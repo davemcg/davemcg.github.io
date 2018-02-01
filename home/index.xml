@@ -41,20 +41,20 @@ I use bash, python (when necessary), and R (when possible) to get work done.</de
     </item>
     
     <item>
-      <title>Recent Publications</title>
-      <link>/./home/publications/</link>
-      <pubDate>Wed, 20 Apr 2016 00:00:00 -0400</pubDate>
-      
-      <guid>/./home/publications/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Projects</title>
       <link>/./home/projects/</link>
       <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
       
       <guid>/./home/projects/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Recent Publications</title>
+      <link>/./home/publications/</link>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 -0400</pubDate>
+      
+      <guid>/./home/publications/</guid>
       <description></description>
     </item>
     

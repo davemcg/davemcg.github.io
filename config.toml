@@ -55,7 +55,7 @@ defaultContentLanguageInSubdir = false
 
   # Your details.
   name = "David McGaughey"
-  role = "Staff Scientist, Bioinformatics Group"
+  role = "Staff Scientist"
 
   # Organizations/Affiliations.
   #   Separate multiple entries with a comma, using the form: `[ {name="Org1", url=""}, {name="Org2", url=""} ]`.
@@ -250,18 +250,18 @@ defaultContentLanguageInSubdir = false
   weight = 1
 
 [[menu.main]]
-  name = "Publications"
-  url = "#publications_selected"
-  weight = 2
-
-[[menu.main]]
   name = "Posts"
   url = "#posts"
-  weight = 3
+  weight = 2
   
 [[menu.main]]
   name = "Projects"
   url = "#projects"
+  weight = 3
+  
+[[menu.main]]
+  name = "Publications"
+  url = "#publications_selected"
   weight = 5
 
 [[menu.main]]
