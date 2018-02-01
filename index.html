@@ -259,7 +259,7 @@ background-color: #666;
 
 
 background-image:
-
+linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
 url('/img/headers/bubbles-wide.jpg');
 
 ;">
@@ -267,60 +267,40 @@ url('/img/headers/bubbles-wide.jpg');
   <div class="container">
 
     <h1 class="hero-title" itemprop="headline">
-      Bioinformatician
+      Academic
     </h1>
 
     
-    <p class="hero-lead">Welcome</p>
+    <p class="hero-lead">The highly flexible website framework for Hugo with an extensible plugin mechanism. Create a beautifully simple site in under 10 minutes 🚀
+<br>
+<small><a id="academic-release" href="https://sourcethemes.com/academic/updates">Latest release</a></small>
+<br><br>
+<iframe style="display: inline-block;" src="https://ghbtns.com/github-btn.html?user=gcushen&amp;repo=hugo-academic&amp;type=star&amp;count=true&amp;size=large" scrolling="0" width="160px" height="30px" frameborder="0"></iframe>
+<iframe style="display: inline-block;" src="https://ghbtns.com/github-btn.html?user=gcushen&amp;repo=hugo-academic&amp;type=fork&amp;count=true&amp;size=large" scrolling="0" width="158px" height="30px" frameborder="0"></iframe></p>
 
-<h1 id="br"><br></h1>
-
-<h1 id="small-a-id-academic-release-href-https-sourcethemes-com-academic-updates-latest-release-a-small"><small><a id="academic-release" href="https://sourcethemes.com/academic/updates">Latest release</a></small></h1>
-
-<h1 id="br-br"><br><br></h1>
-
-<h1 id="iframe-style-display-inline-block-src-https-ghbtns-com-github-btn-html-user-gcushen-amp-repo-hugo-academic-amp-type-star-amp-count-true-amp-size-large-scrolling-0-width-160px-height-30px-frameborder-0-iframe"><iframe style="display: inline-block;" src="https://ghbtns.com/github-btn.html?user=gcushen&amp;repo=hugo-academic&amp;type=star&amp;count=true&amp;size=large" scrolling="0" width="160px" height="30px" frameborder="0"></iframe></h1>
-
-<h1 id="iframe-style-display-inline-block-src-https-ghbtns-com-github-btn-html-user-gcushen-amp-repo-hugo-academic-amp-type-fork-amp-count-true-amp-size-large-scrolling-0-width-158px-height-30px-frameborder-0-iframe"><iframe style="display: inline-block;" src="https://ghbtns.com/github-btn.html?user=gcushen&amp;repo=hugo-academic&amp;type=fork&amp;count=true&amp;size=large" scrolling="0" width="158px" height="30px" frameborder="0"></iframe></h1>
-
-<h1 id="script-type-text-javascript"><script type="text/javascript"></h1>
-
-<h1 id="function-defer">(function defer() {</h1>
-
-<h1 id="if-window-jquery">if (window.jQuery) {</h1>
-
-<h1 id="jquery-document-ready-function">jQuery(document).ready(function(){</h1>
-
-<h1 id="getlatestreleaseinfo">GetLatestReleaseInfo();</h1>
-
-<h1 id="toc_10">});</h1>
-
-<h1 id="else">} else {</h1>
-
-<h1 id="settimeout-function-defer-50">setTimeout(function() { defer() }, 50);</h1>
-
-<h1 id="toc_13">}</h1>
-
-<h1 id="toc_14">})();</h1>
-
-<h1 id="function-getlatestreleaseinfo">function GetLatestReleaseInfo() {</h1>
-
-<h1 id="getjson-https-api-github-com-repos-gcushen-hugo-academic-tags-done-function-json">$.getJSON(&lsquo;<a href="https://api.github.com/repos/gcushen/hugo-academic/tags').done(function" target="_blank">https://api.github.com/repos/gcushen/hugo-academic/tags').done(function</a> (json) {</h1>
-
-<h1 id="let-release-json-0">let release = json[0];</h1>
-
-<h1 id="let-downloadurl-release-zipball-url">// let downloadURL = release.zipball_url;</h1>
-
-<h1 id="academic-release-text-latest-release-release-name">$(&lsquo;#academic-release&rsquo;).text(&lsquo;Latest release &rsquo; + release.name);</h1>
-
-<h1 id="toc_20">});</h1>
-
-<h1 id="toc_21">}</h1>
-
-<h1 id="script"></script></h1>
+<script type="text/javascript">
+  (function defer() {
+    if (window.jQuery) {
+      jQuery(document).ready(function(){
+        GetLatestReleaseInfo();
+      });
+    } else {
+      setTimeout(function() { defer() }, 50);
+    }
+  })();  
+  function GetLatestReleaseInfo() {
+    $.getJSON('https://api.github.com/repos/gcushen/hugo-academic/tags').done(function (json) {
+      let release = json[0];
+      // let downloadURL = release.zipball_url;
+      $('#academic-release').text('Latest release ' + release.name);  
+    });    
+}  
+</script>
 </p>
     
 
+    
+    <p><a href="./post/getting-started/" class="btn btn-light btn-outline btn-large"><i class="fa fa-download"></i> Install Now</a></p>
     
 
   </div>
