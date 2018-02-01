@@ -10,7 +10,7 @@ draft = false # if set to true, changes will not be published
 publishDir = "./"
 
 # Title of your site
-title = "David McGaughey"
+title = "eye Bioinformatician"
 
 # Your copyright notice - appears in site footer.
 # To display a copyright symbol, type `&copy;`.
@@ -55,11 +55,13 @@ defaultContentLanguageInSubdir = false
 
   # Your details.
   name = "David McGaughey"
-  role = "Staff Scientist, OGVFB, NEI, NIH"
+  role = "Staff Scientist, Bioinformatics Group"
 
   # Organizations/Affiliations.
   #   Separate multiple entries with a comma, using the form: `[ {name="Org1", url=""}, {name="Org2", url=""} ]`.
-  organizations = [ { name = "National Institutes of Health", url = "//www.nih.gov" },{ name = "National Eye Institute", url = "//nei.nih.gov"}]
+  organizations = [ { name = "National Institutes of Health", url = "//www.nih.gov" },
+                    { name = "National Eye Institute", url = "//nei.nih.gov"},
+                    { name = "OGVFB", url = "//https://nei.nih.gov/intramural/ogcsb"}]
 
   gravatar = false  # Get your avatar from Gravatar.com? (true/false)
   avatar = "portrait.jpg"  # Specify an avatar image (in `static/img/` folder) or delete value to disable avatar.
@@ -174,7 +176,7 @@ defaultContentLanguageInSubdir = false
 
   # Configuration of talk pages.
   [params.talks]
-    # Show talk time?
+#    # Show talk time?
     time = true
 
   # Configuration of publication pages.
@@ -257,11 +259,6 @@ defaultContentLanguageInSubdir = false
   url = "#posts"
   weight = 3
   
-[[menu.main]]
-  name = "Let's Plot"
-  url = "#letusplot"
-  weight = 4
-
 [[menu.main]]
   name = "Projects"
   url = "#projects"

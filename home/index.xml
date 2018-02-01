@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Homes on David McGaughey</title>
+    <title>Homes on eye Bioinformatician</title>
     <link>/./home/</link>
-    <description>Recent content in Homes on David McGaughey</description>
+    <description>Recent content in Homes on eye Bioinformatician</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
@@ -13,13 +13,12 @@
     
     
     <item>
-      <title>Academic</title>
+      <title>&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</title>
       <link>/./home/hero/</link>
       <pubDate>Sun, 15 Oct 2017 00:00:00 -0400</pubDate>
       
       <guid>/./home/hero/</guid>
-      <description>The highly flexible website framework for Hugo with an extensible plugin mechanism. Create a beautifully simple site in under 10 minutes 🚀 Latest release  
-(function defer() { if (window.jQuery) { jQuery(document).ready(function(){ GetLatestReleaseInfo(); }); } else { setTimeout(function() { defer() }, 50); } })(); function GetLatestReleaseInfo() { $.getJSON(&#39;https://api.github.com/repos/gcushen/hugo-academic/tags&#39;).done(function (json) { let release = json[0]; // let downloadURL = release.zipball_url; $(&#39;#academic-release&#39;).text(&#39;Latest release &#39; + release.name); }); }  </description>
+      <description></description>
     </item>
     
     <item>
@@ -28,16 +27,8 @@
       <pubDate>Thu, 01 Feb 2018 00:00:00 +0000</pubDate>
       
       <guid>/./home/about/</guid>
-      <description>Biography David McGaughey heads the Bioinformatics Group at the Opthlamic Genomics and Visual Function Branch of the National Eye Institute. It is a group of one, responsible for analysis of NGS data in the branch. My research interests include (re)analysis of public genomics data sets and genetic variant prioritization in human disease. I use bash, python (when necessary), and R (when possible) to get work done.</description>
-    </item>
-    
-    <item>
-      <title>Selected Publications</title>
-      <link>/./home/publications_selected/</link>
-      <pubDate>Wed, 20 Apr 2016 00:00:00 -0400</pubDate>
-      
-      <guid>/./home/publications_selected/</guid>
-      <description></description>
+      <description>Biography I head the Bioinformatics Group at the Opthlamic Genomics and Visual Function Branch (OGVFB) of the National Eye Institute. It is a group of one, responsible for analysis of NGS data in the branch. Research interests include (re)analysis of public genomics data sets and genetic variant prioritization in human disease.
+I use bash, python (when necessary), and R (when possible) to get work done.</description>
     </item>
     
     <item>
@@ -46,15 +37,6 @@
       <pubDate>Wed, 20 Apr 2016 00:00:00 -0400</pubDate>
       
       <guid>/./home/publications/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Recent &amp; Upcoming Talks</title>
-      <link>/./home/talks/</link>
-      <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
-      
-      <guid>/./home/talks/</guid>
       <description></description>
     </item>
     

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Publications on David McGaughey</title>
+    <title>Publications on eye Bioinformatician</title>
     <link>/./publication/</link>
-    <description>Recent content in Publications on David McGaughey</description>
+    <description>Recent content in Publications on eye Bioinformatician</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
@@ -13,20 +13,11 @@
     
     
     <item>
-      <title>A Person Re-Identification System For Mobile Devices</title>
-      <link>/./publication/person-re-identification/</link>
-      <pubDate>Tue, 01 Sep 2015 00:00:00 +0000</pubDate>
+      <title>Identifying Core Biological Processes Distinguishing Human Eye Tissues With Systems-Level Gene Expression Analyses And Weighted Correlation Networks</title>
+      <link>/./publication/eyeintegration/</link>
+      <pubDate>Thu, 11 May 2017 00:00:00 +0000</pubDate>
       
-      <guid>/./publication/person-re-identification/</guid>
-      <description>More detail can easily be written here using Markdown and $\rm \LaTeX$ math code.</description>
-    </item>
-    
-    <item>
-      <title>Mobile visual clothing search</title>
-      <link>/./publication/clothing-search/</link>
-      <pubDate>Mon, 01 Jul 2013 00:00:00 +0000</pubDate>
-      
-      <guid>/./publication/clothing-search/</guid>
+      <guid>/./publication/eyeintegration/</guid>
       <description>More detail can easily be written here using Markdown and $\rm \LaTeX$ math code.</description>
     </item>
     

@@ -12,7 +12,7 @@ weight = 5
   interests = [
     "Bioinformatics",
     "Genomics",
-    "Development",
+    "Developmental Biology",
     "Statistics"
   ]
 
@@ -31,4 +31,6 @@ weight = 5
 
 # Biography
 
-David McGaughey heads the Bioinformatics Group at the Opthlamic Genomics and Visual Function Branch of the National Eye Institute. It is a group of one, responsible for analysis of NGS data in the branch. My research interests include (re)analysis of public genomics data sets and genetic variant prioritization in human disease. I use bash, python (when necessary), and R (when possible) to get work done. 
+I head the Bioinformatics Group at the Opthlamic Genomics and Visual Function Branch (OGVFB) of the National Eye Institute. It is a group of one, responsible for analysis of NGS data in the branch. Research interests include (re)analysis of public genomics data sets and genetic variant prioritization in human disease. 
+
+I use bash, python (when necessary), and R (when possible) to get work done. 
