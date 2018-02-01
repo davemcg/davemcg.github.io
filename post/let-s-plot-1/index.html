@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme" content="hugo-academic">
+  <meta name="generator" content="Hugo 0.35" />
+  <meta name="author" content="David McGaughey">
+
+  
+  
+  
+  
+    
+      
+    
+  
+  <meta name="description" content="First time making a polar plot&hellip;.let&rsquo;s see if ggplot2 can do it.
+Import data with readxl library(tidyverse)  ## Warning: package &#39;tidyverse&#39; was built under R version 3.4.2  ## ── Attaching packages ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──  ## ✔ ggplot2 2.2.1 ✔ purrr 0.2.4 ## ✔ tibble 1.3.4 ✔ dplyr 0.7.4 ## ✔ tidyr 0.7.2 ✔ stringr 1.2.0 ## ✔ readr 1.1.1 ✔ forcats 0.2.0  ## Warning: package &#39;tibble&#39; was built under R version 3.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="/./post/let-s-plot-1/">
+
+  
+
+
+  
+
+  
+  
+  <meta name="theme-color" content="#0095eb">
+  
+  
+  
+  
+    
+  
+  
+    
+    
+      
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+      
+    
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha512-6MXa8B6uaO18Hid6blRMetEIoPqHf7Ux1tnyIQdpt9qI5OACx7C+O3IVTr98vwGnlcg0LOLa02i9Y1HpVhlfiw==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.1/css/academicons.min.css" integrity="sha512-NThgw3XKQ1absAahW6to7Ey42uycrVvfNfyjqcFNgCmOCQ5AR4AO0SiXrN+8ZtYeappp56lk1WtvjVmEa+VR6A==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+  
+  
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat:400,700%7cRoboto:400,400italic,700%7cRoboto&#43;Mono">
+  
+  <link rel="stylesheet" href="/styles.css">
+  
+
+  
+
+  
+  <link rel="alternate" href="/./index.xml" type="application/rss+xml" title="eye Bioinformatician">
+  <link rel="feed" href="/./index.xml" type="application/rss+xml" title="eye Bioinformatician">
+  
+
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="/./post/let-s-plot-1/">
+
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="twitter:site" content="@David_McGaughey">
+  <meta property="twitter:creator" content="@David_McGaughey">
+  
+  <meta property="og:site_name" content="eye Bioinformatician">
+  <meta property="og:url" content="/./post/let-s-plot-1/">
+  <meta property="og:title" content="Let’s Plot 1: Going in circles  | eye Bioinformatician">
+  <meta property="og:description" content="First time making a polar plot&hellip;.let&rsquo;s see if ggplot2 can do it.
+Import data with readxl library(tidyverse)  ## Warning: package &#39;tidyverse&#39; was built under R version 3.4.2  ## ── Attaching packages ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──  ## ✔ ggplot2 2.2.1 ✔ purrr 0.2.4 ## ✔ tibble 1.3.4 ✔ dplyr 0.7.4 ## ✔ tidyr 0.7.2 ✔ stringr 1.2.0 ## ✔ readr 1.1.1 ✔ forcats 0.2.0  ## Warning: package &#39;tibble&#39; was built under R version 3.">
+  <meta property="og:locale" content="en-us">
+  
+  <meta property="article:published_time" content="2018-02-01T00:00:00&#43;00:00">
+  
+  <meta property="article:modified_time" content="2018-02-01T00:00:00&#43;00:00">
+  
+
+  
+
+  <title>Let’s Plot 1: Going in circles  | eye Bioinformatician</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#toc" data-offset="71" >
+
+<nav class="navbar navbar-default navbar-fixed-top" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="navbar-header">
+      
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+              data-target=".navbar-collapse" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+      <a class="navbar-brand" href="/">eye Bioinformatician</a>
+    </div>
+
+    
+    <div class="collapse navbar-collapse">
+
+      
+      
+      <ul class="nav navbar-nav navbar-right">
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#about">
+            
+            <span>Home</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#publications_selected">
+            
+            <span>Publications</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#posts">
+            
+            <span>Posts</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#projects">
+            
+            <span>Projects</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#contact">
+            
+            <span>Contact</span>
+            
+          </a>
+        </li>
+
+        
+        
+      
+
+      
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+  <div class="article-container">
+    <h1 itemprop="name">Let’s Plot 1: Going in circles </h1>
+
+    
+
+<div class="article-metadata">
+
+  <span class="article-date">
+    
+    <time datetime="2018-02-01 00:00:00 &#43;0000 UTC" itemprop="datePublished dateModified">
+      Feb 1, 2018
+    </time>
+  </span>
+  <span itemscope itemprop="author publisher" itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="David McGaughey">
+  </span>
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    8 min read
+  </span>
+  
+
+  
+  
+
+  
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fa fa-folder"></i>
+    
+    <a href="/categories/lets-plot">Let’s Plot</a
+    >, 
+    
+    <a href="/categories/r">R</a
+    >
+    
+  </span>
+  
+  
+
+  
+  
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=Let%e2%80%99s%20Plot%201%3a%20Going%20in%20circles%20&amp;url=%2f.%2fpost%2flet-s-plot-1%2f"
+         target="_blank" rel="noopener">
+        <i class="fa fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=%2f.%2fpost%2flet-s-plot-1%2f"
+         target="_blank" rel="noopener">
+        <i class="fa fa-facebook"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2f.%2fpost%2flet-s-plot-1%2f&amp;title=Let%e2%80%99s%20Plot%201%3a%20Going%20in%20circles%20"
+         target="_blank" rel="noopener">
+        <i class="fa fa-linkedin"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=%2f.%2fpost%2flet-s-plot-1%2f&amp;title=Let%e2%80%99s%20Plot%201%3a%20Going%20in%20circles%20"
+         target="_blank" rel="noopener">
+        <i class="fa fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=Let%e2%80%99s%20Plot%201%3a%20Going%20in%20circles%20&amp;body=%2f.%2fpost%2flet-s-plot-1%2f">
+        <i class="fa fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+
+    <div class="article-style" itemprop="articleBody">
+      
+
+<p>First time making a polar plot&hellip;.let&rsquo;s see if ggplot2 can do it.</p>
+
+<h2 id="import-data-with-readxl">Import data with readxl</h2>
+
+<pre><code class="language-r">library(tidyverse)
+</code></pre>
+
+<pre><code>## Warning: package 'tidyverse' was built under R version 3.4.2
+</code></pre>
+
+<pre><code>## ── Attaching packages ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──
+</code></pre>
+
+<pre><code>## ✔ ggplot2 2.2.1     ✔ purrr   0.2.4
+## ✔ tibble  1.3.4     ✔ dplyr   0.7.4
+## ✔ tidyr   0.7.2     ✔ stringr 1.2.0
+## ✔ readr   1.1.1     ✔ forcats 0.2.0
+</code></pre>
+
+<pre><code>## Warning: package 'tibble' was built under R version 3.4.1
+</code></pre>
+
+<pre><code>## Warning: package 'tidyr' was built under R version 3.4.2
+</code></pre>
+
+<pre><code>## Warning: package 'purrr' was built under R version 3.4.2
+</code></pre>
+
+<pre><code>## Warning: package 'dplyr' was built under R version 3.4.2
+</code></pre>
+
+<pre><code>## ── Conflicts ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()
+</code></pre>
+
+<pre><code class="language-r">library(stringr)
+polar_values &lt;- readxl::read_xlsx('~/git/Let_us_plot/001_polar_figure/polar_values.xlsx')
+polar_values
+</code></pre>
+
+<pre><code>## # A tibble: 8 x 8
+##                                                            X__1 `Od Amp1`
+##                                                           &lt;chr&gt;     &lt;dbl&gt;
+## 1                                                             3      2.10
+## 2                                                             5      1.56
+## 3                                                            14      4.79
+## 4                                                            15      0.35
+## 5                                                            18      0.91
+## 6                                                          &lt;NA&gt;        NA
+## 7       1,2,3 are the three readings per patient (3,5,14,15,18)        NA
+## 8 Amp and Angle are paired values, so 1.56 and 19.6 go together        NA
+## # ... with 6 more variables: `Od Amp2` &lt;dbl&gt;, `Od Amp3` &lt;dbl&gt;, X__2 &lt;lgl&gt;,
+## #   `Od Angle1` &lt;dbl&gt;, `Od Angle2` &lt;dbl&gt;, `Od Angle3` &lt;dbl&gt;
+</code></pre>
+
+<h2 id="ok-first-let-s-remove-the-notes">OK, first let&rsquo;s remove the notes.</h2>
+
+<p>We first slice the first 5 rows, then fix the encoding for <code>Od Amp1</code>, then remove the empty column in between</p>
+
+<pre><code class="language-r">polar_values &lt;- polar_values %&gt;% 
+  slice(1:5) %&gt;% 
+  mutate(Patient=as.factor(X__1)) %&gt;% 
+  select(Patient,`Od Amp1`:`Od Amp3`, `Od Angle1`:`Od Angle3`)
+polar_values
+</code></pre>
+
+<pre><code>## # A tibble: 5 x 7
+##   Patient `Od Amp1` `Od Amp2` `Od Amp3` `Od Angle1` `Od Angle2`
+##    &lt;fctr&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;
+## 1       3      2.10      3.01      2.96        66.0        67.7
+## 2       5      1.56      1.36      1.54        19.6        14.7
+## 3      14      4.79      4.73      4.72       359.9       352.9
+## 4      15      0.35      0.32      0.30       256.9       233.8
+## 5      18      0.91      0.83      1.12       349.6       344.4
+## # ... with 1 more variables: `Od Angle3` &lt;dbl&gt;
+</code></pre>
+
+<h2 id="however-we-aren-t-done-the-data-is-wide-instead-of-long-and-we-have-mixed-session-ids-amp-1-3-and-angle-1-3-with-the-value-type">However, we aren&rsquo;t done. The data is &ldquo;wide&rdquo; instead of &ldquo;long&rdquo; and we have mixed session IDs (Amp 1-3 and Angle 1-3) with the value type.</h2>
+
+<p>Let&rsquo;s first deal with the wide issue. If we google &ldquo;R wide to long&rdquo; we find this page near the top <a href="http://www.cookbook-r.com/Manipulating_data/Converting_data_between_wide_and_long_format/" target="_blank">http://www.cookbook-r.com/Manipulating_data/Converting_data_between_wide_and_long_format/</a> which tells us that <code>gather</code> is the function we want.</p>
+
+<p><code>Test_Session</code> is the name for the column containing <code>Od Amp1 to Od Angle</code>
+<code>Value</code> is the name for the column holding the test measurements.</p>
+
+<pre><code class="language-r">polar_values %&gt;% 
+  gather(Test_Session, Value, `Od Amp1`:`Od Angle3`) 
+</code></pre>
+
+<pre><code>## # A tibble: 30 x 3
+##    Patient Test_Session Value
+##     &lt;fctr&gt;        &lt;chr&gt; &lt;dbl&gt;
+##  1       3      Od Amp1  2.10
+##  2       5      Od Amp1  1.56
+##  3      14      Od Amp1  4.79
+##  4      15      Od Amp1  0.35
+##  5      18      Od Amp1  0.91
+##  6       3      Od Amp2  3.01
+##  7       5      Od Amp2  1.36
+##  8      14      Od Amp2  4.73
+##  9      15      Od Amp2  0.32
+## 10      18      Od Amp2  0.83
+## # ... with 20 more rows
+</code></pre>
+
+<h2 id="now-we-need-to-extract-the-session-1-2-3-and-the-test-type-amp-or-angle">Now we need to extract the session (1,2,3) and the test type (Amp or Angle)</h2>
+
+<p>We will use the fact that the session is <em>always</em> at the end to our advantage.</p>
+
+<p>The str_sub function from the stringr package allows you to pick &lsquo;negative&rsquo; positions in the string. So we pick last value and the first to the second last position to get what we need.</p>
+
+<pre><code class="language-r">polar_values %&gt;% 
+  gather(Test_Session, Value, `Od Amp1`:`Od Angle3`) %&gt;% 
+  mutate(Session = str_sub(Test_Session, -1), Test = str_sub(Test_Session,1,-2))
+</code></pre>
+
+<pre><code>## # A tibble: 30 x 5
+##    Patient Test_Session Value Session   Test
+##     &lt;fctr&gt;        &lt;chr&gt; &lt;dbl&gt;   &lt;chr&gt;  &lt;chr&gt;
+##  1       3      Od Amp1  2.10       1 Od Amp
+##  2       5      Od Amp1  1.56       1 Od Amp
+##  3      14      Od Amp1  4.79       1 Od Amp
+##  4      15      Od Amp1  0.35       1 Od Amp
+##  5      18      Od Amp1  0.91       1 Od Amp
+##  6       3      Od Amp2  3.01       2 Od Amp
+##  7       5      Od Amp2  1.36       2 Od Amp
+##  8      14      Od Amp2  4.73       2 Od Amp
+##  9      15      Od Amp2  0.32       2 Od Amp
+## 10      18      Od Amp2  0.83       2 Od Amp
+## # ... with 20 more rows
+</code></pre>
+
+<h2 id="now-we-have-two-value-types-angle-and-amplitude-in-one-column-so-we-need-to-go-from-long-to-wide-to-split-them-apart">Now we have two value types (Angle and Amplitude) in one column. So we need to go from long to wide to split them apart.</h2>
+
+<p>We drop the now useless Test_Session column, grab the session number from the end with <code>str_sub</code>,  then us the <code>spread</code> function to use the Test and Value columns to get it wide.</p>
+
+<pre><code class="language-r">polar_values %&gt;% 
+  gather(Test_Session, Value, `Od Amp1`:`Od Angle3`) %&gt;% 
+  mutate(Session = str_sub(Test_Session, -1), Test = str_sub(Test_Session,1,-2)) %&gt;% 
+  select(-Test_Session) %&gt;% 
+  spread(Test, Value)
+</code></pre>
+
+<pre><code>## # A tibble: 15 x 4
+##    Patient Session `Od Amp` `Od Angle`
+##  *  &lt;fctr&gt;   &lt;chr&gt;    &lt;dbl&gt;      &lt;dbl&gt;
+##  1      14       1     4.79      359.9
+##  2      14       2     4.73      352.9
+##  3      14       3     4.72      353.3
+##  4      15       1     0.35      256.9
+##  5      15       2     0.32      233.8
+##  6      15       3     0.30      275.5
+##  7      18       1     0.91      349.6
+##  8      18       2     0.83      344.4
+##  9      18       3     1.12      349.3
+## 10       3       1     2.10       66.0
+## 11       3       2     3.01       67.7
+## 12       3       3     2.96       65.7
+## 13       5       1     1.56       19.6
+## 14       5       2     1.36       14.7
+## 15       5       3     1.54      359.8
+</code></pre>
+
+<p>Boom. Mic drop.</p>
+
+<h2 id="putting-it-all-together-and-saving-so-we-don-t-have-to-see-this-big-code-block-later">Putting it all together and saving so we don&rsquo;t have to see this big code block later.</h2>
+
+<pre><code class="language-r">reformatted_values &lt;- 
+  polar_values %&gt;% 
+  gather(Test_Session, Value, `Od Amp1`:`Od Angle3`) %&gt;% 
+  mutate(Session = str_sub(Test_Session, -1), Test = str_sub(Test_Session,1,-2)) %&gt;% 
+  select(-Test_Session) %&gt;% 
+  spread(Test, Value)
+
+reformatted_values
+</code></pre>
+
+<pre><code>## # A tibble: 15 x 4
+##    Patient Session `Od Amp` `Od Angle`
+##  *  &lt;fctr&gt;   &lt;chr&gt;    &lt;dbl&gt;      &lt;dbl&gt;
+##  1      14       1     4.79      359.9
+##  2      14       2     4.73      352.9
+##  3      14       3     4.72      353.3
+##  4      15       1     0.35      256.9
+##  5      15       2     0.32      233.8
+##  6      15       3     0.30      275.5
+##  7      18       1     0.91      349.6
+##  8      18       2     0.83      344.4
+##  9      18       3     1.12      349.3
+## 10       3       1     2.10       66.0
+## 11       3       2     3.01       67.7
+## 12       3       3     2.96       65.7
+## 13       5       1     1.56       19.6
+## 14       5       2     1.36       14.7
+## 15       5       3     1.54      359.8
+</code></pre>
+
+<h2 id="first-plot-does-this-work">First plot. Does this work?</h2>
+
+<pre><code class="language-r">reformatted_values %&gt;% ggplot(aes(y=`Od Amp`, x=`Od Angle`)) + geom_point()
+</code></pre>
+
+<p><img src="2018-02-01-let-s-plot-1_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+
+<h2 id="but-wait-this-is-a-polar-plot">But wait, this is a polar plot&hellip;.</h2>
+
+<p>Fortunately ggplot has a function to transform cartesian values into polar values: <code>coord_polar</code></p>
+
+<pre><code class="language-r">reformatted_values %&gt;% ggplot(aes(y=`Od Amp`, x=`Od Angle`)) + coord_polar() + geom_point()
+</code></pre>
+
+<p><img src="2018-02-01-let-s-plot-1_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+
+<h2 id="not-bad-but-we-have-a-lot-of-little-things-to-do">Not bad, but we have a lot of little things to do.</h2>
+
+<p>First, I&rsquo;m  suspicious that the ranges of values is from the smallest to the largest. Or maybe 0 to the largest. We can test this by filtering out the bigger values.</p>
+
+<pre><code class="language-r">reformatted_values %&gt;% 
+  filter(`Od Angle` &lt; 300) %&gt;% 
+  ggplot(aes(y=`Od Amp`, x=`Od Angle`)) + coord_polar() + geom_point()
+</code></pre>
+
+<p><img src="2018-02-01-let-s-plot-1_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+
+<h2 id="yeah-so-we-need-to-tell-ggplot-what-the-range-of-values-is">Yeah, so we need to tell ggplot what the range of values is.</h2>
+
+<pre><code class="language-r">reformatted_values %&gt;% filter(`Od Angle` &lt; 300) %&gt;% 
+  ggplot(aes(y=`Od Amp`, x=`Od Angle`)) + 
+  coord_polar() + 
+  geom_point() +
+  scale_x_continuous(limits=c(0,360), breaks = c(0,30,60,90,120,150,180,210,240,270,300,330)) 
+</code></pre>
+
+<p><img src="2018-02-01-let-s-plot-1_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+
+<h2 id="cool-the-range-goes-to-360-as-expected-still-a-few-more-things-to-do">Cool, the range goes to 360 as expected. Still a few more things to do:</h2>
+
+<ol>
+<li>Rotate the start point so 90 is the top</li>
+<li>Change directions of values from CW to CCW</li>
+<li>Add color and prettify</li>
+</ol>
+
+<p>We examine the coord_polar options (type <code>?coord_polar</code> in the R console) and see that <code>start</code> and <code>direction</code> are options. We want to shift 90 degrees&hellip;but the <code>start</code> parameter is in radians. Some quick googling let&rsquo;s us know that 90 degree ~ 1.57 radians. Let&rsquo;s use that. And -1 for direction to make it counter clockwise.</p>
+
+<pre><code class="language-r">reformatted_values %&gt;% 
+  ggplot(aes(y=`Od Amp`, x=`Od Angle`)) + 
+  coord_polar(start = 1.57, direction = -1) + 
+  geom_point() +
+  scale_x_continuous(limits=c(0,360), breaks = c(0,30,60,90,120,150,180,210,240,270,300,330)) 
+</code></pre>
+
+<p><img src="2018-02-01-let-s-plot-1_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+
+<h2 id="hmm-wrong-way-want-180-on-the-left-let-s-make-it-negative">Hmm, wrong way. (want 180 on the left) Let&rsquo;s make it negative.</h2>
+
+<pre><code class="language-r">reformatted_values %&gt;% 
+  ggplot(aes(y=`Od Amp`, x=`Od Angle`)) + 
+  coord_polar(start = -1.57, direction = -1) + 
+  geom_point() +
+  scale_x_continuous(limits=c(0,360), breaks = c(0,30,60,90,120,150,180,210,240,270,300,330)) 
+</code></pre>
+
+<p><img src="2018-02-01-let-s-plot-1_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+
+<h2 id="ok-final-plot-with-some-color-and-geom-point-tweaking">OK, Final plot with some color and geom_point tweaking!</h2>
+
+<p><code>theme_bw</code> makes the background white instead of gray, which I prefer</p>
+
+<p><code>alpha</code> in <code>geom_point</code> makes the points semi-transparent</p>
+
+<p><code>scale_colour_brewer</code> is a nicer color palette, in my opinion</p>
+
+<p><code>colour</code> and <code>shape</code> in ggplot() gives us color and shape for the patients and three sessions</p>
+
+<pre><code class="language-r">reformatted_values %&gt;% ggplot(aes(y=`Od Amp`, x=`Od Angle`, colour=Patient, shape=Session)) + 
+  coord_polar(start = -1.57, direction = -1) + 
+  geom_point(size=3, alpha=0.7) + 
+  theme_bw() + 
+  scale_x_continuous(limits=c(0,360), breaks = c(0,30,60,90,120,150,180,210,240,270,300,330)) + 
+  scale_color_brewer(palette ='Set1') + xlab('Angle') + ylab('Amplitude') + ggtitle('OD')
+</code></pre>
+
+<p><img src="2018-02-01-let-s-plot-1_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+
+<h1 id="sessioninfo">sessionInfo</h1>
+
+<pre><code class="language-r">sessionInfo()
+</code></pre>
+
+<pre><code>## R version 3.4.0 (2017-04-21)
+## Platform: x86_64-apple-darwin15.6.0 (64-bit)
+## Running under: OS X El Capitan 10.11.6
+## 
+## Matrix products: default
+## BLAS: /Library/Frameworks/R.framework/Versions/3.4/Resources/lib/libRblas.0.dylib
+## LAPACK: /Library/Frameworks/R.framework/Versions/3.4/Resources/lib/libRlapack.dylib
+## 
+## locale:
+## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+## 
+## attached base packages:
+## [1] stats     graphics  grDevices utils     datasets  methods   base     
+## 
+## other attached packages:
+##  [1] bindrcpp_0.2    forcats_0.2.0   stringr_1.2.0   dplyr_0.7.4    
+##  [5] purrr_0.2.4     readr_1.1.1     tidyr_0.7.2     tibble_1.3.4   
+##  [9] ggplot2_2.2.1   tidyverse_1.2.1
+## 
+## loaded via a namespace (and not attached):
+##  [1] Rcpp_0.12.13       RColorBrewer_1.1-2 cellranger_1.1.0  
+##  [4] compiler_3.4.0     plyr_1.8.4         bindr_0.1         
+##  [7] tools_3.4.0        digest_0.6.12      lubridate_1.7.1   
+## [10] jsonlite_1.5       evaluate_0.10.1    nlme_3.1-131      
+## [13] gtable_0.2.0       lattice_0.20-35    pkgconfig_2.0.1   
+## [16] rlang_0.1.4        psych_1.7.8        cli_1.0.0         
+## [19] rstudioapi_0.7     yaml_2.1.14        parallel_3.4.0    
+## [22] haven_1.1.0        xml2_1.1.1         httr_1.3.1        
+## [25] knitr_1.17         hms_0.3            tidyselect_0.2.3  
+## [28] rprojroot_1.2      grid_3.4.0         glue_1.2.0        
+## [31] R6_2.2.2           readxl_1.0.0       foreign_0.8-69    
+## [34] rmarkdown_1.8      modelr_0.1.1       reshape2_1.4.2    
+## [37] magrittr_1.5       backports_1.1.1    scales_0.5.0.9000 
+## [40] htmltools_0.3.6    rvest_0.3.2        assertthat_0.2.0  
+## [43] mnormt_1.5-5       colorspace_1.3-2   labeling_0.3      
+## [46] stringi_1.1.6      lazyeval_0.2.1     munsell_0.4.3     
+## [49] broom_0.4.3        crayon_1.3.4
+</code></pre>
+
+    </div>
+
+    
+
+
+<div class="article-tags">
+  
+  <a class="btn btn-primary btn-outline" href="/tags/r">R</a>
+  
+  <a class="btn btn-primary btn-outline" href="/tags/ggplot2">ggplot2</a>
+  
+  <a class="btn btn-primary btn-outline" href="/tags/lets-plot">Let&#39;s Plot</a>
+  
+</div>
+
+
+
+
+    
+    
+    <div class="article-widget">
+      <div class="hr-light"></div>
+      <h3>Related</h3>
+      <ul>
+        
+        <li><a href="/post/let-s-plot-1/">Let’s Plot 1: Going in circles </a></li>
+        
+      </ul>
+    </div>
+    
+
+    
+
+    
+
+
+  </div>
+</article>
+
+<footer class="site-footer">
+  <div class="container">
+    <p class="powered-by">
+
+      &copy; 2018 &middot; 
+
+      Powered by the
+      <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+      <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+      <span class="pull-right" aria-hidden="true">
+        <a href="#" id="back_to_top">
+          <span class="button_icon">
+            <i class="fa fa-chevron-up fa-2x"></i>
+          </span>
+        </a>
+      </span>
+
+    </p>
+  </div>
+</footer>
+
+
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close btn-large" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Cite</h4>
+      </div>
+      <div>
+        <pre><code class="modal-body tex"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-primary btn-outline js-copy-cite" href="#" target="_blank">
+          <i class="fa fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-primary btn-outline js-download-cite" href="#" target="_blank">
+          <i class="fa fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+    
+
+    
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha512-3P8rXCuGJdNZOnUx/03c1jOTnMn3rP63nBip5gOP2qmUh5YAdVAvFZ1E+QLZZbC1rtMrQb+mah3AfYW11RUrWA==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.3/imagesloaded.pkgd.min.js" integrity="sha512-umsR78NN0D23AzgoZ11K7raBD+R6hqKojyBZs1w8WvYlsI+QuKRGBx3LFCwhatzBunCjDuJpDHwxD13sLMbpRA==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha512-iztkobsvnjKfAtTNdHkGVjAYTrrtlC7mGp/54c40wowO7LhURYl3gVzzcEqGl/qKXQltJ2HwMrdLcNUdo+N/RQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+    
+    
+    <script src="/js/hugo-academic.js"></script>
+    
+
+    
+    
+      
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+      
+
+      
+
+      
+
+      <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+
+  </body>
+</html>
+

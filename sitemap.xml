@@ -5,6 +5,24 @@
     
     <url>
     
+      <loc>/./post/let-s-plot-1/</loc>
+      <lastmod>2018-02-01T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/./post/let-s-plot-1/</loc>
+      <lastmod>2018-02-01T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/./project/eyeintegration/</loc>
       <lastmod>2018-02-01T00:00:00+00:00</lastmod>
     </url>
@@ -68,17 +86,7 @@
     
     <url>
     
-      <loc>/./post/getting-started/</loc>
-      <lastmod>2018-01-13T00:00:00-05:00</lastmod>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>/./post/2015-07-23-r-rmarkdown/</loc>
-      <lastmod>2015-07-23T21:13:14-05:00</lastmod>
+      <loc>/./post/2018-02-01-let-s-plot-1/</loc>
     </url>
     
   
@@ -115,8 +123,28 @@
     
     <url>
     
-      <loc>/./tags/plot/</loc>
-      <lastmod>2015-07-23T21:13:14-05:00</lastmod>
+      <loc>/./tags/ggplot2/</loc>
+      <lastmod>2018-02-01T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/./tags/lets-plot/</loc>
+      <lastmod>2018-02-01T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/./categories/lets-plot/</loc>
+      <lastmod>2018-02-01T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -156,7 +184,7 @@
     <url>
     
       <loc>/./categories/r/</loc>
-      <lastmod>2015-07-23T21:13:14-05:00</lastmod>
+      <lastmod>2018-02-01T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -165,8 +193,8 @@
     
     <url>
     
-      <loc>/./tags/r-markdown/</loc>
-      <lastmod>2015-07-23T21:13:14-05:00</lastmod>
+      <loc>/./tags/r/</loc>
+      <lastmod>2018-02-01T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -177,16 +205,6 @@
     
       <loc>/./tags/rna/</loc>
       <lastmod>2018-02-01T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>/./tags/regression/</loc>
-      <lastmod>2015-07-23T21:13:14-05:00</lastmod>
       <priority>0</priority>
     </url>
     

@@ -11,6 +11,275 @@
     <atom:link href="//" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Let’s Plot 1: Going in circles </title>
+      <link>/./post/let-s-plot-1/</link>
+      <pubDate>Thu, 01 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/let-s-plot-1/</guid>
+      <description>&lt;p&gt;First time making a polar plot….let’s see if ggplot2 can do it.&lt;/p&gt;
+&lt;div id=&#34;import-data-with-readxl&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Import data with readxl&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;tidyverse&amp;#39; was built under R version 3.4.2&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## ── Attaching packages ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## ✔ ggplot2 2.2.1     ✔ purrr   0.2.4
+## ✔ tibble  1.3.4     ✔ dplyr   0.7.4
+## ✔ tidyr   0.7.2     ✔ stringr 1.2.0
+## ✔ readr   1.1.1     ✔ forcats 0.2.0&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;tibble&amp;#39; was built under R version 3.4.1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;tidyr&amp;#39; was built under R version 3.4.2&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;purrr&amp;#39; was built under R version 3.4.2&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;dplyr&amp;#39; was built under R version 3.4.2&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## ── Conflicts ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(stringr)
+polar_values &amp;lt;- readxl::read_xlsx(&amp;#39;~/git/Let_us_plot/001_polar_figure/polar_values.xlsx&amp;#39;)
+polar_values&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 8 x 8
+##                                                            X__1 `Od Amp1`
+##                                                           &amp;lt;chr&amp;gt;     &amp;lt;dbl&amp;gt;
+## 1                                                             3      2.10
+## 2                                                             5      1.56
+## 3                                                            14      4.79
+## 4                                                            15      0.35
+## 5                                                            18      0.91
+## 6                                                          &amp;lt;NA&amp;gt;        NA
+## 7       1,2,3 are the three readings per patient (3,5,14,15,18)        NA
+## 8 Amp and Angle are paired values, so 1.56 and 19.6 go together        NA
+## # ... with 6 more variables: `Od Amp2` &amp;lt;dbl&amp;gt;, `Od Amp3` &amp;lt;dbl&amp;gt;, X__2 &amp;lt;lgl&amp;gt;,
+## #   `Od Angle1` &amp;lt;dbl&amp;gt;, `Od Angle2` &amp;lt;dbl&amp;gt;, `Od Angle3` &amp;lt;dbl&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;ok-first-lets-remove-the-notes.&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;OK, first let’s remove the notes.&lt;/h2&gt;
+&lt;p&gt;We first slice the first 5 rows, then fix the encoding for &lt;code&gt;Od Amp1&lt;/code&gt;, then remove the empty column in between&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;polar_values &amp;lt;- polar_values %&amp;gt;% 
+  slice(1:5) %&amp;gt;% 
+  mutate(Patient=as.factor(X__1)) %&amp;gt;% 
+  select(Patient,`Od Amp1`:`Od Amp3`, `Od Angle1`:`Od Angle3`)
+polar_values&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 5 x 7
+##   Patient `Od Amp1` `Od Amp2` `Od Amp3` `Od Angle1` `Od Angle2`
+##    &amp;lt;fctr&amp;gt;     &amp;lt;dbl&amp;gt;     &amp;lt;dbl&amp;gt;     &amp;lt;dbl&amp;gt;       &amp;lt;dbl&amp;gt;       &amp;lt;dbl&amp;gt;
+## 1       3      2.10      3.01      2.96        66.0        67.7
+## 2       5      1.56      1.36      1.54        19.6        14.7
+## 3      14      4.79      4.73      4.72       359.9       352.9
+## 4      15      0.35      0.32      0.30       256.9       233.8
+## 5      18      0.91      0.83      1.12       349.6       344.4
+## # ... with 1 more variables: `Od Angle3` &amp;lt;dbl&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;however-we-arent-done.-the-data-is-wide-instead-of-long-and-we-have-mixed-session-ids-amp-1-3-and-angle-1-3-with-the-value-type.&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;However, we aren’t done. The data is “wide” instead of “long” and we have mixed session IDs (Amp 1-3 and Angle 1-3) with the value type.&lt;/h2&gt;
+&lt;p&gt;Let’s first deal with the wide issue. If we google “R wide to long” we find this page near the top &lt;a href=&#34;http://www.cookbook-r.com/Manipulating_data/Converting_data_between_wide_and_long_format/&#34; class=&#34;uri&#34;&gt;http://www.cookbook-r.com/Manipulating_data/Converting_data_between_wide_and_long_format/&lt;/a&gt; which tells us that &lt;code&gt;gather&lt;/code&gt; is the function we want.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Test_Session&lt;/code&gt; is the name for the column containing &lt;code&gt;Od Amp1 to Od Angle&lt;/code&gt; &lt;code&gt;Value&lt;/code&gt; is the name for the column holding the test measurements.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;polar_values %&amp;gt;% 
+  gather(Test_Session, Value, `Od Amp1`:`Od Angle3`) &lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 30 x 3
+##    Patient Test_Session Value
+##     &amp;lt;fctr&amp;gt;        &amp;lt;chr&amp;gt; &amp;lt;dbl&amp;gt;
+##  1       3      Od Amp1  2.10
+##  2       5      Od Amp1  1.56
+##  3      14      Od Amp1  4.79
+##  4      15      Od Amp1  0.35
+##  5      18      Od Amp1  0.91
+##  6       3      Od Amp2  3.01
+##  7       5      Od Amp2  1.36
+##  8      14      Od Amp2  4.73
+##  9      15      Od Amp2  0.32
+## 10      18      Od Amp2  0.83
+## # ... with 20 more rows&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;now-we-need-to-extract-the-session-123-and-the-test-type-amp-or-angle&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Now we need to extract the session (1,2,3) and the test type (Amp or Angle)&lt;/h2&gt;
+&lt;p&gt;We will use the fact that the session is &lt;em&gt;always&lt;/em&gt; at the end to our advantage.&lt;/p&gt;
+&lt;p&gt;The str_sub function from the stringr package allows you to pick ‘negative’ positions in the string. So we pick last value and the first to the second last position to get what we need.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;polar_values %&amp;gt;% 
+  gather(Test_Session, Value, `Od Amp1`:`Od Angle3`) %&amp;gt;% 
+  mutate(Session = str_sub(Test_Session, -1), Test = str_sub(Test_Session,1,-2))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 30 x 5
+##    Patient Test_Session Value Session   Test
+##     &amp;lt;fctr&amp;gt;        &amp;lt;chr&amp;gt; &amp;lt;dbl&amp;gt;   &amp;lt;chr&amp;gt;  &amp;lt;chr&amp;gt;
+##  1       3      Od Amp1  2.10       1 Od Amp
+##  2       5      Od Amp1  1.56       1 Od Amp
+##  3      14      Od Amp1  4.79       1 Od Amp
+##  4      15      Od Amp1  0.35       1 Od Amp
+##  5      18      Od Amp1  0.91       1 Od Amp
+##  6       3      Od Amp2  3.01       2 Od Amp
+##  7       5      Od Amp2  1.36       2 Od Amp
+##  8      14      Od Amp2  4.73       2 Od Amp
+##  9      15      Od Amp2  0.32       2 Od Amp
+## 10      18      Od Amp2  0.83       2 Od Amp
+## # ... with 20 more rows&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;now-we-have-two-value-types-angle-and-amplitude-in-one-column.-so-we-need-to-go-from-long-to-wide-to-split-them-apart.&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Now we have two value types (Angle and Amplitude) in one column. So we need to go from long to wide to split them apart.&lt;/h2&gt;
+&lt;p&gt;We drop the now useless Test_Session column, grab the session number from the end with &lt;code&gt;str_sub&lt;/code&gt;, then us the &lt;code&gt;spread&lt;/code&gt; function to use the Test and Value columns to get it wide.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;polar_values %&amp;gt;% 
+  gather(Test_Session, Value, `Od Amp1`:`Od Angle3`) %&amp;gt;% 
+  mutate(Session = str_sub(Test_Session, -1), Test = str_sub(Test_Session,1,-2)) %&amp;gt;% 
+  select(-Test_Session) %&amp;gt;% 
+  spread(Test, Value)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 15 x 4
+##    Patient Session `Od Amp` `Od Angle`
+##  *  &amp;lt;fctr&amp;gt;   &amp;lt;chr&amp;gt;    &amp;lt;dbl&amp;gt;      &amp;lt;dbl&amp;gt;
+##  1      14       1     4.79      359.9
+##  2      14       2     4.73      352.9
+##  3      14       3     4.72      353.3
+##  4      15       1     0.35      256.9
+##  5      15       2     0.32      233.8
+##  6      15       3     0.30      275.5
+##  7      18       1     0.91      349.6
+##  8      18       2     0.83      344.4
+##  9      18       3     1.12      349.3
+## 10       3       1     2.10       66.0
+## 11       3       2     3.01       67.7
+## 12       3       3     2.96       65.7
+## 13       5       1     1.56       19.6
+## 14       5       2     1.36       14.7
+## 15       5       3     1.54      359.8&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Boom. Mic drop.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;putting-it-all-together-and-saving-so-we-dont-have-to-see-this-big-code-block-later.&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Putting it all together and saving so we don’t have to see this big code block later.&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;reformatted_values &amp;lt;- 
+  polar_values %&amp;gt;% 
+  gather(Test_Session, Value, `Od Amp1`:`Od Angle3`) %&amp;gt;% 
+  mutate(Session = str_sub(Test_Session, -1), Test = str_sub(Test_Session,1,-2)) %&amp;gt;% 
+  select(-Test_Session) %&amp;gt;% 
+  spread(Test, Value)
+
+reformatted_values&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 15 x 4
+##    Patient Session `Od Amp` `Od Angle`
+##  *  &amp;lt;fctr&amp;gt;   &amp;lt;chr&amp;gt;    &amp;lt;dbl&amp;gt;      &amp;lt;dbl&amp;gt;
+##  1      14       1     4.79      359.9
+##  2      14       2     4.73      352.9
+##  3      14       3     4.72      353.3
+##  4      15       1     0.35      256.9
+##  5      15       2     0.32      233.8
+##  6      15       3     0.30      275.5
+##  7      18       1     0.91      349.6
+##  8      18       2     0.83      344.4
+##  9      18       3     1.12      349.3
+## 10       3       1     2.10       66.0
+## 11       3       2     3.01       67.7
+## 12       3       3     2.96       65.7
+## 13       5       1     1.56       19.6
+## 14       5       2     1.36       14.7
+## 15       5       3     1.54      359.8&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;first-plot.-does-this-work&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;First plot. Does this work?&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;reformatted_values %&amp;gt;% ggplot(aes(y=`Od Amp`, x=`Od Angle`)) + geom_point()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/././post/2018-02-01-let-s-plot-1_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;but-wait-this-is-a-polar-plot.&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;But wait, this is a polar plot….&lt;/h2&gt;
+&lt;p&gt;Fortunately ggplot has a function to transform cartesian values into polar values: &lt;code&gt;coord_polar&lt;/code&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;reformatted_values %&amp;gt;% ggplot(aes(y=`Od Amp`, x=`Od Angle`)) + coord_polar() + geom_point()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/././post/2018-02-01-let-s-plot-1_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;not-bad-but-we-have-a-lot-of-little-things-to-do.&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Not bad, but we have a lot of little things to do.&lt;/h2&gt;
+&lt;p&gt;First, I’m suspicious that the ranges of values is from the smallest to the largest. Or maybe 0 to the largest. We can test this by filtering out the bigger values.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;reformatted_values %&amp;gt;% 
+  filter(`Od Angle` &amp;lt; 300) %&amp;gt;% 
+  ggplot(aes(y=`Od Amp`, x=`Od Angle`)) + coord_polar() + geom_point()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/././post/2018-02-01-let-s-plot-1_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;yeah-so-we-need-to-tell-ggplot-what-the-range-of-values-is.&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Yeah, so we need to tell ggplot what the range of values is.&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;reformatted_values %&amp;gt;% filter(`Od Angle` &amp;lt; 300) %&amp;gt;% 
+  ggplot(aes(y=`Od Amp`, x=`Od Angle`)) + 
+  coord_polar() + 
+  geom_point() +
+  scale_x_continuous(limits=c(0,360), breaks = c(0,30,60,90,120,150,180,210,240,270,300,330)) &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/././post/2018-02-01-let-s-plot-1_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;cool-the-range-goes-to-360-as-expected.-still-a-few-more-things-to-do&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Cool, the range goes to 360 as expected. Still a few more things to do:&lt;/h2&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Rotate the start point so 90 is the top&lt;/li&gt;
+&lt;li&gt;Change directions of values from CW to CCW&lt;/li&gt;
+&lt;li&gt;Add color and prettify&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;We examine the coord_polar options (type &lt;code&gt;?coord_polar&lt;/code&gt; in the R console) and see that &lt;code&gt;start&lt;/code&gt; and &lt;code&gt;direction&lt;/code&gt; are options. We want to shift 90 degrees…but the &lt;code&gt;start&lt;/code&gt; parameter is in radians. Some quick googling let’s us know that 90 degree ~ 1.57 radians. Let’s use that. And -1 for direction to make it counter clockwise.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;reformatted_values %&amp;gt;% 
+  ggplot(aes(y=`Od Amp`, x=`Od Angle`)) + 
+  coord_polar(start = 1.57, direction = -1) + 
+  geom_point() +
+  scale_x_continuous(limits=c(0,360), breaks = c(0,30,60,90,120,150,180,210,240,270,300,330)) &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/././post/2018-02-01-let-s-plot-1_files/figure-html/unnamed-chunk-11-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;hmm-wrong-way.-want-180-on-the-left-lets-make-it-negative.&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Hmm, wrong way. (want 180 on the left) Let’s make it negative.&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;reformatted_values %&amp;gt;% 
+  ggplot(aes(y=`Od Amp`, x=`Od Angle`)) + 
+  coord_polar(start = -1.57, direction = -1) + 
+  geom_point() +
+  scale_x_continuous(limits=c(0,360), breaks = c(0,30,60,90,120,150,180,210,240,270,300,330)) &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/././post/2018-02-01-let-s-plot-1_files/figure-html/unnamed-chunk-12-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;ok-final-plot-with-some-color-and-geom_point-tweaking&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;OK, Final plot with some color and geom_point tweaking!&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;theme_bw&lt;/code&gt; makes the background white instead of gray, which I prefer&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;alpha&lt;/code&gt; in &lt;code&gt;geom_point&lt;/code&gt; makes the points semi-transparent&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;scale_colour_brewer&lt;/code&gt; is a nicer color palette, in my opinion&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;colour&lt;/code&gt; and &lt;code&gt;shape&lt;/code&gt; in ggplot() gives us color and shape for the patients and three sessions&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;reformatted_values %&amp;gt;% ggplot(aes(y=`Od Amp`, x=`Od Angle`, colour=Patient, shape=Session)) + 
+  coord_polar(start = -1.57, direction = -1) + 
+  geom_point(size=3, alpha=0.7) + 
+  theme_bw() + 
+  scale_x_continuous(limits=c(0,360), breaks = c(0,30,60,90,120,150,180,210,240,270,300,330)) + 
+  scale_color_brewer(palette =&amp;#39;Set1&amp;#39;) + xlab(&amp;#39;Angle&amp;#39;) + ylab(&amp;#39;Amplitude&amp;#39;) + ggtitle(&amp;#39;OD&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/././post/2018-02-01-let-s-plot-1_files/figure-html/unnamed-chunk-13-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;sessioninfo&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;sessionInfo&lt;/h1&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;sessionInfo()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## R version 3.4.0 (2017-04-21)
+## Platform: x86_64-apple-darwin15.6.0 (64-bit)
+## Running under: OS X El Capitan 10.11.6
+## 
+## Matrix products: default
+## BLAS: /Library/Frameworks/R.framework/Versions/3.4/Resources/lib/libRblas.0.dylib
+## LAPACK: /Library/Frameworks/R.framework/Versions/3.4/Resources/lib/libRlapack.dylib
+## 
+## locale:
+## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+## 
+## attached base packages:
+## [1] methods   stats     graphics  grDevices utils     datasets  base     
+## 
+## other attached packages:
+##  [1] bindrcpp_0.2    forcats_0.2.0   stringr_1.2.0   dplyr_0.7.4    
+##  [5] purrr_0.2.4     readr_1.1.1     tidyr_0.7.2     tibble_1.3.4   
+##  [9] ggplot2_2.2.1   tidyverse_1.2.1
+## 
+## loaded via a namespace (and not attached):
+##  [1] tidyselect_0.2.3   xfun_0.1           reshape2_1.4.2    
+##  [4] haven_1.1.0        lattice_0.20-35    colorspace_1.3-2  
+##  [7] htmltools_0.3.6    yaml_2.1.14        rlang_0.1.4       
+## [10] foreign_0.8-69     glue_1.2.0         RColorBrewer_1.1-2
+## [13] modelr_0.1.1       readxl_1.0.0       bindr_0.1         
+## [16] plyr_1.8.4         munsell_0.4.3      blogdown_0.5      
+## [19] gtable_0.2.0       cellranger_1.1.0   rvest_0.3.2       
+## [22] psych_1.7.8        evaluate_0.10.1    labeling_0.3      
+## [25] knitr_1.17         parallel_3.4.0     broom_0.4.3       
+## [28] Rcpp_0.12.13       backports_1.1.1    scales_0.5.0.9000 
+## [31] jsonlite_1.5       mnormt_1.5-5       hms_0.3           
+## [34] digest_0.6.12      stringi_1.1.6      bookdown_0.6      
+## [37] grid_3.4.0         rprojroot_1.2      cli_1.0.0         
+## [40] tools_3.4.0        magrittr_1.5       lazyeval_0.2.1    
+## [43] crayon_1.3.4       pkgconfig_2.0.1    xml2_1.1.1        
+## [46] lubridate_1.7.1    assertthat_0.2.0   rmarkdown_1.8     
+## [49] httr_1.3.1         rstudioapi_0.7     R6_2.2.2          
+## [52] nlme_3.1-131       compiler_3.4.0&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>eyeIntegration</title>
       <link>/./project/eyeintegration/</link>
       <pubDate>Thu, 01 Feb 2018 00:00:00 +0000</pubDate>
@@ -36,242 +305,6 @@
       
       <guid>/./talk/example-talk/</guid>
       <description>&lt;p&gt;Embed your slides or video here using &lt;a href=&#34;https://sourcethemes.com/academic/post/writing-markdown-latex/&#34; target=&#34;_blank&#34;&gt;shortcodes&lt;/a&gt;. Further details can easily be added using &lt;em&gt;Markdown&lt;/em&gt; and $\rm \LaTeX$ math code.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Academic: the website designer for Hugo</title>
-      <link>/./post/getting-started/</link>
-      <pubDate>Wed, 20 Apr 2016 00:00:00 -0400</pubDate>
-      
-      <guid>/./post/getting-started/</guid>
-      <description>
-
-&lt;p&gt;&lt;strong&gt;Academic&lt;/strong&gt; is a framework to help you create a beautiful website quickly. Perfect for personal sites, blogs, or business/project sites. &lt;a href=&#34;https://themes.gohugo.io/theme/academic/&#34; target=&#34;_blank&#34;&gt;Check out the latest demo&lt;/a&gt; of what you&amp;rsquo;ll get in less than 10 minutes. Then head on over to the &lt;a href=&#34;https://sourcethemes.com/academic/docs/&#34; target=&#34;_blank&#34;&gt;Quick Start guide&lt;/a&gt; or take a look at the &lt;a href=&#34;https://sourcethemes.com/academic/updates/&#34; target=&#34;_blank&#34;&gt;Release Notes&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/gcushen/hugo-academic/&#34; target=&#34;_blank&#34;&gt;&lt;img src=&#34;https://raw.githubusercontent.com/gcushen/hugo-academic/master/academic.png&#34; alt=&#34;Screenshot&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Key features:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Easily manage various content including homepage, blog posts, publications, talks, and projects&lt;/li&gt;
-&lt;li&gt;Extensible via &lt;strong&gt;color themes&lt;/strong&gt; and &lt;strong&gt;widgets/plugins&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;Write in &lt;a href=&#34;https://sourcethemes.com/academic/docs/writing-markdown-latex/&#34; target=&#34;_blank&#34;&gt;Markdown&lt;/a&gt; for easy formatting and code highlighting, with &lt;a href=&#34;https://en.wikibooks.org/wiki/LaTeX/Mathematics&#34; target=&#34;_blank&#34;&gt;LaTeX&lt;/a&gt; for mathematical expressions&lt;/li&gt;
-&lt;li&gt;Social/academic network linking, &lt;a href=&#34;https://analytics.google.com&#34; target=&#34;_blank&#34;&gt;Google Analytics&lt;/a&gt;, and &lt;a href=&#34;https://disqus.com&#34; target=&#34;_blank&#34;&gt;Disqus&lt;/a&gt; comments&lt;/li&gt;
-&lt;li&gt;Responsive and mobile friendly&lt;/li&gt;
-&lt;li&gt;Simple and refreshing one page design&lt;/li&gt;
-&lt;li&gt;Multilingual and easy to customize&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;color-themes&#34;&gt;Color Themes&lt;/h2&gt;
-
-&lt;p&gt;Academic is available in different color themes and font themes.&lt;/p&gt;
-
-
-
-&lt;div class=&#34;gallery&#34;&gt;
-  
-  
-  
-  
-    
-  
-  &lt;a data-fancybox=&#34;gallery-1&#34; data-caption=&#34;Default&#34; href=&#34;https://raw.githubusercontent.com/gcushen/hugo-academic/master/images/theme-default.png&#34;&gt;
-    &lt;img alt=&#34;&#34; src=&#34;https://raw.githubusercontent.com/gcushen/hugo-academic/master/images/theme-default.png&#34;&gt;
-  &lt;/a&gt;
-  
-  
-  
-  
-    
-  
-  &lt;a data-fancybox=&#34;gallery-1&#34; data-caption=&#34;Ocean&#34; href=&#34;https://raw.githubusercontent.com/gcushen/hugo-academic/master/images/theme-ocean.png&#34;&gt;
-    &lt;img alt=&#34;&#34; src=&#34;https://raw.githubusercontent.com/gcushen/hugo-academic/master/images/theme-ocean.png&#34;&gt;
-  &lt;/a&gt;
-  
-  
-  
-  
-    
-  
-  &lt;a data-fancybox=&#34;gallery-1&#34; data-caption=&#34;Dark&#34; href=&#34;https://raw.githubusercontent.com/gcushen/hugo-academic/master/images/theme-dark.png&#34;&gt;
-    &lt;img alt=&#34;&#34; src=&#34;https://raw.githubusercontent.com/gcushen/hugo-academic/master/images/theme-dark.png&#34;&gt;
-  &lt;/a&gt;
-  
-  
-  
-  
-    
-  
-  &lt;a data-fancybox=&#34;gallery-1&#34; data-caption=&#34;Default&#34; href=&#34;https://raw.githubusercontent.com/gcushen/hugo-academic/master/images/theme-forest.png&#34;&gt;
-    &lt;img alt=&#34;&#34; src=&#34;https://raw.githubusercontent.com/gcushen/hugo-academic/master/images/theme-forest.png&#34;&gt;
-  &lt;/a&gt;
-  
-  
-  
-  
-    
-  
-  &lt;a data-fancybox=&#34;gallery-1&#34; data-caption=&#34;Coffee theme with Playfair font&#34; href=&#34;https://raw.githubusercontent.com/gcushen/hugo-academic/master/images/theme-coffee-playfair.png&#34;&gt;
-    &lt;img alt=&#34;&#34; src=&#34;https://raw.githubusercontent.com/gcushen/hugo-academic/master/images/theme-coffee-playfair.png&#34;&gt;
-  &lt;/a&gt;
-  
-  
-  
-  
-    
-  
-  &lt;a data-fancybox=&#34;gallery-1&#34; data-caption=&#34;1950s&#34; href=&#34;https://raw.githubusercontent.com/gcushen/hugo-academic/master/images/theme-1950s.png&#34;&gt;
-    &lt;img alt=&#34;&#34; src=&#34;https://raw.githubusercontent.com/gcushen/hugo-academic/master/images/theme-1950s.png&#34;&gt;
-  &lt;/a&gt;
-  
-&lt;/div&gt;
-
-&lt;h2 id=&#34;install&#34;&gt;Install&lt;/h2&gt;
-
-&lt;p&gt;You can choose from one of the following four methods to install:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;one-click install using your web browser (recommended)&lt;/li&gt;
-&lt;li&gt;install on your computer using Git with the Command Prompt/Terminal app&lt;/li&gt;
-&lt;li&gt;install on your computer by downloading the ZIP files&lt;/li&gt;
-&lt;li&gt;install on your computer with RStudio&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;quick-install-using-your-web-browser&#34;&gt;Quick install using your web browser&lt;/h3&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;https://app.netlify.com/start/deploy?repository=https://github.com/sourcethemes/academic-kickstart&#34; target=&#34;_blank&#34;&gt;Install Academic with Netlify&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Netlify will provide you with a customizable URL to access your new site&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;On GitHub, go to your newly created &lt;code&gt;academic-kickstart&lt;/code&gt; repository and edit &lt;code&gt;config.toml&lt;/code&gt; to personalize your site. Shortly after saving the file, your site will automatically update&lt;/li&gt;
-&lt;li&gt;Read the &lt;a href=&#34;https://sourcethemes.com/academic/docs/&#34; target=&#34;_blank&#34;&gt;Quick Start Guide&lt;/a&gt; to learn how to add Markdown content. For inspiration, refer to the &lt;a href=&#34;https://github.com/gcushen/hugo-academic/tree/master/exampleSite&#34; target=&#34;_blank&#34;&gt;Markdown content&lt;/a&gt; which powers the &lt;a href=&#34;https://themes.gohugo.io/theme/academic/&#34; target=&#34;_blank&#34;&gt;Demo&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&#34;install-with-git&#34;&gt;Install with Git&lt;/h3&gt;
-
-&lt;p&gt;Prerequisites:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://git-scm.com/downloads&#34; target=&#34;_blank&#34;&gt;Download and install Git&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://gohugo.io/getting-started/installing/#quick-install&#34; target=&#34;_blank&#34;&gt;Download and install Hugo&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/sourcethemes/academic-kickstart#fork-destination-box&#34; target=&#34;_blank&#34;&gt;Fork&lt;/a&gt; the &lt;em&gt;Academic Kickstart&lt;/em&gt; repository and clone your fork with Git:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;git clone https://github.com/sourcethemes/academic-kickstart.git My_Website
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;em&gt;Note that if you forked Academic Kickstart, the above command should be edited to clone your fork, i.e. replace &lt;code&gt;sourcethemes&lt;/code&gt; with your GitHub username.&lt;/em&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Initialize the theme:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;cd My_Website
-git submodule update --init --recursive
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&#34;install-with-zip&#34;&gt;Install with ZIP&lt;/h3&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/sourcethemes/academic-kickstart/archive/master.zip&#34; target=&#34;_blank&#34;&gt;Download&lt;/a&gt; and extract &lt;em&gt;Academic Kickstart&lt;/em&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/gcushen/hugo-academic/archive/master.zip&#34; target=&#34;_blank&#34;&gt;Download&lt;/a&gt; and extract the &lt;em&gt;Academic theme&lt;/em&gt; to the &lt;code&gt;themes/academic/&lt;/code&gt; folder from the above step&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&#34;install-with-rstudio&#34;&gt;Install with RStudio&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://sourcethemes.com/academic/docs/install/#install-with-rstudio&#34; target=&#34;_blank&#34;&gt;View the guide to installing Academic with RStudio&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;quick-start&#34;&gt;Quick start&lt;/h2&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;If you installed on your computer, view your new website by running the following command:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;hugo server
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now visit &lt;a href=&#34;http://localhost:1313&#34; target=&#34;_blank&#34;&gt;localhost:1313&lt;/a&gt; and your new Academic powered website will appear. Otherwise, if using Netlify, they will provide you with your URL.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Read the &lt;a href=&#34;https://sourcethemes.com/academic/docs/&#34; target=&#34;_blank&#34;&gt;Quick Start Guide&lt;/a&gt; to learn how to add Markdown content, customize your site, and deploy it. For inspiration, refer to the &lt;a href=&#34;https://github.com/gcushen/hugo-academic/tree/master/exampleSite&#34; target=&#34;_blank&#34;&gt;Markdown content&lt;/a&gt; which powers the &lt;a href=&#34;https://themes.gohugo.io/theme/academic/&#34; target=&#34;_blank&#34;&gt;Demo&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Build your site by running the &lt;code&gt;hugo&lt;/code&gt; command. Then &lt;a href=&#34;https://georgecushen.com/create-your-website-with-hugo/&#34; target=&#34;_blank&#34;&gt;host it for free using Github Pages&lt;/a&gt; or Netlify (refer to the first installation method). Alternatively, copy the generated &lt;code&gt;public/&lt;/code&gt; directory (by FTP, Rsync, etc.) to your production web server (such as a university&amp;rsquo;s hosting service).&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;updating&#34;&gt;Updating&lt;/h2&gt;
-
-&lt;p&gt;Feel free to &lt;em&gt;star&lt;/em&gt; the project on &lt;a href=&#34;https://github.com/gcushen/hugo-academic/&#34; target=&#34;_blank&#34;&gt;Github&lt;/a&gt; to help keep track of updates and check out the &lt;a href=&#34;https://sourcethemes.com/academic/updates&#34; target=&#34;_blank&#34;&gt;release notes&lt;/a&gt; prior to updating your site.&lt;/p&gt;
-
-&lt;p&gt;Before updating the framework, it is recommended to make a backup of your entire website directory (or at least your &lt;code&gt;themes/academic&lt;/code&gt; directory) and record your current version number.&lt;/p&gt;
-
-&lt;p&gt;By default, Academic is installed as a Git submodule which can be updated by running the following command:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;git submodule update --remote --merge
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://sourcethemes.com/academic/docs/update/&#34; target=&#34;_blank&#34;&gt;Check out the update guide&lt;/a&gt; for full instructions and alternative methods.&lt;/p&gt;
-
-&lt;h2 id=&#34;feedback-contributing&#34;&gt;Feedback &amp;amp; Contributing&lt;/h2&gt;
-
-&lt;p&gt;Please use the &lt;a href=&#34;https://github.com/gcushen/hugo-academic/issues&#34; target=&#34;_blank&#34;&gt;issue tracker&lt;/a&gt; to let me know about any bugs or feature requests, or alternatively make a pull request.&lt;/p&gt;
-
-&lt;p&gt;For support, head over to the &lt;a href=&#34;http://discuss.gohugo.io&#34; target=&#34;_blank&#34;&gt;Hugo discussion forum&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&#34;license&#34;&gt;License&lt;/h2&gt;
-
-&lt;p&gt;Copyright 2016-present &lt;a href=&#34;https://georgecushen.com&#34; target=&#34;_blank&#34;&gt;George Cushen&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Released under the &lt;a href=&#34;https://github.com/gcushen/hugo-academic/blob/master/LICENSE.md&#34; target=&#34;_blank&#34;&gt;MIT&lt;/a&gt; license.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Hello R Markdown</title>
-      <link>/./post/2015-07-23-r-rmarkdown/</link>
-      <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
-      
-      <guid>/./post/2015-07-23-r-rmarkdown/</guid>
-      <description>&lt;div id=&#34;r-markdown&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;R Markdown&lt;/h1&gt;
-&lt;p&gt;This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see &lt;a href=&#34;http://rmarkdown.rstudio.com&#34; class=&#34;uri&#34;&gt;http://rmarkdown.rstudio.com&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;You can embed an R code chunk like this:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(cars)
-##      speed           dist       
-##  Min.   : 4.0   Min.   :  2.00  
-##  1st Qu.:12.0   1st Qu.: 26.00  
-##  Median :15.0   Median : 36.00  
-##  Mean   :15.4   Mean   : 42.98  
-##  3rd Qu.:19.0   3rd Qu.: 56.00  
-##  Max.   :25.0   Max.   :120.00
-fit &amp;lt;- lm(dist ~ speed, data = cars)
-fit
-## 
-## Call:
-## lm(formula = dist ~ speed, data = cars)
-## 
-## Coefficients:
-## (Intercept)        speed  
-##     -17.579        3.932&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;including-plots&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Including Plots&lt;/h1&gt;
-&lt;p&gt;You can also embed plots. See Figure &lt;a href=&#34;#fig:pie&#34;&gt;1&lt;/a&gt; for example:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;par(mar = c(0, 1, 0, 1))
-pie(
-  c(280, 60, 20),
-  c(&amp;#39;Sky&amp;#39;, &amp;#39;Sunny side of pyramid&amp;#39;, &amp;#39;Shady side of pyramid&amp;#39;),
-  col = c(&amp;#39;#0292D8&amp;#39;, &amp;#39;#F7EA39&amp;#39;, &amp;#39;#C4B632&amp;#39;),
-  init.angle = -50, border = NA
-)&lt;/code&gt;&lt;/pre&gt;
-&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:pie&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;/././post/2015-07-23-r-rmarkdown_files/figure-html/pie-1.png&#34; alt=&#34;A fancy pie chart.&#34; width=&#34;672&#34; /&gt;
-&lt;p class=&#34;caption&#34;&gt;
-Figure 1: A fancy pie chart.
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
 </description>
     </item>
     
