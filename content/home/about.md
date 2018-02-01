@@ -29,7 +29,7 @@ weight = 5
 
 +++
 
-# Biography
+# Welcome
 
 I head the Bioinformatics Group at the Opthlamic Genomics and Visual Function Branch (OGVFB) of the National Eye Institute. It is a group of one, responsible for analysis of NGS data in the branch. Research interests include (re)analysis of public genomics data sets and genetic variant prioritization in human disease. 
 
