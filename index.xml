@@ -310,7 +310,7 @@ reformatted_values&lt;/code&gt;&lt;/pre&gt;
 &lt;div id=&#34;how-can-i-follow-along&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;How can I follow along?&lt;/h1&gt;
 &lt;ol style=&#34;list-style-type: decimal&#34;&gt;
-&lt;li&gt;Download and install R: &lt;a href=&#34;https://cran.r-project.org/bin/macosx/&#34; class=&#34;uri&#34;&gt;https://cran.r-project.org/bin/macosx/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Download and install R: &lt;a href=&#34;https://cran.r-project.org/&#34; class=&#34;uri&#34;&gt;https://cran.r-project.org/&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Download and install Rstudio: &lt;a href=&#34;https://www.rstudio.com/products/rstudio/download/#download&#34; class=&#34;uri&#34;&gt;https://www.rstudio.com/products/rstudio/download/#download&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;In Rstudio install any libraries that throw an error when you run &lt;code&gt;library (LIBRARYNAME)&lt;/code&gt; with &lt;code&gt;install.packages(LIBRARYNAME)&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;Then you can (largely) go line by line through the blog post&lt;/li&gt;
