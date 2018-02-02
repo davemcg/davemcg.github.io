@@ -1,0 +1,26 @@
+---
+title: What is Let’s Plot?
+author: David McGaughey
+date: '2018-01-31'
+slug: what-is-let-s-plot
+categories:
+  - Let’s Plot
+  - R
+tags:
+  - ggplot2
+  - Let's Plot
+  - R
+  - tidyverse
+---
+
+The concept is simple - I get data from one of the scientists in my group. Or I get my own. Then I demonstrate, step-by-step, how I generate the plot(s). I'll also toss in some *data science* concepts occasionally. 
+
+# Tooling
+I like R. I like ggplot. I like the tidyverse. That's what I'll be using. 
+
+# How can I follow along?
+
+1. Download and install R: https://cran.r-project.org/bin/macosx/
+2. Download and install Rstudio: https://www.rstudio.com/products/rstudio/download/#download
+3. In Rstudio install any libraries that throw an error when you run `library (LIBRARYNAME)` with `install.packages(LIBRARYNAME)`
+4. Then you can (largely) go line by line through the blog post

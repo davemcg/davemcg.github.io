@@ -13,6 +13,9 @@ tags:
   - tidyverse
 ---
 
+## What is going on?
+See https://davemcg.github.io/post/what-is-let-s-plot/
+
 ## Where to get the code and data?
 Rmarkdown document: https://github.com/davemcg/Let_us_plot/blob/master/001_polar_figure/polar_plot.Rmd
 Data: https://github.com/davemcg/Let_us_plot/blob/master/001_polar_figure/polar_values.xlsx

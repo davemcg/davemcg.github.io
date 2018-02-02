@@ -23,6 +23,15 @@
     
     <url>
     
+      <loc>/./post/what-is-let-s-plot/</loc>
+      <lastmod>2018-01-31T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/./publication/eyeintegration/</loc>
       <lastmod>2017-05-11T00:00:00+00:00</lastmod>
     </url>
@@ -166,7 +175,7 @@
     
     <url>
     
-      <loc>/./tags/r/</loc>
+      <loc>/./categories/r/</loc>
       <lastmod>2018-02-01T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -176,7 +185,7 @@
     
     <url>
     
-      <loc>/./categories/r/</loc>
+      <loc>/./tags/r/</loc>
       <lastmod>2018-02-01T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
