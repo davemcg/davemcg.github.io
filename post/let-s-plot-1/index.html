@@ -17,8 +17,9 @@
       
     
   
-  <meta name="description" content="First time making a polar plot….let’s see if ggplot2 can do it.
-Import data with readxl library(tidyverse) ## Warning: package &#39;tidyverse&#39; was built under R version 3.4.2 ## ── Attaching packages ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ── ## ✔ ggplot2 2.2.1 ✔ purrr 0.2.4 ## ✔ tibble 1.3.4 ✔ dplyr 0.7.4 ## ✔ tidyr 0.7.2 ✔ stringr 1.2.0 ## ✔ readr 1.1.1 ✔ forcats 0.2.0 ## Warning: package &#39;tibble&#39; was built under R version 3.">
+  <meta name="description" content="Where to get the code and data? Rmarkdown document: https://github.com/davemcg/Let_us_plot/blob/master/001_polar_figure/polar_plot.Rmd Data: https://github.com/davemcg/Let_us_plot/blob/master/001_polar_figure/polar_values.xlsx
+First time making a polar plot….let’s see if ggplot2 can do it.
+ Import data with readxl library(tidyverse) ## Warning: package &#39;tidyverse&#39; was built under R version 3.4.2 ## ── Attaching packages ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ── ## ✔ ggplot2 2.2.1 ✔ purrr 0.2.4 ## ✔ tibble 1.3.4 ✔ dplyr 0.7.4 ## ✔ tidyr 0.7.2 ✔ stringr 1.2.0 ## ✔ readr 1.">
 
   
   <link rel="alternate" hreflang="en-us" href="/./post/let-s-plot-1/">
@@ -74,14 +75,15 @@ Import data with readxl library(tidyverse) ## Warning: package &#39;tidyverse&#3
 
   <meta property="twitter:card" content="summary_large_image">
   
-  <meta property="twitter:site" content="@David_McGaughey">
-  <meta property="twitter:creator" content="@David_McGaughey">
+  <meta property="twitter:site" content="@https://twitter.com/David_McGaughey">
+  <meta property="twitter:creator" content="@https://twitter.com/David_McGaughey">
   
   <meta property="og:site_name" content="eye Bioinformatician">
   <meta property="og:url" content="/./post/let-s-plot-1/">
   <meta property="og:title" content="Let’s Plot 1: Going in circles  | eye Bioinformatician">
-  <meta property="og:description" content="First time making a polar plot….let’s see if ggplot2 can do it.
-Import data with readxl library(tidyverse) ## Warning: package &#39;tidyverse&#39; was built under R version 3.4.2 ## ── Attaching packages ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ── ## ✔ ggplot2 2.2.1 ✔ purrr 0.2.4 ## ✔ tibble 1.3.4 ✔ dplyr 0.7.4 ## ✔ tidyr 0.7.2 ✔ stringr 1.2.0 ## ✔ readr 1.1.1 ✔ forcats 0.2.0 ## Warning: package &#39;tibble&#39; was built under R version 3.">
+  <meta property="og:description" content="Where to get the code and data? Rmarkdown document: https://github.com/davemcg/Let_us_plot/blob/master/001_polar_figure/polar_plot.Rmd Data: https://github.com/davemcg/Let_us_plot/blob/master/001_polar_figure/polar_values.xlsx
+First time making a polar plot….let’s see if ggplot2 can do it.
+ Import data with readxl library(tidyverse) ## Warning: package &#39;tidyverse&#39; was built under R version 3.4.2 ## ── Attaching packages ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ── ## ✔ ggplot2 2.2.1 ✔ purrr 0.2.4 ## ✔ tibble 1.3.4 ✔ dplyr 0.7.4 ## ✔ tidyr 0.7.2 ✔ stringr 1.2.0 ## ✔ readr 1.">
   <meta property="og:locale" content="en-us">
   
   <meta property="article:published_time" content="2018-02-01T00:00:00&#43;00:00">
@@ -141,19 +143,32 @@ Import data with readxl library(tidyverse) ## Warning: package &#39;tidyverse&#3
         
 
         
-        
-        
-        
-        
-          
-        
-
-        <li class="nav-item">
-          <a href="/#posts">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true">
             
             <span>Posts</span>
             
+            <span class="caret"></span>
           </a>
+          <ul class="dropdown-menu">
+            
+            <li class="nav-item">
+              <a href="/#posts">
+                
+                <span>Recent Posts</span>
+                
+              </a>
+            </li>
+            
+            <li class="nav-item">
+              <a href="/post">
+                
+                <span>All Posts</span>
+                
+              </a>
+            </li>
+            
+          </ul>
         </li>
 
         
@@ -190,25 +205,6 @@ Import data with readxl library(tidyverse) ## Warning: package &#39;tidyverse&#3
           <a href="/#publications_selected">
             
             <span>Publications</span>
-            
-          </a>
-        </li>
-
-        
-        
-
-        
-        
-        
-        
-        
-          
-        
-
-        <li class="nav-item">
-          <a href="/#contact">
-            
-            <span>Contact</span>
             
           </a>
         </li>
@@ -322,7 +318,11 @@ Import data with readxl library(tidyverse) ## Warning: package &#39;tidyverse&#3
 
 
     <div class="article-style" itemprop="articleBody">
-      <p>First time making a polar plot….let’s see if ggplot2 can do it.</p>
+      <div id="where-to-get-the-code-and-data" class="section level2">
+<h2>Where to get the code and data?</h2>
+<p>Rmarkdown document: <a href="https://github.com/davemcg/Let_us_plot/blob/master/001_polar_figure/polar_plot.Rmd" class="uri">https://github.com/davemcg/Let_us_plot/blob/master/001_polar_figure/polar_plot.Rmd</a> Data: <a href="https://github.com/davemcg/Let_us_plot/blob/master/001_polar_figure/polar_values.xlsx" class="uri">https://github.com/davemcg/Let_us_plot/blob/master/001_polar_figure/polar_values.xlsx</a></p>
+<p>First time making a polar plot….let’s see if ggplot2 can do it.</p>
+</div>
 <div id="import-data-with-readxl" class="section level2">
 <h2>Import data with readxl</h2>
 <pre class="r"><code>library(tidyverse)</code></pre>
@@ -595,6 +595,8 @@ reformatted_values</code></pre>
   <a class="btn btn-primary btn-outline" href="/tags/ggplot2">ggplot2</a>
   
   <a class="btn btn-primary btn-outline" href="/tags/lets-plot">Let&#39;s Plot</a>
+  
+  <a class="btn btn-primary btn-outline" href="/tags/tidyverse">tidyverse</a>
   
 </div>
 

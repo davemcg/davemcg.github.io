@@ -18,8 +18,9 @@
       <pubDate>Thu, 01 Feb 2018 00:00:00 +0000</pubDate>
       
       <guid>/./post/let-s-plot-1/</guid>
-      <description>First time making a polar plot….let’s see if ggplot2 can do it.
-Import data with readxl library(tidyverse) ## Warning: package &amp;#39;tidyverse&amp;#39; was built under R version 3.4.2 ## ── Attaching packages ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ── ## ✔ ggplot2 2.2.1 ✔ purrr 0.2.4 ## ✔ tibble 1.3.4 ✔ dplyr 0.7.4 ## ✔ tidyr 0.7.2 ✔ stringr 1.2.0 ## ✔ readr 1.1.1 ✔ forcats 0.2.0 ## Warning: package &amp;#39;tibble&amp;#39; was built under R version 3.</description>
+      <description>Where to get the code and data? Rmarkdown document: https://github.com/davemcg/Let_us_plot/blob/master/001_polar_figure/polar_plot.Rmd Data: https://github.com/davemcg/Let_us_plot/blob/master/001_polar_figure/polar_values.xlsx
+First time making a polar plot….let’s see if ggplot2 can do it.
+ Import data with readxl library(tidyverse) ## Warning: package &amp;#39;tidyverse&amp;#39; was built under R version 3.4.2 ## ── Attaching packages ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ── ## ✔ ggplot2 2.2.1 ✔ purrr 0.2.4 ## ✔ tibble 1.3.4 ✔ dplyr 0.7.4 ## ✔ tidyr 0.7.2 ✔ stringr 1.2.0 ## ✔ readr 1.</description>
     </item>
     
   </channel>

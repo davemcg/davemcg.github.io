@@ -71,8 +71,8 @@
 
   <meta property="twitter:card" content="summary_large_image">
   
-  <meta property="twitter:site" content="@David_McGaughey">
-  <meta property="twitter:creator" content="@David_McGaughey">
+  <meta property="twitter:site" content="@https://twitter.com/David_McGaughey">
+  <meta property="twitter:creator" content="@https://twitter.com/David_McGaughey">
   
   <meta property="og:site_name" content="eye Bioinformatician">
   <meta property="og:url" content="/./tags/lets-plot/">
@@ -135,19 +135,32 @@
         
 
         
-        
-        
-        
-        
-          
-        
-
-        <li class="nav-item">
-          <a href="/#posts">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true">
             
             <span>Posts</span>
             
+            <span class="caret"></span>
           </a>
+          <ul class="dropdown-menu">
+            
+            <li class="nav-item">
+              <a href="/#posts">
+                
+                <span>Recent Posts</span>
+                
+              </a>
+            </li>
+            
+            <li class="nav-item">
+              <a href="/post">
+                
+                <span>All Posts</span>
+                
+              </a>
+            </li>
+            
+          </ul>
         </li>
 
         
@@ -190,25 +203,6 @@
 
         
         
-
-        
-        
-        
-        
-        
-          
-        
-
-        <li class="nav-item">
-          <a href="/#contact">
-            
-            <span>Contact</span>
-            
-          </a>
-        </li>
-
-        
-        
       
 
       
@@ -234,8 +228,9 @@
     <h2><a href="/./post/let-s-plot-1/">Let’s Plot 1: Going in circles </a></h2>
     <div class="article-style">
       
-      First time making a polar plot….let’s see if ggplot2 can do it.
-Import data with readxl library(tidyverse) ## Warning: package &#39;tidyverse&#39; was built under R version 3.4.2 ## ── Attaching packages ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ── ## ✔ ggplot2 2.2.1 ✔ purrr 0.2.4 ## ✔ tibble 1.3.4 ✔ dplyr 0.7.4 ## ✔ tidyr 0.7.2 ✔ stringr 1.2.0 ## ✔ readr 1.1.1 ✔ forcats 0.2.0 ## Warning: package &#39;tibble&#39; was built under R version 3.
+      Where to get the code and data? Rmarkdown document: <a href="https://github.com/davemcg/Let_us_plot/blob/master/001_polar_figure/polar_plot.Rmd" target="_blank">https://github.com/davemcg/Let_us_plot/blob/master/001_polar_figure/polar_plot.Rmd</a> Data: <a href="https://github.com/davemcg/Let_us_plot/blob/master/001_polar_figure/polar_values.xlsx" target="_blank">https://github.com/davemcg/Let_us_plot/blob/master/001_polar_figure/polar_values.xlsx</a>
+First time making a polar plot….let’s see if ggplot2 can do it.
+ Import data with readxl library(tidyverse) ## Warning: package &#39;tidyverse&#39; was built under R version 3.4.2 ## ── Attaching packages ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ── ## ✔ ggplot2 2.2.1 ✔ purrr 0.2.4 ## ✔ tibble 1.3.4 ✔ dplyr 0.7.4 ## ✔ tidyr 0.7.2 ✔ stringr 1.2.0 ## ✔ readr 1.
       
     </div>
   </div>

@@ -16,7 +16,11 @@
       <pubDate>Thu, 01 Feb 2018 00:00:00 +0000</pubDate>
       
       <guid>/./post/let-s-plot-1/</guid>
-      <description>&lt;p&gt;First time making a polar plot….let’s see if ggplot2 can do it.&lt;/p&gt;
+      <description>&lt;div id=&#34;where-to-get-the-code-and-data&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Where to get the code and data?&lt;/h2&gt;
+&lt;p&gt;Rmarkdown document: &lt;a href=&#34;https://github.com/davemcg/Let_us_plot/blob/master/001_polar_figure/polar_plot.Rmd&#34; class=&#34;uri&#34;&gt;https://github.com/davemcg/Let_us_plot/blob/master/001_polar_figure/polar_plot.Rmd&lt;/a&gt; Data: &lt;a href=&#34;https://github.com/davemcg/Let_us_plot/blob/master/001_polar_figure/polar_values.xlsx&#34; class=&#34;uri&#34;&gt;https://github.com/davemcg/Let_us_plot/blob/master/001_polar_figure/polar_values.xlsx&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;First time making a polar plot….let’s see if ggplot2 can do it.&lt;/p&gt;
+&lt;/div&gt;
 &lt;div id=&#34;import-data-with-readxl&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Import data with readxl&lt;/h2&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)&lt;/code&gt;&lt;/pre&gt;

@@ -59,9 +59,9 @@ defaultContentLanguageInSubdir = false
 
   # Organizations/Affiliations.
   #   Separate multiple entries with a comma, using the form: `[ {name="Org1", url=""}, {name="Org2", url=""} ]`.
-  organizations = [ { name = "National Institutes of Health", url = "//www.nih.gov" },
-                    { name = "National Eye Institute", url = "//nei.nih.gov"},
-                    { name = "OGVFB", url = "//https://nei.nih.gov/intramural/ogcsb"}]
+  organizations = [ { name = "National Institutes of Health", url = "https://www.nih.gov" },
+                    { name = "National Eye Institute", url = "https://nei.nih.gov"},
+                    { name = "OGVFB", url = "https://nei.nih.gov/intramural/ogcsb"}]
 
   gravatar = false  # Get your avatar from Gravatar.com? (true/false)
   avatar = "portrait.jpg"  # Specify an avatar image (in `static/img/` folder) or delete value to disable avatar.
@@ -223,7 +223,7 @@ defaultContentLanguageInSubdir = false
   [[params.social]]
     icon = "twitter"
     icon_pack = "fa"
-    link = "//twitter.com/David_McGaughey"
+    link = "https://twitter.com/David_McGaughey"
 
 #  [[params.social]]
 #    icon = "google-scholar"
@@ -233,7 +233,7 @@ defaultContentLanguageInSubdir = false
   [[params.social]]
     icon = "github"
     icon_pack = "fa"
-    link = "//github.com/davemcg"
+    link = "https://github.com/davemcg"
 
 
 # Navigation Links
@@ -253,6 +253,19 @@ defaultContentLanguageInSubdir = false
   name = "Posts"
   url = "#posts"
   weight = 2
+  identifier = "posts"
+  
+[[menu.main]]
+  name = "Recent Posts"
+  url = "#posts"
+  weight = 2
+  parent = "posts"
+  
+[[menu.main]]
+  name = "All Posts"
+  url = "post"
+  weight = 3
+  parent = "posts"
   
 [[menu.main]]
   name = "Projects"
@@ -264,10 +277,6 @@ defaultContentLanguageInSubdir = false
   url = "#publications_selected"
   weight = 5
 
-[[menu.main]]
-  name = "Contact"
-  url = "#contact"
-  weight = 6
 
 # Taxonomies.
 [taxonomies]

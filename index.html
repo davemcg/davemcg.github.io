@@ -69,8 +69,8 @@
 
   <meta property="twitter:card" content="summary_large_image">
   
-  <meta property="twitter:site" content="@David_McGaughey">
-  <meta property="twitter:creator" content="@David_McGaughey">
+  <meta property="twitter:site" content="@https://twitter.com/David_McGaughey">
+  <meta property="twitter:creator" content="@https://twitter.com/David_McGaughey">
   
   <meta property="og:site_name" content="eye Bioinformatician">
   <meta property="og:url" content="/./">
@@ -133,19 +133,32 @@
         
 
         
-        
-        
-        
-        
-          
-        
-
-        <li class="nav-item">
-          <a href="/#posts" data-target="#posts">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true">
             
             <span>Posts</span>
             
+            <span class="caret"></span>
           </a>
+          <ul class="dropdown-menu">
+            
+            <li class="nav-item">
+              <a href="/#posts" data-target="#posts">
+                
+                <span>Recent Posts</span>
+                
+              </a>
+            </li>
+            
+            <li class="nav-item">
+              <a href="/post" data-target="post">
+                
+                <span>All Posts</span>
+                
+              </a>
+            </li>
+            
+          </ul>
         </li>
 
         
@@ -182,25 +195,6 @@
           <a href="/#publications_selected" data-target="#publications_selected">
             
             <span>Publications</span>
-            
-          </a>
-        </li>
-
-        
-        
-
-        
-        
-        
-        
-        
-          
-        
-
-        <li class="nav-item">
-          <a href="/#contact" data-target="#contact">
-            
-            <span>Contact</span>
             
           </a>
         </li>
@@ -286,19 +280,19 @@ url('/img/headers/cajal-wide.jpg');
 
         
         <h3 itemprop="worksFor" itemscope itemtype="http://schema.org/Organization">
-          <a href="//www.nih.gov" target="_blank" itemprop="url" rel="noopener">
+          <a href="https://www.nih.gov" target="_blank" itemprop="url" rel="noopener">
           <span itemprop="name">National Institutes of Health</span>
           </a>
         </h3>
         
         <h3 itemprop="worksFor" itemscope itemtype="http://schema.org/Organization">
-          <a href="//nei.nih.gov" target="_blank" itemprop="url" rel="noopener">
+          <a href="https://nei.nih.gov" target="_blank" itemprop="url" rel="noopener">
           <span itemprop="name">National Eye Institute</span>
           </a>
         </h3>
         
         <h3 itemprop="worksFor" itemscope itemtype="http://schema.org/Organization">
-          <a href="//https://nei.nih.gov/intramural/ogcsb" target="_blank" itemprop="url" rel="noopener">
+          <a href="https://nei.nih.gov/intramural/ogcsb" target="_blank" itemprop="url" rel="noopener">
           <span itemprop="name">OGVFB</span>
           </a>
         </h3>
@@ -318,14 +312,14 @@ url('/img/headers/cajal-wide.jpg');
         
         
         <li>
-          <a itemprop="sameAs" href="//twitter.com/David_McGaughey" target="_blank" rel="noopener">
+          <a itemprop="sameAs" href="https://twitter.com/David_McGaughey" target="_blank" rel="noopener">
             <i class="fa fa-twitter big-icon"></i>
           </a>
         </li>
         
         
         <li>
-          <a itemprop="sameAs" href="//github.com/davemcg" target="_blank" rel="noopener">
+          <a itemprop="sameAs" href="https://github.com/davemcg" target="_blank" rel="noopener">
             <i class="fa fa-github big-icon"></i>
           </a>
         </li>
@@ -340,11 +334,13 @@ url('/img/headers/cajal-wide.jpg');
 
 <h1 id="welcome">Welcome</h1>
 
-<p>I head the Bioinformatics Group at the Opthlamic Genomics and Visual Function Branch (OGVFB) of the National Eye Institute. The group is, generally, responsible for analysis of NGS data in the branch. Research interests include (re)analysis of public genomics data sets and genetic variant prioritization in human disease.</p>
+<p>I head the Bioinformatics Group at the Opthlamic Genetics and Visual Function Branch (OGVFB) of the National Eye Institute. The group is, generally, responsible for analysis of NGS data in the branch.</p>
+
+<p>My research interests include (re)analysis of public genomics data sets and genetic variant prioritization in human disease.</p>
 
 <p>I use bash, python (when necessary), and R (when possible) to get work done.</p>
 
-<p>This is a personal page. Nothing I post or write here is endorsed or approved by NEI or NIH.</p>
+<p><em>This is a personal page</em>. Nothing I post or write here is endorsed or approved by NEI or NIH.</p>
 
 
     <div class="row">
@@ -440,6 +436,8 @@ url('/img/headers/cajal-wide.jpg');
       
           
       
+          
+      
 
       
       
@@ -500,8 +498,9 @@ url('/img/headers/cajal-wide.jpg');
   </h3>
   <div class="article-style" itemprop="articleBody">
     
-    First time making a polar plot….let’s see if ggplot2 can do it.
-Import data with readxl library(tidyverse) ## Warning: package &#39;tidyverse&#39; was built under R version 3.4.2 ## ── Attaching packages ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ── ## ✔ ggplot2 2.2.1 ✔ purrr 0.2.4 ## ✔ tibble 1.3.4 ✔ dplyr 0.7.4 ## ✔ tidyr 0.7.2 ✔ stringr 1.2.0 ## ✔ readr 1.1.1 ✔ forcats 0.2.0 ## Warning: package &#39;tibble&#39; was built under R version 3.
+    Where to get the code and data? Rmarkdown document: https://github.com/davemcg/Let_us_plot/blob/master/001_polar_figure/polar_plot.Rmd Data: https://github.com/davemcg/Let_us_plot/blob/master/001_polar_figure/polar_values.xlsx
+First time making a polar plot….let’s see if ggplot2 can do it.
+ Import data with readxl library(tidyverse) ## Warning: package &#39;tidyverse&#39; was built under R version 3.4.2 ## ── Attaching packages ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ── ## ✔ ggplot2 2.2.1 ✔ purrr 0.2.4 ## ✔ tibble 1.3.4 ✔ dplyr 0.7.4 ## ✔ tidyr 0.7.2 ✔ stringr 1.2.0 ## ✔ readr 1.
     
   </div>
   <p class="read-more" itemprop="mainEntityOfPage">
@@ -733,59 +732,14 @@ Import data with readxl library(tidyverse) ## Warning: package &#39;tidyverse&#3
           
           <a href="/tags/public" style="font-size:0.8rem">public</a>
         
+          
+          
+          
+          
+          
+          <a href="/tags/tidyverse" style="font-size:0.8rem">tidyverse</a>
+        
       </div>
-    
-
-  </div>
-</div>
-
-    </div>
-  </section>
-  
-
-  
-  
-  
-  <section id="contact" class="home-section">
-    <div class="container">
-      
-
-
-
-
-<div class="row">
-  <div class="col-xs-12 col-md-4 section-heading">
-    <h1>Contact</h1>
-    
-  </div>
-  <div class="col-xs-12 col-md-8">
-    
-
-    <ul class="fa-ul" itemscope>
-
-      
-      <li>
-        <i class="fa-li fa fa-envelope fa-2x" aria-hidden="true"></i>
-        <span id="person-email" itemprop="email"><a href="mailto:mcgaugheyd@mail.nih.gov">mcgaugheyd@mail.nih.gov</a></span>
-      </li>
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-    </ul>
-
     
 
   </div>
