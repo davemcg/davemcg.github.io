@@ -877,6 +877,7 @@ reformatted_values&lt;/code&gt;&lt;/pre&gt;
       
       <guid>/./post/what-is-let-s-plot/</guid>
       <description>&lt;p&gt;The concept is simple - I get data from one of the scientists in my group. Or I get my own. Then I demonstrate, step-by-step, how I generate the plot(s). I’ll also toss in some &lt;em&gt;data science&lt;/em&gt; concepts occasionally.&lt;/p&gt;
+&lt;p&gt;They are a bit sparse on the words because I’m presenting these in person. But I believe they are clear enough for someone to follow along. Let me know if I’m wrong.&lt;/p&gt;
 &lt;div id=&#34;tooling&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Tooling&lt;/h1&gt;
 &lt;p&gt;I like R. I like ggplot. I like the tidyverse. That’s what I’ll be using.&lt;/p&gt;
