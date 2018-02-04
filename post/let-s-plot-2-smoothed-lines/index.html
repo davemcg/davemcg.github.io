@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme" content="hugo-academic">
+  <meta name="generator" content="Hugo 0.35" />
+  <meta name="author" content="David McGaughey">
+
+  
+  
+  
+  
+    
+      
+    
+  
+  <meta name="description" content="Data from Aaron Rising.
+Get data (two xls files) from here:  https://github.com/davemcg/Let_us_plot/tree/master/002_smoothed_lines The rmd is also here if you want the source code  Two different excel files (Cobra and Eel). Pig names?
+They have metrics for eye function across time.
+Aaron told me to take the ‘first tab’ in each excel file. Which is not the case, as at least to me, ‘Sheet 1’ is empty in both. So I’m using the next tab in both, which is ‘Normalized 2 Base For Comb’">
+
+  
+  <link rel="alternate" hreflang="en-us" href="/./post/let-s-plot-2-smoothed-lines/">
+
+  
+
+
+  
+
+  
+  
+  <meta name="theme-color" content="#0095eb">
+  
+  
+  
+  
+    
+  
+  
+    
+    
+      
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+      
+    
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha512-6MXa8B6uaO18Hid6blRMetEIoPqHf7Ux1tnyIQdpt9qI5OACx7C+O3IVTr98vwGnlcg0LOLa02i9Y1HpVhlfiw==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.1/css/academicons.min.css" integrity="sha512-NThgw3XKQ1absAahW6to7Ey42uycrVvfNfyjqcFNgCmOCQ5AR4AO0SiXrN+8ZtYeappp56lk1WtvjVmEa+VR6A==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+  
+  
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat:400,700%7cRoboto:400,400italic,700%7cRoboto&#43;Mono">
+  
+  <link rel="stylesheet" href="/styles.css">
+  
+
+  
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-113461893-1', 'auto');
+      ga('require', 'eventTracker');
+      ga('require', 'outboundLinkTracker');
+      ga('require', 'urlChangeTracker');
+      ga('send', 'pageview');
+    </script>
+    <script async src="//www.google-analytics.com/analytics.js"></script>
+    
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g==" crossorigin="anonymous"></script>
+    
+  
+
+  
+  <link rel="alternate" href="/./index.xml" type="application/rss+xml" title="eye Bioinformatician">
+  <link rel="feed" href="/./index.xml" type="application/rss+xml" title="eye Bioinformatician">
+  
+
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="/./post/let-s-plot-2-smoothed-lines/">
+
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="twitter:site" content="@https://twitter.com/David_McGaughey">
+  <meta property="twitter:creator" content="@https://twitter.com/David_McGaughey">
+  
+  <meta property="og:site_name" content="eye Bioinformatician">
+  <meta property="og:url" content="/./post/let-s-plot-2-smoothed-lines/">
+  <meta property="og:title" content="Let’s Plot 2: Smoothed Lines | eye Bioinformatician">
+  <meta property="og:description" content="Data from Aaron Rising.
+Get data (two xls files) from here:  https://github.com/davemcg/Let_us_plot/tree/master/002_smoothed_lines The rmd is also here if you want the source code  Two different excel files (Cobra and Eel). Pig names?
+They have metrics for eye function across time.
+Aaron told me to take the ‘first tab’ in each excel file. Which is not the case, as at least to me, ‘Sheet 1’ is empty in both. So I’m using the next tab in both, which is ‘Normalized 2 Base For Comb’">
+  <meta property="og:locale" content="en-us">
+  
+  <meta property="article:published_time" content="2018-02-04T00:00:00&#43;00:00">
+  
+  <meta property="article:modified_time" content="2018-02-04T00:00:00&#43;00:00">
+  
+
+  
+
+  <title>Let’s Plot 2: Smoothed Lines | eye Bioinformatician</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#toc" data-offset="71" >
+
+<nav class="navbar navbar-default navbar-fixed-top" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="navbar-header">
+      
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+              data-target=".navbar-collapse" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+      <a class="navbar-brand" href="/">eye Bioinformatician</a>
+    </div>
+
+    
+    <div class="collapse navbar-collapse">
+
+      
+      
+      <ul class="nav navbar-nav navbar-right">
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#about">
+            
+            <span>Home</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true">
+            
+            <span>Posts</span>
+            
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            
+            <li class="nav-item">
+              <a href="/#posts">
+                
+                <span>Recent Posts</span>
+                
+              </a>
+            </li>
+            
+            <li class="nav-item">
+              <a href="/post">
+                
+                <span>All Posts</span>
+                
+              </a>
+            </li>
+            
+          </ul>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#projects">
+            
+            <span>Projects</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#publications_selected">
+            
+            <span>Publications</span>
+            
+          </a>
+        </li>
+
+        
+        
+      
+
+      
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+  <div class="article-container">
+    <h1 itemprop="name">Let’s Plot 2: Smoothed Lines</h1>
+
+    
+
+<div class="article-metadata">
+
+  <span class="article-date">
+    
+    <time datetime="2018-02-04 00:00:00 &#43;0000 UTC" itemprop="datePublished dateModified">
+      Feb 4, 2018
+    </time>
+  </span>
+  <span itemscope itemprop="author publisher" itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="David McGaughey">
+  </span>
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    20 min read
+  </span>
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <a href="/./post/let-s-plot-2-smoothed-lines/#disqus_thread"></a>
+  
+
+  
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fa fa-folder"></i>
+    
+    <a href="/categories/lets-plot">Let’s Plot</a
+    >, 
+    
+    <a href="/categories/r">R</a
+    >
+    
+  </span>
+  
+  
+
+  
+  
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=Let%e2%80%99s%20Plot%202%3a%20Smoothed%20Lines&amp;url=%2f.%2fpost%2flet-s-plot-2-smoothed-lines%2f"
+         target="_blank" rel="noopener">
+        <i class="fa fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=%2f.%2fpost%2flet-s-plot-2-smoothed-lines%2f"
+         target="_blank" rel="noopener">
+        <i class="fa fa-facebook"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2f.%2fpost%2flet-s-plot-2-smoothed-lines%2f&amp;title=Let%e2%80%99s%20Plot%202%3a%20Smoothed%20Lines"
+         target="_blank" rel="noopener">
+        <i class="fa fa-linkedin"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=%2f.%2fpost%2flet-s-plot-2-smoothed-lines%2f&amp;title=Let%e2%80%99s%20Plot%202%3a%20Smoothed%20Lines"
+         target="_blank" rel="noopener">
+        <i class="fa fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=Let%e2%80%99s%20Plot%202%3a%20Smoothed%20Lines&amp;body=%2f.%2fpost%2flet-s-plot-2-smoothed-lines%2f">
+        <i class="fa fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+
+    <div class="article-style" itemprop="articleBody">
+      <p>Data from Aaron Rising.</p>
+<div id="get-data-two-xls-files-from-here" class="section level2">
+<h2>Get data (two xls files) from here:</h2>
+<ul>
+<li><a href="https://github.com/davemcg/Let_us_plot/tree/master/002_smoothed_lines" class="uri">https://github.com/davemcg/Let_us_plot/tree/master/002_smoothed_lines</a></li>
+<li>The rmd is also here if you want the source code</li>
+</ul>
+<p>Two different excel files (Cobra and Eel). Pig names?</p>
+<p>They have metrics for eye function across time.</p>
+<p>Aaron told me to take the ‘first tab’ in each excel file. Which is not the case, as at least to me, ‘Sheet 1’ is empty in both. So I’m using the next tab in both, which is ‘Normalized 2 Base For Comb’</p>
+</div>
+<div id="load-data-and-look-at-structure-str" class="section level2">
+<h2>Load data and look at structure (str)</h2>
+<pre class="r"><code>library(tidyverse)</code></pre>
+<pre><code>## Warning: package &#39;tidyverse&#39; was built under R version 3.4.2</code></pre>
+<pre><code>## ── Attaching packages ─────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──</code></pre>
+<pre><code>## ✔ ggplot2 2.2.1     ✔ purrr   0.2.4
+## ✔ tibble  1.4.2     ✔ dplyr   0.7.4
+## ✔ tidyr   0.7.2     ✔ stringr 1.2.0
+## ✔ readr   1.1.1     ✔ forcats 0.2.0</code></pre>
+<pre><code>## Warning: package &#39;tibble&#39; was built under R version 3.4.3</code></pre>
+<pre><code>## Warning: package &#39;tidyr&#39; was built under R version 3.4.2</code></pre>
+<pre><code>## Warning: package &#39;purrr&#39; was built under R version 3.4.2</code></pre>
+<pre><code>## Warning: package &#39;dplyr&#39; was built under R version 3.4.2</code></pre>
+<pre><code>## ── Conflicts ────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()</code></pre>
+<pre class="r"><code>library(ggsci)</code></pre>
+<pre><code>## Warning: package &#39;ggsci&#39; was built under R version 3.4.2</code></pre>
+<pre class="r"><code>cobra &lt;- readxl::read_xls(&#39;~/git/Let_us_plot/002_smoothed_lines/Cobra 749--_Normalized_Data_.xls&#39;, sheet = &#39;Normalized 2 Base For Comb&#39;)
+cobra %&gt;% str()</code></pre>
+<pre><code>## Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    187 obs. of  8 variables:
+##  $ Pig_Name  : chr  &quot;Cobra 749&quot; &quot;Cobra 749&quot; &quot;Cobra 749&quot; &quot;Cobra 749&quot; ...
+##  $ Week      : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ Region    : chr  &quot;Healthy_Implant&quot; &quot;Healthy_Implant&quot; &quot;Healthy_Implant&quot; &quot;Healthy_Implant&quot; ...
+##  $ Cells     : logi  FALSE FALSE FALSE FALSE FALSE FALSE ...
+##  $ Output    : chr  &quot;Area-Under-Curve&quot; &quot;HFC-Scalar&quot; &quot;LFC-Scalar&quot; &quot;N1&quot; ...
+##  $ GroupCount: num  3 3 3 3 3 3 3 3 3 3 ...
+##  $ Data      : num  1 1 1 1 15.7 ...
+##  $ STD       : num  0.0994 0.3493 0.2259 0.1063 0.5774 ...</code></pre>
+<pre class="r"><code>eel &lt;- readxl::read_xls(&#39;~/git/Let_us_plot/002_smoothed_lines/Eel 668--_Normalized_Data_.xls&#39;, sheet = &#39;Normalized 2 Base For Comb&#39;)
+eel %&gt;% str()</code></pre>
+<pre><code>## Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    192 obs. of  8 variables:
+##  $ Pig_Name  : chr  &quot;Eel 668&quot; &quot;Eel 668&quot; &quot;Eel 668&quot; &quot;Eel 668&quot; ...
+##  $ Week      : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ Region    : chr  &quot;Healthy_Sham&quot; &quot;Healthy_Sham&quot; &quot;Healthy_Sham&quot; &quot;Healthy_Sham&quot; ...
+##  $ Cells     : logi  FALSE FALSE FALSE FALSE FALSE FALSE ...
+##  $ Output    : chr  &quot;Area-Under-Curve&quot; &quot;HFC-Scalar&quot; &quot;LFC-Scalar&quot; &quot;N1&quot; ...
+##  $ GroupCount: num  3 3 3 3 3 3 3 3 3 3 ...
+##  $ Data      : num  1 1 1 1 20.7 ...
+##  $ STD       : num  0.0537 0.5141 0.1355 0.0631 0.5774 ...</code></pre>
+</div>
+<div id="head-first-few-lines" class="section level2">
+<h2>Head (first few lines)</h2>
+<pre class="r"><code>cobra %&gt;% head()</code></pre>
+<pre><code>## # A tibble: 6 x 8
+##   Pig_Name   Week Region          Cells Output     GroupCount  Data    STD
+##   &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;           &lt;lgl&gt; &lt;chr&gt;           &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+## 1 Cobra 749     0 Healthy_Implant F     Area-Unde…       3.00  1.00 0.0994
+## 2 Cobra 749     0 Healthy_Implant F     HFC-Scalar       3.00  1.00 0.349 
+## 3 Cobra 749     0 Healthy_Implant F     LFC-Scalar       3.00  1.00 0.226 
+## 4 Cobra 749     0 Healthy_Implant F     N1               3.00  1.00 0.106 
+## 5 Cobra 749     0 Healthy_Implant F     N1-Latency       3.00 15.7  0.577 
+## 6 Cobra 749     0 Healthy_Implant F     N1-Prom          3.00  1.00 0.177</code></pre>
+<pre class="r"><code>eel %&gt;% head()</code></pre>
+<pre><code>## # A tibble: 6 x 8
+##   Pig_Name  Week Region       Cells Output         GroupCount  Data    STD
+##   &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;        &lt;lgl&gt; &lt;chr&gt;               &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+## 1 Eel 668      0 Healthy_Sham F     Area-Under-Cu…       3.00  1.00 0.0537
+## 2 Eel 668      0 Healthy_Sham F     HFC-Scalar           3.00  1.00 0.514 
+## 3 Eel 668      0 Healthy_Sham F     LFC-Scalar           3.00  1.00 0.135 
+## 4 Eel 668      0 Healthy_Sham F     N1                   3.00  1.00 0.0631
+## 5 Eel 668      0 Healthy_Sham F     N1-Latency           3.00 20.7  0.577 
+## 6 Eel 668      0 Healthy_Sham F     N1-Prom              3.00  1.00 0.0781</code></pre>
+<p>Looks like we have implant (cobra) vs sham (eel)?</p>
+<p>We have several types of <code>Output</code> (Area-Under-Curve, HFC-Scalar, LFC-Scalar, N1, N1-Latency, N1-Prom, N1-Width, N1P1, N2, N2-Latency, N2-Prom, N2-Width, N2P2, P1, P1-Latency, P1-Prom, P1-Width, P1N2, P2, P2-Latency, P2-Prom, P2-Width, Pos.-Area-Under-Curve, RMS-HFC) which are different variables that have been measured. I asked Aaron what he cared most about and he suggested AUC, N1P1, and Latency</p>
+</div>
+<div id="auc-n1p1-latency" class="section level2">
+<h2>AUC, N1P1, Latency</h2>
+<p>We need to get the exact names for those variables</p>
+<p>We can extract all of the <code>Output</code> values and only print the unique ones</p>
+<pre class="r"><code>eel$Output %&gt;% unique()</code></pre>
+<pre><code>##  [1] &quot;Area-Under-Curve&quot;      &quot;HFC-Scalar&quot;           
+##  [3] &quot;LFC-Scalar&quot;            &quot;N1&quot;                   
+##  [5] &quot;N1-Latency&quot;            &quot;N1-Prom&quot;              
+##  [7] &quot;N1-Width&quot;              &quot;N1P1&quot;                 
+##  [9] &quot;N2&quot;                    &quot;N2-Latency&quot;           
+## [11] &quot;N2-Prom&quot;               &quot;N2-Width&quot;             
+## [13] &quot;N2P2&quot;                  &quot;P1&quot;                   
+## [15] &quot;P1-Latency&quot;            &quot;P1-Prom&quot;              
+## [17] &quot;P1-Width&quot;              &quot;P1N2&quot;                 
+## [19] &quot;P2&quot;                    &quot;P2-Latency&quot;           
+## [21] &quot;P2-Prom&quot;               &quot;P2-Width&quot;             
+## [23] &quot;Pos.-Area-Under-Curve&quot; &quot;RMS-HFC&quot;</code></pre>
+<p>OK, so <code>Area-Under-Curve</code>, <code>N1P1</code>, and <code>N1-Latency</code> are the three variables we’ll take a look at. Or fewer if I get confused.</p>
+<p>Let’s start by just looking at AUC. Generically it is a machine learning measure of how often an algorithm will distinguish the right answer over the wrong one. 1 is perfect. 0 is perfect wrong. 0.5 is a monkey flipping coins. Not sure what it means here.</p>
+</div>
+<div id="summary-of-eel-and-cobra-auc" class="section level2">
+<h2>Summary of eel and cobra AUC</h2>
+<p>Get the summary data from just the AUC values for each pig</p>
+<pre class="r"><code>cobra %&gt;% filter(Output == &#39;Area-Under-Curve&#39;) %&gt;% pull(Data) %&gt;% summary()</code></pre>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##  0.3653  0.4629  0.6895  0.6989  0.9675  1.0000</code></pre>
+<pre class="r"><code>eel %&gt;% filter(Output == &#39;Area-Under-Curve&#39;) %&gt;% pull(Data) %&gt;% summary()</code></pre>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##  0.6022  0.7717  0.9596  0.8698  0.9959  1.0000</code></pre>
+<p>So the sham (eel) has a better AUC?</p>
+</div>
+<div id="what-kind-of-time-points-or-conditions-or-whatever-do-we-have-again" class="section level2">
+<h2>What kind of time points or conditions or whatever do we have again?</h2>
+<pre class="r"><code>cobra %&gt;% filter(Output == &#39;Area-Under-Curve&#39;)</code></pre>
+<pre><code>## # A tibble: 8 x 8
+##   Pig_Name   Week Region          Cells Output     GroupCount  Data    STD
+##   &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;           &lt;lgl&gt; &lt;chr&gt;           &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+## 1 Cobra 749   0   Healthy_Implant F     Area-Unde…       3.00 1.00  0.0994
+## 2 Cobra 749  14.0 Healthy_Implant F     Area-Unde…       3.00 0.690 0.0877
+## 3 Cobra 749  35.0 Healthy_Implant F     Area-Unde…       3.00 0.689 0.119 
+## 4 Cobra 749  58.0 Healthy_Implant F     Area-Unde…       3.00 0.957 0.208 
+## 5 Cobra 749   0   Implant_NoLx    F     Area-Unde…       3.00 1.00  0.0868
+## 6 Cobra 749  14.0 Implant_NoLx    F     Area-Unde…       3.00 0.365 0.0964
+## 7 Cobra 749  35.0 Implant_NoLx    F     Area-Unde…       3.00 0.409 0.102 
+## 8 Cobra 749  58.0 Implant_NoLx    F     Area-Unde…       3.00 0.481 0.212</code></pre>
+<p>Oh, we have <em>two kinds or regions</em>. Didn’t see that before. So the above summary doesn’t take that into account.</p>
+</div>
+<div id="summary-by-pig-and-region" class="section level2">
+<h2>Summary by pig and region</h2>
+<p>This summary is <code>group_by(Region)</code> so we’ll get summary data (<code>mean</code> and <code>median</code>) by Region now</p>
+<pre class="r"><code>cobra %&gt;% filter(Output == &#39;Area-Under-Curve&#39;) %&gt;% group_by(Region) %&gt;% summarise(mean = mean(Data), median= median(Data))</code></pre>
+<pre><code>## # A tibble: 2 x 3
+##   Region           mean median
+##   &lt;chr&gt;           &lt;dbl&gt;  &lt;dbl&gt;
+## 1 Healthy_Implant 0.834  0.823
+## 2 Implant_NoLx    0.564  0.445</code></pre>
+<pre class="r"><code>eel %&gt;% filter(Output == &#39;Area-Under-Curve&#39;) %&gt;% group_by(Region) %&gt;% summarise(mean = mean(Data), median= median(Data))</code></pre>
+<pre><code>## # A tibble: 2 x 3
+##   Region        mean median
+##   &lt;chr&gt;        &lt;dbl&gt;  &lt;dbl&gt;
+## 1 Healthy_Sham 0.978  0.992
+## 2 Implant-Sham 0.761  0.721</code></pre>
+<p>We also have time (Week). This will be our x axis when we plot, as this data is sampled across time</p>
+</div>
+<div id="plot-auc-by-time-and-region-and-pig" class="section level2">
+<h2>Plot AUC by time and region and pig</h2>
+<p>x axis is time, y axis is AUC, and split by region/pig</p>
+<pre class="r"><code>cobra_eel_AUC &lt;- rbind(cobra %&gt;% filter(Output == &#39;Area-Under-Curve&#39;), 
+                       eel %&gt;% filter(Output == &#39;Area-Under-Curve&#39;))
+cobra_eel_AUC %&gt;% 
+  ggplot(aes(x=Week, y=Data, shape=Region, colour=Region)) + 
+   geom_point()</code></pre>
+<p><img src="/./post/2018-02-04-let-s-plot-2-smoothed-lines_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+</div>
+<div id="prettier-plot-with-lines-and-more-formatting" class="section level2">
+<h2>Prettier plot with lines and more formatting</h2>
+<p>Using the ggsci library with the Nature Publishing Group color scheme (<code>scale_colour_npg()</code>)</p>
+<pre class="r"><code>cobra_eel_AUC %&gt;% 
+  ggplot(aes(x=Week, y=Data, colour=Region, shape = Pig_Name)) + 
+  geom_point(size=4) + 
+  geom_smooth(method = &#39;loess&#39;) + ## this draws the smoothed lines through the four points. It auto picks an algorithm that works. loess was used here
+  theme_bw() + scale_colour_npg() +
+  ylab(&#39;AUC&#39;) </code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : span too small. fewer data values than degrees of freedom.</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : pseudoinverse used at -0.29</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : neighborhood radius 35.29</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : reciprocal condition number 0</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : There are other near singularities as well. 1961.6</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : span too small.
+## fewer data values than degrees of freedom.</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : pseudoinverse used
+## at -0.29</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : neighborhood radius
+## 35.29</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : reciprocal
+## condition number 0</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : There are other
+## near singularities as well. 1961.6</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : span too small. fewer data values than degrees of freedom.</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : pseudoinverse used at -0.285</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : neighborhood radius 35.285</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : reciprocal condition number 0</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : There are other near singularities as well. 1873.6</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : span too small.
+## fewer data values than degrees of freedom.</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : pseudoinverse used
+## at -0.285</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : neighborhood radius
+## 35.285</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : reciprocal
+## condition number 0</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : There are other
+## near singularities as well. 1873.6</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : span too small. fewer data values than degrees of freedom.</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : pseudoinverse used at -0.29</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : neighborhood radius 35.29</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : reciprocal condition number 0</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : There are other near singularities as well. 1961.6</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : span too small.
+## fewer data values than degrees of freedom.</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : pseudoinverse used
+## at -0.29</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : neighborhood radius
+## 35.29</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : reciprocal
+## condition number 0</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : There are other
+## near singularities as well. 1961.6</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : span too small. fewer data values than degrees of freedom.</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : pseudoinverse used at -0.285</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : neighborhood radius 35.285</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : reciprocal condition number 0</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : There are other near singularities as well. 1873.6</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : span too small.
+## fewer data values than degrees of freedom.</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : pseudoinverse used
+## at -0.285</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : neighborhood radius
+## 35.285</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : reciprocal
+## condition number 0</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : There are other
+## near singularities as well. 1873.6</code></pre>
+<p><img src="/./post/2018-02-04-let-s-plot-2-smoothed-lines_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+</div>
+<div id="n1p1-plot" class="section level2">
+<h2>N1P1 Plot</h2>
+<pre class="r"><code>rbind(cobra %&gt;% filter(Output == &#39;N1P1&#39;), eel %&gt;% filter(Output == &#39;N1P1&#39;)) %&gt;% 
+  ggplot(aes(x=Week, y=Data, colour=Region, shape = Pig_Name)) + 
+  geom_point(size=4) + 
+  geom_smooth() + ## this draws the smoothed lines through the four points. It auto picks an algorithm that works. loess was used here
+  theme_bw() + scale_colour_npg() +
+  ylab(&#39;N1P1&#39;)</code></pre>
+<pre><code>## `geom_smooth()` using method = &#39;loess&#39;</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : span too small. fewer data values than degrees of freedom.</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : pseudoinverse used at -0.29</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : neighborhood radius 35.29</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : reciprocal condition number 0</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : There are other near singularities as well. 1961.6</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : span too small.
+## fewer data values than degrees of freedom.</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : pseudoinverse used
+## at -0.29</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : neighborhood radius
+## 35.29</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : reciprocal
+## condition number 0</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : There are other
+## near singularities as well. 1961.6</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : span too small. fewer data values than degrees of freedom.</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : pseudoinverse used at -0.285</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : neighborhood radius 35.285</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : reciprocal condition number 0</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : There are other near singularities as well. 1873.6</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : span too small.
+## fewer data values than degrees of freedom.</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : pseudoinverse used
+## at -0.285</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : neighborhood radius
+## 35.285</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : reciprocal
+## condition number 0</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : There are other
+## near singularities as well. 1873.6</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : span too small. fewer data values than degrees of freedom.</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : pseudoinverse used at -0.29</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : neighborhood radius 35.29</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : reciprocal condition number 0</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : There are other near singularities as well. 1961.6</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : span too small.
+## fewer data values than degrees of freedom.</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : pseudoinverse used
+## at -0.29</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : neighborhood radius
+## 35.29</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : reciprocal
+## condition number 0</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : There are other
+## near singularities as well. 1961.6</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : span too small. fewer data values than degrees of freedom.</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : pseudoinverse used at -0.285</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : neighborhood radius 35.285</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : reciprocal condition number 0</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : There are other near singularities as well. 1873.6</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : span too small.
+## fewer data values than degrees of freedom.</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : pseudoinverse used
+## at -0.285</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : neighborhood radius
+## 35.285</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : reciprocal
+## condition number 0</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : There are other
+## near singularities as well. 1873.6</code></pre>
+<p><img src="/./post/2018-02-04-let-s-plot-2-smoothed-lines_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+</div>
+<div id="latency-plot" class="section level2">
+<h2>Latency plot</h2>
+<pre class="r"><code>rbind(cobra %&gt;% filter(Output == &#39;N1-Latency&#39;), eel %&gt;% filter(Output == &#39;N1-Latency&#39;)) %&gt;% 
+  ggplot(aes(x=Week, y=Data, colour=Region, shape = Pig_Name)) + 
+  geom_point(size=4) + 
+  geom_smooth() + ## this draws the smoothed lines through the four points. It auto picks an algorithm that works. loess was used here
+  theme_bw() + scale_colour_npg() +
+  ylab(&#39;N1-Latency&#39;)</code></pre>
+<pre><code>## `geom_smooth()` using method = &#39;loess&#39;</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : span too small. fewer data values than degrees of freedom.</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : pseudoinverse used at -0.29</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : neighborhood radius 35.29</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : reciprocal condition number 0</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : There are other near singularities as well. 1961.6</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : span too small.
+## fewer data values than degrees of freedom.</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : pseudoinverse used
+## at -0.29</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : neighborhood radius
+## 35.29</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : reciprocal
+## condition number 0</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : There are other
+## near singularities as well. 1961.6</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : span too small. fewer data values than degrees of freedom.</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : pseudoinverse used at -0.285</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : neighborhood radius 35.285</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : reciprocal condition number 0</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : There are other near singularities as well. 1873.6</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : span too small.
+## fewer data values than degrees of freedom.</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : pseudoinverse used
+## at -0.285</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : neighborhood radius
+## 35.285</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : reciprocal
+## condition number 0</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : There are other
+## near singularities as well. 1873.6</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : span too small. fewer data values than degrees of freedom.</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : pseudoinverse used at -0.29</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : neighborhood radius 35.29</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : reciprocal condition number 0</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : There are other near singularities as well. 1961.6</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : span too small.
+## fewer data values than degrees of freedom.</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : pseudoinverse used
+## at -0.29</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : neighborhood radius
+## 35.29</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : reciprocal
+## condition number 0</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : There are other
+## near singularities as well. 1961.6</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : span too small. fewer data values than degrees of freedom.</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : pseudoinverse used at -0.285</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : neighborhood radius 35.285</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : reciprocal condition number 0</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : There are other near singularities as well. 1873.6</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : span too small.
+## fewer data values than degrees of freedom.</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : pseudoinverse used
+## at -0.285</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : neighborhood radius
+## 35.285</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : reciprocal
+## condition number 0</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : There are other
+## near singularities as well. 1873.6</code></pre>
+<p><img src="/./post/2018-02-04-let-s-plot-2-smoothed-lines_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+</div>
+<div id="bonus" class="section level2">
+<h2>Bonus</h2>
+<p>We have many variables. We can get a quick sense of how all of the variables separate out the major data categories with a PCA</p>
+<pre class="r"><code>all_pigs &lt;- rbind(cobra, eel) %&gt;% 
+  select(Region, Pig_Name, Week, Output, Data) %&gt;% 
+  spread(Output, Data)
+## toss P-Prime-Latency column
+all_pigs &lt;- all_pigs %&gt;% select(-`P-Prime-Latency`)
+## remove columns with NA
+all_pigs &lt;- all_pigs[complete.cases(all_pigs), complete.cases(t(all_pigs))]
+pca &lt;- prcomp(all_pigs[,4:ncol(all_pigs)], scale. = T)
+
+## pull out PCA coordinates (pca$x) and add to all_pigs with the cbind
+all_pigs &lt;- cbind(all_pigs, pca$x)
+
+ggplot(all_pigs, aes(x=PC1, y=PC4, color=as.factor(Week), shape=Region)) + 
+  geom_point(size=5, alpha=0.7) + 
+  theme_bw() + 
+  scale_colour_npg() </code></pre>
+<p><img src="/./post/2018-02-04-let-s-plot-2-smoothed-lines_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+</div>
+
+    </div>
+
+    
+
+
+<div class="article-tags">
+  
+  <a class="btn btn-primary btn-outline" href="/tags/ggplot2">ggplot2</a>
+  
+  <a class="btn btn-primary btn-outline" href="/tags/lets-plot">Let&#39;s Plot</a>
+  
+  <a class="btn btn-primary btn-outline" href="/tags/r">R</a>
+  
+  <a class="btn btn-primary btn-outline" href="/tags/tidyverse">tidyverse</a>
+  
+</div>
+
+
+
+
+    
+    
+    <div class="article-widget">
+      <div class="hr-light"></div>
+      <h3>Related</h3>
+      <ul>
+        
+        <li><a href="/post/let-s-plot-1/">Let’s Plot 1: Going in circles </a></li>
+        
+        <li><a href="/post/what-is-let-s-plot/">What is Let’s Plot?</a></li>
+        
+      </ul>
+    </div>
+    
+
+    
+
+    
+<section id="comments">
+  <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "davemcg-gitub-io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+
+  </div>
+</article>
+
+<footer class="site-footer">
+  <div class="container">
+    <p class="powered-by">
+
+      &copy; 2018 &middot; 
+
+      Powered by the
+      <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+      <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+      <span class="pull-right" aria-hidden="true">
+        <a href="#" id="back_to_top">
+          <span class="button_icon">
+            <i class="fa fa-chevron-up fa-2x"></i>
+          </span>
+        </a>
+      </span>
+
+    </p>
+  </div>
+</footer>
+
+
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close btn-large" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Cite</h4>
+      </div>
+      <div>
+        <pre><code class="modal-body tex"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-primary btn-outline js-copy-cite" href="#" target="_blank">
+          <i class="fa fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-primary btn-outline js-download-cite" href="#" target="_blank">
+          <i class="fa fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+    
+    <script id="dsq-count-scr" src="//davemcg-gitub-io.disqus.com/count.js" async></script>
+    
+
+    
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha512-3P8rXCuGJdNZOnUx/03c1jOTnMn3rP63nBip5gOP2qmUh5YAdVAvFZ1E+QLZZbC1rtMrQb+mah3AfYW11RUrWA==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.3/imagesloaded.pkgd.min.js" integrity="sha512-umsR78NN0D23AzgoZ11K7raBD+R6hqKojyBZs1w8WvYlsI+QuKRGBx3LFCwhatzBunCjDuJpDHwxD13sLMbpRA==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha512-iztkobsvnjKfAtTNdHkGVjAYTrrtlC7mGp/54c40wowO7LhURYl3gVzzcEqGl/qKXQltJ2HwMrdLcNUdo+N/RQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+    
+    
+    <script src="/js/hugo-academic.js"></script>
+    
+
+    
+    
+      
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+      
+
+      
+
+      
+
+      <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+
+  </body>
+</html>
+
