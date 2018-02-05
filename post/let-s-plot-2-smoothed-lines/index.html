@@ -351,16 +351,16 @@ Aaron told me to take the ‘first tab’ in each excel file. Which is not the c
 <h2>Load data and look at structure (str)</h2>
 <pre class="r"><code>library(tidyverse)</code></pre>
 <pre><code>## Warning: package &#39;tidyverse&#39; was built under R version 3.4.2</code></pre>
-<pre><code>## ── Attaching packages ─────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──</code></pre>
+<pre><code>## ── Attaching packages ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──</code></pre>
 <pre><code>## ✔ ggplot2 2.2.1     ✔ purrr   0.2.4
-## ✔ tibble  1.4.2     ✔ dplyr   0.7.4
+## ✔ tibble  1.3.4     ✔ dplyr   0.7.4
 ## ✔ tidyr   0.7.2     ✔ stringr 1.2.0
 ## ✔ readr   1.1.1     ✔ forcats 0.2.0</code></pre>
-<pre><code>## Warning: package &#39;tibble&#39; was built under R version 3.4.3</code></pre>
+<pre><code>## Warning: package &#39;tibble&#39; was built under R version 3.4.1</code></pre>
 <pre><code>## Warning: package &#39;tidyr&#39; was built under R version 3.4.2</code></pre>
 <pre><code>## Warning: package &#39;purrr&#39; was built under R version 3.4.2</code></pre>
 <pre><code>## Warning: package &#39;dplyr&#39; was built under R version 3.4.2</code></pre>
-<pre><code>## ── Conflicts ────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+<pre><code>## ── Conflicts ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()</code></pre>
 <pre class="r"><code>library(ggsci)</code></pre>
@@ -392,24 +392,26 @@ eel %&gt;% str()</code></pre>
 <h2>Head (first few lines)</h2>
 <pre class="r"><code>cobra %&gt;% head()</code></pre>
 <pre><code>## # A tibble: 6 x 8
-##   Pig_Name   Week Region          Cells Output     GroupCount  Data    STD
-##   &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;           &lt;lgl&gt; &lt;chr&gt;           &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
-## 1 Cobra 749     0 Healthy_Implant F     Area-Unde…       3.00  1.00 0.0994
-## 2 Cobra 749     0 Healthy_Implant F     HFC-Scalar       3.00  1.00 0.349 
-## 3 Cobra 749     0 Healthy_Implant F     LFC-Scalar       3.00  1.00 0.226 
-## 4 Cobra 749     0 Healthy_Implant F     N1               3.00  1.00 0.106 
-## 5 Cobra 749     0 Healthy_Implant F     N1-Latency       3.00 15.7  0.577 
-## 6 Cobra 749     0 Healthy_Implant F     N1-Prom          3.00  1.00 0.177</code></pre>
+##    Pig_Name  Week          Region Cells           Output GroupCount
+##       &lt;chr&gt; &lt;dbl&gt;           &lt;chr&gt; &lt;lgl&gt;            &lt;chr&gt;      &lt;dbl&gt;
+## 1 Cobra 749     0 Healthy_Implant FALSE Area-Under-Curve          3
+## 2 Cobra 749     0 Healthy_Implant FALSE       HFC-Scalar          3
+## 3 Cobra 749     0 Healthy_Implant FALSE       LFC-Scalar          3
+## 4 Cobra 749     0 Healthy_Implant FALSE               N1          3
+## 5 Cobra 749     0 Healthy_Implant FALSE       N1-Latency          3
+## 6 Cobra 749     0 Healthy_Implant FALSE          N1-Prom          3
+## # ... with 2 more variables: Data &lt;dbl&gt;, STD &lt;dbl&gt;</code></pre>
 <pre class="r"><code>eel %&gt;% head()</code></pre>
 <pre><code>## # A tibble: 6 x 8
-##   Pig_Name  Week Region       Cells Output         GroupCount  Data    STD
-##   &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;        &lt;lgl&gt; &lt;chr&gt;               &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
-## 1 Eel 668      0 Healthy_Sham F     Area-Under-Cu…       3.00  1.00 0.0537
-## 2 Eel 668      0 Healthy_Sham F     HFC-Scalar           3.00  1.00 0.514 
-## 3 Eel 668      0 Healthy_Sham F     LFC-Scalar           3.00  1.00 0.135 
-## 4 Eel 668      0 Healthy_Sham F     N1                   3.00  1.00 0.0631
-## 5 Eel 668      0 Healthy_Sham F     N1-Latency           3.00 20.7  0.577 
-## 6 Eel 668      0 Healthy_Sham F     N1-Prom              3.00  1.00 0.0781</code></pre>
+##   Pig_Name  Week       Region Cells           Output GroupCount     Data
+##      &lt;chr&gt; &lt;dbl&gt;        &lt;chr&gt; &lt;lgl&gt;            &lt;chr&gt;      &lt;dbl&gt;    &lt;dbl&gt;
+## 1  Eel 668     0 Healthy_Sham FALSE Area-Under-Curve          3  1.00000
+## 2  Eel 668     0 Healthy_Sham FALSE       HFC-Scalar          3  1.00000
+## 3  Eel 668     0 Healthy_Sham FALSE       LFC-Scalar          3  1.00000
+## 4  Eel 668     0 Healthy_Sham FALSE               N1          3  1.00000
+## 5  Eel 668     0 Healthy_Sham FALSE       N1-Latency          3 20.66667
+## 6  Eel 668     0 Healthy_Sham FALSE          N1-Prom          3  1.00000
+## # ... with 1 more variables: STD &lt;dbl&gt;</code></pre>
 <p>Looks like we have implant (cobra) vs sham (eel)?</p>
 <p>We have several types of <code>Output</code> (Area-Under-Curve, HFC-Scalar, LFC-Scalar, N1, N1-Latency, N1-Prom, N1-Width, N1P1, N2, N2-Latency, N2-Prom, N2-Width, N2P2, P1, P1-Latency, P1-Prom, P1-Width, P1N2, P2, P2-Latency, P2-Prom, P2-Width, Pos.-Area-Under-Curve, RMS-HFC) which are different variables that have been measured. I asked Aaron what he cared most about and he suggested AUC, N1P1, and Latency</p>
 </div>
@@ -448,16 +450,17 @@ eel %&gt;% str()</code></pre>
 <h2>What kind of time points or conditions or whatever do we have again?</h2>
 <pre class="r"><code>cobra %&gt;% filter(Output == &#39;Area-Under-Curve&#39;)</code></pre>
 <pre><code>## # A tibble: 8 x 8
-##   Pig_Name   Week Region          Cells Output     GroupCount  Data    STD
-##   &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;           &lt;lgl&gt; &lt;chr&gt;           &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
-## 1 Cobra 749   0   Healthy_Implant F     Area-Unde…       3.00 1.00  0.0994
-## 2 Cobra 749  14.0 Healthy_Implant F     Area-Unde…       3.00 0.690 0.0877
-## 3 Cobra 749  35.0 Healthy_Implant F     Area-Unde…       3.00 0.689 0.119 
-## 4 Cobra 749  58.0 Healthy_Implant F     Area-Unde…       3.00 0.957 0.208 
-## 5 Cobra 749   0   Implant_NoLx    F     Area-Unde…       3.00 1.00  0.0868
-## 6 Cobra 749  14.0 Implant_NoLx    F     Area-Unde…       3.00 0.365 0.0964
-## 7 Cobra 749  35.0 Implant_NoLx    F     Area-Unde…       3.00 0.409 0.102 
-## 8 Cobra 749  58.0 Implant_NoLx    F     Area-Unde…       3.00 0.481 0.212</code></pre>
+##    Pig_Name  Week          Region Cells           Output GroupCount
+##       &lt;chr&gt; &lt;dbl&gt;           &lt;chr&gt; &lt;lgl&gt;            &lt;chr&gt;      &lt;dbl&gt;
+## 1 Cobra 749     0 Healthy_Implant FALSE Area-Under-Curve          3
+## 2 Cobra 749    14 Healthy_Implant FALSE Area-Under-Curve          3
+## 3 Cobra 749    35 Healthy_Implant FALSE Area-Under-Curve          3
+## 4 Cobra 749    58 Healthy_Implant FALSE Area-Under-Curve          3
+## 5 Cobra 749     0    Implant_NoLx FALSE Area-Under-Curve          3
+## 6 Cobra 749    14    Implant_NoLx FALSE Area-Under-Curve          3
+## 7 Cobra 749    35    Implant_NoLx FALSE Area-Under-Curve          3
+## 8 Cobra 749    58    Implant_NoLx FALSE Area-Under-Curve          3
+## # ... with 2 more variables: Data &lt;dbl&gt;, STD &lt;dbl&gt;</code></pre>
 <p>Oh, we have <em>two kinds or regions</em>. Didn’t see that before. So the above summary doesn’t take that into account.</p>
 </div>
 <div id="summary-by-pig-and-region" class="section level2">
@@ -465,16 +468,16 @@ eel %&gt;% str()</code></pre>
 <p>This summary is <code>group_by(Region)</code> so we’ll get summary data (<code>mean</code> and <code>median</code>) by Region now</p>
 <pre class="r"><code>cobra %&gt;% filter(Output == &#39;Area-Under-Curve&#39;) %&gt;% group_by(Region) %&gt;% summarise(mean = mean(Data), median= median(Data))</code></pre>
 <pre><code>## # A tibble: 2 x 3
-##   Region           mean median
-##   &lt;chr&gt;           &lt;dbl&gt;  &lt;dbl&gt;
-## 1 Healthy_Implant 0.834  0.823
-## 2 Implant_NoLx    0.564  0.445</code></pre>
+##            Region      mean    median
+##             &lt;chr&gt;     &lt;dbl&gt;     &lt;dbl&gt;
+## 1 Healthy_Implant 0.8339120 0.8232216
+## 2    Implant_NoLx 0.5638621 0.4450836</code></pre>
 <pre class="r"><code>eel %&gt;% filter(Output == &#39;Area-Under-Curve&#39;) %&gt;% group_by(Region) %&gt;% summarise(mean = mean(Data), median= median(Data))</code></pre>
 <pre><code>## # A tibble: 2 x 3
-##   Region        mean median
-##   &lt;chr&gt;        &lt;dbl&gt;  &lt;dbl&gt;
-## 1 Healthy_Sham 0.978  0.992
-## 2 Implant-Sham 0.761  0.721</code></pre>
+##         Region      mean    median
+##          &lt;chr&gt;     &lt;dbl&gt;     &lt;dbl&gt;
+## 1 Healthy_Sham 0.9784509 0.9919426
+## 2 Implant-Sham 0.7610630 0.7210445</code></pre>
 <p>We also have time (Week). This will be our x axis when we plot, as this data is sampled across time</p>
 </div>
 <div id="plot-auc-by-time-and-region-and-pig" class="section level2">
