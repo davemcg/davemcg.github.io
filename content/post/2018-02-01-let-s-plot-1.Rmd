@@ -11,6 +11,9 @@ tags:
   - ggplot2
   - Let's Plot
   - tidyverse
+output:
+  blogdown::html_page:
+    toc: true
 ---
 
 ## What is going on?

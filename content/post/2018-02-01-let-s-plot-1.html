@@ -11,9 +11,32 @@ tags:
   - ggplot2
   - Let's Plot
   - tidyverse
+output:
+  blogdown::html_page:
+    toc: true
 ---
 
 
+<div id="TOC">
+<ul>
+<li><a href="#what-is-going-on">What is going on?</a></li>
+<li><a href="#where-to-get-the-code-and-data">Where to get the code and data?</a></li>
+<li><a href="#import-data-with-readxl">Import data with readxl</a></li>
+<li><a href="#ok-first-lets-remove-the-notes.">OK, first let’s remove the notes.</a></li>
+<li><a href="#however-we-arent-done.-the-data-is-wide-instead-of-long-and-we-have-mixed-session-ids-amp-1-3-and-angle-1-3-with-the-value-type.">However, we aren’t done. The data is “wide” instead of “long” and we have mixed session IDs (Amp 1-3 and Angle 1-3) with the value type.</a></li>
+<li><a href="#now-we-need-to-extract-the-session-123-and-the-test-type-amp-or-angle">Now we need to extract the session (1,2,3) and the test type (Amp or Angle)</a></li>
+<li><a href="#now-we-have-two-value-types-angle-and-amplitude-in-one-column.-so-we-need-to-go-from-long-to-wide-to-split-them-apart.">Now we have two value types (Angle and Amplitude) in one column. So we need to go from long to wide to split them apart.</a></li>
+<li><a href="#putting-it-all-together-and-saving-so-we-dont-have-to-see-this-big-code-block-later.">Putting it all together and saving so we don’t have to see this big code block later.</a></li>
+<li><a href="#first-plot.-does-this-work">First plot. Does this work?</a></li>
+<li><a href="#but-wait-this-is-a-polar-plot.">But wait, this is a polar plot….</a></li>
+<li><a href="#not-bad-but-we-have-a-lot-of-little-things-to-do.">Not bad, but we have a lot of little things to do.</a></li>
+<li><a href="#yeah-so-we-need-to-tell-ggplot-what-the-range-of-values-is.">Yeah, so we need to tell ggplot what the range of values is.</a></li>
+<li><a href="#cool-the-range-goes-to-360-as-expected.-still-a-few-more-things-to-do">Cool, the range goes to 360 as expected. Still a few more things to do:</a></li>
+<li><a href="#hmm-wrong-way.-want-180-on-the-left-lets-make-it-negative.">Hmm, wrong way. (want 180 on the left) Let’s make it negative.</a></li>
+<li><a href="#ok-final-plot-with-some-color-and-geom_point-tweaking">OK, Final plot with some color and geom_point tweaking!</a></li>
+<li><a href="#sessioninfo">sessionInfo</a></li>
+</ul>
+</div>
 
 <div id="what-is-going-on" class="section level2">
 <h2>What is going on?</h2>

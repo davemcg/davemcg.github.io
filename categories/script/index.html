@@ -18,7 +18,7 @@
   <meta name="description" content="Staff Scientist">
 
   
-  <link rel="alternate" hreflang="en-us" href="/./tags/tidyverse/">
+  <link rel="alternate" hreflang="en-us" href="/./categories/script/">
 
   
 
@@ -80,7 +80,7 @@
   <link rel="icon" type="image/png" href="/img/icon.png">
   <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
 
-  <link rel="canonical" href="/./tags/tidyverse/">
+  <link rel="canonical" href="/./categories/script/">
 
   <meta property="twitter:card" content="summary_large_image">
   
@@ -88,17 +88,17 @@
   <meta property="twitter:creator" content="@https://twitter.com/David_McGaughey">
   
   <meta property="og:site_name" content="eye Bioinformatician">
-  <meta property="og:url" content="/./tags/tidyverse/">
-  <meta property="og:title" content="Tidyverse | eye Bioinformatician">
+  <meta property="og:url" content="/./categories/script/">
+  <meta property="og:title" content="Script | eye Bioinformatician">
   <meta property="og:description" content="Staff Scientist">
   <meta property="og:locale" content="en-us">
   
-  <meta property="og:updated_time" content="2018-02-04T00:00:00&#43;00:00">
+  <meta property="og:updated_time" content="2018-02-07T00:00:00&#43;00:00">
   
 
   
 
-  <title>Tidyverse | eye Bioinformatician</title>
+  <title>Script | eye Bioinformatician</title>
 
 </head>
 <body id="top" data-spy="scroll" data-target="#toc" data-offset="71" >
@@ -231,36 +231,17 @@
 
 <div class="universal-wrapper">
 
-  <h1>Tidyverse</h1>
+  <h1>Script</h1>
 
   
 
   
   
   <div>
-    <h2><a href="/./post/let-s-plot-2-smoothed-lines/">Let’s Plot 2: Smoothed Lines</a></h2>
+    <h2><a href="/./post/split-vcf-into-n-pieces-by-coordinate/">Split VCF into n pieces by coordinate</a></h2>
     <div class="article-style">
       
-      Get data (two xls files) from here: Load data and look at structure (str) Head (first few lines) AUC, N1P1, Latency Summary of eel and cobra AUC What kind of time points or conditions or whatever do we have again? Summary by pig and region Plot AUC by time and region and pig Prettier plot with lines and more formatting N1P1 Plot Latency plot Bonus   Data from Aaron Rising.
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/./post/let-s-plot-1/">Let’s Plot 1: Going in circles </a></h2>
-    <div class="article-style">
-      
-      What is going on? Where to get the code and data? Import data with readxl OK, first let’s remove the notes. However, we aren’t done. The data is “wide” instead of “long” and we have mixed session IDs (Amp 1-3 and Angle 1-3) with the value type. Now we need to extract the session (1,2,3) and the test type (Amp or Angle) Now we have two value types (Angle and Amplitude) in one column.
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/./post/what-is-let-s-plot/">What is Let’s Plot?</a></h2>
-    <div class="article-style">
-      
-      Tooling How can I follow along?   The concept is simple - I get data from one of the scientists in my group. Or I get my own. Then I demonstrate, step-by-step, how I generate the plot(s). I’ll also toss in some data science concepts occasionally.
-They are a bit sparse on the words because I’m presenting these in person. But I believe they are clear enough for someone to follow along.
+      Introduction Read in vcf header Parse out chr / contig sizes Split chr above 3e7 base pairs into equal(ish) size pieces print coordinates given a chromosome / contig calculate coordinates print ’em output ’em for python input (Snakemake) rscript Using the script output sessionInfo()   Introduction bcftools view -r 1:40000-50000 vcf.gz will output a tabix-indexed vcf containing the header and variants on chromosome 1 between coordinates 40,000 and 50,000 base pairs.
       
     </div>
   </div>

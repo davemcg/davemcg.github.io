@@ -11,6 +11,9 @@ tags:
   - Let's Plot
   - R
   - tidyverse
+output:
+  blogdown::html_page:
+    toc: true
 ---
 
 The concept is simple - I get data from one of the scientists in my group. Or I get my own. Then I demonstrate, step-by-step, how I generate the plot(s). I'll also toss in some *data science* concepts occasionally. 

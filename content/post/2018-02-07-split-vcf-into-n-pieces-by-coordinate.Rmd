@@ -1,0 +1,123 @@
+---
+title: Split VCF into n pieces by coordinate
+author: David McGaughey
+date: '2018-02-07'
+slug: split-vcf-into-n-pieces-by-coordinate
+categories:
+  - R
+  - bioinformatics
+  - script
+tags:
+  - R
+  - script
+  - bioinformatics
+output:
+  blogdown::html_page:
+    toc: true
+---
+
+## Introduction
+`bcftools view -r 1:40000-50000 vcf.gz` will output a tabix-indexed vcf containing the header and variants on chromosome 1 between coordinates 40,000 and 50,000 base pairs. 
+
+I need to break down a large vcf into smaller pieces to dramatically speed up annotation. Let's try 100 pieces. 
+
+The human genome is *approximately* 3 gigabases or 3e9 base pairs. 
+
+$$ \frac{3 * 10^9\ base\ pairs}{100\ pieces} = 3*10^7\ base\ pairs\ per\ piece $$
+
+That's our target size.
+
+This is made a bit tricky since the genome is laid by chromosome. So we have to break into 3e7 pieces, accounting for chromosomes. There are also **many** contigs, most of which are well under 3e7 in size. Those can be processed as a group with `bcftools` by splitting each contig by a `,`. 
+
+Let's read in the header. It contains chromosome (and contig) sizes, which I've extracted from the vcf with `zcat EGAD00001002656.GATK.vcf.gz | head -n 1000 | grep ^## > /home/mcgaugheyd/git/OGVFB_one_offs/mcgaughey/split_VCFs_into_n_pieces/EGAD00001002656.header`
+
+## Read in vcf header
+```{r}
+library(tidyverse)
+library(stringr)
+vcf_header = scan('~/git/OGVFB_one_offs/mcgaughey/split_VCFs_into_n_pieces/EGAD00001002656.header', what='character')
+vcf_header[grepl('contig',vcf_header)]
+```
+
+
+## Parse out chr / contig sizes
+```{r}
+# turn into data frame (well, a tibble)
+contig_size <- vcf_header[grepl('contig', vcf_header)] %>% 
+  data.frame() %>% 
+  select(1, 'header' = 1) %>% 
+  # separate by ,
+  separate(header, c('contig','length','assembly'),',') %>% 
+  # extract values by splitting against = and taking the last element (first after reversing)
+  rowwise() %>% 
+  mutate(contig = str_split(contig,'=')[[1]] %>% gsub('>','',.) %>% rev() %>% .[[1]],
+         length = str_split(length,'=')[[1]] %>% gsub('>','',.) %>% rev() %>% .[[1]] %>% as.numeric(),
+         assembly = str_split(assembly,'=')[[1]] %>% gsub('>','',.) %>% rev() %>% .[[1]])
+contig_size
+```
+
+## Split chr above 3e7 base pairs into equal(ish) size pieces
+`ceiling` will allow intervals a bit less than 3e7 by rounding up the number of pieces per chromsome. Would rather have more splits with less than the target size. 
+```{r}
+n_split <- function(size){
+  pieces <- ceiling(size / 3e7)
+  seq(1, size, size/pieces)
+}
+```
+
+## print coordinates given a chromosome / contig
+```{r}
+n_printer <- function(chr) {
+  # grab the legnth of chr or contig
+  size <- contig_size %>% filter(contig == chr) %>% pull(length)
+  # split into ~30e7 sized pieces
+  sequence <- n_split(size)
+  # add the max size to end (plus another base pair since the loop below reduces size by 1 to eliminate overlaps)
+  sequence <- c(sequence, size+1)
+  df <- data.frame()
+  for(i in 1:length(sequence)){
+    row <- cbind(chr, as.integer(sequence[max(i-1,1)]), # for first row, makes sure you don't pick the 0 position, which doesn't exit
+                 as.integer(sequence[i]-1)) # decrements by one so you don't overlap
+    df <- rbind(df, row)
+  }
+  colnames(df) <- c('chr','start','end')
+  # skip first row which has dummy values
+  df[-1,]
+}
+```
+
+## calculate coordinates
+Will skip contig < 3e7 (all but hs37d5, which I don't process, so it will be eliminated). The contigs will be printed comma separated for `bcftools view -r ` purposes.
+
+How many regions do we have? Should have a bit more than 100. 
+```{r}
+regions <- data.frame()
+for (i in contig_size %>% filter(length > 3e7, contig != 'hs37d5') %>% pull(contig)){
+  regions <- rbind(regions,(n_printer(i)))
+}
+regions %>% nrow()
+```
+
+## print 'em
+```{r}
+regions %>% mutate(f = paste(paste(chr, start, sep =':'), end, sep='-')) %>% select(f)
+```
+
+## output 'em for python input (Snakemake)
+The second write command appends all of the chromosomes or contigs (in this case, just contigs) that are less than 3e7 in length to the output file. It comma separates them, which is how `bcftools view -r` takes in multiple chromosomes or contigs. The `paste(., collapse=',')` command at the end collapses the vector of contigs into a string with comma separation. 
+```{r}
+write(regions %>% mutate(f = paste(paste(chr, start, sep =':'), end, sep='-')) %>% pull(f), file='vcf_region_split_coords.txt')
+write(contig_size %>% filter(length < 3e7, contig != 'hs37d5') %>% pull(contig) %>% paste(., collapse=','), file='vcf_region_split_coords.txt', append = T)
+```
+
+## rscript
+I've wrapped up the functions and handling as a Rscript that takes the header of a vcf as input and outputs and writes to a user-given file the regions. The script also allows you to select desired number of regions (you will almost always get a few more), the output file name, and the genome size (defaults to human genome). The script is [here](/files/scripts/split_vcf_into_n_pieces.R).
+
+## Using the script output
+I'm using it in a Snakemake pipeline. `bcftools` can use it with `-R` (region) if you run the script like this (see source for comments): `Rscript split_vcf_into_n_pieces.R yourVCF.header 200 vcf_region_split_200_coords.txt 3e9 bed`
+
+## sessionInfo()
+```{r}
+devtools::session_info()
+```
+```

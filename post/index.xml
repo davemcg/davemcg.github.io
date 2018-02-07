@@ -13,15 +13,21 @@
     
     
     <item>
+      <title>Split VCF into n pieces by coordinate</title>
+      <link>/./post/split-vcf-into-n-pieces-by-coordinate/</link>
+      <pubDate>Wed, 07 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/split-vcf-into-n-pieces-by-coordinate/</guid>
+      <description>Introduction Read in vcf header Parse out chr / contig sizes Split chr above 3e7 base pairs into equal(ish) size pieces print coordinates given a chromosome / contig calculate coordinates print ’em output ’em for python input (Snakemake) rscript Using the script output sessionInfo()   Introduction bcftools view -r 1:40000-50000 vcf.gz will output a tabix-indexed vcf containing the header and variants on chromosome 1 between coordinates 40,000 and 50,000 base pairs.</description>
+    </item>
+    
+    <item>
       <title>Let’s Plot 2: Smoothed Lines</title>
       <link>/./post/let-s-plot-2-smoothed-lines/</link>
       <pubDate>Sun, 04 Feb 2018 00:00:00 +0000</pubDate>
       
       <guid>/./post/let-s-plot-2-smoothed-lines/</guid>
-      <description>Data from Aaron Rising.
-Get data (two xls files) from here:  https://github.com/davemcg/Let_us_plot/tree/master/002_smoothed_lines The rmd is also here if you want the source code  Two different excel files (Cobra and Eel). Pig names?
-They have metrics for eye function across time.
-Aaron told me to take the ‘first tab’ in each excel file. Which is not the case, as at least to me, ‘Sheet 1’ is empty in both. So I’m using the next tab in both, which is ‘Normalized 2 Base For Comb’</description>
+      <description>Get data (two xls files) from here: Load data and look at structure (str) Head (first few lines) AUC, N1P1, Latency Summary of eel and cobra AUC What kind of time points or conditions or whatever do we have again? Summary by pig and region Plot AUC by time and region and pig Prettier plot with lines and more formatting N1P1 Plot Latency plot Bonus   Data from Aaron Rising.</description>
     </item>
     
     <item>
@@ -30,10 +36,7 @@ Aaron told me to take the ‘first tab’ in each excel file. Which is not the c
       <pubDate>Thu, 01 Feb 2018 00:00:00 +0000</pubDate>
       
       <guid>/./post/let-s-plot-1/</guid>
-      <description>What is going on? See https://davemcg.github.io/post/what-is-let-s-plot/
- Where to get the code and data? Rmarkdown document: https://github.com/davemcg/Let_us_plot/blob/master/001_polar_figure/polar_plot.Rmd Data: https://github.com/davemcg/Let_us_plot/blob/master/001_polar_figure/polar_values.xlsx
-First time making a polar plot….let’s see if ggplot2 can do it.
- Import data with readxl library(tidyverse) ## Warning: package &amp;#39;tidyverse&amp;#39; was built under R version 3.4.2 ## ── Attaching packages ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ── ## ✔ ggplot2 2.2.1 ✔ purrr 0.2.4 ## ✔ tibble 1.3.4 ✔ dplyr 0.7.4 ## ✔ tidyr 0.</description>
+      <description>What is going on? Where to get the code and data? Import data with readxl OK, first let’s remove the notes. However, we aren’t done. The data is “wide” instead of “long” and we have mixed session IDs (Amp 1-3 and Angle 1-3) with the value type. Now we need to extract the session (1,2,3) and the test type (Amp or Angle) Now we have two value types (Angle and Amplitude) in one column.</description>
     </item>
     
     <item>
@@ -42,8 +45,8 @@ First time making a polar plot….let’s see if ggplot2 can do it.
       <pubDate>Wed, 31 Jan 2018 00:00:00 +0000</pubDate>
       
       <guid>/./post/what-is-let-s-plot/</guid>
-      <description>The concept is simple - I get data from one of the scientists in my group. Or I get my own. Then I demonstrate, step-by-step, how I generate the plot(s). I’ll also toss in some data science concepts occasionally.
-They are a bit sparse on the words because I’m presenting these in person. But I believe they are clear enough for someone to follow along. Let me know if I’m wrong.</description>
+      <description>Tooling How can I follow along?   The concept is simple - I get data from one of the scientists in my group. Or I get my own. Then I demonstrate, step-by-step, how I generate the plot(s). I’ll also toss in some data science concepts occasionally.
+They are a bit sparse on the words because I’m presenting these in person. But I believe they are clear enough for someone to follow along.</description>
     </item>
     
   </channel>

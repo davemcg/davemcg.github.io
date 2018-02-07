@@ -11,6 +11,9 @@ tags:
   - Let's Plot
   - R
   - tidyverse
+output:
+  blogdown::html_page:
+    toc: true
 ---
 
 Data from Aaron Rising.

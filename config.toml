@@ -91,7 +91,7 @@ defaultContentLanguageInSubdir = false
   # Map provider:
   #   0: No map
   #   1: Google Maps
-  #   2: OpenStreetMap (Mapnik)
+  #   2: OpenStreetMap (Mapnik)2
   #   3: OpenStreetMap (Mapbox)
   map = 0
   map_api_key = ""
