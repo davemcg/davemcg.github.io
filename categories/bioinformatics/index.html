@@ -241,7 +241,7 @@
     <h2><a href="/./post/split-vcf-into-n-pieces-by-coordinate/">Split VCF into n pieces by coordinate</a></h2>
     <div class="article-style">
       
-      Introduction Read in vcf header Parse out chr / contig sizes Split chr above 3e7 base pairs into equal(ish) size pieces print coordinates given a chromosome / contig calculate coordinates print ’em output ’em for python input (Snakemake) rscript Using the script output sessionInfo()   Introduction bcftools view -r 1:40000-50000 vcf.gz will output a tabix-indexed vcf containing the header and variants on chromosome 1 between coordinates 40,000 and 50,000 base pairs.
+      Introduction Read in vcf header Parse out chr / contig sizes Split chr above 3e7 base pairs into equal(ish) size pieces print coordinates given a chromosome / contig calculate coordinates print ’em output ’em for python input (Snakemake) rscript Using the script output sessionInfo()   Introduction bcftools view -r 1:40000-50000 vcf.gz will output (to stdout) a vcf containing the header and variants on chromosome 1 between coordinates 40,000 and 50,000 base pairs.
       
     </div>
   </div>

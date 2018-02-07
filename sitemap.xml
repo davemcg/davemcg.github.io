@@ -123,7 +123,7 @@
     
     <url>
     
-      <loc>/./tags/bioinformatics/</loc>
+      <loc>/./categories/bioinformatics/</loc>
       <lastmod>2018-02-07T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -133,7 +133,7 @@
     
     <url>
     
-      <loc>/./categories/bioinformatics/</loc>
+      <loc>/./tags/bioinformatics/</loc>
       <lastmod>2018-02-07T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -243,7 +243,7 @@
     
     <url>
     
-      <loc>/./tags/r/</loc>
+      <loc>/./categories/r/</loc>
       <lastmod>2018-02-07T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -253,7 +253,7 @@
     
     <url>
     
-      <loc>/./categories/r/</loc>
+      <loc>/./tags/r/</loc>
       <lastmod>2018-02-07T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -273,7 +273,7 @@
     
     <url>
     
-      <loc>/./tags/script/</loc>
+      <loc>/./categories/script/</loc>
       <lastmod>2018-02-07T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -283,7 +283,7 @@
     
     <url>
     
-      <loc>/./categories/script/</loc>
+      <loc>/./tags/script/</loc>
       <lastmod>2018-02-07T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>

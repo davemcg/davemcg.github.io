@@ -17,7 +17,7 @@ output:
 ---
 
 ## Introduction
-`bcftools view -r 1:40000-50000 vcf.gz` will output a tabix-indexed vcf containing the header and variants on chromosome 1 between coordinates 40,000 and 50,000 base pairs. 
+`bcftools view -r 1:40000-50000 vcf.gz` will output (to stdout) a vcf containing the header and variants on chromosome 1 between coordinates 40,000 and 50,000 base pairs. 
 
 I need to break down a large vcf into smaller pieces to dramatically speed up annotation. Let's try 100 pieces. 
 

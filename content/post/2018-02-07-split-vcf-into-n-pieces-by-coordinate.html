@@ -35,7 +35,7 @@ output:
 
 <div id="introduction" class="section level2">
 <h2>Introduction</h2>
-<p><code>bcftools view -r 1:40000-50000 vcf.gz</code> will output a tabix-indexed vcf containing the header and variants on chromosome 1 between coordinates 40,000 and 50,000 base pairs.</p>
+<p><code>bcftools view -r 1:40000-50000 vcf.gz</code> will output (to stdout) a vcf containing the header and variants on chromosome 1 between coordinates 40,000 and 50,000 base pairs.</p>
 <p>I need to break down a large vcf into smaller pieces to dramatically speed up annotation. Let’s try 100 pieces.</p>
 <p>The human genome is <em>approximately</em> 3 gigabases or 3e9 base pairs.</p>
 <p><span class="math display">\[ \frac{3 * 10^9\ base\ pairs}{100\ pieces} = 3*10^7\ base\ pairs\ per\ piece \]</span></p>
