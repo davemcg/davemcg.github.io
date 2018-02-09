@@ -13,7 +13,8 @@ weight = 5
     "Bioinformatics",
     "Genomics",
     "Developmental Biology",
-    "Statistics"
+    "Statistics",
+    "Software Carpentry"
   ]
 
 # List your qualifications (such as academic degrees).

@@ -1,0 +1,344 @@
+---
+title: 'Let’s Plot 3: Base pair resolution NGS (exome) coverage plots - Part 2'
+author: David McGaughey
+date: '2018-02-08'
+slug: let-s-plot-3-base-pair-resolution-ngs-exome-coverage-plots
+categories:
+  - bioinformatics
+  - Let’s Plot
+  - R
+tags:
+  - bioinformatics
+  - ggplot2
+  - Let's Plot
+  - R
+  - quinlanverse
+output:
+  blogdown::html_page:
+    toc: true
+
+---
+
+
+<div id="TOC">
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#call-mosdepth-on-bam-to-calculate-bp-specific-read-depth">Call mosdepth on bam to calculate bp-specific read depth</a></li>
+<li><a href="#intersect-base-pair-depth-info-with-transcript-and-exon-number">Intersect base pair depth info with transcript and exon number</a></li>
+<li><a href="#now-its-r-time">Now it’s R time!</a><ul>
+<li><a href="#prepare-metadata">Prepare Metadata</a></li>
+<li><a href="#load-mosdepth-bedtools-intersect-data-and-prep">Load mosdepth / bedtools intersect data and prep</a></li>
+<li><a href="#plot-maker-version-1">Plot Maker, version 1</a></li>
+<li><a href="#version-2">Version 2</a></li>
+<li><a href="#sessioninfo">sessionInfo()</a></li>
+</ul></li>
+</ul>
+</div>
+
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>This is a barebones (but detailed enough, I hope) discussion of how to take a bam file, extract base pair resolution coverage data, then finagle the data into coverage plots by gene and exon. No data will be given for the below code. I’m not sharing a bam file. Also, not much point to sharing the bed, HGNC name, and gtf file, as there’s a decent chance they won’t work for your bam.</p>
+</div>
+<div id="call-mosdepth-on-bam-to-calculate-bp-specific-read-depth" class="section level2">
+<h2>Call mosdepth on bam to calculate bp-specific read depth</h2>
+<p><a href="https://github.com/brentp/mosdepth">mosdepth</a>, by default, will generate base pair resolution coverage across the entire genome. Another fantastic tool from Brent Peterson and Aaron Quinlan (some point I’ll do a gushy post on <a href="http://peddy.readthedocs.io/en/latest/">all</a> <a href="http://gemini.readthedocs.io/en/latest/">of</a> <a href="http://bedtools.readthedocs.io/en/latest/">the</a> useful tools <a href="http://quinlanlab.org/#software">Quinlan and company have made</a>).</p>
+<p><code>mosdepth</code> will run <em>very</em> quickly (minutes instead of hours), compared to <code>bedtools genomecov</code>.</p>
+<pre class="bash"><code># bash 
+sinteractive --cpus-per-task 16
+module load mosdepth
+mosdepth -t 16 41001412010527 41001412010527_realigned_recal.bam &amp;
+</code></pre>
+</div>
+<div id="intersect-base-pair-depth-info-with-transcript-and-exon-number" class="section level2">
+<h2>Intersect base pair depth info with transcript and exon number</h2>
+<p>The intersect is to select regions overlapping exons and to label them with the transcript name and exon number present in <code>gencode_genes_v27lift37.codingExons.ensembl.bed.gz</code>. See the code below for how to make your own.</p>
+<pre class="bash"><code># bash
+
+# gencode_genes_v27lift37.codingExons.bed was downloaded from the UCSC table browser from genocde gene v27lift37 and &#39;coding exons&#39; with 0 padding were selected as the output for the bed file
+# my https://github.com/davemcg/ChromosomeMappings/ convert_notation.py script was then used to convert the UCSC notation in ensembl notation, which my bam uses
+# files in biowulf2:/data/mcgaugheyd/genomes/GRCh37/
+module load bedtools
+~/git/ChromosomeMappings/convert_notation.py -c ~/git/ChromosomeMappings/GRCh37_gencode2ensembl.txt -f gencode_genes_v27lift37.codingExons.bed | sort -k1,1 -k2,2n | gzip &gt; gencode_genes_v27lift37.codingExons.ensembl.bed.gz
+bedtools intersect -wa -wb -a 41001412010527.per-base.bed.gz -b /data/mcgaugheyd/genomes/GRCh37/gencode_genes_v27lift37.codingExons.ensembl.bed.gz | bgzip  &gt; 41001412010527.per-base.labeled.bed.gz &amp;</code></pre>
+</div>
+<div id="now-its-r-time" class="section level1">
+<h1>Now it’s R time!</h1>
+<div id="prepare-metadata" class="section level2">
+<h2>Prepare Metadata</h2>
+<p>You’ll need <a href="ftp://ftp.sanger.ac.uk/pub/gencode/Gencode_human/release_27/GRCh37_mapping/gencode.v27lift37.metadata.HGNC.gz">HGNC &lt;-&gt; Ensembl Transcript converter</a> and the <a href="ftp://ftp.sanger.ac.uk/pub/gencode/Gencode_human/release_27/GRCh37_mapping/gencode.v27lift37.basic.annotation.gtf.gz">Gencode GTF</a></p>
+<p>The first file is used to match gene ‘names’ with ensembl transcript ID</p>
+<p>The second file is used to semi-accurately pick the ‘canonical’ transcript for a gene (pick the appris transcript, then the longest)</p>
+<pre class="r"><code>library(data.table)</code></pre>
+<pre><code>## Warning: package &#39;data.table&#39; was built under R version 3.4.2</code></pre>
+<pre class="r"><code>library(tidyverse)</code></pre>
+<pre><code>## Warning: package &#39;tidyverse&#39; was built under R version 3.4.2</code></pre>
+<pre><code>## ── Attaching packages ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──</code></pre>
+<pre><code>## ✔ ggplot2 2.2.1     ✔ purrr   0.2.4
+## ✔ tibble  1.3.4     ✔ dplyr   0.7.4
+## ✔ tidyr   0.7.2     ✔ stringr 1.2.0
+## ✔ readr   1.1.1     ✔ forcats 0.2.0</code></pre>
+<pre><code>## Warning: package &#39;tibble&#39; was built under R version 3.4.1</code></pre>
+<pre><code>## Warning: package &#39;tidyr&#39; was built under R version 3.4.2</code></pre>
+<pre><code>## Warning: package &#39;purrr&#39; was built under R version 3.4.2</code></pre>
+<pre><code>## Warning: package &#39;dplyr&#39; was built under R version 3.4.2</code></pre>
+<pre><code>## ── Conflicts ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::between()   masks data.table::between()
+## ✖ dplyr::filter()    masks stats::filter()
+## ✖ dplyr::first()     masks data.table::first()
+## ✖ dplyr::lag()       masks stats::lag()
+## ✖ dplyr::last()      masks data.table::last()
+## ✖ purrr::transpose() masks data.table::transpose()</code></pre>
+<pre class="r"><code>library(cowplot)</code></pre>
+<pre><code>## Warning: package &#39;cowplot&#39; was built under R version 3.4.2</code></pre>
+<pre><code>## 
+## Attaching package: &#39;cowplot&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:ggplot2&#39;:
+## 
+##     ggsave</code></pre>
+<pre class="r"><code>library(stringr)
+metadata &lt;- fread(&#39;gzcat ~/GenomicData/gencode.v27lift37.metadata.HGNC.gz&#39;, header=F)
+colnames(metadata) &lt;- c(&#39;Transcript&#39;,&#39;Name&#39;)
+gencode &lt;- fread(&#39;gzcat ~/GenomicData/gencode.v27lift37.basic.annotation.gtf.gz&#39;, header=F, skip=4)</code></pre>
+<pre><code>## 
+Read 1.8% of 1651703 rows
+Read 14.5% of 1651703 rows
+Read 27.9% of 1651703 rows
+Read 45.4% of 1651703 rows
+Read 48.4% of 1651703 rows
+Read 62.4% of 1651703 rows
+Read 75.1% of 1651703 rows
+Read 93.2% of 1651703 rows
+Read 1651703 rows and 9 (of 9) columns from 0.822 GB file in 00:00:11</code></pre>
+<pre class="r"><code>gencode2 &lt;- gencode %&gt;% filter(V3==&#39;transcript&#39;) %&gt;% 
+  filter(grepl(&#39;appris_principal&#39;, V9)) %&gt;% 
+  rowwise() %&gt;%  
+  mutate(Transcript = str_extract(V9,&#39;ENST\\d{11}\\.\\d+&#39;), # use regex to graph ensembl transcript 
+         Gene = str_extract(V9, &#39;gene_name\\s\\&quot;.*?;&#39;), # and the gene name
+         Size=V5-V4) %&gt;% 
+  separate(Gene, c(&#39;skip&#39;,&#39;Name&#39;,&#39;skip2&#39;),&#39;\&quot;&#39;) %&gt;% # now you have to remove the &#39;gene name&#39; part  
+  select(-skip, -skip2) %&gt;% 
+  group_by(Name) %&gt;% top_n(1)</code></pre>
+<pre><code>## Warning: Grouping rowwise data frame strips rowwise nature</code></pre>
+<pre><code>## Selecting by Size</code></pre>
+</div>
+<div id="load-mosdepth-bedtools-intersect-data-and-prep" class="section level2">
+<h2>Load mosdepth / bedtools intersect data and prep</h2>
+<p>Label coverage chunks with the depth of their coverage with case_when and extract the transcript name and exon number with a bunch of <code>separate</code> commands</p>
+<pre class="r"><code>depth_data &lt;- fread(&#39;gzcat ~/Desktop/41001412010527.per-base.labeled.bed.gz&#39;)</code></pre>
+<pre><code>## 
+Read 0.0% of 50955214 rows
+Read 4.6% of 50955214 rows
+Read 8.8% of 50955214 rows
+Read 13.4% of 50955214 rows
+Read 17.8% of 50955214 rows
+Read 22.3% of 50955214 rows
+Read 24.5% of 50955214 rows
+Read 29.0% of 50955214 rows
+Read 33.3% of 50955214 rows
+Read 34.5% of 50955214 rows
+Read 39.1% of 50955214 rows
+Read 43.3% of 50955214 rows
+Read 47.6% of 50955214 rows
+Read 51.7% of 50955214 rows
+Read 55.8% of 50955214 rows
+Read 60.2% of 50955214 rows
+Read 64.2% of 50955214 rows
+Read 68.0% of 50955214 rows
+Read 72.2% of 50955214 rows
+Read 76.6% of 50955214 rows
+Read 80.9% of 50955214 rows
+Read 85.3% of 50955214 rows
+Read 89.5% of 50955214 rows
+Read 94.0% of 50955214 rows
+Read 98.6% of 50955214 rows
+Read 50955214 rows and 10 (of 10) columns from 4.490 GB file in 00:00:40</code></pre>
+<pre class="r"><code>dd_processed &lt;- depth_data %&gt;% 
+  separate(V8, c(&#39;Transcript&#39;,&#39;Rest&#39;), &#39;_cds_&#39;) %&gt;% 
+  separate(Rest, c(&#39;Before&#39;,&#39;Stuff&#39;),&#39;_chr&#39;) %&gt;% 
+  separate(Before, c(&#39;Exon Number&#39;,&#39;Num2&#39;),sep=&#39;_&#39;) %&gt;% 
+  mutate(Depth = case_when(V4 &lt; 10 ~ &#39;&lt; 10 Reads&#39;, 
+                           V4 &lt; 20 ~ &#39;&lt; 20 Reads&#39;, 
+                           TRUE ~ &#39;&gt;= 20 Reads&#39;)) %&gt;% 
+  mutate(Depth=factor(Depth, levels=c(&#39;&lt; 10 Reads&#39;,&#39;&lt; 20 Reads&#39;,&#39;&gt;= 20 Reads&#39;))) %&gt;% 
+  mutate(Transcript=case_when(grepl(&#39;_&#39;,Transcript) ~ gsub(&#39;_.&#39;,&#39;&#39;,Transcript), 
+                              TRUE ~ Transcript)) %&gt;% 
+  select(Chr=V1, Start=V2, End=V3, Read_Depth=V4, Transcript, Strand=V10, Depth, `Exon Number`, ExonStart=V6, ExonEnd=V7)
+
+dd_processed &lt;- left_join(dd_processed, metadata, by=c(&#39;Transcript&#39;))</code></pre>
+</div>
+<div id="plot-maker-version-1" class="section level2">
+<h2>Plot Maker, version 1</h2>
+<p>Faceted by exon. One plot per gene and using cowplot to <em>glue</em> them together</p>
+<pre class="r"><code>genes &lt;- c(&#39;PAX6&#39;,&#39;ABCA4&#39;,&#39;NRL&#39;,&#39;CRX&#39;,&#39;RPGR&#39;)
+transcripts = gencode2 %&gt;% filter(Name %in% genes) %&gt;% pull(Transcript)
+
+# set a custom color that will work even if a category is missing
+scale_colour_custom &lt;- function(...){
+  ggplot2:::manual_scale(&#39;colour&#39;, 
+                         values = setNames(c(&#39;darkred&#39;, &#39;red&#39;, &#39;black&#39;),
+                                           c(&#39;&lt; 10 Reads&#39;,&#39;&lt; 20 Reads&#39;,&#39;&gt;= 20 Reads&#39;)), 
+                         ...)
+}
+
+plot_maker &lt;- function(tx){
+  num_of_exons &lt;- dd_processed %&gt;% filter(Transcript==tx) %&gt;% pull(`Exon Number`) %&gt;% as.numeric() %&gt;% max()
+  gene_name &lt;-  dd_processed %&gt;% filter(Transcript==tx) %&gt;% pull(Name) %&gt;% unique()
+  # expand to create a row for each sequence and fill in previous values
+  dd_processed %&gt;% filter(Transcript==tx) %&gt;% group_by(`Exon Number`) %&gt;% 
+    expand(Start=full_seq(c(Start,End),1)) %&gt;% 
+    left_join(.,  dd_processed %&gt;% filter(Transcript==tx)) %&gt;% # create one row per base position, grouped by Exon Number https://stackoverflow.com/questions/42866119/fill-missing-values-in-data-frame-using-dplyr-complete-within-groups
+    fill(Chr:Name) %&gt;% # fill missing values https://stackoverflow.com/questions/40040834/r-replace-na-with-previous-or-next-value-by-group-using-dplyr
+    ungroup() %&gt;% # drop the exon number grouping, so I can mutate below
+    mutate(`Exon Number`= factor(`Exon Number`,levels=0:num_of_exons)) %&gt;% # Ah, reordering. I need it to be a factor, but then I have to explicitly give the order   
+    mutate(Depth = factor(Depth, levels=c(&#39;&lt; 10 Reads&#39;,&#39;&lt; 20 Reads&#39;,&#39;&gt;= 20 Reads&#39;))) %&gt;%  # create three categories for coloring
+    ggplot(aes(x=Start, xend=End, y=Read_Depth, yend=Read_Depth, colour=Depth)) + 
+    facet_wrap(~`Exon Number`, scales = &#39;free_x&#39;, nrow=1, strip.position = &#39;bottom&#39;) + 
+    geom_point(size=0.1) + theme_minimal()+ scale_colour_custom() +  # use my custom color set above for my three categories
+    theme(axis.text.x=element_blank(), 
+          axis.ticks.x = element_blank(), 
+          panel.grid.minor = element_blank(), 
+          panel.grid.major.x = element_blank(),
+          legend.position = &#39;none&#39;) + 
+    ylab(&#39;Depth&#39;) + 
+    xlab(paste0(gene_name[1]))
+}
+
+# little for loop to roll through the transcripts and make plot, storing in a list
+plots &lt;- list()
+for (i in transcripts){
+  plots[[i]] &lt;- plot_maker(i)
+}</code></pre>
+<pre><code>## Joining, by = c(&quot;Exon Number&quot;, &quot;Start&quot;)
+## Joining, by = c(&quot;Exon Number&quot;, &quot;Start&quot;)
+## Joining, by = c(&quot;Exon Number&quot;, &quot;Start&quot;)
+## Joining, by = c(&quot;Exon Number&quot;, &quot;Start&quot;)
+## Joining, by = c(&quot;Exon Number&quot;, &quot;Start&quot;)</code></pre>
+<pre class="r"><code>legend &lt;- get_legend(plots[[names(plots)[1]]] + theme(legend.position=&#39;right&#39;))
+# cowplot can take a list and glue the plots together
+# I&#39;m commenting out the below line because blogdown makes it too damn small. You need to run it to make the plot
+# plot_grid(plot_grid(plotlist = plots, ncol=1, hjust=-2), legend, ncol=2, rel_widths = c(5,0.5))</code></pre>
+<div class="figure">
+<img src="/img/lets_plot_3.png" />
+
+</div>
+</div>
+<div id="version-2" class="section level2">
+<h2>Version 2</h2>
+<p>A bit tighter. Recalculates coordinates to glue all of the exons together in one plot. I can facet by gene. A bit harder to read, but is more accurate as the exons and gene lengths are proportional</p>
+<pre class="r"><code>genes &lt;- c(&#39;PAX6&#39;,&#39;ABCA4&#39;,&#39;NRL&#39;,&#39;CRX&#39;,&#39;RPGR&#39;)
+tx = gencode2 %&gt;% filter(Name %in% genes) %&gt;% pull(Transcript)
+
+dd_expanded &lt;- dd_processed %&gt;% filter(Transcript %in% tx) %&gt;% group_by(Transcript, `Exon Number`) %&gt;% 
+  expand(Start=full_seq(c(Start,End),1)) %&gt;% 
+  left_join(.,  dd_processed %&gt;% filter(Transcript %in% tx)) %&gt;% # create one row per base position, grouped by Exon Number https://stackoverflow.com/questions/42866119/fill-missing-values-in-data-frame-using-dplyr-complete-within-groups
+  fill(Chr:Name) # fill missing values https://stackoverflow.com/questions/40040834/r-replace-na-with-previous-or-next-value-by-group-using-dplyr</code></pre>
+<pre><code>## Joining, by = c(&quot;Transcript&quot;, &quot;Exon Number&quot;, &quot;Start&quot;)</code></pre>
+<pre class="r"><code>dd_expanded &lt;- dd_expanded %&gt;% group_by(Name) %&gt;% mutate(Pos = 1:n())
+even_odds_marking &lt;- dd_expanded %&gt;% group_by(Name, `Exon Number`) %&gt;% summarise(Start=min(Pos), End=max(Pos)) %&gt;% mutate(Exon = case_when(as.numeric(`Exon Number`) %% 2 == 0 ~ &#39;even&#39;, TRUE ~ &#39;odd&#39;))
+plot_data&lt;-bind_rows(dd_expanded,even_odds_marking)
+
+ggplot() + 
+  geom_point(data =  plot_data %&gt;% filter(is.na(Exon)), aes(x=Pos, y=Read_Depth, colour=Depth),size=0.1)  + 
+  facet_wrap(~Name, ncol=1) + 
+  geom_rect(data = plot_data %&gt;% filter(!is.na(Exon)), aes(xmin=Start, xmax=End, ymin=-Inf, ymax=Inf, fill=Exon)) +  
+  scale_fill_manual(values = alpha(c(&quot;gray&quot;, &quot;white&quot;), .3)) +  
+  scale_colour_custom() +
+  theme_minimal() +  
+  theme(axis.text.x=element_blank(), 
+        axis.ticks.x = element_blank(),
+        panel.grid.minor = element_blank(), 
+        panel.grid.major.x = element_blank())+
+  guides(fill=FALSE) + 
+  ylab(&#39;Read Depth&#39;) </code></pre>
+<p><img src="/./post/2018-02-08-let-s-plot-3-base-pair-resolution-ngs-exome-coverage-plots_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+</div>
+<div id="sessioninfo" class="section level2">
+<h2>sessionInfo()</h2>
+<pre class="r"><code>devtools::session_info()</code></pre>
+<pre><code>## Session info -------------------------------------------------------------</code></pre>
+<pre><code>##  setting  value                       
+##  version  R version 3.4.0 (2017-04-21)
+##  system   x86_64, darwin15.6.0        
+##  ui       X11                         
+##  language (EN)                        
+##  collate  en_US.UTF-8                 
+##  tz       America/New_York            
+##  date     2018-02-09</code></pre>
+<pre><code>## Packages -----------------------------------------------------------------</code></pre>
+<pre><code>##  package    * version    date       source                          
+##  assertthat   0.2.0      2017-04-11 CRAN (R 3.4.0)                  
+##  backports    1.1.1      2017-09-25 CRAN (R 3.4.2)                  
+##  base       * 3.4.0      2017-04-21 local                           
+##  bindr        0.1        2016-11-13 CRAN (R 3.4.0)                  
+##  bindrcpp   * 0.2        2017-06-17 CRAN (R 3.4.0)                  
+##  blogdown     0.5        2018-01-24 CRAN (R 3.4.3)                  
+##  bookdown     0.6        2018-01-25 CRAN (R 3.4.3)                  
+##  broom        0.4.3      2017-11-20 CRAN (R 3.4.0)                  
+##  cellranger   1.1.0      2016-07-27 CRAN (R 3.4.0)                  
+##  cli          1.0.0      2017-11-05 CRAN (R 3.4.2)                  
+##  colorspace   1.3-2      2016-12-14 CRAN (R 3.4.0)                  
+##  compiler     3.4.0      2017-04-21 local                           
+##  cowplot    * 0.9.1      2017-11-16 CRAN (R 3.4.2)                  
+##  crayon       1.3.4      2017-09-16 CRAN (R 3.4.1)                  
+##  data.table * 1.10.4-3   2017-10-27 CRAN (R 3.4.2)                  
+##  datasets   * 3.4.0      2017-04-21 local                           
+##  devtools     1.13.4     2017-11-09 CRAN (R 3.4.2)                  
+##  digest       0.6.12     2017-01-27 CRAN (R 3.4.0)                  
+##  dplyr      * 0.7.4      2017-09-28 CRAN (R 3.4.2)                  
+##  evaluate     0.10.1     2017-06-24 CRAN (R 3.4.1)                  
+##  forcats    * 0.2.0      2017-01-23 CRAN (R 3.4.0)                  
+##  foreign      0.8-69     2017-06-22 CRAN (R 3.4.1)                  
+##  ggplot2    * 2.2.1      2016-12-30 CRAN (R 3.4.0)                  
+##  glue         1.2.0      2017-10-29 CRAN (R 3.4.2)                  
+##  graphics   * 3.4.0      2017-04-21 local                           
+##  grDevices  * 3.4.0      2017-04-21 local                           
+##  grid         3.4.0      2017-04-21 local                           
+##  gtable       0.2.0      2016-02-26 CRAN (R 3.4.0)                  
+##  haven        1.1.0      2017-07-09 CRAN (R 3.4.0)                  
+##  hms          0.3        2016-11-22 CRAN (R 3.4.0)                  
+##  htmltools    0.3.6      2017-04-28 CRAN (R 3.4.0)                  
+##  httr         1.3.1      2017-08-20 CRAN (R 3.4.1)                  
+##  jsonlite     1.5        2017-06-01 CRAN (R 3.4.0)                  
+##  knitr        1.17       2017-08-10 CRAN (R 3.4.1)                  
+##  labeling     0.3        2014-08-23 CRAN (R 3.4.0)                  
+##  lattice      0.20-35    2017-03-25 CRAN (R 3.4.0)                  
+##  lazyeval     0.2.1      2017-10-29 CRAN (R 3.4.2)                  
+##  lubridate    1.7.1      2017-11-03 CRAN (R 3.4.2)                  
+##  magrittr     1.5        2014-11-22 CRAN (R 3.4.0)                  
+##  memoise      1.1.0      2017-04-21 CRAN (R 3.4.0)                  
+##  methods    * 3.4.0      2017-04-21 local                           
+##  mnormt       1.5-5      2016-10-15 CRAN (R 3.4.0)                  
+##  modelr       0.1.1      2017-07-24 CRAN (R 3.4.1)                  
+##  munsell      0.4.3      2016-02-13 CRAN (R 3.4.0)                  
+##  nlme         3.1-131    2017-02-06 CRAN (R 3.4.0)                  
+##  parallel     3.4.0      2017-04-21 local                           
+##  pkgconfig    2.0.1      2017-03-21 CRAN (R 3.4.0)                  
+##  plyr         1.8.4      2016-06-08 CRAN (R 3.4.0)                  
+##  psych        1.7.8      2017-09-09 CRAN (R 3.4.0)                  
+##  purrr      * 0.2.4      2017-10-18 CRAN (R 3.4.2)                  
+##  R6           2.2.2      2017-06-17 CRAN (R 3.4.0)                  
+##  Rcpp         0.12.13    2017-09-28 CRAN (R 3.4.2)                  
+##  readr      * 1.1.1      2017-05-16 CRAN (R 3.4.0)                  
+##  readxl       1.0.0      2017-04-18 CRAN (R 3.4.0)                  
+##  reshape2     1.4.2      2016-10-22 CRAN (R 3.4.0)                  
+##  rlang        0.1.4      2017-11-05 CRAN (R 3.4.2)                  
+##  rmarkdown    1.8        2017-11-17 CRAN (R 3.4.2)                  
+##  rprojroot    1.2        2017-01-16 CRAN (R 3.4.0)                  
+##  rstudioapi   0.7        2017-09-07 CRAN (R 3.4.1)                  
+##  rvest        0.3.2      2016-06-17 CRAN (R 3.4.0)                  
+##  scales       0.5.0.9000 2017-09-20 Github (hadley/scales@d767915)  
+##  stats      * 3.4.0      2017-04-21 local                           
+##  stringi      1.1.6      2017-11-17 CRAN (R 3.4.2)                  
+##  stringr    * 1.2.0      2017-02-18 CRAN (R 3.4.0)                  
+##  tibble     * 1.3.4      2017-08-22 CRAN (R 3.4.1)                  
+##  tidyr      * 0.7.2      2017-10-16 CRAN (R 3.4.2)                  
+##  tidyselect   0.2.3      2017-11-06 CRAN (R 3.4.2)                  
+##  tidyverse  * 1.2.1      2017-11-14 CRAN (R 3.4.2)                  
+##  tools        3.4.0      2017-04-21 local                           
+##  utils      * 3.4.0      2017-04-21 local                           
+##  withr        2.1.0.9000 2017-11-22 Github (jimhester/withr@fe81c00)
+##  xfun         0.1        2018-01-22 CRAN (R 3.4.3)                  
+##  xml2         1.1.1      2017-01-24 CRAN (R 3.4.0)                  
+##  yaml         2.1.14     2016-11-12 CRAN (R 3.4.0)</code></pre>
+</div>
+</div>

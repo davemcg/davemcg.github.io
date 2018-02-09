@@ -1,0 +1,181 @@
+---
+title: 'Let’s Plot 3: Base pair resolution NGS (exome) coverage plots - Part 1'
+author: David McGaughey
+date: '2018-02-07'
+slug: let-s-plot-3-base-pair-resolution-ngs-exome-coverage-plots-part-1
+categories:
+  - bioinformatics
+  - Let’s Plot
+  - R
+tags:
+  - bioinformatics
+  - ggplot2
+  - Let's Plot
+  - quinlanverse
+  - R
+---
+
+---
+title: "NGS (Exome) Gene Coverage Analysis"
+output: 
+  html_notebook:
+   toc: True
+---
+
+## Load data
+This is a departure from the previous installments, as we are loading in a very processed dataset. The reasons why are numerous:
+
+1. The original data is 330mb, compressed
+2. After loading (2 minutes on my quite fast computer) and uncompressing, it takes over 10GB of RAM on my computer
+3. The original data needed a severe amount of massaging to make it quickly useable:
+- Annotating with gene name
+- Identifying primary transcript for gene
+- Expanding range data into row-form*
+
+* `mosdepth` provides read depth as ranges. So instead of writing a row for each of the three billion+ base pairs, `mosdepth` collapses adjacent rows with identical read depth together. This is crucial for saving space, especially for exomes, which have huge stretches of zero coverage since only ~3% of the genome is targeted. 
+
+## Curious?
+If you want to see how I did the above, see [Part 2](/content/post/2018-02-08-let-s-plot-3-base-pair-resolution-ngs-exome-coverage-plots.html). This post also has some cooler plots. 
+
+## Data
+`dd_class.csv` can be found [here](https://github.com/davemcg/Let_us_plot/raw/master/003_coverage/dd_class.csv)
+
+```{r}
+library(tidyverse)
+library(cowplot) # you probably need to install this with install.packages('cowplot')
+dd_class <- read_csv('~/git/Let_us_plot/003_coverage/dd_class.csv')
+
+head(dd_class)
+```
+
+## How many genes are in this dataset?
+```{r}
+dd_class$Name %>% unique() %>% length()
+```
+
+## What genes are in here?
+```{r}
+dd_class$Name %>% unique() %>% sort()
+```
+
+## How many data points (bases) per gene?
+```{r}
+dd_class %>% 
+  group_by(Name) %>% 
+  summarise(Count=n())
+```
+
+## How many exons per gene?
+```{r}
+dd_class %>% 
+  select(Name, `Exon Number`) %>% 
+  unique() %>% 
+  group_by(Name) %>% 
+  summarise(Count = n())
+```
+
+## How many base pairs of ABCA4 (well, ABCA4 exons) is covered by more than 10 reads?
+Base R style
+```{r}
+# Grab the Read_Depth vector from the data frame filtered by ABCA4 values
+depth_abca4 <- dd_class %>% 
+  filter(Name=='ABCA4') %>% 
+  pull(Read_Depth)
+sum(depth_abca4 > 10)
+```
+
+## 5 reads?
+```{r}
+sum(depth_abca4 > 5)
+```
+
+## Let's check all of the genes to see which are the worst covered
+```{r}
+dd_class %>% 
+  group_by(Name) %>% 
+  summarise(Total_Bases = n(),
+            LT5 = sum(Read_Depth < 5),
+            LT10 = sum(Read_Depth < 10),
+            Good = sum(Read_Depth >= 10),
+            P5 = LT5 / Total_Bases,
+            P10 = LT10 / Total_Bases) %>% 
+  arrange(-P10)
+```
+
+
+## We can visually display the data, also
+```{r}
+dd_class %>% 
+  ggplot(aes(x=Read_Depth, group=Name)) +
+  geom_density()
+```
+
+## Hard to see what is going on, let's make little plots for each gene
+```{r, fig.width=10, fig.height=10, fig.keep = F}
+dd_class %>% 
+  ggplot(aes(x=Read_Depth, group=Name)) +
+  facet_wrap(~Name) + 
+  geom_density()
+```
+[](/img/lets_plot3_density.png)
+
+
+## Where are genes poorly covered?
+### BBIP1
+```{r}
+dd_class %>% filter(Name=='BBIP1') %>% 
+  ggplot(aes(x=Start, y=Read_Depth)) + 
+  facet_wrap(~`Exon Number`, scales = 'free_x', nrow=1, strip.position = 'bottom') + 
+  geom_point(size=0.1) + theme_minimal() +
+  theme(axis.text.x=element_blank(), 
+        axis.ticks.x = element_blank(), 
+        panel.grid.minor = element_blank(), 
+        panel.grid.major.x = element_blank(),
+        legend.position = 'none') + 
+  ylab('Depth') + 
+  xlab('Exon Number')
+
+```
+
+
+## Make a coverage plot for many genes (This is advanced stuff!!!)
+```{r, fig.width=6, fig.height=3, fig.keep = 'none'}
+gene_list <- c('ABCA4', 'PITX2','VSX2','RPGR','SOX10')
+
+# set a custom color that will work even if a category is missing
+scale_colour_custom <- function(...){
+  ggplot2:::manual_scale('colour', 
+                         values = setNames(c('darkred', 'red', 'black'),
+                                           c('< 10 Reads','< 20 Reads','>= 20 Reads')), 
+                         ...)
+}
+
+plot_maker <- function(gene){
+  num_of_exons <- dd_class%>% filter(Name==gene) %>% pull(`Exon Number`) %>% as.numeric() %>% max()
+   # expand to create a row for each sequence and fill in previous values
+  dd_class %>% filter(Name==gene) %>%
+    mutate(`Exon Number`= factor(`Exon Number`,levels=0:num_of_exons)) %>%  
+    ggplot(aes(x=Start, y=Read_Depth)) + 
+    facet_wrap(~`Exon Number`, scales = 'free_x', nrow=1, strip.position = 'bottom') + 
+    geom_point(size=0.1) + theme_minimal() + scale_colour_custom() +
+    theme(axis.text.x=element_blank(), 
+          axis.ticks.x = element_blank(), 
+          panel.grid.minor = element_blank(), 
+          panel.grid.major.x = element_blank(),
+          legend.position = 'none') + 
+    ylab('Depth') + 
+    xlab(gene)
+}
+
+plots <- list()
+for (i in gene_list){
+  plots[[i]] <- plot_maker(i)
+}
+
+plot_grid(plotlist = plots, ncol=1)
+```
+
+```{r echo=FALSE, out.width='100%'}
+knitr::include_graphics('/img/lets_plot3_cow.png')
+```
+

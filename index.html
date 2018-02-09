@@ -371,6 +371,8 @@ url('/img/headers/cajal-wide.jpg');
           
           <li>Statistics</li>
           
+          <li>Software Carpentry</li>
+          
         </ul>
       </div>
       
@@ -424,6 +426,13 @@ url('/img/headers/cajal-wide.jpg');
     <h1>Recent Posts</h1>
     
     
+    <p class="view-all">
+      <a href="/post/">
+        More Posts
+        <i class="fa fa-angle-double-right"></i>
+      </a>
+    </p>
+    
 
   </div>
   <div class="col-xs-12 col-md-8">
@@ -434,6 +443,201 @@ url('/img/headers/cajal-wide.jpg');
       
 
       
+      
+
+        
+
+        
+        
+
+        
+        
+          
+      
+          
+      
+          
+      
+          
+      
+          
+      
+
+      
+      
+        
+        
+
+<div class="card-simple" itemscope itemprop="blogPost" itemtype="http://schema.org/BlogPosting">
+  
+
+<div class="article-metadata">
+
+  <span class="article-date">
+    
+    <time datetime="2018-02-08 00:00:00 &#43;0000 UTC" itemprop="datePublished dateModified">
+      Feb 8, 2018
+    </time>
+  </span>
+  <span itemscope itemprop="author publisher" itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="David McGaughey">
+  </span>
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    10 min read
+  </span>
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <a href="/./post/let-s-plot-3-base-pair-resolution-ngs-exome-coverage-plots/#disqus_thread"></a>
+  
+
+  
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fa fa-folder"></i>
+    
+    <a href="/categories/bioinformatics">bioinformatics</a
+    >, 
+    
+    <a href="/categories/lets-plot">Let’s Plot</a
+    >, 
+    
+    <a href="/categories/r">R</a
+    >
+    
+  </span>
+  
+  
+
+  
+
+</div>
+
+
+  
+  
+  <h3 class="article-title" itemprop="headline">
+    <a href="/./post/let-s-plot-3-base-pair-resolution-ngs-exome-coverage-plots/" itemprop="url">Let’s Plot 3: Base pair resolution NGS (exome) coverage plots - Part 2</a>
+  </h3>
+  <div class="article-style" itemprop="articleBody">
+    
+    Introduction Call mosdepth on bam to calculate bp-specific read depth Intersect base pair depth info with transcript and exon number Now it’s R time! Prepare Metadata Load mosdepth / bedtools intersect data and prep Plot Maker, version 1 Version 2 sessionInfo()    Introduction This is a barebones (but detailed enough, I hope) discussion of how to take a bam file, extract base pair resolution coverage data, then finagle the data into coverage plots by gene and exon.
+    
+  </div>
+  <p class="read-more" itemprop="mainEntityOfPage">
+    <a href="/./post/let-s-plot-3-base-pair-resolution-ngs-exome-coverage-plots/" class="btn btn-primary btn-outline">
+      CONTINUE READING
+    </a>
+  </p>
+</div>
+
+      
+
+      
+
+        
+
+        
+        
+
+        
+        
+          
+      
+          
+      
+          
+      
+          
+      
+          
+      
+
+      
+      
+        
+        
+
+<div class="card-simple" itemscope itemprop="blogPost" itemtype="http://schema.org/BlogPosting">
+  
+
+<div class="article-metadata">
+
+  <span class="article-date">
+    
+    <time datetime="2018-02-07 00:00:00 &#43;0000 UTC" itemprop="datePublished dateModified">
+      Feb 7, 2018
+    </time>
+  </span>
+  <span itemscope itemprop="author publisher" itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="David McGaughey">
+  </span>
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    7 min read
+  </span>
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <a href="/./post/let-s-plot-3-base-pair-resolution-ngs-exome-coverage-plots-part-1/#disqus_thread"></a>
+  
+
+  
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fa fa-folder"></i>
+    
+    <a href="/categories/bioinformatics">bioinformatics</a
+    >, 
+    
+    <a href="/categories/lets-plot">Let’s Plot</a
+    >, 
+    
+    <a href="/categories/r">R</a
+    >
+    
+  </span>
+  
+  
+
+  
+
+</div>
+
+
+  
+  
+  <h3 class="article-title" itemprop="headline">
+    <a href="/./post/let-s-plot-3-base-pair-resolution-ngs-exome-coverage-plots-part-1/" itemprop="url">Let’s Plot 3: Base pair resolution NGS (exome) coverage plots - Part 1</a>
+  </h3>
+  <div class="article-style" itemprop="articleBody">
+    
+    Load data This is a departure from the previous installments, as we are loading in a very processed dataset. The reasons why are numerous:
+The original data is 330mb, compressed After loading (2 minutes on my quite fast computer) and uncompressing, it takes over 10GB of RAM on my computer The original data needed a severe amount of massaging to make it quickly useable:   Annotating with gene name Identifying primary transcript for gene Expanding range data into row-form*
+    
+  </div>
+  <p class="read-more" itemprop="mainEntityOfPage">
+    <a href="/./post/let-s-plot-3-base-pair-resolution-ngs-exome-coverage-plots-part-1/" class="btn btn-primary btn-outline">
+      CONTINUE READING
+    </a>
+  </p>
+</div>
+
+      
+
       
 
         
@@ -712,99 +916,6 @@ url('/img/headers/cajal-wide.jpg');
       
 
       
-
-        
-
-        
-        
-
-        
-        
-          
-      
-          
-      
-          
-      
-          
-      
-
-      
-      
-        
-        
-
-<div class="card-simple" itemscope itemprop="blogPost" itemtype="http://schema.org/BlogPosting">
-  
-
-<div class="article-metadata">
-
-  <span class="article-date">
-    
-    <time datetime="2018-01-31 00:00:00 &#43;0000 UTC" itemprop="datePublished dateModified">
-      Jan 31, 2018
-    </time>
-  </span>
-  <span itemscope itemprop="author publisher" itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="David McGaughey">
-  </span>
-
-  
-  <span class="middot-divider"></span>
-  <span class="article-reading-time">
-    1 min read
-  </span>
-  
-
-  
-  
-  <span class="middot-divider"></span>
-  <a href="/./post/what-is-let-s-plot/#disqus_thread"></a>
-  
-
-  
-  
-  
-  <span class="middot-divider"></span>
-  <span class="article-categories">
-    <i class="fa fa-folder"></i>
-    
-    <a href="/categories/lets-plot">Let’s Plot</a
-    >, 
-    
-    <a href="/categories/r">R</a
-    >
-    
-  </span>
-  
-  
-
-  
-
-</div>
-
-
-  
-  
-  <h3 class="article-title" itemprop="headline">
-    <a href="/./post/what-is-let-s-plot/" itemprop="url">What is Let’s Plot?</a>
-  </h3>
-  <div class="article-style" itemprop="articleBody">
-    
-    Tooling How can I follow along?   The concept is simple - I get data from one of the scientists in my group. Or I get my own. Then I demonstrate, step-by-step, how I generate the plot(s). I’ll also toss in some data science concepts occasionally.
-They are a bit sparse on the words because I’m presenting these in person. But I believe they are clear enough for someone to follow along.
-    
-  </div>
-  <p class="read-more" itemprop="mainEntityOfPage">
-    <a href="/./post/what-is-let-s-plot/" class="btn btn-primary btn-outline">
-      CONTINUE READING
-    </a>
-  </p>
-</div>
-
-      
-
-      
     
 
   </div>
@@ -1046,14 +1157,14 @@ They are a bit sparse on the words because I’m presenting these in person. But
           
           
           
-          <a href="/tags/lets-plot" style="font-size:1.960430530626175rem">Let&#39;s Plot</a>
+          <a href="/tags/lets-plot" style="font-size:2.2060487080897575rem">Let&#39;s Plot</a>
         
           
           
           
           
           
-          <a href="/tags/r" style="font-size:2.2643002974495365rem">R</a>
+          <a href="/tags/r" style="font-size:2.365329775974723rem">R</a>
         
           
           
@@ -1067,7 +1178,7 @@ They are a bit sparse on the words because I’m presenting these in person. But
           
           
           
-          <a href="/tags/bioinformatics" style="font-size:0.8rem">bioinformatics</a>
+          <a href="/tags/bioinformatics" style="font-size:1.7597775578910853rem">bioinformatics</a>
         
           
           
@@ -1088,7 +1199,7 @@ They are a bit sparse on the words because I’m presenting these in person. But
           
           
           
-          <a href="/tags/ggplot2" style="font-size:1.960430530626175rem">ggplot2</a>
+          <a href="/tags/ggplot2" style="font-size:2.2060487080897575rem">ggplot2</a>
         
           
           
@@ -1102,6 +1213,13 @@ They are a bit sparse on the words because I’m presenting these in person. But
           
           
           
+          <a href="/tags/quinlanverse" style="font-size:1.4055522180836377rem">quinlanverse</a>
+        
+          
+          
+          
+          
+          
           <a href="/tags/script" style="font-size:0.8rem">script</a>
         
           
@@ -1109,7 +1227,7 @@ They are a bit sparse on the words because I’m presenting these in person. But
           
           
           
-          <a href="/tags/tidyverse" style="font-size:1.960430530626175rem">tidyverse</a>
+          <a href="/tags/tidyverse" style="font-size:1.7597775578910853rem">tidyverse</a>
         
       </div>
     

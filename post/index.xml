@@ -13,6 +13,25 @@
     
     
     <item>
+      <title>Let’s Plot 3: Base pair resolution NGS (exome) coverage plots - Part 2</title>
+      <link>/./post/let-s-plot-3-base-pair-resolution-ngs-exome-coverage-plots/</link>
+      <pubDate>Thu, 08 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/let-s-plot-3-base-pair-resolution-ngs-exome-coverage-plots/</guid>
+      <description>Introduction Call mosdepth on bam to calculate bp-specific read depth Intersect base pair depth info with transcript and exon number Now it’s R time! Prepare Metadata Load mosdepth / bedtools intersect data and prep Plot Maker, version 1 Version 2 sessionInfo()    Introduction This is a barebones (but detailed enough, I hope) discussion of how to take a bam file, extract base pair resolution coverage data, then finagle the data into coverage plots by gene and exon.</description>
+    </item>
+    
+    <item>
+      <title>Let’s Plot 3: Base pair resolution NGS (exome) coverage plots - Part 1</title>
+      <link>/./post/let-s-plot-3-base-pair-resolution-ngs-exome-coverage-plots-part-1/</link>
+      <pubDate>Wed, 07 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/let-s-plot-3-base-pair-resolution-ngs-exome-coverage-plots-part-1/</guid>
+      <description>Load data This is a departure from the previous installments, as we are loading in a very processed dataset. The reasons why are numerous:
+The original data is 330mb, compressed After loading (2 minutes on my quite fast computer) and uncompressing, it takes over 10GB of RAM on my computer The original data needed a severe amount of massaging to make it quickly useable:   Annotating with gene name Identifying primary transcript for gene Expanding range data into row-form*</description>
+    </item>
+    
+    <item>
       <title>Split VCF into n pieces by coordinate</title>
       <link>/./post/split-vcf-into-n-pieces-by-coordinate/</link>
       <pubDate>Wed, 07 Feb 2018 00:00:00 +0000</pubDate>

@@ -238,6 +238,155 @@
 
   <span class="article-date">
     
+    <time datetime="2018-02-08 00:00:00 &#43;0000 UTC" itemprop="datePublished dateModified">
+      Feb 8, 2018
+    </time>
+  </span>
+  <span itemscope itemprop="author publisher" itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="David McGaughey">
+  </span>
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    10 min read
+  </span>
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <a href="/./post/let-s-plot-3-base-pair-resolution-ngs-exome-coverage-plots/#disqus_thread"></a>
+  
+
+  
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fa fa-folder"></i>
+    
+    <a href="/categories/bioinformatics">bioinformatics</a
+    >, 
+    
+    <a href="/categories/lets-plot">Let’s Plot</a
+    >, 
+    
+    <a href="/categories/r">R</a
+    >
+    
+  </span>
+  
+  
+
+  
+
+</div>
+
+
+  
+  
+  <h3 class="article-title" itemprop="headline">
+    <a href="/./post/let-s-plot-3-base-pair-resolution-ngs-exome-coverage-plots/" itemprop="url">Let’s Plot 3: Base pair resolution NGS (exome) coverage plots - Part 2</a>
+  </h3>
+  <div class="article-style" itemprop="articleBody">
+    
+    Introduction Call mosdepth on bam to calculate bp-specific read depth Intersect base pair depth info with transcript and exon number Now it’s R time! Prepare Metadata Load mosdepth / bedtools intersect data and prep Plot Maker, version 1 Version 2 sessionInfo()    Introduction This is a barebones (but detailed enough, I hope) discussion of how to take a bam file, extract base pair resolution coverage data, then finagle the data into coverage plots by gene and exon.
+    
+  </div>
+  <p class="read-more" itemprop="mainEntityOfPage">
+    <a href="/./post/let-s-plot-3-base-pair-resolution-ngs-exome-coverage-plots/" class="btn btn-primary btn-outline">
+      CONTINUE READING
+    </a>
+  </p>
+</div>
+
+  
+    
+    
+
+<div class="card-simple" itemscope itemprop="blogPost" itemtype="http://schema.org/BlogPosting">
+  
+
+<div class="article-metadata">
+
+  <span class="article-date">
+    
+    <time datetime="2018-02-07 00:00:00 &#43;0000 UTC" itemprop="datePublished dateModified">
+      Feb 7, 2018
+    </time>
+  </span>
+  <span itemscope itemprop="author publisher" itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="David McGaughey">
+  </span>
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    7 min read
+  </span>
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <a href="/./post/let-s-plot-3-base-pair-resolution-ngs-exome-coverage-plots-part-1/#disqus_thread"></a>
+  
+
+  
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fa fa-folder"></i>
+    
+    <a href="/categories/bioinformatics">bioinformatics</a
+    >, 
+    
+    <a href="/categories/lets-plot">Let’s Plot</a
+    >, 
+    
+    <a href="/categories/r">R</a
+    >
+    
+  </span>
+  
+  
+
+  
+
+</div>
+
+
+  
+  
+  <h3 class="article-title" itemprop="headline">
+    <a href="/./post/let-s-plot-3-base-pair-resolution-ngs-exome-coverage-plots-part-1/" itemprop="url">Let’s Plot 3: Base pair resolution NGS (exome) coverage plots - Part 1</a>
+  </h3>
+  <div class="article-style" itemprop="articleBody">
+    
+    Load data This is a departure from the previous installments, as we are loading in a very processed dataset. The reasons why are numerous:
+The original data is 330mb, compressed After loading (2 minutes on my quite fast computer) and uncompressing, it takes over 10GB of RAM on my computer The original data needed a severe amount of massaging to make it quickly useable:   Annotating with gene name Identifying primary transcript for gene Expanding range data into row-form*
+    
+  </div>
+  <p class="read-more" itemprop="mainEntityOfPage">
+    <a href="/./post/let-s-plot-3-base-pair-resolution-ngs-exome-coverage-plots-part-1/" class="btn btn-primary btn-outline">
+      CONTINUE READING
+    </a>
+  </p>
+</div>
+
+  
+    
+    
+
+<div class="card-simple" itemscope itemprop="blogPost" itemtype="http://schema.org/BlogPosting">
+  
+
+<div class="article-metadata">
+
+  <span class="article-date">
+    
     <time datetime="2018-02-07 00:00:00 &#43;0000 UTC" itemprop="datePublished dateModified">
       Feb 7, 2018
     </time>
