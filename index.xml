@@ -124,30 +124,29 @@ Read 1651703 rows and 9 (of 9) columns from 0.822 GB file in 00:00:11&lt;/code&g
 &lt;pre&gt;&lt;code&gt;## 
 Read 0.0% of 50955214 rows
 Read 4.6% of 50955214 rows
-Read 8.8% of 50955214 rows
-Read 13.4% of 50955214 rows
-Read 17.8% of 50955214 rows
-Read 22.3% of 50955214 rows
+Read 9.1% of 50955214 rows
+Read 13.7% of 50955214 rows
+Read 17.9% of 50955214 rows
+Read 22.2% of 50955214 rows
 Read 24.5% of 50955214 rows
 Read 29.0% of 50955214 rows
-Read 33.3% of 50955214 rows
+Read 33.4% of 50955214 rows
 Read 34.5% of 50955214 rows
 Read 39.1% of 50955214 rows
-Read 43.3% of 50955214 rows
-Read 47.6% of 50955214 rows
-Read 51.7% of 50955214 rows
-Read 55.8% of 50955214 rows
-Read 60.2% of 50955214 rows
-Read 64.2% of 50955214 rows
-Read 68.0% of 50955214 rows
-Read 72.2% of 50955214 rows
-Read 76.6% of 50955214 rows
-Read 80.9% of 50955214 rows
-Read 85.3% of 50955214 rows
-Read 89.5% of 50955214 rows
-Read 94.0% of 50955214 rows
-Read 98.6% of 50955214 rows
-Read 50955214 rows and 10 (of 10) columns from 4.490 GB file in 00:00:40&lt;/code&gt;&lt;/pre&gt;
+Read 43.8% of 50955214 rows
+Read 48.4% of 50955214 rows
+Read 52.9% of 50955214 rows
+Read 57.2% of 50955214 rows
+Read 61.7% of 50955214 rows
+Read 66.2% of 50955214 rows
+Read 70.8% of 50955214 rows
+Read 75.3% of 50955214 rows
+Read 79.7% of 50955214 rows
+Read 84.3% of 50955214 rows
+Read 88.9% of 50955214 rows
+Read 93.5% of 50955214 rows
+Read 98.1% of 50955214 rows
+Read 50955214 rows and 10 (of 10) columns from 4.490 GB file in 00:00:37&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;dd_processed &amp;lt;- depth_data %&amp;gt;% 
   separate(V8, c(&amp;#39;Transcript&amp;#39;,&amp;#39;Rest&amp;#39;), &amp;#39;_cds_&amp;#39;) %&amp;gt;% 
   separate(Rest, c(&amp;#39;Before&amp;#39;,&amp;#39;Stuff&amp;#39;),&amp;#39;_chr&amp;#39;) %&amp;gt;% 
@@ -364,7 +363,7 @@ ggplot() +
 &lt;/div&gt;
 &lt;div id=&#34;curious&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Curious?&lt;/h2&gt;
-&lt;p&gt;If you want to see how I did the above, see &lt;a href=&#34;/./content/post/2018-02-08-let-s-plot-3-base-pair-resolution-ngs-exome-coverage-plots.html&#34;&gt;Part 2&lt;/a&gt;. This post also has some cooler plots.&lt;/p&gt;
+&lt;p&gt;If you want to see how I did the above, see &lt;a href=&#34;/./content/post/2018-02-08-let-s-plot-3-base-pair-resolution-ngs-exome-coverage-plots&#34;&gt;Part 2&lt;/a&gt;. This post also has some cooler plots.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;data&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Data&lt;/h2&gt;

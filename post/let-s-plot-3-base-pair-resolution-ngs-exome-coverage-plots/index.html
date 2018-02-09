@@ -441,30 +441,29 @@ Read 1651703 rows and 9 (of 9) columns from 0.822 GB file in 00:00:11</code></pr
 <pre><code>## 
 Read 0.0% of 50955214 rows
 Read 4.6% of 50955214 rows
-Read 8.8% of 50955214 rows
-Read 13.4% of 50955214 rows
-Read 17.8% of 50955214 rows
-Read 22.3% of 50955214 rows
+Read 9.1% of 50955214 rows
+Read 13.7% of 50955214 rows
+Read 17.9% of 50955214 rows
+Read 22.2% of 50955214 rows
 Read 24.5% of 50955214 rows
 Read 29.0% of 50955214 rows
-Read 33.3% of 50955214 rows
+Read 33.4% of 50955214 rows
 Read 34.5% of 50955214 rows
 Read 39.1% of 50955214 rows
-Read 43.3% of 50955214 rows
-Read 47.6% of 50955214 rows
-Read 51.7% of 50955214 rows
-Read 55.8% of 50955214 rows
-Read 60.2% of 50955214 rows
-Read 64.2% of 50955214 rows
-Read 68.0% of 50955214 rows
-Read 72.2% of 50955214 rows
-Read 76.6% of 50955214 rows
-Read 80.9% of 50955214 rows
-Read 85.3% of 50955214 rows
-Read 89.5% of 50955214 rows
-Read 94.0% of 50955214 rows
-Read 98.6% of 50955214 rows
-Read 50955214 rows and 10 (of 10) columns from 4.490 GB file in 00:00:40</code></pre>
+Read 43.8% of 50955214 rows
+Read 48.4% of 50955214 rows
+Read 52.9% of 50955214 rows
+Read 57.2% of 50955214 rows
+Read 61.7% of 50955214 rows
+Read 66.2% of 50955214 rows
+Read 70.8% of 50955214 rows
+Read 75.3% of 50955214 rows
+Read 79.7% of 50955214 rows
+Read 84.3% of 50955214 rows
+Read 88.9% of 50955214 rows
+Read 93.5% of 50955214 rows
+Read 98.1% of 50955214 rows
+Read 50955214 rows and 10 (of 10) columns from 4.490 GB file in 00:00:37</code></pre>
 <pre class="r"><code>dd_processed &lt;- depth_data %&gt;% 
   separate(V8, c(&#39;Transcript&#39;,&#39;Rest&#39;), &#39;_cds_&#39;) %&gt;% 
   separate(Rest, c(&#39;Before&#39;,&#39;Stuff&#39;),&#39;_chr&#39;) %&gt;% 
