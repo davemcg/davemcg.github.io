@@ -418,7 +418,7 @@ Read 14.5% of 1651703 rows
 Read 27.9% of 1651703 rows
 Read 45.4% of 1651703 rows
 Read 48.4% of 1651703 rows
-Read 62.4% of 1651703 rows
+Read 61.1% of 1651703 rows
 Read 75.1% of 1651703 rows
 Read 93.2% of 1651703 rows
 Read 1651703 rows and 9 (of 9) columns from 0.822 GB file in 00:00:11</code></pre>
@@ -440,30 +440,30 @@ Read 1651703 rows and 9 (of 9) columns from 0.822 GB file in 00:00:11</code></pr
 <pre class="r"><code>depth_data &lt;- fread(&#39;gzcat ~/Desktop/41001412010527.per-base.labeled.bed.gz&#39;)</code></pre>
 <pre><code>## 
 Read 0.0% of 50955214 rows
-Read 4.6% of 50955214 rows
-Read 9.1% of 50955214 rows
-Read 13.7% of 50955214 rows
-Read 17.9% of 50955214 rows
-Read 22.2% of 50955214 rows
+Read 4.7% of 50955214 rows
+Read 9.2% of 50955214 rows
+Read 13.9% of 50955214 rows
+Read 18.5% of 50955214 rows
+Read 23.2% of 50955214 rows
 Read 24.5% of 50955214 rows
-Read 29.0% of 50955214 rows
-Read 33.4% of 50955214 rows
+Read 29.1% of 50955214 rows
+Read 33.8% of 50955214 rows
 Read 34.5% of 50955214 rows
 Read 39.1% of 50955214 rows
-Read 43.8% of 50955214 rows
+Read 43.7% of 50955214 rows
 Read 48.4% of 50955214 rows
-Read 52.9% of 50955214 rows
-Read 57.2% of 50955214 rows
-Read 61.7% of 50955214 rows
-Read 66.2% of 50955214 rows
-Read 70.8% of 50955214 rows
-Read 75.3% of 50955214 rows
-Read 79.7% of 50955214 rows
-Read 84.3% of 50955214 rows
-Read 88.9% of 50955214 rows
-Read 93.5% of 50955214 rows
-Read 98.1% of 50955214 rows
-Read 50955214 rows and 10 (of 10) columns from 4.490 GB file in 00:00:37</code></pre>
+Read 53.0% of 50955214 rows
+Read 57.6% of 50955214 rows
+Read 62.2% of 50955214 rows
+Read 66.6% of 50955214 rows
+Read 71.2% of 50955214 rows
+Read 75.9% of 50955214 rows
+Read 80.6% of 50955214 rows
+Read 85.2% of 50955214 rows
+Read 89.7% of 50955214 rows
+Read 94.3% of 50955214 rows
+Read 98.9% of 50955214 rows
+Read 50955214 rows and 10 (of 10) columns from 4.490 GB file in 00:00:36</code></pre>
 <pre class="r"><code>dd_processed &lt;- depth_data %&gt;% 
   separate(V8, c(&#39;Transcript&#39;,&#39;Rest&#39;), &#39;_cds_&#39;) %&gt;% 
   separate(Rest, c(&#39;Before&#39;,&#39;Stuff&#39;),&#39;_chr&#39;) %&gt;% 
