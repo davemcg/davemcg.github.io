@@ -35,7 +35,7 @@ This is a departure from the previous installments, as we are loading in a very 
 * `mosdepth` provides read depth as ranges. So instead of writing a row for each of the three billion+ base pairs, `mosdepth` collapses adjacent rows with identical read depth together. This is crucial for saving space, especially for exomes, which have huge stretches of zero coverage since only ~3% of the genome is targeted. 
 
 ## Curious?
-If you want to see how I did the above, see [Part 2](/post/2018-02-08-let-s-plot-3-base-pair-resolution-ngs-exome-coverage-plots). This post also has some cooler plots. 
+If you want to see how I did the above, see [Part 2](/post/let-s-plot-3-base-pair-resolution-ngs-exome-coverage-plots). This post also has some cooler plots. 
 
 ## Data
 `dd_class.csv` can be found [here](https://github.com/davemcg/Let_us_plot/raw/master/003_coverage/dd_class.csv)
