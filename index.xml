@@ -64,20 +64,14 @@ bedtools intersect -wa -wb -a 41001412010527.per-base.bed.gz -b /data/mcgaugheyd
 &lt;p&gt;You’ll need &lt;a href=&#34;ftp://ftp.sanger.ac.uk/pub/gencode/Gencode_human/release_27/GRCh37_mapping/gencode.v27lift37.metadata.HGNC.gz&#34;&gt;HGNC &amp;lt;-&amp;gt; Ensembl Transcript converter&lt;/a&gt; and the &lt;a href=&#34;ftp://ftp.sanger.ac.uk/pub/gencode/Gencode_human/release_27/GRCh37_mapping/gencode.v27lift37.basic.annotation.gtf.gz&#34;&gt;Gencode GTF&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;The first file is used to match gene ‘names’ with ensembl transcript ID&lt;/p&gt;
 &lt;p&gt;The second file is used to semi-accurately pick the ‘canonical’ transcript for a gene (pick the appris transcript, then the longest)&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(data.table)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;data.table&amp;#39; was built under R version 3.4.2&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;tidyverse&amp;#39; was built under R version 3.4.2&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ── Attaching packages ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(data.table)
+library(tidyverse)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## ── Attaching packages ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## ✔ ggplot2 2.2.1     ✔ purrr   0.2.4
-## ✔ tibble  1.3.4     ✔ dplyr   0.7.4
+## ✔ tibble  1.4.2     ✔ dplyr   0.7.4
 ## ✔ tidyr   0.7.2     ✔ stringr 1.2.0
 ## ✔ readr   1.1.1     ✔ forcats 0.2.0&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;tibble&amp;#39; was built under R version 3.4.1&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;tidyr&amp;#39; was built under R version 3.4.2&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;purrr&amp;#39; was built under R version 3.4.2&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;dplyr&amp;#39; was built under R version 3.4.2&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ── Conflicts ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+&lt;pre&gt;&lt;code&gt;## ── Conflicts ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::between()   masks data.table::between()
 ## ✖ dplyr::filter()    masks stats::filter()
 ## ✖ dplyr::first()     masks data.table::first()
@@ -85,7 +79,6 @@ bedtools intersect -wa -wb -a 41001412010527.per-base.bed.gz -b /data/mcgaugheyd
 ## ✖ dplyr::last()      masks data.table::last()
 ## ✖ purrr::transpose() masks data.table::transpose()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(cowplot)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;cowplot&amp;#39; was built under R version 3.4.2&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## 
 ## Attaching package: &amp;#39;cowplot&amp;#39;&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## The following object is masked from &amp;#39;package:ggplot2&amp;#39;:
@@ -101,7 +94,7 @@ Read 14.5% of 1651703 rows
 Read 27.9% of 1651703 rows
 Read 45.4% of 1651703 rows
 Read 48.4% of 1651703 rows
-Read 61.1% of 1651703 rows
+Read 63.0% of 1651703 rows
 Read 75.1% of 1651703 rows
 Read 93.2% of 1651703 rows
 Read 1651703 rows and 9 (of 9) columns from 0.822 GB file in 00:00:11&lt;/code&gt;&lt;/pre&gt;
@@ -114,7 +107,6 @@ Read 1651703 rows and 9 (of 9) columns from 0.822 GB file in 00:00:11&lt;/code&g
   separate(Gene, c(&amp;#39;skip&amp;#39;,&amp;#39;Name&amp;#39;,&amp;#39;skip2&amp;#39;),&amp;#39;\&amp;quot;&amp;#39;) %&amp;gt;% # now you have to remove the &amp;#39;gene name&amp;#39; part  
   select(-skip, -skip2) %&amp;gt;% 
   group_by(Name) %&amp;gt;% top_n(1)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning: Grouping rowwise data frame strips rowwise nature&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Selecting by Size&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;load-mosdepth-bedtools-intersect-data-and-prep&#34; class=&#34;section level2&#34;&gt;
@@ -123,30 +115,30 @@ Read 1651703 rows and 9 (of 9) columns from 0.822 GB file in 00:00:11&lt;/code&g
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;depth_data &amp;lt;- fread(&amp;#39;gzcat ~/Desktop/41001412010527.per-base.labeled.bed.gz&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## 
 Read 0.0% of 50955214 rows
-Read 4.7% of 50955214 rows
-Read 9.2% of 50955214 rows
-Read 13.9% of 50955214 rows
-Read 18.5% of 50955214 rows
-Read 23.2% of 50955214 rows
+Read 4.5% of 50955214 rows
+Read 9.0% of 50955214 rows
+Read 13.5% of 50955214 rows
+Read 18.0% of 50955214 rows
+Read 22.4% of 50955214 rows
 Read 24.5% of 50955214 rows
 Read 29.1% of 50955214 rows
 Read 33.8% of 50955214 rows
 Read 34.5% of 50955214 rows
-Read 39.1% of 50955214 rows
-Read 43.7% of 50955214 rows
-Read 48.4% of 50955214 rows
+Read 39.2% of 50955214 rows
+Read 43.8% of 50955214 rows
+Read 48.5% of 50955214 rows
 Read 53.0% of 50955214 rows
-Read 57.6% of 50955214 rows
-Read 62.2% of 50955214 rows
-Read 66.6% of 50955214 rows
-Read 71.2% of 50955214 rows
-Read 75.9% of 50955214 rows
-Read 80.6% of 50955214 rows
-Read 85.2% of 50955214 rows
-Read 89.7% of 50955214 rows
-Read 94.3% of 50955214 rows
-Read 98.9% of 50955214 rows
-Read 50955214 rows and 10 (of 10) columns from 4.490 GB file in 00:00:36&lt;/code&gt;&lt;/pre&gt;
+Read 57.7% of 50955214 rows
+Read 62.3% of 50955214 rows
+Read 66.9% of 50955214 rows
+Read 71.6% of 50955214 rows
+Read 76.2% of 50955214 rows
+Read 80.9% of 50955214 rows
+Read 85.6% of 50955214 rows
+Read 90.2% of 50955214 rows
+Read 94.6% of 50955214 rows
+Read 99.1% of 50955214 rows
+Read 50955214 rows and 10 (of 10) columns from 4.490 GB file in 00:00:37&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;dd_processed &amp;lt;- depth_data %&amp;gt;% 
   separate(V8, c(&amp;#39;Transcript&amp;#39;,&amp;#39;Rest&amp;#39;), &amp;#39;_cds_&amp;#39;) %&amp;gt;% 
   separate(Rest, c(&amp;#39;Before&amp;#39;,&amp;#39;Stuff&amp;#39;),&amp;#39;_chr&amp;#39;) %&amp;gt;% 
@@ -258,7 +250,7 @@ ggplot() +
 ##  language (EN)                        
 ##  collate  en_US.UTF-8                 
 ##  tz       America/New_York            
-##  date     2018-02-09&lt;/code&gt;&lt;/pre&gt;
+##  date     2018-02-13&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Packages -----------------------------------------------------------------&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##  package    * version    date       source                          
 ##  assertthat   0.2.0      2017-04-11 CRAN (R 3.4.0)                  
@@ -307,6 +299,7 @@ ggplot() +
 ##  munsell      0.4.3      2016-02-13 CRAN (R 3.4.0)                  
 ##  nlme         3.1-131    2017-02-06 CRAN (R 3.4.0)                  
 ##  parallel     3.4.0      2017-04-21 local                           
+##  pillar       1.1.0      2018-01-14 cran (@1.1.0)                   
 ##  pkgconfig    2.0.1      2017-03-21 CRAN (R 3.4.0)                  
 ##  plyr         1.8.4      2016-06-08 CRAN (R 3.4.0)                  
 ##  psych        1.7.8      2017-09-09 CRAN (R 3.4.0)                  
@@ -316,7 +309,7 @@ ggplot() +
 ##  readr      * 1.1.1      2017-05-16 CRAN (R 3.4.0)                  
 ##  readxl       1.0.0      2017-04-18 CRAN (R 3.4.0)                  
 ##  reshape2     1.4.2      2016-10-22 CRAN (R 3.4.0)                  
-##  rlang        0.1.4      2017-11-05 CRAN (R 3.4.2)                  
+##  rlang        0.1.6      2017-12-21 cran (@0.1.6)                   
 ##  rmarkdown    1.8        2017-11-17 CRAN (R 3.4.2)                  
 ##  rprojroot    1.2        2017-01-16 CRAN (R 3.4.0)                  
 ##  rstudioapi   0.7        2017-09-07 CRAN (R 3.4.1)                  
@@ -325,7 +318,7 @@ ggplot() +
 ##  stats      * 3.4.0      2017-04-21 local                           
 ##  stringi      1.1.6      2017-11-17 CRAN (R 3.4.2)                  
 ##  stringr    * 1.2.0      2017-02-18 CRAN (R 3.4.0)                  
-##  tibble     * 1.3.4      2017-08-22 CRAN (R 3.4.1)                  
+##  tibble     * 1.4.2      2018-01-22 cran (@1.4.2)                   
 ##  tidyr      * 0.7.2      2017-10-16 CRAN (R 3.4.2)                  
 ##  tidyselect   0.2.3      2017-11-06 CRAN (R 3.4.2)                  
 ##  tidyverse  * 1.2.1      2017-11-14 CRAN (R 3.4.2)                  
@@ -369,21 +362,15 @@ ggplot() +
 &lt;h2&gt;Data&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;dd_class.csv&lt;/code&gt; can be found &lt;a href=&#34;https://github.com/davemcg/Let_us_plot/raw/master/003_coverage/dd_class.csv&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;tidyverse&amp;#39; was built under R version 3.4.2&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ── Attaching packages ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## ── Attaching packages ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## ✔ ggplot2 2.2.1     ✔ purrr   0.2.4
-## ✔ tibble  1.3.4     ✔ dplyr   0.7.4
+## ✔ tibble  1.4.2     ✔ dplyr   0.7.4
 ## ✔ tidyr   0.7.2     ✔ stringr 1.2.0
 ## ✔ readr   1.1.1     ✔ forcats 0.2.0&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;tibble&amp;#39; was built under R version 3.4.1&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;tidyr&amp;#39; was built under R version 3.4.2&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;purrr&amp;#39; was built under R version 3.4.2&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;dplyr&amp;#39; was built under R version 3.4.2&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ── Conflicts ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+&lt;pre&gt;&lt;code&gt;## ── Conflicts ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(cowplot) # you probably need to install this with install.packages(&amp;#39;cowplot&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;cowplot&amp;#39; was built under R version 3.4.2&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## 
 ## Attaching package: &amp;#39;cowplot&amp;#39;&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## The following object is masked from &amp;#39;package:ggplot2&amp;#39;:
@@ -403,24 +390,17 @@ ggplot() +
 ##   ExonEnd = col_integer(),
 ##   Name = col_character()
 ## )&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in rbind(names(probs), probs_f): number of columns of result is not
-## a multiple of vector length (arg 1)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning: 19644 parsing failures.
-## row # A tibble: 5 x 5 col     row   col   expected actual expected   &amp;lt;int&amp;gt; &amp;lt;chr&amp;gt;      &amp;lt;chr&amp;gt;  &amp;lt;chr&amp;gt; actual 1 53399   Chr an integer      X file 2 53400   Chr an integer      X row 3 53401   Chr an integer      X col 4 53402   Chr an integer      X expected 5 53403   Chr an integer      X actual # ... with 1 more variables: file &amp;lt;chr&amp;gt;
-## ... ................. ... ............................... ........ ............................... ...... ............................... .... ............................... ... ............................... ... ............................... ........ ............................... ...... .......................................
-## See problems(...) for more details.&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;head(dd_class)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## # A tibble: 6 x 10
-##          Transcript `Exon Number`    Start   Chr      End Read_Depth
-##               &amp;lt;chr&amp;gt;         &amp;lt;int&amp;gt;    &amp;lt;dbl&amp;gt; &amp;lt;int&amp;gt;    &amp;lt;int&amp;gt;      &amp;lt;int&amp;gt;
-## 1 ENST00000020945.3             0 49831356     8 49831367        108
-## 2 ENST00000020945.3             0 49831357     8 49831367        108
-## 3 ENST00000020945.3             0 49831358     8 49831367        108
-## 4 ENST00000020945.3             0 49831359     8 49831367        108
-## 5 ENST00000020945.3             0 49831360     8 49831367        108
-## 6 ENST00000020945.3             0 49831361     8 49831367        108
-## # ... with 4 more variables: Strand &amp;lt;chr&amp;gt;, ExonStart &amp;lt;int&amp;gt;, ExonEnd &amp;lt;int&amp;gt;,
-## #   Name &amp;lt;chr&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+##   Transcript `Exon Number`  Start   Chr    End Read_Depth Strand ExonStart
+##   &amp;lt;chr&amp;gt;              &amp;lt;int&amp;gt;  &amp;lt;dbl&amp;gt; &amp;lt;int&amp;gt;  &amp;lt;int&amp;gt;      &amp;lt;int&amp;gt; &amp;lt;chr&amp;gt;      &amp;lt;int&amp;gt;
+## 1 ENST00000…             0 4.98e⁷     8 4.98e⁷        108 -       49831365
+## 2 ENST00000…             0 4.98e⁷     8 4.98e⁷        108 -       49831365
+## 3 ENST00000…             0 4.98e⁷     8 4.98e⁷        108 -       49831365
+## 4 ENST00000…             0 4.98e⁷     8 4.98e⁷        108 -       49831365
+## 5 ENST00000…             0 4.98e⁷     8 4.98e⁷        108 -       49831365
+## 6 ENST00000…             0 4.98e⁷     8 4.98e⁷        108 -       49831365
+## # ... with 2 more variables: ExonEnd &amp;lt;int&amp;gt;, Name &amp;lt;chr&amp;gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;how-many-genes-are-in-this-dataset&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;How many genes are in this dataset?&lt;/h2&gt;
@@ -457,18 +437,18 @@ ggplot() +
   group_by(Name) %&amp;gt;% 
   summarise(Count=n())&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## # A tibble: 118 x 2
-##       Name Count
-##      &amp;lt;chr&amp;gt; &amp;lt;int&amp;gt;
-##  1   ABCA4  6804
-##  2   ABCB6  2527
-##  3   AIPL1  1159
+##    Name    Count
+##    &amp;lt;chr&amp;gt;   &amp;lt;int&amp;gt;
+##  1 ABCA4    6804
+##  2 ABCB6    2527
+##  3 AIPL1    1159
 ##  4 ALDH1A3  1550
-##  5    ARL6   569
-##  6    ATF6  2008
-##  7   ATOH7   457
-##  8   BBIP1   220
-##  9    BBS1  1773
-## 10   BBS10  2172
+##  5 ARL6      569
+##  6 ATF6     2008
+##  7 ATOH7     457
+##  8 BBIP1     220
+##  9 BBS1     1773
+## 10 BBS10    2172
 ## # ... with 108 more rows&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;how-many-exons-per-gene&#34; class=&#34;section level2&#34;&gt;
@@ -479,18 +459,18 @@ ggplot() +
   group_by(Name) %&amp;gt;% 
   summarise(Count = n())&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## # A tibble: 118 x 2
-##       Name Count
-##      &amp;lt;chr&amp;gt; &amp;lt;int&amp;gt;
-##  1   ABCA4    50
-##  2   ABCB6    19
-##  3   AIPL1     6
+##    Name    Count
+##    &amp;lt;chr&amp;gt;   &amp;lt;int&amp;gt;
+##  1 ABCA4      50
+##  2 ABCB6      19
+##  3 AIPL1       6
 ##  4 ALDH1A3    13
-##  5    ARL6     7
-##  6    ATF6    16
-##  7   ATOH7     1
-##  8   BBIP1     2
-##  9    BBS1    17
-## 10   BBS10     2
+##  5 ARL6        7
+##  6 ATF6       16
+##  7 ATOH7       1
+##  8 BBIP1       2
+##  9 BBS1       17
+## 10 BBS10       2
 ## # ... with 108 more rows&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;how-many-base-pairs-of-abca4-well-abca4-exons-is-covered-by-more-than-10-reads&#34; class=&#34;section level2&#34;&gt;
@@ -520,18 +500,18 @@ sum(depth_abca4 &amp;gt; 10)&lt;/code&gt;&lt;/pre&gt;
             P10 = LT10 / Total_Bases) %&amp;gt;% 
   arrange(-P10)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## # A tibble: 118 x 7
-##       Name Total_Bases   LT5  LT10  Good          P5         P10
-##      &amp;lt;chr&amp;gt;       &amp;lt;int&amp;gt; &amp;lt;int&amp;gt; &amp;lt;int&amp;gt; &amp;lt;int&amp;gt;       &amp;lt;dbl&amp;gt;       &amp;lt;dbl&amp;gt;
-##  1   BBIP1         220     0    61   159 0.000000000 0.277272727
-##  2    ISPD        1339     0    57  1282 0.000000000 0.042569081
-##  3    CASK        2778     0    79  2699 0.000000000 0.028437725
-##  4   NAA10         725     0    10   715 0.000000000 0.013793103
-##  5   CNGB3        2436     0    18  2418 0.000000000 0.007389163
-##  6    LYST       11400    13    66 11334 0.001140351 0.005789474
-##  7   PROM1        2601     0     8  2593 0.000000000 0.003075740
-##  8     RET        3348     0     9  3339 0.000000000 0.002688172
-##  9  CEP290        7456     0    18  7438 0.000000000 0.002414163
-## 10 SLC25A1         933     0     2   931 0.000000000 0.002143623
+##    Name    Total_Bases   LT5  LT10  Good      P5     P10
+##    &amp;lt;chr&amp;gt;         &amp;lt;int&amp;gt; &amp;lt;int&amp;gt; &amp;lt;int&amp;gt; &amp;lt;int&amp;gt;   &amp;lt;dbl&amp;gt;   &amp;lt;dbl&amp;gt;
+##  1 BBIP1           220     0    61   159 0       0.277  
+##  2 ISPD           1339     0    57  1282 0       0.0426 
+##  3 CASK           2778     0    79  2699 0       0.0284 
+##  4 NAA10           725     0    10   715 0       0.0138 
+##  5 CNGB3          2436     0    18  2418 0       0.00739
+##  6 LYST          11400    13    66 11334 0.00114 0.00579
+##  7 PROM1          2601     0     8  2593 0       0.00308
+##  8 RET            3348     0     9  3339 0       0.00269
+##  9 CEP290         7456     0    18  7438 0       0.00241
+## 10 SLC25A1         933     0     2   931 0       0.00214
 ## # ... with 108 more rows&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;we-can-visually-display-the-data-also&#34; class=&#34;section level2&#34;&gt;
@@ -612,7 +592,7 @@ plot_grid(plotlist = plots, ncol=1)&lt;/code&gt;&lt;/pre&gt;
 ##  language (EN)                        
 ##  collate  en_US.UTF-8                 
 ##  tz       America/New_York            
-##  date     2018-02-09&lt;/code&gt;&lt;/pre&gt;
+##  date     2018-02-13&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Packages -----------------------------------------------------------------&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##  package    * version    date       source                          
 ##  assertthat   0.2.0      2017-04-11 CRAN (R 3.4.0)                  
@@ -660,6 +640,7 @@ plot_grid(plotlist = plots, ncol=1)&lt;/code&gt;&lt;/pre&gt;
 ##  munsell      0.4.3      2016-02-13 CRAN (R 3.4.0)                  
 ##  nlme         3.1-131    2017-02-06 CRAN (R 3.4.0)                  
 ##  parallel     3.4.0      2017-04-21 local                           
+##  pillar       1.1.0      2018-01-14 cran (@1.1.0)                   
 ##  pkgconfig    2.0.1      2017-03-21 CRAN (R 3.4.0)                  
 ##  plyr         1.8.4      2016-06-08 CRAN (R 3.4.0)                  
 ##  psych        1.7.8      2017-09-09 CRAN (R 3.4.0)                  
@@ -669,7 +650,7 @@ plot_grid(plotlist = plots, ncol=1)&lt;/code&gt;&lt;/pre&gt;
 ##  readr      * 1.1.1      2017-05-16 CRAN (R 3.4.0)                  
 ##  readxl       1.0.0      2017-04-18 CRAN (R 3.4.0)                  
 ##  reshape2     1.4.2      2016-10-22 CRAN (R 3.4.0)                  
-##  rlang        0.1.4      2017-11-05 CRAN (R 3.4.2)                  
+##  rlang        0.1.6      2017-12-21 cran (@0.1.6)                   
 ##  rmarkdown    1.8        2017-11-17 CRAN (R 3.4.2)                  
 ##  rprojroot    1.2        2017-01-16 CRAN (R 3.4.0)                  
 ##  rstudioapi   0.7        2017-09-07 CRAN (R 3.4.1)                  
@@ -678,10 +659,11 @@ plot_grid(plotlist = plots, ncol=1)&lt;/code&gt;&lt;/pre&gt;
 ##  stats      * 3.4.0      2017-04-21 local                           
 ##  stringi      1.1.6      2017-11-17 CRAN (R 3.4.2)                  
 ##  stringr    * 1.2.0      2017-02-18 CRAN (R 3.4.0)                  
-##  tibble     * 1.3.4      2017-08-22 CRAN (R 3.4.1)                  
+##  tibble     * 1.4.2      2018-01-22 cran (@1.4.2)                   
 ##  tidyr      * 0.7.2      2017-10-16 CRAN (R 3.4.2)                  
 ##  tidyverse  * 1.2.1      2017-11-14 CRAN (R 3.4.2)                  
 ##  tools        3.4.0      2017-04-21 local                           
+##  utf8         1.1.3      2018-01-03 cran (@1.1.3)                   
 ##  utils      * 3.4.0      2017-04-21 local                           
 ##  withr        2.1.0.9000 2017-11-22 Github (jimhester/withr@fe81c00)
 ##  xfun         0.1        2018-01-22 CRAN (R 3.4.3)                  
@@ -726,17 +708,12 @@ plot_grid(plotlist = plots, ncol=1)&lt;/code&gt;&lt;/pre&gt;
 &lt;div id=&#34;read-in-vcf-header&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Read in vcf header&lt;/h2&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;tidyverse&amp;#39; was built under R version 3.4.2&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ── Attaching packages ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## ── Attaching packages ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## ✔ ggplot2 2.2.1     ✔ purrr   0.2.4
-## ✔ tibble  1.3.4     ✔ dplyr   0.7.4
+## ✔ tibble  1.4.2     ✔ dplyr   0.7.4
 ## ✔ tidyr   0.7.2     ✔ stringr 1.2.0
 ## ✔ readr   1.1.1     ✔ forcats 0.2.0&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;tibble&amp;#39; was built under R version 3.4.1&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;tidyr&amp;#39; was built under R version 3.4.2&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;purrr&amp;#39; was built under R version 3.4.2&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;dplyr&amp;#39; was built under R version 3.4.2&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ── Conflicts ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+&lt;pre&gt;&lt;code&gt;## ── Conflicts ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(stringr)
@@ -848,17 +825,17 @@ contig_size&lt;/code&gt;&lt;/pre&gt;
 ## 
 ## # A tibble: 86 x 3
 ##    contig    length assembly
-##     &amp;lt;chr&amp;gt;     &amp;lt;dbl&amp;gt;    &amp;lt;chr&amp;gt;
-##  1      1 249250621      b37
-##  2      2 243199373      b37
-##  3      3 198022430      b37
-##  4      4 191154276      b37
-##  5      5 180915260      b37
-##  6      6 171115067      b37
-##  7      7 159138663      b37
-##  8      8 146364022      b37
-##  9      9 141213431      b37
-## 10     10 135534747      b37
+##    &amp;lt;chr&amp;gt;      &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;   
+##  1 1      249250621 b37     
+##  2 2      243199373 b37     
+##  3 3      198022430 b37     
+##  4 4      191154276 b37     
+##  5 5      180915260 b37     
+##  6 6      171115067 b37     
+##  7 7      159138663 b37     
+##  8 8      146364022 b37     
+##  9 9      141213431 b37     
+## 10 10     135534747 b37     
 ## # ... with 76 more rows&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;split-chr-above-3e7-base-pairs-into-equalish-size-pieces&#34; class=&#34;section level2&#34;&gt;
@@ -1045,7 +1022,7 @@ write(contig_size %&amp;gt;% filter(length &amp;lt; 3e7, contig != &amp;#39;hs37
 ##  language (EN)                        
 ##  collate  en_US.UTF-8                 
 ##  tz       America/New_York            
-##  date     2018-02-09&lt;/code&gt;&lt;/pre&gt;
+##  date     2018-02-13&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Packages -----------------------------------------------------------------&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##  package    * version    date       source                          
 ##  assertthat   0.2.0      2017-04-11 CRAN (R 3.4.0)                  
@@ -1091,6 +1068,7 @@ write(contig_size %&amp;gt;% filter(length &amp;lt; 3e7, contig != &amp;#39;hs37
 ##  munsell      0.4.3      2016-02-13 CRAN (R 3.4.0)                  
 ##  nlme         3.1-131    2017-02-06 CRAN (R 3.4.0)                  
 ##  parallel     3.4.0      2017-04-21 local                           
+##  pillar       1.1.0      2018-01-14 cran (@1.1.0)                   
 ##  pkgconfig    2.0.1      2017-03-21 CRAN (R 3.4.0)                  
 ##  plyr         1.8.4      2016-06-08 CRAN (R 3.4.0)                  
 ##  psych        1.7.8      2017-09-09 CRAN (R 3.4.0)                  
@@ -1100,7 +1078,7 @@ write(contig_size %&amp;gt;% filter(length &amp;lt; 3e7, contig != &amp;#39;hs37
 ##  readr      * 1.1.1      2017-05-16 CRAN (R 3.4.0)                  
 ##  readxl       1.0.0      2017-04-18 CRAN (R 3.4.0)                  
 ##  reshape2     1.4.2      2016-10-22 CRAN (R 3.4.0)                  
-##  rlang        0.1.4      2017-11-05 CRAN (R 3.4.2)                  
+##  rlang        0.1.6      2017-12-21 cran (@0.1.6)                   
 ##  rmarkdown    1.8        2017-11-17 CRAN (R 3.4.2)                  
 ##  rprojroot    1.2        2017-01-16 CRAN (R 3.4.0)                  
 ##  rstudioapi   0.7        2017-09-07 CRAN (R 3.4.1)                  
@@ -1109,11 +1087,12 @@ write(contig_size %&amp;gt;% filter(length &amp;lt; 3e7, contig != &amp;#39;hs37
 ##  stats      * 3.4.0      2017-04-21 local                           
 ##  stringi      1.1.6      2017-11-17 CRAN (R 3.4.2)                  
 ##  stringr    * 1.2.0      2017-02-18 CRAN (R 3.4.0)                  
-##  tibble     * 1.3.4      2017-08-22 CRAN (R 3.4.1)                  
+##  tibble     * 1.4.2      2018-01-22 cran (@1.4.2)                   
 ##  tidyr      * 0.7.2      2017-10-16 CRAN (R 3.4.2)                  
 ##  tidyselect   0.2.3      2017-11-06 CRAN (R 3.4.2)                  
 ##  tidyverse  * 1.2.1      2017-11-14 CRAN (R 3.4.2)                  
 ##  tools        3.4.0      2017-04-21 local                           
+##  utf8         1.1.3      2018-01-03 cran (@1.1.3)                   
 ##  utils      * 3.4.0      2017-04-21 local                           
 ##  withr        2.1.0.9000 2017-11-22 Github (jimhester/withr@fe81c00)
 ##  xfun         0.1        2018-01-22 CRAN (R 3.4.3)                  
@@ -1161,22 +1140,17 @@ write(contig_size %&amp;gt;% filter(length &amp;lt; 3e7, contig != &amp;#39;hs37
 &lt;div id=&#34;load-data-and-look-at-structure-str&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Load data and look at structure (str)&lt;/h2&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;tidyverse&amp;#39; was built under R version 3.4.2&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ── Attaching packages ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## ── Attaching packages ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## ✔ ggplot2 2.2.1     ✔ purrr   0.2.4
-## ✔ tibble  1.3.4     ✔ dplyr   0.7.4
+## ✔ tibble  1.4.2     ✔ dplyr   0.7.4
 ## ✔ tidyr   0.7.2     ✔ stringr 1.2.0
 ## ✔ readr   1.1.1     ✔ forcats 0.2.0&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;tibble&amp;#39; was built under R version 3.4.1&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;tidyr&amp;#39; was built under R version 3.4.2&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;purrr&amp;#39; was built under R version 3.4.2&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;dplyr&amp;#39; was built under R version 3.4.2&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ── Conflicts ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+&lt;pre&gt;&lt;code&gt;## ── Conflicts ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggsci)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;ggsci&amp;#39; was built under R version 3.4.2&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;cobra &amp;lt;- readxl::read_xls(&amp;#39;~/git/Let_us_plot/002_smoothed_lines/Cobra 749--_Normalized_Data_.xls&amp;#39;, sheet = &amp;#39;Normalized 2 Base For Comb&amp;#39;)
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggsci)
+
+cobra &amp;lt;- readxl::read_xls(&amp;#39;~/git/Let_us_plot/002_smoothed_lines/Cobra 749--_Normalized_Data_.xls&amp;#39;, sheet = &amp;#39;Normalized 2 Base For Comb&amp;#39;)
 cobra %&amp;gt;% str()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Classes &amp;#39;tbl_df&amp;#39;, &amp;#39;tbl&amp;#39; and &amp;#39;data.frame&amp;#39;:    187 obs. of  8 variables:
 ##  $ Pig_Name  : chr  &amp;quot;Cobra 749&amp;quot; &amp;quot;Cobra 749&amp;quot; &amp;quot;Cobra 749&amp;quot; &amp;quot;Cobra 749&amp;quot; ...
@@ -1203,26 +1177,24 @@ eel %&amp;gt;% str()&lt;/code&gt;&lt;/pre&gt;
 &lt;h2&gt;Head (first few lines)&lt;/h2&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;cobra %&amp;gt;% head()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## # A tibble: 6 x 8
-##    Pig_Name  Week          Region Cells           Output GroupCount
-##       &amp;lt;chr&amp;gt; &amp;lt;dbl&amp;gt;           &amp;lt;chr&amp;gt; &amp;lt;lgl&amp;gt;            &amp;lt;chr&amp;gt;      &amp;lt;dbl&amp;gt;
-## 1 Cobra 749     0 Healthy_Implant FALSE Area-Under-Curve          3
-## 2 Cobra 749     0 Healthy_Implant FALSE       HFC-Scalar          3
-## 3 Cobra 749     0 Healthy_Implant FALSE       LFC-Scalar          3
-## 4 Cobra 749     0 Healthy_Implant FALSE               N1          3
-## 5 Cobra 749     0 Healthy_Implant FALSE       N1-Latency          3
-## 6 Cobra 749     0 Healthy_Implant FALSE          N1-Prom          3
-## # ... with 2 more variables: Data &amp;lt;dbl&amp;gt;, STD &amp;lt;dbl&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+##   Pig_Name   Week Region          Cells Output     GroupCount  Data    STD
+##   &amp;lt;chr&amp;gt;     &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;           &amp;lt;lgl&amp;gt; &amp;lt;chr&amp;gt;           &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt;  &amp;lt;dbl&amp;gt;
+## 1 Cobra 749     0 Healthy_Implant F     Area-Unde…       3.00  1.00 0.0994
+## 2 Cobra 749     0 Healthy_Implant F     HFC-Scalar       3.00  1.00 0.349 
+## 3 Cobra 749     0 Healthy_Implant F     LFC-Scalar       3.00  1.00 0.226 
+## 4 Cobra 749     0 Healthy_Implant F     N1               3.00  1.00 0.106 
+## 5 Cobra 749     0 Healthy_Implant F     N1-Latency       3.00 15.7  0.577 
+## 6 Cobra 749     0 Healthy_Implant F     N1-Prom          3.00  1.00 0.177&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;eel %&amp;gt;% head()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## # A tibble: 6 x 8
-##   Pig_Name  Week       Region Cells           Output GroupCount     Data
-##      &amp;lt;chr&amp;gt; &amp;lt;dbl&amp;gt;        &amp;lt;chr&amp;gt; &amp;lt;lgl&amp;gt;            &amp;lt;chr&amp;gt;      &amp;lt;dbl&amp;gt;    &amp;lt;dbl&amp;gt;
-## 1  Eel 668     0 Healthy_Sham FALSE Area-Under-Curve          3  1.00000
-## 2  Eel 668     0 Healthy_Sham FALSE       HFC-Scalar          3  1.00000
-## 3  Eel 668     0 Healthy_Sham FALSE       LFC-Scalar          3  1.00000
-## 4  Eel 668     0 Healthy_Sham FALSE               N1          3  1.00000
-## 5  Eel 668     0 Healthy_Sham FALSE       N1-Latency          3 20.66667
-## 6  Eel 668     0 Healthy_Sham FALSE          N1-Prom          3  1.00000
-## # ... with 1 more variables: STD &amp;lt;dbl&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+##   Pig_Name  Week Region       Cells Output         GroupCount  Data    STD
+##   &amp;lt;chr&amp;gt;    &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;        &amp;lt;lgl&amp;gt; &amp;lt;chr&amp;gt;               &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt;  &amp;lt;dbl&amp;gt;
+## 1 Eel 668      0 Healthy_Sham F     Area-Under-Cu…       3.00  1.00 0.0537
+## 2 Eel 668      0 Healthy_Sham F     HFC-Scalar           3.00  1.00 0.514 
+## 3 Eel 668      0 Healthy_Sham F     LFC-Scalar           3.00  1.00 0.135 
+## 4 Eel 668      0 Healthy_Sham F     N1                   3.00  1.00 0.0631
+## 5 Eel 668      0 Healthy_Sham F     N1-Latency           3.00 20.7  0.577 
+## 6 Eel 668      0 Healthy_Sham F     N1-Prom              3.00  1.00 0.0781&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Looks like we have implant (cobra) vs sham (eel)?&lt;/p&gt;
 &lt;p&gt;We have several types of &lt;code&gt;Output&lt;/code&gt; (Area-Under-Curve, HFC-Scalar, LFC-Scalar, N1, N1-Latency, N1-Prom, N1-Width, N1P1, N2, N2-Latency, N2-Prom, N2-Width, N2P2, P1, P1-Latency, P1-Prom, P1-Width, P1N2, P2, P2-Latency, P2-Prom, P2-Width, Pos.-Area-Under-Curve, RMS-HFC) which are different variables that have been measured. I asked Aaron what he cared most about and he suggested AUC, N1P1, and Latency&lt;/p&gt;
 &lt;/div&gt;
@@ -1261,17 +1233,16 @@ eel %&amp;gt;% str()&lt;/code&gt;&lt;/pre&gt;
 &lt;h2&gt;What kind of time points or conditions or whatever do we have again?&lt;/h2&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;cobra %&amp;gt;% filter(Output == &amp;#39;Area-Under-Curve&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## # A tibble: 8 x 8
-##    Pig_Name  Week          Region Cells           Output GroupCount
-##       &amp;lt;chr&amp;gt; &amp;lt;dbl&amp;gt;           &amp;lt;chr&amp;gt; &amp;lt;lgl&amp;gt;            &amp;lt;chr&amp;gt;      &amp;lt;dbl&amp;gt;
-## 1 Cobra 749     0 Healthy_Implant FALSE Area-Under-Curve          3
-## 2 Cobra 749    14 Healthy_Implant FALSE Area-Under-Curve          3
-## 3 Cobra 749    35 Healthy_Implant FALSE Area-Under-Curve          3
-## 4 Cobra 749    58 Healthy_Implant FALSE Area-Under-Curve          3
-## 5 Cobra 749     0    Implant_NoLx FALSE Area-Under-Curve          3
-## 6 Cobra 749    14    Implant_NoLx FALSE Area-Under-Curve          3
-## 7 Cobra 749    35    Implant_NoLx FALSE Area-Under-Curve          3
-## 8 Cobra 749    58    Implant_NoLx FALSE Area-Under-Curve          3
-## # ... with 2 more variables: Data &amp;lt;dbl&amp;gt;, STD &amp;lt;dbl&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+##   Pig_Name   Week Region          Cells Output     GroupCount  Data    STD
+##   &amp;lt;chr&amp;gt;     &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;           &amp;lt;lgl&amp;gt; &amp;lt;chr&amp;gt;           &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt;  &amp;lt;dbl&amp;gt;
+## 1 Cobra 749   0   Healthy_Implant F     Area-Unde…       3.00 1.00  0.0994
+## 2 Cobra 749  14.0 Healthy_Implant F     Area-Unde…       3.00 0.690 0.0877
+## 3 Cobra 749  35.0 Healthy_Implant F     Area-Unde…       3.00 0.689 0.119 
+## 4 Cobra 749  58.0 Healthy_Implant F     Area-Unde…       3.00 0.957 0.208 
+## 5 Cobra 749   0   Implant_NoLx    F     Area-Unde…       3.00 1.00  0.0868
+## 6 Cobra 749  14.0 Implant_NoLx    F     Area-Unde…       3.00 0.365 0.0964
+## 7 Cobra 749  35.0 Implant_NoLx    F     Area-Unde…       3.00 0.409 0.102 
+## 8 Cobra 749  58.0 Implant_NoLx    F     Area-Unde…       3.00 0.481 0.212&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Oh, we have &lt;em&gt;two kinds or regions&lt;/em&gt;. Didn’t see that before. So the above summary doesn’t take that into account.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;summary-by-pig-and-region&#34; class=&#34;section level2&#34;&gt;
@@ -1279,16 +1250,16 @@ eel %&amp;gt;% str()&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;This summary is &lt;code&gt;group_by(Region)&lt;/code&gt; so we’ll get summary data (&lt;code&gt;mean&lt;/code&gt; and &lt;code&gt;median&lt;/code&gt;) by Region now&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;cobra %&amp;gt;% filter(Output == &amp;#39;Area-Under-Curve&amp;#39;) %&amp;gt;% group_by(Region) %&amp;gt;% summarise(mean = mean(Data), median= median(Data))&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## # A tibble: 2 x 3
-##            Region      mean    median
-##             &amp;lt;chr&amp;gt;     &amp;lt;dbl&amp;gt;     &amp;lt;dbl&amp;gt;
-## 1 Healthy_Implant 0.8339120 0.8232216
-## 2    Implant_NoLx 0.5638621 0.4450836&lt;/code&gt;&lt;/pre&gt;
+##   Region           mean median
+##   &amp;lt;chr&amp;gt;           &amp;lt;dbl&amp;gt;  &amp;lt;dbl&amp;gt;
+## 1 Healthy_Implant 0.834  0.823
+## 2 Implant_NoLx    0.564  0.445&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;eel %&amp;gt;% filter(Output == &amp;#39;Area-Under-Curve&amp;#39;) %&amp;gt;% group_by(Region) %&amp;gt;% summarise(mean = mean(Data), median= median(Data))&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## # A tibble: 2 x 3
-##         Region      mean    median
-##          &amp;lt;chr&amp;gt;     &amp;lt;dbl&amp;gt;     &amp;lt;dbl&amp;gt;
-## 1 Healthy_Sham 0.9784509 0.9919426
-## 2 Implant-Sham 0.7610630 0.7210445&lt;/code&gt;&lt;/pre&gt;
+##   Region        mean median
+##   &amp;lt;chr&amp;gt;        &amp;lt;dbl&amp;gt;  &amp;lt;dbl&amp;gt;
+## 1 Healthy_Sham 0.978  0.992
+## 2 Implant-Sham 0.761  0.721&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;We also have time (Week). This will be our x axis when we plot, as this data is sampled across time&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;plot-auc-by-time-and-region-and-pig&#34; class=&#34;section level2&#34;&gt;
@@ -1310,126 +1281,6 @@ cobra_eel_AUC %&amp;gt;%
   geom_smooth(method = &amp;#39;loess&amp;#39;) + ## this draws the smoothed lines through the four points. It auto picks an algorithm that works. loess was used here
   theme_bw() + scale_colour_npg() +
   ylab(&amp;#39;AUC&amp;#39;) &lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : span too small. fewer data values than degrees of freedom.&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : pseudoinverse used at -0.29&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : neighborhood radius 35.29&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : reciprocal condition number 0&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : There are other near singularities as well. 1961.6&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : span too small.
-## fewer data values than degrees of freedom.&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : pseudoinverse used
-## at -0.29&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : neighborhood radius
-## 35.29&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : reciprocal
-## condition number 0&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : There are other
-## near singularities as well. 1961.6&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : span too small. fewer data values than degrees of freedom.&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : pseudoinverse used at -0.285&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : neighborhood radius 35.285&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : reciprocal condition number 0&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : There are other near singularities as well. 1873.6&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : span too small.
-## fewer data values than degrees of freedom.&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : pseudoinverse used
-## at -0.285&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : neighborhood radius
-## 35.285&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : reciprocal
-## condition number 0&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : There are other
-## near singularities as well. 1873.6&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : span too small. fewer data values than degrees of freedom.&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : pseudoinverse used at -0.29&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : neighborhood radius 35.29&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : reciprocal condition number 0&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : There are other near singularities as well. 1961.6&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : span too small.
-## fewer data values than degrees of freedom.&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : pseudoinverse used
-## at -0.29&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : neighborhood radius
-## 35.29&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : reciprocal
-## condition number 0&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : There are other
-## near singularities as well. 1961.6&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : span too small. fewer data values than degrees of freedom.&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : pseudoinverse used at -0.285&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : neighborhood radius 35.285&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : reciprocal condition number 0&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : There are other near singularities as well. 1873.6&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : span too small.
-## fewer data values than degrees of freedom.&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : pseudoinverse used
-## at -0.285&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : neighborhood radius
-## 35.285&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : reciprocal
-## condition number 0&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : There are other
-## near singularities as well. 1873.6&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;/././post/2018-02-04-let-s-plot-2-smoothed-lines_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;n1p1-plot&#34; class=&#34;section level2&#34;&gt;
@@ -1441,126 +1292,6 @@ cobra_eel_AUC %&amp;gt;%
   theme_bw() + scale_colour_npg() +
   ylab(&amp;#39;N1P1&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## `geom_smooth()` using method = &amp;#39;loess&amp;#39;&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : span too small. fewer data values than degrees of freedom.&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : pseudoinverse used at -0.29&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : neighborhood radius 35.29&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : reciprocal condition number 0&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : There are other near singularities as well. 1961.6&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : span too small.
-## fewer data values than degrees of freedom.&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : pseudoinverse used
-## at -0.29&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : neighborhood radius
-## 35.29&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : reciprocal
-## condition number 0&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : There are other
-## near singularities as well. 1961.6&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : span too small. fewer data values than degrees of freedom.&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : pseudoinverse used at -0.285&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : neighborhood radius 35.285&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : reciprocal condition number 0&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : There are other near singularities as well. 1873.6&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : span too small.
-## fewer data values than degrees of freedom.&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : pseudoinverse used
-## at -0.285&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : neighborhood radius
-## 35.285&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : reciprocal
-## condition number 0&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : There are other
-## near singularities as well. 1873.6&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : span too small. fewer data values than degrees of freedom.&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : pseudoinverse used at -0.29&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : neighborhood radius 35.29&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : reciprocal condition number 0&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : There are other near singularities as well. 1961.6&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : span too small.
-## fewer data values than degrees of freedom.&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : pseudoinverse used
-## at -0.29&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : neighborhood radius
-## 35.29&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : reciprocal
-## condition number 0&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : There are other
-## near singularities as well. 1961.6&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : span too small. fewer data values than degrees of freedom.&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : pseudoinverse used at -0.285&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : neighborhood radius 35.285&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : reciprocal condition number 0&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : There are other near singularities as well. 1873.6&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : span too small.
-## fewer data values than degrees of freedom.&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : pseudoinverse used
-## at -0.285&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : neighborhood radius
-## 35.285&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : reciprocal
-## condition number 0&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : There are other
-## near singularities as well. 1873.6&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;/././post/2018-02-04-let-s-plot-2-smoothed-lines_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;latency-plot&#34; class=&#34;section level2&#34;&gt;
@@ -1572,126 +1303,6 @@ cobra_eel_AUC %&amp;gt;%
   theme_bw() + scale_colour_npg() +
   ylab(&amp;#39;N1-Latency&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## `geom_smooth()` using method = &amp;#39;loess&amp;#39;&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : span too small. fewer data values than degrees of freedom.&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : pseudoinverse used at -0.29&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : neighborhood radius 35.29&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : reciprocal condition number 0&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : There are other near singularities as well. 1961.6&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : span too small.
-## fewer data values than degrees of freedom.&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : pseudoinverse used
-## at -0.29&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : neighborhood radius
-## 35.29&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : reciprocal
-## condition number 0&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : There are other
-## near singularities as well. 1961.6&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : span too small. fewer data values than degrees of freedom.&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : pseudoinverse used at -0.285&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : neighborhood radius 35.285&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : reciprocal condition number 0&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : There are other near singularities as well. 1873.6&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : span too small.
-## fewer data values than degrees of freedom.&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : pseudoinverse used
-## at -0.285&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : neighborhood radius
-## 35.285&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : reciprocal
-## condition number 0&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : There are other
-## near singularities as well. 1873.6&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : span too small. fewer data values than degrees of freedom.&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : pseudoinverse used at -0.29&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : neighborhood radius 35.29&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : reciprocal condition number 0&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : There are other near singularities as well. 1961.6&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : span too small.
-## fewer data values than degrees of freedom.&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : pseudoinverse used
-## at -0.29&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : neighborhood radius
-## 35.29&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : reciprocal
-## condition number 0&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : There are other
-## near singularities as well. 1961.6&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : span too small. fewer data values than degrees of freedom.&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : pseudoinverse used at -0.285&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : neighborhood radius 35.285&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : reciprocal condition number 0&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : There are other near singularities as well. 1873.6&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : span too small.
-## fewer data values than degrees of freedom.&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : pseudoinverse used
-## at -0.285&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : neighborhood radius
-## 35.285&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : reciprocal
-## condition number 0&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : There are other
-## near singularities as well. 1873.6&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;/././post/2018-02-04-let-s-plot-2-smoothed-lines_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;bonus&#34; class=&#34;section level2&#34;&gt;
@@ -1777,35 +1388,29 @@ ggplot(all_pigs, aes(x=PC1, y=PC4, color=as.factor(Week), shape=Region)) +
 &lt;div id=&#34;import-data-with-readxl&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Import data with readxl&lt;/h2&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;tidyverse&amp;#39; was built under R version 3.4.2&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ── Attaching packages ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## ── Attaching packages ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## ✔ ggplot2 2.2.1     ✔ purrr   0.2.4
-## ✔ tibble  1.3.4     ✔ dplyr   0.7.4
+## ✔ tibble  1.4.2     ✔ dplyr   0.7.4
 ## ✔ tidyr   0.7.2     ✔ stringr 1.2.0
 ## ✔ readr   1.1.1     ✔ forcats 0.2.0&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;tibble&amp;#39; was built under R version 3.4.1&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;tidyr&amp;#39; was built under R version 3.4.2&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;purrr&amp;#39; was built under R version 3.4.2&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;dplyr&amp;#39; was built under R version 3.4.2&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ── Conflicts ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+&lt;pre&gt;&lt;code&gt;## ── Conflicts ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(stringr)
 polar_values &amp;lt;- readxl::read_xlsx(&amp;#39;~/git/Let_us_plot/001_polar_figure/polar_values.xlsx&amp;#39;)
 polar_values&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## # A tibble: 8 x 8
-##                                                            X__1 `Od Amp1`
-##                                                           &amp;lt;chr&amp;gt;     &amp;lt;dbl&amp;gt;
-## 1                                                             3      2.10
-## 2                                                             5      1.56
-## 3                                                            14      4.79
-## 4                                                            15      0.35
-## 5                                                            18      0.91
-## 6                                                          &amp;lt;NA&amp;gt;        NA
-## 7       1,2,3 are the three readings per patient (3,5,14,15,18)        NA
-## 8 Amp and Angle are paired values, so 1.56 and 19.6 go together        NA
-## # ... with 6 more variables: `Od Amp2` &amp;lt;dbl&amp;gt;, `Od Amp3` &amp;lt;dbl&amp;gt;, X__2 &amp;lt;lgl&amp;gt;,
-## #   `Od Angle1` &amp;lt;dbl&amp;gt;, `Od Angle2` &amp;lt;dbl&amp;gt;, `Od Angle3` &amp;lt;dbl&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+##   X__1         `Od Amp1` `Od Amp2` `Od Amp3` X__2  `Od Angle1` `Od Angle2`
+##   &amp;lt;chr&amp;gt;            &amp;lt;dbl&amp;gt;     &amp;lt;dbl&amp;gt;     &amp;lt;dbl&amp;gt; &amp;lt;lgl&amp;gt;       &amp;lt;dbl&amp;gt;       &amp;lt;dbl&amp;gt;
+## 1 3                2.10      3.01      2.96  NA           66.0        67.7
+## 2 5                1.56      1.36      1.54  NA           19.6        14.7
+## 3 14               4.79      4.73      4.72  NA          360         353  
+## 4 15               0.350     0.320     0.300 NA          257         234  
+## 5 18               0.910     0.830     1.12  NA          350         344  
+## 6 &amp;lt;NA&amp;gt;            NA        NA        NA     NA           NA          NA  
+## 7 1,2,3 are t…    NA        NA        NA     NA           NA          NA  
+## 8 Amp and Ang…    NA        NA        NA     NA           NA          NA  
+## # ... with 1 more variable: `Od Angle3` &amp;lt;dbl&amp;gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;ok-first-lets-remove-the-notes.&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;OK, first let’s remove the notes.&lt;/h2&gt;
@@ -1817,13 +1422,13 @@ polar_values&lt;/code&gt;&lt;/pre&gt;
 polar_values&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## # A tibble: 5 x 7
 ##   Patient `Od Amp1` `Od Amp2` `Od Amp3` `Od Angle1` `Od Angle2`
-##    &amp;lt;fctr&amp;gt;     &amp;lt;dbl&amp;gt;     &amp;lt;dbl&amp;gt;     &amp;lt;dbl&amp;gt;       &amp;lt;dbl&amp;gt;       &amp;lt;dbl&amp;gt;
-## 1       3      2.10      3.01      2.96        66.0        67.7
-## 2       5      1.56      1.36      1.54        19.6        14.7
-## 3      14      4.79      4.73      4.72       359.9       352.9
-## 4      15      0.35      0.32      0.30       256.9       233.8
-## 5      18      0.91      0.83      1.12       349.6       344.4
-## # ... with 1 more variables: `Od Angle3` &amp;lt;dbl&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+##   &amp;lt;fct&amp;gt;       &amp;lt;dbl&amp;gt;     &amp;lt;dbl&amp;gt;     &amp;lt;dbl&amp;gt;       &amp;lt;dbl&amp;gt;       &amp;lt;dbl&amp;gt;
+## 1 3           2.10      3.01      2.96         66.0        67.7
+## 2 5           1.56      1.36      1.54         19.6        14.7
+## 3 14          4.79      4.73      4.72        360         353  
+## 4 15          0.350     0.320     0.300       257         234  
+## 5 18          0.910     0.830     1.12        350         344  
+## # ... with 1 more variable: `Od Angle3` &amp;lt;dbl&amp;gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;however-we-arent-done.-the-data-is-wide-instead-of-long-and-we-have-mixed-session-ids-amp-1-3-and-angle-1-3-with-the-value-type.&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;However, we aren’t done. The data is “wide” instead of “long” and we have mixed session IDs (Amp 1-3 and Angle 1-3) with the value type.&lt;/h2&gt;
@@ -1833,17 +1438,17 @@ polar_values&lt;/code&gt;&lt;/pre&gt;
   gather(Test_Session, Value, `Od Amp1`:`Od Angle3`) &lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## # A tibble: 30 x 3
 ##    Patient Test_Session Value
-##     &amp;lt;fctr&amp;gt;        &amp;lt;chr&amp;gt; &amp;lt;dbl&amp;gt;
-##  1       3      Od Amp1  2.10
-##  2       5      Od Amp1  1.56
-##  3      14      Od Amp1  4.79
-##  4      15      Od Amp1  0.35
-##  5      18      Od Amp1  0.91
-##  6       3      Od Amp2  3.01
-##  7       5      Od Amp2  1.36
-##  8      14      Od Amp2  4.73
-##  9      15      Od Amp2  0.32
-## 10      18      Od Amp2  0.83
+##    &amp;lt;fct&amp;gt;   &amp;lt;chr&amp;gt;        &amp;lt;dbl&amp;gt;
+##  1 3       Od Amp1      2.10 
+##  2 5       Od Amp1      1.56 
+##  3 14      Od Amp1      4.79 
+##  4 15      Od Amp1      0.350
+##  5 18      Od Amp1      0.910
+##  6 3       Od Amp2      3.01 
+##  7 5       Od Amp2      1.36 
+##  8 14      Od Amp2      4.73 
+##  9 15      Od Amp2      0.320
+## 10 18      Od Amp2      0.830
 ## # ... with 20 more rows&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;now-we-need-to-extract-the-session-123-and-the-test-type-amp-or-angle&#34; class=&#34;section level2&#34;&gt;
@@ -1854,18 +1459,18 @@ polar_values&lt;/code&gt;&lt;/pre&gt;
   gather(Test_Session, Value, `Od Amp1`:`Od Angle3`) %&amp;gt;% 
   mutate(Session = str_sub(Test_Session, -1), Test = str_sub(Test_Session,1,-2))&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## # A tibble: 30 x 5
-##    Patient Test_Session Value Session   Test
-##     &amp;lt;fctr&amp;gt;        &amp;lt;chr&amp;gt; &amp;lt;dbl&amp;gt;   &amp;lt;chr&amp;gt;  &amp;lt;chr&amp;gt;
-##  1       3      Od Amp1  2.10       1 Od Amp
-##  2       5      Od Amp1  1.56       1 Od Amp
-##  3      14      Od Amp1  4.79       1 Od Amp
-##  4      15      Od Amp1  0.35       1 Od Amp
-##  5      18      Od Amp1  0.91       1 Od Amp
-##  6       3      Od Amp2  3.01       2 Od Amp
-##  7       5      Od Amp2  1.36       2 Od Amp
-##  8      14      Od Amp2  4.73       2 Od Amp
-##  9      15      Od Amp2  0.32       2 Od Amp
-## 10      18      Od Amp2  0.83       2 Od Amp
+##    Patient Test_Session Value Session Test  
+##    &amp;lt;fct&amp;gt;   &amp;lt;chr&amp;gt;        &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;   &amp;lt;chr&amp;gt; 
+##  1 3       Od Amp1      2.10  1       Od Amp
+##  2 5       Od Amp1      1.56  1       Od Amp
+##  3 14      Od Amp1      4.79  1       Od Amp
+##  4 15      Od Amp1      0.350 1       Od Amp
+##  5 18      Od Amp1      0.910 1       Od Amp
+##  6 3       Od Amp2      3.01  2       Od Amp
+##  7 5       Od Amp2      1.36  2       Od Amp
+##  8 14      Od Amp2      4.73  2       Od Amp
+##  9 15      Od Amp2      0.320 2       Od Amp
+## 10 18      Od Amp2      0.830 2       Od Amp
 ## # ... with 20 more rows&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;now-we-have-two-value-types-angle-and-amplitude-in-one-column.-so-we-need-to-go-from-long-to-wide-to-split-them-apart.&#34; class=&#34;section level2&#34;&gt;
@@ -1878,22 +1483,22 @@ polar_values&lt;/code&gt;&lt;/pre&gt;
   spread(Test, Value)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## # A tibble: 15 x 4
 ##    Patient Session `Od Amp` `Od Angle`
-##  *  &amp;lt;fctr&amp;gt;   &amp;lt;chr&amp;gt;    &amp;lt;dbl&amp;gt;      &amp;lt;dbl&amp;gt;
-##  1      14       1     4.79      359.9
-##  2      14       2     4.73      352.9
-##  3      14       3     4.72      353.3
-##  4      15       1     0.35      256.9
-##  5      15       2     0.32      233.8
-##  6      15       3     0.30      275.5
-##  7      18       1     0.91      349.6
-##  8      18       2     0.83      344.4
-##  9      18       3     1.12      349.3
-## 10       3       1     2.10       66.0
-## 11       3       2     3.01       67.7
-## 12       3       3     2.96       65.7
-## 13       5       1     1.56       19.6
-## 14       5       2     1.36       14.7
-## 15       5       3     1.54      359.8&lt;/code&gt;&lt;/pre&gt;
+##  * &amp;lt;fct&amp;gt;   &amp;lt;chr&amp;gt;      &amp;lt;dbl&amp;gt;      &amp;lt;dbl&amp;gt;
+##  1 14      1          4.79       360  
+##  2 14      2          4.73       353  
+##  3 14      3          4.72       353  
+##  4 15      1          0.350      257  
+##  5 15      2          0.320      234  
+##  6 15      3          0.300      276  
+##  7 18      1          0.910      350  
+##  8 18      2          0.830      344  
+##  9 18      3          1.12       349  
+## 10 3       1          2.10        66.0
+## 11 3       2          3.01        67.7
+## 12 3       3          2.96        65.7
+## 13 5       1          1.56        19.6
+## 14 5       2          1.36        14.7
+## 15 5       3          1.54       360&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Boom. Mic drop.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;putting-it-all-together-and-saving-so-we-dont-have-to-see-this-big-code-block-later.&#34; class=&#34;section level2&#34;&gt;
@@ -1908,22 +1513,22 @@ polar_values&lt;/code&gt;&lt;/pre&gt;
 reformatted_values&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## # A tibble: 15 x 4
 ##    Patient Session `Od Amp` `Od Angle`
-##  *  &amp;lt;fctr&amp;gt;   &amp;lt;chr&amp;gt;    &amp;lt;dbl&amp;gt;      &amp;lt;dbl&amp;gt;
-##  1      14       1     4.79      359.9
-##  2      14       2     4.73      352.9
-##  3      14       3     4.72      353.3
-##  4      15       1     0.35      256.9
-##  5      15       2     0.32      233.8
-##  6      15       3     0.30      275.5
-##  7      18       1     0.91      349.6
-##  8      18       2     0.83      344.4
-##  9      18       3     1.12      349.3
-## 10       3       1     2.10       66.0
-## 11       3       2     3.01       67.7
-## 12       3       3     2.96       65.7
-## 13       5       1     1.56       19.6
-## 14       5       2     1.36       14.7
-## 15       5       3     1.54      359.8&lt;/code&gt;&lt;/pre&gt;
+##  * &amp;lt;fct&amp;gt;   &amp;lt;chr&amp;gt;      &amp;lt;dbl&amp;gt;      &amp;lt;dbl&amp;gt;
+##  1 14      1          4.79       360  
+##  2 14      2          4.73       353  
+##  3 14      3          4.72       353  
+##  4 15      1          0.350      257  
+##  5 15      2          0.320      234  
+##  6 15      3          0.300      276  
+##  7 18      1          0.910      350  
+##  8 18      2          0.830      344  
+##  9 18      3          1.12       349  
+## 10 3       1          2.10        66.0
+## 11 3       2          3.01        67.7
+## 12 3       3          2.96        65.7
+## 13 5       1          1.56        19.6
+## 14 5       2          1.36        14.7
+## 15 5       3          1.54       360&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;first-plot.-does-this-work&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;First plot. Does this work?&lt;/h2&gt;
@@ -2010,28 +1615,29 @@ reformatted_values&lt;/code&gt;&lt;/pre&gt;
 ## 
 ## other attached packages:
 ##  [1] bindrcpp_0.2    forcats_0.2.0   stringr_1.2.0   dplyr_0.7.4    
-##  [5] purrr_0.2.4     readr_1.1.1     tidyr_0.7.2     tibble_1.3.4   
+##  [5] purrr_0.2.4     readr_1.1.1     tidyr_0.7.2     tibble_1.4.2   
 ##  [9] ggplot2_2.2.1   tidyverse_1.2.1
 ## 
 ## loaded via a namespace (and not attached):
 ##  [1] tidyselect_0.2.3   xfun_0.1           reshape2_1.4.2    
 ##  [4] haven_1.1.0        lattice_0.20-35    colorspace_1.3-2  
-##  [7] htmltools_0.3.6    yaml_2.1.14        rlang_0.1.4       
-## [10] foreign_0.8-69     glue_1.2.0         RColorBrewer_1.1-2
-## [13] modelr_0.1.1       readxl_1.0.0       bindr_0.1         
-## [16] plyr_1.8.4         munsell_0.4.3      blogdown_0.5      
-## [19] gtable_0.2.0       cellranger_1.1.0   rvest_0.3.2       
-## [22] psych_1.7.8        evaluate_0.10.1    labeling_0.3      
-## [25] knitr_1.17         parallel_3.4.0     broom_0.4.3       
-## [28] Rcpp_0.12.13       backports_1.1.1    scales_0.5.0.9000 
-## [31] jsonlite_1.5       mnormt_1.5-5       hms_0.3           
-## [34] digest_0.6.12      stringi_1.1.6      bookdown_0.6      
-## [37] grid_3.4.0         rprojroot_1.2      cli_1.0.0         
-## [40] tools_3.4.0        magrittr_1.5       lazyeval_0.2.1    
-## [43] crayon_1.3.4       pkgconfig_2.0.1    xml2_1.1.1        
-## [46] lubridate_1.7.1    assertthat_0.2.0   rmarkdown_1.8     
-## [49] httr_1.3.1         rstudioapi_0.7     R6_2.2.2          
-## [52] nlme_3.1-131       compiler_3.4.0&lt;/code&gt;&lt;/pre&gt;
+##  [7] htmltools_0.3.6    yaml_2.1.14        utf8_1.1.3        
+## [10] rlang_0.1.6        pillar_1.1.0       foreign_0.8-69    
+## [13] glue_1.2.0         RColorBrewer_1.1-2 modelr_0.1.1      
+## [16] readxl_1.0.0       bindr_0.1          plyr_1.8.4        
+## [19] munsell_0.4.3      blogdown_0.5       gtable_0.2.0      
+## [22] cellranger_1.1.0   rvest_0.3.2        psych_1.7.8       
+## [25] evaluate_0.10.1    labeling_0.3       knitr_1.17        
+## [28] parallel_3.4.0     broom_0.4.3        Rcpp_0.12.13      
+## [31] backports_1.1.1    scales_0.5.0.9000  jsonlite_1.5      
+## [34] mnormt_1.5-5       hms_0.3            digest_0.6.12     
+## [37] stringi_1.1.6      bookdown_0.6       grid_3.4.0        
+## [40] rprojroot_1.2      cli_1.0.0          tools_3.4.0       
+## [43] magrittr_1.5       lazyeval_0.2.1     crayon_1.3.4      
+## [46] pkgconfig_2.0.1    xml2_1.1.1         lubridate_1.7.1   
+## [49] assertthat_0.2.0   rmarkdown_1.8      httr_1.3.1        
+## [52] rstudioapi_0.7     R6_2.2.2           nlme_3.1-131      
+## [55] compiler_3.4.0&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 </description>
     </item>

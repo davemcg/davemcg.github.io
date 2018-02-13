@@ -55,7 +55,7 @@ You'll need [HGNC <-> Ensembl Transcript converter](ftp://ftp.sanger.ac.uk/pub/g
 The first file is used to match gene 'names' with ensembl transcript ID
 
 The second file is used to semi-accurately pick the 'canonical' transcript for a gene (pick the appris transcript, then the longest)
-```{r}
+```{r, warning = FALSE}
 library(data.table)
 library(tidyverse)
 library(cowplot)
@@ -76,7 +76,7 @@ gencode2 <- gencode %>% filter(V3=='transcript') %>%
 
 ## Load mosdepth / bedtools intersect data and prep
 Label coverage chunks with the depth of their coverage with case_when and extract the transcript name and exon number with a bunch of `separate` commands
-```{r}
+```{r, warning = FALSE}
 depth_data <- fread('gzcat ~/Desktop/41001412010527.per-base.labeled.bed.gz')
 dd_processed <- depth_data %>% 
   separate(V8, c('Transcript','Rest'), '_cds_') %>% 
@@ -96,7 +96,7 @@ dd_processed <- left_join(dd_processed, metadata, by=c('Transcript'))
 
 ## Plot Maker, version 1
 Faceted by exon. One plot per gene and using cowplot to *glue* them together
-```{r, fig.width=7,fig.height=3}
+```{r, warning = FALSE, fig.width=7,fig.height=3}
 genes <- c('PAX6','ABCA4','NRL','CRX','RPGR')
 transcripts = gencode2 %>% filter(Name %in% genes) %>% pull(Transcript)
 
@@ -145,7 +145,7 @@ legend <- get_legend(plots[[names(plots)[1]]] + theme(legend.position='right'))
 
 ## Version 2
 A bit tighter. Recalculates coordinates to glue all of the exons together in one plot. I can facet by gene. A bit harder to read, but is more accurate as the exons and gene lengths are proportional
-```{r}
+```{r, warning = FALSE}
 genes <- c('PAX6','ABCA4','NRL','CRX','RPGR')
 tx = gencode2 %>% filter(Name %in% genes) %>% pull(Transcript)
 
@@ -174,7 +174,7 @@ ggplot() +
 ```
 
 ## sessionInfo()
-```{r}
+```{r, warning = FALSE}
 devtools::session_info()
 ```
 

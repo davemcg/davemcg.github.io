@@ -40,7 +40,7 @@ If you want to see how I did the above, see [Part 2](/post/let-s-plot-3-base-pai
 ## Data
 `dd_class.csv` can be found [here](https://github.com/davemcg/Let_us_plot/raw/master/003_coverage/dd_class.csv)
 
-```{r}
+```{r, warning = FALSE}
 library(tidyverse)
 library(cowplot) # you probably need to install this with install.packages('cowplot')
 dd_class <- read_csv('~/git/Let_us_plot/003_coverage/dd_class.csv')
@@ -49,24 +49,24 @@ head(dd_class)
 ```
 
 ## How many genes are in this dataset?
-```{r}
+```{r, warning = FALSE}
 dd_class$Name %>% unique() %>% length()
 ```
 
 ## What genes are in here?
-```{r}
+```{r, warning = FALSE}
 dd_class$Name %>% unique() %>% sort()
 ```
 
 ## How many data points (bases) per gene?
-```{r}
+```{r, warning = FALSE}
 dd_class %>% 
   group_by(Name) %>% 
   summarise(Count=n())
 ```
 
 ## How many exons per gene?
-```{r}
+```{r, warning = FALSE}
 dd_class %>% 
   select(Name, `Exon Number`) %>% 
   unique() %>% 
@@ -76,7 +76,7 @@ dd_class %>%
 
 ## How many base pairs of ABCA4 (well, ABCA4 exons) is covered by more than 10 reads?
 Base R style
-```{r}
+```{r, warning = FALSE}
 # Grab the Read_Depth vector from the data frame filtered by ABCA4 values
 depth_abca4 <- dd_class %>% 
   filter(Name=='ABCA4') %>% 
@@ -85,12 +85,12 @@ sum(depth_abca4 > 10)
 ```
 
 ## 5 reads?
-```{r}
+```{r, warning = FALSE}
 sum(depth_abca4 > 5)
 ```
 
 ## Let's check all of the genes to see which are the worst covered
-```{r}
+```{r, warning = FALSE}
 dd_class %>% 
   group_by(Name) %>% 
   summarise(Total_Bases = n(),
@@ -104,14 +104,14 @@ dd_class %>%
 
 
 ## We can visually display the data, also
-```{r}
+```{r, warning = FALSE}
 dd_class %>% 
   ggplot(aes(x=Read_Depth, group=Name)) +
   geom_density()
 ```
 
 ## Hard to see what is going on, let's make little plots for each gene
-```{r, fig.width=10, fig.height=10, fig.keep = F}
+```{r, warning = FALSE, fig.width=10, fig.height=10, fig.keep = F}
 dd_class %>% 
   ggplot(aes(x=Read_Depth, group=Name)) +
   facet_wrap(~Name) + 
@@ -122,7 +122,7 @@ dd_class %>%
 
 ## Where are genes poorly covered?
 ### BBIP1
-```{r}
+```{r, warning = FALSE}
 dd_class %>% filter(Name=='BBIP1') %>% 
   ggplot(aes(x=Start, y=Read_Depth)) + 
   facet_wrap(~`Exon Number`, scales = 'free_x', nrow=1, strip.position = 'bottom') + 
@@ -139,7 +139,7 @@ dd_class %>% filter(Name=='BBIP1') %>%
 
 
 ## Make a coverage plot for many genes (This is advanced stuff!!!)
-```{r, fig.width=6, fig.height=3, fig.keep = 'none'}
+```{r, warning = FALSE, fig.width=6, fig.height=3, fig.keep = 'none'}
 gene_list <- c('ABCA4', 'PITX2','VSX2','RPGR','SOX10')
 
 # set a custom color that will work even if a category is missing
@@ -175,11 +175,11 @@ for (i in gene_list){
 plot_grid(plotlist = plots, ncol=1)
 ```
 
-```{r echo=FALSE, out.width='100%'}
+```{r, warning = FALSE, echo=FALSE, out.width='100%'}
 knitr::include_graphics('/img/lets_plot3_cow.png')
 ```
 
-```{r}
+```{r, warning = FALSE}
 devtools::session_info()
 ```
 

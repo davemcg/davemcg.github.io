@@ -255,7 +255,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    10 min read
+    9 min read
   </span>
   
 
@@ -381,20 +381,14 @@ bedtools intersect -wa -wb -a 41001412010527.per-base.bed.gz -b /data/mcgaugheyd
 <p>You’ll need <a href="ftp://ftp.sanger.ac.uk/pub/gencode/Gencode_human/release_27/GRCh37_mapping/gencode.v27lift37.metadata.HGNC.gz">HGNC &lt;-&gt; Ensembl Transcript converter</a> and the <a href="ftp://ftp.sanger.ac.uk/pub/gencode/Gencode_human/release_27/GRCh37_mapping/gencode.v27lift37.basic.annotation.gtf.gz">Gencode GTF</a></p>
 <p>The first file is used to match gene ‘names’ with ensembl transcript ID</p>
 <p>The second file is used to semi-accurately pick the ‘canonical’ transcript for a gene (pick the appris transcript, then the longest)</p>
-<pre class="r"><code>library(data.table)</code></pre>
-<pre><code>## Warning: package &#39;data.table&#39; was built under R version 3.4.2</code></pre>
-<pre class="r"><code>library(tidyverse)</code></pre>
-<pre><code>## Warning: package &#39;tidyverse&#39; was built under R version 3.4.2</code></pre>
-<pre><code>## ── Attaching packages ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──</code></pre>
+<pre class="r"><code>library(data.table)
+library(tidyverse)</code></pre>
+<pre><code>## ── Attaching packages ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──</code></pre>
 <pre><code>## ✔ ggplot2 2.2.1     ✔ purrr   0.2.4
-## ✔ tibble  1.3.4     ✔ dplyr   0.7.4
+## ✔ tibble  1.4.2     ✔ dplyr   0.7.4
 ## ✔ tidyr   0.7.2     ✔ stringr 1.2.0
 ## ✔ readr   1.1.1     ✔ forcats 0.2.0</code></pre>
-<pre><code>## Warning: package &#39;tibble&#39; was built under R version 3.4.1</code></pre>
-<pre><code>## Warning: package &#39;tidyr&#39; was built under R version 3.4.2</code></pre>
-<pre><code>## Warning: package &#39;purrr&#39; was built under R version 3.4.2</code></pre>
-<pre><code>## Warning: package &#39;dplyr&#39; was built under R version 3.4.2</code></pre>
-<pre><code>## ── Conflicts ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+<pre><code>## ── Conflicts ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::between()   masks data.table::between()
 ## ✖ dplyr::filter()    masks stats::filter()
 ## ✖ dplyr::first()     masks data.table::first()
@@ -402,7 +396,6 @@ bedtools intersect -wa -wb -a 41001412010527.per-base.bed.gz -b /data/mcgaugheyd
 ## ✖ dplyr::last()      masks data.table::last()
 ## ✖ purrr::transpose() masks data.table::transpose()</code></pre>
 <pre class="r"><code>library(cowplot)</code></pre>
-<pre><code>## Warning: package &#39;cowplot&#39; was built under R version 3.4.2</code></pre>
 <pre><code>## 
 ## Attaching package: &#39;cowplot&#39;</code></pre>
 <pre><code>## The following object is masked from &#39;package:ggplot2&#39;:
@@ -418,7 +411,7 @@ Read 14.5% of 1651703 rows
 Read 27.9% of 1651703 rows
 Read 45.4% of 1651703 rows
 Read 48.4% of 1651703 rows
-Read 61.1% of 1651703 rows
+Read 63.0% of 1651703 rows
 Read 75.1% of 1651703 rows
 Read 93.2% of 1651703 rows
 Read 1651703 rows and 9 (of 9) columns from 0.822 GB file in 00:00:11</code></pre>
@@ -431,7 +424,6 @@ Read 1651703 rows and 9 (of 9) columns from 0.822 GB file in 00:00:11</code></pr
   separate(Gene, c(&#39;skip&#39;,&#39;Name&#39;,&#39;skip2&#39;),&#39;\&quot;&#39;) %&gt;% # now you have to remove the &#39;gene name&#39; part  
   select(-skip, -skip2) %&gt;% 
   group_by(Name) %&gt;% top_n(1)</code></pre>
-<pre><code>## Warning: Grouping rowwise data frame strips rowwise nature</code></pre>
 <pre><code>## Selecting by Size</code></pre>
 </div>
 <div id="load-mosdepth-bedtools-intersect-data-and-prep" class="section level2">
@@ -440,30 +432,30 @@ Read 1651703 rows and 9 (of 9) columns from 0.822 GB file in 00:00:11</code></pr
 <pre class="r"><code>depth_data &lt;- fread(&#39;gzcat ~/Desktop/41001412010527.per-base.labeled.bed.gz&#39;)</code></pre>
 <pre><code>## 
 Read 0.0% of 50955214 rows
-Read 4.7% of 50955214 rows
-Read 9.2% of 50955214 rows
-Read 13.9% of 50955214 rows
-Read 18.5% of 50955214 rows
-Read 23.2% of 50955214 rows
+Read 4.5% of 50955214 rows
+Read 9.0% of 50955214 rows
+Read 13.5% of 50955214 rows
+Read 18.0% of 50955214 rows
+Read 22.4% of 50955214 rows
 Read 24.5% of 50955214 rows
 Read 29.1% of 50955214 rows
 Read 33.8% of 50955214 rows
 Read 34.5% of 50955214 rows
-Read 39.1% of 50955214 rows
-Read 43.7% of 50955214 rows
-Read 48.4% of 50955214 rows
+Read 39.2% of 50955214 rows
+Read 43.8% of 50955214 rows
+Read 48.5% of 50955214 rows
 Read 53.0% of 50955214 rows
-Read 57.6% of 50955214 rows
-Read 62.2% of 50955214 rows
-Read 66.6% of 50955214 rows
-Read 71.2% of 50955214 rows
-Read 75.9% of 50955214 rows
-Read 80.6% of 50955214 rows
-Read 85.2% of 50955214 rows
-Read 89.7% of 50955214 rows
-Read 94.3% of 50955214 rows
-Read 98.9% of 50955214 rows
-Read 50955214 rows and 10 (of 10) columns from 4.490 GB file in 00:00:36</code></pre>
+Read 57.7% of 50955214 rows
+Read 62.3% of 50955214 rows
+Read 66.9% of 50955214 rows
+Read 71.6% of 50955214 rows
+Read 76.2% of 50955214 rows
+Read 80.9% of 50955214 rows
+Read 85.6% of 50955214 rows
+Read 90.2% of 50955214 rows
+Read 94.6% of 50955214 rows
+Read 99.1% of 50955214 rows
+Read 50955214 rows and 10 (of 10) columns from 4.490 GB file in 00:00:37</code></pre>
 <pre class="r"><code>dd_processed &lt;- depth_data %&gt;% 
   separate(V8, c(&#39;Transcript&#39;,&#39;Rest&#39;), &#39;_cds_&#39;) %&gt;% 
   separate(Rest, c(&#39;Before&#39;,&#39;Stuff&#39;),&#39;_chr&#39;) %&gt;% 
@@ -575,7 +567,7 @@ ggplot() +
 ##  language (EN)                        
 ##  collate  en_US.UTF-8                 
 ##  tz       America/New_York            
-##  date     2018-02-09</code></pre>
+##  date     2018-02-13</code></pre>
 <pre><code>## Packages -----------------------------------------------------------------</code></pre>
 <pre><code>##  package    * version    date       source                          
 ##  assertthat   0.2.0      2017-04-11 CRAN (R 3.4.0)                  
@@ -624,6 +616,7 @@ ggplot() +
 ##  munsell      0.4.3      2016-02-13 CRAN (R 3.4.0)                  
 ##  nlme         3.1-131    2017-02-06 CRAN (R 3.4.0)                  
 ##  parallel     3.4.0      2017-04-21 local                           
+##  pillar       1.1.0      2018-01-14 cran (@1.1.0)                   
 ##  pkgconfig    2.0.1      2017-03-21 CRAN (R 3.4.0)                  
 ##  plyr         1.8.4      2016-06-08 CRAN (R 3.4.0)                  
 ##  psych        1.7.8      2017-09-09 CRAN (R 3.4.0)                  
@@ -633,7 +626,7 @@ ggplot() +
 ##  readr      * 1.1.1      2017-05-16 CRAN (R 3.4.0)                  
 ##  readxl       1.0.0      2017-04-18 CRAN (R 3.4.0)                  
 ##  reshape2     1.4.2      2016-10-22 CRAN (R 3.4.0)                  
-##  rlang        0.1.4      2017-11-05 CRAN (R 3.4.2)                  
+##  rlang        0.1.6      2017-12-21 cran (@0.1.6)                   
 ##  rmarkdown    1.8        2017-11-17 CRAN (R 3.4.2)                  
 ##  rprojroot    1.2        2017-01-16 CRAN (R 3.4.0)                  
 ##  rstudioapi   0.7        2017-09-07 CRAN (R 3.4.1)                  
@@ -642,7 +635,7 @@ ggplot() +
 ##  stats      * 3.4.0      2017-04-21 local                           
 ##  stringi      1.1.6      2017-11-17 CRAN (R 3.4.2)                  
 ##  stringr    * 1.2.0      2017-02-18 CRAN (R 3.4.0)                  
-##  tibble     * 1.3.4      2017-08-22 CRAN (R 3.4.1)                  
+##  tibble     * 1.4.2      2018-01-22 cran (@1.4.2)                   
 ##  tidyr      * 0.7.2      2017-10-16 CRAN (R 3.4.2)                  
 ##  tidyselect   0.2.3      2017-11-06 CRAN (R 3.4.2)                  
 ##  tidyverse  * 1.2.1      2017-11-14 CRAN (R 3.4.2)                  

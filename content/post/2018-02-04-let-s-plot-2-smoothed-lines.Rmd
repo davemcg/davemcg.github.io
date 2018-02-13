@@ -29,7 +29,7 @@ They have metrics for eye function across time.
 Aaron told me to take the 'first tab' in each excel file. Which is not the case, as at least to me, 'Sheet 1' is empty in both. So I'm using the next tab in both, which is 'Normalized 2 Base For Comb'
 
 ## Load data and look at structure (str)
-```{r}
+```{r, warning = FALSE}
 library(tidyverse)
 library(ggsci)
 
@@ -41,7 +41,7 @@ eel %>% str()
 ```
 
 ## Head (first few lines)
-```{r}
+```{r, warning = FALSE}
 cobra %>% head()
 eel %>% head()
 ```
@@ -54,7 +54,7 @@ We have several types of `Output` (`r eel$Output %>% unique()`) which are differ
 We need to get the exact names for those variables
 
 We can extract all of the `Output` values and only print the unique ones
-```{r}
+```{r, warning = FALSE}
 eel$Output %>% unique()
 ```
 
@@ -64,7 +64,7 @@ Let's start by just looking at AUC. Generically it is a machine learning measure
 
 ## Summary of eel and cobra AUC
 Get the summary data from just the AUC values for each pig
-```{r}
+```{r, warning = FALSE}
 cobra %>% filter(Output == 'Area-Under-Curve') %>% pull(Data) %>% summary()
 eel %>% filter(Output == 'Area-Under-Curve') %>% pull(Data) %>% summary()
 ```
@@ -72,7 +72,7 @@ eel %>% filter(Output == 'Area-Under-Curve') %>% pull(Data) %>% summary()
 So the sham (eel) has a better AUC? 
 
 ## What kind of time points or conditions or whatever do we have again?
-```{r}
+```{r, warning = FALSE}
 cobra %>% filter(Output == 'Area-Under-Curve')
 ```
 
@@ -80,7 +80,7 @@ Oh, we have *two kinds or regions*. Didn't see that before. So the above summary
 
 ## Summary by pig and region
 This summary is `group_by(Region)` so we'll get summary data (`mean` and `median`) by Region now
-```{r}
+```{r, warning = FALSE}
 cobra %>% filter(Output == 'Area-Under-Curve') %>% group_by(Region) %>% summarise(mean = mean(Data), median= median(Data))
 eel %>% filter(Output == 'Area-Under-Curve') %>% group_by(Region) %>% summarise(mean = mean(Data), median= median(Data))
 ```
@@ -90,7 +90,7 @@ We also have time (Week). This will be our x axis when we plot, as this data is 
 
 ## Plot AUC by time and region and pig
 x axis is time, y axis is AUC, and split by region/pig
-```{r}
+```{r, warning = FALSE}
 cobra_eel_AUC <- rbind(cobra %>% filter(Output == 'Area-Under-Curve'), 
                        eel %>% filter(Output == 'Area-Under-Curve'))
 cobra_eel_AUC %>% 
@@ -100,7 +100,7 @@ cobra_eel_AUC %>%
 
 ## Prettier plot with lines and more formatting
 Using the ggsci library with the Nature Publishing Group color scheme (`scale_colour_npg()`)
-```{r}
+```{r, warning = FALSE}
 cobra_eel_AUC %>% 
   ggplot(aes(x=Week, y=Data, colour=Region, shape = Pig_Name)) + 
   geom_point(size=4) + 
@@ -110,7 +110,7 @@ cobra_eel_AUC %>%
 ```
 
 ## N1P1 Plot
-```{r}
+```{r, warning = FALSE}
 rbind(cobra %>% filter(Output == 'N1P1'), eel %>% filter(Output == 'N1P1')) %>% 
   ggplot(aes(x=Week, y=Data, colour=Region, shape = Pig_Name)) + 
   geom_point(size=4) + 
@@ -120,7 +120,7 @@ rbind(cobra %>% filter(Output == 'N1P1'), eel %>% filter(Output == 'N1P1')) %>%
 ```
 
 ## Latency plot
-```{r}
+```{r, warning = FALSE}
 rbind(cobra %>% filter(Output == 'N1-Latency'), eel %>% filter(Output == 'N1-Latency')) %>% 
   ggplot(aes(x=Week, y=Data, colour=Region, shape = Pig_Name)) + 
   geom_point(size=4) + 
@@ -132,7 +132,7 @@ rbind(cobra %>% filter(Output == 'N1-Latency'), eel %>% filter(Output == 'N1-Lat
 ## Bonus
 
 We have many variables. We can get a quick sense of how all of the variables separate out the major data categories with a PCA
-```{r}
+```{r, warning = FALSE}
 all_pigs <- rbind(cobra, eel) %>% 
   select(Region, Pig_Name, Week, Output, Data) %>% 
   spread(Output, Data)

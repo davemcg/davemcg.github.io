@@ -50,35 +50,29 @@ output:
 <div id="import-data-with-readxl" class="section level2">
 <h2>Import data with readxl</h2>
 <pre class="r"><code>library(tidyverse)</code></pre>
-<pre><code>## Warning: package &#39;tidyverse&#39; was built under R version 3.4.2</code></pre>
-<pre><code>## ── Attaching packages ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──</code></pre>
+<pre><code>## ── Attaching packages ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──</code></pre>
 <pre><code>## ✔ ggplot2 2.2.1     ✔ purrr   0.2.4
-## ✔ tibble  1.3.4     ✔ dplyr   0.7.4
+## ✔ tibble  1.4.2     ✔ dplyr   0.7.4
 ## ✔ tidyr   0.7.2     ✔ stringr 1.2.0
 ## ✔ readr   1.1.1     ✔ forcats 0.2.0</code></pre>
-<pre><code>## Warning: package &#39;tibble&#39; was built under R version 3.4.1</code></pre>
-<pre><code>## Warning: package &#39;tidyr&#39; was built under R version 3.4.2</code></pre>
-<pre><code>## Warning: package &#39;purrr&#39; was built under R version 3.4.2</code></pre>
-<pre><code>## Warning: package &#39;dplyr&#39; was built under R version 3.4.2</code></pre>
-<pre><code>## ── Conflicts ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+<pre><code>## ── Conflicts ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()</code></pre>
 <pre class="r"><code>library(stringr)
 polar_values &lt;- readxl::read_xlsx(&#39;~/git/Let_us_plot/001_polar_figure/polar_values.xlsx&#39;)
 polar_values</code></pre>
 <pre><code>## # A tibble: 8 x 8
-##                                                            X__1 `Od Amp1`
-##                                                           &lt;chr&gt;     &lt;dbl&gt;
-## 1                                                             3      2.10
-## 2                                                             5      1.56
-## 3                                                            14      4.79
-## 4                                                            15      0.35
-## 5                                                            18      0.91
-## 6                                                          &lt;NA&gt;        NA
-## 7       1,2,3 are the three readings per patient (3,5,14,15,18)        NA
-## 8 Amp and Angle are paired values, so 1.56 and 19.6 go together        NA
-## # ... with 6 more variables: `Od Amp2` &lt;dbl&gt;, `Od Amp3` &lt;dbl&gt;, X__2 &lt;lgl&gt;,
-## #   `Od Angle1` &lt;dbl&gt;, `Od Angle2` &lt;dbl&gt;, `Od Angle3` &lt;dbl&gt;</code></pre>
+##   X__1         `Od Amp1` `Od Amp2` `Od Amp3` X__2  `Od Angle1` `Od Angle2`
+##   &lt;chr&gt;            &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt; &lt;lgl&gt;       &lt;dbl&gt;       &lt;dbl&gt;
+## 1 3                2.10      3.01      2.96  NA           66.0        67.7
+## 2 5                1.56      1.36      1.54  NA           19.6        14.7
+## 3 14               4.79      4.73      4.72  NA          360         353  
+## 4 15               0.350     0.320     0.300 NA          257         234  
+## 5 18               0.910     0.830     1.12  NA          350         344  
+## 6 &lt;NA&gt;            NA        NA        NA     NA           NA          NA  
+## 7 1,2,3 are t…    NA        NA        NA     NA           NA          NA  
+## 8 Amp and Ang…    NA        NA        NA     NA           NA          NA  
+## # ... with 1 more variable: `Od Angle3` &lt;dbl&gt;</code></pre>
 </div>
 <div id="ok-first-lets-remove-the-notes." class="section level2">
 <h2>OK, first let’s remove the notes.</h2>
@@ -90,13 +84,13 @@ polar_values</code></pre>
 polar_values</code></pre>
 <pre><code>## # A tibble: 5 x 7
 ##   Patient `Od Amp1` `Od Amp2` `Od Amp3` `Od Angle1` `Od Angle2`
-##    &lt;fctr&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;
-## 1       3      2.10      3.01      2.96        66.0        67.7
-## 2       5      1.56      1.36      1.54        19.6        14.7
-## 3      14      4.79      4.73      4.72       359.9       352.9
-## 4      15      0.35      0.32      0.30       256.9       233.8
-## 5      18      0.91      0.83      1.12       349.6       344.4
-## # ... with 1 more variables: `Od Angle3` &lt;dbl&gt;</code></pre>
+##   &lt;fct&gt;       &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;
+## 1 3           2.10      3.01      2.96         66.0        67.7
+## 2 5           1.56      1.36      1.54         19.6        14.7
+## 3 14          4.79      4.73      4.72        360         353  
+## 4 15          0.350     0.320     0.300       257         234  
+## 5 18          0.910     0.830     1.12        350         344  
+## # ... with 1 more variable: `Od Angle3` &lt;dbl&gt;</code></pre>
 </div>
 <div id="however-we-arent-done.-the-data-is-wide-instead-of-long-and-we-have-mixed-session-ids-amp-1-3-and-angle-1-3-with-the-value-type." class="section level2">
 <h2>However, we aren’t done. The data is “wide” instead of “long” and we have mixed session IDs (Amp 1-3 and Angle 1-3) with the value type.</h2>
@@ -106,17 +100,17 @@ polar_values</code></pre>
   gather(Test_Session, Value, `Od Amp1`:`Od Angle3`) </code></pre>
 <pre><code>## # A tibble: 30 x 3
 ##    Patient Test_Session Value
-##     &lt;fctr&gt;        &lt;chr&gt; &lt;dbl&gt;
-##  1       3      Od Amp1  2.10
-##  2       5      Od Amp1  1.56
-##  3      14      Od Amp1  4.79
-##  4      15      Od Amp1  0.35
-##  5      18      Od Amp1  0.91
-##  6       3      Od Amp2  3.01
-##  7       5      Od Amp2  1.36
-##  8      14      Od Amp2  4.73
-##  9      15      Od Amp2  0.32
-## 10      18      Od Amp2  0.83
+##    &lt;fct&gt;   &lt;chr&gt;        &lt;dbl&gt;
+##  1 3       Od Amp1      2.10 
+##  2 5       Od Amp1      1.56 
+##  3 14      Od Amp1      4.79 
+##  4 15      Od Amp1      0.350
+##  5 18      Od Amp1      0.910
+##  6 3       Od Amp2      3.01 
+##  7 5       Od Amp2      1.36 
+##  8 14      Od Amp2      4.73 
+##  9 15      Od Amp2      0.320
+## 10 18      Od Amp2      0.830
 ## # ... with 20 more rows</code></pre>
 </div>
 <div id="now-we-need-to-extract-the-session-123-and-the-test-type-amp-or-angle" class="section level2">
@@ -127,18 +121,18 @@ polar_values</code></pre>
   gather(Test_Session, Value, `Od Amp1`:`Od Angle3`) %&gt;% 
   mutate(Session = str_sub(Test_Session, -1), Test = str_sub(Test_Session,1,-2))</code></pre>
 <pre><code>## # A tibble: 30 x 5
-##    Patient Test_Session Value Session   Test
-##     &lt;fctr&gt;        &lt;chr&gt; &lt;dbl&gt;   &lt;chr&gt;  &lt;chr&gt;
-##  1       3      Od Amp1  2.10       1 Od Amp
-##  2       5      Od Amp1  1.56       1 Od Amp
-##  3      14      Od Amp1  4.79       1 Od Amp
-##  4      15      Od Amp1  0.35       1 Od Amp
-##  5      18      Od Amp1  0.91       1 Od Amp
-##  6       3      Od Amp2  3.01       2 Od Amp
-##  7       5      Od Amp2  1.36       2 Od Amp
-##  8      14      Od Amp2  4.73       2 Od Amp
-##  9      15      Od Amp2  0.32       2 Od Amp
-## 10      18      Od Amp2  0.83       2 Od Amp
+##    Patient Test_Session Value Session Test  
+##    &lt;fct&gt;   &lt;chr&gt;        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt; 
+##  1 3       Od Amp1      2.10  1       Od Amp
+##  2 5       Od Amp1      1.56  1       Od Amp
+##  3 14      Od Amp1      4.79  1       Od Amp
+##  4 15      Od Amp1      0.350 1       Od Amp
+##  5 18      Od Amp1      0.910 1       Od Amp
+##  6 3       Od Amp2      3.01  2       Od Amp
+##  7 5       Od Amp2      1.36  2       Od Amp
+##  8 14      Od Amp2      4.73  2       Od Amp
+##  9 15      Od Amp2      0.320 2       Od Amp
+## 10 18      Od Amp2      0.830 2       Od Amp
 ## # ... with 20 more rows</code></pre>
 </div>
 <div id="now-we-have-two-value-types-angle-and-amplitude-in-one-column.-so-we-need-to-go-from-long-to-wide-to-split-them-apart." class="section level2">
@@ -151,22 +145,22 @@ polar_values</code></pre>
   spread(Test, Value)</code></pre>
 <pre><code>## # A tibble: 15 x 4
 ##    Patient Session `Od Amp` `Od Angle`
-##  *  &lt;fctr&gt;   &lt;chr&gt;    &lt;dbl&gt;      &lt;dbl&gt;
-##  1      14       1     4.79      359.9
-##  2      14       2     4.73      352.9
-##  3      14       3     4.72      353.3
-##  4      15       1     0.35      256.9
-##  5      15       2     0.32      233.8
-##  6      15       3     0.30      275.5
-##  7      18       1     0.91      349.6
-##  8      18       2     0.83      344.4
-##  9      18       3     1.12      349.3
-## 10       3       1     2.10       66.0
-## 11       3       2     3.01       67.7
-## 12       3       3     2.96       65.7
-## 13       5       1     1.56       19.6
-## 14       5       2     1.36       14.7
-## 15       5       3     1.54      359.8</code></pre>
+##  * &lt;fct&gt;   &lt;chr&gt;      &lt;dbl&gt;      &lt;dbl&gt;
+##  1 14      1          4.79       360  
+##  2 14      2          4.73       353  
+##  3 14      3          4.72       353  
+##  4 15      1          0.350      257  
+##  5 15      2          0.320      234  
+##  6 15      3          0.300      276  
+##  7 18      1          0.910      350  
+##  8 18      2          0.830      344  
+##  9 18      3          1.12       349  
+## 10 3       1          2.10        66.0
+## 11 3       2          3.01        67.7
+## 12 3       3          2.96        65.7
+## 13 5       1          1.56        19.6
+## 14 5       2          1.36        14.7
+## 15 5       3          1.54       360</code></pre>
 <p>Boom. Mic drop.</p>
 </div>
 <div id="putting-it-all-together-and-saving-so-we-dont-have-to-see-this-big-code-block-later." class="section level2">
@@ -181,22 +175,22 @@ polar_values</code></pre>
 reformatted_values</code></pre>
 <pre><code>## # A tibble: 15 x 4
 ##    Patient Session `Od Amp` `Od Angle`
-##  *  &lt;fctr&gt;   &lt;chr&gt;    &lt;dbl&gt;      &lt;dbl&gt;
-##  1      14       1     4.79      359.9
-##  2      14       2     4.73      352.9
-##  3      14       3     4.72      353.3
-##  4      15       1     0.35      256.9
-##  5      15       2     0.32      233.8
-##  6      15       3     0.30      275.5
-##  7      18       1     0.91      349.6
-##  8      18       2     0.83      344.4
-##  9      18       3     1.12      349.3
-## 10       3       1     2.10       66.0
-## 11       3       2     3.01       67.7
-## 12       3       3     2.96       65.7
-## 13       5       1     1.56       19.6
-## 14       5       2     1.36       14.7
-## 15       5       3     1.54      359.8</code></pre>
+##  * &lt;fct&gt;   &lt;chr&gt;      &lt;dbl&gt;      &lt;dbl&gt;
+##  1 14      1          4.79       360  
+##  2 14      2          4.73       353  
+##  3 14      3          4.72       353  
+##  4 15      1          0.350      257  
+##  5 15      2          0.320      234  
+##  6 15      3          0.300      276  
+##  7 18      1          0.910      350  
+##  8 18      2          0.830      344  
+##  9 18      3          1.12       349  
+## 10 3       1          2.10        66.0
+## 11 3       2          3.01        67.7
+## 12 3       3          2.96        65.7
+## 13 5       1          1.56        19.6
+## 14 5       2          1.36        14.7
+## 15 5       3          1.54       360</code></pre>
 </div>
 <div id="first-plot.-does-this-work" class="section level2">
 <h2>First plot. Does this work?</h2>
@@ -283,26 +277,27 @@ reformatted_values</code></pre>
 ## 
 ## other attached packages:
 ##  [1] bindrcpp_0.2    forcats_0.2.0   stringr_1.2.0   dplyr_0.7.4    
-##  [5] purrr_0.2.4     readr_1.1.1     tidyr_0.7.2     tibble_1.3.4   
+##  [5] purrr_0.2.4     readr_1.1.1     tidyr_0.7.2     tibble_1.4.2   
 ##  [9] ggplot2_2.2.1   tidyverse_1.2.1
 ## 
 ## loaded via a namespace (and not attached):
 ##  [1] tidyselect_0.2.3   xfun_0.1           reshape2_1.4.2    
 ##  [4] haven_1.1.0        lattice_0.20-35    colorspace_1.3-2  
-##  [7] htmltools_0.3.6    yaml_2.1.14        rlang_0.1.4       
-## [10] foreign_0.8-69     glue_1.2.0         RColorBrewer_1.1-2
-## [13] modelr_0.1.1       readxl_1.0.0       bindr_0.1         
-## [16] plyr_1.8.4         munsell_0.4.3      blogdown_0.5      
-## [19] gtable_0.2.0       cellranger_1.1.0   rvest_0.3.2       
-## [22] psych_1.7.8        evaluate_0.10.1    labeling_0.3      
-## [25] knitr_1.17         parallel_3.4.0     broom_0.4.3       
-## [28] Rcpp_0.12.13       backports_1.1.1    scales_0.5.0.9000 
-## [31] jsonlite_1.5       mnormt_1.5-5       hms_0.3           
-## [34] digest_0.6.12      stringi_1.1.6      bookdown_0.6      
-## [37] grid_3.4.0         rprojroot_1.2      cli_1.0.0         
-## [40] tools_3.4.0        magrittr_1.5       lazyeval_0.2.1    
-## [43] crayon_1.3.4       pkgconfig_2.0.1    xml2_1.1.1        
-## [46] lubridate_1.7.1    assertthat_0.2.0   rmarkdown_1.8     
-## [49] httr_1.3.1         rstudioapi_0.7     R6_2.2.2          
-## [52] nlme_3.1-131       compiler_3.4.0</code></pre>
+##  [7] htmltools_0.3.6    yaml_2.1.14        utf8_1.1.3        
+## [10] rlang_0.1.6        pillar_1.1.0       foreign_0.8-69    
+## [13] glue_1.2.0         RColorBrewer_1.1-2 modelr_0.1.1      
+## [16] readxl_1.0.0       bindr_0.1          plyr_1.8.4        
+## [19] munsell_0.4.3      blogdown_0.5       gtable_0.2.0      
+## [22] cellranger_1.1.0   rvest_0.3.2        psych_1.7.8       
+## [25] evaluate_0.10.1    labeling_0.3       knitr_1.17        
+## [28] parallel_3.4.0     broom_0.4.3        Rcpp_0.12.13      
+## [31] backports_1.1.1    scales_0.5.0.9000  jsonlite_1.5      
+## [34] mnormt_1.5-5       hms_0.3            digest_0.6.12     
+## [37] stringi_1.1.6      bookdown_0.6       grid_3.4.0        
+## [40] rprojroot_1.2      cli_1.0.0          tools_3.4.0       
+## [43] magrittr_1.5       lazyeval_0.2.1     crayon_1.3.4      
+## [46] pkgconfig_2.0.1    xml2_1.1.1         lubridate_1.7.1   
+## [49] assertthat_0.2.0   rmarkdown_1.8      httr_1.3.1        
+## [52] rstudioapi_0.7     R6_2.2.2           nlme_3.1-131      
+## [55] compiler_3.4.0</code></pre>
 </div>

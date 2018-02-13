@@ -46,17 +46,12 @@ output:
 <div id="read-in-vcf-header" class="section level2">
 <h2>Read in vcf header</h2>
 <pre class="r"><code>library(tidyverse)</code></pre>
-<pre><code>## Warning: package &#39;tidyverse&#39; was built under R version 3.4.2</code></pre>
-<pre><code>## ── Attaching packages ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──</code></pre>
+<pre><code>## ── Attaching packages ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──</code></pre>
 <pre><code>## ✔ ggplot2 2.2.1     ✔ purrr   0.2.4
-## ✔ tibble  1.3.4     ✔ dplyr   0.7.4
+## ✔ tibble  1.4.2     ✔ dplyr   0.7.4
 ## ✔ tidyr   0.7.2     ✔ stringr 1.2.0
 ## ✔ readr   1.1.1     ✔ forcats 0.2.0</code></pre>
-<pre><code>## Warning: package &#39;tibble&#39; was built under R version 3.4.1</code></pre>
-<pre><code>## Warning: package &#39;tidyr&#39; was built under R version 3.4.2</code></pre>
-<pre><code>## Warning: package &#39;purrr&#39; was built under R version 3.4.2</code></pre>
-<pre><code>## Warning: package &#39;dplyr&#39; was built under R version 3.4.2</code></pre>
-<pre><code>## ── Conflicts ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+<pre><code>## ── Conflicts ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()</code></pre>
 <pre class="r"><code>library(stringr)
@@ -168,17 +163,17 @@ contig_size</code></pre>
 ## 
 ## # A tibble: 86 x 3
 ##    contig    length assembly
-##     &lt;chr&gt;     &lt;dbl&gt;    &lt;chr&gt;
-##  1      1 249250621      b37
-##  2      2 243199373      b37
-##  3      3 198022430      b37
-##  4      4 191154276      b37
-##  5      5 180915260      b37
-##  6      6 171115067      b37
-##  7      7 159138663      b37
-##  8      8 146364022      b37
-##  9      9 141213431      b37
-## 10     10 135534747      b37
+##    &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt;   
+##  1 1      249250621 b37     
+##  2 2      243199373 b37     
+##  3 3      198022430 b37     
+##  4 4      191154276 b37     
+##  5 5      180915260 b37     
+##  6 6      171115067 b37     
+##  7 7      159138663 b37     
+##  8 8      146364022 b37     
+##  9 9      141213431 b37     
+## 10 10     135534747 b37     
 ## # ... with 76 more rows</code></pre>
 </div>
 <div id="split-chr-above-3e7-base-pairs-into-equalish-size-pieces" class="section level2">
@@ -365,7 +360,7 @@ write(contig_size %&gt;% filter(length &lt; 3e7, contig != &#39;hs37d5&#39;) %&g
 ##  language (EN)                        
 ##  collate  en_US.UTF-8                 
 ##  tz       America/New_York            
-##  date     2018-02-09</code></pre>
+##  date     2018-02-13</code></pre>
 <pre><code>## Packages -----------------------------------------------------------------</code></pre>
 <pre><code>##  package    * version    date       source                          
 ##  assertthat   0.2.0      2017-04-11 CRAN (R 3.4.0)                  
@@ -411,6 +406,7 @@ write(contig_size %&gt;% filter(length &lt; 3e7, contig != &#39;hs37d5&#39;) %&g
 ##  munsell      0.4.3      2016-02-13 CRAN (R 3.4.0)                  
 ##  nlme         3.1-131    2017-02-06 CRAN (R 3.4.0)                  
 ##  parallel     3.4.0      2017-04-21 local                           
+##  pillar       1.1.0      2018-01-14 cran (@1.1.0)                   
 ##  pkgconfig    2.0.1      2017-03-21 CRAN (R 3.4.0)                  
 ##  plyr         1.8.4      2016-06-08 CRAN (R 3.4.0)                  
 ##  psych        1.7.8      2017-09-09 CRAN (R 3.4.0)                  
@@ -420,7 +416,7 @@ write(contig_size %&gt;% filter(length &lt; 3e7, contig != &#39;hs37d5&#39;) %&g
 ##  readr      * 1.1.1      2017-05-16 CRAN (R 3.4.0)                  
 ##  readxl       1.0.0      2017-04-18 CRAN (R 3.4.0)                  
 ##  reshape2     1.4.2      2016-10-22 CRAN (R 3.4.0)                  
-##  rlang        0.1.4      2017-11-05 CRAN (R 3.4.2)                  
+##  rlang        0.1.6      2017-12-21 cran (@0.1.6)                   
 ##  rmarkdown    1.8        2017-11-17 CRAN (R 3.4.2)                  
 ##  rprojroot    1.2        2017-01-16 CRAN (R 3.4.0)                  
 ##  rstudioapi   0.7        2017-09-07 CRAN (R 3.4.1)                  
@@ -429,11 +425,12 @@ write(contig_size %&gt;% filter(length &lt; 3e7, contig != &#39;hs37d5&#39;) %&g
 ##  stats      * 3.4.0      2017-04-21 local                           
 ##  stringi      1.1.6      2017-11-17 CRAN (R 3.4.2)                  
 ##  stringr    * 1.2.0      2017-02-18 CRAN (R 3.4.0)                  
-##  tibble     * 1.3.4      2017-08-22 CRAN (R 3.4.1)                  
+##  tibble     * 1.4.2      2018-01-22 cran (@1.4.2)                   
 ##  tidyr      * 0.7.2      2017-10-16 CRAN (R 3.4.2)                  
 ##  tidyselect   0.2.3      2017-11-06 CRAN (R 3.4.2)                  
 ##  tidyverse  * 1.2.1      2017-11-14 CRAN (R 3.4.2)                  
 ##  tools        3.4.0      2017-04-21 local                           
+##  utf8         1.1.3      2018-01-03 cran (@1.1.3)                   
 ##  utils      * 3.4.0      2017-04-21 local                           
 ##  withr        2.1.0.9000 2017-11-22 Github (jimhester/withr@fe81c00)
 ##  xfun         0.1        2018-01-22 CRAN (R 3.4.3)                  
