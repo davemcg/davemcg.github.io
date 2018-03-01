@@ -45,7 +45,7 @@ As a bonus, I made a short video to demonstrate how you can skip the below data 
 ## Data
 A variety of eye measurements between a wild-type zebrafish line and a mutant line.
 
-You can get the excel file (here)[https://github.com/davemcg/Let_us_plot/blob/master/004_r_vs_excel/Compiled%20eye%20measurements.xlsx]
+You can get the excel file [here](https://github.com/davemcg/Let_us_plot/blob/master/004_r_vs_excel/Compiled%20eye%20measurements.xlsx)
 ```{r}
 library(tidyverse)
 library(ggsci)
