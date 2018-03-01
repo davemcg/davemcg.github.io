@@ -13,14 +13,10 @@ tags:
   - Let's Plot
   - quinlanverse
   - R
----
-
----
-title: "NGS (Exome) Gene Coverage Analysis"
-output: 
-  html_notebook:
-   toc: True
----
+output:
+  blogdown::html_page:
+    toc: true
+----
 
 ## Load data
 This is a departure from the previous installments, as we are loading in a very processed dataset. The reasons why are numerous:

@@ -13,6 +13,9 @@ tags:
   - Let's Plot
   - R
   - tidyverse
+output:
+  blogdown::html_page:
+    toc: true
 ---
 
 ## Introduction
@@ -139,4 +142,7 @@ t.test(micro %>% filter(Date=='Day5') %>% pull(Size) ~ micro %>% filter(Date=='D
 ```
 Yes for Day 3, no for Day 5. 
 
-
+# Session
+```{r}
+devtools::session_info()
+```
