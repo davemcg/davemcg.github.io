@@ -1,0 +1,205 @@
+---
+title: 'Let’s Plot 4: R vs Excel, Round 1'
+author: David McGaughey
+date: '2018-03-01'
+slug: let-s-plot-4-r-vs-excel
+categories:
+  - bioinformatics
+  - Let’s Plot
+  - R
+tags:
+  - bioinformatics
+  - ggplot2
+  - Let's Plot
+  - R
+  - tidyverse
+---
+
+
+
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>The battle that we’ve all been waiting for. Excel vs. R. Bar plot versus a plot that actually shows the data.</p>
+<p>Yeah, this isn’t a fair fight.</p>
+<p>Bar plots are terrible. Why? Simple. They don’t show what your data looks like. A bar plot gives you zero idea how many data points there are. You can add error bars, but you don’t know if you are looking at standard error or standard deviation.</p>
+<div class="figure">
+<img src="/img/excel_bar_plot_bad.png" />
+
+</div>
+<p>Box plots are <em>much</em> better. They display useful information like minimum, maximum, quartiles, and median. But they still can really mislead depending on how your data is structured.</p>
+<div class="figure">
+<img src="/img/BoxViolinSmaller.gif" alt="https://www.autodeskresearch.com/publications/samestats" />
+<p class="caption"><a href="https://www.autodeskresearch.com/publications/samestats" class="uri">https://www.autodeskresearch.com/publications/samestats</a></p>
+</div>
+<div class="figure">
+<img src="/img/journal.pbio.1002128.g001.png" alt="https://doi.org/10.1371/journal.pbio.1002128" />
+<p class="caption"><a href="https://doi.org/10.1371/journal.pbio.1002128" class="uri">https://doi.org/10.1371/journal.pbio.1002128</a></p>
+</div>
+<p>Why do so many scientists keep using bar (or box) plots? Well, simple. Excel makes bar plots with one click. Excel <em>can</em> make box plots, but it is <a href="https://support.office.com/en-us/article/create-a-box-plot-10204530-8cdf-40fe-a711-2eb9785e510f">not easy</a>.</p>
+<p>Excel, as far as I can tell, can’t do what I’m about to show you: violin plots or box plots with the <em>raw data displayed inline</em>.</p>
+<p>As a bonus, I made a short video to demonstrate how you can skip the below data cleaning in R with some clicking and dragging in Excel - then just plot in R.</p>
+<p><a href="https://www.youtube.com/watch?v=_teDfnv0gUE&amp;feature=youtu.be">Click here</a></p>
+</div>
+<div id="data" class="section level2">
+<h2>Data</h2>
+<p>A variety of eye measurements between a wild-type zebrafish line and a mutant line.</p>
+<p>You can get the excel file (here)[<a href="https://github.com/davemcg/Let_us_plot/blob/master/004_r_vs_excel/Compiled%20eye%20measurements.xlsx">https://github.com/davemcg/Let_us_plot/blob/master/004_r_vs_excel/Compiled%20eye%20measurements.xlsx</a>]</p>
+<pre class="r"><code>library(tidyverse)</code></pre>
+<pre><code>## Warning: package &#39;tidyverse&#39; was built under R version 3.4.2</code></pre>
+<pre><code>## ── Attaching packages ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──</code></pre>
+<pre><code>## ✔ ggplot2 2.2.1     ✔ purrr   0.2.4
+## ✔ tibble  1.4.2     ✔ dplyr   0.7.4
+## ✔ tidyr   0.7.2     ✔ stringr 1.2.0
+## ✔ readr   1.1.1     ✔ forcats 0.2.0</code></pre>
+<pre><code>## Warning: package &#39;tibble&#39; was built under R version 3.4.3</code></pre>
+<pre><code>## Warning: package &#39;tidyr&#39; was built under R version 3.4.2</code></pre>
+<pre><code>## Warning: package &#39;purrr&#39; was built under R version 3.4.2</code></pre>
+<pre><code>## Warning: package &#39;dplyr&#39; was built under R version 3.4.2</code></pre>
+<pre><code>## ── Conflicts ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()</code></pre>
+<pre class="r"><code>library(ggsci)</code></pre>
+<pre><code>## Warning: package &#39;ggsci&#39; was built under R version 3.4.2</code></pre>
+<pre class="r"><code>library(ggbeeswarm)</code></pre>
+<pre><code>## Warning: package &#39;ggbeeswarm&#39; was built under R version 3.4.1</code></pre>
+<pre class="r"><code>micro &lt;- readxl::read_xlsx(&#39;~/git/Let_us_plot/004_r_vs_excel/Compiled eye measurements.xlsx&#39;)
+head(micro)</code></pre>
+<pre><code>## # A tibble: 6 x 13
+##   X__1  Day3   X__2  Day5  X__3  X__4  X__5  X__6  X__7  X__8  X__9  X__10
+##   &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;lgl&gt; &lt;lgl&gt; &lt;lgl&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;
+## 1 Fish  WT/Het Mut   WT/H… Mut   NA    NA    NA    &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt; 
+## 2 1     6.099… 4.80… 7.29… 6.70… NA    NA    NA    &lt;NA&gt;  Day3  &lt;NA&gt;  Day5 
+## 3 2     7.099… 5.29… 7.19… 8.20… NA    NA    NA    &lt;NA&gt;  WT/H… Mut   WT/H…
+## 4 3     0.05   5.39… 7.69… 7.09… NA    NA    NA    avg   6.06… 5.37… 7.31…
+## 5 4     6.3E-2 5.80… 7.19… 6.60… NA    NA    NA    &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt; 
+## 6 5     6.400… 5.80… 6.09… 7.09… NA    NA    NA    se    1.50… 1.12… 1.12…
+## # ... with 1 more variable: X__11 &lt;chr&gt;</code></pre>
+</div>
+<div id="cleaning" class="section level2">
+<h2>Cleaning</h2>
+<p>OK, a bit messy since this isn’t a computer-formatted file. I’m going to grab the relevant data (ignoring the summarize stats) by looking at the data and slicing and selecting by coordinates. Not worth doing anything fancier (regex, grep, neural network) to automate this.</p>
+<pre class="r"><code># clean
+micro &lt;- micro %&gt;% 
+  slice(2:31) %&gt;% 
+  select(`Fish ID` = X__1, 
+         Day3_Het = Day3, 
+         Day3_Mut = X__2, 
+         Day5_Het = Day5, 
+         Day5_Mut = X__3) %&gt;% 
+  mutate(Day3_Het = as.numeric(Day3_Het),
+         Day3_Mut = as.numeric(Day3_Mut),
+         Day5_Het = as.numeric(Day5_Het),
+         Day5_Mut = as.numeric(Day5_Mut))
+micro</code></pre>
+<pre><code>## # A tibble: 30 x 5
+##    `Fish ID` Day3_Het Day3_Mut Day5_Het Day5_Mut
+##    &lt;chr&gt;        &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
+##  1 1           0.0610   0.0480   0.0730   0.0670
+##  2 2           0.0710   0.0530   0.0720   0.0820
+##  3 3           0.0500   0.0540   0.0770   0.0710
+##  4 4           0.0630   0.0580   0.0720   0.0660
+##  5 5           0.0640   0.0580   0.0610   0.0710
+##  6 6           0.0650   0.0530   0.0750   0.0700
+##  7 7           0.0580   0.0560   0.0800   0.0700
+##  8 8           0.0570   0.0530   0.0630   0.0760
+##  9 9           0.0650   0.0680   0.0730   0.0710
+## 10 10          0.0620   0.0610   0.0720   0.0750
+## # ... with 20 more rows</code></pre>
+</div>
+<div id="reformatting" class="section level2">
+<h2>Reformatting</h2>
+<p>We are also going to have to reformat the data since Date and Genotype are mixed together in a column. Would rather have all the data in one column and the date and genotype in their own columns. Confused? Well, just compare the above data to the modified data.</p>
+<p><strong>Remember</strong> - if this is too intimidating right now, then it is fine to just manually move the data around with Excel to make it look like the below data. Then you can just focus on making the figure.</p>
+<pre class="r"><code># wide to long
+micro &lt;- micro %&gt;% 
+  gather(Date_Genotype, Size, -`Fish ID`) %&gt;% 
+  separate(Date_Genotype, c(&#39;Date&#39;,&#39;Genotype&#39;))
+micro</code></pre>
+<pre><code>## # A tibble: 120 x 4
+##    `Fish ID` Date  Genotype   Size
+##  * &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt;     &lt;dbl&gt;
+##  1 1         Day3  Het      0.0610
+##  2 2         Day3  Het      0.0710
+##  3 3         Day3  Het      0.0500
+##  4 4         Day3  Het      0.0630
+##  5 5         Day3  Het      0.0640
+##  6 6         Day3  Het      0.0650
+##  7 7         Day3  Het      0.0580
+##  8 8         Day3  Het      0.0570
+##  9 9         Day3  Het      0.0650
+## 10 10        Day3  Het      0.0620
+## # ... with 110 more rows</code></pre>
+</div>
+<div id="box-plot" class="section level2">
+<h2>Box Plot</h2>
+<pre class="r"><code>micro %&gt;% ggplot(aes(x=Genotype, y=Size, colour=Genotype)) + 
+  facet_wrap(~Date) +
+  geom_boxplot() + 
+  theme_minimal() + 
+  scale_color_aaas()</code></pre>
+<p><img src="/./post/2018-03-01-let-s-plot-r-vs-excel_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+</div>
+<div id="boxplot-with-all-the-data-displayed" class="section level2">
+<h2>Boxplot with all the data displayed</h2>
+<p>So easy with ggplot2</p>
+<p>Remember to have your <code>geom_boxplot</code> remove display of outliers (since you are showing them now with <code>geom_jitter</code>)</p>
+<pre class="r"><code>micro %&gt;% ggplot(aes(x=Genotype, y=Size, colour=Genotype)) + facet_wrap(~Date) +
+  geom_boxplot(outlier.shape = NA) + 
+  geom_jitter() + 
+  theme_minimal() + 
+  scale_color_aaas()</code></pre>
+<p><img src="/./post/2018-03-01-let-s-plot-r-vs-excel_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+</div>
+<div id="i-used-to-prefer-violin-plots" class="section level2">
+<h2>I used to prefer violin plots</h2>
+<p>But the smoothing for outlier points can be misleading. They also confuse people who haven’t seen them before <strong>and</strong> you lose the quartile / median info a boxplot provides.</p>
+<pre class="r"><code>micro %&gt;% ggplot(aes(x=Genotype, y=Size, colour=Genotype)) + facet_wrap(~Date) +
+  geom_violin() + 
+  geom_jitter() + 
+  theme_minimal() + 
+  scale_color_aaas()</code></pre>
+<p><img src="/./post/2018-03-01-let-s-plot-r-vs-excel_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+</div>
+<div id="im-a-fan-of-beeswarm-plots-with-boxplots" class="section level2">
+<h2>I’m a fan of beeswarm plots with boxplots</h2>
+<p>You get the violin plot structure and the quartile / median info of boxplots. Win win.</p>
+<p>I’ve reduced the alpha (opacity) of the points to put more emphasis on the boxplot.</p>
+<pre class="r"><code>micro %&gt;% ggplot(aes(x=Genotype, y=Size, colour=Genotype)) + facet_wrap(~Date) +
+  geom_boxplot(outlier.shape = NA) + 
+  geom_quasirandom(alpha=0.4) + 
+  theme_minimal() + 
+  scale_color_aaas()</code></pre>
+<p><img src="/./post/2018-03-01-let-s-plot-r-vs-excel_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+</div>
+<div id="doing-statistics." class="section level2">
+<h2>Doing statistics.</h2>
+<p>Are the differences significant between genotype on Day3 and Day5? More precisely, can we reject the null hypothesis (no mean difference in size)?</p>
+<p>Let’s use the venerable t.test. The data eyeballs as normally distributed. I’m using <code>dplyr</code> <code>filter</code> to test Day 3 and Day 5 separately, testing for differences in mean between genotypes (hence the right half of the equation below ends with <code>pull(Genotype)</code>)</p>
+<pre class="r"><code># Day 3
+t.test(micro %&gt;% filter(Date==&#39;Day3&#39;) %&gt;% pull(Size) ~ micro %&gt;% filter(Date==&#39;Day3&#39;) %&gt;% pull(Genotype))</code></pre>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  micro %&gt;% filter(Date == &quot;Day3&quot;) %&gt;% pull(Size) by micro %&gt;% filter(Date == &quot;Day3&quot;) %&gt;% pull(Genotype)
+## t = 3.5888, df = 53.629, p-value = 0.0007197
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  0.003029977 0.010703357
+## sample estimates:
+## mean in group Het mean in group Mut 
+##        0.06060000        0.05373333</code></pre>
+<pre class="r"><code># Day 5
+t.test(micro %&gt;% filter(Date==&#39;Day5&#39;) %&gt;% pull(Size) ~ micro %&gt;% filter(Date==&#39;Day5&#39;) %&gt;% pull(Genotype))</code></pre>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  micro %&gt;% filter(Date == &quot;Day5&quot;) %&gt;% pull(Size) by micro %&gt;% filter(Date == &quot;Day5&quot;) %&gt;% pull(Genotype)
+## t = 1.4851, df = 52.164, p-value = 0.1435
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -0.001029920  0.006896587
+## sample estimates:
+## mean in group Het mean in group Mut 
+##        0.07313333        0.07020000</code></pre>
+<p>Yes for Day 3, no for Day 5.</p>
+</div>

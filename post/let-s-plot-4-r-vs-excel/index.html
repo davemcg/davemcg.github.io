@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme" content="hugo-academic">
+  <meta name="generator" content="Hugo 0.35" />
+  <meta name="author" content="David McGaughey">
+
+  
+  
+  
+  
+    
+      
+    
+  
+  <meta name="description" content="Introduction The battle that we’ve all been waiting for. Excel vs. R. Bar plot versus a plot that actually shows the data.
+Yeah, this isn’t a fair fight.
+Bar plots are terrible. Why? Simple. They don’t show what your data looks like. A bar plot gives you zero idea how many data points there are. You can add error bars, but you don’t know if you are looking at standard error or standard deviation.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="/./post/let-s-plot-4-r-vs-excel/">
+
+  
+
+
+  
+
+  
+  
+  <meta name="theme-color" content="#0095eb">
+  
+  
+  
+  
+    
+  
+  
+    
+    
+      
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+      
+    
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha512-6MXa8B6uaO18Hid6blRMetEIoPqHf7Ux1tnyIQdpt9qI5OACx7C+O3IVTr98vwGnlcg0LOLa02i9Y1HpVhlfiw==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.1/css/academicons.min.css" integrity="sha512-NThgw3XKQ1absAahW6to7Ey42uycrVvfNfyjqcFNgCmOCQ5AR4AO0SiXrN+8ZtYeappp56lk1WtvjVmEa+VR6A==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+  
+  
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat:400,700%7cRoboto:400,400italic,700%7cRoboto&#43;Mono">
+  
+  <link rel="stylesheet" href="/styles.css">
+  
+
+  
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-113461893-1', 'auto');
+      ga('require', 'eventTracker');
+      ga('require', 'outboundLinkTracker');
+      ga('require', 'urlChangeTracker');
+      ga('send', 'pageview');
+    </script>
+    <script async src="//www.google-analytics.com/analytics.js"></script>
+    
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g==" crossorigin="anonymous"></script>
+    
+  
+
+  
+  <link rel="alternate" href="/./index.xml" type="application/rss+xml" title="eye Bioinformatician">
+  <link rel="feed" href="/./index.xml" type="application/rss+xml" title="eye Bioinformatician">
+  
+
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="/./post/let-s-plot-4-r-vs-excel/">
+
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="twitter:site" content="@https://twitter.com/David_McGaughey">
+  <meta property="twitter:creator" content="@https://twitter.com/David_McGaughey">
+  
+  <meta property="og:site_name" content="eye Bioinformatician">
+  <meta property="og:url" content="/./post/let-s-plot-4-r-vs-excel/">
+  <meta property="og:title" content="Let’s Plot 4: R vs Excel, Round 1 | eye Bioinformatician">
+  <meta property="og:description" content="Introduction The battle that we’ve all been waiting for. Excel vs. R. Bar plot versus a plot that actually shows the data.
+Yeah, this isn’t a fair fight.
+Bar plots are terrible. Why? Simple. They don’t show what your data looks like. A bar plot gives you zero idea how many data points there are. You can add error bars, but you don’t know if you are looking at standard error or standard deviation.">
+  <meta property="og:locale" content="en-us">
+  
+  <meta property="article:published_time" content="2018-03-01T00:00:00&#43;00:00">
+  
+  <meta property="article:modified_time" content="2018-03-01T00:00:00&#43;00:00">
+  
+
+  
+
+  <title>Let’s Plot 4: R vs Excel, Round 1 | eye Bioinformatician</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#toc" data-offset="71" >
+
+<nav class="navbar navbar-default navbar-fixed-top" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="navbar-header">
+      
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+              data-target=".navbar-collapse" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+      <a class="navbar-brand" href="/">eye Bioinformatician</a>
+    </div>
+
+    
+    <div class="collapse navbar-collapse">
+
+      
+      
+      <ul class="nav navbar-nav navbar-right">
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#about">
+            
+            <span>Home</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true">
+            
+            <span>Posts</span>
+            
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            
+            <li class="nav-item">
+              <a href="/#posts">
+                
+                <span>Recent Posts</span>
+                
+              </a>
+            </li>
+            
+            <li class="nav-item">
+              <a href="/post">
+                
+                <span>All Posts</span>
+                
+              </a>
+            </li>
+            
+          </ul>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#projects">
+            
+            <span>Projects</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#publications_selected">
+            
+            <span>Publications</span>
+            
+          </a>
+        </li>
+
+        
+        
+      
+
+      
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+  <div class="article-container">
+    <h1 itemprop="name">Let’s Plot 4: R vs Excel, Round 1</h1>
+
+    
+
+<div class="article-metadata">
+
+  <span class="article-date">
+    
+    <time datetime="2018-03-01 00:00:00 &#43;0000 UTC" itemprop="datePublished dateModified">
+      Mar 1, 2018
+    </time>
+  </span>
+  <span itemscope itemprop="author publisher" itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="David McGaughey">
+  </span>
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    6 min read
+  </span>
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <a href="/./post/let-s-plot-4-r-vs-excel/#disqus_thread"></a>
+  
+
+  
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fa fa-folder"></i>
+    
+    <a href="/categories/bioinformatics">bioinformatics</a
+    >, 
+    
+    <a href="/categories/lets-plot">Let’s Plot</a
+    >, 
+    
+    <a href="/categories/r">R</a
+    >
+    
+  </span>
+  
+  
+
+  
+  
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=Let%e2%80%99s%20Plot%204%3a%20R%20vs%20Excel%2c%20Round%201&amp;url=%2f.%2fpost%2flet-s-plot-4-r-vs-excel%2f"
+         target="_blank" rel="noopener">
+        <i class="fa fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=%2f.%2fpost%2flet-s-plot-4-r-vs-excel%2f"
+         target="_blank" rel="noopener">
+        <i class="fa fa-facebook"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2f.%2fpost%2flet-s-plot-4-r-vs-excel%2f&amp;title=Let%e2%80%99s%20Plot%204%3a%20R%20vs%20Excel%2c%20Round%201"
+         target="_blank" rel="noopener">
+        <i class="fa fa-linkedin"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=%2f.%2fpost%2flet-s-plot-4-r-vs-excel%2f&amp;title=Let%e2%80%99s%20Plot%204%3a%20R%20vs%20Excel%2c%20Round%201"
+         target="_blank" rel="noopener">
+        <i class="fa fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=Let%e2%80%99s%20Plot%204%3a%20R%20vs%20Excel%2c%20Round%201&amp;body=%2f.%2fpost%2flet-s-plot-4-r-vs-excel%2f">
+        <i class="fa fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+
+    <div class="article-style" itemprop="articleBody">
+      <div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>The battle that we’ve all been waiting for. Excel vs. R. Bar plot versus a plot that actually shows the data.</p>
+<p>Yeah, this isn’t a fair fight.</p>
+<p>Bar plots are terrible. Why? Simple. They don’t show what your data looks like. A bar plot gives you zero idea how many data points there are. You can add error bars, but you don’t know if you are looking at standard error or standard deviation.</p>
+<div class="figure">
+<img src="/img/excel_bar_plot_bad.png" />
+
+</div>
+<p>Box plots are <em>much</em> better. They display useful information like minimum, maximum, quartiles, and median. But they still can really mislead depending on how your data is structured.</p>
+<div class="figure">
+<img src="/img/BoxViolinSmaller.gif" alt="https://www.autodeskresearch.com/publications/samestats" />
+<p class="caption"><a href="https://www.autodeskresearch.com/publications/samestats" class="uri">https://www.autodeskresearch.com/publications/samestats</a></p>
+</div>
+<div class="figure">
+<img src="/img/journal.pbio.1002128.g001.png" alt="https://doi.org/10.1371/journal.pbio.1002128" />
+<p class="caption"><a href="https://doi.org/10.1371/journal.pbio.1002128" class="uri">https://doi.org/10.1371/journal.pbio.1002128</a></p>
+</div>
+<p>Why do so many scientists keep using bar (or box) plots? Well, simple. Excel makes bar plots with one click. Excel <em>can</em> make box plots, but it is <a href="https://support.office.com/en-us/article/create-a-box-plot-10204530-8cdf-40fe-a711-2eb9785e510f">not easy</a>.</p>
+<p>Excel, as far as I can tell, can’t do what I’m about to show you: violin plots or box plots with the <em>raw data displayed inline</em>.</p>
+<p>As a bonus, I made a short video to demonstrate how you can skip the below data cleaning in R with some clicking and dragging in Excel - then just plot in R.</p>
+<p><a href="https://www.youtube.com/watch?v=_teDfnv0gUE&amp;feature=youtu.be">Click here</a></p>
+</div>
+<div id="data" class="section level2">
+<h2>Data</h2>
+<p>A variety of eye measurements between a wild-type zebrafish line and a mutant line.</p>
+<p>You can get the excel file (here)[<a href="https://github.com/davemcg/Let_us_plot/blob/master/004_r_vs_excel/Compiled%20eye%20measurements.xlsx">https://github.com/davemcg/Let_us_plot/blob/master/004_r_vs_excel/Compiled%20eye%20measurements.xlsx</a>]</p>
+<pre class="r"><code>library(tidyverse)</code></pre>
+<pre><code>## Warning: package &#39;tidyverse&#39; was built under R version 3.4.2</code></pre>
+<pre><code>## ── Attaching packages ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──</code></pre>
+<pre><code>## ✔ ggplot2 2.2.1     ✔ purrr   0.2.4
+## ✔ tibble  1.4.2     ✔ dplyr   0.7.4
+## ✔ tidyr   0.7.2     ✔ stringr 1.2.0
+## ✔ readr   1.1.1     ✔ forcats 0.2.0</code></pre>
+<pre><code>## Warning: package &#39;tibble&#39; was built under R version 3.4.3</code></pre>
+<pre><code>## Warning: package &#39;tidyr&#39; was built under R version 3.4.2</code></pre>
+<pre><code>## Warning: package &#39;purrr&#39; was built under R version 3.4.2</code></pre>
+<pre><code>## Warning: package &#39;dplyr&#39; was built under R version 3.4.2</code></pre>
+<pre><code>## ── Conflicts ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()</code></pre>
+<pre class="r"><code>library(ggsci)</code></pre>
+<pre><code>## Warning: package &#39;ggsci&#39; was built under R version 3.4.2</code></pre>
+<pre class="r"><code>library(ggbeeswarm)</code></pre>
+<pre><code>## Warning: package &#39;ggbeeswarm&#39; was built under R version 3.4.1</code></pre>
+<pre class="r"><code>micro &lt;- readxl::read_xlsx(&#39;~/git/Let_us_plot/004_r_vs_excel/Compiled eye measurements.xlsx&#39;)
+head(micro)</code></pre>
+<pre><code>## # A tibble: 6 x 13
+##   X__1  Day3   X__2  Day5  X__3  X__4  X__5  X__6  X__7  X__8  X__9  X__10
+##   &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;lgl&gt; &lt;lgl&gt; &lt;lgl&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;
+## 1 Fish  WT/Het Mut   WT/H… Mut   NA    NA    NA    &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt; 
+## 2 1     6.099… 4.80… 7.29… 6.70… NA    NA    NA    &lt;NA&gt;  Day3  &lt;NA&gt;  Day5 
+## 3 2     7.099… 5.29… 7.19… 8.20… NA    NA    NA    &lt;NA&gt;  WT/H… Mut   WT/H…
+## 4 3     0.05   5.39… 7.69… 7.09… NA    NA    NA    avg   6.06… 5.37… 7.31…
+## 5 4     6.3E-2 5.80… 7.19… 6.60… NA    NA    NA    &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt; 
+## 6 5     6.400… 5.80… 6.09… 7.09… NA    NA    NA    se    1.50… 1.12… 1.12…
+## # ... with 1 more variable: X__11 &lt;chr&gt;</code></pre>
+</div>
+<div id="cleaning" class="section level2">
+<h2>Cleaning</h2>
+<p>OK, a bit messy since this isn’t a computer-formatted file. I’m going to grab the relevant data (ignoring the summarize stats) by looking at the data and slicing and selecting by coordinates. Not worth doing anything fancier (regex, grep, neural network) to automate this.</p>
+<pre class="r"><code># clean
+micro &lt;- micro %&gt;% 
+  slice(2:31) %&gt;% 
+  select(`Fish ID` = X__1, 
+         Day3_Het = Day3, 
+         Day3_Mut = X__2, 
+         Day5_Het = Day5, 
+         Day5_Mut = X__3) %&gt;% 
+  mutate(Day3_Het = as.numeric(Day3_Het),
+         Day3_Mut = as.numeric(Day3_Mut),
+         Day5_Het = as.numeric(Day5_Het),
+         Day5_Mut = as.numeric(Day5_Mut))
+micro</code></pre>
+<pre><code>## # A tibble: 30 x 5
+##    `Fish ID` Day3_Het Day3_Mut Day5_Het Day5_Mut
+##    &lt;chr&gt;        &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
+##  1 1           0.0610   0.0480   0.0730   0.0670
+##  2 2           0.0710   0.0530   0.0720   0.0820
+##  3 3           0.0500   0.0540   0.0770   0.0710
+##  4 4           0.0630   0.0580   0.0720   0.0660
+##  5 5           0.0640   0.0580   0.0610   0.0710
+##  6 6           0.0650   0.0530   0.0750   0.0700
+##  7 7           0.0580   0.0560   0.0800   0.0700
+##  8 8           0.0570   0.0530   0.0630   0.0760
+##  9 9           0.0650   0.0680   0.0730   0.0710
+## 10 10          0.0620   0.0610   0.0720   0.0750
+## # ... with 20 more rows</code></pre>
+</div>
+<div id="reformatting" class="section level2">
+<h2>Reformatting</h2>
+<p>We are also going to have to reformat the data since Date and Genotype are mixed together in a column. Would rather have all the data in one column and the date and genotype in their own columns. Confused? Well, just compare the above data to the modified data.</p>
+<p><strong>Remember</strong> - if this is too intimidating right now, then it is fine to just manually move the data around with Excel to make it look like the below data. Then you can just focus on making the figure.</p>
+<pre class="r"><code># wide to long
+micro &lt;- micro %&gt;% 
+  gather(Date_Genotype, Size, -`Fish ID`) %&gt;% 
+  separate(Date_Genotype, c(&#39;Date&#39;,&#39;Genotype&#39;))
+micro</code></pre>
+<pre><code>## # A tibble: 120 x 4
+##    `Fish ID` Date  Genotype   Size
+##  * &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt;     &lt;dbl&gt;
+##  1 1         Day3  Het      0.0610
+##  2 2         Day3  Het      0.0710
+##  3 3         Day3  Het      0.0500
+##  4 4         Day3  Het      0.0630
+##  5 5         Day3  Het      0.0640
+##  6 6         Day3  Het      0.0650
+##  7 7         Day3  Het      0.0580
+##  8 8         Day3  Het      0.0570
+##  9 9         Day3  Het      0.0650
+## 10 10        Day3  Het      0.0620
+## # ... with 110 more rows</code></pre>
+</div>
+<div id="box-plot" class="section level2">
+<h2>Box Plot</h2>
+<pre class="r"><code>micro %&gt;% ggplot(aes(x=Genotype, y=Size, colour=Genotype)) + 
+  facet_wrap(~Date) +
+  geom_boxplot() + 
+  theme_minimal() + 
+  scale_color_aaas()</code></pre>
+<p><img src="/./post/2018-03-01-let-s-plot-r-vs-excel_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+</div>
+<div id="boxplot-with-all-the-data-displayed" class="section level2">
+<h2>Boxplot with all the data displayed</h2>
+<p>So easy with ggplot2</p>
+<p>Remember to have your <code>geom_boxplot</code> remove display of outliers (since you are showing them now with <code>geom_jitter</code>)</p>
+<pre class="r"><code>micro %&gt;% ggplot(aes(x=Genotype, y=Size, colour=Genotype)) + facet_wrap(~Date) +
+  geom_boxplot(outlier.shape = NA) + 
+  geom_jitter() + 
+  theme_minimal() + 
+  scale_color_aaas()</code></pre>
+<p><img src="/./post/2018-03-01-let-s-plot-r-vs-excel_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+</div>
+<div id="i-used-to-prefer-violin-plots" class="section level2">
+<h2>I used to prefer violin plots</h2>
+<p>But the smoothing for outlier points can be misleading. They also confuse people who haven’t seen them before <strong>and</strong> you lose the quartile / median info a boxplot provides.</p>
+<pre class="r"><code>micro %&gt;% ggplot(aes(x=Genotype, y=Size, colour=Genotype)) + facet_wrap(~Date) +
+  geom_violin() + 
+  geom_jitter() + 
+  theme_minimal() + 
+  scale_color_aaas()</code></pre>
+<p><img src="/./post/2018-03-01-let-s-plot-r-vs-excel_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+</div>
+<div id="im-a-fan-of-beeswarm-plots-with-boxplots" class="section level2">
+<h2>I’m a fan of beeswarm plots with boxplots</h2>
+<p>You get the violin plot structure and the quartile / median info of boxplots. Win win.</p>
+<p>I’ve reduced the alpha (opacity) of the points to put more emphasis on the boxplot.</p>
+<pre class="r"><code>micro %&gt;% ggplot(aes(x=Genotype, y=Size, colour=Genotype)) + facet_wrap(~Date) +
+  geom_boxplot(outlier.shape = NA) + 
+  geom_quasirandom(alpha=0.4) + 
+  theme_minimal() + 
+  scale_color_aaas()</code></pre>
+<p><img src="/./post/2018-03-01-let-s-plot-r-vs-excel_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+</div>
+<div id="doing-statistics." class="section level2">
+<h2>Doing statistics.</h2>
+<p>Are the differences significant between genotype on Day3 and Day5? More precisely, can we reject the null hypothesis (no mean difference in size)?</p>
+<p>Let’s use the venerable t.test. The data eyeballs as normally distributed. I’m using <code>dplyr</code> <code>filter</code> to test Day 3 and Day 5 separately, testing for differences in mean between genotypes (hence the right half of the equation below ends with <code>pull(Genotype)</code>)</p>
+<pre class="r"><code># Day 3
+t.test(micro %&gt;% filter(Date==&#39;Day3&#39;) %&gt;% pull(Size) ~ micro %&gt;% filter(Date==&#39;Day3&#39;) %&gt;% pull(Genotype))</code></pre>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  micro %&gt;% filter(Date == &quot;Day3&quot;) %&gt;% pull(Size) by micro %&gt;% filter(Date == &quot;Day3&quot;) %&gt;% pull(Genotype)
+## t = 3.5888, df = 53.629, p-value = 0.0007197
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  0.003029977 0.010703357
+## sample estimates:
+## mean in group Het mean in group Mut 
+##        0.06060000        0.05373333</code></pre>
+<pre class="r"><code># Day 5
+t.test(micro %&gt;% filter(Date==&#39;Day5&#39;) %&gt;% pull(Size) ~ micro %&gt;% filter(Date==&#39;Day5&#39;) %&gt;% pull(Genotype))</code></pre>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  micro %&gt;% filter(Date == &quot;Day5&quot;) %&gt;% pull(Size) by micro %&gt;% filter(Date == &quot;Day5&quot;) %&gt;% pull(Genotype)
+## t = 1.4851, df = 52.164, p-value = 0.1435
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -0.001029920  0.006896587
+## sample estimates:
+## mean in group Het mean in group Mut 
+##        0.07313333        0.07020000</code></pre>
+<p>Yes for Day 3, no for Day 5.</p>
+</div>
+
+    </div>
+
+    
+
+
+<div class="article-tags">
+  
+  <a class="btn btn-primary btn-outline" href="/tags/bioinformatics">bioinformatics</a>
+  
+  <a class="btn btn-primary btn-outline" href="/tags/ggplot2">ggplot2</a>
+  
+  <a class="btn btn-primary btn-outline" href="/tags/lets-plot">Let&#39;s Plot</a>
+  
+  <a class="btn btn-primary btn-outline" href="/tags/r">R</a>
+  
+  <a class="btn btn-primary btn-outline" href="/tags/tidyverse">tidyverse</a>
+  
+</div>
+
+
+
+
+    
+    
+    <div class="article-widget">
+      <div class="hr-light"></div>
+      <h3>Related</h3>
+      <ul>
+        
+        <li><a href="/post/let-s-plot-3-base-pair-resolution-ngs-exome-coverage-plots/">Let’s Plot 3: Base pair resolution NGS (exome) coverage plots - Part 2</a></li>
+        
+        <li><a href="/post/let-s-plot-3-base-pair-resolution-ngs-exome-coverage-plots-part-1/">Let’s Plot 3: Base pair resolution NGS (exome) coverage plots - Part 1</a></li>
+        
+        <li><a href="/post/let-s-plot-2-smoothed-lines/">Let’s Plot 2: Smoothed Lines</a></li>
+        
+        <li><a href="/post/let-s-plot-1/">Let’s Plot 1: Going in circles </a></li>
+        
+        <li><a href="/post/what-is-let-s-plot/">What is Let’s Plot?</a></li>
+        
+      </ul>
+    </div>
+    
+
+    
+
+    
+<section id="comments">
+  <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "davemcg-gitub-io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+
+  </div>
+</article>
+
+<footer class="site-footer">
+  <div class="container">
+    <p class="powered-by">
+
+      &copy; 2018 &middot; 
+
+      Powered by the
+      <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+      <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+      <span class="pull-right" aria-hidden="true">
+        <a href="#" id="back_to_top">
+          <span class="button_icon">
+            <i class="fa fa-chevron-up fa-2x"></i>
+          </span>
+        </a>
+      </span>
+
+    </p>
+  </div>
+</footer>
+
+
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close btn-large" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Cite</h4>
+      </div>
+      <div>
+        <pre><code class="modal-body tex"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-primary btn-outline js-copy-cite" href="#" target="_blank">
+          <i class="fa fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-primary btn-outline js-download-cite" href="#" target="_blank">
+          <i class="fa fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+    
+    <script id="dsq-count-scr" src="//davemcg-gitub-io.disqus.com/count.js" async></script>
+    
+
+    
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha512-3P8rXCuGJdNZOnUx/03c1jOTnMn3rP63nBip5gOP2qmUh5YAdVAvFZ1E+QLZZbC1rtMrQb+mah3AfYW11RUrWA==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.3/imagesloaded.pkgd.min.js" integrity="sha512-umsR78NN0D23AzgoZ11K7raBD+R6hqKojyBZs1w8WvYlsI+QuKRGBx3LFCwhatzBunCjDuJpDHwxD13sLMbpRA==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha512-iztkobsvnjKfAtTNdHkGVjAYTrrtlC7mGp/54c40wowO7LhURYl3gVzzcEqGl/qKXQltJ2HwMrdLcNUdo+N/RQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+    
+    
+    <script src="/js/hugo-academic.js"></script>
+    
+
+    
+    
+      
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+      
+
+      
+
+      
+
+      <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML" integrity="sha512-tOav5w1OjvsSJzePRtt2uQPFwBoHt1VZcUq8l8nm5284LEKE9FSJBQryzMBzHxY5P0zRdNqEcpLIRVYFNgu1jw==" crossorigin="anonymous"></script>
+    
+    
+
+  </body>
+</html>
+

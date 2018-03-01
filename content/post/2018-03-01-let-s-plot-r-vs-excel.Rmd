@@ -1,0 +1,142 @@
+---
+title: 'Let’s Plot 4: R vs Excel, Round 1'
+author: David McGaughey
+date: '2018-03-01'
+slug: let-s-plot-4-r-vs-excel
+categories:
+  - bioinformatics
+  - Let’s Plot
+  - R
+tags:
+  - bioinformatics
+  - ggplot2
+  - Let's Plot
+  - R
+  - tidyverse
+---
+
+## Introduction
+
+The battle that we've all been waiting for. Excel vs. R. Bar plot versus a plot that actually shows the data. 
+
+Yeah, this isn't a fair fight. 
+
+Bar plots are terrible. Why? Simple. They don't show what your data looks like. A bar plot gives you zero idea how many data points there are. You can add error bars, but you don't know if you are looking at standard error or standard deviation. 
+
+![](/img/excel_bar_plot_bad.png)
+
+Box plots are *much* better. They display useful information like minimum, maximum, quartiles, and median. But they still can really mislead depending on how your data is structured. 
+
+![https://www.autodeskresearch.com/publications/samestats](/img/BoxViolinSmaller.gif)
+
+![https://doi.org/10.1371/journal.pbio.1002128](/img/journal.pbio.1002128.g001.png)
+
+Why do so many scientists keep using bar (or box) plots? Well, simple. Excel makes bar plots with one click. Excel *can* make box plots, but it is [not easy](https://support.office.com/en-us/article/create-a-box-plot-10204530-8cdf-40fe-a711-2eb9785e510f). 
+
+Excel, as far as I can tell, can't do what I'm about to show you: violin plots or box plots with the *raw data displayed inline*. 
+
+As a bonus, I made a short video to demonstrate how you can skip the below data cleaning in R with some clicking and dragging in Excel - then just plot in R.
+
+[Click here](https://www.youtube.com/watch?v=_teDfnv0gUE&feature=youtu.be)
+
+## Data
+A variety of eye measurements between a wild-type zebrafish line and a mutant line.
+
+You can get the excel file (here)[https://github.com/davemcg/Let_us_plot/blob/master/004_r_vs_excel/Compiled%20eye%20measurements.xlsx]
+```{r}
+library(tidyverse)
+library(ggsci)
+library(ggbeeswarm)
+micro <- readxl::read_xlsx('~/git/Let_us_plot/004_r_vs_excel/Compiled eye measurements.xlsx')
+head(micro)
+```
+
+## Cleaning 
+OK, a bit messy since this isn't a computer-formatted file. I'm going to grab the relevant data (ignoring the summarize stats) by looking at the data and slicing and selecting by coordinates. Not worth doing anything fancier (regex, grep, neural network) to automate this.
+
+```{r}
+# clean
+micro <- micro %>% 
+  slice(2:31) %>% 
+  select(`Fish ID` = X__1, 
+         Day3_Het = Day3, 
+         Day3_Mut = X__2, 
+         Day5_Het = Day5, 
+         Day5_Mut = X__3) %>% 
+  mutate(Day3_Het = as.numeric(Day3_Het),
+         Day3_Mut = as.numeric(Day3_Mut),
+         Day5_Het = as.numeric(Day5_Het),
+         Day5_Mut = as.numeric(Day5_Mut))
+micro
+```
+
+## Reformatting
+
+We are also going to have to reformat the data since Date and Genotype are mixed together in a column. Would rather have all the data in one column and the date and genotype in their own columns. Confused? Well, just compare the above data to the modified data. 
+
+**Remember** - if this is too intimidating right now, then it is fine to just manually move the data around with Excel to make it look like the below data. Then you can just focus on making the figure. 
+```{r}
+# wide to long
+micro <- micro %>% 
+  gather(Date_Genotype, Size, -`Fish ID`) %>% 
+  separate(Date_Genotype, c('Date','Genotype'))
+micro
+```
+
+## Box Plot
+```{r}
+micro %>% ggplot(aes(x=Genotype, y=Size, colour=Genotype)) + 
+  facet_wrap(~Date) +
+  geom_boxplot() + 
+  theme_minimal() + 
+  scale_color_aaas()
+```
+
+## Boxplot with all the data displayed
+So easy with ggplot2
+
+Remember to have your `geom_boxplot` remove display of outliers (since you are showing them now with `geom_jitter`)
+```{r}
+micro %>% ggplot(aes(x=Genotype, y=Size, colour=Genotype)) + facet_wrap(~Date) +
+  geom_boxplot(outlier.shape = NA) + 
+  geom_jitter() + 
+  theme_minimal() + 
+  scale_color_aaas()
+```
+
+## I used to prefer violin plots
+But the smoothing for outlier points can be misleading. They also confuse people who haven't seen them before **and** you lose the quartile / median info a boxplot provides. 
+```{r}
+micro %>% ggplot(aes(x=Genotype, y=Size, colour=Genotype)) + facet_wrap(~Date) +
+  geom_violin() + 
+  geom_jitter() + 
+  theme_minimal() + 
+  scale_color_aaas()
+```
+
+## I'm a fan of beeswarm plots with boxplots
+You get the violin plot structure and the quartile / median info of boxplots. Win win. 
+
+I've reduced the alpha (opacity) of the points to put more emphasis on the boxplot. 
+```{r}
+micro %>% ggplot(aes(x=Genotype, y=Size, colour=Genotype)) + facet_wrap(~Date) +
+  geom_boxplot(outlier.shape = NA) + 
+  geom_quasirandom(alpha=0.4) + 
+  theme_minimal() + 
+  scale_color_aaas()
+```
+
+## Doing statistics. 
+Are the differences significant between genotype on Day3 and Day5? More precisely, can we reject the null hypothesis (no mean difference in size)?
+
+Let's use the venerable t.test. The data eyeballs as normally distributed. I'm using `dplyr` `filter` to test Day 3 and Day 5 separately, testing for differences in mean between genotypes (hence the right half of the equation below ends with `pull(Genotype)`)
+```{r}
+# Day 3
+t.test(micro %>% filter(Date=='Day3') %>% pull(Size) ~ micro %>% filter(Date=='Day3') %>% pull(Genotype))
+
+# Day 5
+t.test(micro %>% filter(Date=='Day5') %>% pull(Size) ~ micro %>% filter(Date=='Day5') %>% pull(Genotype))
+```
+Yes for Day 3, no for Day 5. 
+
+
