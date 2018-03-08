@@ -1,0 +1,54 @@
+---
+title: Are you in genomics? Stop using ROC - use PR
+author: David McGaughey
+date: '2018-03-03'
+slug: are-you-in-genomics-stop-using-roc-use-pr
+categories:
+  - bioinformatics
+  - machineLearning
+  - R
+tags:
+  - bioinformatics
+  - R
+  - machinelearning
+  - caret
+---
+
+## Intro
+ROC curves are a terrible metric for a genomics-scale problem. Don't use them. Well, you have to use them because everyone uses them and expects them, but try to stick them in the supplementary figures.
+
+Why?
+
+Because genomics machine learning problems are *always* wildly imbalanced between classes. The human genome is three gigabases (3e8) in size. 
+
+Using knn to identify promoters? There are 20,000 genes * 1000 base pair (bp) promoter = 2e6 bp in the promoter class and 3e8 bases in the not-promoter class. 
+
+3e8 : 2e6  | 150 : 1 | not-promoter | promoter
+
+Writing a neural network to identify CTCF binding sites? CTCF binds around 50,000 sites * 14bp = 7e5.
+
+3e8 / 7e5 = 430
+
+Using random forests to create a pathogenicity metric? Well, in a given genome only 1-2 positions will contribute to a mendelian disorder. 
+
+3e8 / 2 = 1.5e8
+
+OK, what does class imbalance have to do with ROC? If you have some more time, go read Lior Pachter's [post](https://liorpachter.wordpress.com/2016/12/21/confusion-matrix-terminology-is-taxicab-trigonometry/) on metrics for assessing performance. 
+
+There are also several web posts that explain [why](https://www.kaggle.com/general/7517) [ROC](https://www.kaggle.com/lct14558/imbalanced-data-why-you-should-not-use-roc-curve) is bad for unbalanced classes and even a published [paper](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4349800/). 
+
+## I'm going to show you the problem and *also* show you the solution. With R.
+I've got a subset of the ClinVar dataset. I have most of the pathogenic variants associated with some form of retinal degeneration. Also, all of the variants in ClinVar marked benign. I've used VEP, vcfanno, and vcf2b from the Quinlan group to label each variant with a wide variety of metrics. Since many of the metrics are non-numeric, I've *one hot encoded* them so we can run more machine learning algorithms on the data. 
+
+You can get `clinvar_one_hot.tsv.gz` [here](LINK).
+```{r, warning=FALSE}
+library(tidyverse)
+clinvar <- read_tsv('~/git/eye_var_Pathogenicity/processed_data/clinvar_one_hot.tsv.gz')
+```
+
+The most important column is `Status` as it is the answer key.
+
+# How many Pathogenic and NotPathogenic do we have?
+```{r}
+clinvar$Status %>% table()
+```
