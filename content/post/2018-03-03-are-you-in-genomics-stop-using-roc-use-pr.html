@@ -1,0 +1,301 @@
+---
+title: Are you in genomics and building models? Stop using ROC - use PR
+author: David McGaughey
+date: '2018-03-03'
+slug: are-you-in-genomics-stop-using-roc-use-pr
+categories:
+  - bioinformatics
+  - machineLearning
+  - R
+tags:
+  - bioinformatics
+  - R
+  - machinelearning
+  - caret
+---
+
+
+
+<div id="tldr" class="section level2">
+<h2>tldr</h2>
+<p>Area Under the Curve (AUC) of Receiver Operating Characteristic (ROC) is a terrible metric for a genomics problem. Do not use it. This metric also goes by AUC or AUROC. Use Precision Recall AUC.</p>
+</div>
+<div id="inspiration-for-this-post" class="section level2">
+<h2>Inspiration for this post</h2>
+<ol style="list-style-type: decimal">
+<li>I am working on a machine learning problem in genomics</li>
+<li>I was getting really confused why AUROC was so worthless</li>
+<li>scienceTwitter featuring Anshul Kundaje <img src="/img/anshul_ROC_PR.png" alt="https://twitter.com/anshulkundaje/status/965623852209352704" /></li>
+<li>I want to save you (some time)</li>
+</ol>
+</div>
+<div id="whats-a-roc" class="section level2">
+<h2>What’s a ROC?</h2>
+<p>First, you do have to use them because everyone uses them and expects them, but try to move them in the supplementary figures. Eventually the field will stop expecting this and demand to see a useful metric - like AUC of Precision Recall. More on this later.</p>
+<p>Before we discuss how an ROC is constructed, let’s see first see a <em>Confusion Matrix</em> of a model.</p>
+<table>
+<tbody>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>Reference</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>Positive</td>
+<td>Negative</td>
+</tr>
+<tr class="odd">
+<td>Prediction</td>
+<td>Positive</td>
+<td>236</td>
+<td>103</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>Negative</td>
+<td>174</td>
+<td>116,952</td>
+</tr>
+</tbody>
+</table>
+<p>The two axes of a ROC are:</p>
+<ol style="list-style-type: decimal">
+<li>True Positive Rate (TPR) / Sensitivity / Recall (I assume it goes by so many names because different fields kept re-inventing it)</li>
+<li>False Positive Rate (FPR)</li>
+</ol>
+<p>The TPR of the model is: <span class="math display">\[\frac{236}{236 + 174}\approx0.576\]</span></p>
+<p>The FPR of the model is: <span class="math display">\[\frac{174}{174 + 116,952}\approx0.001\]</span></p>
+<p>The model does not actually spit out positive or negative. It gives out <em>probabilities</em> that a given item is positive or negative. If we change the probabilities cutoff to different values (to make the classification more or less stringent) we can get different TPR and FPR. This is done to generate TPR and FPR from 0 to 1 and a line is plotted. The AUC for the ROC (AUROC) is then calculated by measuring the area under the curve. Either by taking the <a href="https://en.wikipedia.org/wiki/Receiver_operating_characteristic">integral or a trapezoidal approximation</a>.</p>
+<p>A larger AUROC is better. 1 is perfect. 0.5 is a bunch of grad students flipping coins.</p>
+<p>Now we have a rough idea of ROC works. Now let’s do some machine learning and see ROC works in practice.</p>
+</div>
+<div id="machine-learning" class="section level2">
+<h2>Machine Learning</h2>
+<p>Load data. Briefly, they are ClinVar variants for a variety of eye disease. They’ve been classified as <code>Pathogenic</code> or <code>NotPathogenic</code> by groups submitting to ClinVar (ClinVar uses the term <em>benign</em>). Each variant has been labeled with a variety of pathogenicity scores, population frequency info, and <em>in silico</em> consequences. Empty values were assigned <code>-1</code> (brief aside: I’m not sure if imputing missing data is a good idea here). One hot encoding was done to turn categorical information into numeric vectors. Each predictor (column) was centered and scaled.</p>
+<p>You can download the <code>clinvar_one_hot_CS_toy_set.tsv.gz</code> file <a href="https://github.com/davemcg/eye_var_Pathogenicity/blob/master/processed_data/clinvar_one_hot_CS_toy_set.tsv.gz">here</a></p>
+<pre class="r"><code>library(tidyverse)</code></pre>
+<pre><code>## ── Attaching packages ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──</code></pre>
+<pre><code>## ✔ ggplot2 2.2.1     ✔ purrr   0.2.4
+## ✔ tibble  1.4.2     ✔ dplyr   0.7.4
+## ✔ tidyr   0.7.2     ✔ stringr 1.2.0
+## ✔ readr   1.1.1     ✔ forcats 0.2.0</code></pre>
+<pre><code>## ── Conflicts ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()</code></pre>
+<pre class="r"><code>clinvar &lt;- read_tsv(&#39;~/git/eye_var_Pathogenicity/processed_data/clinvar_one_hot_CS_toy_set.tsv.gz&#39;)</code></pre>
+<pre><code>## Parsed with column specification:
+## cols(
+##   Status = col_character(),
+##   is_lof = col_double(),
+##   impact_severity = col_double(),
+##   polyphen_score = col_double(),
+##   sift_score = col_double(),
+##   revel = col_double(),
+##   cadd_phred = col_double(),
+##   af_exac_all = col_double(),
+##   pli = col_double(),
+##   n_syn = col_double(),
+##   n_mis = col_double(),
+##   precessive = col_double(),
+##   fathmm_mkl_coding_score = col_double()
+## )</code></pre>
+<pre class="r"><code># set levels for status
+clinvar $Status &lt;- factor(clinvar$Status, levels=c(&#39;Pathogenic&#39;,&#39;NotPathogenic&#39;))</code></pre>
+</div>
+<div id="quickly-check-our-data" class="section level2">
+<h2>Quickly check our data</h2>
+<p><code>Status</code> is the crucial column - it has the answer key</p>
+<pre class="r"><code>clinvar$Status %&gt;% table()</code></pre>
+<pre><code>## .
+##    Pathogenic NotPathogenic 
+##           186          8246</code></pre>
+<p>Predictors</p>
+<pre class="r"><code>clinvar %&gt;% select(-Status) %&gt;% colnames()</code></pre>
+<pre><code>##  [1] &quot;is_lof&quot;                  &quot;impact_severity&quot;        
+##  [3] &quot;polyphen_score&quot;          &quot;sift_score&quot;             
+##  [5] &quot;revel&quot;                   &quot;cadd_phred&quot;             
+##  [7] &quot;af_exac_all&quot;             &quot;pli&quot;                    
+##  [9] &quot;n_syn&quot;                   &quot;n_mis&quot;                  
+## [11] &quot;precessive&quot;              &quot;fathmm_mkl_coding_score&quot;</code></pre>
+</div>
+<div id="split-data-into-training-and-testing-sets" class="section level2">
+<h2>Split data into training and testing sets</h2>
+<pre class="r"><code>clinvar$index &lt;- seq(1:nrow(clinvar))
+set.seed(9253)
+train_set &lt;- clinvar %&gt;% group_by(Status) %&gt;% sample_frac(0.5)
+test_set &lt;- clinvar %&gt;% filter(!index %in% train_set$index)
+# remove index so the models don&#39;t use them to classify
+train_set &lt;- train_set %&gt;% select(-index)
+test_set &lt;- test_set %&gt;% select(-index)</code></pre>
+</div>
+<div id="set-up-training-paramters" class="section level2">
+<h2>Set up training paramters</h2>
+<p>This is a nice feature of the <code>caret</code> package. You can customize training parameters and apply them to multiple algorithms</p>
+<pre class="r"><code>library(caret)</code></pre>
+<pre><code>## Loading required package: lattice</code></pre>
+<pre><code>## 
+## Attaching package: &#39;caret&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:purrr&#39;:
+## 
+##     lift</code></pre>
+<pre class="r"><code># 5 fold cross validation
+# twoClassSummary optimizes the algorithm for AUROC
+fitControl_naive &lt;- trainControl(
+  classProbs=T, # we want probabilites returned for each prediction
+  method = &quot;cv&quot;,
+  number = 5,
+  summaryFunction = twoClassSummary
+)</code></pre>
+</div>
+<div id="build-models" class="section level2">
+<h2>Build models</h2>
+<p>This is the big lie of machine learning. Look how trivial this is! Never mind the difficulty of all the work summarized above…</p>
+<pre class="r"><code>bglmFit &lt;- train(Status ~ ., data=train_set, 
+                 method = &#39;bayesglm&#39;,
+                 trControl = fitControl_naive)
+rfFit &lt;- train(Status ~ ., data=train_set, 
+               method = &#39;rf&#39;,
+                 trControl = fitControl_naive)
+# let&#39;s see how a popular pathogenicity score does alone
+caddFit &lt;- train(Status ~ ., data=train_set %&gt;% select(Status, cadd_phred), 
+                   method = &#39;glm&#39;,
+                 trControl = fitControl_naive)
+
+
+my_models &lt;- list()
+my_models$bglm &lt;- bglmFit
+my_models$rfFit &lt;- rfFit
+my_models$cadd &lt;- caddFit</code></pre>
+</div>
+<div id="auroc-plot" class="section level2">
+<h2>AUROC Plot!</h2>
+<pre class="r"><code>library(PRROC)
+# AUROC
+roc_maker &lt;- function(model, data) {
+  # new predictions on test set
+  # don&#39;t use the training set - if you are overfitting you will not get accurate idea of your models merit
+  new_predictions &lt;- predict(model, data, type = &#39;prob&#39;) %&gt;%
+    mutate(Answers = data$Status, 
+           Prediction = case_when(Pathogenic &gt; 0.5 ~ &#39;Pathogenic&#39;, 
+                                  TRUE ~ &#39;NotPathogenic&#39;))
+  roc.curve(scores.class0 = new_predictions %&gt;% filter(Answers==&#39;Pathogenic&#39;) %&gt;% pull(Pathogenic),
+           scores.class1 = new_predictions %&gt;% filter(Answers==&#39;NotPathogenic&#39;) %&gt;% pull(Pathogenic),
+           curve = T)
+}
+
+#bglm
+plot(roc_maker(bglmFit, test_set))</code></pre>
+<p><img src="/./post/2018-03-03-are-you-in-genomics-stop-using-roc-use-pr_files/figure-html/unnamed-chunk-7-1.png" width="672" /> Wow! 97% AUC for a bayesian generalized linear model for predicting pathogenicity! Let’s go straight to Nature/Cell/PNAS/Science!</p>
+<p>Well, let’s plot all three predictors at once. I did make three models after all.</p>
+<pre class="r"><code>roc_data &lt;- data.frame()
+for (i in names(my_models)){
+  print(my_models[[i]]$method)
+  roc &lt;- roc_maker(my_models[[i]], test_set)
+  out &lt;- roc$curve[,1:2] %&gt;% data.frame()
+  colnames(out) &lt;- c(&#39;FPR&#39;,&#39;Sensitivity&#39;)
+  out$model &lt;- i
+  out$AUC &lt;- roc$auc
+  out$&#39;Model (AUC)&#39; &lt;- paste0(i, &#39; (&#39;,round(roc$auc, 2),&#39;)&#39; )
+  roc_data &lt;- rbind(roc_data, out)
+}</code></pre>
+<pre><code>## [1] &quot;bayesglm&quot;
+## [1] &quot;rf&quot;
+## [1] &quot;glm&quot;</code></pre>
+<pre class="r"><code>roc &lt;- roc_data %&gt;% 
+  ggplot(aes(x=FPR, y=Sensitivity, colour=`Model (AUC)`)) + 
+  geom_line() + 
+  theme_minimal()  + 
+  ggtitle(&#39;AUROC&#39;) +
+  ggsci::scale_color_startrek()
+
+roc</code></pre>
+<p><img src="/./post/2018-03-03-are-you-in-genomics-stop-using-roc-use-pr_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p>Wow, the random forests are even better! CADD alone isn’t so bad, either! 78% is almost a B, right?</p>
+<p>Well, maybe we should make those confusion matrix things I showed earlier. Just to be careful.</p>
+<pre class="r"><code>cm_maker &lt;- function(model, data, cutoff=0.5, mode = &#39;sens_spec&#39;) {
+  new_predictions &lt;- predict(model, data, type=&#39;prob&#39;) %&gt;%
+    mutate(Answers = data$Status, Prediction = case_when(Pathogenic &gt; cutoff ~ &#39;Pathogenic&#39;, TRUE ~ &#39;NotPathogenic&#39;))
+  confusionMatrix(data = new_predictions$Prediction, reference = new_predictions$Answers, mode= mode)
+}
+
+for (i in names(my_models)){
+  print(i)
+  print(cm_maker(my_models[[i]], test_set)$table)
+}</code></pre>
+<pre><code>## [1] &quot;bglm&quot;
+##                Reference
+## Prediction      Pathogenic NotPathogenic
+##   Pathogenic            43            35
+##   NotPathogenic         50          4088
+## [1] &quot;rfFit&quot;
+##                Reference
+## Prediction      Pathogenic NotPathogenic
+##   Pathogenic            56            14
+##   NotPathogenic         37          4109
+## [1] &quot;cadd&quot;
+##                Reference
+## Prediction      Pathogenic NotPathogenic
+##   Pathogenic            10             3
+##   NotPathogenic         83          4120</code></pre>
+<p>Huh, these do not look so great….the TPR for the bayes glm model is only 46%. But the AUROC looked so awesome.</p>
+<p>What is happening?</p>
+<p>Well, the classes are imbalanced. ROC plots are designed to provide useful information <strong>when your classes are balanced</strong>. You have a huge set of <code>NotPathogenic</code> compared to <code>Pathogenic</code>. We have 186 <code>Pathogenic</code> and 8246 <code>NotPathogenic</code>.</p>
+<p>A model that always guessed <code>NotPathogenic</code> would also do great on the AUROC.</p>
+<p>How do we better represent reality?</p>
+</div>
+<div id="precision-recall-plots" class="section level2">
+<h2>Precision Recall Plots</h2>
+<p>These plot precision against recall. The advantage compared to ROC is that they do not take into the <em>negative</em> class. Let’s see what they look like with the same models. One thing to quickly note is that, by convention, the plots are ‘mirrored’ compared to ROC - you want your model to be in the top right for a PR plot, instead of the top left for a ROC.</p>
+<pre class="r"><code># precision recall AUC
+pr_maker &lt;- function(model, data) {
+  new_predictions &lt;- predict(model, data, type = &#39;prob&#39;) %&gt;%
+    mutate(Answers = data$Status, Prediction = case_when(Pathogenic &gt; 0.5 ~ &#39;Pathogenic&#39;, TRUE ~ &#39;NotPathogenic&#39;))
+  pr.curve(scores.class0 = new_predictions %&gt;% filter(Answers==&#39;Pathogenic&#39;) %&gt;% pull(Pathogenic),
+           scores.class1 = new_predictions %&gt;% filter(Answers==&#39;NotPathogenic&#39;) %&gt;% pull(Pathogenic),
+           curve = T)
+}
+
+pr_data &lt;- data.frame()
+for (i in names(my_models)){
+  print(my_models[[i]]$method)
+  pr &lt;- pr_maker(my_models[[i]], test_set)
+  out &lt;- pr$curve[,1:2] %&gt;% data.frame()
+  colnames(out) &lt;- c(&#39;Recall&#39;,&#39;Precision&#39;)
+  out$AUC &lt;- pr$auc.integral
+  out$model &lt;- i
+  out$&#39;Model (AUC)&#39; &lt;- paste0(i, &#39; (&#39;,round(pr$auc.integral,2),&#39;)&#39; )
+  pr_data &lt;- rbind(pr_data, out)
+}</code></pre>
+<pre><code>## [1] &quot;bayesglm&quot;
+## [1] &quot;rf&quot;
+## [1] &quot;glm&quot;</code></pre>
+<pre class="r"><code>pr &lt;- pr_data %&gt;% 
+  ggplot(aes(x=Recall, y=Precision, colour=`Model (AUC)`)) + 
+  geom_line() + 
+  theme_minimal() + 
+  ggtitle(&#39;Precision Recall Curve&#39;) +
+  ggsci::scale_color_startrek()
+
+pr</code></pre>
+<p><img src="/./post/2018-03-03-are-you-in-genomics-stop-using-roc-use-pr_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p>This looks like a more reasonable way to assess performance. Also notice how the RF and bayes GLM have subtantially different performance when being assessed like this, even though the AUROC was only 0.02 apart.</p>
+</div>
+<div id="conclusion" class="section level2">
+<h2>Conclusion</h2>
+<p>Why again do I have to use PR plots in genomics - I balanced my two classes when I trained the model! Well because in actual problem space, the genome, the problems are <em>always</em> wildly imbalanced between classes. The human genome is three gigabases (3e9) in size.</p>
+<p>Using knn to identify promoters? There are 20,000 genes * 1000 base pair (bp) promoter = 2e6 bp.</p>
+<p>3e9 / 2e6 = 1500:1 ratio</p>
+<p>Writing a deep convoluational neural network to identify CTCF binding sites? CTCF binds around 50,000 sites * 14bp = 7e5.</p>
+<p>3e9 / 7e5 = 4300:1 ratio</p>
+<p>Using random forests to create a pathogenicity metric? Well, in a given genome only 1-2 positions will contribute to a mendelian disorder.</p>
+<p>3e9 / 2 = 1.5e9:1 ratio</p>
+</div>
+<div id="a-little-more-reading" class="section level2">
+<h2>A little more reading</h2>
+<p>If you have some more time, go read Lior Pachter’s <a href="https://liorpachter.wordpress.com/2016/12/21/confusion-matrix-terminology-is-taxicab-trigonometry/">post</a> on metrics for assessing performance.</p>
+<p>Also check this tweet <a href="https://twitter.com/michaelhoffman/status/969261327331061760">conversation</a> between Michael Hoffman and Anshul Kundaje.</p>
+<p>There are also several web posts that explain <a href="https://www.kaggle.com/general/7517">why</a> <a href="https://www.kaggle.com/lct14558/imbalanced-data-why-you-should-not-use-roc-curve">ROC</a> is bad for unbalanced classes and even a published <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4349800/">paper</a>.</p>
+</div>

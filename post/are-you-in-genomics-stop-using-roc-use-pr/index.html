@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme" content="hugo-academic">
+  <meta name="generator" content="Hugo 0.35" />
+  <meta name="author" content="David McGaughey">
+
+  
+  
+  
+  
+    
+      
+    
+  
+  <meta name="description" content="tldr Area Under the Curve (AUC) of Receiver Operating Characteristic (ROC) is a terrible metric for a genomics problem. Do not use it. This metric also goes by AUC or AUROC. Use Precision Recall AUC.
+ Inspiration for this post I am working on a machine learning problem in genomics I was getting really confused why AUROC was so worthless scienceTwitter featuring Anshul Kundaje  I want to save you (some time)   What’s a ROC?">
+
+  
+  <link rel="alternate" hreflang="en-us" href="/./post/are-you-in-genomics-stop-using-roc-use-pr/">
+
+  
+
+
+  
+
+  
+  
+  <meta name="theme-color" content="#0095eb">
+  
+  
+  
+  
+    
+  
+  
+    
+    
+      
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+      
+    
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha512-6MXa8B6uaO18Hid6blRMetEIoPqHf7Ux1tnyIQdpt9qI5OACx7C+O3IVTr98vwGnlcg0LOLa02i9Y1HpVhlfiw==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.1/css/academicons.min.css" integrity="sha512-NThgw3XKQ1absAahW6to7Ey42uycrVvfNfyjqcFNgCmOCQ5AR4AO0SiXrN+8ZtYeappp56lk1WtvjVmEa+VR6A==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+  
+  
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat:400,700%7cRoboto:400,400italic,700%7cRoboto&#43;Mono">
+  
+  <link rel="stylesheet" href="/styles.css">
+  
+
+  
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-113461893-1', 'auto');
+      ga('require', 'eventTracker');
+      ga('require', 'outboundLinkTracker');
+      ga('require', 'urlChangeTracker');
+      ga('send', 'pageview');
+    </script>
+    <script async src="//www.google-analytics.com/analytics.js"></script>
+    
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g==" crossorigin="anonymous"></script>
+    
+  
+
+  
+  <link rel="alternate" href="/./index.xml" type="application/rss+xml" title="eye Bioinformatician">
+  <link rel="feed" href="/./index.xml" type="application/rss+xml" title="eye Bioinformatician">
+  
+
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="/./post/are-you-in-genomics-stop-using-roc-use-pr/">
+
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="twitter:site" content="@https://twitter.com/David_McGaughey">
+  <meta property="twitter:creator" content="@https://twitter.com/David_McGaughey">
+  
+  <meta property="og:site_name" content="eye Bioinformatician">
+  <meta property="og:url" content="/./post/are-you-in-genomics-stop-using-roc-use-pr/">
+  <meta property="og:title" content="Are you in genomics and building models? Stop using ROC - use PR | eye Bioinformatician">
+  <meta property="og:description" content="tldr Area Under the Curve (AUC) of Receiver Operating Characteristic (ROC) is a terrible metric for a genomics problem. Do not use it. This metric also goes by AUC or AUROC. Use Precision Recall AUC.
+ Inspiration for this post I am working on a machine learning problem in genomics I was getting really confused why AUROC was so worthless scienceTwitter featuring Anshul Kundaje  I want to save you (some time)   What’s a ROC?">
+  <meta property="og:locale" content="en-us">
+  
+  <meta property="article:published_time" content="2018-03-03T00:00:00&#43;00:00">
+  
+  <meta property="article:modified_time" content="2018-03-03T00:00:00&#43;00:00">
+  
+
+  
+
+  <title>Are you in genomics and building models? Stop using ROC - use PR | eye Bioinformatician</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#toc" data-offset="71" >
+
+<nav class="navbar navbar-default navbar-fixed-top" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="navbar-header">
+      
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+              data-target=".navbar-collapse" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+      <a class="navbar-brand" href="/">eye Bioinformatician</a>
+    </div>
+
+    
+    <div class="collapse navbar-collapse">
+
+      
+      
+      <ul class="nav navbar-nav navbar-right">
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#about">
+            
+            <span>Home</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true">
+            
+            <span>Posts</span>
+            
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            
+            <li class="nav-item">
+              <a href="/#posts">
+                
+                <span>Recent Posts</span>
+                
+              </a>
+            </li>
+            
+            <li class="nav-item">
+              <a href="/post">
+                
+                <span>All Posts</span>
+                
+              </a>
+            </li>
+            
+          </ul>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#projects">
+            
+            <span>Projects</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#publications_selected">
+            
+            <span>Publications</span>
+            
+          </a>
+        </li>
+
+        
+        
+      
+
+      
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+  <div class="article-container">
+    <h1 itemprop="name">Are you in genomics and building models? Stop using ROC - use PR</h1>
+
+    
+
+<div class="article-metadata">
+
+  <span class="article-date">
+    
+    <time datetime="2018-03-03 00:00:00 &#43;0000 UTC" itemprop="datePublished dateModified">
+      Mar 3, 2018
+    </time>
+  </span>
+  <span itemscope itemprop="author publisher" itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="David McGaughey">
+  </span>
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    8 min read
+  </span>
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <a href="/./post/are-you-in-genomics-stop-using-roc-use-pr/#disqus_thread"></a>
+  
+
+  
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fa fa-folder"></i>
+    
+    <a href="/categories/bioinformatics">bioinformatics</a
+    >, 
+    
+    <a href="/categories/machinelearning">machineLearning</a
+    >, 
+    
+    <a href="/categories/r">R</a
+    >
+    
+  </span>
+  
+  
+
+  
+  
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=Are%20you%20in%20genomics%20and%20building%20models%3f%20Stop%20using%20ROC%20-%20use%20PR&amp;url=%2f.%2fpost%2fare-you-in-genomics-stop-using-roc-use-pr%2f"
+         target="_blank" rel="noopener">
+        <i class="fa fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=%2f.%2fpost%2fare-you-in-genomics-stop-using-roc-use-pr%2f"
+         target="_blank" rel="noopener">
+        <i class="fa fa-facebook"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2f.%2fpost%2fare-you-in-genomics-stop-using-roc-use-pr%2f&amp;title=Are%20you%20in%20genomics%20and%20building%20models%3f%20Stop%20using%20ROC%20-%20use%20PR"
+         target="_blank" rel="noopener">
+        <i class="fa fa-linkedin"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=%2f.%2fpost%2fare-you-in-genomics-stop-using-roc-use-pr%2f&amp;title=Are%20you%20in%20genomics%20and%20building%20models%3f%20Stop%20using%20ROC%20-%20use%20PR"
+         target="_blank" rel="noopener">
+        <i class="fa fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=Are%20you%20in%20genomics%20and%20building%20models%3f%20Stop%20using%20ROC%20-%20use%20PR&amp;body=%2f.%2fpost%2fare-you-in-genomics-stop-using-roc-use-pr%2f">
+        <i class="fa fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+
+    <div class="article-style" itemprop="articleBody">
+      <div id="tldr" class="section level2">
+<h2>tldr</h2>
+<p>Area Under the Curve (AUC) of Receiver Operating Characteristic (ROC) is a terrible metric for a genomics problem. Do not use it. This metric also goes by AUC or AUROC. Use Precision Recall AUC.</p>
+</div>
+<div id="inspiration-for-this-post" class="section level2">
+<h2>Inspiration for this post</h2>
+<ol style="list-style-type: decimal">
+<li>I am working on a machine learning problem in genomics</li>
+<li>I was getting really confused why AUROC was so worthless</li>
+<li>scienceTwitter featuring Anshul Kundaje <img src="/img/anshul_ROC_PR.png" alt="https://twitter.com/anshulkundaje/status/965623852209352704" /></li>
+<li>I want to save you (some time)</li>
+</ol>
+</div>
+<div id="whats-a-roc" class="section level2">
+<h2>What’s a ROC?</h2>
+<p>First, you do have to use them because everyone uses them and expects them, but try to move them in the supplementary figures. Eventually the field will stop expecting this and demand to see a useful metric - like AUC of Precision Recall. More on this later.</p>
+<p>Before we discuss how an ROC is constructed, let’s see first see a <em>Confusion Matrix</em> of a model.</p>
+<table>
+<tbody>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>Reference</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>Positive</td>
+<td>Negative</td>
+</tr>
+<tr class="odd">
+<td>Prediction</td>
+<td>Positive</td>
+<td>236</td>
+<td>103</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>Negative</td>
+<td>174</td>
+<td>116,952</td>
+</tr>
+</tbody>
+</table>
+<p>The two axes of a ROC are:</p>
+<ol style="list-style-type: decimal">
+<li>True Positive Rate (TPR) / Sensitivity / Recall (I assume it goes by so many names because different fields kept re-inventing it)</li>
+<li>False Positive Rate (FPR)</li>
+</ol>
+<p>The TPR of the model is: <span class="math display">\[\frac{236}{236 + 174}\approx0.576\]</span></p>
+<p>The FPR of the model is: <span class="math display">\[\frac{174}{174 + 116,952}\approx0.001\]</span></p>
+<p>The model does not actually spit out positive or negative. It gives out <em>probabilities</em> that a given item is positive or negative. If we change the probabilities cutoff to different values (to make the classification more or less stringent) we can get different TPR and FPR. This is done to generate TPR and FPR from 0 to 1 and a line is plotted. The AUC for the ROC (AUROC) is then calculated by measuring the area under the curve. Either by taking the <a href="https://en.wikipedia.org/wiki/Receiver_operating_characteristic">integral or a trapezoidal approximation</a>.</p>
+<p>A larger AUROC is better. 1 is perfect. 0.5 is a bunch of grad students flipping coins.</p>
+<p>Now we have a rough idea of ROC works. Now let’s do some machine learning and see ROC works in practice.</p>
+</div>
+<div id="machine-learning" class="section level2">
+<h2>Machine Learning</h2>
+<p>Load data. Briefly, they are ClinVar variants for a variety of eye disease. They’ve been classified as <code>Pathogenic</code> or <code>NotPathogenic</code> by groups submitting to ClinVar (ClinVar uses the term <em>benign</em>). Each variant has been labeled with a variety of pathogenicity scores, population frequency info, and <em>in silico</em> consequences. Empty values were assigned <code>-1</code> (brief aside: I’m not sure if imputing missing data is a good idea here). One hot encoding was done to turn categorical information into numeric vectors. Each predictor (column) was centered and scaled.</p>
+<p>You can download the <code>clinvar_one_hot_CS_toy_set.tsv.gz</code> file <a href="https://github.com/davemcg/eye_var_Pathogenicity/blob/master/processed_data/clinvar_one_hot_CS_toy_set.tsv.gz">here</a></p>
+<pre class="r"><code>library(tidyverse)</code></pre>
+<pre><code>## ── Attaching packages ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──</code></pre>
+<pre><code>## ✔ ggplot2 2.2.1     ✔ purrr   0.2.4
+## ✔ tibble  1.4.2     ✔ dplyr   0.7.4
+## ✔ tidyr   0.7.2     ✔ stringr 1.2.0
+## ✔ readr   1.1.1     ✔ forcats 0.2.0</code></pre>
+<pre><code>## ── Conflicts ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()</code></pre>
+<pre class="r"><code>clinvar &lt;- read_tsv(&#39;~/git/eye_var_Pathogenicity/processed_data/clinvar_one_hot_CS_toy_set.tsv.gz&#39;)</code></pre>
+<pre><code>## Parsed with column specification:
+## cols(
+##   Status = col_character(),
+##   is_lof = col_double(),
+##   impact_severity = col_double(),
+##   polyphen_score = col_double(),
+##   sift_score = col_double(),
+##   revel = col_double(),
+##   cadd_phred = col_double(),
+##   af_exac_all = col_double(),
+##   pli = col_double(),
+##   n_syn = col_double(),
+##   n_mis = col_double(),
+##   precessive = col_double(),
+##   fathmm_mkl_coding_score = col_double()
+## )</code></pre>
+<pre class="r"><code># set levels for status
+clinvar $Status &lt;- factor(clinvar$Status, levels=c(&#39;Pathogenic&#39;,&#39;NotPathogenic&#39;))</code></pre>
+</div>
+<div id="quickly-check-our-data" class="section level2">
+<h2>Quickly check our data</h2>
+<p><code>Status</code> is the crucial column - it has the answer key</p>
+<pre class="r"><code>clinvar$Status %&gt;% table()</code></pre>
+<pre><code>## .
+##    Pathogenic NotPathogenic 
+##           186          8246</code></pre>
+<p>Predictors</p>
+<pre class="r"><code>clinvar %&gt;% select(-Status) %&gt;% colnames()</code></pre>
+<pre><code>##  [1] &quot;is_lof&quot;                  &quot;impact_severity&quot;        
+##  [3] &quot;polyphen_score&quot;          &quot;sift_score&quot;             
+##  [5] &quot;revel&quot;                   &quot;cadd_phred&quot;             
+##  [7] &quot;af_exac_all&quot;             &quot;pli&quot;                    
+##  [9] &quot;n_syn&quot;                   &quot;n_mis&quot;                  
+## [11] &quot;precessive&quot;              &quot;fathmm_mkl_coding_score&quot;</code></pre>
+</div>
+<div id="split-data-into-training-and-testing-sets" class="section level2">
+<h2>Split data into training and testing sets</h2>
+<pre class="r"><code>clinvar$index &lt;- seq(1:nrow(clinvar))
+set.seed(9253)
+train_set &lt;- clinvar %&gt;% group_by(Status) %&gt;% sample_frac(0.5)
+test_set &lt;- clinvar %&gt;% filter(!index %in% train_set$index)
+# remove index so the models don&#39;t use them to classify
+train_set &lt;- train_set %&gt;% select(-index)
+test_set &lt;- test_set %&gt;% select(-index)</code></pre>
+</div>
+<div id="set-up-training-paramters" class="section level2">
+<h2>Set up training paramters</h2>
+<p>This is a nice feature of the <code>caret</code> package. You can customize training parameters and apply them to multiple algorithms</p>
+<pre class="r"><code>library(caret)</code></pre>
+<pre><code>## Loading required package: lattice</code></pre>
+<pre><code>## 
+## Attaching package: &#39;caret&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:purrr&#39;:
+## 
+##     lift</code></pre>
+<pre class="r"><code># 5 fold cross validation
+# twoClassSummary optimizes the algorithm for AUROC
+fitControl_naive &lt;- trainControl(
+  classProbs=T, # we want probabilites returned for each prediction
+  method = &quot;cv&quot;,
+  number = 5,
+  summaryFunction = twoClassSummary
+)</code></pre>
+</div>
+<div id="build-models" class="section level2">
+<h2>Build models</h2>
+<p>This is the big lie of machine learning. Look how trivial this is! Never mind the difficulty of all the work summarized above…</p>
+<pre class="r"><code>bglmFit &lt;- train(Status ~ ., data=train_set, 
+                 method = &#39;bayesglm&#39;,
+                 trControl = fitControl_naive)
+rfFit &lt;- train(Status ~ ., data=train_set, 
+               method = &#39;rf&#39;,
+                 trControl = fitControl_naive)
+# let&#39;s see how a popular pathogenicity score does alone
+caddFit &lt;- train(Status ~ ., data=train_set %&gt;% select(Status, cadd_phred), 
+                   method = &#39;glm&#39;,
+                 trControl = fitControl_naive)
+
+
+my_models &lt;- list()
+my_models$bglm &lt;- bglmFit
+my_models$rfFit &lt;- rfFit
+my_models$cadd &lt;- caddFit</code></pre>
+</div>
+<div id="auroc-plot" class="section level2">
+<h2>AUROC Plot!</h2>
+<pre class="r"><code>library(PRROC)
+# AUROC
+roc_maker &lt;- function(model, data) {
+  # new predictions on test set
+  # don&#39;t use the training set - if you are overfitting you will not get accurate idea of your models merit
+  new_predictions &lt;- predict(model, data, type = &#39;prob&#39;) %&gt;%
+    mutate(Answers = data$Status, 
+           Prediction = case_when(Pathogenic &gt; 0.5 ~ &#39;Pathogenic&#39;, 
+                                  TRUE ~ &#39;NotPathogenic&#39;))
+  roc.curve(scores.class0 = new_predictions %&gt;% filter(Answers==&#39;Pathogenic&#39;) %&gt;% pull(Pathogenic),
+           scores.class1 = new_predictions %&gt;% filter(Answers==&#39;NotPathogenic&#39;) %&gt;% pull(Pathogenic),
+           curve = T)
+}
+
+#bglm
+plot(roc_maker(bglmFit, test_set))</code></pre>
+<p><img src="/./post/2018-03-03-are-you-in-genomics-stop-using-roc-use-pr_files/figure-html/unnamed-chunk-7-1.png" width="672" /> Wow! 97% AUC for a bayesian generalized linear model for predicting pathogenicity! Let’s go straight to Nature/Cell/PNAS/Science!</p>
+<p>Well, let’s plot all three predictors at once. I did make three models after all.</p>
+<pre class="r"><code>roc_data &lt;- data.frame()
+for (i in names(my_models)){
+  print(my_models[[i]]$method)
+  roc &lt;- roc_maker(my_models[[i]], test_set)
+  out &lt;- roc$curve[,1:2] %&gt;% data.frame()
+  colnames(out) &lt;- c(&#39;FPR&#39;,&#39;Sensitivity&#39;)
+  out$model &lt;- i
+  out$AUC &lt;- roc$auc
+  out$&#39;Model (AUC)&#39; &lt;- paste0(i, &#39; (&#39;,round(roc$auc, 2),&#39;)&#39; )
+  roc_data &lt;- rbind(roc_data, out)
+}</code></pre>
+<pre><code>## [1] &quot;bayesglm&quot;
+## [1] &quot;rf&quot;
+## [1] &quot;glm&quot;</code></pre>
+<pre class="r"><code>roc &lt;- roc_data %&gt;% 
+  ggplot(aes(x=FPR, y=Sensitivity, colour=`Model (AUC)`)) + 
+  geom_line() + 
+  theme_minimal()  + 
+  ggtitle(&#39;AUROC&#39;) +
+  ggsci::scale_color_startrek()
+
+roc</code></pre>
+<p><img src="/./post/2018-03-03-are-you-in-genomics-stop-using-roc-use-pr_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p>Wow, the random forests are even better! CADD alone isn’t so bad, either! 78% is almost a B, right?</p>
+<p>Well, maybe we should make those confusion matrix things I showed earlier. Just to be careful.</p>
+<pre class="r"><code>cm_maker &lt;- function(model, data, cutoff=0.5, mode = &#39;sens_spec&#39;) {
+  new_predictions &lt;- predict(model, data, type=&#39;prob&#39;) %&gt;%
+    mutate(Answers = data$Status, Prediction = case_when(Pathogenic &gt; cutoff ~ &#39;Pathogenic&#39;, TRUE ~ &#39;NotPathogenic&#39;))
+  confusionMatrix(data = new_predictions$Prediction, reference = new_predictions$Answers, mode= mode)
+}
+
+for (i in names(my_models)){
+  print(i)
+  print(cm_maker(my_models[[i]], test_set)$table)
+}</code></pre>
+<pre><code>## [1] &quot;bglm&quot;
+##                Reference
+## Prediction      Pathogenic NotPathogenic
+##   Pathogenic            43            35
+##   NotPathogenic         50          4088
+## [1] &quot;rfFit&quot;
+##                Reference
+## Prediction      Pathogenic NotPathogenic
+##   Pathogenic            56            14
+##   NotPathogenic         37          4109
+## [1] &quot;cadd&quot;
+##                Reference
+## Prediction      Pathogenic NotPathogenic
+##   Pathogenic            10             3
+##   NotPathogenic         83          4120</code></pre>
+<p>Huh, these do not look so great….the TPR for the bayes glm model is only 46%. But the AUROC looked so awesome.</p>
+<p>What is happening?</p>
+<p>Well, the classes are imbalanced. ROC plots are designed to provide useful information <strong>when your classes are balanced</strong>. You have a huge set of <code>NotPathogenic</code> compared to <code>Pathogenic</code>. We have 186 <code>Pathogenic</code> and 8246 <code>NotPathogenic</code>.</p>
+<p>A model that always guessed <code>NotPathogenic</code> would also do great on the AUROC.</p>
+<p>How do we better represent reality?</p>
+</div>
+<div id="precision-recall-plots" class="section level2">
+<h2>Precision Recall Plots</h2>
+<p>These plot precision against recall. The advantage compared to ROC is that they do not take into the <em>negative</em> class. Let’s see what they look like with the same models. One thing to quickly note is that, by convention, the plots are ‘mirrored’ compared to ROC - you want your model to be in the top right for a PR plot, instead of the top left for a ROC.</p>
+<pre class="r"><code># precision recall AUC
+pr_maker &lt;- function(model, data) {
+  new_predictions &lt;- predict(model, data, type = &#39;prob&#39;) %&gt;%
+    mutate(Answers = data$Status, Prediction = case_when(Pathogenic &gt; 0.5 ~ &#39;Pathogenic&#39;, TRUE ~ &#39;NotPathogenic&#39;))
+  pr.curve(scores.class0 = new_predictions %&gt;% filter(Answers==&#39;Pathogenic&#39;) %&gt;% pull(Pathogenic),
+           scores.class1 = new_predictions %&gt;% filter(Answers==&#39;NotPathogenic&#39;) %&gt;% pull(Pathogenic),
+           curve = T)
+}
+
+pr_data &lt;- data.frame()
+for (i in names(my_models)){
+  print(my_models[[i]]$method)
+  pr &lt;- pr_maker(my_models[[i]], test_set)
+  out &lt;- pr$curve[,1:2] %&gt;% data.frame()
+  colnames(out) &lt;- c(&#39;Recall&#39;,&#39;Precision&#39;)
+  out$AUC &lt;- pr$auc.integral
+  out$model &lt;- i
+  out$&#39;Model (AUC)&#39; &lt;- paste0(i, &#39; (&#39;,round(pr$auc.integral,2),&#39;)&#39; )
+  pr_data &lt;- rbind(pr_data, out)
+}</code></pre>
+<pre><code>## [1] &quot;bayesglm&quot;
+## [1] &quot;rf&quot;
+## [1] &quot;glm&quot;</code></pre>
+<pre class="r"><code>pr &lt;- pr_data %&gt;% 
+  ggplot(aes(x=Recall, y=Precision, colour=`Model (AUC)`)) + 
+  geom_line() + 
+  theme_minimal() + 
+  ggtitle(&#39;Precision Recall Curve&#39;) +
+  ggsci::scale_color_startrek()
+
+pr</code></pre>
+<p><img src="/./post/2018-03-03-are-you-in-genomics-stop-using-roc-use-pr_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p>This looks like a more reasonable way to assess performance. Also notice how the RF and bayes GLM have subtantially different performance when being assessed like this, even though the AUROC was only 0.02 apart.</p>
+</div>
+<div id="conclusion" class="section level2">
+<h2>Conclusion</h2>
+<p>Why again do I have to use PR plots in genomics - I balanced my two classes when I trained the model! Well because in actual problem space, the genome, the problems are <em>always</em> wildly imbalanced between classes. The human genome is three gigabases (3e9) in size.</p>
+<p>Using knn to identify promoters? There are 20,000 genes * 1000 base pair (bp) promoter = 2e6 bp.</p>
+<p>3e9 / 2e6 = 1500:1 ratio</p>
+<p>Writing a deep convoluational neural network to identify CTCF binding sites? CTCF binds around 50,000 sites * 14bp = 7e5.</p>
+<p>3e9 / 7e5 = 4300:1 ratio</p>
+<p>Using random forests to create a pathogenicity metric? Well, in a given genome only 1-2 positions will contribute to a mendelian disorder.</p>
+<p>3e9 / 2 = 1.5e9:1 ratio</p>
+</div>
+<div id="a-little-more-reading" class="section level2">
+<h2>A little more reading</h2>
+<p>If you have some more time, go read Lior Pachter’s <a href="https://liorpachter.wordpress.com/2016/12/21/confusion-matrix-terminology-is-taxicab-trigonometry/">post</a> on metrics for assessing performance.</p>
+<p>Also check this tweet <a href="https://twitter.com/michaelhoffman/status/969261327331061760">conversation</a> between Michael Hoffman and Anshul Kundaje.</p>
+<p>There are also several web posts that explain <a href="https://www.kaggle.com/general/7517">why</a> <a href="https://www.kaggle.com/lct14558/imbalanced-data-why-you-should-not-use-roc-curve">ROC</a> is bad for unbalanced classes and even a published <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4349800/">paper</a>.</p>
+</div>
+
+    </div>
+
+    
+
+
+<div class="article-tags">
+  
+  <a class="btn btn-primary btn-outline" href="/tags/bioinformatics">bioinformatics</a>
+  
+  <a class="btn btn-primary btn-outline" href="/tags/r">R</a>
+  
+  <a class="btn btn-primary btn-outline" href="/tags/machinelearning">machinelearning</a>
+  
+  <a class="btn btn-primary btn-outline" href="/tags/caret">caret</a>
+  
+</div>
+
+
+
+
+    
+    
+    <div class="article-widget">
+      <div class="hr-light"></div>
+      <h3>Related</h3>
+      <ul>
+        
+        <li><a href="/post/let-s-plot-4-r-vs-excel/">Let’s Plot 4: R vs Excel, Round 1</a></li>
+        
+        <li><a href="/post/let-s-plot-3-base-pair-resolution-ngs-exome-coverage-plots/">Let’s Plot 3: Base pair resolution NGS (exome) coverage plots - Part 2</a></li>
+        
+        <li><a href="/post/split-vcf-into-n-pieces-by-coordinate/">Split VCF into n pieces by coordinate</a></li>
+        
+        <li><a href="/post/let-s-plot-2-smoothed-lines/">Let’s Plot 2: Smoothed Lines</a></li>
+        
+        <li><a href="/post/let-s-plot-1/">Let’s Plot 1: Going in circles </a></li>
+        
+      </ul>
+    </div>
+    
+
+    
+
+    
+<section id="comments">
+  <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "davemcg-gitub-io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+
+  </div>
+</article>
+
+<footer class="site-footer">
+  <div class="container">
+    <p class="powered-by">
+
+      &copy; 2018 &middot; 
+
+      Powered by the
+      <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+      <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+      <span class="pull-right" aria-hidden="true">
+        <a href="#" id="back_to_top">
+          <span class="button_icon">
+            <i class="fa fa-chevron-up fa-2x"></i>
+          </span>
+        </a>
+      </span>
+
+    </p>
+  </div>
+</footer>
+
+
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close btn-large" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Cite</h4>
+      </div>
+      <div>
+        <pre><code class="modal-body tex"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-primary btn-outline js-copy-cite" href="#" target="_blank">
+          <i class="fa fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-primary btn-outline js-download-cite" href="#" target="_blank">
+          <i class="fa fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+    
+    <script id="dsq-count-scr" src="//davemcg-gitub-io.disqus.com/count.js" async></script>
+    
+
+    
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha512-3P8rXCuGJdNZOnUx/03c1jOTnMn3rP63nBip5gOP2qmUh5YAdVAvFZ1E+QLZZbC1rtMrQb+mah3AfYW11RUrWA==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.3/imagesloaded.pkgd.min.js" integrity="sha512-umsR78NN0D23AzgoZ11K7raBD+R6hqKojyBZs1w8WvYlsI+QuKRGBx3LFCwhatzBunCjDuJpDHwxD13sLMbpRA==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha512-iztkobsvnjKfAtTNdHkGVjAYTrrtlC7mGp/54c40wowO7LhURYl3gVzzcEqGl/qKXQltJ2HwMrdLcNUdo+N/RQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+    
+    
+    <script src="/js/hugo-academic.js"></script>
+    
+
+    
+    
+      
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+      
+
+      
+
+      
+
+      <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML" integrity="sha512-tOav5w1OjvsSJzePRtt2uQPFwBoHt1VZcUq8l8nm5284LEKE9FSJBQryzMBzHxY5P0zRdNqEcpLIRVYFNgu1jw==" crossorigin="anonymous"></script>
+    
+    
+
+  </body>
+</html>
+

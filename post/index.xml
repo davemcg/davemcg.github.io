@@ -13,6 +13,16 @@
     
     
     <item>
+      <title>Are you in genomics and building models? Stop using ROC - use PR</title>
+      <link>/./post/are-you-in-genomics-stop-using-roc-use-pr/</link>
+      <pubDate>Sat, 03 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/are-you-in-genomics-stop-using-roc-use-pr/</guid>
+      <description>tldr Area Under the Curve (AUC) of Receiver Operating Characteristic (ROC) is a terrible metric for a genomics problem. Do not use it. This metric also goes by AUC or AUROC. Use Precision Recall AUC.
+ Inspiration for this post I am working on a machine learning problem in genomics I was getting really confused why AUROC was so worthless scienceTwitter featuring Anshul Kundaje  I want to save you (some time)   What’s a ROC?</description>
+    </item>
+    
+    <item>
       <title>Let’s Plot 4: R vs Excel, Round 1</title>
       <link>/./post/let-s-plot-4-r-vs-excel/</link>
       <pubDate>Thu, 01 Mar 2018 00:00:00 +0000</pubDate>

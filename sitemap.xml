@@ -5,6 +5,15 @@
     
     <url>
     
+      <loc>/./post/are-you-in-genomics-stop-using-roc-use-pr/</loc>
+      <lastmod>2018-03-03T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/./post/let-s-plot-4-r-vs-excel/</loc>
       <lastmod>2018-03-01T00:00:00+00:00</lastmod>
     </url>
@@ -149,8 +158,8 @@
     
     <url>
     
-      <loc>/./categories/bioinformatics/</loc>
-      <lastmod>2018-03-01T00:00:00+00:00</lastmod>
+      <loc>/./tags/bioinformatics/</loc>
+      <lastmod>2018-03-03T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -159,8 +168,18 @@
     
     <url>
     
-      <loc>/./tags/bioinformatics/</loc>
-      <lastmod>2018-03-01T00:00:00+00:00</lastmod>
+      <loc>/./categories/bioinformatics/</loc>
+      <lastmod>2018-03-03T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/./tags/caret/</loc>
+      <lastmod>2018-03-03T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -170,7 +189,7 @@
     <url>
     
       <loc>/./categories/</loc>
-      <lastmod>2018-03-01T00:00:00+00:00</lastmod>
+      <lastmod>2018-03-03T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -229,6 +248,26 @@
     
     <url>
     
+      <loc>/./categories/machinelearning/</loc>
+      <lastmod>2018-03-03T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/./tags/machinelearning/</loc>
+      <lastmod>2018-03-03T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/./people/</loc>
       <lastmod>2018-02-01T00:00:00+00:00</lastmod>
       <priority>0</priority>
@@ -279,8 +318,8 @@
     
     <url>
     
-      <loc>/./categories/r/</loc>
-      <lastmod>2018-03-01T00:00:00+00:00</lastmod>
+      <loc>/./tags/r/</loc>
+      <lastmod>2018-03-03T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -289,8 +328,8 @@
     
     <url>
     
-      <loc>/./tags/r/</loc>
-      <lastmod>2018-03-01T00:00:00+00:00</lastmod>
+      <loc>/./categories/r/</loc>
+      <lastmod>2018-03-03T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -309,7 +348,7 @@
     
     <url>
     
-      <loc>/./categories/script/</loc>
+      <loc>/./tags/script/</loc>
       <lastmod>2018-02-07T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -319,7 +358,7 @@
     
     <url>
     
-      <loc>/./tags/script/</loc>
+      <loc>/./categories/script/</loc>
       <lastmod>2018-02-07T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
