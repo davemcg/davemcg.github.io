@@ -67,7 +67,7 @@
 &lt;li&gt;False Positive Rate (FPR)&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;The TPR of the model is: &lt;span class=&#34;math display&#34;&gt;\[\frac{236}{236 + 174}\approx0.576\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;The FPR of the model is: &lt;span class=&#34;math display&#34;&gt;\[\frac{174}{174 + 116,952}\approx0.001\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;The FPR of the model is: &lt;span class=&#34;math display&#34;&gt;\[\frac{103}{103 + 116,952}\approx0.001\]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;The model does not actually spit out positive or negative. It gives out &lt;em&gt;probabilities&lt;/em&gt; that a given item is positive or negative. If we change the probabilities cutoff to different values (to make the classification more or less stringent) we can get different TPR and FPR. This is done to generate TPR and FPR from 0 to 1 and a line is plotted. The AUC for the ROC (AUROC) is then calculated by measuring the area under the curve. Either by taking the &lt;a href=&#34;https://en.wikipedia.org/wiki/Receiver_operating_characteristic&#34;&gt;integral or a trapezoidal approximation&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;A larger AUROC is better. 1 is perfect. 0.5 is a bunch of grad students flipping coins.&lt;/p&gt;
 &lt;p&gt;Now we have a rough idea of ROC works. Now let’s do some machine learning and see ROC works in practice.&lt;/p&gt;
@@ -2271,7 +2271,7 @@ plot_grid(plotlist = plots, ncol=1)&lt;/code&gt;&lt;/pre&gt;
 ##  language (EN)                        
 ##  collate  en_US.UTF-8                 
 ##  tz       America/New_York            
-##  date     2018-03-09&lt;/code&gt;&lt;/pre&gt;
+##  date     2018-03-12&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Packages -----------------------------------------------------------------&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##  package    * version    date       source                          
 ##  assertthat   0.2.0      2017-04-11 CRAN (R 3.4.0)                  

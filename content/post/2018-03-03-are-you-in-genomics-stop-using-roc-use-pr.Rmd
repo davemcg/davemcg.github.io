@@ -43,7 +43,7 @@ The two axes of a ROC are:
 
 The TPR of the model is: $$\frac{236}{236 + 174}\approx0.576$$
 
-The FPR of the model is: $$\frac{174}{174 + 116,952}\approx0.001$$
+The FPR of the model is: $$\frac{103}{103 + 116,952}\approx0.001$$
 
 The model does not actually spit out positive or negative. It gives out *probabilities* that a given item is positive or negative. If we change the probabilities cutoff to different values (to make the classification more or less stringent) we can get different TPR and FPR. This is done to generate TPR and FPR from 0 to 1 and a line is plotted. The AUC for the ROC (AUROC) is then calculated by measuring the area under the curve. Either by taking the [integral or a trapezoidal approximation](https://en.wikipedia.org/wiki/Receiver_operating_characteristic). 
 

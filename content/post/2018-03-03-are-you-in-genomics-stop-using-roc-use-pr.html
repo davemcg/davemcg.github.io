@@ -67,7 +67,7 @@ tags:
 <li>False Positive Rate (FPR)</li>
 </ol>
 <p>The TPR of the model is: <span class="math display">\[\frac{236}{236 + 174}\approx0.576\]</span></p>
-<p>The FPR of the model is: <span class="math display">\[\frac{174}{174 + 116,952}\approx0.001\]</span></p>
+<p>The FPR of the model is: <span class="math display">\[\frac{103}{103 + 116,952}\approx0.001\]</span></p>
 <p>The model does not actually spit out positive or negative. It gives out <em>probabilities</em> that a given item is positive or negative. If we change the probabilities cutoff to different values (to make the classification more or less stringent) we can get different TPR and FPR. This is done to generate TPR and FPR from 0 to 1 and a line is plotted. The AUC for the ROC (AUROC) is then calculated by measuring the area under the curve. Either by taking the <a href="https://en.wikipedia.org/wiki/Receiver_operating_characteristic">integral or a trapezoidal approximation</a>.</p>
 <p>A larger AUROC is better. 1 is perfect. 0.5 is a bunch of grad students flipping coins.</p>
 <p>Now we have a rough idea of ROC works. Now let’s do some machine learning and see ROC works in practice.</p>
