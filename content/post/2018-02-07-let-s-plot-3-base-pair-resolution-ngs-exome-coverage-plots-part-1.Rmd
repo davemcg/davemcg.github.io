@@ -1,5 +1,5 @@
 ---
-title: 'Let’s Plot 3: Base pair resolution NGS (exome) coverage plots - Part 1'
+title: Let’s Plot 3: Base pair resolution NGS (exome) coverage plots - Part 1
 author: David McGaughey
 date: '2018-02-07'
 slug: let-s-plot-3-base-pair-resolution-ngs-exome-coverage-plots-part-1
@@ -38,7 +38,7 @@ If you want to see how I did the above, see [Part 2](/post/let-s-plot-3-base-pai
 
 ```{r, warning = FALSE}
 library(tidyverse)
-library(cowplot) # you probably need to install this with install.packages('cowplot')
+library(cowplot) # you may need to install this with install.packages('cowplot')
 dd_class <- read_csv('~/git/Let_us_plot/003_coverage/dd_class.csv')
 
 head(dd_class)

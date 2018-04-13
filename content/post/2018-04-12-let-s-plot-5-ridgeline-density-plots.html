@@ -1,0 +1,127 @@
+---
+title: "Let’s Plot 5: ridgeline density plots"
+author: David McGaughey
+date: '2018-04-12'
+slug: let-s-plot-5-ridgeline-density-plots
+categories:
+  - Let’s Plot
+  - R
+tags:
+  - ggplot2
+  - ggridgeline
+  - R
+  - tidyverse
+---
+
+
+
+<div id="intro" class="section level1">
+<h1>Intro</h1>
+<p>For this installment of Let’s Plot (where anyone can make a figure!), we’ll be making the hottest visualization of 2017 - the <em>joy plot</em> or <em>ridgeline plot</em>.</p>
+<p>Joy plots are partially overlapping density line plots that create the impression of a mountain range. They can be quite useful for visualizing substantial changes in distributions over time or space.</p>
+<p>This type of visualization was inspired by the <a href="https://en.wikipedia.org/wiki/Unknown_Pleasures">cover art</a> from Joy Division’s album Unknown Pleasures and implemented in the R package <a href="http://cran.r-project.org/web/packages/ggridges">ggridges</a> by Claus Wilke.
+<img src="/img/lets_plot_5_cover.jpg" /></p>
+<p>While the original term for this plot took off as <em>joy plot</em> it has since been changed to a <em>ridgeline plot</em> or <em>ridges plots</em>, as discussed at length <a href="http://serialmentor.com/blog/2017/9/15/goodbye-joyplots">here</a>.</p>
+<p>Anyways, Claus has a <em>beautiful</em> intro to his package <a href="https://cran.r-project.org/web/packages/ggridges/vignettes/gallery.html">here</a>. I will not reproduce any of his plots, as I want you to click the link. Plus they are way cooler looking than what we will be making. Which is real(ish) data from people in my division.</p>
+</div>
+<div id="load-davide-merged-data" class="section level1">
+<h1>Load Davide merged data</h1>
+<p>This is a highly cut down version of his original data - which is a 160mb csv file. The csv for this exercise can be found <a href="https://github.com/davemcg/Let_us_plot/blob/master/005_ggridges/davide_cell_size_data.csv">here</a>.</p>
+<p>It contains cell area size for thousands of cells which have had a drug perturbation, split by wells in a dish. One drug per well.</p>
+<pre class="r"><code>library(tidyverse)
+library(ggridges)
+merged.df &lt;- read_csv(&#39;~/git/Let_us_plot/005_ggridges/davide_cell_size_data.csv&#39;)</code></pre>
+</div>
+<div id="what-does-the-data-look-like" class="section level1">
+<h1>What does the data look like?</h1>
+<pre class="r"><code>head(merged.df)</code></pre>
+<pre><code>## # A tibble: 6 x 3
+##   Well.names  Area Drug 
+##   &lt;chr&gt;      &lt;int&gt; &lt;chr&gt;
+## 1 D07          643 20(S 
+## 2 D07          388 20(S 
+## 3 D09          290 20(S 
+## 4 D08         1174 20(S 
+## 5 D09          186 20(S 
+## 6 D09         7062 20(S</code></pre>
+</div>
+<div id="first-we-create-a-fake-dmso-to-match-each-drug-so-we-can-see-the-null-distribution-matched-with-each-drug-in-the-visualization-below" class="section level1">
+<h1>First we create a fake DMSO to match each drug so we can see the ‘null’ distribution matched with each drug in the visualization below</h1>
+<pre class="r"><code># for background DMSO plot
+fake_DMSO_drug &lt;- data.frame()
+for (i in (merged.df$Drug %&gt;% unique())){
+  print(i)
+  fake_DMSO_drug &lt;- rbind(fake_DMSO_drug, merged.df %&gt;% filter(Drug==&#39;DMSO&#39;) %&gt;% mutate(Drug = i, Well.names=paste0(&#39;0DMSO_&#39;, i), DMSO=&#39;Yes&#39;))
+}</code></pre>
+<pre><code>## [1] &quot;20(S&quot;
+## [1] &quot;3-Am&quot;
+## [1] &quot;Brom&quot;
+## [1] &quot;Cili&quot;
+## [1] &quot;Ctrl&quot;
+## [1] &quot;DMSO&quot;
+## [1] &quot;ETP&quot;
+## [1] &quot;G-Pr&quot;
+## [1] &quot;GANT&quot;
+## [1] &quot;HA 1&quot;
+## [1] &quot;IMR-&quot;
+## [1] &quot;IWP-&quot;
+## [1] &quot;IWR-&quot;
+## [1] &quot;LGK-&quot;
+## [1] &quot;LY41&quot;
+## [1] &quot;Metf&quot;
+## [1] &quot;PJ 3&quot;
+## [1] &quot;SANT&quot;
+## [1] &quot;Sodi&quot;
+## [1] &quot;Tori&quot;
+## [1] &quot;UNC&quot;
+## [1] &quot;Valp&quot;
+## [1] &quot;Wnt-&quot;
+## [1] &quot;WYE&quot;</code></pre>
+<pre class="r"><code># merged.df %&gt;% mutate(`Drug Well` = paste(Drug, Well.names)) %&gt;% mutate(Drug=factor(Drug, levels=drug_order)) %&gt;% ggplot(aes(y = Drug, x=log2(Area), group=Well.names, fill=Drug)) +
+#     geom_density_ridges(alpha=0.5) + theme_ridges() + scale_color_brewer(palette=&#39;Spectral&#39;)
+
+# order drugs by median area
+drug_order &lt;- merged.df %&gt;% group_by(Drug) %&gt;% summarise(MedianArea=median(Area)) %&gt;% arrange(MedianArea) %&gt;% pull(Drug)</code></pre>
+</div>
+<div id="ridgeline-plot-showing-each-well-separately" class="section level1">
+<h1>ridgeline plot, showing each well separately</h1>
+<pre class="r"><code>bind_rows(merged.df %&gt;% mutate(DMSO=&#39;No&#39;),fake_DMSO_drug) %&gt;% 
+  filter(Drug!=&#39;DMSO&#39;, Drug!=&#39;Pyr&#39;) %&gt;% # don&#39;t need DMSO plot now and Pyr is empty
+  mutate(Drug=factor(Drug, levels=drug_order)) %&gt;% # reorder drugs by drug_order above 
+  ggplot(aes(y = Drug, x=log2(Area), group=Well.names, fill=DMSO)) +
+  geom_density_ridges(alpha=0.6) + 
+  theme_ridges() + 
+  scale_fill_brewer(palette = &#39;Set1&#39;)</code></pre>
+<pre><code>## Picking joint bandwidth of 0.258</code></pre>
+<p><img src="/./post/2018-04-12-let-s-plot-5-ridgeline-density-plots_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+</div>
+<div id="same-but-merging-all-wells-together" class="section level1">
+<h1>same, but merging all wells together</h1>
+<pre class="r"><code>bind_rows(merged.df %&gt;% 
+            mutate(DMSO=&#39;No&#39;, Well.names2=paste0(&#39;Orig&#39;, Drug)),
+          fake_DMSO_drug %&gt;% 
+            mutate(Well.names2 = Well.names)) %&gt;% 
+  filter(Drug!=&#39;DMSO&#39;, Drug!=&#39;Pyro&#39;) %&gt;% # dont&#39; need DMSO plot now and Pyroxamine is empty
+  mutate(Drug=factor(Drug, levels=drug_order)) %&gt;% # reorder drugs by drug_order above 
+  ggplot(aes(y = Drug, x = log2(Area), group=Well.names2, fill=DMSO)) +
+  geom_density_ridges(alpha=0.6) + 
+  theme_ridges() + 
+  scale_fill_brewer(palette = &#39;Set1&#39;)</code></pre>
+<pre><code>## Picking joint bandwidth of 0.204</code></pre>
+<p><img src="/./post/2018-04-12-let-s-plot-5-ridgeline-density-plots_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+</div>
+<div id="you-have-a-large-variation-in-the-number-of-counts" class="section level1">
+<h1>You have a large variation in the number of counts</h1>
+<p>How did I know? Because a bunch of the density plots were super wavy - which means (usually) that the number of counts in that sample is low. Low numbers = high variance.</p>
+<p>So IMR, IMP, Tori, and WYE are <em>problem</em> tests. Perhaps they are just killing the cells? Something for Davide to examine.</p>
+<pre class="r"><code>cell_area_counts_by_drug &lt;- merged.df %&gt;% 
+  group_by(Drug) %&gt;% 
+  summarise(Count=n())
+
+cell_area_counts_by_drug  %&gt;% 
+  ggplot(aes(x=Drug, y=Count)) +
+  geom_bar(stat=&#39;identity&#39;) + 
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))</code></pre>
+<p><img src="/./post/2018-04-12-let-s-plot-5-ridgeline-density-plots_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+</div>

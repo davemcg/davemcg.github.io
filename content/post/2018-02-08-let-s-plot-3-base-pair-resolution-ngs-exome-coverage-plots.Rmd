@@ -1,5 +1,5 @@
 ---
-title: 'Let’s Plot 3: Base pair resolution NGS (exome) coverage plots - Part 2'
+title: "Let’s Plot 3: Base pair resolution NGS (exome) coverage plots - Part 2"
 author: David McGaughey
 date: '2018-02-08'
 slug: let-s-plot-3-base-pair-resolution-ngs-exome-coverage-plots
@@ -31,7 +31,6 @@ This is a barebones (but detailed enough, I hope) discussion of how to take a ba
 sinteractive --cpus-per-task 16
 module load mosdepth
 mosdepth -t 16 41001412010527 41001412010527_realigned_recal.bam &
-
 ```
 
 ## Intersect base pair depth info with transcript and exon number

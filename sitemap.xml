@@ -5,6 +5,15 @@
     
     <url>
     
+      <loc>/./post/let-s-plot-5-ridgeline-density-plots/</loc>
+      <lastmod>2018-04-12T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/./post/are-you-in-genomics-stop-using-roc-use-pr/</loc>
       <lastmod>2018-03-03T00:00:00+00:00</lastmod>
     </url>
@@ -219,7 +228,17 @@
     <url>
     
       <loc>/./tags/ggplot2/</loc>
-      <lastmod>2018-03-01T00:00:00+00:00</lastmod>
+      <lastmod>2018-04-12T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/./tags/ggridgeline/</loc>
+      <lastmod>2018-04-12T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -239,7 +258,7 @@
     <url>
     
       <loc>/./categories/lets-plot/</loc>
-      <lastmod>2018-03-01T00:00:00+00:00</lastmod>
+      <lastmod>2018-04-12T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -319,7 +338,7 @@
     <url>
     
       <loc>/./tags/r/</loc>
-      <lastmod>2018-03-03T00:00:00+00:00</lastmod>
+      <lastmod>2018-04-12T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -329,7 +348,7 @@
     <url>
     
       <loc>/./categories/r/</loc>
-      <lastmod>2018-03-03T00:00:00+00:00</lastmod>
+      <lastmod>2018-04-12T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -379,7 +398,7 @@
     <url>
     
       <loc>/./tags/tidyverse/</loc>
-      <lastmod>2018-03-01T00:00:00+00:00</lastmod>
+      <lastmod>2018-04-12T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     

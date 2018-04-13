@@ -13,6 +13,17 @@
     
     
     <item>
+      <title>Let’s Plot 5: ridgeline density plots</title>
+      <link>/./post/let-s-plot-5-ridgeline-density-plots/</link>
+      <pubDate>Thu, 12 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/let-s-plot-5-ridgeline-density-plots/</guid>
+      <description>Intro For this installment of Let’s Plot (where anyone can make a figure!), we’ll be making the hottest visualization of 2017 - the joy plot or ridgeline plot.
+Joy plots are partially overlapping density line plots that create the impression of a mountain range. They can be quite useful for visualizing substantial changes in distributions over time or space.
+This type of visualization was inspired by the cover art from Joy Division’s album Unknown Pleasures and implemented in the R package ggridges by Claus Wilke.</description>
+    </item>
+    
+    <item>
       <title>Are you in genomics and building models? Stop using ROC - use PR</title>
       <link>/./post/are-you-in-genomics-stop-using-roc-use-pr/</link>
       <pubDate>Sat, 03 Mar 2018 00:00:00 +0000</pubDate>
@@ -85,7 +96,7 @@ They are a bit sparse on the words because I’m presenting these in person. But
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/./post/2018-02-07-let-s-plot-3-base-pair-resolution-ngs-exome-coverage-plots-part-1/</guid>
-      <description>title: ‘Let’s Plot 3: Base pair resolution NGS (exome) coverage plots - Part 1’  author: David McGaughey  date: ‘2018-02-07’  slug: let-s-plot-3-base-pair-resolution-ngs-exome-coverage-plots-part-1  categories:  - bioinformatics  - Let’s Plot  - R  tags:  - bioinformatics  - ggplot2  - Let’s Plot  - quinlanverse  - R  output:  blogdown::html_page:  toc: true    Load data This is a departure from the previous installments, as we are loading in a very processed dataset.</description>
+      <description>title: Let’s Plot 3: Base pair resolution NGS (exome) coverage plots - Part 1  author: David McGaughey  date: ‘2018-02-07’  slug: let-s-plot-3-base-pair-resolution-ngs-exome-coverage-plots-part-1  categories:  - bioinformatics  - Let’s Plot  - R  tags:  - bioinformatics  - ggplot2  - Let’s Plot  - quinlanverse  - R  output:  blogdown::html_page:  toc: true    Load data This is a departure from the previous installments, as we are loading in a very processed dataset.</description>
     </item>
     
   </channel>
