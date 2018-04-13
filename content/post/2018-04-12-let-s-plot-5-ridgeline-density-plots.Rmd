@@ -15,7 +15,7 @@ tags:
 # Intro
 For this installment of Let's Plot (where anyone can make a figure!), we'll be making the hottest visualization of 2017 - the *joy plot* or *ridgeline plot*. 
 
-Joy plots are partially overlapping density line plots that create the impression of a mountain range. They can be quite useful for visualizing substantial changes in distributions over time or space. 
+Joy plots are partially overlapping density line plots. They are useful for densely showing changes in many distributions over time / condition / etc. 
 
 This type of visualization was inspired by the [cover art](https://en.wikipedia.org/wiki/Unknown_Pleasures) from Joy Division’s album Unknown Pleasures and implemented in the R package [ggridges](http://cran.r-project.org/web/packages/ggridges) by Claus Wilke. 
 ![](/img/lets_plot_5_cover.jpg)
@@ -40,6 +40,9 @@ head(merged.df)
 ```
 
 # First we create a fake DMSO to match each drug so we can see the 'null' distribution matched with each drug in the visualization below
+I know `for` loops are out of trend, but I find them easier to write *and* read compared to `purrr`. A lot less compact, I concede. 
+
+This is a bit hacky, but I want to duplicate the DMSO data and assign it to each drug. Later we'll be splitting the plot by drug, so we can see both the drug data *and* the DMSO data in the section. 
 ```{r}
 # for background DMSO plot
 fake_DMSO_drug <- data.frame()
@@ -48,14 +51,12 @@ for (i in (merged.df$Drug %>% unique())){
   fake_DMSO_drug <- rbind(fake_DMSO_drug, merged.df %>% filter(Drug=='DMSO') %>% mutate(Drug = i, Well.names=paste0('0DMSO_', i), DMSO='Yes'))
 }
 
-# merged.df %>% mutate(`Drug Well` = paste(Drug, Well.names)) %>% mutate(Drug=factor(Drug, levels=drug_order)) %>% ggplot(aes(y = Drug, x=log2(Area), group=Well.names, fill=Drug)) +
-#     geom_density_ridges(alpha=0.5) + theme_ridges() + scale_color_brewer(palette='Spectral')
-
 # order drugs by median area
 drug_order <- merged.df %>% group_by(Drug) %>% summarise(MedianArea=median(Area)) %>% arrange(MedianArea) %>% pull(Drug)
 ```
 
 # ridgeline plot, showing each well separately
+Several wells got the same drugs. So there are multiple plots per drug. 
 ```{r, fig.height=8}
 bind_rows(merged.df %>% mutate(DMSO='No'),fake_DMSO_drug) %>% 
   filter(Drug!='DMSO', Drug!='Pyr') %>% # don't need DMSO plot now and Pyr is empty
@@ -66,7 +67,8 @@ bind_rows(merged.df %>% mutate(DMSO='No'),fake_DMSO_drug) %>%
   scale_fill_brewer(palette = 'Set1')
 ```
 
-# same, but merging all wells together
+# Same, but merging all wells together
+Now merge all the wells together. Notice how the group is now `Well.names2`
 ```{r, fig.height=9}
 
 bind_rows(merged.df %>% 
@@ -82,8 +84,8 @@ bind_rows(merged.df %>%
 
 ```
 
-# You have a large variation in the number of counts
-How did I know? Because a bunch of the density plots were super wavy - which means (usually) that the number of counts in that sample is low. Low numbers = high variance. 
+# There's a large variation in the number of counts
+How did I know? Because a bunch of the density plots were super wavy - which means (almost always) that the number of counts in that sample is very low. Low numbers = high variance. 
 
 So IMR, IMP, Tori, and WYE are *problem* tests. Perhaps they are just killing the cells? Something for Davide to examine.
 ```{r}
