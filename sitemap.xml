@@ -5,6 +5,15 @@
     
     <url>
     
+      <loc>/./post/easy-bam-downsampling/</loc>
+      <lastmod>2018-04-20T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/./post/let-s-plot-5-ridgeline-density-plots/</loc>
       <lastmod>2018-04-12T00:00:00+00:00</lastmod>
     </url>
@@ -167,8 +176,18 @@
     
     <url>
     
-      <loc>/./tags/bioinformatics/</loc>
-      <lastmod>2018-03-03T00:00:00+00:00</lastmod>
+      <loc>/./categories/bash/</loc>
+      <lastmod>2018-04-20T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/./tags/bash/</loc>
+      <lastmod>2018-04-20T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -178,7 +197,17 @@
     <url>
     
       <loc>/./categories/bioinformatics/</loc>
-      <lastmod>2018-03-03T00:00:00+00:00</lastmod>
+      <lastmod>2018-04-20T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/./tags/bioinformatics/</loc>
+      <lastmod>2018-04-20T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -198,7 +227,7 @@
     <url>
     
       <loc>/./categories/</loc>
-      <lastmod>2018-03-03T00:00:00+00:00</lastmod>
+      <lastmod>2018-04-20T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -337,7 +366,7 @@
     
     <url>
     
-      <loc>/./tags/r/</loc>
+      <loc>/./categories/r/</loc>
       <lastmod>2018-04-12T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -347,7 +376,7 @@
     
     <url>
     
-      <loc>/./categories/r/</loc>
+      <loc>/./tags/r/</loc>
       <lastmod>2018-04-12T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -367,8 +396,8 @@
     
     <url>
     
-      <loc>/./tags/script/</loc>
-      <lastmod>2018-02-07T00:00:00+00:00</lastmod>
+      <loc>/./tags/samtools/</loc>
+      <lastmod>2018-04-20T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -378,6 +407,16 @@
     <url>
     
       <loc>/./categories/script/</loc>
+      <lastmod>2018-02-07T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/./tags/script/</loc>
       <lastmod>2018-02-07T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>

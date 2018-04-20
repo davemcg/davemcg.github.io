@@ -11,6 +11,28 @@
     <atom:link href="//" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Easy bam downsampling</title>
+      <link>/./post/easy-bam-downsampling/</link>
+      <pubDate>Fri, 20 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/easy-bam-downsampling/</guid>
+      <description>&lt;p&gt;When you have a set of ChIP-seq (like) files, it is sometimes useful to downsample the larger samples to more closely match most of the samples. Tommy Tang goes into more detail in his &lt;a href=&#34;http://crazyhottommy.blogspot.com/2016/05/downsampling-for-bam-files-to-certain.html&#34;&gt;blog post&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Unfortunately the tool suites I use most for bam files (samtools and picard) only downsample to a &lt;em&gt;percentage&lt;/em&gt;. Which isn’t ideal when you want your files to be no more than &lt;code&gt;n&lt;/code&gt; reads.&lt;/p&gt;
+&lt;p&gt;This post is just a slight one-upping of Tommy Tang’s &lt;a href=&#34;http://crazyhottommy.blogspot.com/2016/05/downsampling-for-bam-files-to-certain.html&#34;&gt;process&lt;/a&gt; to easily downsample a bam. If you do some googling you’ll find lots of &lt;em&gt;boutique&lt;/em&gt; tools to downsample. Which I tend to avoid because I don’t want to have to sift through the source to make sure what they are doing looks reasonable and often-times there are dependencies to worry about. For something this simple, there &lt;em&gt;should&lt;/em&gt; be a way to pipe together a few commands to get what we want. Which Tommy &lt;em&gt;almost&lt;/em&gt; does.&lt;/p&gt;
+&lt;p&gt;His little code snippet is &lt;code&gt;samtools idxstats example.bam | cut -f3 | awk &#39;BEGIN {total=0} {total += $1} END {print total}&#39;&lt;/code&gt;. It sums up the reads present in each chromosome/contig that the bam index holds. It is robust and will work unless the output format &lt;code&gt;idxstats&lt;/code&gt; sub-program is altered. Which I think is unlikely.&lt;/p&gt;
+&lt;p&gt;The problem is that you have to do a &lt;em&gt;little&lt;/em&gt; more work to get the percentage to feed &lt;code&gt;samtools view -s&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;So here’s my extension, using &lt;code&gt;awk&lt;/code&gt; to calculate the percentage of the bam file to sample if you want to get to &lt;code&gt;n&lt;/code&gt; reads. It also will return &lt;code&gt;1&lt;/code&gt; if your bam file has fewer reads than your target.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;frac=$( samtools idxstats  input.bam | cut -f3 | awk &#39;BEGIN {total=0} {total += $1} END {frac=15000000/total; if (frac &amp;gt; 1) {print 1} else {print frac}}&#39; )&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;If you &lt;code&gt;echo $frac&lt;/code&gt; you get the downsample percentage: &lt;code&gt;0.334801&lt;/code&gt; for one of my bam files. You replace the 15000000 (15 million) with whatever you want to the the maximum number of reads.&lt;/p&gt;
+&lt;p&gt;If your bam has fewer than &lt;code&gt;n&lt;/code&gt; reads you’ll get back &lt;code&gt;1&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;You can then just feed this into &lt;code&gt;samtools view&lt;/code&gt; like so: &lt;code&gt;samtools view -bs $frac input.bam &amp;gt; subsample.bam&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Putting it all together we have a nice two step process which fits nicely into an automated pipeline / workflow:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;frac=$( samtools idxstats  input.bam | cut -f3 | awk &#39;BEGIN {total=0} {total += $1} END {frac=15000000/total; if (frac &amp;gt; 1) {print 1} else {print frac}}&#39; )&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;samtools view -bs $frac input.bam &amp;gt; subsample.bam&lt;/code&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Let’s Plot 5: ridgeline density plots</title>
       <link>/./post/let-s-plot-5-ridgeline-density-plots/</link>
       <pubDate>Thu, 12 Apr 2018 00:00:00 +0000</pubDate>
@@ -2388,7 +2410,7 @@ plot_grid(plotlist = plots, ncol=1)&lt;/code&gt;&lt;/pre&gt;
 ##  language (EN)                        
 ##  collate  en_US.UTF-8                 
 ##  tz       America/New_York            
-##  date     2018-04-13&lt;/code&gt;&lt;/pre&gt;
+##  date     2018-04-20&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Packages -----------------------------------------------------------------&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##  package    * version    date       source                            
 ##  assertthat   0.2.0      2017-04-11 CRAN (R 3.4.0)                    

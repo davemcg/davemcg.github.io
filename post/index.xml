@@ -13,6 +13,17 @@
     
     
     <item>
+      <title>Easy bam downsampling</title>
+      <link>/./post/easy-bam-downsampling/</link>
+      <pubDate>Fri, 20 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/easy-bam-downsampling/</guid>
+      <description>When you have a set of ChIP-seq (like) files, it is sometimes useful to downsample the larger samples to more closely match most of the samples. Tommy Tang goes into more detail in his blog post.
+Unfortunately the tool suites I use most for bam files (samtools and picard) only downsample to a percentage. Which isn’t ideal when you want your files to be no more than n reads.
+This post is just a slight one-upping of Tommy Tang’s process to easily downsample a bam.</description>
+    </item>
+    
+    <item>
       <title>Let’s Plot 5: ridgeline density plots</title>
       <link>/./post/let-s-plot-5-ridgeline-density-plots/</link>
       <pubDate>Thu, 12 Apr 2018 00:00:00 +0000</pubDate>

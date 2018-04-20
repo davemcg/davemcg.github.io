@@ -1,0 +1,29 @@
+---
+title: Easy bam downsampling
+author: David McGaughey
+date: '2018-04-20'
+slug: easy-bam-downsampling
+categories:
+  - bioinformatics
+  - bash
+tags:
+  - bioinformatics
+  - bash
+  - samtools
+---
+
+
+
+<p>When you have a set of ChIP-seq (like) files, it is sometimes useful to downsample the larger samples to more closely match most of the samples. Tommy Tang goes into more detail in his <a href="http://crazyhottommy.blogspot.com/2016/05/downsampling-for-bam-files-to-certain.html">blog post</a>.</p>
+<p>Unfortunately the tool suites I use most for bam files (samtools and picard) only downsample to a <em>percentage</em>. Which isn’t ideal when you want your files to be no more than <code>n</code> reads.</p>
+<p>This post is just a slight one-upping of Tommy Tang’s <a href="http://crazyhottommy.blogspot.com/2016/05/downsampling-for-bam-files-to-certain.html">process</a> to easily downsample a bam. If you do some googling you’ll find lots of <em>boutique</em> tools to downsample. Which I tend to avoid because I don’t want to have to sift through the source to make sure what they are doing looks reasonable and often-times there are dependencies to worry about. For something this simple, there <em>should</em> be a way to pipe together a few commands to get what we want. Which Tommy <em>almost</em> does.</p>
+<p>His little code snippet is <code>samtools idxstats example.bam | cut -f3 | awk 'BEGIN {total=0} {total += $1} END {print total}'</code>. It sums up the reads present in each chromosome/contig that the bam index holds. It is robust and will work unless the output format <code>idxstats</code> sub-program is altered. Which I think is unlikely.</p>
+<p>The problem is that you have to do a <em>little</em> more work to get the percentage to feed <code>samtools view -s</code>.</p>
+<p>So here’s my extension, using <code>awk</code> to calculate the percentage of the bam file to sample if you want to get to <code>n</code> reads. It also will return <code>1</code> if your bam file has fewer reads than your target.</p>
+<p><code>frac=$( samtools idxstats  input.bam | cut -f3 | awk 'BEGIN {total=0} {total += $1} END {frac=15000000/total; if (frac &gt; 1) {print 1} else {print frac}}' )</code></p>
+<p>If you <code>echo $frac</code> you get the downsample percentage: <code>0.334801</code> for one of my bam files. You replace the 15000000 (15 million) with whatever you want to the the maximum number of reads.</p>
+<p>If your bam has fewer than <code>n</code> reads you’ll get back <code>1</code>.</p>
+<p>You can then just feed this into <code>samtools view</code> like so: <code>samtools view -bs $frac input.bam &gt; subsample.bam</code></p>
+<p>Putting it all together we have a nice two step process which fits nicely into an automated pipeline / workflow:</p>
+<p><code>frac=$( samtools idxstats  input.bam | cut -f3 | awk 'BEGIN {total=0} {total += $1} END {frac=15000000/total; if (frac &gt; 1) {print 1} else {print frac}}' )</code></p>
+<p><code>samtools view -bs $frac input.bam &gt; subsample.bam</code></p>
