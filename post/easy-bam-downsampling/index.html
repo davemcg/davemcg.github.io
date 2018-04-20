@@ -259,7 +259,7 @@ This post is just a slight one-upping of Tommy Tang’s process to easily downsa
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    2 min read
+    3 min read
   </span>
   
 
@@ -347,6 +347,10 @@ This post is just a slight one-upping of Tommy Tang’s process to easily downsa
 <p>Putting it all together we have a nice two step process which fits nicely into an automated pipeline / workflow:</p>
 <p><code>frac=$( samtools idxstats  input.bam | cut -f3 | awk 'BEGIN {total=0} {total += $1} END {frac=15000000/total; if (frac &gt; 1) {print 1} else {print frac}}' )</code></p>
 <p><code>samtools view -bs $frac input.bam &gt; subsample.bam</code></p>
+<div id="update" class="section level1">
+<h1>UPDATE</h1>
+<p>Tommy pointed out that you should run this <strong>after</strong> you have removed reads that are duplicated, singletons, and low quality. It is not unusual to see bam files with &gt;50% duplicate reads.</p>
+</div>
 
     </div>
 
