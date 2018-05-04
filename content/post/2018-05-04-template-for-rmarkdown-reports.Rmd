@@ -1,0 +1,43 @@
+---
+title: Template for rmarkdown reports
+author: David McGaughey
+date: '2018-05-04'
+slug: template-for-rmarkdown-reports
+categories:
+  - R
+tags:
+  - rmarkdown
+---
+
+# What is this?
+Since I keep opening up random recent Rmarkdown documents to copy the header to paste into my next document, I figure it would be more efficient to just make a post I could reach from anywhere (with an internet connection). 
+
+# Copy / paste:
+````
+---
+title: THE TITLE
+author: David McGaughey
+date: '`r`r ''` format(Sys.Date(), "%Y-%m-%d")`'
+output: 
+  html_notebook:
+    theme: flatly
+    toc: true
+    code_folding: hide
+---
+````
+
+
+````
+```{r, message=F, warning=F, include=F}`r ''`
+# Load Libraries without printing any warnings or messages
+library(tidyverse)
+```
+````
+
+\# Session Info
+````
+```{r}`r ''`
+devtools::session_info()
+```
+````
+

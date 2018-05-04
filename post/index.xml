@@ -13,6 +13,16 @@
     
     
     <item>
+      <title>Template for rmarkdown reports</title>
+      <link>/./post/template-for-rmarkdown-reports/</link>
+      <pubDate>Fri, 04 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/template-for-rmarkdown-reports/</guid>
+      <description>What is this? Since I keep opening up random recent Rmarkdown documents to copy the header to paste into my next document, I figure it would be more efficient to just make a post I could reach from anywhere (with an internet connection).
+ Copy / paste: --- title: THE TITLE author: David McGaughey date: &amp;#39;`r format(Sys.Date(), &amp;quot;%Y-%m-%d&amp;quot;)`&amp;#39; output: html_notebook: theme: flatly toc: true code_folding: hide --- ```{r, message=F, warning=F, include=F} # Load Libraries without printing any warnings or messages library(tidyverse) ``` # Session Info</description>
+    </item>
+    
+    <item>
       <title>Easy bam downsampling</title>
       <link>/./post/easy-bam-downsampling/</link>
       <pubDate>Fri, 20 Apr 2018 00:00:00 +0000</pubDate>
