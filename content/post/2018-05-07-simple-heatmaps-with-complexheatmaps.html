@@ -1,0 +1,371 @@
+---
+title: Simple guide to heatmaps with ComplexHeatmaps
+author: David McGaughey
+date: '2018-05-07'
+slug: simple-heatmaps-with-complexheatmaps
+categories:
+  - Let’s Plot
+  - R
+tags:
+  - bioinformatics
+  - R
+  - tidyverse
+  - heatmaps
+output:
+  blogdown::html_page:
+    toc: true
+---
+
+
+<div id="TOC">
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#data-processing">Data processing</a></li>
+<li><a href="#load-data">Load data</a></li>
+<li><a href="#peek-at-expression">Peek at expression</a></li>
+<li><a href="#peek-at-metadata">Peek at metadata</a></li>
+<li><a href="#brief-outline-on-how-the-rna-seq-data-was-processed-before-we-see-it">Brief outline on how the RNA-seq data was processed before we see it</a></li>
+<li><a href="#load-libraries">Load libraries</a></li>
+<li><a href="#create-a-sample---sample-distance-heatmap">Create a Sample - Sample distance heatmap</a><ul>
+<li><a href="#easy-heatmap-with-complexheatmap">Easy heatmap with ComplexHeatmap</a></li>
+<li><a href="#complex-heatmap">Complex heatmap</a></li>
+<li><a href="#finished-heatmap">Finished heatmap</a></li>
+</ul></li>
+<li><a href="#gene-heatmaps">Gene Heatmaps</a><ul>
+<li><a href="#a-bit-simpler">A bit simpler</a></li>
+</ul></li>
+<li><a href="#session-info">Session Info</a></li>
+</ul>
+</div>
+
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>Heatmaps are a core competency for a bioinformatician. They are a compact way to visually demonstrate relationships and changes in values across conditions.</p>
+<p>We are going to use RNA-seq data to make two kinds of common heatmaps:</p>
+<ol style="list-style-type: decimal">
+<li>Sample - Sample relationships</li>
+<li>Gene expression changes across samples for a subset of genes</li>
+</ol>
+</div>
+<div id="data-processing" class="section level2">
+<h2>Data processing</h2>
+<p>The two Rdata datasets we are going to use can be found here:</p>
+<ol style="list-style-type: decimal">
+<li><a href="https://github.com/davemcg/Let_us_plot/blob/master/006_heatmaps/expression.Rdata">Expression data</a></li>
+<li><a href="https://github.com/davemcg/Let_us_plot/blob/master/006_heatmaps/metadata.Rdata">Metadata</a></li>
+</ol>
+</div>
+<div id="load-data" class="section level2">
+<h2>Load data</h2>
+<pre class="r"><code>load(&#39;~/git/Let_us_plot/006_heatmaps/expression.Rdata&#39;)
+load(&#39;~/git/Let_us_plot/006_heatmaps/metadata.Rdata&#39;)</code></pre>
+</div>
+<div id="peek-at-expression" class="section level2">
+<h2>Peek at expression</h2>
+<p>Rows are genes, columns are samples. Notice how the <em>number</em> sample names got X appended to the beginning. This is because R variable names cannot start with a number. Generally R will ‘fix’ your sample names during a <em>base</em> R handling.</p>
+<pre class="r"><code>head(expression)</code></pre>
+<pre><code>##     Gene       X10       X11       X16       X17       X18        X2
+## 1  ABCA1 13.973778 12.244265 12.628729 13.182851 11.383009 12.333361
+## 2 ABCA10 10.883834  8.813957 11.247787  9.870685  8.059123  9.346461
+## 3 ABCA13  9.171412  7.629223  7.490137  8.134116  8.261363  6.430140
+## 4  ABCA2 11.338420 14.976849 13.679589 12.014997 16.011478 13.439011
+## 5  ABCA4  8.773803 11.641017 11.293125  8.072241 12.393982 10.126994
+## 6  ABCA6  9.420007  6.285309  7.527962  8.659904  5.957441  6.535751
+##          X3        X4        X9      var
+## 1 13.483913 11.377315 10.976546 1.056482
+## 2 11.245402  8.585732  9.479805 1.387638
+## 3  9.955795  7.499681  7.084981 1.152503
+## 4 12.259725 16.007328 15.390794 3.168466
+## 5 10.126629 11.505725 11.344527 2.040986
+## 6  9.950779  5.658777  6.439992 2.526444</code></pre>
+<pre class="r"><code># check number of rows (genes) and column (samples)
+dim(expression)</code></pre>
+<pre><code>## [1] 2191   11</code></pre>
+</div>
+<div id="peek-at-metadata" class="section level2">
+<h2>Peek at metadata</h2>
+<p>Sample names with the serum conditions (Human Serum or Heat Inactivated HS) as well as the time the cells spend in the serum</p>
+<pre class="r"><code>metadata</code></pre>
+<pre><code>##   sample serum treatment_hours
+## 1      2    HS              24
+## 2      3    HS              48
+## 3      4  HIHS              48
+## 4      9    HS              24
+## 5     10    HS              48
+## 6     11  HIHS              48
+## 7     16    HS              24
+## 8     17    HS              48
+## 9     18  HIHS              48</code></pre>
+</div>
+<div id="brief-outline-on-how-the-rna-seq-data-was-processed-before-we-see-it" class="section level2">
+<h2>Brief outline on how the RNA-seq data was processed before we see it</h2>
+<ol style="list-style-type: decimal">
+<li><a href="http://salmon.readthedocs.io">Salmon</a></li>
+<li><a href="https://bioconductor.org/packages/release/bioc/html/tximport.html">tximport</a></li>
+<li><a href="https://bioconductor.org/packages/release/bioc/html/DESeq2.html">DESeq2</a></li>
+<li><a href="http://www.bioconductor.org/packages//2.10/bioc/vignettes/DESeq/inst/doc/vst.pdf">variance stabilizing transformation</a></li>
+<li>Filter genes to only retain high variance genes (often not necessary, but used to reduce the amount of data I share)</li>
+</ol>
+</div>
+<div id="load-libraries" class="section level2">
+<h2>Load libraries</h2>
+<p>I’ve rapidly become a fan of <a href="https://www.bioconductor.org/packages/release/bioc/html/ComplexHeatmap.html">ComplexHeatmap</a>. It is capaable of creating just about anything <strong>and</strong> has excellent documentation and examples.</p>
+<pre><code>## Warning: package &#39;tidyverse&#39; was built under R version 3.4.2</code></pre>
+<pre><code>## ── Attaching packages ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──</code></pre>
+<pre><code>## ✔ ggplot2 2.2.1     ✔ purrr   0.2.4
+## ✔ tibble  1.4.2     ✔ dplyr   0.7.4
+## ✔ tidyr   0.8.0     ✔ stringr 1.3.0
+## ✔ readr   1.1.1     ✔ forcats 0.3.0</code></pre>
+<pre><code>## Warning: package &#39;tibble&#39; was built under R version 3.4.3</code></pre>
+<pre><code>## Warning: package &#39;tidyr&#39; was built under R version 3.4.3</code></pre>
+<pre><code>## Warning: package &#39;purrr&#39; was built under R version 3.4.2</code></pre>
+<pre><code>## Warning: package &#39;dplyr&#39; was built under R version 3.4.2</code></pre>
+<pre><code>## Warning: package &#39;stringr&#39; was built under R version 3.4.3</code></pre>
+<pre><code>## Warning: package &#39;forcats&#39; was built under R version 3.4.3</code></pre>
+<pre><code>## ── Conflicts ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()</code></pre>
+<pre><code>## Loading required package: grid</code></pre>
+<pre><code>## Warning: package &#39;viridis&#39; was built under R version 3.4.3</code></pre>
+<pre><code>## Loading required package: viridisLite</code></pre>
+<pre><code>## Warning: package &#39;viridisLite&#39; was built under R version 3.4.3</code></pre>
+</div>
+<div id="create-a-sample---sample-distance-heatmap" class="section level2">
+<h2>Create a Sample - Sample distance heatmap</h2>
+<p>An powerful way to see sample to sample relationships is to use the expression data to arrange the samples. The distance between each sample can be calculated by taking the <a href="https://en.wikipedia.org/wiki/Euclidean_distance">euclidean distance</a> between each sample. This reduces the space from a n x m matrix of values to a single number for each sample pair.</p>
+<pre class="r"><code>expression_dists &lt;- expression %&gt;% 
+  # drop the Gene and variance column
+  select(-Gene, -var) %&gt;% 
+  # flip axes as the dist() function does all of row-row relationships
+  # we want samples as the rows....
+  t() %&gt;% 
+  # this actually calculates the euclidean distance (other types of distance are possible - read the docs with ?dist)
+  dist() %&gt;% 
+  # coerce to matrix, then data frame
+  as.matrix() %&gt;% data.frame() 
+
+# now a 9 x 9 data frame
+expression_dists %&gt;% dim()</code></pre>
+<pre><code>## [1] 9 9</code></pre>
+<div id="easy-heatmap-with-complexheatmap" class="section level3">
+<h3>Easy heatmap with ComplexHeatmap</h3>
+<p>I have a few problems with this plot:</p>
+<ol style="list-style-type: decimal">
+<li>Red / blue is more for distinguishing over / under in my opinion - we are talking about close to far</li>
+<li>Don’t really need to see key for the colors. Distance is unit-less.</li>
+<li>We can’t map between sample name and the metadata</li>
+</ol>
+<pre class="r"><code>Heatmap(expression_dists)</code></pre>
+<p><img src="/./post/2018-05-07-simple-heatmaps-with-complexheatmaps_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+</div>
+<div id="complex-heatmap" class="section level3">
+<h3>Complex heatmap</h3>
+<p>The metadata needs some extensive reworking to make it work with the sample distance data for the heatmap</p>
+<ol style="list-style-type: decimal">
+<li><code>mutate</code> the sample to add the ‘X’ to match the dist data column names</li>
+<li><code>filter</code> to only keep metadata samples that are in the distance data (very common to have metadata for <em>all</em> samples)</li>
+<li><code>select</code> to grab the relevant columns (also common to have many extra columns that aren’t used)</li>
+<li><code>mutate</code> again to coerce the sample order in the metadata to match the sample order in the distance data</li>
+<li><code>arrange</code> to use the order set above for the metadata (try erasing this and see what happens….)</li>
+<li><code>unique</code> to remove duplicated rows</li>
+</ol>
+<p>After that the HeatmapAnnotation take the <code>Time</code> and <code>Serum</code> as a data.frame and I am manually setting the colors by grabbing colors from the magma scheme from viridis.</p>
+<pre class="r"><code>metadata_heatmap &lt;- metadata  %&gt;% 
+  mutate(sample = paste0(&#39;X&#39;, sample)) %&gt;% 
+  filter(sample %in% colnames(expression_dists)) %&gt;% 
+  dplyr::select(sample, treatment_hours, serum) %&gt;% 
+  mutate(sample=factor(sample, levels=colnames(expression_dists))) %&gt;% 
+  arrange(sample) %&gt;% 
+  unique() 
+
+ha_column = HeatmapAnnotation(df = data.frame(Time = metadata_heatmap$treatment_hours,
+                                              Serum = metadata_heatmap$serum), 
+                              col = list(Serum = c(&quot;HS&quot; =  magma(20)[5], &quot;HIHS&quot; = magma(20)[7]),
+                                         Time = c(&quot;24&quot; = magma(20)[12], &quot;48&quot; = magma(20)[18])))
+
+
+Heatmap(expression_dists, 
+        col=viridis(100),
+        name = &#39;Sample\nDistances&#39;,
+        top_annotation = ha_column)</code></pre>
+<p><img src="/./post/2018-05-07-simple-heatmaps-with-complexheatmaps_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+</div>
+<div id="finished-heatmap" class="section level3">
+<h3>Finished heatmap</h3>
+<p>Now I am going to drop the ‘X’ from the sample names and remove the Sample Distances key</p>
+<pre class="r"><code># substitute &#39;&#39; (nothing) for &#39;X&#39; for the column and row names
+colnames(expression_dists) &lt;- gsub(&#39;X&#39;,&#39;&#39;,colnames(expression_dists))
+rownames(expression_dists) &lt;- gsub(&#39;X&#39;,&#39;&#39;,rownames(expression_dists))
+Heatmap(expression_dists, 
+        col=viridis(100),
+        show_heatmap_legend = F,
+        top_annotation = ha_column)</code></pre>
+<p><img src="/./post/2018-05-07-simple-heatmaps-with-complexheatmaps_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+</div>
+</div>
+<div id="gene-heatmaps" class="section level2">
+<h2>Gene Heatmaps</h2>
+<p>The next common type of heatmap is to show how a set of genes changes expression between conditions</p>
+<p>We will look at a small set of genes and see how their expression changes when put in Heat Inactivated Human Serum (HIHS) or Human Serum (HS), only at the 48 hour time point.</p>
+<p>First, make gene_set, HS, and HIHS sample vectors</p>
+<pre class="r"><code>gene_set &lt;- c(&#39;EP300&#39;,&#39;ABCA4&#39;,&#39;CLCN6&#39;,&#39;CRX&#39;,&#39;HIST1H1T&#39;,&#39;IGSF9&#39;,&#39;SLC16A7&#39;,&#39;MYO5C&#39;,&#39;NEURL3&#39;)
+
+HS_samples &lt;- metadata %&gt;% filter(serum==&#39;HS&#39;, treatment_hours==48) %&gt;% pull(sample) %&gt;% unique() %&gt;% paste0(&#39;X&#39;,.)
+HIHS_samples &lt;- metadata %&gt;% filter(serum==&#39;HIHS&#39;, treatment_hours==48) %&gt;% pull(sample) %&gt;% unique() %&gt;% paste0(&#39;X&#39;,.)</code></pre>
+<p>Now calculate the change in expression across the HIHS &lt;-&gt; HS comparison and prep the metadata</p>
+<pre class="r"><code>gene_set = expression %&gt;% filter(Gene %in% gene_set) %&gt;% select(-var)
+
+# HIHS is the &#39;reference&#39;
+# we&#39;ll look at how expression changes with you use HS
+row_mean_HIHS = gene_set[,HIHS_samples] %&gt;% rowMeans()
+
+# now subtract the mean HIHS expression from each row,
+# and only keep HS samples for the plot
+heatmap_expression = gene_set[,HS_samples] - row_mean_HIHS
+# add Gene back as rownames
+row.names(heatmap_expression) &lt;- gene_set$Gene
+# prep metadata as above
+metadata_heatmap &lt;- metadata  %&gt;% 
+  mutate(sample = paste0(&#39;X&#39;, sample)) %&gt;% 
+  filter(sample %in% colnames(heatmap_expression)) %&gt;% 
+  dplyr::select(sample, treatment_hours, serum) %&gt;% 
+  mutate(sample=factor(sample, levels=colnames(heatmap_expression))) %&gt;% 
+  arrange(sample) %&gt;% 
+  unique() </code></pre>
+<p>The clustering of the rows is <em>really</em> useful to quickly see what sets of genes are moving in the same direction</p>
+<pre class="r"><code>ha_column = HeatmapAnnotation(df = data.frame(Time = metadata_heatmap$treatment_hours,
+                                              Serum = metadata_heatmap$serum), 
+                              col = list(Serum = c(&quot;HS&quot; =  magma(20)[5], &quot;HIHS&quot; = magma(20)[7]),
+                                         Time = c(&quot;24&quot; = magma(20)[12], &quot;48&quot; = magma(20)[18])))
+
+# Drop the X in sample names
+colnames(heatmap_expression) &lt;- gsub(&#39;X&#39;,&#39;&#39;,colnames(heatmap_expression))
+Heatmap(heatmap_expression, 
+        cluster_columns = FALSE,
+        name = &#39;log2(Fold\nChange)&#39;, 
+        top_annotation = ha_column)</code></pre>
+<p><img src="/./post/2018-05-07-simple-heatmaps-with-complexheatmaps_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<div id="a-bit-simpler" class="section level3">
+<h3>A bit simpler</h3>
+<p>You may think the annotations are superfluous, as they are all the same. If you are making just one, I would agree. Usually I am making a bunch of plots and I’d rather keep the annotations attached so I don’t get confused later.</p>
+<p>It is easy enough to drop them.</p>
+<pre class="r"><code>Heatmap(heatmap_expression, 
+        cluster_columns = FALSE,
+        name = &#39;log2(Fold\nChange)&#39;)</code></pre>
+<p><img src="/./post/2018-05-07-simple-heatmaps-with-complexheatmaps_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+</div>
+</div>
+<div id="session-info" class="section level2">
+<h2>Session Info</h2>
+<pre class="r"><code>devtools::session_info()</code></pre>
+<pre><code>## Session info -------------------------------------------------------------</code></pre>
+<pre><code>##  setting  value                       
+##  version  R version 3.4.0 (2017-04-21)
+##  system   x86_64, darwin15.6.0        
+##  ui       X11                         
+##  language (EN)                        
+##  collate  en_US.UTF-8                 
+##  tz       America/New_York            
+##  date     2018-05-07</code></pre>
+<pre><code>## Packages -----------------------------------------------------------------</code></pre>
+<pre><code>##  package        * version    date       source                        
+##  assertthat       0.2.0      2017-04-11 CRAN (R 3.4.0)                
+##  backports        1.1.2      2017-12-13 CRAN (R 3.4.3)                
+##  base           * 3.4.0      2017-04-21 local                         
+##  bindr            0.1.1      2018-03-13 CRAN (R 3.4.4)                
+##  bindrcpp       * 0.2        2017-06-17 CRAN (R 3.4.0)                
+##  blogdown         0.5        2018-01-24 CRAN (R 3.4.3)                
+##  bookdown         0.7        2018-02-18 CRAN (R 3.4.3)                
+##  broom            0.4.3      2017-11-20 CRAN (R 3.4.0)                
+##  cellranger       1.1.0      2016-07-27 CRAN (R 3.4.0)                
+##  circlize         0.4.3      2017-12-20 CRAN (R 3.4.3)                
+##  class            7.3-14     2015-08-30 CRAN (R 3.4.0)                
+##  cli              1.0.0      2017-11-05 CRAN (R 3.4.2)                
+##  cluster          2.0.6      2017-03-10 CRAN (R 3.4.0)                
+##  colorspace       1.3-2      2016-12-14 CRAN (R 3.4.0)                
+##  compiler         3.4.0      2017-04-21 local                         
+##  ComplexHeatmap * 1.14.0     2017-02-15 Bioconductor (R 3.4.0)        
+##  crayon           1.3.4      2017-09-16 CRAN (R 3.4.1)                
+##  datasets       * 3.4.0      2017-04-21 local                         
+##  dendextend       1.7.0      2018-02-11 CRAN (R 3.4.3)                
+##  DEoptimR         1.0-8      2016-11-19 CRAN (R 3.4.0)                
+##  devtools         1.13.5     2018-02-18 CRAN (R 3.4.3)                
+##  digest           0.6.15     2018-01-28 CRAN (R 3.4.3)                
+##  diptest          0.75-7     2016-12-05 CRAN (R 3.4.0)                
+##  dplyr          * 0.7.4      2017-09-28 CRAN (R 3.4.2)                
+##  evaluate         0.10.1     2017-06-24 CRAN (R 3.4.1)                
+##  flexmix          2.3-14     2017-04-28 CRAN (R 3.4.0)                
+##  forcats        * 0.3.0      2018-02-19 CRAN (R 3.4.3)                
+##  foreign          0.8-69     2017-06-22 CRAN (R 3.4.1)                
+##  fpc              2.1-11     2018-01-13 CRAN (R 3.4.3)                
+##  GetoptLong       0.1.6      2017-03-07 CRAN (R 3.4.0)                
+##  ggplot2        * 2.2.1      2016-12-30 CRAN (R 3.4.0)                
+##  GlobalOptions    0.0.13     2018-03-15 CRAN (R 3.4.4)                
+##  glue             1.2.0      2017-10-29 CRAN (R 3.4.2)                
+##  graphics       * 3.4.0      2017-04-21 local                         
+##  grDevices      * 3.4.0      2017-04-21 local                         
+##  grid           * 3.4.0      2017-04-21 local                         
+##  gridExtra        2.3        2017-09-09 CRAN (R 3.4.1)                
+##  gtable           0.2.0      2016-02-26 CRAN (R 3.4.0)                
+##  haven            1.1.1      2018-01-18 CRAN (R 3.4.3)                
+##  hms              0.4.2      2018-03-10 CRAN (R 3.4.4)                
+##  htmltools        0.3.6      2017-04-28 CRAN (R 3.4.0)                
+##  httr             1.3.1      2017-08-20 CRAN (R 3.4.1)                
+##  jsonlite         1.5        2017-06-01 CRAN (R 3.4.0)                
+##  kernlab          0.9-25     2016-10-03 CRAN (R 3.4.0)                
+##  knitr            1.20       2018-02-20 CRAN (R 3.4.3)                
+##  lattice          0.20-35    2017-03-25 CRAN (R 3.4.0)                
+##  lazyeval         0.2.1      2017-10-29 CRAN (R 3.4.2)                
+##  lubridate        1.7.3      2018-02-27 CRAN (R 3.4.3)                
+##  magrittr         1.5        2014-11-22 CRAN (R 3.4.0)                
+##  MASS             7.3-49     2018-02-23 CRAN (R 3.4.3)                
+##  mclust           5.4        2017-11-22 CRAN (R 3.4.3)                
+##  memoise          1.1.0      2017-04-21 CRAN (R 3.4.0)                
+##  methods        * 3.4.0      2017-04-21 local                         
+##  mnormt           1.5-5      2016-10-15 CRAN (R 3.4.0)                
+##  modelr           0.1.1      2017-07-24 CRAN (R 3.4.1)                
+##  modeltools       0.2-21     2013-09-02 CRAN (R 3.4.0)                
+##  munsell          0.4.3      2016-02-13 CRAN (R 3.4.0)                
+##  mvtnorm          1.0-7      2018-01-25 CRAN (R 3.4.3)                
+##  nlme             3.1-131.1  2018-02-16 CRAN (R 3.4.3)                
+##  nnet             7.3-12     2016-02-02 CRAN (R 3.4.0)                
+##  parallel         3.4.0      2017-04-21 local                         
+##  pillar           1.2.1      2018-02-27 CRAN (R 3.4.3)                
+##  pkgconfig        2.0.1      2017-03-21 CRAN (R 3.4.0)                
+##  plyr             1.8.4      2016-06-08 CRAN (R 3.4.0)                
+##  prabclus         2.2-6      2015-01-14 CRAN (R 3.4.0)                
+##  psych            1.7.8      2017-09-09 CRAN (R 3.4.0)                
+##  purrr          * 0.2.4      2017-10-18 CRAN (R 3.4.2)                
+##  R6               2.2.2      2017-06-17 CRAN (R 3.4.0)                
+##  RColorBrewer     1.1-2      2014-12-07 CRAN (R 3.4.0)                
+##  Rcpp             0.12.16    2018-03-13 CRAN (R 3.4.4)                
+##  readr          * 1.1.1      2017-05-16 CRAN (R 3.4.0)                
+##  readxl           1.0.0      2017-04-18 CRAN (R 3.4.0)                
+##  reshape2         1.4.3      2017-12-11 CRAN (R 3.4.3)                
+##  rjson            0.2.15     2014-11-03 CRAN (R 3.4.0)                
+##  rlang            0.2.0      2018-02-20 CRAN (R 3.4.3)                
+##  rmarkdown        1.9        2018-03-01 CRAN (R 3.4.3)                
+##  robustbase       0.92-8     2017-11-01 CRAN (R 3.4.2)                
+##  rprojroot        1.3-2      2018-01-03 CRAN (R 3.4.3)                
+##  rstudioapi       0.7        2017-09-07 CRAN (R 3.4.1)                
+##  rvest            0.3.2      2016-06-17 CRAN (R 3.4.0)                
+##  scales           0.5.0.9000 2017-09-20 Github (hadley/scales@d767915)
+##  shape            1.4.4      2018-02-07 CRAN (R 3.4.3)                
+##  stats          * 3.4.0      2017-04-21 local                         
+##  stats4           3.4.0      2017-04-21 local                         
+##  stringi          1.1.7      2018-03-12 CRAN (R 3.4.4)                
+##  stringr        * 1.3.0      2018-02-19 CRAN (R 3.4.3)                
+##  tibble         * 1.4.2      2018-01-22 cran (@1.4.2)                 
+##  tidyr          * 0.8.0      2018-01-29 CRAN (R 3.4.3)                
+##  tidyverse      * 1.2.1      2017-11-14 CRAN (R 3.4.2)                
+##  tools            3.4.0      2017-04-21 local                         
+##  trimcluster      0.1-2      2012-10-29 CRAN (R 3.4.0)                
+##  utils          * 3.4.0      2017-04-21 local                         
+##  viridis        * 0.5.0      2018-02-02 CRAN (R 3.4.3)                
+##  viridisLite    * 0.3.0      2018-02-01 CRAN (R 3.4.3)                
+##  whisker          0.3-2      2013-04-28 CRAN (R 3.4.0)                
+##  withr            2.1.2      2018-03-15 CRAN (R 3.4.4)                
+##  xfun             0.1        2018-01-22 CRAN (R 3.4.3)                
+##  xml2             1.2.0      2018-01-24 CRAN (R 3.4.3)                
+##  yaml             2.1.18     2018-03-08 CRAN (R 3.4.4)</code></pre>
+</div>

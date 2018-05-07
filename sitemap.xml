@@ -5,6 +5,15 @@
     
     <url>
     
+      <loc>/./post/simple-heatmaps-with-complexheatmaps/</loc>
+      <lastmod>2018-05-07T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/./post/template-for-rmarkdown-reports/</loc>
       <lastmod>2018-05-04T00:00:00+00:00</lastmod>
     </url>
@@ -206,7 +215,7 @@
     <url>
     
       <loc>/./tags/bioinformatics/</loc>
-      <lastmod>2018-04-20T00:00:00+00:00</lastmod>
+      <lastmod>2018-05-07T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -285,6 +294,16 @@
     
     <url>
     
+      <loc>/./tags/heatmaps/</loc>
+      <lastmod>2018-05-07T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/./tags/lets-plot/</loc>
       <lastmod>2018-03-01T00:00:00+00:00</lastmod>
       <priority>0</priority>
@@ -296,7 +315,7 @@
     <url>
     
       <loc>/./categories/lets-plot/</loc>
-      <lastmod>2018-04-12T00:00:00+00:00</lastmod>
+      <lastmod>2018-05-07T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -376,7 +395,7 @@
     <url>
     
       <loc>/./tags/r/</loc>
-      <lastmod>2018-04-12T00:00:00+00:00</lastmod>
+      <lastmod>2018-05-07T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -386,7 +405,7 @@
     <url>
     
       <loc>/./categories/r/</loc>
-      <lastmod>2018-05-04T00:00:00+00:00</lastmod>
+      <lastmod>2018-05-07T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -456,7 +475,7 @@
     <url>
     
       <loc>/./tags/tidyverse/</loc>
-      <lastmod>2018-04-12T00:00:00+00:00</lastmod>
+      <lastmod>2018-05-07T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
