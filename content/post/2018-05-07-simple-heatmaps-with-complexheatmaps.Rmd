@@ -1,5 +1,5 @@
 ---
-title: Let's Plot 6: Simple guide to heatmaps with ComplexHeatmaps
+title: "Let's Plot 6: Simple guide to heatmaps with ComplexHeatmaps"
 author: David McGaughey
 date: '2018-05-07'
 slug: simple-heatmaps-with-complexheatmaps
@@ -14,6 +14,7 @@ tags:
 output:
   blogdown::html_page:
     toc: true
+
 ---
 
 ## Introduction
@@ -38,7 +39,7 @@ load('~/git/Let_us_plot/006_heatmaps/metadata.Rdata')
 ```
 
 ## Peek at expression
-Rows are genes, columns are samples. Notice how the *number* sample names got X appended to the beginning. This is because R variable names cannot start with a number. Generally R will 'fix' your sample names during a *base* R handling.
+Rows are genes, columns are samples. Notice how the *numeric* sample names got X appended to the beginning. This is because R variable names cannot start with a number. Generally R will 'fix' your sample names during a *base* R handling.
 ```{r}
 head(expression)
 # check number of rows (genes) and column (samples)
@@ -61,7 +62,7 @@ metadata
 
 ## Load libraries
 I've rapidly become a fan of [ComplexHeatmap](https://www.bioconductor.org/packages/release/bioc/html/ComplexHeatmap.html). It is capaable of creating just about anything **and** has excellent documentation and examples. 
-```{r, echo=FALSE}
+```{r, results='hide', warning=FALSE}
 library(tidyverse)
 library(ComplexHeatmap)
 library(viridis)

@@ -1,5 +1,5 @@
 ---
-title: Simple guide to heatmaps with ComplexHeatmaps
+title: "Let's Plot 6: Simple guide to heatmaps with ComplexHeatmaps"
 author: David McGaughey
 date: '2018-05-07'
 slug: simple-heatmaps-with-complexheatmaps
@@ -14,6 +14,7 @@ tags:
 output:
   blogdown::html_page:
     toc: true
+
 ---
 
 
@@ -110,25 +111,19 @@ dim(expression)</code></pre>
 <div id="load-libraries" class="section level2">
 <h2>Load libraries</h2>
 <p>I’ve rapidly become a fan of <a href="https://www.bioconductor.org/packages/release/bioc/html/ComplexHeatmap.html">ComplexHeatmap</a>. It is capaable of creating just about anything <strong>and</strong> has excellent documentation and examples.</p>
-<pre><code>## Warning: package &#39;tidyverse&#39; was built under R version 3.4.2</code></pre>
+<pre class="r"><code>library(tidyverse)</code></pre>
 <pre><code>## ── Attaching packages ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──</code></pre>
 <pre><code>## ✔ ggplot2 2.2.1     ✔ purrr   0.2.4
 ## ✔ tibble  1.4.2     ✔ dplyr   0.7.4
 ## ✔ tidyr   0.8.0     ✔ stringr 1.3.0
 ## ✔ readr   1.1.1     ✔ forcats 0.3.0</code></pre>
-<pre><code>## Warning: package &#39;tibble&#39; was built under R version 3.4.3</code></pre>
-<pre><code>## Warning: package &#39;tidyr&#39; was built under R version 3.4.3</code></pre>
-<pre><code>## Warning: package &#39;purrr&#39; was built under R version 3.4.2</code></pre>
-<pre><code>## Warning: package &#39;dplyr&#39; was built under R version 3.4.2</code></pre>
-<pre><code>## Warning: package &#39;stringr&#39; was built under R version 3.4.3</code></pre>
-<pre><code>## Warning: package &#39;forcats&#39; was built under R version 3.4.3</code></pre>
 <pre><code>## ── Conflicts ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()</code></pre>
+<pre class="r"><code>library(ComplexHeatmap)</code></pre>
 <pre><code>## Loading required package: grid</code></pre>
-<pre><code>## Warning: package &#39;viridis&#39; was built under R version 3.4.3</code></pre>
+<pre class="r"><code>library(viridis)</code></pre>
 <pre><code>## Loading required package: viridisLite</code></pre>
-<pre><code>## Warning: package &#39;viridisLite&#39; was built under R version 3.4.3</code></pre>
 </div>
 <div id="create-a-sample---sample-distance-heatmap" class="section level2">
 <h2>Create a Sample - Sample distance heatmap</h2>
