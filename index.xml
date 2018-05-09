@@ -39,13 +39,17 @@
 &lt;li&gt;&lt;a href=&#34;#ipsita-agarwal-molly-przeworski&#34;&gt;Ipsita Agarwal (Molly Przeworski)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#amnon-koren&#34;&gt;Amnon Koren&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#sarah-tishkoff&#34;&gt;Sarah Tishkoff&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#patrick-albers-gil-mcvean&#34;&gt;Patrick Albers (Gil McVean)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#laura-hayward-guy-sella&#34;&gt;Laura Hayward (Guy Sella)&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 
 &lt;div id=&#34;intro&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Intro&lt;/h1&gt;
-&lt;p&gt;Very sparse and poorly written notes covering &lt;a href=&#34;https://twitter.com/search?q=%23BoG18&amp;amp;src=tyah&#34;&gt;#BoG18&lt;/a&gt;. I’ve tried to respect #notwitter. Will be updated periodically.&lt;/p&gt;
+&lt;p&gt;Very sparse and poorly written notes covering &lt;a href=&#34;https://twitter.com/search?q=%23BoG18&amp;amp;src=tyah&#34;&gt;#BoG18&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Typos everywhere. Things may change dramatically over time as I scan back through notes.&lt;/p&gt;
+&lt;p&gt;I’ve tried to respect #notwitter. Will be updated periodically.&lt;/p&gt;
 &lt;p&gt;Speaker (Last Author)&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;genome-engineering-and-genome-editing-tuesday-night&#34; class=&#34;section level1&#34;&gt;
@@ -413,7 +417,7 @@ time |           XXX      XX
 &lt;p&gt;We have extensive maps of human genomic / epigenomic&lt;/p&gt;
 &lt;p&gt;But where are replication origins?&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;** yeah….good q**&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;yeah….good q&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;yeast have them
 &lt;ul&gt;
 &lt;li&gt;yeast have a DnaA/OriC signatures&lt;/li&gt;
@@ -457,12 +461,78 @@ time |           XXX      XX
 &lt;/ul&gt;
 &lt;p&gt;GWAS of DNA replication timing&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;‘rtQTL’ (replication)&lt;/li&gt;
+&lt;li&gt;‘rtQTL’ (replication timing)&lt;/li&gt;
+&lt;li&gt;big hit on chr7&lt;/li&gt;
+&lt;li&gt;756 with FDR &amp;lt; 0.1&lt;/li&gt;
+&lt;li&gt;most fall within replication origin
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;direct relationship, then, cool&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;getting causal SNPs with CAVIAR&lt;/li&gt;
+&lt;li&gt;enriched with active chromatin states&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;perhaps some QTL stabilize TF binding motifs - stuff happening in motifs&lt;/p&gt;
+&lt;p&gt;Q: look for associations with structural variation? (1000G data) A: looking at this now Q: cell type specific? (&lt;strong&gt;thank you&lt;/strong&gt;) A: 20-30% are dif across cell types (&lt;strong&gt;cool&lt;/strong&gt;) Q: is ORI piggybacking on enhancer / regulatory system? (&lt;strong&gt;or other way around??&lt;/strong&gt;) A: maybe (or other way around) Q: cis effects - did you find any trans or pleiotropy? A: nothing strong (spurious stuff maybe?) Q: HiC/3C data profiles comparisons? A: not &lt;em&gt;yet&lt;/em&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;sarah-tishkoff&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Sarah Tishkoff&lt;/h2&gt;
 &lt;p&gt;Novel loci associated with skin pigmentation identified in African populations&lt;/p&gt;
+&lt;p&gt;Integrative omics of copmlex traits&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;epigenomics&lt;/li&gt;
+&lt;li&gt;transcriptomes&lt;/li&gt;
+&lt;li&gt;microbiome&lt;/li&gt;
+&lt;li&gt;metabolomics&lt;/li&gt;
+&lt;li&gt;proteomics&lt;/li&gt;
+&lt;li&gt;genomics&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;LOTS OF POSTERS&lt;/p&gt;
+&lt;p&gt;200 WGS Aricans - 35 million SNPS - 20% novel&lt;/p&gt;
+&lt;p&gt;81% GWAS european&lt;/p&gt;
+&lt;p&gt;Skin color is adaptive trait - spectrophotometry of skin color - and take DNA - boom GWAS - 1600 people - found 8 regions&lt;/p&gt;
+&lt;p&gt;SLC24A5&lt;/p&gt;
+&lt;p&gt;MFSD12 - novel - transmembrane transporters - found enhnacer activity - functional work! - KO mRNA in melanocyptes - get more melanin - colocalizes with lysosome - ZF KO - yellow gone - mouse KO - diff colors - looks like gr/gr mouse - 9bp deletion in MFSD12!&lt;/p&gt;
+&lt;p&gt;DDB1 - DNA repair in UV damage - pigmentation in tomatoes - fine mapping hits TMEM128 - luciferase assay with enhancer activity - huge haplotype blocks of low het in europeans/asians - selective sweep, near complete fixation&lt;/p&gt;
+&lt;p&gt;OCA2/HERC2 - exon10 SNP alt splicing - rs1800404&lt;/p&gt;
+&lt;p&gt;convergent evolution of very dark skin - african and south asia&lt;/p&gt;
+&lt;p&gt;q: speculate about lysosome? a: pheomelanin made in lysosome (like) structure? q: surprised to not find var close to mcr1 a: no q: chimp with no hair has vitiligo? a: dont’ think so - have been assured chimps have light skin&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;patrick-albers-gil-mcvean&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Patrick Albers (Gil McVean)&lt;/h2&gt;
+&lt;p&gt;Non-parametric estimation of allele age for variants in pop-scale seq data&lt;/p&gt;
+&lt;p&gt;Want to know history of allele at single locus&lt;/p&gt;
+&lt;p&gt;Genealogical approach (GEVA)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;look for coalescent events
+&lt;ul&gt;
+&lt;li&gt;concordant and discordance allele pairs&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;use HMM to detecdt haplotypes segments
+&lt;ul&gt;
+&lt;li&gt;non parametric&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;assess allele age…not sure how
+&lt;ul&gt;
+&lt;li&gt;incorporate time some how?&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;model with real data to pick parameters??&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;model - simulation with simple pop, const size, fixed mut rate - compare estimate with actual - good cor (0.953)&lt;/p&gt;
+&lt;p&gt;also tested in error-filled data - haplotypes, errors, phasing issues - still works, but overestimate young alleles (think they are older)&lt;/p&gt;
+&lt;p&gt;ran in simons genetci diversity project and 1000G - oldest var ~37.5k years in AFR - SAS 12.5K - EAS 11K - AMR 7.5K - EUR 6K (why so young? - admixture)&lt;/p&gt;
+&lt;p&gt;cumulative coalescent decoding (CCD) - what frac of your genome share with another genome back in time? - ran this pair-wise across 1000G dataset&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;will release a genome-wide atlas of allele age &amp;gt;16 million variants&lt;/em&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;laura-hayward-guy-sella&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Laura Hayward (Guy Sella)&lt;/h2&gt;
+&lt;p&gt;Polygenic adaptation in response to sudden change in environment&lt;/p&gt;
+&lt;p&gt;What time scale? Mentioned Human expansion out of Africa, which is ~100k years&lt;/p&gt;
+&lt;p&gt;stabilizing selection reduces pheontypic variance (omega is width of trait distribution) - kingsolver et al. 2001&lt;/p&gt;
+&lt;p&gt;model change of phenotpye in environment change&lt;/p&gt;
+&lt;p&gt;OK…not following this talk well at all (pretty sure it’s me). Laura is copiously using cartoons, which is usually works for fools like me.&lt;/p&gt;
+&lt;p&gt;not cetain whether this stuff is driven by theory or data or both - no, no data - equations from first princples&lt;/p&gt;
+&lt;p&gt;conclusions: - polygenic adaption is rapid - short term: large effects drive change - long term: moderate effect alleles replace them&lt;/p&gt;
+&lt;p&gt;topol Q: is this like dogs? big changes in short term a: no, not modeling dramatic changes like this&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 </description>
