@@ -1,0 +1,326 @@
+---
+title: '#BoG18: Talk Notes'
+author: David McGaughey
+date: '2018-05-08'
+slug: bog18-notes
+categories:
+  - bog18
+  - bioinformatics
+tags:
+  - conference
+  - bog18
+  - bioinformatics
+  - talks
+output:
+  blogdown::html_page:
+    toc: true
+---
+
+# Intro
+Very sparse and poorly written notes covering [#BoG18](https://twitter.com/search?q=%23BoG18&src=tyah). I've tried to respect #notwitter. Will be updated periodically. 
+
+# Genome Engineering and Genome Editing (Tuesday Night)
+
+## Jef Boeke
+### Writing Genomes
+
+Building synthetic yeast genomes. Contig/chr one by one. All designed. *Sc2.0*
+
+80+% complete for each of the 16. 
+
+### "dark matter"
+
+Can we use 'big dna' to functionally query mammalian genomes?
+'Synthetic haplotypes'
+
+Building dif combinations of haplotype blocks
+
+synthetic hypervariation:
+
+    - query enhancers
+    - alt splicing
+  
+built 102kb locus (human) and put into yeast
+
+    - built in 3kb chunks and can assemble dif combiations
+    
+### big dna
+Can build big dna pieces
+CEGS grant
+will build 3 100kb+ loci / year
+want community input
+
+## Greg Findlay (Jay Shendure)
+Accurate classficiation of thousands of BRCA1 variants with saturation genome editing
+
+vous a problem
+BRCA1:
+
+  - 4243 clinvar snvs
+  - >50% VOUS
+    
+How to functionally validate?
+
+Use Homology-direct repair (HDR). Can engineer precise edits.
+
+Use a library of SNVs for the HDR
+
+Over time selecdtion removes non functional edits
+
+Each experimente:
+
+  - millions of cells
+  - millions of sequencing reads to count SNVs
+    
+Variable effects at splicing junctions
+
+  - sometimes just 2-3 bp
+  - sometimes 9 base pairs
+    
+also have matched rna-seq data
+
+aberrant splicing causes RNA depletion
+
+matches up really well with clinvar designations
+
+question: 
+
+  - hdr effeciency rate? 10-90% effectiveness
+
+## Stephen Levene
+eccDNA is a possible mediator of chromosomal polymorphism at multple loci
+
+'physical chemist by training'
+
+e. coli genome: 1 femtoliter volume
+
+100 fold compaction problem (DNA)
+
+~10k fold for mammalian
+
+Techniques for DNA/chromiatin flexibility:
+
+  - Hi-C
+  - FISH
+  - SLICE (Beagrie et al Nature 2017)
+  
+eccDNA (circular dna outside chromosome/nucleus(?))
+
+  - unclear how it forms
+  - elevated levels associatd with genome instability
+  
+how to capture?
+
+  - DNA -> SDS lysis -> isolate gDNA -> cscl gradient -> bottom bit
+  - or exoV treatment (leaves circular alone)
+  
+take pictures of the loops with high resolution microscopy
+
+sequenced a few (**unfortunately with short read illumina**)
+
+modeled with molecular dynamics
+
+## David Truong
+Resurrection of Histone H3k27 Me in brewer's yeast by human prc2 and plant atxr6
+
+human pathway reconstruction in yeast
+
+  - avoid pleiotropy (hopefully)
+  - more real than *in vitro*
+  
+Yeast (s. cerevisiae) lost histone mods 
+
+**Adding them back???**
+
+yes
+
+humanize yeast histones
+
+add synthetic human histones
+
+force out wt histones with +5FOA
+
+*20 days later* ..... one colony
+
+Keep growing the colony out
+
+WGS: mutations in cell cycle regulation 
+
+  - bypassing histone cycle checks?
+
+brewer's yeast does not have H3K27 methylation 
+
+  - PRC2 complex (to methylate h3k27)
+
+add the stuffs - what happens?
+
+  - made artifical chr with PRC2 complex
+    - and a slightly broken one
+  - not much happens in WT yeast
+    - no me changes
+  - deleted H3k36me3 (might antagonize artificial chr)
+    - nope
+  - can you jump start with atxr6 (does mono me)?
+    - yes (confirmed with mass spec)
+      - not super high levels (0.054% tri me)
+      
+      
+## Feng Zhang
+Advances in genome editing technologies
+
+two major classes of CRISPR
+
+  - class 1 (multi subunut)
+  - class 2 (single subunit crRNA-effector)
+  
+trying to find new class 2
+
+  - bioinformatic screen with BLAST of cas1
+  - found a bunch (Shmakov collaboration)
+  
+cas13
+
+  - added into e. coli
+  - modify to only edit RNA?
+  
+rna editing
+
+  - reversible
+  - nuclease based editing inefficient in post mitotic cells 
+  - dCas13 linked with [ADAR](https://en.wikipedia.org/wiki/ADAR) (adenosine to inosine) + guideRNA --> A to I conversion in RNA
+  - 90+% conversion
+  - 1732 off target incidents
+    - 925 off target with non-targeting guide!
+    - so protein itself is not ideal....
+    - identified non-binding residues of ADAR
+      - mutated them
+  - v2 works better
+    - 18385 off target (v1) to 20 (v2)
+  - still developing
+  
+## Molly Gasperini (Jay Shendure)
+**my fav of the night**
+
+crisprQTL mapping as a genome-wide association framework for cellular genetic screens
+  
+lots of guideRNA to made mutations, check for dif in expression
+
+nuclease inactive cas9
+
+want to test all enhancers against all genes
+
+scRNA-seq + guideRNA (multiplex gRNA)
+
+  - thus multiple perturbations per 'assay'
+  - 15-30 / cell!
+  
+targeted 1,119 candidate enhancers
+
+  - 15 guides / cell
+  - 47k cells
+  - 10X
+  - CROP-seq 
+  - works really well
+  - crisprQTL usually targets closest gene
+    - sometimes not....
+  - matches up with histone chip-seq
+  - 34.3kb average distance from enhancer <-> gene
+  
+** new data! **
+4,801 enhancers
+
+  - built logistic regression model on pilot to pick new candidates
+  - 30 guides / cell
+  - correlates with pilot
+
+manolis kellis q:
+
+  - why doesn't work so well? expected more
+  - what about multiple SNPS / block?
+  
+## Eilon Sharon
+
+Testing genetic var effect on fitness using precise genome editing
+
+high throughput edigint
+
+crispey:
+cas9 retron precise parallel editing via homology
+
+use bacterial reverse transcriptase and RNA retron to covalently link ssDNA donor to guide-tracrRNA
+
+can insert long sequences
+
+(yeast)
+
+measure fitness of genetic variants (growth competition)
+
+sequence every 2-3 gens
+
+model at linear relative strain abundance / time (generation #)
+
+ # missense var ~ # synonymous var for effecting fitness!
+
+## Luca Pinello
+CRISPR-SURF exploratory and interactive software for analyzing CRISPR-base tiling screens
+
+Uncover non-coding functional regions
+
+** Nice overview of CRISPR tiling strategy **
+Mutate (tile across region) -> Measure pheno change (somehow) -> Assess (sequence gRNA)
+
+No unified framework to analyze these kind of assays
+
+many challenges
+
+  - biological noise
+  - sgRNA efficiencies
+  - non-uniform spacing
+  - perturbation / assay differences
+  - epigenetic perturbation can be wide (changing 200bp or so)  
+
+deconvolve with generalized lasso
+
+fastq -> score -> segmentation -> deconvolution -> region ID
+
+# Population Genomics
+
+## Mattias Joakobsson 
+
+** out of my field here **
+
+Sequence based approaches utilizing complete modern and ancient genomes to investigate early human history
+
+Use full genomes on ancient pops
+
+Population divergence models
+
+                      X
+     +                X
+     |                X
+     |                X
+     |                X
+     |               XXXX
+     |              XX  XXX
+time |           XXX      XX
+     |         XXX         XX
+     |        XX            XX
+     |
+     |      A B              C
+     |
+     v
+
+
+Can model whether discordant or concordant (a,b,c) over time
+
+estimate pop divergence (time) in generations
+
+use genes from different populations to estimate divergence 
+  - 'tt method'
+  
+stone age humans from sourthern afridca
+  - 13 genomes from 3 people
+  - a bit 'right' of yoruba
+  - admixture with east africa **missed something**
+
+  

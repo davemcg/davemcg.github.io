@@ -13,6 +13,16 @@
     
     
     <item>
+      <title>#BoG18: Talk Notes</title>
+      <link>/./post/bog18-notes/</link>
+      <pubDate>Tue, 08 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/bog18-notes/</guid>
+      <description>Intro Genome Engineering and Genome Editing Jef Boeke Writing Genomes “dark matter” big dna  Greg Findlay (Jay Shendure) Stephen Levene David Truong Feng Zhang Molly Gasperini (Jay Shendure) Eilon Sharon Luca Pinello  Population Genomics Mattias Joakobsson    Intro Very sparse and poorly written notes covering #BoG18. I’ve tried to respect #notwitter. Will be updated periodically.
+ Genome Engineering and Genome Editing Jef Boeke Writing Genomes Building synthetic yeast genomes.</description>
+    </item>
+    
+    <item>
       <title>Let&#39;s Plot 6: Simple guide to heatmaps with ComplexHeatmaps</title>
       <link>/./post/simple-heatmaps-with-complexheatmaps/</link>
       <pubDate>Mon, 07 May 2018 00:00:00 +0000</pubDate>

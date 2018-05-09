@@ -11,6 +11,301 @@
     <atom:link href="//" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>#BoG18: Talk Notes</title>
+      <link>/./post/bog18-notes/</link>
+      <pubDate>Tue, 08 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/bog18-notes/</guid>
+      <description>&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#intro&#34;&gt;Intro&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#genome-engineering-and-genome-editing&#34;&gt;Genome Engineering and Genome Editing&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#jef-boeke&#34;&gt;Jef Boeke&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#writing-genomes&#34;&gt;Writing Genomes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#dark-matter&#34;&gt;“dark matter”&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#big-dna&#34;&gt;big dna&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#greg-findlay-jay-shendure&#34;&gt;Greg Findlay (Jay Shendure)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#stephen-levene&#34;&gt;Stephen Levene&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#david-truong&#34;&gt;David Truong&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#feng-zhang&#34;&gt;Feng Zhang&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#molly-gasperini-jay-shendure&#34;&gt;Molly Gasperini (Jay Shendure)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#eilon-sharon&#34;&gt;Eilon Sharon&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#luca-pinello&#34;&gt;Luca Pinello&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#population-genomics&#34;&gt;Population Genomics&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#mattias-joakobsson&#34;&gt;Mattias Joakobsson&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;intro&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Intro&lt;/h1&gt;
+&lt;p&gt;Very sparse and poorly written notes covering &lt;a href=&#34;https://twitter.com/search?q=%23BoG18&amp;amp;src=tyah&#34;&gt;#BoG18&lt;/a&gt;. I’ve tried to respect #notwitter. Will be updated periodically.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;genome-engineering-and-genome-editing&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Genome Engineering and Genome Editing&lt;/h1&gt;
+&lt;div id=&#34;jef-boeke&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Jef Boeke&lt;/h2&gt;
+&lt;div id=&#34;writing-genomes&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Writing Genomes&lt;/h3&gt;
+&lt;p&gt;Building synthetic yeast genomes. Contig/chr one by one. All designed. &lt;em&gt;Sc2.0&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;80+% complete for each of the 16.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;dark-matter&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;“dark matter”&lt;/h3&gt;
+&lt;p&gt;Can we use ‘big dna’ to functionally query mammalian genomes? ‘Synthetic haplotypes’&lt;/p&gt;
+&lt;p&gt;Building dif combinations of haplotype blocks&lt;/p&gt;
+&lt;p&gt;synthetic hypervariation:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;- query enhancers
+- alt splicing&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;built 102kb locus (human) and put into yeast&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;- built in 3kb chunks and can assemble dif combiations&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;big-dna&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;big dna&lt;/h3&gt;
+&lt;p&gt;Can build big dna pieces CEGS grant will build 3 100kb+ loci / year want community input&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;greg-findlay-jay-shendure&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Greg Findlay (Jay Shendure)&lt;/h2&gt;
+&lt;p&gt;Accurate classficiation of thousands of BRCA1 variants with saturation genome editing&lt;/p&gt;
+&lt;p&gt;vous a problem BRCA1:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;4243 clinvar snvs&lt;/li&gt;
+&lt;li&gt;&lt;blockquote&gt;
+&lt;p&gt;50% VOUS&lt;/p&gt;
+&lt;/blockquote&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;How to functionally validate?&lt;/p&gt;
+&lt;p&gt;Use Homology-direct repair (HDR). Can engineer precise edits.&lt;/p&gt;
+&lt;p&gt;Use a library of SNVs for the HDR&lt;/p&gt;
+&lt;p&gt;Over time selecdtion removes non functional edits&lt;/p&gt;
+&lt;p&gt;Each experimente:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;millions of cells&lt;/li&gt;
+&lt;li&gt;millions of sequencing reads to count SNVs&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Variable effects at splicing junctions&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;sometimes just 2-3 bp&lt;/li&gt;
+&lt;li&gt;sometimes 9 base pairs&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;also have matched rna-seq data&lt;/p&gt;
+&lt;p&gt;aberrant splicing causes RNA depletion&lt;/p&gt;
+&lt;p&gt;matches up really well with clinvar designations&lt;/p&gt;
+&lt;p&gt;question:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;hdr effeciency rate? 10-90% effectiveness&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;stephen-levene&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Stephen Levene&lt;/h2&gt;
+&lt;p&gt;eccDNA is a possible mediator of chromosomal polymorphism at multple loci&lt;/p&gt;
+&lt;p&gt;‘physical chemist by training’&lt;/p&gt;
+&lt;ol start=&#34;5&#34; style=&#34;list-style-type: lower-alpha&#34;&gt;
+&lt;li&gt;coli genome: 1 femtoliter volume&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;100 fold compaction problem (DNA)&lt;/p&gt;
+&lt;p&gt;~10k fold for mammalian&lt;/p&gt;
+&lt;p&gt;Techniques for DNA/chromiatin flexibility:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Hi-C&lt;/li&gt;
+&lt;li&gt;FISH&lt;/li&gt;
+&lt;li&gt;SLICE (Beagrie et al Nature 2017)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;eccDNA (circular dna outside chromosome/nucleus(?))&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;unclear how it forms&lt;/li&gt;
+&lt;li&gt;elevated levels associatd with genome instability&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;how to capture?&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;DNA -&amp;gt; SDS lysis -&amp;gt; isolate gDNA -&amp;gt; cscl gradient -&amp;gt; bottom bit&lt;/li&gt;
+&lt;li&gt;or exoV treatment (leaves circular alone)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;take pictures of the loops with high resolution microscopy&lt;/p&gt;
+&lt;p&gt;sequenced a few (&lt;strong&gt;unfortunately with short read illumina&lt;/strong&gt;)&lt;/p&gt;
+&lt;p&gt;modeled with molecular dynamics&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;david-truong&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;David Truong&lt;/h2&gt;
+&lt;p&gt;Resurrection of Histone H3k27 Me in brewer’s yeast by human prc2 and plant atxr6&lt;/p&gt;
+&lt;p&gt;human pathway reconstruction in yeast&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;avoid pleiotropy (hopefully)&lt;/li&gt;
+&lt;li&gt;more real than &lt;em&gt;in vitro&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Yeast (s. cerevisiae) lost histone mods&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Adding them back???&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;yes&lt;/p&gt;
+&lt;p&gt;humanize yeast histones&lt;/p&gt;
+&lt;p&gt;add synthetic human histones&lt;/p&gt;
+&lt;p&gt;force out wt histones with +5FOA&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;20 days later&lt;/em&gt; ….. one colony&lt;/p&gt;
+&lt;p&gt;Keep growing the colony out&lt;/p&gt;
+&lt;p&gt;WGS: mutations in cell cycle regulation&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;bypassing histone cycle checks?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;brewer’s yeast does not have H3K27 methylation&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;PRC2 complex (to methylate h3k27)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;add the stuffs - what happens?&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;made artifical chr with PRC2 complex
+&lt;ul&gt;
+&lt;li&gt;and a slightly broken one&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;not much happens in WT yeast
+&lt;ul&gt;
+&lt;li&gt;no me changes&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;deleted H3k36me3 (might antagonize artificial chr)
+&lt;ul&gt;
+&lt;li&gt;nope&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;can you jump start with atxr6 (does mono me)?
+&lt;ul&gt;
+&lt;li&gt;yes (confirmed with mass spec)&lt;/li&gt;
+&lt;li&gt;not super high levels (0.054% tri me)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;feng-zhang&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Feng Zhang&lt;/h2&gt;
+&lt;p&gt;Advances in genome editing technologies&lt;/p&gt;
+&lt;p&gt;two major classes of CRISPR&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;class 1 (multi subunut)&lt;/li&gt;
+&lt;li&gt;class 2 (single subunit crRNA-effector)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;trying to find new class 2&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;bioinformatic screen with BLAST of cas1&lt;/li&gt;
+&lt;li&gt;found a bunch (Shmakov collaboration)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;cas13&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;added into e. coli&lt;/li&gt;
+&lt;li&gt;modify to only edit RNA?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;rna editing&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;reversible&lt;/li&gt;
+&lt;li&gt;nuclease based editing inefficient in post mitotic cells&lt;/li&gt;
+&lt;li&gt;dCas13 linked with &lt;a href=&#34;https://en.wikipedia.org/wiki/ADAR&#34;&gt;ADAR&lt;/a&gt; (adenosine to inosine) + guideRNA –&amp;gt; A to I conversion in RNA&lt;/li&gt;
+&lt;li&gt;90+% conversion&lt;/li&gt;
+&lt;li&gt;1732 off target incidents
+&lt;ul&gt;
+&lt;li&gt;925 off target with non-targeting guide!&lt;/li&gt;
+&lt;li&gt;so protein itself is not ideal….&lt;/li&gt;
+&lt;li&gt;identified non-binding residues of ADAR&lt;/li&gt;
+&lt;li&gt;mutated them&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;v2 works better
+&lt;ul&gt;
+&lt;li&gt;18385 off target (v1) to 20 (v2)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;still developing&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;molly-gasperini-jay-shendure&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Molly Gasperini (Jay Shendure)&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;my fav of the night&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;crisprQTL mapping as a genome-wide association framework for cellular genetic screens&lt;/p&gt;
+&lt;p&gt;lots of guideRNA to made mutations, check for dif in expression&lt;/p&gt;
+&lt;p&gt;nuclease inactive cas9&lt;/p&gt;
+&lt;p&gt;want to test all enhancers against all genes&lt;/p&gt;
+&lt;p&gt;scRNA-seq + guideRNA (multiplex gRNA)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;thus multiple perturbations per ‘assay’&lt;/li&gt;
+&lt;li&gt;15-30 / cell!&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;targeted 1,119 candidate enhancers&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;15 guides / cell&lt;/li&gt;
+&lt;li&gt;47k cells&lt;/li&gt;
+&lt;li&gt;10X&lt;/li&gt;
+&lt;li&gt;CROP-seq&lt;/li&gt;
+&lt;li&gt;works really well&lt;/li&gt;
+&lt;li&gt;crisprQTL usually targets closest gene
+&lt;ul&gt;
+&lt;li&gt;sometimes not….&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;matches up with histone chip-seq&lt;/li&gt;
+&lt;li&gt;34.3kb average distance from enhancer &amp;lt;-&amp;gt; gene&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;** new data! ** 4,801 enhancers&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;built logistic regression model on pilot to pick new candidates&lt;/li&gt;
+&lt;li&gt;30 guides / cell&lt;/li&gt;
+&lt;li&gt;correlates with pilot&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;manolis kellis q:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;why doesn’t work so well? expected more&lt;/li&gt;
+&lt;li&gt;what about multiple SNPS / block?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;eilon-sharon&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Eilon Sharon&lt;/h2&gt;
+&lt;p&gt;Testing genetic var effect on fitness using precise genome editing&lt;/p&gt;
+&lt;p&gt;high throughput edigint&lt;/p&gt;
+&lt;p&gt;crispey: cas9 retron precise parallel editing via homology&lt;/p&gt;
+&lt;p&gt;use bacterial reverse transcriptase and RNA retron to covalently link ssDNA donor to guide-tracrRNA&lt;/p&gt;
+&lt;p&gt;can insert long sequences&lt;/p&gt;
+&lt;p&gt;(yeast)&lt;/p&gt;
+&lt;p&gt;measure fitness of genetic variants (growth competition)&lt;/p&gt;
+&lt;p&gt;sequence every 2-3 gens&lt;/p&gt;
+&lt;p&gt;model at linear relative strain abundance / time (generation #)&lt;/p&gt;
+&lt;p&gt;# missense var ~ # synonymous var for effecting fitness!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;luca-pinello&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Luca Pinello&lt;/h2&gt;
+&lt;p&gt;CRISPR-SURF exploratory and interactive software for analyzing CRISPR-base tiling screens&lt;/p&gt;
+&lt;p&gt;Uncover non-coding functional regions&lt;/p&gt;
+&lt;p&gt;** Nice overview of CRISPR tiling strategy ** Mutate (tile across region) -&amp;gt; Measure pheno change (somehow) -&amp;gt; Assess (sequence gRNA)&lt;/p&gt;
+&lt;p&gt;No unified framework to analyze these kind of assays&lt;/p&gt;
+&lt;p&gt;many challenges&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;biological noise&lt;/li&gt;
+&lt;li&gt;sgRNA efficiencies&lt;/li&gt;
+&lt;li&gt;non-uniform spacing&lt;/li&gt;
+&lt;li&gt;perturbation / assay differences&lt;/li&gt;
+&lt;li&gt;epigenetic perturbation can be wide (changing 200bp or so)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;deconvolve with generalized lasso&lt;/p&gt;
+&lt;p&gt;fastq -&amp;gt; score -&amp;gt; segmentation -&amp;gt; deconvolution -&amp;gt; region ID&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;population-genomics&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Population Genomics&lt;/h1&gt;
+&lt;div id=&#34;mattias-joakobsson&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Mattias Joakobsson&lt;/h2&gt;
+&lt;p&gt;** out of my field here **&lt;/p&gt;
+&lt;p&gt;Sequence based approaches utilizing complete modern and ancient genomes to investigate early human history&lt;/p&gt;
+&lt;p&gt;Use full genomes on ancient pops&lt;/p&gt;
+&lt;p&gt;Population divergence models&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;                  X
+ +                X
+ |                X
+ |                X
+ |                X
+ |               XXXX
+ |              XX  XXX&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;time | XXX XX | XXX XX | XX XX | | A B C | v&lt;/p&gt;
+&lt;p&gt;Can model whether discordant or concordant (a,b,c) over time&lt;/p&gt;
+&lt;p&gt;estimate pop divergence (time) in generations&lt;/p&gt;
+&lt;p&gt;use genes from different populations to estimate divergence - ‘tt method’&lt;/p&gt;
+&lt;p&gt;stone age humans from sourthern afridca - 13 genomes from 3 people - a bit ‘right’ of yoruba - admixture with east africa &lt;strong&gt;missed something&lt;/strong&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Let&#39;s Plot 6: Simple guide to heatmaps with ComplexHeatmaps</title>
       <link>/./post/simple-heatmaps-with-complexheatmaps/</link>
       <pubDate>Mon, 07 May 2018 00:00:00 +0000</pubDate>
@@ -2475,16 +2770,6 @@ reformatted_values&lt;/code&gt;&lt;/pre&gt;
       
       <guid>/./publication/eyeintegration/</guid>
       <description>&lt;p&gt;More detail can easily be written here using &lt;em&gt;Markdown&lt;/em&gt; and $\rm \LaTeX$ math code.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Example Talk</title>
-      <link>/./talk/example-talk/</link>
-      <pubDate>Sun, 01 Jan 2017 00:00:00 -0500</pubDate>
-      
-      <guid>/./talk/example-talk/</guid>
-      <description>&lt;p&gt;Embed your slides or video here using &lt;a href=&#34;https://sourcethemes.com/academic/post/writing-markdown-latex/&#34; target=&#34;_blank&#34;&gt;shortcodes&lt;/a&gt;. Further details can easily be added using &lt;em&gt;Markdown&lt;/em&gt; and $\rm \LaTeX$ math code.&lt;/p&gt;
 </description>
     </item>
     
