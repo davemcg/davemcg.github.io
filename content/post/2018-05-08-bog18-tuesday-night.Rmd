@@ -19,6 +19,8 @@ output:
 # Intro
 Very sparse and poorly written notes covering [#BoG18](https://twitter.com/search?q=%23BoG18&src=tyah). I've tried to respect #notwitter. Will be updated periodically. 
 
+Speaker (Last Author)
+
 # Genome Engineering and Genome Editing (Tuesday Night)
 
 ## Jef Boeke
@@ -87,7 +89,7 @@ question:
 
   - hdr effeciency rate? 10-90% effectiveness
 
-## Stephen Levene
+## Stephen Levene (Andrew Fire)
 eccDNA is a possible mediator of chromosomal polymorphism at multple loci
 
 'physical chemist by training'
@@ -120,7 +122,7 @@ sequenced a few (**unfortunately with short read illumina**)
 
 modeled with molecular dynamics
 
-## David Truong
+## David Truong (Jef Boeke)
 Resurrection of Histone H3k27 Me in brewer's yeast by human prc2 and plant atxr6
 
 human pathway reconstruction in yeast
@@ -238,7 +240,7 @@ manolis kellis q:
   - why doesn't work so well? expected more
   - what about multiple SNPS / block?
   
-## Eilon Sharon
+## Eilon Sharon (Hunter Fraser)
 
 Testing genetic var effect on fitness using precise genome editing
 
@@ -283,7 +285,7 @@ deconvolve with generalized lasso
 
 fastq -> score -> segmentation -> deconvolution -> region ID
 
-# Population Genomics
+# Population Genomics (Wednesday morning)
 
 ## Mattias Joakobsson 
 
@@ -323,4 +325,50 @@ stone age humans from sourthern afridca
   - a bit 'right' of yoruba
   - admixture with east africa **missed something**
 
+## Jaemin Kim (Elaine Ostrander?)
+Genetic Selection of Athletic Success in Sport Hunting Dogs
+
+WGS of sport hunting (10 breeds), terrier (i breeds), and 'village' dogs (unselected - an outgroup)
+  - 14 million SNPs
+
+59 genes under strong selectdion in hunting dogs (compare to terrier and village)
+  - blood circulation GO terms
+  - and a bunch of 'process' GO terms
+
+ASIC3 - resistance to muscle fatigue? 
+  - maybe?
+  - a guess based on known gene function (I think)
   
+dogs do agility performance competitions
+  - made a metric to find breeds good at winning
+  - WGS of 92 breeds of 299 dogs
+  - ROBO1 significant 3e-4 (FDR corrected? Don't know)
+    - neuronal migration, axon guidance
+  - 1243 SNP chip
+    - dogs classified by agility performance
+    - ** do only pure breeds do agility? **
+    - ROBO1 SNP AF increases with more winning breeds
+
+racing speeds (whippet)
+  - not ROBO1
+  - TRPM3 (1.6e-3)
+  
+CDH23 - increased tolerance to loud noise and low startle reflex
+  - **do hunting dogs have poor hearing?**
+  
+**Useful stuff maybe for competitive dog breeders**
+
+Q (Kellis?): polymorphic nature of traits across dogs. **what's the question?**
+A: complex traits, incomplete answers right now
+Q (Kellis?): enrollment bias for dogs that will win
+A: tried to control by grouping breeds
+Q: what kind of mutations?
+A: mostly noncoding (**answer in LD I guess**)
+Q: project personality onto dog ... look at dog behavior/traits relating to this?
+A: try to objectively test dogs (can't trust owners....)
+Elaine: people developing stanrdard tests for dogs (yes, owners lie)
+
+## Ipsita Agarwal (Molly Przeworski)
+Widespread differences in the mtation spectrum of X and autosomes
+
+Males contrigute more germline mutations than females 
