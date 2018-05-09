@@ -332,7 +332,7 @@ stone age humans from sourthern africa
   - a bit 'right' of yoruba
   - admixture with east africa **missed something**
 
-## Jaemin Kim (Elaine Ostrander?)
+## Jaemin Kim (Elaine Ostrander)
 Genetic Selection of Athletic Success in Sport Hunting Dogs
 
 WGS of sport hunting (10 breeds), terrier (i breeds), and 'village' dogs (unselected - an outgroup)
@@ -616,6 +616,6 @@ conclusions:
   - short term: large effects drive change
   - long term: moderate effect alleles replace them
   
-  topol Q: is this like dogs? big changes in short term
-  a: no, not modeling dramatic changes like this
+topol Q: is this like dogs? big changes in short term
+a: no, not modeling dramatic changes like this
    
