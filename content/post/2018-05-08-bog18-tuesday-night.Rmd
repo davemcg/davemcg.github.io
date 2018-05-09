@@ -297,6 +297,7 @@ Use full genomes on ancient pops
 
 Population divergence models
 
+```{ascii}
                       X
      +                X
      |                X
@@ -311,16 +312,18 @@ time |           XXX      XX
      |      A B              C
      |
      v
-
+```
 
 Can model whether discordant or concordant (a,b,c) over time
 
 estimate pop divergence (time) in generations
 
 use genes from different populations to estimate divergence 
+
   - 'tt method'
   
-stone age humans from sourthern afridca
+stone age humans from sourthern africa
+
   - 13 genomes from 3 people
   - a bit 'right' of yoruba
   - admixture with east africa **missed something**
@@ -329,17 +332,21 @@ stone age humans from sourthern afridca
 Genetic Selection of Athletic Success in Sport Hunting Dogs
 
 WGS of sport hunting (10 breeds), terrier (i breeds), and 'village' dogs (unselected - an outgroup)
+
   - 14 million SNPs
 
 59 genes under strong selectdion in hunting dogs (compare to terrier and village)
+
   - blood circulation GO terms
   - and a bunch of 'process' GO terms
 
 ASIC3 - resistance to muscle fatigue? 
+
   - maybe?
   - a guess based on known gene function (I think)
   
 dogs do agility performance competitions
+
   - made a metric to find breeds good at winning
   - WGS of 92 breeds of 299 dogs
   - ROBO1 significant 3e-4 (FDR corrected? Don't know)
@@ -350,6 +357,7 @@ dogs do agility performance competitions
     - ROBO1 SNP AF increases with more winning breeds
 
 racing speeds (whippet)
+
   - not ROBO1
   - TRPM3 (1.6e-3)
   
@@ -372,3 +380,92 @@ Elaine: people developing stanrdard tests for dogs (yes, owners lie)
 Widespread differences in the mtation spectrum of X and autosomes
 
 Males contrigute more germline mutations than females 
+
+  - epigenetic differences for gamete development (methylation)
+  - sperm in mitosis all the time
+ 
+```{ascii} 
++
+|
+|
+|                         XX
+|                       XXX
+|                    XX
+|                  X
+|               XX
+|             X
+|       X XX
+|   XXXX
+|  XX
+|                 XXXX
+|   XXXX XXX  XXXXX
+|
++------------------------+
+```
+
+Mutation rates get wider as males age (top line male, bottom female)
+
+  - **eyeball 3x worse?**
+  
+GnomAD:
+
+  - 120 million SNPs
+  - 60% singleton (50%) and doubletons (10%) for variants
+  
+Looked for X-autosome difs
+
+X/A diversity = (mutations(x) / all X) / (mutation(a) / all a)
+(a is autosome, x is chrX)
+
+Bootstrap test for mutation types to make null distribution
+
+  - big shift in X (more than expected)
+  - T->A and C->A more common in X versus autosome
+  
+Replication timing
+
+ - inactive X has more mutations
+ 
+Enriched of C>G (meiotic recombination / DSB) mutations
+
+## Amnon Koren
+Genetic architecture of human DNA replication origin activity
+
+We have extensive maps of human genomic / epigenomic
+
+But where are replication origins?
+
+  - ** yeah....good q**
+  - yeast have them
+    - yeast have a DnaA/OriC signatures
+  - how to find?
+    - many techniques - don't agree well (or at all)
+    
+different parts of genomic replicate at different rates
+  
+  - **can measure coverage across time, right**
+    - yes
+  - sort G / S phase
+    - check coverage
+  - Did in 2012 with human - but not precise enough (low resolution)
+  
+Is this a polymorphic trait?
+
+  - skipped cell sorting
+  - works well enough
+    - and way faster to do
+  - **uh, wait, this has been done already (if cells are growing)**
+      - again, yes, LCL from 1000G
+
+But still, did WGS >140 hESC lines 
+  
+  - oooooo, reproduces REALLY well
+  - find 'master' ORI that are pretty much always present
+      - crucial regions in replication?
+
+GWAS of DNA replication timing
+
+  - 'rtQTL' (replication)
+
+## Sarah Tishkoff
+Novel loci associated with skin pigmentation identified in African populations

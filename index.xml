@@ -35,9 +35,11 @@
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#population-genomics-wednesday-morning&#34;&gt;Population Genomics (Wednesday morning)&lt;/a&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#mattias-joakobsson&#34;&gt;Mattias Joakobsson&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#jaemin-kim-elaine-ostrander&#34;&gt;Jaemin Kim (Elaine Ostrander?)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#ipsita-agarwal-molly-przeworski&#34;&gt;Ipsita Agarwal (Molly Przeworski)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#amnon-koren&#34;&gt;Amnon Koren&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#sarah-tishkoff&#34;&gt;Sarah Tishkoff&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -291,35 +293,177 @@
 &lt;p&gt;Sequence based approaches utilizing complete modern and ancient genomes to investigate early human history&lt;/p&gt;
 &lt;p&gt;Use full genomes on ancient pops&lt;/p&gt;
 &lt;p&gt;Population divergence models&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;                  X
- +                X
- |                X
- |                X
- |                X
- |               XXXX
- |              XX  XXX&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;time | XXX XX | XXX XX | XX XX | | A B C | v&lt;/p&gt;
+&lt;pre class=&#34;ascii&#34;&gt;&lt;code&gt;                      X
+     +                X
+     |                X
+     |                X
+     |                X
+     |               XXXX
+     |              XX  XXX
+time |           XXX      XX
+     |         XXX         XX
+     |        XX            XX
+     |
+     |      A B              C
+     |
+     v&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Can model whether discordant or concordant (a,b,c) over time&lt;/p&gt;
 &lt;p&gt;estimate pop divergence (time) in generations&lt;/p&gt;
-&lt;p&gt;use genes from different populations to estimate divergence - ‘tt method’&lt;/p&gt;
-&lt;p&gt;stone age humans from sourthern afridca - 13 genomes from 3 people - a bit ‘right’ of yoruba - admixture with east africa &lt;strong&gt;missed something&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;use genes from different populations to estimate divergence&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;‘tt method’&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;stone age humans from sourthern africa&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;13 genomes from 3 people&lt;/li&gt;
+&lt;li&gt;a bit ‘right’ of yoruba&lt;/li&gt;
+&lt;li&gt;admixture with east africa &lt;strong&gt;missed something&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;jaemin-kim-elaine-ostrander&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Jaemin Kim (Elaine Ostrander?)&lt;/h1&gt;
+&lt;div id=&#34;jaemin-kim-elaine-ostrander&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Jaemin Kim (Elaine Ostrander?)&lt;/h2&gt;
 &lt;p&gt;Genetic Selection of Athletic Success in Sport Hunting Dogs&lt;/p&gt;
-&lt;p&gt;WGS of sport hunting (10 breeds), terrier (i breeds), and ‘village’ dogs (unselected - an outgroup) - 14 million SNPs&lt;/p&gt;
-&lt;p&gt;59 genes under strong selectdion in hunting dogs (compare to terrier and village) - blood circulation GO terms - and a bunch of ‘process’ GO terms&lt;/p&gt;
-&lt;p&gt;ASIC3 - resistance to muscle fatigue? - maybe? - a guess based on known gene function (I think)&lt;/p&gt;
-&lt;p&gt;dogs do agility performance competitions - made a metric to find breeds good at winning - WGS of 92 breeds of 299 dogs - ROBO1 significant 3e-4 (FDR corrected? Don’t know) - neuronal migration, axon guidance - 1243 SNP chip - dogs classified by agility performance - ** do only pure breeds do agility? ** - ROBO1 SNP AF increases with more winning breeds&lt;/p&gt;
-&lt;p&gt;racing speeds (whippet) - not ROBO1 - TRPM3 (1.6e-3)&lt;/p&gt;
+&lt;p&gt;WGS of sport hunting (10 breeds), terrier (i breeds), and ‘village’ dogs (unselected - an outgroup)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;14 million SNPs&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;59 genes under strong selectdion in hunting dogs (compare to terrier and village)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;blood circulation GO terms&lt;/li&gt;
+&lt;li&gt;and a bunch of ‘process’ GO terms&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;ASIC3 - resistance to muscle fatigue?&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;maybe?&lt;/li&gt;
+&lt;li&gt;a guess based on known gene function (I think)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;dogs do agility performance competitions&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;made a metric to find breeds good at winning&lt;/li&gt;
+&lt;li&gt;WGS of 92 breeds of 299 dogs&lt;/li&gt;
+&lt;li&gt;ROBO1 significant 3e-4 (FDR corrected? Don’t know)
+&lt;ul&gt;
+&lt;li&gt;neuronal migration, axon guidance&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;1243 SNP chip
+&lt;ul&gt;
+&lt;li&gt;dogs classified by agility performance&lt;/li&gt;
+&lt;li&gt;** do only pure breeds do agility? **&lt;/li&gt;
+&lt;li&gt;ROBO1 SNP AF increases with more winning breeds&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;racing speeds (whippet)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;not ROBO1&lt;/li&gt;
+&lt;li&gt;TRPM3 (1.6e-3)&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;CDH23 - increased tolerance to loud noise and low startle reflex - &lt;strong&gt;do hunting dogs have poor hearing?&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Useful stuff maybe for competitive dog breeders&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Q (Kellis?): polymorphic nature of traits across dogs. &lt;strong&gt;what’s the question?&lt;/strong&gt; A: complex traits, incomplete answers right now Q (Kellis?): enrollment bias for dogs that will win A: tried to control by grouping breeds Q: what kind of mutations? A: mostly noncoding (&lt;strong&gt;answer in LD I guess&lt;/strong&gt;) Q: project personality onto dog … look at dog behavior/traits relating to this? A: try to objectively test dogs (can’t trust owners….) Elaine: people developing stanrdard tests for dogs (yes, owners lie)&lt;/p&gt;
 &lt;/div&gt;
-&lt;div id=&#34;ipsita-agarwal-molly-przeworski&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Ipsita Agarwal (Molly Przeworski)&lt;/h1&gt;
+&lt;div id=&#34;ipsita-agarwal-molly-przeworski&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Ipsita Agarwal (Molly Przeworski)&lt;/h2&gt;
 &lt;p&gt;Widespread differences in the mtation spectrum of X and autosomes&lt;/p&gt;
+&lt;p&gt;Males contrigute more germline mutations than females&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;epigenetic differences for gamete development (methylation)&lt;/li&gt;
+&lt;li&gt;sperm in mitosis all the time&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;ascii&#34;&gt;&lt;code&gt;+
+|
+|
+|                         XX
+|                       XXX
+|                    XX
+|                  X
+|               XX
+|             X
+|       X XX
+|   XXXX
+|  XX
+|                 XXXX
+|   XXXX XXX  XXXXX
+|
++------------------------+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Mutation rates get wider as males age (top line male, bottom female)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;eyeball 3x worse?&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;GnomAD:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;120 million SNPs&lt;/li&gt;
+&lt;li&gt;60% singleton (50%) and doubletons (10%) for variants&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Looked for X-autosome difs&lt;/p&gt;
+&lt;p&gt;X/A diversity = (mutations(x) / all X) / (mutation(a) / all a) (a is autosome, x is chrX)&lt;/p&gt;
+&lt;p&gt;Bootstrap test for mutation types to make null distribution&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;big shift in X (more than expected)&lt;/li&gt;
+&lt;li&gt;T-&amp;gt;A and C-&amp;gt;A more common in X versus autosome&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Replication timing&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;inactive X has more mutations&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Enriched of C&amp;gt;G (meiotic recombination / DSB) mutations&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;amnon-koren&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Amnon Koren&lt;/h2&gt;
+&lt;p&gt;Genetic architecture of human DNA replication origin activity&lt;/p&gt;
+&lt;p&gt;We have extensive maps of human genomic / epigenomic&lt;/p&gt;
+&lt;p&gt;But where are replication origins?&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;** yeah….good q**&lt;/li&gt;
+&lt;li&gt;yeast have them
+&lt;ul&gt;
+&lt;li&gt;yeast have a DnaA/OriC signatures&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;how to find?
+&lt;ul&gt;
+&lt;li&gt;many techniques - don’t agree well (or at all)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;different parts of genomic replicate at different rates&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;can measure coverage across time, right&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;yes&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;sort G / S phase
+&lt;ul&gt;
+&lt;li&gt;check coverage&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Did in 2012 with human - but not precise enough (low resolution)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Is this a polymorphic trait?&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;skipped cell sorting&lt;/li&gt;
+&lt;li&gt;works well enough
+&lt;ul&gt;
+&lt;li&gt;and way faster to do&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;uh, wait, this has been done already (if cells are growing)&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;again, yes, LCL from 1000G&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;But still, did WGS &amp;gt;140 hESC lines&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;oooooo, reproduces REALLY well&lt;/li&gt;
+&lt;li&gt;find ‘master’ ORI that are pretty much always present
+&lt;ul&gt;
+&lt;li&gt;crucial regions in replication?&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;GWAS of DNA replication timing&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;‘rtQTL’ (replication)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;sarah-tishkoff&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Sarah Tishkoff&lt;/h2&gt;
+&lt;p&gt;Novel loci associated with skin pigmentation identified in African populations&lt;/p&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 </description>
     </item>
