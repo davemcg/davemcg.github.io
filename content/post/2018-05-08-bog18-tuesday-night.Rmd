@@ -885,7 +885,7 @@ Interventions:
   
 Sum6 line: Rbbp8 (aka Ctp1, Sae2)
 
-  - DSB repair
+  - DSB (double strand break) repair
     - MeCP2 null alleles prone to DNA damage...
   - BRCA1 as cofactor
     - found mutations in this too that surpress symptons
@@ -897,11 +897,90 @@ combination therapy
   
 **great talk**
 
-q: 
+q: radio sensitivity?
 
-## Arang Rhie (Erich Jarvis)
+a: yes, higher DSB. cortex highly effected, even in cells that don't divide
+
+
+
+
+## Arang Rhie (Erich Jarvis, Adam Phillippy)
+Genome10K Vertebrate genomes Project
+
+generate error-free reference-quality gnomes assemblies for **all** 66k extant vertebrate species
+
+why? because bad ref genomes are super confusing to work with when YFG (your favorite gene) is missing 
+
+  - bad assembly a major contributor
+  
+goals
+
+  - >1 Mb N50
+  - >QV40
+  - both haplotypes (**eek**)
+  - big scaffold
+  - >90% reads to right chr/contig
+  
+only 16 genomes approaching these goals (NCBI, exclude human/mouse)
+
+name drop awesome goat paper from phillippy group
+
+  - PacBio + Hi-C + Illumina + Optical Map
+
+Phase 1:
+
+  - 200 orders, 266 species
+  
+Process:
+  
+  - PacBio for contigs
+  - Scaffolding with: 10X, Bionano, Hi-C
+  - Gap filling with PacBio (and base polishing**?**)
+  
+Evaluation:
+
+  - gEVAL (Chow et al. 2016)
+    - k-mer com-leteness
+    - synteny
+    - gene completeness (BUSCO Simao et al 2015)
+    - KAT
+    - Mashmap2
+    - Evol.Highway
+    
+Data Release!!!!!
+
+  - [https://www.vertebrategenomesproject.org]
+    - link doesn't work??
+    - oh, it does (click through)
+  - [https://www.sanger.ac.uk/science/data/vertebrate-genomes-project]
+
+Heterozygosity causes allelic dup
+
+  - zebrafinch very high
+  - using trio binning for phasing
+
+q: annotations?
+
+a: we have a working group....
 
 ## Olga Dudchenko (Erez Lieberman Aiden)
+DE NOVO assembly of mammalian genomes with chr-length scaffolds from short reads for <$1000
+
+pointing out that unnamed company 1k genome requires a good reference
+
+  - this is *de novo*
+
+tile reads...contigging...but of course doesn't work too well when you hit repeats
+
+can order contigs with linking data (scaffolding)
+  
+  - EXPENSIVE and slow
+  
+Hi-C
+
+  - 3d genome sequencing
+  - make genome-wide contact map
+  
 
 ## Kasper Munch
 
