@@ -755,7 +755,8 @@ How do enhancers encode function?
 Need to test in embryos across time
 
 *Ciona*
-  - have notochord, heart, nerver chord
+
+  - have notochord, heart
   
 enhnacer + prom + gfp -> electroporation == inside embryo
 
@@ -796,11 +797,13 @@ cry1 24 cycle in liver (high at night, low at day)
 how are enhancers used?
 
 4c-seq on mice collected every 4 hours for 24 hours
+
   - contacts change over time
   
 h3k27ac changes also at same location
 
 removed that region in mouse: cry1deltaE mouse
+
   - clock runs faster (15 mins over 24 hours)
   - corresponding mRNA difs in cry1
   
@@ -829,6 +832,13 @@ iPSCs models and mouse models with tx profiling (brain and not brain)
 # Evolutionary and Non-human genomics
 
 ## Monica Justice
+Informing human genetic variation and therapeutic entruy poitns through modififer screens in mice
+
+Rett syndrome
+
+  - x-linked
+  - 1/10,000 live female births
+
 
 ## Arang Rhie (Erich Jarvis)
 
