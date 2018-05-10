@@ -742,8 +742,104 @@ Chimera embryos
 
   - KO gene, but only chimerically (inject KO mESC into blastocyst)
   - **whoah**
-  - can compare KO **cells** vs not KO **cells**
+  - can compare KO **cells** vs not KO **cells** within full atlas
   - **damn**
   
 ## Emma Farley
 Regulatory principles governing enhancer specificity during development
+
+Otxa (neural enhancer)
+
+How do enhancers encode function?
+
+Need to test in embryos across time
+
+*Ciona*
+  - have notochord, heart, nerver chord
+  
+enhnacer + prom + gfp -> electroporation == inside embryo
+
+made 2.5 million synthetic enhancers (barcoded)
+
+electroporate 100k eggs -> mRNA -> sequence (remember, we have barcodes) -> identify functional enhancers 
+  
+  - **pooling of embryos?**
+  - **doesn't seem like it...but seems like you have too for $**
+  
+Can we we make inert enhancers functional with small tweaks (change to optimal seq)
+
+  - lights up EVERYTHING
+  - *need mix of optimal and sub-optimal sites to maintain proper expression*
+
+spacing between enhancers also important
+
+  - adding just a few bp between motifs >>> expression
+
+interplay between spacing and motif 'strength' (canonical-ness)
+
+and *orientation* (flipping motifs can break function)
+
+*suboptimization* as design parameter hilarious and terrifying (great, let's make things worse to control things more precisely)
+
+wut - SHH enhancer that causes polydactyly....points out that SNP makes binding site *better*
+
+Deboever et al. Cell Stem Cell 2017
+D'Antonion et al. Nature communication 2017
+
+## Jake Yeung (Felix Naef)
+Clock dependent chromatin topology modulates circadian transcdription and behavior
+
+promoter - enhancer loops
+
+cry1 24 cycle in liver (high at night, low at day)
+
+how are enhancers used?
+
+4c-seq on mice collected every 4 hours for 24 hours
+  - contacts change over time
+  
+h3k27ac changes also at same location
+
+removed that region in mouse: cry1deltaE mouse
+  - clock runs faster (15 mins over 24 hours)
+  - corresponding mRNA difs in cry1
+  
+## Minal Caliskan (Casey Brown)
+Genetic and epigenetic fine mapping of complex trait associated loci in the human liver
+
+Genotype <-> RNA-seq <-> H3K4me3 <-> H3K27ac
+50 <-> 50 <-> 10 <-> 10 (people)
+
+Found eQTLs specific to liver (vs GTEX)
+
+Found hQTLS also (histone)
+
+eQTL + hQTL + RNA-seq to 'fine map' GWAS loci
+
+  - blood pressure
+  - coronary artery disease
+
+## Parisa Razaz (Talkwoski)
+Tissue-specific molecular sigmnature of 16p11.2 reciprocal genomic disorder
+
+engineer rgd with CRISPR (make microdels and microdups)
+
+iPSCs models and mouse models with tx profiling (brain and not brain)
+
+# Evolutionary and Non-human genomics
+
+## Monica Justice
+
+## Arang Rhie (Erich Jarvis)
+
+## Olga Dudchenko (Erez Lieberman Aiden)
+
+## Kasper Munch
+
+## Gavin Sherlock
+
+## Anne Ruxandra Carvunis
+
+## Elaine Ostrander
+
+## Bobbie Cansdale (Claire Wade)
