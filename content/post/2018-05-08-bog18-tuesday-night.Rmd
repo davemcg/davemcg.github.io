@@ -838,7 +838,66 @@ Rett syndrome
 
   - x-linked
   - 1/10,000 live female births
+  - developmental regression
+  - fatal in males
+  
+MeCP2
 
+  - ubiquitously expressed (highest in neuron)
+  - regulate gene expression
+  - chromatin modifier
+  
+can a second mutation improve pathological phenotype?
+  
+  - forward genetic unbiased screen in mice
+  - **how to assess phenotype???**
+  - random mutagenesis (ENU) 
+    - of males
+  - evaluate symptons to make a 'health score'
+    - **eek, so a LOT of work**
+  - screen 3200 mice
+
+exome seq G1 founder male for candidate phenotype
+  - 20-99 new lesions
+  - backcross
+  - mate 10 G2 
+  - analyze 10 G3 offspring
+
+many pathways affected
+
+  - including DNA repair and lipid metabolism
+
+sum3 line (null allele of Sqle)
+
+  - dysregulation of cholesterol pathway
+  - brain lipd turnover fails
+  - other lipids overproduced
+  
+Other mutations:
+
+  - NCoR1/SMRT
+  - HDAC3
+
+Interventions:
+
+  - Statin drugs to decrease cholesterol biosynthesis
+  - clinical trial just finished
+  
+Sum6 line: Rbbp8 (aka Ctp1, Sae2)
+
+  - DSB repair
+    - MeCP2 null alleles prone to DNA damage...
+  - BRCA1 as cofactor
+    - found mutations in this too that surpress symptons
+
+combination therapy
+
+  - DSB + lipid metabolism
+  - with mouse mut can 'cure' disease
+  
+**great talk**
+
+q: 
 
 ## Arang Rhie (Erich Jarvis)
 
