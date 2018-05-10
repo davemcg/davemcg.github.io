@@ -949,10 +949,10 @@ Evaluation:
     
 Data Release!!!!!
 
-  - [https://www.vertebrategenomesproject.org]
+  - https://www.vertebrategenomesproject.org
     - link doesn't work??
     - oh, it does (click through)
-  - [https://www.sanger.ac.uk/science/data/vertebrate-genomes-project]
+  - https://www.sanger.ac.uk/science/data/vertebrate-genomes-project
 
 Heterozygosity causes allelic dup
 
@@ -980,8 +980,27 @@ Hi-C
 
   - 3d genome sequencing
   - make genome-wide contact map
-  
+  - has been used to reassemble known genomes
+    - often with MANY other techniques
+    
+using hi-c contact map to correct contigs/scaffolds
 
+  - showing different types of issues (translocations/inversions/etc)
+  - GUI work to correct assembly?!
+    - 'kids can do this'
+  - **they have something more automated?**
+    - would be nuts to do with just short reads (100k +)
+    
+Open to collaborations (http://www.aidenlab.org)
+
+100 Million HiC PE150 illumina + 300M DNA-seq PE150 (w2rap)
+
+3D-DNA suite
+  
+  - $1k
+  - abou a week
+  - aidenlab.org/assembly
+  
 ## Kasper Munch
 
 ## Gavin Sherlock
