@@ -895,11 +895,12 @@ ctcf                           ctcf                                 ctcf</code><
 <li>showing different types of issues (translocations/inversions/etc)</li>
 <li>GUI work to correct assembly?!
 <ul>
+<li>juicebox, apparently (<a href="https://www.aidenlab.org/juicebox/" class="uri">https://www.aidenlab.org/juicebox/</a>)</li>
 <li>‘kids can do this’</li>
 </ul></li>
 <li><strong>they have something more automated?</strong>
 <ul>
-<li>would be nuts to do with just short reads (100k +)</li>
+<li><strong>seems like would be nuts to do with just short reads (100k + pieces)</strong></li>
 </ul></li>
 </ul>
 <p>Open to collaborations (<a href="http://www.aidenlab.org" class="uri">http://www.aidenlab.org</a>)</p>
@@ -907,23 +908,205 @@ ctcf                           ctcf                                 ctcf</code><
 <p>3D-DNA suite</p>
 <ul>
 <li>$1k</li>
-<li>abou a week</li>
-<li>aidenlab.org/assembly</li>
+<li>about a week</li>
+<li><a href="http://aidenlab.org/assembly" class="uri">http://aidenlab.org/assembly</a></li>
 </ul>
 </div>
 <div id="kasper-munch" class="section level2">
 <h2>Kasper Munch</h2>
+<p>Multiple selective sweeps removed Neandertha admixture of the X chr in out of Africa pop</p>
+<p>strong selective sweeps in great ape in chr X</p>
+<p>because of inter chromosomal conflict between x and y?</p>
+<p>165 male X chromosome from Simons Genome Diversity Project</p>
+<ul>
+<li><strong>SGD gertting name dropped a ton this conference</strong></li>
+</ul>
+<p>large proportion of very similar haplotyes among non-african people</p>
+<ul>
+<li>big left spike on density plot</li>
+<li>don’t see in african pop</li>
+</ul>
+<p>what are these haplotypes?</p>
+<ul>
+<li>low divergence haplotype defined as dist less than 5e-5 of &gt;25% people in 500kb sliding window</li>
+<li>locations grouped with ethnicity in chrX</li>
+</ul>
+<p>find 500kb sweep spanning non-africans</p>
+<ul>
+<li>after leaving africa</li>
+<li>but before world-wide spread</li>
+</ul>
+<p>does it overlap human-chimp common ancestor?</p>
+<ul>
+<li>yes</li>
+</ul>
+<p>swept chr regions have less archaic admixture - Skov et al 2018 bioRxiv for method</p>
+<p>trying to get time window of sweep</p>
+<ul>
+<li>45k years</li>
+</ul>
+<p>why?</p>
+<ul>
+<li>don’t know (for certain)</li>
+<li>‘crazy ideas’
+<ul>
+<li>two pop leave africa
+<ul>
+<li>only one meet neanderthal</li>
+<li>then merge</li>
+</ul></li>
+<li>many small groups leave</li>
+<li>later one big one leaves, which meets neanderthals</li>
+<li>then all merge</li>
+</ul></li>
+</ul>
 </div>
 <div id="gavin-sherlock" class="section level2">
 <h2>Gavin Sherlock</h2>
+<p>Joint distribution of fitness effects for beneficial mutations in yeast</p>
+<p>(<strong>did a bang up job of keeping first half of session on time</strong>)</p>
+<p>Interested in adaptive (positive) mutations that improve fitness</p>
+<p>yeast</p>
+<p>‘experimental evolution’</p>
+<p>Lineage tracing system:</p>
+<ul>
+<li>random primers</li>
+<li>plasmid library</li>
+<li>barcodes</li>
+<li>generations (with replicates)</li>
+<li>sequence barcodes after each serial transfer
+<ul>
+<li>beneficial mutation barcodes will increase</li>
+<li>most adapative lineages are rare (&lt;&lt;1%)</li>
+</ul></li>
+</ul>
+<p>genotype to fitness map (ID beneficial mutations)</p>
+<p>‘narrow in scope’</p>
+<ul>
+<li>conditions not very diverse</li>
+<li>what are tradeoffs?</li>
+</ul>
+<p>‘achieving high fitness across a wide range of habitats is apparently hard’</p>
+<ul>
+<li>mutations deleterious</li>
+<li>direct tradeoffs (antognistic pleiotropy)</li>
+<li>lower fitness elsewhere</li>
+</ul>
+<p>what’s the balance of these three effects?</p>
+<p>So…</p>
+<ul>
+<li>measure fitness in dif environments</li>
+<li>m x n matrix of fitness in environment x alt environment</li>
+<li>exponential scaling….</li>
+</ul>
+<p>added second barcode to mark condition</p>
+<p>evolve populations -&gt; isolate colones -&gt; POOL (second barcode!) -&gt; measure pools across n environments</p>
+<ul>
+<li>pleiotropy common</li>
+<li>big cluster with variety of performance in alt conditions</li>
+<li>a few generally useful clones</li>
+<li>many generally bad</li>
+</ul>
+<p><strong>no discussion of variants / genes that increase fitness?? Boooo</strong></p>
+<p>q: look at structural variation?</p>
+<p>a: whole chr dup very common to increase fitness for a few gene. hard to get structural data with short reads</p>
+<p>q: super yeast generalists? what about cycling yeast across conditions repeatedly? genetic basis of super yeast?</p>
+<p>a: have done a bit of flipping across environment. diploids more fit. <strong>really dancing around the genetic basis question</strong></p>
 </div>
 <div id="anne-ruxandra-carvunis" class="section level2">
 <h2>Anne Ruxandra Carvunis</h2>
+<p>The genome’s reservoir of benefical proto-genes</p>
+<p>mechanism of molecular innovation</p>
+<p>proto-genes</p>
+<ul>
+<li>non-genic seq &lt;-&gt; pervasive expression -&gt; adaptive potential -&gt; novel gene</li>
+</ul>
+<p>yeast genome pervasively tx and has lots of ‘random’ ORFs (open reading frames)</p>
+<p>RiboSeq (Ingolia et al 2009) to ID translated seq</p>
+<ul>
+<li>2k ‘proto-genes’</li>
+<li>match up with RNA-seq</li>
+<li>and predicted ORF</li>
+</ul>
+<p>artifically evolve by systematic overexpression (of proto-genes)</p>
+<ul>
+<li>and put WT yeast and check to see who wins over time</li>
+<li>so measuring growth</li>
+</ul>
+<p>find all three classes:</p>
+<ul>
+<li>beneficial (some)</li>
+<li>deleterious</li>
+<li>neutral (most)</li>
+</ul>
+<p>enrichement of proto-genes in beneficial class (OR ~3 <strong>pretty good</strong>)</p>
+<p>found 6 generalists</p>
+<p>‘network integration’</p>
+<ul>
+<li>what are good proto-genes predicted function</li>
+<li>#notweet
+<ul>
+<li>(not 100% certain in results yet)</li>
+<li><strong>happy that Anne is sharing a bit about general proto-gene functions</strong></li>
+<li><strong>compelling stuff</strong></li>
+</ul></li>
+<li><strong>bit confused on network integration …. didn’t see any evidence or discussion of it</strong>
+<ul>
+<li><strong>maybe a syntax issue?</strong></li>
+</ul></li>
+</ul>
 </div>
 <div id="elaine-ostrander" class="section level2">
 <h2>Elaine Ostrander</h2>
+<p>Catalog of 722 Whole Genome Sequences Reveals Variants Controlling Morphology in Domestic Dogs</p>
+<p>dog GWAS (with WGS)</p>
+<ul>
+<li>easy to do GWAS with low n (do high n lineages)</li>
+<li>easy to find LD block</li>
+<li>hard to find mutation</li>
+</ul>
+<p>Parker et al. Cell Reports 2017</p>
+<ul>
+<li>breed relatedness with neighbor joining tree (up to &gt;200 dog breeds)</li>
+<li>found haplotype sharing across breeds</li>
+</ul>
+<p>91 million variants</p>
+<ul>
+<li>60% low VEP impact</li>
+<li><strong>argh exploded 3d pie charts!!!</strong></li>
+</ul>
+<p>Lots of filtering, pop stratification ….</p>
+<ul>
+<li>14 million vars</li>
+</ul>
+<p>GWAS on the 14 million</p>
+<ul>
+<li>28 associations</li>
+<li><strong>big table, little text</strong></li>
+<li>validate on known biology (Furnishing, fur length, height)
+<ul>
+<li>yes they find the stuff they expect</li>
+</ul></li>
+</ul>
+<p>LCORL</p>
+<ul>
+<li>strong influence on dog size</li>
+</ul>
+<p>SMAD2, HMGA2, IGF1, IRS5, IGSF1 (bigger size/weight)</p>
+<ul>
+<li>also for longevity (anti correlated)</li>
+</ul>
+<p>ESR1 (leg length)</p>
+<p>lincRNA (near MSR83) (drop ears)</p>
+<p>gorab, chsy3 (tail shape)</p>
+<p>Working to get to 10K dog genomes (Dog10K)</p>
 </div>
 <div id="bobbie-cansdale-claire-wade" class="section level2">
 <h2>Bobbie Cansdale (Claire Wade)</h2>
+<p>3D modeling of Hi-C data to investigate spatial organization of the canine genome</p>
+<p>TADs - modular units of genome struture/organization</p>
+<p>Regions assessed: - MITF - ASIP - RALY - TYRP1 - MC1R - KRT71 - RSPO2 - MSRB3 - IFG1</p>
+<p>Qualitative look at genes known to do stuff…and what genes are near them (in Hi-C TAD block)….as far as I could tell.</p>
+<p>3D modeling….haven’t done yet….</p>
 </div>
 </div>

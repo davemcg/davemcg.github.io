@@ -21,7 +21,7 @@ Very sparse and poorly written notes covering [#BoG18](https://twitter.com/searc
 
 Typos everywhere. Things may change dramatically over time as I scan back through notes.
 
-I've tried to respect #notwitter. Will be updated periodically. 
+I've tried to respect \#notwitter. Will be updated periodically. 
 
 Speaker (Last Author)
 
@@ -987,9 +987,10 @@ using hi-c contact map to correct contigs/scaffolds
 
   - showing different types of issues (translocations/inversions/etc)
   - GUI work to correct assembly?!
+    - juicebox, apparently (https://www.aidenlab.org/juicebox/)
     - 'kids can do this'
   - **they have something more automated?**
-    - would be nuts to do with just short reads (100k +)
+    - **seems like would be nuts to do with just short reads (100k + pieces)**
     
 Open to collaborations (http://www.aidenlab.org)
 
@@ -998,15 +999,227 @@ Open to collaborations (http://www.aidenlab.org)
 3D-DNA suite
   
   - $1k
-  - abou a week
-  - aidenlab.org/assembly
+  - about a week
+  - http://aidenlab.org/assembly
   
 ## Kasper Munch
+Multiple selective sweeps removed Neandertha admixture of the X chr in out of Africa pop
+
+strong selective sweeps in great ape in chr X
+
+because of inter chromosomal conflict between x and y?
+
+165 male X chromosome from Simons Genome Diversity Project
+
+  - **SGD gertting name dropped a ton this conference**
+  
+large proportion of very similar haplotyes among non-african people
+
+  - big left spike on density plot
+  - don't see in african pop
+
+what are these haplotypes?
+
+  - low divergence haplotype defined as dist less than 5e-5 of >25% people in 500kb sliding window
+  - locations grouped with ethnicity in chrX
+  
+find 500kb sweep spanning non-africans
+
+  - after leaving africa
+  - but before world-wide spread
+  
+does it overlap human-chimp common ancestor?
+
+  - yes
+  
+swept chr regions have less archaic admixture
+  - Skov et al 2018 bioRxiv for method
+
+trying to get time window of sweep
+
+  - 45k years 
+  
+why?
+
+  - don't know (for certain)
+  - 'crazy ideas'
+    - two pop leave africa
+        - only one meet neanderthal
+        - then merge
+      - many small groups leave
+      - later one big one leaves, which meets neanderthals
+      - then all merge
 
 ## Gavin Sherlock
+Joint distribution of fitness effects for beneficial mutations in yeast
 
+(**did a bang up job of keeping first half of session on time**)
+
+Interested in adaptive (positive) mutations that improve fitness
+
+yeast
+
+'experimental evolution'
+
+Lineage tracing system:
+
+  - random primers
+  - plasmid library
+  - barcodes
+  - generations (with replicates)
+  - sequence barcodes after each serial transfer
+    - beneficial mutation barcodes will increase 
+    - most adapative lineages are rare (<<1%)
+    
+genotype to fitness map (ID beneficial mutations)
+
+'narrow in scope'
+
+  - conditions not very diverse 
+  - what are tradeoffs?
+  
+'achieving high fitness across a wide range of habitats is apparently hard'
+  
+  - mutations deleterious
+  - direct tradeoffs (antognistic pleiotropy)
+  - lower fitness elsewhere
+  
+what's the balance of these three effects?
+
+So...
+
+  - measure fitness in dif environments
+  - m x n matrix of fitness in environment x alt environment
+  - exponential scaling....
+  
+added second barcode to mark condition
+
+evolve populations -> isolate colones -> POOL (second barcode!) -> measure pools across n environments
+  
+  - pleiotropy common
+  - big cluster with variety of performance in alt conditions
+  - a few generally useful clones
+  - many generally bad
+  
+**no discussion of variants / genes that increase fitness?? Boooo**
+
+q: look at structural variation?
+
+a: whole chr dup very common to increase fitness for a few gene. hard to get structural data with short reads
+
+
+q: super yeast generalists? what about cycling yeast across conditions repeatedly? genetic basis of super yeast?
+
+a: have done a bit of flipping across environment. diploids more fit. **really dancing around the genetic basis question**
+
+ 
 ## Anne Ruxandra Carvunis
+The genome's reservoir of benefical proto-genes
+
+mechanism of molecular innovation
+
+proto-genes
+
+  - non-genic seq <-> pervasive expression -> adaptive potential -> novel gene
+
+yeast genome pervasively tx and has lots of 'random' ORFs (open reading frames)
+
+RiboSeq (Ingolia et al 2009) to ID translated seq
+
+  - 2k 'proto-genes'
+  - match up with RNA-seq 
+  - and predicted ORF
+  
+artifically evolve by systematic overexpression (of proto-genes)
+
+  - and put WT  yeast and check to see who wins over time
+  - so measuring growth 
+  
+find all three classes:
+
+  - beneficial (some)
+  - deleterious
+  - neutral (most)
+  
+enrichement of proto-genes in beneficial class (OR ~3 **pretty good**)
+
+found 6 generalists
+
+'network integration'
+  
+  - what are good proto-genes predicted function
+  - \#notweet
+    - (not 100% certain in results yet)
+    - **happy that Anne is sharing a bit about general proto-gene functions**
+      - **compelling stuff**
+  - **bit confused on network integration .... didn't see any evidence or discussion of it**
+    - **maybe a syntax issue?**
+
+
 
 ## Elaine Ostrander
+Catalog of 722 Whole Genome Sequences Reveals Variants Controlling Morphology in Domestic Dogs
+
+dog GWAS (with WGS)
+  
+  - easy to do GWAS with low n (do high n lineages)
+  - easy to find LD block
+  - hard to find mutation
+  
+Parker et al. Cell Reports 2017 
+
+  - breed relatedness with neighbor joining tree (up to >200 dog breeds)
+  - found haplotype sharing across breeds
+  
+91 million variants
+
+  - 60% low VEP impact
+  - **argh exploded 3d pie charts!!!**
+  
+Lots of filtering, pop stratification ....
+
+  - 14 million vars
+  
+GWAS on the 14 million
+
+  - 28 associations
+  - **big table, little text**
+  - validate on known biology (Furnishing, fur length, height)
+    - yes they find the stuff they expect
+
+LCORL
+
+  - strong influence on dog size
+
+SMAD2, HMGA2, IGF1, IRS5, IGSF1 (bigger size/weight)
+
+  - also for longevity (anti correlated)
+
+ESR1 (leg length)
+
+lincRNA (near MSR83) (drop ears)
+
+gorab, chsy3 (tail shape)
+
+Working to get to 10K dog genomes (Dog10K)
 
 ## Bobbie Cansdale (Claire Wade)
+3D modeling of Hi-C data to investigate spatial organization of the canine genome
+
+TADs
+  - modular units of genome struture/organization
+
+Regions assessed:
+  - MITF
+  - ASIP
+  - RALY
+  - TYRP1
+  - MC1R
+  - KRT71
+  - RSPO2
+  - MSRB3
+  - IFG1
+  
+Qualitative look at genes known to do stuff...and what genes are near them (in Hi-C TAD block)....as far as I could tell. 
+
+3D modeling....haven't done yet....
