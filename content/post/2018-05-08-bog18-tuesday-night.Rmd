@@ -719,3 +719,31 @@ Where do they map?
   - some genes like MALAT1 interact with *entire* genome
   - compartments **sort of** like TADS
     - weak cor with Hi-C (0.27)
+
+## Johnathan Griffiths (Berthold Gottgens)
+Charting the Diversification of Mammalian Cells at whole genome scale 
+
+Gastrulation focus (mouse)
+
+>350 whole embryos
+
+Collected every 6 hours: e6.5 to e8.5
+
+10X chromium, 94k cells (post QC), 15,000 UMI (median), 3.5k detected genes (median)
+
+Big t-SNE plot
+
+  - talk of 'direction' and 'trajectory' which I dislike for t-SNE...
+  - but can back up with time point data
+
+Clustered with association of cell types to each other
+
+Chimera embryos
+
+  - KO gene, but only chimerically (inject KO mESC into blastocyst)
+  - **whoah**
+  - can compare KO **cells** vs not KO **cells**
+  - **damn**
+  
+## Emma Farley
+Regulatory principles governing enhancer specificity during development
