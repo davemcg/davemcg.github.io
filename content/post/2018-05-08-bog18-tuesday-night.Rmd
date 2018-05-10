@@ -1112,6 +1112,12 @@ q: super yeast generalists? what about cycling yeast across conditions repeatedl
 
 a: have done a bit of flipping across environment. diploids more fit. **really dancing around the genetic basis question**
 
+#### Update
+Bit unfair to Gavin here (I was just really hoping for some speculation on gene function!). His [tweet](https://twitter.com/gsherloc/status/994617999331069960) response:
+
+![](/img/bog_sherlock_tweet.png)
+
+
  
 ## Anne Ruxandra Carvunis
 The genome's reservoir of benefical proto-genes
