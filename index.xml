@@ -42,6 +42,11 @@
 &lt;li&gt;&lt;a href=&#34;#patrick-albers-gil-mcvean&#34;&gt;Patrick Albers (Gil McVean)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#laura-hayward-guy-sella&#34;&gt;Laura Hayward (Guy Sella)&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#functional-genetics-and-epigenomics&#34;&gt;Functional Genetics and Epigenomics&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#job-dekker&#34;&gt;Job Dekker&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#flora-vaccarino&#34;&gt;Flora Vaccarino&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#carninci&#34;&gt;Carninci&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -363,7 +368,15 @@ time |           XXX      XX
 &lt;/ul&gt;
 &lt;p&gt;CDH23 - increased tolerance to loud noise and low startle reflex - &lt;strong&gt;do hunting dogs have poor hearing?&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Useful stuff maybe for competitive dog breeders&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Q (Kellis?): polymorphic nature of traits across dogs. &lt;strong&gt;what’s the question?&lt;/strong&gt; A: complex traits, incomplete answers right now Q (Kellis?): enrollment bias for dogs that will win A: tried to control by grouping breeds Q: what kind of mutations? A: mostly noncoding (&lt;strong&gt;answer in LD I guess&lt;/strong&gt;) Q: project personality onto dog … look at dog behavior/traits relating to this? A: try to objectively test dogs (can’t trust owners….) Elaine: people developing stanrdard tests for dogs (yes, owners lie)&lt;/p&gt;
+&lt;p&gt;Q (Kellis?): polymorphic nature of traits across dogs. &lt;strong&gt;what’s the question?&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;A: complex traits, incomplete answers right now&lt;/p&gt;
+&lt;p&gt;Q (Kellis?): enrollment bias for dogs that will win&lt;/p&gt;
+&lt;p&gt;A: tried to control by grouping breeds&lt;/p&gt;
+&lt;p&gt;Q: what kind of mutations?&lt;/p&gt;
+&lt;p&gt;A: mostly noncoding (&lt;strong&gt;answer in LD I guess&lt;/strong&gt;)&lt;/p&gt;
+&lt;p&gt;Q: project personality onto dog … look at dog behavior/traits relating to this?&lt;/p&gt;
+&lt;p&gt;A: try to objectively test dogs (can’t trust owners….)&lt;/p&gt;
+&lt;p&gt;Elaine: people developing stanrdard tests for dogs (yes, owners lie)&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;ipsita-agarwal-molly-przeworski&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Ipsita Agarwal (Molly Przeworski)&lt;/h2&gt;
@@ -472,7 +485,16 @@ time |           XXX      XX
 &lt;li&gt;enriched with active chromatin states&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;perhaps some QTL stabilize TF binding motifs - stuff happening in motifs&lt;/p&gt;
-&lt;p&gt;Q: look for associations with structural variation? (1000G data) A: looking at this now Q: cell type specific? (&lt;strong&gt;thank you&lt;/strong&gt;) A: 20-30% are dif across cell types (&lt;strong&gt;cool&lt;/strong&gt;) Q: is ORI piggybacking on enhancer / regulatory system? (&lt;strong&gt;or other way around??&lt;/strong&gt;) A: maybe (or other way around) Q: cis effects - did you find any trans or pleiotropy? A: nothing strong (spurious stuff maybe?) Q: HiC/3C data profiles comparisons? A: not &lt;em&gt;yet&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Q: look for associations with structural variation? (1000G data)&lt;/p&gt;
+&lt;p&gt;A: looking at this now&lt;/p&gt;
+&lt;p&gt;Q: cell type specific? (&lt;strong&gt;thank you&lt;/strong&gt;)&lt;/p&gt;
+&lt;p&gt;A: 20-30% are dif across cell types (&lt;strong&gt;cool&lt;/strong&gt;)&lt;/p&gt;
+&lt;p&gt;Q: is ORI piggybacking on enhancer / regulatory system? (&lt;strong&gt;or other way around??&lt;/strong&gt;)&lt;/p&gt;
+&lt;p&gt;A: maybe (or other way around)&lt;/p&gt;
+&lt;p&gt;Q: cis effects - did you find any trans or pleiotropy?&lt;/p&gt;
+&lt;p&gt;A: nothing strong (spurious stuff maybe?)&lt;/p&gt;
+&lt;p&gt;Q: HiC/3C data profiles comparisons?&lt;/p&gt;
+&lt;p&gt;A: not &lt;em&gt;yet&lt;/em&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;sarah-tishkoff&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Sarah Tishkoff&lt;/h2&gt;
@@ -495,7 +517,11 @@ time |           XXX      XX
 &lt;p&gt;DDB1 - DNA repair in UV damage - pigmentation in tomatoes - fine mapping hits TMEM128 - luciferase assay with enhancer activity - huge haplotype blocks of low het in europeans/asians - selective sweep, near complete fixation&lt;/p&gt;
 &lt;p&gt;OCA2/HERC2 - exon10 SNP alt splicing - rs1800404&lt;/p&gt;
 &lt;p&gt;convergent evolution of very dark skin - african and south asia&lt;/p&gt;
-&lt;p&gt;q: speculate about lysosome? a: pheomelanin made in lysosome (like) structure? q: surprised to not find var close to mcr1 a: no q: chimp with no hair has vitiligo? a: dont’ think so - have been assured chimps have light skin&lt;/p&gt;
+&lt;p&gt;q: speculate about lysosome?&lt;/p&gt;
+&lt;p&gt;a: pheomelanin made in lysosome (like) structure?&lt;/p&gt;
+&lt;p&gt;q: surprised to not find var close to mcr1 a: no&lt;/p&gt;
+&lt;p&gt;q: chimp with no hair has vitiligo?&lt;/p&gt;
+&lt;p&gt;a: dont’ think so - have been assured chimps have light skin&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;patrick-albers-gil-mcvean&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Patrick Albers (Gil McVean)&lt;/h2&gt;
@@ -532,7 +558,70 @@ time |           XXX      XX
 &lt;p&gt;OK…not following this talk well at all (pretty sure it’s me). Laura is copiously using cartoons, which is usually works for fools like me.&lt;/p&gt;
 &lt;p&gt;not cetain whether this stuff is driven by theory or data or both - no, no data - equations from first princples&lt;/p&gt;
 &lt;p&gt;conclusions: - polygenic adaption is rapid - short term: large effects drive change - long term: moderate effect alleles replace them&lt;/p&gt;
-&lt;p&gt;topol Q: is this like dogs? big changes in short term a: no, not modeling dramatic changes like this&lt;/p&gt;
+&lt;p&gt;topol Q: is this like dogs? big changes in short term&lt;/p&gt;
+&lt;p&gt;a: no, not modeling dramatic changes like this&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;functional-genetics-and-epigenomics&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Functional Genetics and Epigenomics&lt;/h1&gt;
+&lt;div id=&#34;job-dekker&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Job Dekker&lt;/h2&gt;
+&lt;p&gt;Folding, unfolding, and refolding genomes&lt;/p&gt;
+&lt;p&gt;How does the genome work? &lt;strong&gt;structured&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Dekker et al. 2002: 3C. &lt;strong&gt;I remember this paper. And totally failing at doing this tech myself&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;A/B compartments….TAD…..enhancer - gene loops. One slide summarzing many publications and of cool work.&lt;/p&gt;
+&lt;pre class=&#34;ascii&#34;&gt;&lt;code&gt;                                TAD
+                                                loop (cohesin-mediated)
+                 loop (cohesin-mediated)       XXXX 
+                XXXX                         XX   XX
+              XXX   XXX                     XX      XXX
+            XX        XX                  XX           XX
+          XX            XX              XXX              XX
+        XX                X           XXX                  XXX
+      XX                   XX        XX                      XX
+    XXX                      XX    XXX                         XXX
+  XX                          XXXXX                              XX
+ XXXX                           X                XXXXXXXX       XXXX
+    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX       XXX X XX
+ctcf                           ctcf                                 ctcf&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Interphase / metaphase - interphase has structure - metaphase erases structure (fat diagonal of 3c map)&lt;/p&gt;
+&lt;p&gt;meiotic chr fold as helical nested loop arrays (helix with loops coming off) - Gibcus…Dekker Science 2018&lt;/p&gt;
+&lt;p&gt;Using ATAC-seq, cut&amp;amp;ruhn to assay CTCF binding patterning in interphase / metaphase&lt;/p&gt;
+&lt;p&gt;FRAP to measure stable CTCF binding in interphase / metaphase - unstable in metaphase&lt;/p&gt;
+&lt;p&gt;Q: CTCF sites occupied in mitosis - why? Nucleosomes taking over?&lt;/p&gt;
+&lt;p&gt;A: Good q, don’t know. Think nucleosomes ‘sliding in’&lt;/p&gt;
+&lt;p&gt;Q: &lt;strong&gt;missed it&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;A: protein levels of CTCF doesn’t change during what phase cell is in&lt;/p&gt;
+&lt;p&gt;Q: what is keeping the promoters open during mitosis&lt;/p&gt;
+&lt;p&gt;A: don’t think pol is bound….promoters more open to begin with….something bookmarking the site????&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;flora-vaccarino&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Flora Vaccarino&lt;/h2&gt;
+&lt;p&gt;Integrative multi-omics analyses of iPSC-derived brain organioids&lt;/p&gt;
+&lt;p&gt;#notwitter&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;carninci&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Carninci&lt;/h2&gt;
+&lt;p&gt;RADICL-seq: novel tech for genome-wide mapping of RNA-chromatin interactions&lt;/p&gt;
+&lt;p&gt;Many many (~20k) functiona lncRNA&lt;/p&gt;
+&lt;p&gt;But what is role? Activate genes, promoter, enhancer? Repression of genes? Establish insulation?&lt;/p&gt;
+&lt;p&gt;RADICL-seq - capture RNA-DNA interactions with crosslinking (formaldehyde, 1-2%)&lt;/p&gt;
+&lt;p&gt;Where do they map?&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Lots in the intron&lt;/li&gt;
+&lt;li&gt;open chromatin&lt;/li&gt;
+&lt;li&gt;380k RNA-DNA interactions&lt;/li&gt;
+&lt;li&gt;enriched in TF family members&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;looks like lots of trans interactions&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;but way fewer than cis,as you would expect&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;some genes like MALAT1 interact with entire genome&lt;/li&gt;
+&lt;li&gt;compartments &lt;strong&gt;sort of&lt;/strong&gt; like TADS
+&lt;ul&gt;
+&lt;li&gt;weak cor with Hi-C (0.27)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 </description>

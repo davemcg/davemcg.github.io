@@ -371,13 +371,21 @@ CDH23 - increased tolerance to loud noise and low startle reflex
 **Useful stuff maybe for competitive dog breeders**
 
 Q (Kellis?): polymorphic nature of traits across dogs. **what's the question?**
+
 A: complex traits, incomplete answers right now
+
 Q (Kellis?): enrollment bias for dogs that will win
+
 A: tried to control by grouping breeds
+
 Q: what kind of mutations?
+
 A: mostly noncoding (**answer in LD I guess**)
+
 Q: project personality onto dog ... look at dog behavior/traits relating to this?
+
 A: try to objectively test dogs (can't trust owners....)
+
 Elaine: people developing stanrdard tests for dogs (yes, owners lie)
 
 ## Ipsita Agarwal (Molly Przeworski)
@@ -481,14 +489,23 @@ perhaps some QTL stabilize TF binding motifs
   - stuff happening in motifs 
 
 Q: look for associations with structural variation? (1000G data)
+
 A: looking at this now
+
 Q: cell type specific? (**thank you**)
+
 A: 20-30% are dif across cell types (**cool**)
+
 Q: is ORI piggybacking on enhancer / regulatory system? (**or other way around??**)
+
 A: maybe (or other way around)
+
 Q: cis effects - did you find any trans or pleiotropy?
+
 A: nothing strong (spurious stuff maybe?)
+
 Q: HiC/3C data profiles comparisons?
+
 A: not *yet*
 
 
@@ -552,10 +569,14 @@ convergent evolution of very dark skin
   - african and south asia
   
 q: speculate about lysosome?
+
 a: pheomelanin made in lysosome (like) structure?
+
 q: surprised to not find var close to mcr1 
 a: no
+
 q: chimp with no hair has vitiligo?
+
 a: dont' think so - have been assured chimps have light skin
 
 ##  Patrick Albers (Gil McVean)
@@ -617,5 +638,84 @@ conclusions:
   - long term: moderate effect alleles replace them
   
 topol Q: is this like dogs? big changes in short term
+
 a: no, not modeling dramatic changes like this
-   
+
+# Functional Genetics and Epigenomics
+
+## Job Dekker
+Folding, unfolding, and refolding genomes
+
+How does the genome work? **structured**
+
+Dekker et al. 2002: 3C. **I remember this paper. And totally failing at doing this tech myself**
+
+A/B compartments....TAD.....enhancer - gene loops. One slide summarzing many publications and of cool work. 
+
+```{ascii}
+                                TAD
+                                                loop (cohesin-mediated)
+                 loop (cohesin-mediated)       XXXX 
+                XXXX                         XX   XX
+              XXX   XXX                     XX      XXX
+            XX        XX                  XX           XX
+          XX            XX              XXX              XX
+        XX                X           XXX                  XXX
+      XX                   XX        XX                      XX
+    XXX                      XX    XXX                         XXX
+  XX                          XXXXX                              XX
+ XXXX                           X                XXXXXXXX       XXXX
+    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX       XXX X XX
+ctcf                           ctcf                                 ctcf
+```
+
+Interphase / metaphase
+  - interphase has structure
+  - metaphase erases structure (fat diagonal of 3c map)
+  
+meiotic chr fold as helical nested loop arrays (helix with loops coming off)
+  - Gibcus...Dekker Science 2018
+  
+Using ATAC-seq, cut&ruhn to assay CTCF binding patterning in interphase / metaphase
+
+FRAP to measure stable CTCF binding in interphase / metaphase
+  - unstable in metaphase
+  
+Q: CTCF sites occupied in mitosis - why? Nucleosomes taking over?
+
+A: Good q, don't know. Think nucleosomes 'sliding in'
+
+Q: **missed it**
+
+A: protein levels of CTCF doesn't change during what phase cell is in
+
+Q: what is keeping the promoters open during mitosis
+
+A: don't think pol is bound....promoters more open to begin with....something bookmarking the site????
+
+## Flora Vaccarino
+Integrative multi-omics analyses of iPSC-derived brain organioids
+
+ #notwitter
+ 
+## Carninci
+RADICL-seq: novel tech for genome-wide mapping of RNA-chromatin interactions
+
+Many many (~20k) functiona lncRNA
+
+But what is role? Activate genes, promoter, enhancer? Repression of genes? Establish insulation?
+
+RADICL-seq
+  - capture RNA-DNA interactions with crosslinking (formaldehyde, 1-2%)
+  
+Where do they map?
+
+  - Lots in the intron
+  - open chromatin
+  - 380k RNA-DNA interactions
+  - enriched in TF family members
+  - **looks like lots of trans interactions**
+    - **but way fewer than cis,as you would expect**
+  - some genes like MALAT1 interact with *entire* genome
+  - compartments **sort of** like TADS
+    - weak cor with Hi-C (0.27)
