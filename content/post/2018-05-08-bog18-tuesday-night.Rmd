@@ -1694,3 +1694,205 @@ f-VICE has 8.5 change in comparing CTCF (- cohesin) and CTCF (+ cohesin).
   - ~10-20X diff by FRAP
   
 **No github?**
+
+## Christina Leslie
+Decoding immune cell dysfunction
+
+In solid tumors
+
+Does epigenetic state of tumor-speicif T cells present a barrier to immunotherapy
+
+  - Want to know whether checkpoint blockade approach will work or not in a patient
+  - It does in mice (Philip Nature 2017)
+    - during development see epigenetic state change (plastic to fixed as time goes on)
+    
+**intro over, new stuff**
+
+Is CD8 T cell tolerance to self-antigens epigenetically encoded? Can tolerance be broken?
+
+model of CD* t cell tolerance to self-antigen
+
+ - TCR(GAG) xAlb:GAG (mouse) --> TCR(GAG) x Alb(GAG) give self-tolerant CD8 T cells
+  - two states
+   - native t cell (memory) and naive t cell (tolerance)
+
+ATAC and RNA-seq
+
+  - naive clusters from efector/memory/tolerant
+  - enriched in putative enhancers
+    - **is this ever NOT the case??**
+  - 1837 peaks differntial accessible (out of 95k)
+  - showing browser plots with disappearing signal
+
+correlation between accessiblity and gene expression
+
+  - very cool plot
+    - RNA log2FC on y axis, genes on x axis (each individual point colored by 'tolerant' or 'memory')
+
+can you break tolerance to become functional?
+
+  - transiently by transfer hosts (Schietinger et al Science 2012)
+  - massive expression diff when you transient rescue
+    - but no epigenetic changes
+    - **audible whoah**
+  - but how can you *really* rescue?
+    - if you immunize in black 6 background
+      - now epigenetic state changes
+      
+GLM to find epigenetic signatue of tolerance state
+
+  - peak accesbility log2FC == A + P + T
+  - Lef1 (**very cool because not DE by RNA**)
+
+
+## Pejman Mohammadi (Tuuli Lappalainen)
+Using rare allelic expression data for studying rare disease biology
+@pejminister
+
+Interpreting non-coding genome
+
+  - regulatory var important in disease/phenotypes
+  - big place, poorly annotated (**or not at all**)
+  - no clear measure of regulatory constraint
+  - in comparison coding regions
+    - codon triplets
+    - pLI, etc.
+  - want to something similar, but for noncoding
+  
+regulatory variation and expression outliers
+
+  - rna-seq noisey
+  - maybe ASE (allele specific expression)
+    - haplotype specific
+  - try to find outliers 
+    - (plot ref allele abundance / alt allele abundance  for each gene)
+    - not linked to populatin info!
+    
+how to set alleleic imbalance cutoff?
+  
+  - check GTEx
+  - but ASE patterns....are diverse (reg effect, allele freq, LD, ....)
+  
+1. define quant measure of reg var  
+2. ref. population: estimate regulator var for each gene
+3. check in patient
+
+log alleleic Fold Change (aFC)
+  
+  - Mohammadi et at Gen Res 2017
+  
+plotting different outcomes
+
+  - aFC vs experssion FC
+  - copy loss, wildtype, reg variant, 
+  
+"I'm skipping 20 of my favorite slides"
+
+How to model when so much info is missing?
+
+  - binomial model
+  - ANEVA (Analysis of Expression Variance) in GTEx data
+  - tissue specific estimates
+  
+D(g) / D(t) measure regulatory tolerance (**g and t are subscripts - I can't latex quickly*)
+
+  - ID Haplotinsufficient genes
+  - better than noncoding RVIS
+  - good heritability on independent data
+  - better than noncoding metrics (ROC)
+  
+Use skeletal muscle GTEx with Macarthur muscle disoorder cohort (~70)
+
+  - find some D(g) outliers
+  - found 20 'dosage outliers'
+    - similar to GTEx (totally dif datasets)
+    - 6x *fewer* hits than naive binomial test
+
+## Erik Garrison (Richard Durbin)
+Variation graphs for efficient unbiased pangenoimc seq interpretation
+
+want to represent 'reference' genome as a graph 
+
+  - to include variation 
+  - simulate genomes by walking along paths
+  - retain info with 'metadata' for each point 
+
+another model is have **every** base seen as a big vector
+  
+  - **certainly cleaner and simpler to visualize**
+  
+'pan genomics'
+
+  - https://github.com/vgteam/vg
+  - **intimidating flowchart**
+  - reference <-> sample (update ref) <-> known variation
+  
+applications
+
+  - 1000g pan-genome graph
+  - build and index 1000g graph
+    - "computation is tractable"
+  - performance of pan-genome worse than paired end seq against linear ref
+    - but better when a read has a variant 
+    - no bias
+  - **Erik is being explicit about limitations and strengths; very nice**
+
+yeast var graph
+
+  - with long reads
+  - graph does better overall than linear genome (5% better in mean identity)
+  
+ancient dna
+
+  - helps out a lot
+  
+graphical pangenomics
+
+  - back to the linear visualization mentioned earlier
+  - **I really like this**
+    - **I'm very freaked out by spaghetti plots of graphs**
+  
+
+## Masa Roller (Paul Flicek)
+Tissue specific enhancer and promoter evolution in mammals
+
+enhancers <-> promoters <-> gene expression
+
+using chip-seq as proxies for enhancer / promoters
+
+create comprehensive regulatory maps
+
+  - 4 tissues
+  - 10 mammals
+  - 3 histones
+  - 3 replicates
+  - 360 ChIP-Seq!
+    - 4 dropouts
+    - require min seq depth
+      - 20 million good reads for H3K27ac, H3k$me3
+      - 40 million for H3k4me1
+
+promoter == H3K27ac and H3K4me3
+enhancer == H3k27ac and H3k4me1
+
+look between tissues/species
+
+  - **UpSet plot!**
+  - testes has lots of tissue specific promoters
+  - but still many shared promtoers
+  
+tissue *specific* regulatory elements evolve more rapidly than tissue *shared* elements
+
+  - promoters and enhancers show this patterns
+
+regulatory elements rarely switch activity between tissues
+ 
+  - what do switches look like?
+  - lower H3K4me3 and lower H3k27ac
+    - maybe weak promoters?
+    
+see switches across evolution
+
+  - again, not too many
+  - some promoter <-> enhancer (**10-20% by my eyeball**)
+

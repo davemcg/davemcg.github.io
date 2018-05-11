@@ -78,6 +78,10 @@ output:
 <li><a href="#ben-strober-alexis-battle">Ben Strober (Alexis Battle)</a></li>
 <li><a href="#meena-subramaniam-jimmie-ye-and-noah-zaitlen">Meena Subramaniam (Jimmie Ye and Noah Zaitlen)</a></li>
 <li><a href="#ricardo-doliveira-albanus-steve-parker-hey-i-know-this-guy">Ricardo D’Oliveira Albanus (Steve Parker!!! &lt;– Hey I know this guy)</a></li>
+<li><a href="#christina-leslie">Christina Leslie</a></li>
+<li><a href="#pejman-mohammadi-tuuli-lappalainen">Pejman Mohammadi (Tuuli Lappalainen)</a></li>
+<li><a href="#erik-garrison-richard-durbin">Erik Garrison (Richard Durbin)</a></li>
+<li><a href="#masa-roller-paul-flicek">Masa Roller (Paul Flicek)</a></li>
 </ul></li>
 </ul>
 </div>
@@ -1586,5 +1590,229 @@ ctcf                           ctcf                                 ctcf</code><
 </ul>
 <p>f-VICE has 8.5 change in comparing CTCF (- cohesin) and CTCF (+ cohesin). - ~10-20X diff by FRAP</p>
 <p><strong>No github?</strong></p>
+</div>
+<div id="christina-leslie" class="section level2">
+<h2>Christina Leslie</h2>
+<p>Decoding immune cell dysfunction</p>
+<p>In solid tumors</p>
+<p>Does epigenetic state of tumor-speicif T cells present a barrier to immunotherapy</p>
+<ul>
+<li>Want to know whether checkpoint blockade approach will work or not in a patient</li>
+<li>It does in mice (Philip Nature 2017)
+<ul>
+<li>during development see epigenetic state change (plastic to fixed as time goes on)</li>
+</ul></li>
+</ul>
+<p><strong>intro over, new stuff</strong></p>
+<p>Is CD8 T cell tolerance to self-antigens epigenetically encoded? Can tolerance be broken?</p>
+<p>model of CD* t cell tolerance to self-antigen</p>
+<ul>
+<li>TCR(GAG) xAlb:GAG (mouse) –&gt; TCR(GAG) x Alb(GAG) give self-tolerant CD8 T cells</li>
+<li>two states</li>
+<li>native t cell (memory) and naive t cell (tolerance)</li>
+</ul>
+<p>ATAC and RNA-seq</p>
+<ul>
+<li>naive clusters from efector/memory/tolerant</li>
+<li>enriched in putative enhancers
+<ul>
+<li><strong>is this ever NOT the case??</strong></li>
+</ul></li>
+<li>1837 peaks differntial accessible (out of 95k)</li>
+<li>showing browser plots with disappearing signal</li>
+</ul>
+<p>correlation between accessiblity and gene expression</p>
+<ul>
+<li>very cool plot
+<ul>
+<li>RNA log2FC on y axis, genes on x axis (each individual point colored by ‘tolerant’ or ‘memory’)</li>
+</ul></li>
+</ul>
+<p>can you break tolerance to become functional?</p>
+<ul>
+<li>transiently by transfer hosts (Schietinger et al Science 2012)</li>
+<li>massive expression diff when you transient rescue
+<ul>
+<li>but no epigenetic changes</li>
+<li><strong>audible whoah</strong></li>
+</ul></li>
+<li>but how can you <em>really</em> rescue?
+<ul>
+<li>if you immunize in black 6 background</li>
+<li>now epigenetic state changes</li>
+</ul></li>
+</ul>
+<p>GLM to find epigenetic signatue of tolerance state</p>
+<ul>
+<li>peak accesbility log2FC == A + P + T</li>
+<li>Lef1 (<strong>very cool because not DE by RNA</strong>)</li>
+</ul>
+</div>
+<div id="pejman-mohammadi-tuuli-lappalainen" class="section level2">
+<h2>Pejman Mohammadi (Tuuli Lappalainen)</h2>
+<p>Using rare allelic expression data for studying rare disease biology <span class="citation">@pejminister</span></p>
+<p>Interpreting non-coding genome</p>
+<ul>
+<li>regulatory var important in disease/phenotypes</li>
+<li>big place, poorly annotated (<strong>or not at all</strong>)</li>
+<li>no clear measure of regulatory constraint</li>
+<li>in comparison coding regions
+<ul>
+<li>codon triplets</li>
+<li>pLI, etc.</li>
+</ul></li>
+<li>want to something similar, but for noncoding</li>
+</ul>
+<p>regulatory variation and expression outliers</p>
+<ul>
+<li>rna-seq noisey</li>
+<li>maybe ASE (allele specific expression)
+<ul>
+<li>haplotype specific</li>
+</ul></li>
+<li>try to find outliers
+<ul>
+<li>(plot ref allele abundance / alt allele abundance for each gene)</li>
+<li>not linked to populatin info!</li>
+</ul></li>
+</ul>
+<p>how to set alleleic imbalance cutoff?</p>
+<ul>
+<li>check GTEx</li>
+<li>but ASE patterns….are diverse (reg effect, allele freq, LD, ….)</li>
+</ul>
+<ol style="list-style-type: decimal">
+<li>define quant measure of reg var<br />
+</li>
+<li>ref. population: estimate regulator var for each gene</li>
+<li>check in patient</li>
+</ol>
+<p>log alleleic Fold Change (aFC)</p>
+<ul>
+<li>Mohammadi et at Gen Res 2017</li>
+</ul>
+<p>plotting different outcomes</p>
+<ul>
+<li>aFC vs experssion FC</li>
+<li>copy loss, wildtype, reg variant,</li>
+</ul>
+<p>“I’m skipping 20 of my favorite slides”</p>
+<p>How to model when so much info is missing?</p>
+<ul>
+<li>binomial model</li>
+<li>ANEVA (Analysis of Expression Variance) in GTEx data</li>
+<li>tissue specific estimates</li>
+</ul>
+<p>D(g) / D(t) measure regulatory tolerance (**g and t are subscripts - I can’t latex quickly*)</p>
+<ul>
+<li>ID Haplotinsufficient genes</li>
+<li>better than noncoding RVIS</li>
+<li>good heritability on independent data</li>
+<li>better than noncoding metrics (ROC)</li>
+</ul>
+<p>Use skeletal muscle GTEx with Macarthur muscle disoorder cohort (~70)</p>
+<ul>
+<li>find some D(g) outliers</li>
+<li>found 20 ‘dosage outliers’
+<ul>
+<li>similar to GTEx (totally dif datasets)</li>
+<li>6x <em>fewer</em> hits than naive binomial test</li>
+</ul></li>
+</ul>
+</div>
+<div id="erik-garrison-richard-durbin" class="section level2">
+<h2>Erik Garrison (Richard Durbin)</h2>
+<p>Variation graphs for efficient unbiased pangenoimc seq interpretation</p>
+<p>want to represent ‘reference’ genome as a graph</p>
+<ul>
+<li>to include variation</li>
+<li>simulate genomes by walking along paths</li>
+<li>retain info with ‘metadata’ for each point</li>
+</ul>
+<p>another model is have <strong>every</strong> base seen as a big vector</p>
+<ul>
+<li><strong>certainly cleaner and simpler to visualize</strong></li>
+</ul>
+<p>‘pan genomics’</p>
+<ul>
+<li><a href="https://github.com/vgteam/vg" class="uri">https://github.com/vgteam/vg</a></li>
+<li><strong>intimidating flowchart</strong></li>
+<li>reference &lt;-&gt; sample (update ref) &lt;-&gt; known variation</li>
+</ul>
+<p>applications</p>
+<ul>
+<li>1000g pan-genome graph</li>
+<li>build and index 1000g graph
+<ul>
+<li>“computation is tractable”</li>
+</ul></li>
+<li>performance of pan-genome worse than paired end seq against linear ref
+<ul>
+<li>but better when a read has a variant</li>
+<li>no bias</li>
+</ul></li>
+<li><strong>Erik is being explicit about limitations and strengths; very nice</strong></li>
+</ul>
+<p>yeast var graph</p>
+<ul>
+<li>with long reads</li>
+<li>graph does better overall than linear genome (5% better in mean identity)</li>
+</ul>
+<p>ancient dna</p>
+<ul>
+<li>helps out a lot</li>
+</ul>
+<p>graphical pangenomics</p>
+<ul>
+<li>back to the linear visualization mentioned earlier</li>
+<li><strong>I really like this</strong>
+<ul>
+<li><strong>I’m very freaked out by spaghetti plots of graphs</strong></li>
+</ul></li>
+</ul>
+</div>
+<div id="masa-roller-paul-flicek" class="section level2">
+<h2>Masa Roller (Paul Flicek)</h2>
+<p>Tissue specific enhancer and promoter evolution in mammals</p>
+<p>enhancers &lt;-&gt; promoters &lt;-&gt; gene expression</p>
+<p>using chip-seq as proxies for enhancer / promoters</p>
+<p>create comprehensive regulatory maps</p>
+<ul>
+<li>4 tissues</li>
+<li>10 mammals</li>
+<li>3 histones</li>
+<li>3 replicates</li>
+<li>360 ChIP-Seq!
+<ul>
+<li>4 dropouts</li>
+<li>require min seq depth</li>
+<li>20 million good reads for H3K27ac, H3k$me3</li>
+<li>40 million for H3k4me1</li>
+</ul></li>
+</ul>
+<p>promoter == H3K27ac and H3K4me3 enhancer == H3k27ac and H3k4me1</p>
+<p>look between tissues/species</p>
+<ul>
+<li><strong>UpSet plot!</strong></li>
+<li>testes has lots of tissue specific promoters</li>
+<li>but still many shared promtoers</li>
+</ul>
+<p>tissue <em>specific</em> regulatory elements evolve more rapidly than tissue <em>shared</em> elements</p>
+<ul>
+<li>promoters and enhancers show this patterns</li>
+</ul>
+<p>regulatory elements rarely switch activity between tissues</p>
+<ul>
+<li>what do switches look like?</li>
+<li>lower H3K4me3 and lower H3k27ac
+<ul>
+<li>maybe weak promoters?</li>
+</ul></li>
+</ul>
+<p>see switches across evolution</p>
+<ul>
+<li>again, not too many</li>
+<li>some promoter &lt;-&gt; enhancer (<strong>10-20% by my eyeball</strong>)</li>
+</ul>
 </div>
 </div>
