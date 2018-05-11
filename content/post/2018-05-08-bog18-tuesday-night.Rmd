@@ -1229,3 +1229,199 @@ Regions assessed:
 Qualitative look at genes known to do stuff...and what genes are near them (in Hi-C TAD block)....as far as I could tell. 
 
 3D modeling....haven't done yet....
+
+# Cancer and Medical Genomics
+
+## Trey Ideker
+Decoding patient genomes through the hierarchical pathway architecture of the cancer cell
+
+'somatic' eQTL
+RNA expression + WGS + enhancers (mapped to genes with GeneHancer) + covariates to calc eQTL
+Found ~190 (including positive control TERT)
+
+**yeast now**
+
+ppi (protein protein interactions)
+  - Dutkowski et al 2013 nature methods
+  
+DCell
+  - neural network guided by hierarchical cell bio
+  - 3500 cell subsystems (**from ppi?**)
+  - 12 layers
+  - 12 million yeast genotypes (single and pairwise KO)
+  - http://d-cell.ucsd.edu
+
+DCell a model for what to hope to do one day for human
+
+## Rajbir Batra (Carlos Caldas)
+Decoding the dynamics of DNA methylation in breast cancer
+
+Cluster of breast cancer with:
+  
+  - gene expression
+  - CNV
+  - miRNA
+  
+Little epigenetics
+
+So looking at Me
+
+METABRIC data source
+  
+  - 1482 primary breast tumor
+  - 237 matched adjacent norm
+  - RRBS (reduced representation bisulfite seq)
+  
+Background drift of methylation
+
+  - tried to pick background regions (not promoters)
+  - late replication timing associated with higher me
+  
+Now look at more functional region
+
+  - but control for background drift
+  
+Change mean methylation from tumor to matched tissue
+
+  - 'epiallelic burden'
+  - heterogeneous across tumor types
+  
+
+  
+
+
+## Patrick Short (Matthew Hurles)
+Contribution of *de novo* mutations in the regulatory elements in neurodevelopment disorders and autisum
+
+DDD Study (Deciphering Developmental Disorders)
+
+  - 8k trios
+  - exome
+  
+Model germline mutation rate
+
+  - Samocha et al. 2014
+  - enrichment in missense and PTV
+  
+What proportion of remaining cases may be regulatory?
+  
+Regulatory elements
+
+  - heart enhancers
+  - VISTA
+  - Conserved elements
+  
+Look for variation in elements
+
+enrichment in fetal brain conserved elements
+
+manhattan plot not so good (flat)
+
+  - variety of reasons 
+    - enhancers shorter
+    - less consequential than proteins
+    - poor understanding of enhancer code
+    
+can we development noncoding constraint score for deep whole genomes?
+
+25,000 whole genomes
+
+mutation rate vary across genome / chr / region
+
+using random forest to model and use a large number of features
+  
+  - not so successful (see below)
+  
+~160 mb of open chromatin is contrained, most of this is conserved nucleotides in *poorly conserved elements*
+
+thinking that *1 million* deep whole genomes to accuratly model small (tfbs) sized elements
+
+selection on nucleotide level, not 'peak'/chunk level
+
+## Max Shen (David Gifford)
+Predictable and precise template-free editing of pathogneic mutations by CHRSPR-Cas9 nuclease
+
+High-throughput assay (1872 guideRNA) and deep sequencing to assess mutation pattern
+
+1262 genotypes / target site
+  
+  - mostly deletions (almost 90%)
+  - lots of 'microhomology' deletions (60%)
+    - deletion with multiple equal quality alignments
+
+built dnns to predict mutation pattern
+
+  - three models for microhomology, not microhomology, and insertion (knn for this one)
+  - *inDelphi*
+  - 90% outcomes predicted (70% single bp resolution)
+
+so mutation patterns are semi-predictable (**semi** is my language)
+
+use model to design guideRNA to get more preditable outcome
+
+**nice web app**
+  - **can't find it online...not ready yet**
+   - **https://github.com/maxwshen/indelphi-dataprocessinganalysis**
+
+## Sharon Plon (PJ Lupo)
+Cancer risk among children with non-chromosomal birth defects in the genetic ovrerlap between congenital anomalies and cancer in kids (GOBACK) study
+
+1/33 children born with birth defects
+
+GOBACK
+
+  - look for overlap between cancer and genetic abnormalities (birth defect) in children
+  
+10 million births
+0.5 million birth defects
+15k cancer
+1.8k birth defect *and* cancer
+  - **napkin math would expect 750**
+  
+more birth defects = greater chance of having cancer
+
+different defects have diff cancer increase rates
+
+can go back to the children
+  
+  - doing WGS
+
+## Massa Shoura (Andrew Fire)
+eccDNA-mediated 'scars' in the TTN gene may contribute to microfiber diversity
+
+Coding regions 'shedding' the eccDNA 'circles'
+
+Including Titin
+
+Looked at cardiomyocyte vs iPS vs lymphocytes to see if eccDNA shedding changes
+
+  - unique to cardiomyocytes
+  
+eccDNA shedding seems dynamic in different cardiomyocyte conditions
+
+## Sidi Chen
+Towards mapping functional cancer genome atlases
+
+Concept:
+
+  - cancer seq data to make cancer atlas
+  - make mouse models
+
+## Marcin Imielinski
+Signature of complex structural variation across thousands of cancer whole genomes
+
+Diversity in rearrangments across cancers
+
+Successful at finding SNV signatures
+
+  - Alexandrov et al 2013 Nature
+  
+How to count rearrangments????
+
+  - lots of types (dup / insertion / translocation /etc)
+  
+gGnome (R packages):
+  
+  - https://www.github.com/mskilab/JaBbA
+  - https://www.github.com/mskilab/gGnome
+  
