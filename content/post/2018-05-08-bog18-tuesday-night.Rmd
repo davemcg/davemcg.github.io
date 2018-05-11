@@ -1425,3 +1425,272 @@ gGnome (R packages):
   - https://www.github.com/mskilab/JaBbA
   - https://www.github.com/mskilab/gGnome
   
+# Computational Genomics (! - **I'm very excited**)
+
+## Oliver Stegle
+Methods for the joint analysis of high-dimensional traits and samples substructure in human cohorts
+
+project high dimensional data into lower dimensions
+
+  - confounding factors
+  - inference of sparse factors (f-scLCVM)
+  - spatio-temporal dependencies (SpatialDE)
+  
+https://github.com/bioFAM/MOFA
+
+  - scheme for merging data
+
+Identification of sub-gropu specific genetic effects
+
+  - interation between environment/behavior (**self reported??**) and genotypes
+
+random effect model to match genetic structure to environment
+
+scaling up - with big 2D matrices
+
+StructLMM: mixed model interaction
+
+  - phenotye = G + GxE + additivity(?) + noise
+    - Casale et al PLOS Genetics 2017
+    
+BMI on UK biobank
+  
+  - 240k unrelated people
+  - 7.5 million variants
+  - 64 'environments'
+    - **not certain what this is**
+
+Increased power for detecting GxE (loci match GWAS ID'ed loci)
+
+How to deconvoluate which environmental var drives GxE?
+
+  - include/exclude environmental vars to rank change in bayes factor
+    - **reminds me of variable important in random forest**
+
+"Fresh results"
+
+  - can leverage GWAS info with GxE analysis
+  - genome wide search
+  - GxE of 7 metabolic traits
+      - FTO...MC4R....SEC16B
+      - **loads** of hits (nice manhattan peaks)
+  - correlation structure 
+    - loci x loci spearman cor
+    - cluster blocks by **loci**
+    - by traits not so much
+  - % variance explained
+    - adding up to 10% var
+    
+https://www.github.com/limix/struct-lmm
+  
+q: pleiotropy? metabolic traits confounding
+
+a: yes (we see overlap between traits)
+
+q: environment matrix. how sensitive to variable weighting?
+
+a: controvery over how to weight. quite robust for a not crazy amount of traits
+
+## Ben Strober (Alexis Battle)
+
+Modeling genetic effects during cellular differentiation
+
+Genetic effects dependent on cellular environment (**or cell type**)
+
+  - tx studies are generally single time point
+
+study dynamic genetic effects during cell diff in iPSC
+
+  - ID varying genetics effects
+  - new stats approaches
+  
+Cell Diff time course
+
+  - iPSC (14 lines) 
+  - 16 time steps (ranging 0 to 15) when diff to cardiomyocyte
+  - == 217 total RNA-seq samples
+  
+Marker genes going up (or down) over time as iPSC --> cardiomyocyte
+
+  - time is pc1
+    - **percent of var?**
+    
+cisEQTL in *each* time step
+  
+  - WASP combined haplotype test (Geijn Nat Meth 2014)
+  - 50-200 eQTL genes (FDR <0.1) per step
+  - replicates to independent iPSC eQTL study (Banovich Gen Res 2018)
+  
+Temporal dynamics
+  - correlation of eQTL pairs summary stats
+    - **hey look - blocks**
+
+sparse matrix factorization to find *shared* eQTL effect size (across time) patterns
+
+this compression is correlating to time step blocks
+
+id dynamic-QTL
+  
+  - GLM to predict allele-specific read counts
+    - log(y nj) == intercept + time + genotype + (time x Genotype)
+    
+rs1897133
+  
+  - association gets stronger over time
+  - **nice integrated model instead of doing tons of independent tests**
+    - **I assume the GLM gets much higher power**
+  
+obligatory slide showing enrichment in cis-regulatory elements (chromHMM enhancer)
+
+'is time the best way to quantify differentiation progress?'
+  
+  - no
+  - cell lines will develop at dif rates
+  - hmm to infer (predict) 'differentiation progress'
+    - hmm states (4 states over 15 days) work
+    
+future
+
+  - more lines
+  - more assays (single cell, ATAC)
+  - apply methods to other longitudinal data
+
+## Meena Subramaniam (Jimmie Ye and Noah Zaitlen)
+Population-scale single cell seq to reveal context specific effects in lupus
+
+(bulk) gene expression var could be due to diff cell type *proportion* or *state*
+
+  - answer: scRNA-seq
+  
+SLE (lupus)
+
+  - PBMCs (**convenient**)
+    - Meena did justify this cell type
+    
+10X chromium:
+  
+  - 1 well / donor $1300
+  - 200 donors / 200k is ... expensive
+  - 50k cells with 25 people / well
+      - $200 / donor
+  - pooling
+    - double rate increase
+    - lose sample ID
+    
+multiplexed droplet scRNA
+
+  - cell barcode
+  - then can demultiplex (with genetic var)
+  
+genetic barcode
+
+  - unique variants in sample
+    - but scRNA is mega lossy
+    - **prob have to use many variants?**
+      - **how many?**
+        - 20 gives 98% ID
+
+doublet ID (with 'demuxlet')
+
+  - bayesian model to find doublets
+  - intentionally merged samples
+    - can deconvolute robustly
+
+`mux-seq` and `dumuxlet`
+
+https://www.github.com/statgen/demuxlet
+
+https://www.satijalab.org/costpercell
+
+did human immune 'census' (**is this the new atlas?**)
+
+  - 4k cells / donor (750k total)
+  - 8 major cell types t-SNE looks good
+  - sle vs healthy have unique locations (not clean blocks / 'clsuters')
+  
+CD14+ and CD4+ *proportions* change
+
+  - EHR confirms with CBC (cor 0.83)
+  - **cool to get to check out the EHR data**
+  
+novel monocyte population
+
+  - 'intermediate monocyte'
+  - found interferon correlation
+  
+stimulate cells with interferon
+
+  - large shift in cell t-SNE patterning
+  
+change in both *proportion* and *state*
+
+search for genetic factors (GWAS)
+  
+  - flat manhattan plot
+
+cis-eQTLS
+  
+  - much better power (QQ plot)
+  - hundreds eQTLS found per cell class
+  - **cool to see cell-type specific eQTL**
+  
+data sharing (June)
+
+  - https://www.humancellatlas.org/data-sharing
+  
+q: mech for change in variance
+
+A: rare cell state....or dif enhancers being used with dif noise profile
+
+q: are you looking for novel gene signatures for cell groups?
+
+a: following up on that now
+
+
+## Ricardo D'Oliveira Albanus (Steve Parker!!! <-- Hey I know this guy)
+Information theory of ATAC-seq data predicts local chromatic kinetics and reveals novel aspects of gene regulation and genomic org
+
+http://theparkerlab.org
+
+ATAC-seq --> open chromatin --> footprints
+
+  - but not all TF leave footprints
+    - don't bind long enough
+  - CTCF, AP-1 bind a *long* time
+  - GR short time
+  - know from FRAP assays
+    - but super hard to do
+    
+can we use ATAC-seq data to infer kinetics of TF-DNA interactions?
+  
+  - can we break dependence on footprints to predict TF-DNA binding?
+    - **OMG, can we???**
+
+model theoretical binding of nucleosome / TF
+
+  - 'V plot'
+    - CTCF has a nice strong one
+    - NFKB less strong
+    
+measure chromatin information content
+  
+  - f-VICE (feature V-plot Information Content Enhancment)
+  - calc f-VICE for each TF
+    - AP-1 and CTCF has highest f-VICE score
+    
+    
+`BMO` uses ATAC-seq signal and co-occurring motifs for TF binding prediction
+
+  - compare to CENTIPEDE, DNase2TF, HINT, bedtools intersect
+  - **f-VICE not involved???**
+    - **feel like a shift happened quickly in the talk**
+  - BMO works better with (assessed with F1 of predictions)
+    - **works better for bad binders...?**
+    - compare /cor with f-VICE
+    - **so yes, `BMO` not using f-VICE (I think)**
+  - CENTIPEDE next best (pretty close)
+  
+f-VICE has 8.5 change in comparing CTCF (- cohesin) and CTCF (+ cohesin).
+  - ~10-20X diff by FRAP
+  
+**No github?**
