@@ -1,0 +1,1818 @@
+---
+title: '#BoG18: Talk Notes'
+author: David McGaughey
+date: '2018-05-08'
+slug: bog18-notes
+categories:
+  - bog18
+  - bioinformatics
+tags:
+  - conference
+  - bog18
+  - bioinformatics
+  - talks
+output:
+  blogdown::html_page:
+    toc: true
+---
+
+
+<div id="TOC">
+<ul>
+<li><a href="#intro">Intro</a></li>
+<li><a href="#genome-engineering-and-genome-editing-tuesday-night">Genome Engineering and Genome Editing (Tuesday Night)</a><ul>
+<li><a href="#jef-boeke">Jef Boeke</a><ul>
+<li><a href="#writing-genomes">Writing Genomes</a></li>
+<li><a href="#dark-matter">“dark matter”</a></li>
+<li><a href="#big-dna">big dna</a></li>
+</ul></li>
+<li><a href="#greg-findlay-jay-shendure">Greg Findlay (Jay Shendure)</a></li>
+<li><a href="#stephen-levene-andrew-fire">Stephen Levene (Andrew Fire)</a></li>
+<li><a href="#david-truong-jef-boeke">David Truong (Jef Boeke)</a></li>
+<li><a href="#feng-zhang">Feng Zhang</a></li>
+<li><a href="#molly-gasperini-jay-shendure">Molly Gasperini (Jay Shendure)</a></li>
+<li><a href="#eilon-sharon-hunter-fraser">Eilon Sharon (Hunter Fraser)</a></li>
+<li><a href="#luca-pinello">Luca Pinello</a></li>
+</ul></li>
+<li><a href="#population-genomics-wednesday-morning">Population Genomics (Wednesday morning)</a><ul>
+<li><a href="#mattias-joakobsson">Mattias Joakobsson</a></li>
+<li><a href="#jaemin-kim-elaine-ostrander">Jaemin Kim (Elaine Ostrander)</a></li>
+<li><a href="#ipsita-agarwal-molly-przeworski">Ipsita Agarwal (Molly Przeworski)</a></li>
+<li><a href="#amnon-koren">Amnon Koren</a></li>
+<li><a href="#sarah-tishkoff">Sarah Tishkoff</a></li>
+<li><a href="#patrick-albers-gil-mcvean">Patrick Albers (Gil McVean)</a></li>
+<li><a href="#laura-hayward-guy-sella">Laura Hayward (Guy Sella)</a></li>
+</ul></li>
+<li><a href="#functional-genetics-and-epigenomics">Functional Genetics and Epigenomics</a><ul>
+<li><a href="#job-dekker">Job Dekker</a></li>
+<li><a href="#flora-vaccarino">Flora Vaccarino</a></li>
+<li><a href="#carninci">Carninci</a></li>
+<li><a href="#johnathan-griffiths-berthold-gottgens">Johnathan Griffiths (Berthold Gottgens)</a></li>
+<li><a href="#emma-farley">Emma Farley</a></li>
+<li><a href="#jake-yeung-felix-naef">Jake Yeung (Felix Naef)</a></li>
+<li><a href="#minal-caliskan-casey-brown">Minal Caliskan (Casey Brown)</a></li>
+<li><a href="#parisa-razaz-talkwoski">Parisa Razaz (Talkwoski)</a></li>
+</ul></li>
+<li><a href="#evolutionary-and-non-human-genomics">Evolutionary and Non-human genomics</a><ul>
+<li><a href="#monica-justice">Monica Justice</a></li>
+<li><a href="#arang-rhie-erich-jarvis-adam-phillippy">Arang Rhie (Erich Jarvis, Adam Phillippy)</a></li>
+<li><a href="#olga-dudchenko-erez-lieberman-aiden">Olga Dudchenko (Erez Lieberman Aiden)</a></li>
+<li><a href="#kasper-munch">Kasper Munch</a></li>
+<li><a href="#gavin-sherlock">Gavin Sherlock</a></li>
+<li><a href="#anne-ruxandra-carvunis">Anne Ruxandra Carvunis</a></li>
+<li><a href="#elaine-ostrander">Elaine Ostrander</a></li>
+<li><a href="#bobbie-cansdale-claire-wade">Bobbie Cansdale (Claire Wade)</a></li>
+</ul></li>
+<li><a href="#cancer-and-medical-genomics">Cancer and Medical Genomics</a><ul>
+<li><a href="#trey-ideker">Trey Ideker</a></li>
+<li><a href="#rajbir-batra-carlos-caldas">Rajbir Batra (Carlos Caldas)</a></li>
+<li><a href="#patrick-short-matthew-hurles">Patrick Short (Matthew Hurles)</a></li>
+<li><a href="#max-shen-david-gifford">Max Shen (David Gifford)</a></li>
+<li><a href="#sharon-plon-pj-lupo">Sharon Plon (PJ Lupo)</a></li>
+<li><a href="#massa-shoura-andrew-fire">Massa Shoura (Andrew Fire)</a></li>
+<li><a href="#sidi-chen">Sidi Chen</a></li>
+<li><a href="#marcin-imielinski">Marcin Imielinski</a></li>
+</ul></li>
+<li><a href="#computational-genomics---im-very-excited">Computational Genomics (! - <strong>I’m very excited</strong>)</a><ul>
+<li><a href="#oliver-stegle">Oliver Stegle</a></li>
+<li><a href="#ben-strober-alexis-battle">Ben Strober (Alexis Battle)</a></li>
+<li><a href="#meena-subramaniam-jimmie-ye-and-noah-zaitlen">Meena Subramaniam (Jimmie Ye and Noah Zaitlen)</a></li>
+<li><a href="#ricardo-doliveira-albanus-steve-parker-hey-i-know-this-guy">Ricardo D’Oliveira Albanus (Steve Parker!!! &lt;– Hey I know this guy)</a></li>
+<li><a href="#christina-leslie">Christina Leslie</a></li>
+<li><a href="#pejman-mohammadi-tuuli-lappalainen">Pejman Mohammadi (Tuuli Lappalainen)</a></li>
+<li><a href="#erik-garrison-richard-durbin">Erik Garrison (Richard Durbin)</a></li>
+<li><a href="#masa-roller-paul-flicek">Masa Roller (Paul Flicek)</a></li>
+</ul></li>
+</ul>
+</div>
+
+<div id="intro" class="section level1">
+<h1>Intro</h1>
+<p>Very sparse and poorly written notes covering <a href="https://twitter.com/search?q=%23BoG18&amp;src=tyah">#BoG18</a>.</p>
+<p>Typos everywhere. Things may change dramatically over time as I scan back through notes.</p>
+<p>I’ve tried to respect #notwitter. Will be updated periodically.</p>
+<p>Speaker (Last Author)</p>
+</div>
+<div id="genome-engineering-and-genome-editing-tuesday-night" class="section level1">
+<h1>Genome Engineering and Genome Editing (Tuesday Night)</h1>
+<div id="jef-boeke" class="section level2">
+<h2>Jef Boeke</h2>
+<div id="writing-genomes" class="section level3">
+<h3>Writing Genomes</h3>
+<p>Building synthetic yeast genomes. Contig/chr one by one. All designed. <em>Sc2.0</em></p>
+<p>80+% complete for each of the 16.</p>
+</div>
+<div id="dark-matter" class="section level3">
+<h3>“dark matter”</h3>
+<p>Can we use ‘big dna’ to functionally query mammalian genomes? ‘Synthetic haplotypes’</p>
+<p>Building dif combinations of haplotype blocks</p>
+<p>synthetic hypervariation:</p>
+<pre><code>- query enhancers
+- alt splicing</code></pre>
+<p>built 102kb locus (human) and put into yeast</p>
+<pre><code>- built in 3kb chunks and can assemble dif combiations</code></pre>
+</div>
+<div id="big-dna" class="section level3">
+<h3>big dna</h3>
+<p>Can build big dna pieces CEGS grant will build 3 100kb+ loci / year want community input</p>
+</div>
+</div>
+<div id="greg-findlay-jay-shendure" class="section level2">
+<h2>Greg Findlay (Jay Shendure)</h2>
+<p>Accurate classficiation of thousands of BRCA1 variants with saturation genome editing</p>
+<p>vous a problem BRCA1:</p>
+<ul>
+<li>4243 clinvar snvs</li>
+<li><blockquote>
+<p>50% VOUS</p>
+</blockquote></li>
+</ul>
+<p>How to functionally validate?</p>
+<p>Use Homology-direct repair (HDR). Can engineer precise edits.</p>
+<p>Use a library of SNVs for the HDR</p>
+<p>Over time selecdtion removes non functional edits</p>
+<p>Each experimente:</p>
+<ul>
+<li>millions of cells</li>
+<li>millions of sequencing reads to count SNVs</li>
+</ul>
+<p>Variable effects at splicing junctions</p>
+<ul>
+<li>sometimes just 2-3 bp</li>
+<li>sometimes 9 base pairs</li>
+</ul>
+<p>also have matched rna-seq data</p>
+<p>aberrant splicing causes RNA depletion</p>
+<p>matches up really well with clinvar designations</p>
+<p>question:</p>
+<ul>
+<li>hdr effeciency rate? 10-90% effectiveness</li>
+</ul>
+</div>
+<div id="stephen-levene-andrew-fire" class="section level2">
+<h2>Stephen Levene (Andrew Fire)</h2>
+<p>eccDNA is a possible mediator of chromosomal polymorphism at multple loci</p>
+<p>‘physical chemist by training’</p>
+<ol start="5" style="list-style-type: lower-alpha">
+<li>coli genome: 1 femtoliter volume</li>
+</ol>
+<p>100 fold compaction problem (DNA)</p>
+<p>~10k fold for mammalian</p>
+<p>Techniques for DNA/chromiatin flexibility:</p>
+<ul>
+<li>Hi-C</li>
+<li>FISH</li>
+<li>SLICE (Beagrie et al Nature 2017)</li>
+</ul>
+<p>eccDNA (circular dna outside chromosome/nucleus(?))</p>
+<ul>
+<li>unclear how it forms</li>
+<li>elevated levels associatd with genome instability</li>
+</ul>
+<p>how to capture?</p>
+<ul>
+<li>DNA -&gt; SDS lysis -&gt; isolate gDNA -&gt; cscl gradient -&gt; bottom bit</li>
+<li>or exoV treatment (leaves circular alone)</li>
+</ul>
+<p>take pictures of the loops with high resolution microscopy</p>
+<p>sequenced a few (<strong>unfortunately with short read illumina</strong>)</p>
+<p>modeled with molecular dynamics</p>
+</div>
+<div id="david-truong-jef-boeke" class="section level2">
+<h2>David Truong (Jef Boeke)</h2>
+<p>Resurrection of Histone H3k27 Me in brewer’s yeast by human prc2 and plant atxr6</p>
+<p>human pathway reconstruction in yeast</p>
+<ul>
+<li>avoid pleiotropy (hopefully)</li>
+<li>more real than <em>in vitro</em></li>
+</ul>
+<p>Yeast (s. cerevisiae) lost histone mods</p>
+<p><strong>Adding them back???</strong></p>
+<p>yes</p>
+<p>humanize yeast histones</p>
+<p>add synthetic human histones</p>
+<p>force out wt histones with +5FOA</p>
+<p><em>20 days later</em> ….. one colony</p>
+<p>Keep growing the colony out</p>
+<p>WGS: mutations in cell cycle regulation</p>
+<ul>
+<li>bypassing histone cycle checks?</li>
+</ul>
+<p>brewer’s yeast does not have H3K27 methylation</p>
+<ul>
+<li>PRC2 complex (to methylate h3k27)</li>
+</ul>
+<p>add the stuffs - what happens?</p>
+<ul>
+<li>made artifical chr with PRC2 complex
+<ul>
+<li>and a slightly broken one</li>
+</ul></li>
+<li>not much happens in WT yeast
+<ul>
+<li>no me changes</li>
+</ul></li>
+<li>deleted H3k36me3 (might antagonize artificial chr)
+<ul>
+<li>nope</li>
+</ul></li>
+<li>can you jump start with atxr6 (does mono me)?
+<ul>
+<li>yes (confirmed with mass spec)</li>
+<li>not super high levels (0.054% tri me)</li>
+</ul></li>
+</ul>
+</div>
+<div id="feng-zhang" class="section level2">
+<h2>Feng Zhang</h2>
+<p>Advances in genome editing technologies</p>
+<p>two major classes of CRISPR</p>
+<ul>
+<li>class 1 (multi subunut)</li>
+<li>class 2 (single subunit crRNA-effector)</li>
+</ul>
+<p>trying to find new class 2</p>
+<ul>
+<li>bioinformatic screen with BLAST of cas1</li>
+<li>found a bunch (Shmakov collaboration)</li>
+</ul>
+<p>cas13</p>
+<ul>
+<li>added into e. coli</li>
+<li>modify to only edit RNA?</li>
+</ul>
+<p>rna editing</p>
+<ul>
+<li>reversible</li>
+<li>nuclease based editing inefficient in post mitotic cells</li>
+<li>dCas13 linked with <a href="https://en.wikipedia.org/wiki/ADAR">ADAR</a> (adenosine to inosine) + guideRNA –&gt; A to I conversion in RNA</li>
+<li>90+% conversion</li>
+<li>1732 off target incidents
+<ul>
+<li>925 off target with non-targeting guide!</li>
+<li>so protein itself is not ideal….</li>
+<li>identified non-binding residues of ADAR</li>
+<li>mutated them</li>
+</ul></li>
+<li>v2 works better
+<ul>
+<li>18385 off target (v1) to 20 (v2)</li>
+</ul></li>
+<li>still developing</li>
+</ul>
+</div>
+<div id="molly-gasperini-jay-shendure" class="section level2">
+<h2>Molly Gasperini (Jay Shendure)</h2>
+<p><strong>my fav of the night</strong></p>
+<p>crisprQTL mapping as a genome-wide association framework for cellular genetic screens</p>
+<p>lots of guideRNA to made mutations, check for dif in expression</p>
+<p>nuclease inactive cas9</p>
+<p>want to test all enhancers against all genes</p>
+<p>scRNA-seq + guideRNA (multiplex gRNA)</p>
+<ul>
+<li>thus multiple perturbations per ‘assay’</li>
+<li>15-30 / cell!</li>
+</ul>
+<p>targeted 1,119 candidate enhancers</p>
+<ul>
+<li>15 guides / cell</li>
+<li>47k cells</li>
+<li>10X</li>
+<li>CROP-seq</li>
+<li>works really well</li>
+<li>crisprQTL usually targets closest gene
+<ul>
+<li>sometimes not….</li>
+</ul></li>
+<li>matches up with histone chip-seq</li>
+<li>34.3kb average distance from enhancer &lt;-&gt; gene</li>
+</ul>
+<p>** new data! ** 4,801 enhancers</p>
+<ul>
+<li>built logistic regression model on pilot to pick new candidates</li>
+<li>30 guides / cell</li>
+<li>correlates with pilot</li>
+</ul>
+<p>manolis kellis q:</p>
+<ul>
+<li>why doesn’t work so well? expected more</li>
+<li>what about multiple SNPS / block?</li>
+</ul>
+</div>
+<div id="eilon-sharon-hunter-fraser" class="section level2">
+<h2>Eilon Sharon (Hunter Fraser)</h2>
+<p>Testing genetic var effect on fitness using precise genome editing</p>
+<p>high throughput edigint</p>
+<p>crispey: cas9 retron precise parallel editing via homology</p>
+<p>use bacterial reverse transcriptase and RNA retron to covalently link ssDNA donor to guide-tracrRNA</p>
+<p>can insert long sequences</p>
+<p>(yeast)</p>
+<p>measure fitness of genetic variants (growth competition)</p>
+<p>sequence every 2-3 gens</p>
+<p>model at linear relative strain abundance / time (generation #)</p>
+<p># missense var ~ # synonymous var for effecting fitness!</p>
+</div>
+<div id="luca-pinello" class="section level2">
+<h2>Luca Pinello</h2>
+<p>CRISPR-SURF exploratory and interactive software for analyzing CRISPR-base tiling screens</p>
+<p>Uncover non-coding functional regions</p>
+<p>** Nice overview of CRISPR tiling strategy ** Mutate (tile across region) -&gt; Measure pheno change (somehow) -&gt; Assess (sequence gRNA)</p>
+<p>No unified framework to analyze these kind of assays</p>
+<p>many challenges</p>
+<ul>
+<li>biological noise</li>
+<li>sgRNA efficiencies</li>
+<li>non-uniform spacing</li>
+<li>perturbation / assay differences</li>
+<li>epigenetic perturbation can be wide (changing 200bp or so)</li>
+</ul>
+<p>deconvolve with generalized lasso</p>
+<p>fastq -&gt; score -&gt; segmentation -&gt; deconvolution -&gt; region ID</p>
+</div>
+</div>
+<div id="population-genomics-wednesday-morning" class="section level1">
+<h1>Population Genomics (Wednesday morning)</h1>
+<div id="mattias-joakobsson" class="section level2">
+<h2>Mattias Joakobsson</h2>
+<p>** out of my field here **</p>
+<p>Sequence based approaches utilizing complete modern and ancient genomes to investigate early human history</p>
+<p>Use full genomes on ancient pops</p>
+<p>Population divergence models</p>
+<pre class="ascii"><code>                      X
+     +                X
+     |                X
+     |                X
+     |                X
+     |               XXXX
+     |              XX  XXX
+time |           XXX      XX
+     |         XXX         XX
+     |        XX            XX
+     |
+     |      A B              C
+     |
+     v</code></pre>
+<p>Can model whether discordant or concordant (a,b,c) over time</p>
+<p>estimate pop divergence (time) in generations</p>
+<p>use genes from different populations to estimate divergence</p>
+<ul>
+<li>‘tt method’</li>
+</ul>
+<p>stone age humans from sourthern africa</p>
+<ul>
+<li>13 genomes from 3 people</li>
+<li>a bit ‘right’ of yoruba</li>
+<li>admixture with east africa <strong>missed something</strong></li>
+</ul>
+</div>
+<div id="jaemin-kim-elaine-ostrander" class="section level2">
+<h2>Jaemin Kim (Elaine Ostrander)</h2>
+<p>Genetic Selection of Athletic Success in Sport Hunting Dogs</p>
+<p>WGS of sport hunting (10 breeds), terrier (i breeds), and ‘village’ dogs (unselected - an outgroup)</p>
+<ul>
+<li>14 million SNPs</li>
+</ul>
+<p>59 genes under strong selectdion in hunting dogs (compare to terrier and village)</p>
+<ul>
+<li>blood circulation GO terms</li>
+<li>and a bunch of ‘process’ GO terms</li>
+</ul>
+<p>ASIC3 - resistance to muscle fatigue?</p>
+<ul>
+<li>maybe?</li>
+<li>a guess based on known gene function (I think)</li>
+</ul>
+<p>dogs do agility performance competitions</p>
+<ul>
+<li>made a metric to find breeds good at winning</li>
+<li>WGS of 92 breeds of 299 dogs</li>
+<li>ROBO1 significant 3e-4 (FDR corrected? Don’t know)
+<ul>
+<li>neuronal migration, axon guidance</li>
+</ul></li>
+<li>1243 SNP chip
+<ul>
+<li>dogs classified by agility performance</li>
+<li>** do only pure breeds do agility? **</li>
+<li>ROBO1 SNP AF increases with more winning breeds</li>
+</ul></li>
+</ul>
+<p>racing speeds (whippet)</p>
+<ul>
+<li>not ROBO1</li>
+<li>TRPM3 (1.6e-3)</li>
+</ul>
+<p>CDH23 - increased tolerance to loud noise and low startle reflex - <strong>do hunting dogs have poor hearing?</strong></p>
+<p><strong>Useful stuff maybe for competitive dog breeders</strong></p>
+<p>Q (Kellis?): polymorphic nature of traits across dogs. <strong>what’s the question?</strong></p>
+<p>A: complex traits, incomplete answers right now</p>
+<p>Q (Kellis?): enrollment bias for dogs that will win</p>
+<p>A: tried to control by grouping breeds</p>
+<p>Q: what kind of mutations?</p>
+<p>A: mostly noncoding (<strong>answer in LD I guess</strong>)</p>
+<p>Q: project personality onto dog … look at dog behavior/traits relating to this?</p>
+<p>A: try to objectively test dogs (can’t trust owners….)</p>
+<p>Elaine: people developing stanrdard tests for dogs (yes, owners lie)</p>
+</div>
+<div id="ipsita-agarwal-molly-przeworski" class="section level2">
+<h2>Ipsita Agarwal (Molly Przeworski)</h2>
+<p>Widespread differences in the mtation spectrum of X and autosomes</p>
+<p>Males contrigute more germline mutations than females</p>
+<ul>
+<li>epigenetic differences for gamete development (methylation)</li>
+<li>sperm in mitosis all the time</li>
+</ul>
+<pre class="ascii"><code>+
+|
+|
+|                         XX
+|                       XXX
+|                    XX
+|                  X
+|               XX
+|             X
+|       X XX
+|   XXXX
+|  XX
+|                 XXXX
+|   XXXX XXX  XXXXX
+|
++------------------------+</code></pre>
+<p>Mutation rates get wider as males age (top line male, bottom female)</p>
+<ul>
+<li><strong>eyeball 3x worse?</strong></li>
+</ul>
+<p>GnomAD:</p>
+<ul>
+<li>120 million SNPs</li>
+<li>60% singleton (50%) and doubletons (10%) for variants</li>
+</ul>
+<p>Looked for X-autosome difs</p>
+<p>X/A diversity = (mutations(x) / all X) / (mutation(a) / all a) (a is autosome, x is chrX)</p>
+<p>Bootstrap test for mutation types to make null distribution</p>
+<ul>
+<li>big shift in X (more than expected)</li>
+<li>T-&gt;A and C-&gt;A more common in X versus autosome</li>
+</ul>
+<p>Replication timing</p>
+<ul>
+<li>inactive X has more mutations</li>
+</ul>
+<p>Enriched of C&gt;G (meiotic recombination / DSB) mutations</p>
+</div>
+<div id="amnon-koren" class="section level2">
+<h2>Amnon Koren</h2>
+<p>Genetic architecture of human DNA replication origin activity</p>
+<p>We have extensive maps of human genomic / epigenomic</p>
+<p>But where are replication origins?</p>
+<ul>
+<li><strong>yeah….good q</strong></li>
+<li>yeast have them
+<ul>
+<li>yeast have a DnaA/OriC signatures</li>
+</ul></li>
+<li>how to find?
+<ul>
+<li>many techniques - don’t agree well (or at all)</li>
+</ul></li>
+</ul>
+<p>different parts of genomic replicate at different rates</p>
+<ul>
+<li><strong>can measure coverage across time, right</strong>
+<ul>
+<li>yes</li>
+</ul></li>
+<li>sort G / S phase
+<ul>
+<li>check coverage</li>
+</ul></li>
+<li>Did in 2012 with human - but not precise enough (low resolution)</li>
+</ul>
+<p>Is this a polymorphic trait?</p>
+<ul>
+<li>skipped cell sorting</li>
+<li>works well enough
+<ul>
+<li>and way faster to do</li>
+</ul></li>
+<li><strong>uh, wait, this has been done already (if cells are growing)</strong>
+<ul>
+<li>again, yes, LCL from 1000G</li>
+</ul></li>
+</ul>
+<p>But still, did WGS &gt;140 hESC lines</p>
+<ul>
+<li>oooooo, reproduces REALLY well</li>
+<li>find ‘master’ ORI that are pretty much always present
+<ul>
+<li>crucial regions in replication?</li>
+</ul></li>
+</ul>
+<p>GWAS of DNA replication timing</p>
+<ul>
+<li>‘rtQTL’ (replication timing)</li>
+<li>big hit on chr7</li>
+<li>756 with FDR &lt; 0.1</li>
+<li>most fall within replication origin
+<ul>
+<li><strong>direct relationship, then, cool</strong></li>
+</ul></li>
+<li>getting causal SNPs with CAVIAR</li>
+<li>enriched with active chromatin states</li>
+</ul>
+<p>perhaps some QTL stabilize TF binding motifs - stuff happening in motifs</p>
+<p>Q: look for associations with structural variation? (1000G data)</p>
+<p>A: looking at this now</p>
+<p>Q: cell type specific? (<strong>thank you</strong>)</p>
+<p>A: 20-30% are dif across cell types (<strong>cool</strong>)</p>
+<p>Q: is ORI piggybacking on enhancer / regulatory system? (<strong>or other way around??</strong>)</p>
+<p>A: maybe (or other way around)</p>
+<p>Q: cis effects - did you find any trans or pleiotropy?</p>
+<p>A: nothing strong (spurious stuff maybe?)</p>
+<p>Q: HiC/3C data profiles comparisons?</p>
+<p>A: not <em>yet</em></p>
+</div>
+<div id="sarah-tishkoff" class="section level2">
+<h2>Sarah Tishkoff</h2>
+<p>Novel loci associated with skin pigmentation identified in African populations</p>
+<p>Integrative omics of copmlex traits</p>
+<ul>
+<li>epigenomics</li>
+<li>transcriptomes</li>
+<li>microbiome</li>
+<li>metabolomics</li>
+<li>proteomics</li>
+<li>genomics</li>
+</ul>
+<p>LOTS OF POSTERS</p>
+<p>200 WGS Aricans - 35 million SNPS - 20% novel</p>
+<p>81% GWAS european</p>
+<p>Skin color is adaptive trait - spectrophotometry of skin color - and take DNA - boom GWAS - 1600 people - found 8 regions</p>
+<p>SLC24A5</p>
+<p>MFSD12 - novel - transmembrane transporters - found enhnacer activity - functional work! - KO mRNA in melanocyptes - get more melanin - colocalizes with lysosome - ZF KO - yellow gone - mouse KO - diff colors - looks like gr/gr mouse - 9bp deletion in MFSD12!</p>
+<p>DDB1 - DNA repair in UV damage - pigmentation in tomatoes - fine mapping hits TMEM128 - luciferase assay with enhancer activity - huge haplotype blocks of low het in europeans/asians - selective sweep, near complete fixation</p>
+<p>OCA2/HERC2 - exon10 SNP alt splicing - rs1800404</p>
+<p>convergent evolution of very dark skin - african and south asia</p>
+<p>q: speculate about lysosome?</p>
+<p>a: pheomelanin made in lysosome (like) structure?</p>
+<p>q: surprised to not find var close to mcr1 a: no</p>
+<p>q: chimp with no hair has vitiligo?</p>
+<p>a: dont’ think so - have been assured chimps have light skin</p>
+</div>
+<div id="patrick-albers-gil-mcvean" class="section level2">
+<h2>Patrick Albers (Gil McVean)</h2>
+<p>Non-parametric estimation of allele age for variants in pop-scale seq data</p>
+<p>Want to know history of allele at single locus</p>
+<p>Genealogical approach (GEVA)</p>
+<ul>
+<li>look for coalescent events
+<ul>
+<li>concordant and discordance allele pairs</li>
+</ul></li>
+<li>use HMM to detecdt haplotypes segments
+<ul>
+<li>non parametric</li>
+</ul></li>
+<li>assess allele age…not sure how
+<ul>
+<li>incorporate time some how?</li>
+<li><strong>model with real data to pick parameters??</strong></li>
+</ul></li>
+</ul>
+<p>model - simulation with simple pop, const size, fixed mut rate - compare estimate with actual - good cor (0.953)</p>
+<p>also tested in error-filled data - haplotypes, errors, phasing issues - still works, but overestimate young alleles (think they are older)</p>
+<p>ran in simons genetci diversity project and 1000G - oldest var ~37.5k years in AFR - SAS 12.5K - EAS 11K - AMR 7.5K - EUR 6K (why so young? - admixture)</p>
+<p>cumulative coalescent decoding (CCD) - what frac of your genome share with another genome back in time? - ran this pair-wise across 1000G dataset</p>
+<p><em>will release a genome-wide atlas of allele age &gt;16 million variants</em></p>
+</div>
+<div id="laura-hayward-guy-sella" class="section level2">
+<h2>Laura Hayward (Guy Sella)</h2>
+<p>Polygenic adaptation in response to sudden change in environment</p>
+<p>What time scale? Mentioned Human expansion out of Africa, which is ~100k years</p>
+<p>stabilizing selection reduces pheontypic variance (omega is width of trait distribution) - kingsolver et al. 2001</p>
+<p>model change of phenotpye in environment change</p>
+<p>OK…not following this talk well at all (pretty sure it’s me). Laura is copiously using cartoons, which is usually works for fools like me.</p>
+<p>not cetain whether this stuff is driven by theory or data or both - no, no data - equations from first princples</p>
+<p>conclusions: - polygenic adaption is rapid - short term: large effects drive change - long term: moderate effect alleles replace them</p>
+<p>topol Q: is this like dogs? big changes in short term</p>
+<p>a: no, not modeling dramatic changes like this</p>
+</div>
+</div>
+<div id="functional-genetics-and-epigenomics" class="section level1">
+<h1>Functional Genetics and Epigenomics</h1>
+<div id="job-dekker" class="section level2">
+<h2>Job Dekker</h2>
+<p>Folding, unfolding, and refolding genomes</p>
+<p>How does the genome work? <strong>structured</strong></p>
+<p>Dekker et al. 2002: 3C. <strong>I remember this paper. And totally failing at doing this tech myself</strong></p>
+<p>A/B compartments….TAD…..enhancer - gene loops. One slide summarzing many publications and of cool work.</p>
+<pre class="ascii"><code>                                TAD
+                                                loop (cohesin-mediated)
+                 loop (cohesin-mediated)       XXXX 
+                XXXX                         XX   XX
+              XXX   XXX                     XX      XXX
+            XX        XX                  XX           XX
+          XX            XX              XXX              XX
+        XX                X           XXX                  XXX
+      XX                   XX        XX                      XX
+    XXX                      XX    XXX                         XXX
+  XX                          XXXXX                              XX
+ XXXX                           X                XXXXXXXX       XXXX
+    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX       XXX X XX
+ctcf                           ctcf                                 ctcf</code></pre>
+<p>Interphase / metaphase - interphase has structure - metaphase erases structure (fat diagonal of 3c map)</p>
+<p>meiotic chr fold as helical nested loop arrays (helix with loops coming off) - Gibcus…Dekker Science 2018</p>
+<p>Using ATAC-seq, cut&amp;ruhn to assay CTCF binding patterning in interphase / metaphase</p>
+<p>FRAP to measure stable CTCF binding in interphase / metaphase - unstable in metaphase</p>
+<p>Q: CTCF sites occupied in mitosis - why? Nucleosomes taking over?</p>
+<p>A: Good q, don’t know. Think nucleosomes ‘sliding in’</p>
+<p>Q: <strong>missed it</strong></p>
+<p>A: protein levels of CTCF doesn’t change during what phase cell is in</p>
+<p>Q: what is keeping the promoters open during mitosis</p>
+<p>A: don’t think pol is bound….promoters more open to begin with….something bookmarking the site????</p>
+</div>
+<div id="flora-vaccarino" class="section level2">
+<h2>Flora Vaccarino</h2>
+<p>Integrative multi-omics analyses of iPSC-derived brain organioids</p>
+<p>#notwitter</p>
+</div>
+<div id="carninci" class="section level2">
+<h2>Carninci</h2>
+<p>RADICL-seq: novel tech for genome-wide mapping of RNA-chromatin interactions</p>
+<p>Many many (~20k) functiona lncRNA</p>
+<p>But what is role? Activate genes, promoter, enhancer? Repression of genes? Establish insulation?</p>
+<p>RADICL-seq - capture RNA-DNA interactions with crosslinking (formaldehyde, 1-2%)</p>
+<p>Where do they map?</p>
+<ul>
+<li>Lots in the intron</li>
+<li>open chromatin</li>
+<li>380k RNA-DNA interactions</li>
+<li>enriched in TF family members</li>
+<li><strong>looks like lots of trans interactions</strong>
+<ul>
+<li><strong>but way fewer than cis,as you would expect</strong></li>
+</ul></li>
+<li>some genes like MALAT1 interact with <em>entire</em> genome</li>
+<li>compartments <strong>sort of</strong> like TADS
+<ul>
+<li>weak cor with Hi-C (0.27)</li>
+</ul></li>
+</ul>
+</div>
+<div id="johnathan-griffiths-berthold-gottgens" class="section level2">
+<h2>Johnathan Griffiths (Berthold Gottgens)</h2>
+<p>Charting the Diversification of Mammalian Cells at whole genome scale</p>
+<p>Gastrulation focus (mouse)</p>
+<blockquote>
+<p>350 whole embryos</p>
+</blockquote>
+<p>Collected every 6 hours: e6.5 to e8.5</p>
+<p>10X chromium, 94k cells (post QC), 15,000 UMI (median), 3.5k detected genes (median)</p>
+<p>Big t-SNE plot</p>
+<ul>
+<li>talk of ‘direction’ and ‘trajectory’ which I dislike for t-SNE…</li>
+<li>but can back up with time point data</li>
+</ul>
+<p>Clustered with association of cell types to each other</p>
+<p>Chimera embryos</p>
+<ul>
+<li>KO gene, but only chimerically (inject KO mESC into blastocyst)</li>
+<li><strong>whoah</strong></li>
+<li>can compare KO <strong>cells</strong> vs not KO <strong>cells</strong> within full atlas</li>
+<li><strong>damn</strong></li>
+</ul>
+</div>
+<div id="emma-farley" class="section level2">
+<h2>Emma Farley</h2>
+<p>Regulatory principles governing enhancer specificity during development</p>
+<p>Otxa (neural enhancer)</p>
+<p>How do enhancers encode function?</p>
+<p>Need to test in embryos across time</p>
+<p><em>Ciona</em></p>
+<ul>
+<li>have notochord, heart</li>
+</ul>
+<p>enhnacer + prom + gfp -&gt; electroporation == inside embryo</p>
+<p>made 2.5 million synthetic enhancers (barcoded)</p>
+<p>electroporate 100k eggs -&gt; mRNA -&gt; sequence (remember, we have barcodes) -&gt; identify functional enhancers</p>
+<ul>
+<li><strong>pooling of embryos?</strong></li>
+<li><strong>doesn’t seem like it…but seems like you have too for $</strong></li>
+</ul>
+<p>Can we we make inert enhancers functional with small tweaks (change to optimal seq)</p>
+<ul>
+<li>lights up EVERYTHING</li>
+<li><em>need mix of optimal and sub-optimal sites to maintain proper expression</em></li>
+</ul>
+<p>spacing between enhancers also important</p>
+<ul>
+<li>adding just a few bp between motifs &gt;&gt;&gt; expression</li>
+</ul>
+<p>interplay between spacing and motif ‘strength’ (canonical-ness)</p>
+<p>and <em>orientation</em> (flipping motifs can break function)</p>
+<p><em>suboptimization</em> as design parameter hilarious and terrifying (great, let’s make things worse to control things more precisely)</p>
+<p>wut - SHH enhancer that causes polydactyly….points out that SNP makes binding site <em>better</em></p>
+<p>Deboever et al. Cell Stem Cell 2017 D’Antonion et al. Nature communication 2017</p>
+</div>
+<div id="jake-yeung-felix-naef" class="section level2">
+<h2>Jake Yeung (Felix Naef)</h2>
+<p>Clock dependent chromatin topology modulates circadian transcdription and behavior</p>
+<p>promoter - enhancer loops</p>
+<p>cry1 24 cycle in liver (high at night, low at day)</p>
+<p>how are enhancers used?</p>
+<p>4c-seq on mice collected every 4 hours for 24 hours</p>
+<ul>
+<li>contacts change over time</li>
+</ul>
+<p>h3k27ac changes also at same location</p>
+<p>removed that region in mouse: cry1deltaE mouse</p>
+<ul>
+<li>clock runs faster (15 mins over 24 hours)</li>
+<li>corresponding mRNA difs in cry1</li>
+</ul>
+</div>
+<div id="minal-caliskan-casey-brown" class="section level2">
+<h2>Minal Caliskan (Casey Brown)</h2>
+<p>Genetic and epigenetic fine mapping of complex trait associated loci in the human liver</p>
+<p>Genotype &lt;-&gt; RNA-seq &lt;-&gt; H3K4me3 &lt;-&gt; H3K27ac 50 &lt;-&gt; 50 &lt;-&gt; 10 &lt;-&gt; 10 (people)</p>
+<p>Found eQTLs specific to liver (vs GTEX)</p>
+<p>Found hQTLS also (histone)</p>
+<p>eQTL + hQTL + RNA-seq to ‘fine map’ GWAS loci</p>
+<ul>
+<li>blood pressure</li>
+<li>coronary artery disease</li>
+</ul>
+</div>
+<div id="parisa-razaz-talkwoski" class="section level2">
+<h2>Parisa Razaz (Talkwoski)</h2>
+<p>Tissue-specific molecular sigmnature of 16p11.2 reciprocal genomic disorder</p>
+<p>engineer rgd with CRISPR (make microdels and microdups)</p>
+<p>iPSCs models and mouse models with tx profiling (brain and not brain)</p>
+</div>
+</div>
+<div id="evolutionary-and-non-human-genomics" class="section level1">
+<h1>Evolutionary and Non-human genomics</h1>
+<div id="monica-justice" class="section level2">
+<h2>Monica Justice</h2>
+<p>Informing human genetic variation and therapeutic entruy poitns through modififer screens in mice</p>
+<p>Rett syndrome</p>
+<ul>
+<li>x-linked</li>
+<li>1/10,000 live female births</li>
+<li>developmental regression</li>
+<li>fatal in males</li>
+</ul>
+<p>MeCP2</p>
+<ul>
+<li>ubiquitously expressed (highest in neuron)</li>
+<li>regulate gene expression</li>
+<li>chromatin modifier</li>
+</ul>
+<p>can a second mutation improve pathological phenotype?</p>
+<ul>
+<li>forward genetic unbiased screen in mice</li>
+<li><strong>how to assess phenotype???</strong></li>
+<li>random mutagenesis (ENU)
+<ul>
+<li>of males</li>
+</ul></li>
+<li>evaluate symptons to make a ‘health score’
+<ul>
+<li><strong>eek, so a LOT of work</strong></li>
+</ul></li>
+<li>screen 3200 mice</li>
+</ul>
+<p>exome seq G1 founder male for candidate phenotype - 20-99 new lesions - backcross - mate 10 G2 - analyze 10 G3 offspring</p>
+<p>many pathways affected</p>
+<ul>
+<li>including DNA repair and lipid metabolism</li>
+</ul>
+<p>sum3 line (null allele of Sqle)</p>
+<ul>
+<li>dysregulation of cholesterol pathway</li>
+<li>brain lipd turnover fails</li>
+<li>other lipids overproduced</li>
+</ul>
+<p>Other mutations:</p>
+<ul>
+<li>NCoR1/SMRT</li>
+<li>HDAC3</li>
+</ul>
+<p>Interventions:</p>
+<ul>
+<li>Statin drugs to decrease cholesterol biosynthesis</li>
+<li>clinical trial just finished</li>
+</ul>
+<p>Sum6 line: Rbbp8 (aka Ctp1, Sae2)</p>
+<ul>
+<li>DSB (double strand break) repair
+<ul>
+<li>MeCP2 null alleles prone to DNA damage…</li>
+</ul></li>
+<li>BRCA1 as cofactor
+<ul>
+<li>found mutations in this too that surpress symptons</li>
+</ul></li>
+</ul>
+<p>combination therapy</p>
+<ul>
+<li>DSB + lipid metabolism</li>
+<li>with mouse mut can ‘cure’ disease</li>
+</ul>
+<p><strong>great talk</strong></p>
+<p>q: radio sensitivity?</p>
+<p>a: yes, higher DSB. cortex highly effected, even in cells that don’t divide</p>
+</div>
+<div id="arang-rhie-erich-jarvis-adam-phillippy" class="section level2">
+<h2>Arang Rhie (Erich Jarvis, Adam Phillippy)</h2>
+<p>Genome10K Vertebrate genomes Project</p>
+<p>generate error-free reference-quality gnomes assemblies for <strong>all</strong> 66k extant vertebrate species</p>
+<p>why? because bad ref genomes are super confusing to work with when YFG (your favorite gene) is missing</p>
+<ul>
+<li>bad assembly a major contributor</li>
+</ul>
+<p>goals</p>
+<ul>
+<li><blockquote>
+<p>1 Mb N50</p>
+</blockquote></li>
+<li><blockquote>
+<p>QV40</p>
+</blockquote></li>
+<li>both haplotypes (<strong>eek</strong>)</li>
+<li>big scaffold</li>
+<li><blockquote>
+<p>90% reads to right chr/contig</p>
+</blockquote></li>
+</ul>
+<p>only 16 genomes approaching these goals (NCBI, exclude human/mouse)</p>
+<p>name drop awesome goat paper from phillippy group</p>
+<ul>
+<li>PacBio + Hi-C + Illumina + Optical Map</li>
+</ul>
+<p>Phase 1:</p>
+<ul>
+<li>200 orders, 266 species</li>
+</ul>
+<p>Process:</p>
+<ul>
+<li>PacBio for contigs</li>
+<li>Scaffolding with: 10X, Bionano, Hi-C</li>
+<li>Gap filling with PacBio (and base polishing<strong>?</strong>)</li>
+</ul>
+<p>Evaluation:</p>
+<ul>
+<li>gEVAL (Chow et al. 2016)
+<ul>
+<li>k-mer com-leteness</li>
+<li>synteny</li>
+<li>gene completeness (BUSCO Simao et al 2015)</li>
+<li>KAT</li>
+<li>Mashmap2</li>
+<li>Evol.Highway</li>
+</ul></li>
+</ul>
+<p>Data Release!!!!!</p>
+<ul>
+<li><a href="https://www.vertebrategenomesproject.org" class="uri">https://www.vertebrategenomesproject.org</a>
+<ul>
+<li>link doesn’t work??</li>
+<li>oh, it does (click through)</li>
+</ul></li>
+<li><a href="https://www.sanger.ac.uk/science/data/vertebrate-genomes-project" class="uri">https://www.sanger.ac.uk/science/data/vertebrate-genomes-project</a></li>
+</ul>
+<p>Heterozygosity causes allelic dup</p>
+<ul>
+<li>zebrafinch very high</li>
+<li>using trio binning for phasing</li>
+</ul>
+<p>q: annotations?</p>
+<p>a: we have a working group….</p>
+</div>
+<div id="olga-dudchenko-erez-lieberman-aiden" class="section level2">
+<h2>Olga Dudchenko (Erez Lieberman Aiden)</h2>
+<p>DE NOVO assembly of mammalian genomes with chr-length scaffolds from short reads for &lt;$1000</p>
+<p>pointing out that unnamed company 1k genome requires a good reference</p>
+<ul>
+<li>this is <em>de novo</em></li>
+</ul>
+<p>tile reads…contigging…but of course doesn’t work too well when you hit repeats</p>
+<p>can order contigs with linking data (scaffolding)</p>
+<ul>
+<li>EXPENSIVE and slow</li>
+</ul>
+<p>Hi-C</p>
+<ul>
+<li>3d genome sequencing</li>
+<li>make genome-wide contact map</li>
+<li>has been used to reassemble known genomes
+<ul>
+<li>often with MANY other techniques</li>
+</ul></li>
+</ul>
+<p>using hi-c contact map to correct contigs/scaffolds</p>
+<ul>
+<li>showing different types of issues (translocations/inversions/etc)</li>
+<li>GUI work to correct assembly?!
+<ul>
+<li>juicebox, apparently (<a href="https://www.aidenlab.org/juicebox/" class="uri">https://www.aidenlab.org/juicebox/</a>)</li>
+<li>‘kids can do this’</li>
+</ul></li>
+<li><strong>they have something more automated?</strong>
+<ul>
+<li><strong>seems like would be nuts to do with just short reads (100k + pieces)</strong></li>
+</ul></li>
+</ul>
+<p>Open to collaborations (<a href="http://www.aidenlab.org" class="uri">http://www.aidenlab.org</a>)</p>
+<p>100 Million HiC PE150 illumina + 300M DNA-seq PE150 (w2rap)</p>
+<p>3D-DNA suite</p>
+<ul>
+<li>$1k</li>
+<li>about a week</li>
+<li><a href="http://aidenlab.org/assembly" class="uri">http://aidenlab.org/assembly</a></li>
+</ul>
+</div>
+<div id="kasper-munch" class="section level2">
+<h2>Kasper Munch</h2>
+<p>Multiple selective sweeps removed Neandertha admixture of the X chr in out of Africa pop</p>
+<p>strong selective sweeps in great ape in chr X</p>
+<p>because of inter chromosomal conflict between x and y?</p>
+<p>165 male X chromosome from Simons Genome Diversity Project</p>
+<ul>
+<li><strong>SGD gertting name dropped a ton this conference</strong></li>
+</ul>
+<p>large proportion of very similar haplotyes among non-african people</p>
+<ul>
+<li>big left spike on density plot</li>
+<li>don’t see in african pop</li>
+</ul>
+<p>what are these haplotypes?</p>
+<ul>
+<li>low divergence haplotype defined as dist less than 5e-5 of &gt;25% people in 500kb sliding window</li>
+<li>locations grouped with ethnicity in chrX</li>
+</ul>
+<p>find 500kb sweep spanning non-africans</p>
+<ul>
+<li>after leaving africa</li>
+<li>but before world-wide spread</li>
+</ul>
+<p>does it overlap human-chimp common ancestor?</p>
+<ul>
+<li>yes</li>
+</ul>
+<p>swept chr regions have less archaic admixture - Skov et al 2018 bioRxiv for method</p>
+<p>trying to get time window of sweep</p>
+<ul>
+<li>45k years</li>
+</ul>
+<p>why?</p>
+<ul>
+<li>don’t know (for certain)</li>
+<li>‘crazy ideas’
+<ul>
+<li>two pop leave africa
+<ul>
+<li>only one meet neanderthal</li>
+<li>then merge</li>
+</ul></li>
+<li>many small groups leave</li>
+<li>later one big one leaves, which meets neanderthals</li>
+<li>then all merge</li>
+</ul></li>
+</ul>
+</div>
+<div id="gavin-sherlock" class="section level2">
+<h2>Gavin Sherlock</h2>
+<p>Joint distribution of fitness effects for beneficial mutations in yeast</p>
+<p>(<strong>did a bang up job of keeping first half of session on time</strong>)</p>
+<p>Interested in adaptive (positive) mutations that improve fitness</p>
+<p>yeast</p>
+<p>‘experimental evolution’</p>
+<p>Lineage tracing system:</p>
+<ul>
+<li>random primers</li>
+<li>plasmid library</li>
+<li>barcodes</li>
+<li>generations (with replicates)</li>
+<li>sequence barcodes after each serial transfer
+<ul>
+<li>beneficial mutation barcodes will increase</li>
+<li>most adapative lineages are rare (&lt;&lt;1%)</li>
+</ul></li>
+</ul>
+<p>genotype to fitness map (ID beneficial mutations)</p>
+<p>‘narrow in scope’</p>
+<ul>
+<li>conditions not very diverse</li>
+<li>what are tradeoffs?</li>
+</ul>
+<p>‘achieving high fitness across a wide range of habitats is apparently hard’</p>
+<ul>
+<li>mutations deleterious</li>
+<li>direct tradeoffs (antognistic pleiotropy)</li>
+<li>lower fitness elsewhere</li>
+</ul>
+<p>what’s the balance of these three effects?</p>
+<p>So…</p>
+<ul>
+<li>measure fitness in dif environments</li>
+<li>m x n matrix of fitness in environment x alt environment</li>
+<li>exponential scaling….</li>
+</ul>
+<p>added second barcode to mark condition</p>
+<p>evolve populations -&gt; isolate colones -&gt; POOL (second barcode!) -&gt; measure pools across n environments</p>
+<ul>
+<li>pleiotropy common</li>
+<li>big cluster with variety of performance in alt conditions</li>
+<li>a few generally useful clones</li>
+<li>many generally bad</li>
+</ul>
+<p><strong>no discussion of variants / genes that increase fitness?? Boooo</strong></p>
+<p>q: look at structural variation?</p>
+<p>a: whole chr dup very common to increase fitness for a few gene. hard to get structural data with short reads</p>
+<p>q: super yeast generalists? what about cycling yeast across conditions repeatedly? genetic basis of super yeast?</p>
+<p>a: have done a bit of flipping across environment. diploids more fit. <strong>really dancing around the genetic basis question</strong></p>
+<div id="update" class="section level4">
+<h4>Update</h4>
+<p>Bit unfair to Gavin here (I was just really hoping for some speculation on gene function!). His <a href="https://twitter.com/gsherloc/status/994617999331069960">tweet</a> response:</p>
+<div class="figure">
+<img src="/img/bog_sherlock_tweet.png" />
+
+</div>
+</div>
+</div>
+<div id="anne-ruxandra-carvunis" class="section level2">
+<h2>Anne Ruxandra Carvunis</h2>
+<p>The genome’s reservoir of benefical proto-genes</p>
+<p>mechanism of molecular innovation</p>
+<p>proto-genes</p>
+<ul>
+<li>non-genic seq &lt;-&gt; pervasive expression -&gt; adaptive potential -&gt; novel gene</li>
+</ul>
+<p>yeast genome pervasively tx and has lots of ‘random’ ORFs (open reading frames)</p>
+<p>RiboSeq (Ingolia et al 2009) to ID translated seq</p>
+<ul>
+<li>2k ‘proto-genes’</li>
+<li>match up with RNA-seq</li>
+<li>and predicted ORF</li>
+</ul>
+<p>artifically evolve by systematic overexpression (of proto-genes)</p>
+<ul>
+<li>and put WT yeast and check to see who wins over time</li>
+<li>so measuring growth</li>
+</ul>
+<p>find all three classes:</p>
+<ul>
+<li>beneficial (some)</li>
+<li>deleterious</li>
+<li>neutral (most)</li>
+</ul>
+<p>enrichement of proto-genes in beneficial class (OR ~3 <strong>pretty good</strong>)</p>
+<p>found 6 generalists</p>
+<p>‘network integration’</p>
+<ul>
+<li>what are good proto-genes predicted function</li>
+<li>#notweet
+<ul>
+<li>(not 100% certain in results yet)</li>
+<li><strong>happy that Anne is sharing a bit about general proto-gene functions</strong></li>
+<li><strong>compelling stuff</strong></li>
+</ul></li>
+<li><strong>bit confused on network integration …. didn’t see any evidence or discussion of it</strong>
+<ul>
+<li><strong>maybe a syntax issue?</strong></li>
+</ul></li>
+</ul>
+</div>
+<div id="elaine-ostrander" class="section level2">
+<h2>Elaine Ostrander</h2>
+<p>Catalog of 722 Whole Genome Sequences Reveals Variants Controlling Morphology in Domestic Dogs</p>
+<p>dog GWAS (with WGS)</p>
+<ul>
+<li>easy to do GWAS with low n (do high n lineages)</li>
+<li>easy to find LD block</li>
+<li>hard to find mutation</li>
+</ul>
+<p>Parker et al. Cell Reports 2017</p>
+<ul>
+<li>breed relatedness with neighbor joining tree (up to &gt;200 dog breeds)</li>
+<li>found haplotype sharing across breeds</li>
+</ul>
+<p>91 million variants</p>
+<ul>
+<li>60% low VEP impact</li>
+<li><strong>argh exploded 3d pie charts!!!</strong></li>
+</ul>
+<p>Lots of filtering, pop stratification ….</p>
+<ul>
+<li>14 million vars</li>
+</ul>
+<p>GWAS on the 14 million</p>
+<ul>
+<li>28 associations</li>
+<li><strong>big table, little text</strong></li>
+<li>validate on known biology (Furnishing, fur length, height)
+<ul>
+<li>yes they find the stuff they expect</li>
+</ul></li>
+</ul>
+<p>LCORL</p>
+<ul>
+<li>strong influence on dog size</li>
+</ul>
+<p>SMAD2, HMGA2, IGF1, IRS5, IGSF1 (bigger size/weight)</p>
+<ul>
+<li>also for longevity (anti correlated)</li>
+</ul>
+<p>ESR1 (leg length)</p>
+<p>lincRNA (near MSR83) (drop ears)</p>
+<p>gorab, chsy3 (tail shape)</p>
+<p>Working to get to 10K dog genomes (Dog10K)</p>
+</div>
+<div id="bobbie-cansdale-claire-wade" class="section level2">
+<h2>Bobbie Cansdale (Claire Wade)</h2>
+<p>3D modeling of Hi-C data to investigate spatial organization of the canine genome</p>
+<p>TADs - modular units of genome struture/organization</p>
+<p>Regions assessed: - MITF - ASIP - RALY - TYRP1 - MC1R - KRT71 - RSPO2 - MSRB3 - IFG1</p>
+<p>Qualitative look at genes known to do stuff…and what genes are near them (in Hi-C TAD block)….as far as I could tell.</p>
+<p>3D modeling….haven’t done yet….</p>
+</div>
+</div>
+<div id="cancer-and-medical-genomics" class="section level1">
+<h1>Cancer and Medical Genomics</h1>
+<div id="trey-ideker" class="section level2">
+<h2>Trey Ideker</h2>
+<p>Decoding patient genomes through the hierarchical pathway architecture of the cancer cell</p>
+<p>‘somatic’ eQTL RNA expression + WGS + enhancers (mapped to genes with GeneHancer) + covariates to calc eQTL Found ~190 (including positive control TERT)</p>
+<p><strong>yeast now</strong></p>
+<p>ppi (protein protein interactions) - Dutkowski et al 2013 nature methods</p>
+<p>DCell - neural network guided by hierarchical cell bio - 3500 cell subsystems (<strong>from ppi?</strong>) - 12 layers - 12 million yeast genotypes (single and pairwise KO) - <a href="http://d-cell.ucsd.edu" class="uri">http://d-cell.ucsd.edu</a></p>
+<p>DCell a model for what to hope to do one day for human</p>
+</div>
+<div id="rajbir-batra-carlos-caldas" class="section level2">
+<h2>Rajbir Batra (Carlos Caldas)</h2>
+<p>Decoding the dynamics of DNA methylation in breast cancer</p>
+<p>Cluster of breast cancer with:</p>
+<ul>
+<li>gene expression</li>
+<li>CNV</li>
+<li>miRNA</li>
+</ul>
+<p>Little epigenetics</p>
+<p>So looking at Me</p>
+<p>METABRIC data source</p>
+<ul>
+<li>1482 primary breast tumor</li>
+<li>237 matched adjacent norm</li>
+<li>RRBS (reduced representation bisulfite seq)</li>
+</ul>
+<p>Background drift of methylation</p>
+<ul>
+<li>tried to pick background regions (not promoters)</li>
+<li>late replication timing associated with higher me</li>
+</ul>
+<p>Now look at more functional region</p>
+<ul>
+<li>but control for background drift</li>
+</ul>
+<p>Change mean methylation from tumor to matched tissue</p>
+<ul>
+<li>‘epiallelic burden’</li>
+<li>heterogeneous across tumor types</li>
+</ul>
+</div>
+<div id="patrick-short-matthew-hurles" class="section level2">
+<h2>Patrick Short (Matthew Hurles)</h2>
+<p>Contribution of <em>de novo</em> mutations in the regulatory elements in neurodevelopment disorders and autisum</p>
+<p>DDD Study (Deciphering Developmental Disorders)</p>
+<ul>
+<li>8k trios</li>
+<li>exome</li>
+</ul>
+<p>Model germline mutation rate</p>
+<ul>
+<li>Samocha et al. 2014</li>
+<li>enrichment in missense and PTV</li>
+</ul>
+<p>What proportion of remaining cases may be regulatory?</p>
+<p>Regulatory elements</p>
+<ul>
+<li>heart enhancers</li>
+<li>VISTA</li>
+<li>Conserved elements</li>
+</ul>
+<p>Look for variation in elements</p>
+<p>enrichment in fetal brain conserved elements</p>
+<p>manhattan plot not so good (flat)</p>
+<ul>
+<li>variety of reasons
+<ul>
+<li>enhancers shorter</li>
+<li>less consequential than proteins</li>
+<li>poor understanding of enhancer code</li>
+</ul></li>
+</ul>
+<p>can we development noncoding constraint score for deep whole genomes?</p>
+<p>25,000 whole genomes</p>
+<p>mutation rate vary across genome / chr / region</p>
+<p>using random forest to model and use a large number of features</p>
+<ul>
+<li>not so successful (see below)</li>
+</ul>
+<p>~160 mb of open chromatin is contrained, most of this is conserved nucleotides in <em>poorly conserved elements</em></p>
+<p>thinking that <em>1 million</em> deep whole genomes to accuratly model small (tfbs) sized elements</p>
+<p>selection on nucleotide level, not ‘peak’/chunk level</p>
+</div>
+<div id="max-shen-david-gifford" class="section level2">
+<h2>Max Shen (David Gifford)</h2>
+<p>Predictable and precise template-free editing of pathogneic mutations by CHRSPR-Cas9 nuclease</p>
+<p>High-throughput assay (1872 guideRNA) and deep sequencing to assess mutation pattern</p>
+<p>1262 genotypes / target site</p>
+<ul>
+<li>mostly deletions (almost 90%)</li>
+<li>lots of ‘microhomology’ deletions (60%)
+<ul>
+<li>deletion with multiple equal quality alignments</li>
+</ul></li>
+</ul>
+<p>built dnns to predict mutation pattern</p>
+<ul>
+<li>three models for microhomology, not microhomology, and insertion (knn for this one)</li>
+<li><em>inDelphi</em></li>
+<li>90% outcomes predicted (70% single bp resolution)</li>
+</ul>
+<p>so mutation patterns are semi-predictable (<strong>semi</strong> is my language)</p>
+<p>use model to design guideRNA to get more preditable outcome</p>
+<p><strong>nice web app</strong> - <strong>can’t find it online…not ready yet</strong> - **<a href="https://github.com/maxwshen/indelphi-dataprocessinganalysis**" class="uri">https://github.com/maxwshen/indelphi-dataprocessinganalysis**</a></p>
+</div>
+<div id="sharon-plon-pj-lupo" class="section level2">
+<h2>Sharon Plon (PJ Lupo)</h2>
+<p>Cancer risk among children with non-chromosomal birth defects in the genetic ovrerlap between congenital anomalies and cancer in kids (GOBACK) study</p>
+<p>1/33 children born with birth defects</p>
+<p>GOBACK</p>
+<ul>
+<li>look for overlap between cancer and genetic abnormalities (birth defect) in children</li>
+</ul>
+<p>10 million births 0.5 million birth defects 15k cancer 1.8k birth defect <em>and</em> cancer - <strong>napkin math would expect 750</strong></p>
+<p>more birth defects = greater chance of having cancer</p>
+<p>different defects have diff cancer increase rates</p>
+<p>can go back to the children</p>
+<ul>
+<li>doing WGS</li>
+</ul>
+</div>
+<div id="massa-shoura-andrew-fire" class="section level2">
+<h2>Massa Shoura (Andrew Fire)</h2>
+<p>eccDNA-mediated ‘scars’ in the TTN gene may contribute to microfiber diversity</p>
+<p>Coding regions ‘shedding’ the eccDNA ‘circles’</p>
+<p>Including Titin</p>
+<p>Looked at cardiomyocyte vs iPS vs lymphocytes to see if eccDNA shedding changes</p>
+<ul>
+<li>unique to cardiomyocytes</li>
+</ul>
+<p>eccDNA shedding seems dynamic in different cardiomyocyte conditions</p>
+</div>
+<div id="sidi-chen" class="section level2">
+<h2>Sidi Chen</h2>
+<p>Towards mapping functional cancer genome atlases</p>
+<p>Concept:</p>
+<ul>
+<li>cancer seq data to make cancer atlas</li>
+<li>make mouse models</li>
+</ul>
+</div>
+<div id="marcin-imielinski" class="section level2">
+<h2>Marcin Imielinski</h2>
+<p>Signature of complex structural variation across thousands of cancer whole genomes</p>
+<p>Diversity in rearrangments across cancers</p>
+<p>Successful at finding SNV signatures</p>
+<ul>
+<li>Alexandrov et al 2013 Nature</li>
+</ul>
+<p>How to count rearrangments????</p>
+<ul>
+<li>lots of types (dup / insertion / translocation /etc)</li>
+</ul>
+<p>gGnome (R packages):</p>
+<ul>
+<li><a href="https://www.github.com/mskilab/JaBbA" class="uri">https://www.github.com/mskilab/JaBbA</a></li>
+<li><a href="https://www.github.com/mskilab/gGnome" class="uri">https://www.github.com/mskilab/gGnome</a></li>
+</ul>
+</div>
+</div>
+<div id="computational-genomics---im-very-excited" class="section level1">
+<h1>Computational Genomics (! - <strong>I’m very excited</strong>)</h1>
+<div id="oliver-stegle" class="section level2">
+<h2>Oliver Stegle</h2>
+<p>Methods for the joint analysis of high-dimensional traits and samples substructure in human cohorts</p>
+<p>project high dimensional data into lower dimensions</p>
+<ul>
+<li>confounding factors</li>
+<li>inference of sparse factors (f-scLCVM)</li>
+<li>spatio-temporal dependencies (SpatialDE)</li>
+</ul>
+<p><a href="https://github.com/bioFAM/MOFA" class="uri">https://github.com/bioFAM/MOFA</a></p>
+<ul>
+<li>scheme for merging data</li>
+</ul>
+<p>Identification of sub-gropu specific genetic effects</p>
+<ul>
+<li>interation between environment/behavior (<strong>self reported??</strong>) and genotypes</li>
+</ul>
+<p>random effect model to match genetic structure to environment</p>
+<p>scaling up - with big 2D matrices</p>
+<p>StructLMM: mixed model interaction</p>
+<ul>
+<li>phenotye = G + GxE + additivity(?) + noise
+<ul>
+<li>Casale et al PLOS Genetics 2017</li>
+</ul></li>
+</ul>
+<p>BMI on UK biobank</p>
+<ul>
+<li>240k unrelated people</li>
+<li>7.5 million variants</li>
+<li>64 ‘environments’
+<ul>
+<li><strong>not certain what this is</strong></li>
+</ul></li>
+</ul>
+<p>Increased power for detecting GxE (loci match GWAS ID’ed loci)</p>
+<p>How to deconvoluate which environmental var drives GxE?</p>
+<ul>
+<li>include/exclude environmental vars to rank change in bayes factor
+<ul>
+<li><strong>reminds me of variable important in random forest</strong></li>
+</ul></li>
+</ul>
+<p>“Fresh results”</p>
+<ul>
+<li>can leverage GWAS info with GxE analysis</li>
+<li>genome wide search</li>
+<li>GxE of 7 metabolic traits
+<ul>
+<li>FTO…MC4R….SEC16B</li>
+<li><strong>loads</strong> of hits (nice manhattan peaks)</li>
+</ul></li>
+<li>correlation structure
+<ul>
+<li>loci x loci spearman cor</li>
+<li>cluster blocks by <strong>loci</strong></li>
+<li>by traits not so much</li>
+</ul></li>
+<li>% variance explained
+<ul>
+<li>adding up to 10% var</li>
+</ul></li>
+</ul>
+<p><a href="https://www.github.com/limix/struct-lmm" class="uri">https://www.github.com/limix/struct-lmm</a></p>
+<p>q: pleiotropy? metabolic traits confounding</p>
+<p>a: yes (we see overlap between traits)</p>
+<p>q: environment matrix. how sensitive to variable weighting?</p>
+<p>a: controvery over how to weight. quite robust for a not crazy amount of traits</p>
+</div>
+<div id="ben-strober-alexis-battle" class="section level2">
+<h2>Ben Strober (Alexis Battle)</h2>
+<p>Modeling genetic effects during cellular differentiation</p>
+<p>Genetic effects dependent on cellular environment (<strong>or cell type</strong>)</p>
+<ul>
+<li>tx studies are generally single time point</li>
+</ul>
+<p>study dynamic genetic effects during cell diff in iPSC</p>
+<ul>
+<li>ID varying genetics effects</li>
+<li>new stats approaches</li>
+</ul>
+<p>Cell Diff time course</p>
+<ul>
+<li>iPSC (14 lines)</li>
+<li>16 time steps (ranging 0 to 15) when diff to cardiomyocyte</li>
+<li>== 217 total RNA-seq samples</li>
+</ul>
+<p>Marker genes going up (or down) over time as iPSC –&gt; cardiomyocyte</p>
+<ul>
+<li>time is pc1
+<ul>
+<li><strong>percent of var?</strong></li>
+</ul></li>
+</ul>
+<p>cisEQTL in <em>each</em> time step</p>
+<ul>
+<li>WASP combined haplotype test (Geijn Nat Meth 2014)</li>
+<li>50-200 eQTL genes (FDR &lt;0.1) per step</li>
+<li>replicates to independent iPSC eQTL study (Banovich Gen Res 2018)</li>
+</ul>
+<p>Temporal dynamics - correlation of eQTL pairs summary stats - <strong>hey look - blocks</strong></p>
+<p>sparse matrix factorization to find <em>shared</em> eQTL effect size (across time) patterns</p>
+<p>this compression is correlating to time step blocks</p>
+<p>id dynamic-QTL</p>
+<ul>
+<li>GLM to predict allele-specific read counts
+<ul>
+<li>log(y nj) == intercept + time + genotype + (time x Genotype)</li>
+</ul></li>
+</ul>
+<p>rs1897133</p>
+<ul>
+<li>association gets stronger over time</li>
+<li><strong>nice integrated model instead of doing tons of independent tests</strong>
+<ul>
+<li><strong>I assume the GLM gets much higher power</strong></li>
+</ul></li>
+</ul>
+<p>obligatory slide showing enrichment in cis-regulatory elements (chromHMM enhancer)</p>
+<p>‘is time the best way to quantify differentiation progress?’</p>
+<ul>
+<li>no</li>
+<li>cell lines will develop at dif rates</li>
+<li>hmm to infer (predict) ‘differentiation progress’
+<ul>
+<li>hmm states (4 states over 15 days) work</li>
+</ul></li>
+</ul>
+<p>future</p>
+<ul>
+<li>more lines</li>
+<li>more assays (single cell, ATAC)</li>
+<li>apply methods to other longitudinal data</li>
+</ul>
+</div>
+<div id="meena-subramaniam-jimmie-ye-and-noah-zaitlen" class="section level2">
+<h2>Meena Subramaniam (Jimmie Ye and Noah Zaitlen)</h2>
+<p>Population-scale single cell seq to reveal context specific effects in lupus</p>
+<p>(bulk) gene expression var could be due to diff cell type <em>proportion</em> or <em>state</em></p>
+<ul>
+<li>answer: scRNA-seq</li>
+</ul>
+<p>SLE (lupus)</p>
+<ul>
+<li>PBMCs (<strong>convenient</strong>)
+<ul>
+<li>Meena did justify this cell type</li>
+</ul></li>
+</ul>
+<p>10X chromium:</p>
+<ul>
+<li>1 well / donor $1300</li>
+<li>200 donors / 200k is … expensive</li>
+<li>50k cells with 25 people / well
+<ul>
+<li>$200 / donor</li>
+</ul></li>
+<li>pooling
+<ul>
+<li>double rate increase</li>
+<li>lose sample ID</li>
+</ul></li>
+</ul>
+<p>multiplexed droplet scRNA</p>
+<ul>
+<li>cell barcode</li>
+<li>then can demultiplex (with genetic var)</li>
+</ul>
+<p>genetic barcode</p>
+<ul>
+<li>unique variants in sample
+<ul>
+<li>but scRNA is mega lossy</li>
+<li><strong>prob have to use many variants?</strong></li>
+<li><strong>how many?</strong>
+<ul>
+<li>20 gives 98% ID</li>
+</ul></li>
+</ul></li>
+</ul>
+<p>doublet ID (with ‘demuxlet’)</p>
+<ul>
+<li>bayesian model to find doublets</li>
+<li>intentionally merged samples
+<ul>
+<li>can deconvolute robustly</li>
+</ul></li>
+</ul>
+<p><code>mux-seq</code> and <code>dumuxlet</code></p>
+<p><a href="https://www.github.com/statgen/demuxlet" class="uri">https://www.github.com/statgen/demuxlet</a></p>
+<p><a href="https://www.satijalab.org/costpercell" class="uri">https://www.satijalab.org/costpercell</a></p>
+<p>did human immune ‘census’ (<strong>is this the new atlas?</strong>)</p>
+<ul>
+<li>4k cells / donor (750k total)</li>
+<li>8 major cell types t-SNE looks good</li>
+<li>sle vs healthy have unique locations (not clean blocks / ‘clsuters’)</li>
+</ul>
+<p>CD14+ and CD4+ <em>proportions</em> change</p>
+<ul>
+<li>EHR confirms with CBC (cor 0.83)</li>
+<li><strong>cool to get to check out the EHR data</strong></li>
+</ul>
+<p>novel monocyte population</p>
+<ul>
+<li>‘intermediate monocyte’</li>
+<li>found interferon correlation</li>
+</ul>
+<p>stimulate cells with interferon</p>
+<ul>
+<li>large shift in cell t-SNE patterning</li>
+</ul>
+<p>change in both <em>proportion</em> and <em>state</em></p>
+<p>search for genetic factors (GWAS)</p>
+<ul>
+<li>flat manhattan plot</li>
+</ul>
+<p>cis-eQTLS</p>
+<ul>
+<li>much better power (QQ plot)</li>
+<li>hundreds eQTLS found per cell class</li>
+<li><strong>cool to see cell-type specific eQTL</strong></li>
+</ul>
+<p>data sharing (June)</p>
+<ul>
+<li><a href="https://www.humancellatlas.org/data-sharing" class="uri">https://www.humancellatlas.org/data-sharing</a></li>
+</ul>
+<p>q: mech for change in variance</p>
+<p>A: rare cell state….or dif enhancers being used with dif noise profile</p>
+<p>q: are you looking for novel gene signatures for cell groups?</p>
+<p>a: following up on that now</p>
+</div>
+<div id="ricardo-doliveira-albanus-steve-parker-hey-i-know-this-guy" class="section level2">
+<h2>Ricardo D’Oliveira Albanus (Steve Parker!!! &lt;– Hey I know this guy)</h2>
+<p>Information theory of ATAC-seq data predicts local chromatic kinetics and reveals novel aspects of gene regulation and genomic org</p>
+<p><a href="http://theparkerlab.org" class="uri">http://theparkerlab.org</a></p>
+<p>ATAC-seq –&gt; open chromatin –&gt; footprints</p>
+<ul>
+<li>but not all TF leave footprints
+<ul>
+<li>don’t bind long enough</li>
+</ul></li>
+<li>CTCF, AP-1 bind a <em>long</em> time</li>
+<li>GR short time</li>
+<li>know from FRAP assays
+<ul>
+<li>but super hard to do</li>
+</ul></li>
+</ul>
+<p>can we use ATAC-seq data to infer kinetics of TF-DNA interactions?</p>
+<ul>
+<li>can we break dependence on footprints to predict TF-DNA binding?
+<ul>
+<li><strong>OMG, can we???</strong></li>
+</ul></li>
+</ul>
+<p>model theoretical binding of nucleosome / TF</p>
+<ul>
+<li>‘V plot’
+<ul>
+<li>CTCF has a nice strong one</li>
+<li>NFKB less strong</li>
+</ul></li>
+</ul>
+<p>measure chromatin information content</p>
+<ul>
+<li>f-VICE (feature V-plot Information Content Enhancment)</li>
+<li>calc f-VICE for each TF
+<ul>
+<li>AP-1 and CTCF has highest f-VICE score</li>
+</ul></li>
+</ul>
+<p><code>BMO</code> uses ATAC-seq signal and co-occurring motifs for TF binding prediction</p>
+<ul>
+<li>compare to CENTIPEDE, DNase2TF, HINT, bedtools intersect</li>
+<li><strong>f-VICE not involved???</strong>
+<ul>
+<li><strong>feel like a shift happened quickly in the talk</strong></li>
+</ul></li>
+<li>BMO works better with (assessed with F1 of predictions)
+<ul>
+<li><strong>works better for bad binders…?</strong></li>
+<li>compare /cor with f-VICE</li>
+<li><strong>so yes, <code>BMO</code> not using f-VICE (I think)</strong></li>
+</ul></li>
+<li>CENTIPEDE next best (pretty close)</li>
+</ul>
+<p>f-VICE has 8.5 change in comparing CTCF (- cohesin) and CTCF (+ cohesin). - ~10-20X diff by FRAP</p>
+<p><strong>No github?</strong></p>
+</div>
+<div id="christina-leslie" class="section level2">
+<h2>Christina Leslie</h2>
+<p>Decoding immune cell dysfunction</p>
+<p>In solid tumors</p>
+<p>Does epigenetic state of tumor-speicif T cells present a barrier to immunotherapy</p>
+<ul>
+<li>Want to know whether checkpoint blockade approach will work or not in a patient</li>
+<li>It does in mice (Philip Nature 2017)
+<ul>
+<li>during development see epigenetic state change (plastic to fixed as time goes on)</li>
+</ul></li>
+</ul>
+<p><strong>intro over, new stuff</strong></p>
+<p>Is CD8 T cell tolerance to self-antigens epigenetically encoded? Can tolerance be broken?</p>
+<p>model of CD* t cell tolerance to self-antigen</p>
+<ul>
+<li>TCR(GAG) xAlb:GAG (mouse) –&gt; TCR(GAG) x Alb(GAG) give self-tolerant CD8 T cells</li>
+<li>two states</li>
+<li>native t cell (memory) and naive t cell (tolerance)</li>
+</ul>
+<p>ATAC and RNA-seq</p>
+<ul>
+<li>naive clusters from efector/memory/tolerant</li>
+<li>enriched in putative enhancers
+<ul>
+<li><strong>is this ever NOT the case??</strong></li>
+</ul></li>
+<li>1837 peaks differntial accessible (out of 95k)</li>
+<li>showing browser plots with disappearing signal</li>
+</ul>
+<p>correlation between accessiblity and gene expression</p>
+<ul>
+<li>very cool plot
+<ul>
+<li>RNA log2FC on y axis, genes on x axis (each individual point colored by ‘tolerant’ or ‘memory’)</li>
+</ul></li>
+</ul>
+<p>can you break tolerance to become functional?</p>
+<ul>
+<li>transiently by transfer hosts (Schietinger et al Science 2012)</li>
+<li>massive expression diff when you transient rescue
+<ul>
+<li>but no epigenetic changes</li>
+<li><strong>audible whoah</strong></li>
+</ul></li>
+<li>but how can you <em>really</em> rescue?
+<ul>
+<li>if you immunize in black 6 background</li>
+<li>now epigenetic state changes</li>
+</ul></li>
+</ul>
+<p>GLM to find epigenetic signatue of tolerance state</p>
+<ul>
+<li>peak accesbility log2FC == A + P + T</li>
+<li>Lef1 (<strong>very cool because not DE by RNA</strong>)</li>
+</ul>
+</div>
+<div id="pejman-mohammadi-tuuli-lappalainen" class="section level2">
+<h2>Pejman Mohammadi (Tuuli Lappalainen)</h2>
+<p>Using rare allelic expression data for studying rare disease biology <span class="citation">@pejminister</span></p>
+<p>Interpreting non-coding genome</p>
+<ul>
+<li>regulatory var important in disease/phenotypes</li>
+<li>big place, poorly annotated (<strong>or not at all</strong>)</li>
+<li>no clear measure of regulatory constraint</li>
+<li>in comparison coding regions
+<ul>
+<li>codon triplets</li>
+<li>pLI, etc.</li>
+</ul></li>
+<li>want to something similar, but for noncoding</li>
+</ul>
+<p>regulatory variation and expression outliers</p>
+<ul>
+<li>rna-seq noisey</li>
+<li>maybe ASE (allele specific expression)
+<ul>
+<li>haplotype specific</li>
+</ul></li>
+<li>try to find outliers
+<ul>
+<li>(plot ref allele abundance / alt allele abundance for each gene)</li>
+<li>not linked to populatin info!</li>
+</ul></li>
+</ul>
+<p>how to set alleleic imbalance cutoff?</p>
+<ul>
+<li>check GTEx</li>
+<li>but ASE patterns….are diverse (reg effect, allele freq, LD, ….)</li>
+</ul>
+<ol style="list-style-type: decimal">
+<li>define quant measure of reg var<br />
+</li>
+<li>ref. population: estimate regulator var for each gene</li>
+<li>check in patient</li>
+</ol>
+<p>log alleleic Fold Change (aFC)</p>
+<ul>
+<li>Mohammadi et at Gen Res 2017</li>
+</ul>
+<p>plotting different outcomes</p>
+<ul>
+<li>aFC vs experssion FC</li>
+<li>copy loss, wildtype, reg variant,</li>
+</ul>
+<p>“I’m skipping 20 of my favorite slides”</p>
+<p>How to model when so much info is missing?</p>
+<ul>
+<li>binomial model</li>
+<li>ANEVA (Analysis of Expression Variance) in GTEx data</li>
+<li>tissue specific estimates</li>
+</ul>
+<p>D(g) / D(t) measure regulatory tolerance (**g and t are subscripts - I can’t latex quickly*)</p>
+<ul>
+<li>ID Haplotinsufficient genes</li>
+<li>better than noncoding RVIS</li>
+<li>good heritability on independent data</li>
+<li>better than noncoding metrics (ROC)</li>
+</ul>
+<p>Use skeletal muscle GTEx with Macarthur muscle disoorder cohort (~70)</p>
+<ul>
+<li>find some D(g) outliers</li>
+<li>found 20 ‘dosage outliers’
+<ul>
+<li>similar to GTEx (totally dif datasets)</li>
+<li>6x <em>fewer</em> hits than naive binomial test</li>
+</ul></li>
+</ul>
+</div>
+<div id="erik-garrison-richard-durbin" class="section level2">
+<h2>Erik Garrison (Richard Durbin)</h2>
+<p>Variation graphs for efficient unbiased pangenoimc seq interpretation</p>
+<p>want to represent ‘reference’ genome as a graph</p>
+<ul>
+<li>to include variation</li>
+<li>simulate genomes by walking along paths</li>
+<li>retain info with ‘metadata’ for each point</li>
+</ul>
+<p>another model is have <strong>every</strong> base seen as a big vector</p>
+<ul>
+<li><strong>certainly cleaner and simpler to visualize</strong></li>
+</ul>
+<p>‘pan genomics’</p>
+<ul>
+<li><a href="https://github.com/vgteam/vg" class="uri">https://github.com/vgteam/vg</a></li>
+<li><strong>intimidating flowchart</strong></li>
+<li>reference &lt;-&gt; sample (update ref) &lt;-&gt; known variation</li>
+</ul>
+<p>applications</p>
+<ul>
+<li>1000g pan-genome graph</li>
+<li>build and index 1000g graph
+<ul>
+<li>“computation is tractable”</li>
+</ul></li>
+<li>performance of pan-genome worse than paired end seq against linear ref
+<ul>
+<li>but better when a read has a variant</li>
+<li>no bias</li>
+</ul></li>
+<li><strong>Erik is being explicit about limitations and strengths; very nice</strong></li>
+</ul>
+<p>yeast var graph</p>
+<ul>
+<li>with long reads</li>
+<li>graph does better overall than linear genome (5% better in mean identity)</li>
+</ul>
+<p>ancient dna</p>
+<ul>
+<li>helps out a lot</li>
+</ul>
+<p>graphical pangenomics</p>
+<ul>
+<li>back to the linear visualization mentioned earlier</li>
+<li><strong>I really like this</strong>
+<ul>
+<li><strong>I’m very freaked out by spaghetti plots of graphs</strong></li>
+</ul></li>
+</ul>
+</div>
+<div id="masa-roller-paul-flicek" class="section level2">
+<h2>Masa Roller (Paul Flicek)</h2>
+<p>Tissue specific enhancer and promoter evolution in mammals</p>
+<p>enhancers &lt;-&gt; promoters &lt;-&gt; gene expression</p>
+<p>using chip-seq as proxies for enhancer / promoters</p>
+<p>create comprehensive regulatory maps</p>
+<ul>
+<li>4 tissues</li>
+<li>10 mammals</li>
+<li>3 histones</li>
+<li>3 replicates</li>
+<li>360 ChIP-Seq!
+<ul>
+<li>4 dropouts</li>
+<li>require min seq depth</li>
+<li>20 million good reads for H3K27ac, H3k$me3</li>
+<li>40 million for H3k4me1</li>
+</ul></li>
+</ul>
+<p>promoter == H3K27ac and H3K4me3 enhancer == H3k27ac and H3k4me1</p>
+<p>look between tissues/species</p>
+<ul>
+<li><strong>UpSet plot!</strong></li>
+<li>testes has lots of tissue specific promoters</li>
+<li>but still many shared promtoers</li>
+</ul>
+<p>tissue <em>specific</em> regulatory elements evolve more rapidly than tissue <em>shared</em> elements</p>
+<ul>
+<li>promoters and enhancers show this patterns</li>
+</ul>
+<p>regulatory elements rarely switch activity between tissues</p>
+<ul>
+<li>what do switches look like?</li>
+<li>lower H3K4me3 and lower H3k27ac
+<ul>
+<li>maybe weak promoters?</li>
+</ul></li>
+</ul>
+<p>see switches across evolution</p>
+<ul>
+<li>again, not too many</li>
+<li>some promoter &lt;-&gt; enhancer (<strong>10-20% by my eyeball</strong>)</li>
+</ul>
+</div>
+</div>

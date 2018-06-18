@@ -1,0 +1,1898 @@
+---
+title: '#BoG18: Talk Notes'
+author: David McGaughey
+date: '2018-05-08'
+slug: bog18-notes
+categories:
+  - bog18
+  - bioinformatics
+tags:
+  - conference
+  - bog18
+  - bioinformatics
+  - talks
+output:
+  blogdown::html_page:
+    toc: true
+---
+
+# Intro
+Very sparse and poorly written notes covering [#BoG18](https://twitter.com/search?q=%23BoG18&src=tyah). 
+
+Typos everywhere. Things may change dramatically over time as I scan back through notes.
+
+I've tried to respect \#notwitter. Will be updated periodically. 
+
+Speaker (Last Author)
+
+# Genome Engineering and Genome Editing (Tuesday Night)
+
+## Jef Boeke
+### Writing Genomes
+
+Building synthetic yeast genomes. Contig/chr one by one. All designed. *Sc2.0*
+
+80+% complete for each of the 16. 
+
+### "dark matter"
+
+Can we use 'big dna' to functionally query mammalian genomes?
+'Synthetic haplotypes'
+
+Building dif combinations of haplotype blocks
+
+synthetic hypervariation:
+
+    - query enhancers
+    - alt splicing
+  
+built 102kb locus (human) and put into yeast
+
+    - built in 3kb chunks and can assemble dif combiations
+    
+### big dna
+Can build big dna pieces
+CEGS grant
+will build 3 100kb+ loci / year
+want community input
+
+## Greg Findlay (Jay Shendure)
+Accurate classficiation of thousands of BRCA1 variants with saturation genome editing
+
+vous a problem
+BRCA1:
+
+  - 4243 clinvar snvs
+  - >50% VOUS
+    
+How to functionally validate?
+
+Use Homology-direct repair (HDR). Can engineer precise edits.
+
+Use a library of SNVs for the HDR
+
+Over time selecdtion removes non functional edits
+
+Each experimente:
+
+  - millions of cells
+  - millions of sequencing reads to count SNVs
+    
+Variable effects at splicing junctions
+
+  - sometimes just 2-3 bp
+  - sometimes 9 base pairs
+    
+also have matched rna-seq data
+
+aberrant splicing causes RNA depletion
+
+matches up really well with clinvar designations
+
+question: 
+
+  - hdr effeciency rate? 10-90% effectiveness
+
+## Stephen Levene (Andrew Fire)
+eccDNA is a possible mediator of chromosomal polymorphism at multple loci
+
+'physical chemist by training'
+
+e. coli genome: 1 femtoliter volume
+
+100 fold compaction problem (DNA)
+
+~10k fold for mammalian
+
+Techniques for DNA/chromiatin flexibility:
+
+  - Hi-C
+  - FISH
+  - SLICE (Beagrie et al Nature 2017)
+  
+eccDNA (circular dna outside chromosome/nucleus(?))
+
+  - unclear how it forms
+  - elevated levels associatd with genome instability
+  
+how to capture?
+
+  - DNA -> SDS lysis -> isolate gDNA -> cscl gradient -> bottom bit
+  - or exoV treatment (leaves circular alone)
+  
+take pictures of the loops with high resolution microscopy
+
+sequenced a few (**unfortunately with short read illumina**)
+
+modeled with molecular dynamics
+
+## David Truong (Jef Boeke)
+Resurrection of Histone H3k27 Me in brewer's yeast by human prc2 and plant atxr6
+
+human pathway reconstruction in yeast
+
+  - avoid pleiotropy (hopefully)
+  - more real than *in vitro*
+  
+Yeast (s. cerevisiae) lost histone mods 
+
+**Adding them back???**
+
+yes
+
+humanize yeast histones
+
+add synthetic human histones
+
+force out wt histones with +5FOA
+
+*20 days later* ..... one colony
+
+Keep growing the colony out
+
+WGS: mutations in cell cycle regulation 
+
+  - bypassing histone cycle checks?
+
+brewer's yeast does not have H3K27 methylation 
+
+  - PRC2 complex (to methylate h3k27)
+
+add the stuffs - what happens?
+
+  - made artifical chr with PRC2 complex
+    - and a slightly broken one
+  - not much happens in WT yeast
+    - no me changes
+  - deleted H3k36me3 (might antagonize artificial chr)
+    - nope
+  - can you jump start with atxr6 (does mono me)?
+    - yes (confirmed with mass spec)
+      - not super high levels (0.054% tri me)
+      
+      
+## Feng Zhang
+Advances in genome editing technologies
+
+two major classes of CRISPR
+
+  - class 1 (multi subunut)
+  - class 2 (single subunit crRNA-effector)
+  
+trying to find new class 2
+
+  - bioinformatic screen with BLAST of cas1
+  - found a bunch (Shmakov collaboration)
+  
+cas13
+
+  - added into e. coli
+  - modify to only edit RNA?
+  
+rna editing
+
+  - reversible
+  - nuclease based editing inefficient in post mitotic cells 
+  - dCas13 linked with [ADAR](https://en.wikipedia.org/wiki/ADAR) (adenosine to inosine) + guideRNA --> A to I conversion in RNA
+  - 90+% conversion
+  - 1732 off target incidents
+    - 925 off target with non-targeting guide!
+    - so protein itself is not ideal....
+    - identified non-binding residues of ADAR
+      - mutated them
+  - v2 works better
+    - 18385 off target (v1) to 20 (v2)
+  - still developing
+  
+## Molly Gasperini (Jay Shendure)
+**my fav of the night**
+
+crisprQTL mapping as a genome-wide association framework for cellular genetic screens
+  
+lots of guideRNA to made mutations, check for dif in expression
+
+nuclease inactive cas9
+
+want to test all enhancers against all genes
+
+scRNA-seq + guideRNA (multiplex gRNA)
+
+  - thus multiple perturbations per 'assay'
+  - 15-30 / cell!
+  
+targeted 1,119 candidate enhancers
+
+  - 15 guides / cell
+  - 47k cells
+  - 10X
+  - CROP-seq 
+  - works really well
+  - crisprQTL usually targets closest gene
+    - sometimes not....
+  - matches up with histone chip-seq
+  - 34.3kb average distance from enhancer <-> gene
+  
+** new data! **
+4,801 enhancers
+
+  - built logistic regression model on pilot to pick new candidates
+  - 30 guides / cell
+  - correlates with pilot
+
+manolis kellis q:
+
+  - why doesn't work so well? expected more
+  - what about multiple SNPS / block?
+  
+## Eilon Sharon (Hunter Fraser)
+
+Testing genetic var effect on fitness using precise genome editing
+
+high throughput edigint
+
+crispey:
+cas9 retron precise parallel editing via homology
+
+use bacterial reverse transcriptase and RNA retron to covalently link ssDNA donor to guide-tracrRNA
+
+can insert long sequences
+
+(yeast)
+
+measure fitness of genetic variants (growth competition)
+
+sequence every 2-3 gens
+
+model at linear relative strain abundance / time (generation #)
+
+ # missense var ~ # synonymous var for effecting fitness!
+
+## Luca Pinello
+CRISPR-SURF exploratory and interactive software for analyzing CRISPR-base tiling screens
+
+Uncover non-coding functional regions
+
+** Nice overview of CRISPR tiling strategy **
+Mutate (tile across region) -> Measure pheno change (somehow) -> Assess (sequence gRNA)
+
+No unified framework to analyze these kind of assays
+
+many challenges
+
+  - biological noise
+  - sgRNA efficiencies
+  - non-uniform spacing
+  - perturbation / assay differences
+  - epigenetic perturbation can be wide (changing 200bp or so)  
+
+deconvolve with generalized lasso
+
+fastq -> score -> segmentation -> deconvolution -> region ID
+
+# Population Genomics (Wednesday morning)
+
+## Mattias Joakobsson 
+
+** out of my field here **
+
+Sequence based approaches utilizing complete modern and ancient genomes to investigate early human history
+
+Use full genomes on ancient pops
+
+Population divergence models
+
+```{ascii}
+                      X
+     +                X
+     |                X
+     |                X
+     |                X
+     |               XXXX
+     |              XX  XXX
+time |           XXX      XX
+     |         XXX         XX
+     |        XX            XX
+     |
+     |      A B              C
+     |
+     v
+```
+
+Can model whether discordant or concordant (a,b,c) over time
+
+estimate pop divergence (time) in generations
+
+use genes from different populations to estimate divergence 
+
+  - 'tt method'
+  
+stone age humans from sourthern africa
+
+  - 13 genomes from 3 people
+  - a bit 'right' of yoruba
+  - admixture with east africa **missed something**
+
+## Jaemin Kim (Elaine Ostrander)
+Genetic Selection of Athletic Success in Sport Hunting Dogs
+
+WGS of sport hunting (10 breeds), terrier (i breeds), and 'village' dogs (unselected - an outgroup)
+
+  - 14 million SNPs
+
+59 genes under strong selectdion in hunting dogs (compare to terrier and village)
+
+  - blood circulation GO terms
+  - and a bunch of 'process' GO terms
+
+ASIC3 - resistance to muscle fatigue? 
+
+  - maybe?
+  - a guess based on known gene function (I think)
+  
+dogs do agility performance competitions
+
+  - made a metric to find breeds good at winning
+  - WGS of 92 breeds of 299 dogs
+  - ROBO1 significant 3e-4 (FDR corrected? Don't know)
+    - neuronal migration, axon guidance
+  - 1243 SNP chip
+    - dogs classified by agility performance
+    - ** do only pure breeds do agility? **
+    - ROBO1 SNP AF increases with more winning breeds
+
+racing speeds (whippet)
+
+  - not ROBO1
+  - TRPM3 (1.6e-3)
+  
+CDH23 - increased tolerance to loud noise and low startle reflex
+  - **do hunting dogs have poor hearing?**
+  
+**Useful stuff maybe for competitive dog breeders**
+
+Q (Kellis?): polymorphic nature of traits across dogs. **what's the question?**
+
+A: complex traits, incomplete answers right now
+
+Q (Kellis?): enrollment bias for dogs that will win
+
+A: tried to control by grouping breeds
+
+Q: what kind of mutations?
+
+A: mostly noncoding (**answer in LD I guess**)
+
+Q: project personality onto dog ... look at dog behavior/traits relating to this?
+
+A: try to objectively test dogs (can't trust owners....)
+
+Elaine: people developing stanrdard tests for dogs (yes, owners lie)
+
+## Ipsita Agarwal (Molly Przeworski)
+Widespread differences in the mtation spectrum of X and autosomes
+
+Males contrigute more germline mutations than females 
+
+  - epigenetic differences for gamete development (methylation)
+  - sperm in mitosis all the time
+ 
+```{ascii} 
++
+|
+|
+|                         XX
+|                       XXX
+|                    XX
+|                  X
+|               XX
+|             X
+|       X XX
+|   XXXX
+|  XX
+|                 XXXX
+|   XXXX XXX  XXXXX
+|
++------------------------+
+```
+
+Mutation rates get wider as males age (top line male, bottom female)
+
+  - **eyeball 3x worse?**
+  
+GnomAD:
+
+  - 120 million SNPs
+  - 60% singleton (50%) and doubletons (10%) for variants
+  
+Looked for X-autosome difs
+
+X/A diversity = (mutations(x) / all X) / (mutation(a) / all a)
+(a is autosome, x is chrX)
+
+Bootstrap test for mutation types to make null distribution
+
+  - big shift in X (more than expected)
+  - T->A and C->A more common in X versus autosome
+  
+Replication timing
+
+ - inactive X has more mutations
+ 
+Enriched of C>G (meiotic recombination / DSB) mutations
+
+## Amnon Koren
+Genetic architecture of human DNA replication origin activity
+
+We have extensive maps of human genomic / epigenomic
+
+But where are replication origins?
+
+  - **yeah....good q**
+  - yeast have them
+    - yeast have a DnaA/OriC signatures
+  - how to find?
+    - many techniques - don't agree well (or at all)
+    
+different parts of genomic replicate at different rates
+  
+  - **can measure coverage across time, right**
+    - yes
+  - sort G / S phase
+    - check coverage
+  - Did in 2012 with human - but not precise enough (low resolution)
+  
+Is this a polymorphic trait?
+
+  - skipped cell sorting
+  - works well enough
+    - and way faster to do
+  - **uh, wait, this has been done already (if cells are growing)**
+      - again, yes, LCL from 1000G
+
+But still, did WGS >140 hESC lines 
+  
+  - oooooo, reproduces REALLY well
+  - find 'master' ORI that are pretty much always present
+      - crucial regions in replication?
+
+GWAS of DNA replication timing
+
+  - 'rtQTL' (replication timing)
+  - big hit on chr7
+  - 756 with FDR < 0.1
+  - most fall within replication origin
+    - **direct relationship, then, cool**
+  - getting causal SNPs with CAVIAR
+  - enriched with active chromatin states
+  
+perhaps some QTL stabilize TF binding motifs
+  - stuff happening in motifs 
+
+Q: look for associations with structural variation? (1000G data)
+
+A: looking at this now
+
+Q: cell type specific? (**thank you**)
+
+A: 20-30% are dif across cell types (**cool**)
+
+Q: is ORI piggybacking on enhancer / regulatory system? (**or other way around??**)
+
+A: maybe (or other way around)
+
+Q: cis effects - did you find any trans or pleiotropy?
+
+A: nothing strong (spurious stuff maybe?)
+
+Q: HiC/3C data profiles comparisons?
+
+A: not *yet*
+
+
+## Sarah Tishkoff
+Novel loci associated with skin pigmentation identified in African populations
+
+Integrative omics of copmlex traits
+
+  - epigenomics
+  - transcriptomes
+  - microbiome
+  - metabolomics
+  - proteomics
+  - genomics
+  
+LOTS OF POSTERS
+
+200 WGS Aricans
+  - 35 million SNPS
+  - 20% novel
+  
+81% GWAS european
+
+Skin color is adaptive trait
+  - spectrophotometry of skin color
+  - and take DNA
+  - boom GWAS
+  - 1600 people
+  - found 8 regions
+  
+SLC24A5
+
+MFSD12
+  - novel
+  - transmembrane transporters
+  - found enhnacer activity
+  - functional work!
+    - KO mRNA in melanocyptes
+      - get more melanin
+      - colocalizes with lysosome
+    - ZF KO
+      - yellow gone
+    - mouse KO
+      - diff colors
+      - looks like gr/gr mouse
+        - 9bp deletion in MFSD12!
+        
+DDB1
+  - DNA repair in UV damage
+  - pigmentation in tomatoes
+  - fine mapping hits TMEM128
+  - luciferase assay with enhancer activity
+  - huge haplotype blocks of low het in europeans/asians
+    - selective sweep, near complete fixation
+    
+OCA2/HERC2
+- exon10 SNP alt splicing
+- rs1800404
+
+convergent evolution of very dark skin
+  - african and south asia
+  
+q: speculate about lysosome?
+
+a: pheomelanin made in lysosome (like) structure?
+
+q: surprised to not find var close to mcr1 
+a: no
+
+q: chimp with no hair has vitiligo?
+
+a: dont' think so - have been assured chimps have light skin
+
+##  Patrick Albers (Gil McVean)
+Non-parametric estimation of allele age for variants in pop-scale seq data
+
+Want to know history of allele at single locus
+
+Genealogical approach (GEVA)
+
+  - look for coalescent events
+      - concordant and discordance allele pairs
+  - use HMM to detecdt haplotypes segments
+    - non parametric
+  - assess allele age...not sure how
+    - incorporate time some how?
+    - **model with real data to pick parameters??**
+    
+model
+  - simulation with simple pop, const size, fixed mut rate
+  - compare estimate with actual
+  - good cor (0.953)
+  
+also tested in error-filled data
+  - haplotypes, errors, phasing issues
+  - still works, but overestimate young alleles (think they are older)
+  
+ran in simons genetci diversity project and 1000G
+  - oldest var ~37.5k years in AFR
+  - SAS 12.5K
+  - EAS 11K
+  - AMR 7.5K
+  - EUR 6K (why so young? - admixture)
+  
+cumulative coalescent decoding (CCD)
+  - what frac of your genome share with another genome back in time?
+  - ran this pair-wise across 1000G dataset
+  
+*will release a genome-wide atlas of allele age >16 million variants*
+
+## Laura Hayward (Guy Sella)
+Polygenic adaptation in response to sudden change in environment
+
+What time scale? Mentioned Human expansion out of Africa, which is ~100k years
+
+stabilizing selection reduces pheontypic variance (omega is width of trait distribution)
+  - kingsolver et al. 2001
+  
+model change of phenotpye in environment change
+
+OK...not following this talk well at all (pretty sure it's me). Laura is copiously using cartoons, which is usually works for fools like me. 
+
+not cetain whether this stuff is driven by theory or data or both
+  - no, no data
+  - equations from first princples
+  
+conclusions:
+  - polygenic adaption is rapid
+  - short term: large effects drive change
+  - long term: moderate effect alleles replace them
+  
+topol Q: is this like dogs? big changes in short term
+
+a: no, not modeling dramatic changes like this
+
+# Functional Genetics and Epigenomics
+
+## Job Dekker
+Folding, unfolding, and refolding genomes
+
+How does the genome work? **structured**
+
+Dekker et al. 2002: 3C. **I remember this paper. And totally failing at doing this tech myself**
+
+A/B compartments....TAD.....enhancer - gene loops. One slide summarzing many publications and of cool work. 
+
+```{ascii}
+                                TAD
+                                                loop (cohesin-mediated)
+                 loop (cohesin-mediated)       XXXX 
+                XXXX                         XX   XX
+              XXX   XXX                     XX      XXX
+            XX        XX                  XX           XX
+          XX            XX              XXX              XX
+        XX                X           XXX                  XXX
+      XX                   XX        XX                      XX
+    XXX                      XX    XXX                         XXX
+  XX                          XXXXX                              XX
+ XXXX                           X                XXXXXXXX       XXXX
+    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX       XXX X XX
+ctcf                           ctcf                                 ctcf
+```
+
+Interphase / metaphase
+  - interphase has structure
+  - metaphase erases structure (fat diagonal of 3c map)
+  
+meiotic chr fold as helical nested loop arrays (helix with loops coming off)
+  - Gibcus...Dekker Science 2018
+  
+Using ATAC-seq, cut&ruhn to assay CTCF binding patterning in interphase / metaphase
+
+FRAP to measure stable CTCF binding in interphase / metaphase
+  - unstable in metaphase
+  
+Q: CTCF sites occupied in mitosis - why? Nucleosomes taking over?
+
+A: Good q, don't know. Think nucleosomes 'sliding in'
+
+Q: **missed it**
+
+A: protein levels of CTCF doesn't change during what phase cell is in
+
+Q: what is keeping the promoters open during mitosis
+
+A: don't think pol is bound....promoters more open to begin with....something bookmarking the site????
+
+## Flora Vaccarino
+Integrative multi-omics analyses of iPSC-derived brain organioids
+
+ #notwitter
+ 
+## Carninci
+RADICL-seq: novel tech for genome-wide mapping of RNA-chromatin interactions
+
+Many many (~20k) functiona lncRNA
+
+But what is role? Activate genes, promoter, enhancer? Repression of genes? Establish insulation?
+
+RADICL-seq
+  - capture RNA-DNA interactions with crosslinking (formaldehyde, 1-2%)
+  
+Where do they map?
+
+  - Lots in the intron
+  - open chromatin
+  - 380k RNA-DNA interactions
+  - enriched in TF family members
+  - **looks like lots of trans interactions**
+    - **but way fewer than cis,as you would expect**
+  - some genes like MALAT1 interact with *entire* genome
+  - compartments **sort of** like TADS
+    - weak cor with Hi-C (0.27)
+
+## Johnathan Griffiths (Berthold Gottgens)
+Charting the Diversification of Mammalian Cells at whole genome scale 
+
+Gastrulation focus (mouse)
+
+>350 whole embryos
+
+Collected every 6 hours: e6.5 to e8.5
+
+10X chromium, 94k cells (post QC), 15,000 UMI (median), 3.5k detected genes (median)
+
+Big t-SNE plot
+
+  - talk of 'direction' and 'trajectory' which I dislike for t-SNE...
+  - but can back up with time point data
+
+Clustered with association of cell types to each other
+
+Chimera embryos
+
+  - KO gene, but only chimerically (inject KO mESC into blastocyst)
+  - **whoah**
+  - can compare KO **cells** vs not KO **cells** within full atlas
+  - **damn**
+  
+## Emma Farley
+Regulatory principles governing enhancer specificity during development
+
+Otxa (neural enhancer)
+
+How do enhancers encode function?
+
+Need to test in embryos across time
+
+*Ciona*
+
+  - have notochord, heart
+  
+enhnacer + prom + gfp -> electroporation == inside embryo
+
+made 2.5 million synthetic enhancers (barcoded)
+
+electroporate 100k eggs -> mRNA -> sequence (remember, we have barcodes) -> identify functional enhancers 
+  
+  - **pooling of embryos?**
+  - **doesn't seem like it...but seems like you have too for $**
+  
+Can we we make inert enhancers functional with small tweaks (change to optimal seq)
+
+  - lights up EVERYTHING
+  - *need mix of optimal and sub-optimal sites to maintain proper expression*
+
+spacing between enhancers also important
+
+  - adding just a few bp between motifs >>> expression
+
+interplay between spacing and motif 'strength' (canonical-ness)
+
+and *orientation* (flipping motifs can break function)
+
+*suboptimization* as design parameter hilarious and terrifying (great, let's make things worse to control things more precisely)
+
+wut - SHH enhancer that causes polydactyly....points out that SNP makes binding site *better*
+
+Deboever et al. Cell Stem Cell 2017
+D'Antonion et al. Nature communication 2017
+
+## Jake Yeung (Felix Naef)
+Clock dependent chromatin topology modulates circadian transcdription and behavior
+
+promoter - enhancer loops
+
+cry1 24 cycle in liver (high at night, low at day)
+
+how are enhancers used?
+
+4c-seq on mice collected every 4 hours for 24 hours
+
+  - contacts change over time
+  
+h3k27ac changes also at same location
+
+removed that region in mouse: cry1deltaE mouse
+
+  - clock runs faster (15 mins over 24 hours)
+  - corresponding mRNA difs in cry1
+  
+## Minal Caliskan (Casey Brown)
+Genetic and epigenetic fine mapping of complex trait associated loci in the human liver
+
+Genotype <-> RNA-seq <-> H3K4me3 <-> H3K27ac
+50 <-> 50 <-> 10 <-> 10 (people)
+
+Found eQTLs specific to liver (vs GTEX)
+
+Found hQTLS also (histone)
+
+eQTL + hQTL + RNA-seq to 'fine map' GWAS loci
+
+  - blood pressure
+  - coronary artery disease
+
+## Parisa Razaz (Talkwoski)
+Tissue-specific molecular sigmnature of 16p11.2 reciprocal genomic disorder
+
+engineer rgd with CRISPR (make microdels and microdups)
+
+iPSCs models and mouse models with tx profiling (brain and not brain)
+
+# Evolutionary and Non-human genomics
+
+## Monica Justice
+Informing human genetic variation and therapeutic entruy poitns through modififer screens in mice
+
+Rett syndrome
+
+  - x-linked
+  - 1/10,000 live female births
+  - developmental regression
+  - fatal in males
+  
+MeCP2
+
+  - ubiquitously expressed (highest in neuron)
+  - regulate gene expression
+  - chromatin modifier
+  
+can a second mutation improve pathological phenotype?
+  
+  - forward genetic unbiased screen in mice
+  - **how to assess phenotype???**
+  - random mutagenesis (ENU) 
+    - of males
+  - evaluate symptons to make a 'health score'
+    - **eek, so a LOT of work**
+  - screen 3200 mice
+
+exome seq G1 founder male for candidate phenotype
+  - 20-99 new lesions
+  - backcross
+  - mate 10 G2 
+  - analyze 10 G3 offspring
+
+many pathways affected
+
+  - including DNA repair and lipid metabolism
+
+sum3 line (null allele of Sqle)
+
+  - dysregulation of cholesterol pathway
+  - brain lipd turnover fails
+  - other lipids overproduced
+  
+Other mutations:
+
+  - NCoR1/SMRT
+  - HDAC3
+
+Interventions:
+
+  - Statin drugs to decrease cholesterol biosynthesis
+  - clinical trial just finished
+  
+Sum6 line: Rbbp8 (aka Ctp1, Sae2)
+
+  - DSB (double strand break) repair
+    - MeCP2 null alleles prone to DNA damage...
+  - BRCA1 as cofactor
+    - found mutations in this too that surpress symptons
+
+combination therapy
+
+  - DSB + lipid metabolism
+  - with mouse mut can 'cure' disease
+  
+**great talk**
+
+q: radio sensitivity?
+
+a: yes, higher DSB. cortex highly effected, even in cells that don't divide
+
+
+
+
+## Arang Rhie (Erich Jarvis, Adam Phillippy)
+Genome10K Vertebrate genomes Project
+
+generate error-free reference-quality gnomes assemblies for **all** 66k extant vertebrate species
+
+why? because bad ref genomes are super confusing to work with when YFG (your favorite gene) is missing 
+
+  - bad assembly a major contributor
+  
+goals
+
+  - >1 Mb N50
+  - >QV40
+  - both haplotypes (**eek**)
+  - big scaffold
+  - >90% reads to right chr/contig
+  
+only 16 genomes approaching these goals (NCBI, exclude human/mouse)
+
+name drop awesome goat paper from phillippy group
+
+  - PacBio + Hi-C + Illumina + Optical Map
+
+Phase 1:
+
+  - 200 orders, 266 species
+  
+Process:
+  
+  - PacBio for contigs
+  - Scaffolding with: 10X, Bionano, Hi-C
+  - Gap filling with PacBio (and base polishing**?**)
+  
+Evaluation:
+
+  - gEVAL (Chow et al. 2016)
+    - k-mer com-leteness
+    - synteny
+    - gene completeness (BUSCO Simao et al 2015)
+    - KAT
+    - Mashmap2
+    - Evol.Highway
+    
+Data Release!!!!!
+
+  - https://www.vertebrategenomesproject.org
+    - link doesn't work??
+    - oh, it does (click through)
+  - https://www.sanger.ac.uk/science/data/vertebrate-genomes-project
+
+Heterozygosity causes allelic dup
+
+  - zebrafinch very high
+  - using trio binning for phasing
+
+q: annotations?
+
+a: we have a working group....
+
+## Olga Dudchenko (Erez Lieberman Aiden)
+DE NOVO assembly of mammalian genomes with chr-length scaffolds from short reads for <$1000
+
+pointing out that unnamed company 1k genome requires a good reference
+
+  - this is *de novo*
+
+tile reads...contigging...but of course doesn't work too well when you hit repeats
+
+can order contigs with linking data (scaffolding)
+  
+  - EXPENSIVE and slow
+  
+Hi-C
+
+  - 3d genome sequencing
+  - make genome-wide contact map
+  - has been used to reassemble known genomes
+    - often with MANY other techniques
+    
+using hi-c contact map to correct contigs/scaffolds
+
+  - showing different types of issues (translocations/inversions/etc)
+  - GUI work to correct assembly?!
+    - juicebox, apparently (https://www.aidenlab.org/juicebox/)
+    - 'kids can do this'
+  - **they have something more automated?**
+    - **seems like would be nuts to do with just short reads (100k + pieces)**
+    
+Open to collaborations (http://www.aidenlab.org)
+
+100 Million HiC PE150 illumina + 300M DNA-seq PE150 (w2rap)
+
+3D-DNA suite
+  
+  - $1k
+  - about a week
+  - http://aidenlab.org/assembly
+  
+## Kasper Munch
+Multiple selective sweeps removed Neandertha admixture of the X chr in out of Africa pop
+
+strong selective sweeps in great ape in chr X
+
+because of inter chromosomal conflict between x and y?
+
+165 male X chromosome from Simons Genome Diversity Project
+
+  - **SGD gertting name dropped a ton this conference**
+  
+large proportion of very similar haplotyes among non-african people
+
+  - big left spike on density plot
+  - don't see in african pop
+
+what are these haplotypes?
+
+  - low divergence haplotype defined as dist less than 5e-5 of >25% people in 500kb sliding window
+  - locations grouped with ethnicity in chrX
+  
+find 500kb sweep spanning non-africans
+
+  - after leaving africa
+  - but before world-wide spread
+  
+does it overlap human-chimp common ancestor?
+
+  - yes
+  
+swept chr regions have less archaic admixture
+  - Skov et al 2018 bioRxiv for method
+
+trying to get time window of sweep
+
+  - 45k years 
+  
+why?
+
+  - don't know (for certain)
+  - 'crazy ideas'
+    - two pop leave africa
+        - only one meet neanderthal
+        - then merge
+      - many small groups leave
+      - later one big one leaves, which meets neanderthals
+      - then all merge
+
+## Gavin Sherlock
+Joint distribution of fitness effects for beneficial mutations in yeast
+
+(**did a bang up job of keeping first half of session on time**)
+
+Interested in adaptive (positive) mutations that improve fitness
+
+yeast
+
+'experimental evolution'
+
+Lineage tracing system:
+
+  - random primers
+  - plasmid library
+  - barcodes
+  - generations (with replicates)
+  - sequence barcodes after each serial transfer
+    - beneficial mutation barcodes will increase 
+    - most adapative lineages are rare (<<1%)
+    
+genotype to fitness map (ID beneficial mutations)
+
+'narrow in scope'
+
+  - conditions not very diverse 
+  - what are tradeoffs?
+  
+'achieving high fitness across a wide range of habitats is apparently hard'
+  
+  - mutations deleterious
+  - direct tradeoffs (antognistic pleiotropy)
+  - lower fitness elsewhere
+  
+what's the balance of these three effects?
+
+So...
+
+  - measure fitness in dif environments
+  - m x n matrix of fitness in environment x alt environment
+  - exponential scaling....
+  
+added second barcode to mark condition
+
+evolve populations -> isolate colones -> POOL (second barcode!) -> measure pools across n environments
+  
+  - pleiotropy common
+  - big cluster with variety of performance in alt conditions
+  - a few generally useful clones
+  - many generally bad
+  
+**no discussion of variants / genes that increase fitness?? Boooo**
+
+q: look at structural variation?
+
+a: whole chr dup very common to increase fitness for a few gene. hard to get structural data with short reads
+
+
+q: super yeast generalists? what about cycling yeast across conditions repeatedly? genetic basis of super yeast?
+
+a: have done a bit of flipping across environment. diploids more fit. **really dancing around the genetic basis question**
+
+#### Update
+Bit unfair to Gavin here (I was just really hoping for some speculation on gene function!). His [tweet](https://twitter.com/gsherloc/status/994617999331069960) response:
+
+![](/img/bog_sherlock_tweet.png)
+
+
+ 
+## Anne Ruxandra Carvunis
+The genome's reservoir of benefical proto-genes
+
+mechanism of molecular innovation
+
+proto-genes
+
+  - non-genic seq <-> pervasive expression -> adaptive potential -> novel gene
+
+yeast genome pervasively tx and has lots of 'random' ORFs (open reading frames)
+
+RiboSeq (Ingolia et al 2009) to ID translated seq
+
+  - 2k 'proto-genes'
+  - match up with RNA-seq 
+  - and predicted ORF
+  
+artifically evolve by systematic overexpression (of proto-genes)
+
+  - and put WT  yeast and check to see who wins over time
+  - so measuring growth 
+  
+find all three classes:
+
+  - beneficial (some)
+  - deleterious
+  - neutral (most)
+  
+enrichement of proto-genes in beneficial class (OR ~3 **pretty good**)
+
+found 6 generalists
+
+'network integration'
+  
+  - what are good proto-genes predicted function
+  - \#notweet
+    - (not 100% certain in results yet)
+    - **happy that Anne is sharing a bit about general proto-gene functions**
+      - **compelling stuff**
+  - **bit confused on network integration .... didn't see any evidence or discussion of it**
+    - **maybe a syntax issue?**
+
+
+
+## Elaine Ostrander
+Catalog of 722 Whole Genome Sequences Reveals Variants Controlling Morphology in Domestic Dogs
+
+dog GWAS (with WGS)
+  
+  - easy to do GWAS with low n (do high n lineages)
+  - easy to find LD block
+  - hard to find mutation
+  
+Parker et al. Cell Reports 2017 
+
+  - breed relatedness with neighbor joining tree (up to >200 dog breeds)
+  - found haplotype sharing across breeds
+  
+91 million variants
+
+  - 60% low VEP impact
+  - **argh exploded 3d pie charts!!!**
+  
+Lots of filtering, pop stratification ....
+
+  - 14 million vars
+  
+GWAS on the 14 million
+
+  - 28 associations
+  - **big table, little text**
+  - validate on known biology (Furnishing, fur length, height)
+    - yes they find the stuff they expect
+
+LCORL
+
+  - strong influence on dog size
+
+SMAD2, HMGA2, IGF1, IRS5, IGSF1 (bigger size/weight)
+
+  - also for longevity (anti correlated)
+
+ESR1 (leg length)
+
+lincRNA (near MSR83) (drop ears)
+
+gorab, chsy3 (tail shape)
+
+Working to get to 10K dog genomes (Dog10K)
+
+## Bobbie Cansdale (Claire Wade)
+3D modeling of Hi-C data to investigate spatial organization of the canine genome
+
+TADs
+  - modular units of genome struture/organization
+
+Regions assessed:
+  - MITF
+  - ASIP
+  - RALY
+  - TYRP1
+  - MC1R
+  - KRT71
+  - RSPO2
+  - MSRB3
+  - IFG1
+  
+Qualitative look at genes known to do stuff...and what genes are near them (in Hi-C TAD block)....as far as I could tell. 
+
+3D modeling....haven't done yet....
+
+# Cancer and Medical Genomics
+
+## Trey Ideker
+Decoding patient genomes through the hierarchical pathway architecture of the cancer cell
+
+'somatic' eQTL
+RNA expression + WGS + enhancers (mapped to genes with GeneHancer) + covariates to calc eQTL
+Found ~190 (including positive control TERT)
+
+**yeast now**
+
+ppi (protein protein interactions)
+  - Dutkowski et al 2013 nature methods
+  
+DCell
+  - neural network guided by hierarchical cell bio
+  - 3500 cell subsystems (**from ppi?**)
+  - 12 layers
+  - 12 million yeast genotypes (single and pairwise KO)
+  - http://d-cell.ucsd.edu
+
+DCell a model for what to hope to do one day for human
+
+## Rajbir Batra (Carlos Caldas)
+Decoding the dynamics of DNA methylation in breast cancer
+
+Cluster of breast cancer with:
+  
+  - gene expression
+  - CNV
+  - miRNA
+  
+Little epigenetics
+
+So looking at Me
+
+METABRIC data source
+  
+  - 1482 primary breast tumor
+  - 237 matched adjacent norm
+  - RRBS (reduced representation bisulfite seq)
+  
+Background drift of methylation
+
+  - tried to pick background regions (not promoters)
+  - late replication timing associated with higher me
+  
+Now look at more functional region
+
+  - but control for background drift
+  
+Change mean methylation from tumor to matched tissue
+
+  - 'epiallelic burden'
+  - heterogeneous across tumor types
+  
+
+  
+
+
+## Patrick Short (Matthew Hurles)
+Contribution of *de novo* mutations in the regulatory elements in neurodevelopment disorders and autisum
+
+DDD Study (Deciphering Developmental Disorders)
+
+  - 8k trios
+  - exome
+  
+Model germline mutation rate
+
+  - Samocha et al. 2014
+  - enrichment in missense and PTV
+  
+What proportion of remaining cases may be regulatory?
+  
+Regulatory elements
+
+  - heart enhancers
+  - VISTA
+  - Conserved elements
+  
+Look for variation in elements
+
+enrichment in fetal brain conserved elements
+
+manhattan plot not so good (flat)
+
+  - variety of reasons 
+    - enhancers shorter
+    - less consequential than proteins
+    - poor understanding of enhancer code
+    
+can we development noncoding constraint score for deep whole genomes?
+
+25,000 whole genomes
+
+mutation rate vary across genome / chr / region
+
+using random forest to model and use a large number of features
+  
+  - not so successful (see below)
+  
+~160 mb of open chromatin is contrained, most of this is conserved nucleotides in *poorly conserved elements*
+
+thinking that *1 million* deep whole genomes to accuratly model small (tfbs) sized elements
+
+selection on nucleotide level, not 'peak'/chunk level
+
+## Max Shen (David Gifford)
+Predictable and precise template-free editing of pathogneic mutations by CHRSPR-Cas9 nuclease
+
+High-throughput assay (1872 guideRNA) and deep sequencing to assess mutation pattern
+
+1262 genotypes / target site
+  
+  - mostly deletions (almost 90%)
+  - lots of 'microhomology' deletions (60%)
+    - deletion with multiple equal quality alignments
+
+built dnns to predict mutation pattern
+
+  - three models for microhomology, not microhomology, and insertion (knn for this one)
+  - *inDelphi*
+  - 90% outcomes predicted (70% single bp resolution)
+
+so mutation patterns are semi-predictable (**semi** is my language)
+
+use model to design guideRNA to get more preditable outcome
+
+**nice web app**
+  - **can't find it online...not ready yet**
+   - **https://github.com/maxwshen/indelphi-dataprocessinganalysis**
+
+## Sharon Plon (PJ Lupo)
+Cancer risk among children with non-chromosomal birth defects in the genetic ovrerlap between congenital anomalies and cancer in kids (GOBACK) study
+
+1/33 children born with birth defects
+
+GOBACK
+
+  - look for overlap between cancer and genetic abnormalities (birth defect) in children
+  
+10 million births
+0.5 million birth defects
+15k cancer
+1.8k birth defect *and* cancer
+  - **napkin math would expect 750**
+  
+more birth defects = greater chance of having cancer
+
+different defects have diff cancer increase rates
+
+can go back to the children
+  
+  - doing WGS
+
+## Massa Shoura (Andrew Fire)
+eccDNA-mediated 'scars' in the TTN gene may contribute to microfiber diversity
+
+Coding regions 'shedding' the eccDNA 'circles'
+
+Including Titin
+
+Looked at cardiomyocyte vs iPS vs lymphocytes to see if eccDNA shedding changes
+
+  - unique to cardiomyocytes
+  
+eccDNA shedding seems dynamic in different cardiomyocyte conditions
+
+## Sidi Chen
+Towards mapping functional cancer genome atlases
+
+Concept:
+
+  - cancer seq data to make cancer atlas
+  - make mouse models
+
+## Marcin Imielinski
+Signature of complex structural variation across thousands of cancer whole genomes
+
+Diversity in rearrangments across cancers
+
+Successful at finding SNV signatures
+
+  - Alexandrov et al 2013 Nature
+  
+How to count rearrangments????
+
+  - lots of types (dup / insertion / translocation /etc)
+  
+gGnome (R packages):
+  
+  - https://www.github.com/mskilab/JaBbA
+  - https://www.github.com/mskilab/gGnome
+  
+# Computational Genomics (! - **I'm very excited**)
+
+## Oliver Stegle
+Methods for the joint analysis of high-dimensional traits and samples substructure in human cohorts
+
+project high dimensional data into lower dimensions
+
+  - confounding factors
+  - inference of sparse factors (f-scLCVM)
+  - spatio-temporal dependencies (SpatialDE)
+  
+https://github.com/bioFAM/MOFA
+
+  - scheme for merging data
+
+Identification of sub-gropu specific genetic effects
+
+  - interation between environment/behavior (**self reported??**) and genotypes
+
+random effect model to match genetic structure to environment
+
+scaling up - with big 2D matrices
+
+StructLMM: mixed model interaction
+
+  - phenotye = G + GxE + additivity(?) + noise
+    - Casale et al PLOS Genetics 2017
+    
+BMI on UK biobank
+  
+  - 240k unrelated people
+  - 7.5 million variants
+  - 64 'environments'
+    - **not certain what this is**
+
+Increased power for detecting GxE (loci match GWAS ID'ed loci)
+
+How to deconvoluate which environmental var drives GxE?
+
+  - include/exclude environmental vars to rank change in bayes factor
+    - **reminds me of variable important in random forest**
+
+"Fresh results"
+
+  - can leverage GWAS info with GxE analysis
+  - genome wide search
+  - GxE of 7 metabolic traits
+      - FTO...MC4R....SEC16B
+      - **loads** of hits (nice manhattan peaks)
+  - correlation structure 
+    - loci x loci spearman cor
+    - cluster blocks by **loci**
+    - by traits not so much
+  - % variance explained
+    - adding up to 10% var
+    
+https://www.github.com/limix/struct-lmm
+  
+q: pleiotropy? metabolic traits confounding
+
+a: yes (we see overlap between traits)
+
+q: environment matrix. how sensitive to variable weighting?
+
+a: controvery over how to weight. quite robust for a not crazy amount of traits
+
+## Ben Strober (Alexis Battle)
+
+Modeling genetic effects during cellular differentiation
+
+Genetic effects dependent on cellular environment (**or cell type**)
+
+  - tx studies are generally single time point
+
+study dynamic genetic effects during cell diff in iPSC
+
+  - ID varying genetics effects
+  - new stats approaches
+  
+Cell Diff time course
+
+  - iPSC (14 lines) 
+  - 16 time steps (ranging 0 to 15) when diff to cardiomyocyte
+  - == 217 total RNA-seq samples
+  
+Marker genes going up (or down) over time as iPSC --> cardiomyocyte
+
+  - time is pc1
+    - **percent of var?**
+    
+cisEQTL in *each* time step
+  
+  - WASP combined haplotype test (Geijn Nat Meth 2014)
+  - 50-200 eQTL genes (FDR <0.1) per step
+  - replicates to independent iPSC eQTL study (Banovich Gen Res 2018)
+  
+Temporal dynamics
+  - correlation of eQTL pairs summary stats
+    - **hey look - blocks**
+
+sparse matrix factorization to find *shared* eQTL effect size (across time) patterns
+
+this compression is correlating to time step blocks
+
+id dynamic-QTL
+  
+  - GLM to predict allele-specific read counts
+    - log(y nj) == intercept + time + genotype + (time x Genotype)
+    
+rs1897133
+  
+  - association gets stronger over time
+  - **nice integrated model instead of doing tons of independent tests**
+    - **I assume the GLM gets much higher power**
+  
+obligatory slide showing enrichment in cis-regulatory elements (chromHMM enhancer)
+
+'is time the best way to quantify differentiation progress?'
+  
+  - no
+  - cell lines will develop at dif rates
+  - hmm to infer (predict) 'differentiation progress'
+    - hmm states (4 states over 15 days) work
+    
+future
+
+  - more lines
+  - more assays (single cell, ATAC)
+  - apply methods to other longitudinal data
+
+## Meena Subramaniam (Jimmie Ye and Noah Zaitlen)
+Population-scale single cell seq to reveal context specific effects in lupus
+
+(bulk) gene expression var could be due to diff cell type *proportion* or *state*
+
+  - answer: scRNA-seq
+  
+SLE (lupus)
+
+  - PBMCs (**convenient**)
+    - Meena did justify this cell type
+    
+10X chromium:
+  
+  - 1 well / donor $1300
+  - 200 donors / 200k is ... expensive
+  - 50k cells with 25 people / well
+      - $200 / donor
+  - pooling
+    - double rate increase
+    - lose sample ID
+    
+multiplexed droplet scRNA
+
+  - cell barcode
+  - then can demultiplex (with genetic var)
+  
+genetic barcode
+
+  - unique variants in sample
+    - but scRNA is mega lossy
+    - **prob have to use many variants?**
+      - **how many?**
+        - 20 gives 98% ID
+
+doublet ID (with 'demuxlet')
+
+  - bayesian model to find doublets
+  - intentionally merged samples
+    - can deconvolute robustly
+
+`mux-seq` and `dumuxlet`
+
+https://www.github.com/statgen/demuxlet
+
+https://www.satijalab.org/costpercell
+
+did human immune 'census' (**is this the new atlas?**)
+
+  - 4k cells / donor (750k total)
+  - 8 major cell types t-SNE looks good
+  - sle vs healthy have unique locations (not clean blocks / 'clsuters')
+  
+CD14+ and CD4+ *proportions* change
+
+  - EHR confirms with CBC (cor 0.83)
+  - **cool to get to check out the EHR data**
+  
+novel monocyte population
+
+  - 'intermediate monocyte'
+  - found interferon correlation
+  
+stimulate cells with interferon
+
+  - large shift in cell t-SNE patterning
+  
+change in both *proportion* and *state*
+
+search for genetic factors (GWAS)
+  
+  - flat manhattan plot
+
+cis-eQTLS
+  
+  - much better power (QQ plot)
+  - hundreds eQTLS found per cell class
+  - **cool to see cell-type specific eQTL**
+  
+data sharing (June)
+
+  - https://www.humancellatlas.org/data-sharing
+  
+q: mech for change in variance
+
+A: rare cell state....or dif enhancers being used with dif noise profile
+
+q: are you looking for novel gene signatures for cell groups?
+
+a: following up on that now
+
+
+## Ricardo D'Oliveira Albanus (Steve Parker!!! <-- Hey I know this guy)
+Information theory of ATAC-seq data predicts local chromatic kinetics and reveals novel aspects of gene regulation and genomic org
+
+http://theparkerlab.org
+
+ATAC-seq --> open chromatin --> footprints
+
+  - but not all TF leave footprints
+    - don't bind long enough
+  - CTCF, AP-1 bind a *long* time
+  - GR short time
+  - know from FRAP assays
+    - but super hard to do
+    
+can we use ATAC-seq data to infer kinetics of TF-DNA interactions?
+  
+  - can we break dependence on footprints to predict TF-DNA binding?
+    - **OMG, can we???**
+
+model theoretical binding of nucleosome / TF
+
+  - 'V plot'
+    - CTCF has a nice strong one
+    - NFKB less strong
+    
+measure chromatin information content
+  
+  - f-VICE (feature V-plot Information Content Enhancment)
+  - calc f-VICE for each TF
+    - AP-1 and CTCF has highest f-VICE score
+    
+    
+`BMO` uses ATAC-seq signal and co-occurring motifs for TF binding prediction
+
+  - compare to CENTIPEDE, DNase2TF, HINT, bedtools intersect
+  - **f-VICE not involved???**
+    - **feel like a shift happened quickly in the talk**
+  - BMO works better with (assessed with F1 of predictions)
+    - **works better for bad binders...?**
+    - compare /cor with f-VICE
+    - **so yes, `BMO` not using f-VICE (I think)**
+  - CENTIPEDE next best (pretty close)
+  
+f-VICE has 8.5 change in comparing CTCF (- cohesin) and CTCF (+ cohesin).
+  - ~10-20X diff by FRAP
+  
+**No github?**
+
+## Christina Leslie
+Decoding immune cell dysfunction
+
+In solid tumors
+
+Does epigenetic state of tumor-speicif T cells present a barrier to immunotherapy
+
+  - Want to know whether checkpoint blockade approach will work or not in a patient
+  - It does in mice (Philip Nature 2017)
+    - during development see epigenetic state change (plastic to fixed as time goes on)
+    
+**intro over, new stuff**
+
+Is CD8 T cell tolerance to self-antigens epigenetically encoded? Can tolerance be broken?
+
+model of CD* t cell tolerance to self-antigen
+
+ - TCR(GAG) xAlb:GAG (mouse) --> TCR(GAG) x Alb(GAG) give self-tolerant CD8 T cells
+  - two states
+   - native t cell (memory) and naive t cell (tolerance)
+
+ATAC and RNA-seq
+
+  - naive clusters from efector/memory/tolerant
+  - enriched in putative enhancers
+    - **is this ever NOT the case??**
+  - 1837 peaks differntial accessible (out of 95k)
+  - showing browser plots with disappearing signal
+
+correlation between accessiblity and gene expression
+
+  - very cool plot
+    - RNA log2FC on y axis, genes on x axis (each individual point colored by 'tolerant' or 'memory')
+
+can you break tolerance to become functional?
+
+  - transiently by transfer hosts (Schietinger et al Science 2012)
+  - massive expression diff when you transient rescue
+    - but no epigenetic changes
+    - **audible whoah**
+  - but how can you *really* rescue?
+    - if you immunize in black 6 background
+      - now epigenetic state changes
+      
+GLM to find epigenetic signatue of tolerance state
+
+  - peak accesbility log2FC == A + P + T
+  - Lef1 (**very cool because not DE by RNA**)
+
+
+## Pejman Mohammadi (Tuuli Lappalainen)
+Using rare allelic expression data for studying rare disease biology
+@pejminister
+
+Interpreting non-coding genome
+
+  - regulatory var important in disease/phenotypes
+  - big place, poorly annotated (**or not at all**)
+  - no clear measure of regulatory constraint
+  - in comparison coding regions
+    - codon triplets
+    - pLI, etc.
+  - want to something similar, but for noncoding
+  
+regulatory variation and expression outliers
+
+  - rna-seq noisey
+  - maybe ASE (allele specific expression)
+    - haplotype specific
+  - try to find outliers 
+    - (plot ref allele abundance / alt allele abundance  for each gene)
+    - not linked to populatin info!
+    
+how to set alleleic imbalance cutoff?
+  
+  - check GTEx
+  - but ASE patterns....are diverse (reg effect, allele freq, LD, ....)
+  
+1. define quant measure of reg var  
+2. ref. population: estimate regulator var for each gene
+3. check in patient
+
+log alleleic Fold Change (aFC)
+  
+  - Mohammadi et at Gen Res 2017
+  
+plotting different outcomes
+
+  - aFC vs experssion FC
+  - copy loss, wildtype, reg variant, 
+  
+"I'm skipping 20 of my favorite slides"
+
+How to model when so much info is missing?
+
+  - binomial model
+  - ANEVA (Analysis of Expression Variance) in GTEx data
+  - tissue specific estimates
+  
+D(g) / D(t) measure regulatory tolerance (**g and t are subscripts - I can't latex quickly*)
+
+  - ID Haplotinsufficient genes
+  - better than noncoding RVIS
+  - good heritability on independent data
+  - better than noncoding metrics (ROC)
+  
+Use skeletal muscle GTEx with Macarthur muscle disoorder cohort (~70)
+
+  - find some D(g) outliers
+  - found 20 'dosage outliers'
+    - similar to GTEx (totally dif datasets)
+    - 6x *fewer* hits than naive binomial test
+
+## Erik Garrison (Richard Durbin)
+Variation graphs for efficient unbiased pangenoimc seq interpretation
+
+want to represent 'reference' genome as a graph 
+
+  - to include variation 
+  - simulate genomes by walking along paths
+  - retain info with 'metadata' for each point 
+
+another model is have **every** base seen as a big vector
+  
+  - **certainly cleaner and simpler to visualize**
+  
+'pan genomics'
+
+  - https://github.com/vgteam/vg
+  - **intimidating flowchart**
+  - reference <-> sample (update ref) <-> known variation
+  
+applications
+
+  - 1000g pan-genome graph
+  - build and index 1000g graph
+    - "computation is tractable"
+  - performance of pan-genome worse than paired end seq against linear ref
+    - but better when a read has a variant 
+    - no bias
+  - **Erik is being explicit about limitations and strengths; very nice**
+
+yeast var graph
+
+  - with long reads
+  - graph does better overall than linear genome (5% better in mean identity)
+  
+ancient dna
+
+  - helps out a lot
+  
+graphical pangenomics
+
+  - back to the linear visualization mentioned earlier
+  - **I really like this**
+    - **I'm very freaked out by spaghetti plots of graphs**
+  
+
+## Masa Roller (Paul Flicek)
+Tissue specific enhancer and promoter evolution in mammals
+
+enhancers <-> promoters <-> gene expression
+
+using chip-seq as proxies for enhancer / promoters
+
+create comprehensive regulatory maps
+
+  - 4 tissues
+  - 10 mammals
+  - 3 histones
+  - 3 replicates
+  - 360 ChIP-Seq!
+    - 4 dropouts
+    - require min seq depth
+      - 20 million good reads for H3K27ac, H3k$me3
+      - 40 million for H3k4me1
+
+promoter == H3K27ac and H3K4me3
+enhancer == H3k27ac and H3k4me1
+
+look between tissues/species
+
+  - **UpSet plot!**
+  - testes has lots of tissue specific promoters
+  - but still many shared promtoers
+  
+tissue *specific* regulatory elements evolve more rapidly than tissue *shared* elements
+
+  - promoters and enhancers show this patterns
+
+regulatory elements rarely switch activity between tissues
+ 
+  - what do switches look like?
+  - lower H3K4me3 and lower H3k27ac
+    - maybe weak promoters?
+    
+see switches across evolution
+
+  - again, not too many
+  - some promoter <-> enhancer (**10-20% by my eyeball**)
+
