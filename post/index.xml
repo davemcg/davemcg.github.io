@@ -13,6 +13,20 @@
     
     
     <item>
+      <title>Quick Guide to Gene Name Conversion</title>
+      <link>/./post/quick-guide-to-gene-name-conversion/</link>
+      <pubDate>Mon, 18 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/quick-guide-to-gene-name-conversion/</guid>
+      <description>Background There are several popular naming systems for (human) genes:
+RefSeq (NM_000350) Ensembl (ENSG00000198691) HGNC Symbol (ABCA4) Entrez (24)  Given enough time in #bioinformatics, you will have to do every possible combination of conversions.
+This post will very briefly explain the most expedient way to automatically convert between these formats with R.
+ More exhaustive resources http://crazyhottommy.blogspot.com/2014/09/converting-gene-ids-using-bioconductor.html
+https://davetang.org/muse/2013/11/25/thoughts-converting-gene-identifiers/
+ Ensembl &amp;lt;-&amp;gt; HGNC &amp;lt;-&amp;gt; Entrez Stephen Turner has built a small set of data frames (well, tibbles) with core information, including transcript &amp;lt;-&amp;gt; gene info.</description>
+    </item>
+    
+    <item>
       <title>#BoG18: Talk Notes</title>
       <link>/./post/bog18-notes/</link>
       <pubDate>Tue, 08 May 2018 00:00:00 +0000</pubDate>
