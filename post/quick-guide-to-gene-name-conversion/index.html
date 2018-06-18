@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme" content="hugo-academic">
+  <meta name="generator" content="Hugo 0.35" />
+  <meta name="author" content="David McGaughey">
+
+  
+  
+  
+  
+    
+      
+    
+  
+  <meta name="description" content="Background There are several popular naming systems for (human) genes:
+RefSeq (NM_000350) Ensembl (ENSG00000198691) HGNC Symbol (ABCA4) Entrez (24)  Given enough time in #bioinformatics, you will have to do every possible combination of conversions.
+This post will very briefly explain the most expedient way to automatically convert between these formats with R.
+ More exhaustive resources http://crazyhottommy.blogspot.com/2014/09/converting-gene-ids-using-bioconductor.html
+https://davetang.org/muse/2013/11/25/thoughts-converting-gene-identifiers/
+ Ensembl &lt;-&gt; HGNC &lt;-&gt; Entrez Stephen Turner has built a small set of data frames (well, tibbles) with core information, including transcript &lt;-&gt; gene info.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="/./post/quick-guide-to-gene-name-conversion/">
+
+  
+
+
+  
+
+  
+  
+  <meta name="theme-color" content="#0095eb">
+  
+  
+  
+  
+    
+  
+  
+    
+    
+      
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+      
+    
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha512-6MXa8B6uaO18Hid6blRMetEIoPqHf7Ux1tnyIQdpt9qI5OACx7C+O3IVTr98vwGnlcg0LOLa02i9Y1HpVhlfiw==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.1/css/academicons.min.css" integrity="sha512-NThgw3XKQ1absAahW6to7Ey42uycrVvfNfyjqcFNgCmOCQ5AR4AO0SiXrN+8ZtYeappp56lk1WtvjVmEa+VR6A==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+  
+  
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat:400,700%7cRoboto:400,400italic,700%7cRoboto&#43;Mono">
+  
+  <link rel="stylesheet" href="/styles.css">
+  
+
+  
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-113461893-1', 'auto');
+      ga('require', 'eventTracker');
+      ga('require', 'outboundLinkTracker');
+      ga('require', 'urlChangeTracker');
+      ga('send', 'pageview');
+    </script>
+    <script async src="//www.google-analytics.com/analytics.js"></script>
+    
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g==" crossorigin="anonymous"></script>
+    
+  
+
+  
+  <link rel="alternate" href="/./index.xml" type="application/rss+xml" title="eye Bioinformatician">
+  <link rel="feed" href="/./index.xml" type="application/rss+xml" title="eye Bioinformatician">
+  
+
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="/./post/quick-guide-to-gene-name-conversion/">
+
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="twitter:site" content="@https://twitter.com/David_McGaughey">
+  <meta property="twitter:creator" content="@https://twitter.com/David_McGaughey">
+  
+  <meta property="og:site_name" content="eye Bioinformatician">
+  <meta property="og:url" content="/./post/quick-guide-to-gene-name-conversion/">
+  <meta property="og:title" content="Quick Guide to Gene Name Conversion | eye Bioinformatician">
+  <meta property="og:description" content="Background There are several popular naming systems for (human) genes:
+RefSeq (NM_000350) Ensembl (ENSG00000198691) HGNC Symbol (ABCA4) Entrez (24)  Given enough time in #bioinformatics, you will have to do every possible combination of conversions.
+This post will very briefly explain the most expedient way to automatically convert between these formats with R.
+ More exhaustive resources http://crazyhottommy.blogspot.com/2014/09/converting-gene-ids-using-bioconductor.html
+https://davetang.org/muse/2013/11/25/thoughts-converting-gene-identifiers/
+ Ensembl &lt;-&gt; HGNC &lt;-&gt; Entrez Stephen Turner has built a small set of data frames (well, tibbles) with core information, including transcript &lt;-&gt; gene info.">
+  <meta property="og:locale" content="en-us">
+  
+  <meta property="article:published_time" content="2018-06-18T00:00:00&#43;00:00">
+  
+  <meta property="article:modified_time" content="2018-06-18T00:00:00&#43;00:00">
+  
+
+  
+
+  <title>Quick Guide to Gene Name Conversion | eye Bioinformatician</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#toc" data-offset="71" >
+
+<nav class="navbar navbar-default navbar-fixed-top" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="navbar-header">
+      
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+              data-target=".navbar-collapse" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+      <a class="navbar-brand" href="/">eye Bioinformatician</a>
+    </div>
+
+    
+    <div class="collapse navbar-collapse">
+
+      
+      
+      <ul class="nav navbar-nav navbar-right">
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#about">
+            
+            <span>Home</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true">
+            
+            <span>Posts</span>
+            
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            
+            <li class="nav-item">
+              <a href="/#posts">
+                
+                <span>Recent Posts</span>
+                
+              </a>
+            </li>
+            
+            <li class="nav-item">
+              <a href="/post">
+                
+                <span>All Posts</span>
+                
+              </a>
+            </li>
+            
+          </ul>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#projects">
+            
+            <span>Projects</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#publications_selected">
+            
+            <span>Publications</span>
+            
+          </a>
+        </li>
+
+        
+        
+      
+
+      
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+  <div class="article-container">
+    <h1 itemprop="name">Quick Guide to Gene Name Conversion</h1>
+
+    
+
+<div class="article-metadata">
+
+  <span class="article-date">
+    
+    <time datetime="2018-06-18 00:00:00 &#43;0000 UTC" itemprop="datePublished dateModified">
+      Jun 18, 2018
+    </time>
+  </span>
+  <span itemscope itemprop="author publisher" itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="David McGaughey">
+  </span>
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    7 min read
+  </span>
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <a href="/./post/quick-guide-to-gene-name-conversion/#disqus_thread"></a>
+  
+
+  
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fa fa-folder"></i>
+    
+    <a href="/categories/bioinformatics">bioinformatics</a
+    >, 
+    
+    <a href="/categories/r">R</a
+    >
+    
+  </span>
+  
+  
+
+  
+  
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=Quick%20Guide%20to%20Gene%20Name%20Conversion&amp;url=%2f.%2fpost%2fquick-guide-to-gene-name-conversion%2f"
+         target="_blank" rel="noopener">
+        <i class="fa fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=%2f.%2fpost%2fquick-guide-to-gene-name-conversion%2f"
+         target="_blank" rel="noopener">
+        <i class="fa fa-facebook"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2f.%2fpost%2fquick-guide-to-gene-name-conversion%2f&amp;title=Quick%20Guide%20to%20Gene%20Name%20Conversion"
+         target="_blank" rel="noopener">
+        <i class="fa fa-linkedin"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=%2f.%2fpost%2fquick-guide-to-gene-name-conversion%2f&amp;title=Quick%20Guide%20to%20Gene%20Name%20Conversion"
+         target="_blank" rel="noopener">
+        <i class="fa fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=Quick%20Guide%20to%20Gene%20Name%20Conversion&amp;body=%2f.%2fpost%2fquick-guide-to-gene-name-conversion%2f">
+        <i class="fa fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+
+    <div class="article-style" itemprop="articleBody">
+      <div id="background" class="section level2">
+<h2>Background</h2>
+<p>There are several popular naming systems for (human) genes:</p>
+<ol style="list-style-type: decimal">
+<li>RefSeq (<a href="https://www.ncbi.nlm.nih.gov/nuccore/NM_000350">NM_000350</a>)</li>
+<li>Ensembl (<a href="https://useast.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000198691;r=1:93992835-94121132">ENSG00000198691</a>)</li>
+<li>HGNC Symbol (<a href="https://www.genenames.org/cgi-bin/gene_symbol_report?hgnc_id=HGNC:34">ABCA4</a>)</li>
+<li>Entrez (<a href="https://www.ncbi.nlm.nih.gov/gene/24">24</a>)</li>
+</ol>
+<p>Given enough time in <code>#bioinformatics</code>, you will have to do every possible combination of conversions.</p>
+<p>This post will very briefly explain the most expedient way to automatically convert between these formats with <code>R</code>.</p>
+</div>
+<div id="more-exhaustive-resources" class="section level2">
+<h2>More exhaustive resources</h2>
+<p><a href="http://crazyhottommy.blogspot.com/2014/09/converting-gene-ids-using-bioconductor.html" class="uri">http://crazyhottommy.blogspot.com/2014/09/converting-gene-ids-using-bioconductor.html</a></p>
+<p><a href="https://davetang.org/muse/2013/11/25/thoughts-converting-gene-identifiers/" class="uri">https://davetang.org/muse/2013/11/25/thoughts-converting-gene-identifiers/</a></p>
+</div>
+<div id="ensembl---hgnc---entrez" class="section level2">
+<h2>Ensembl &lt;-&gt; HGNC &lt;-&gt; Entrez</h2>
+<p>Stephen Turner has built a small set of data frames (well, tibbles) with core information, including transcript &lt;-&gt; gene info. You just install the library, run <code>library(annotables)</code> and you have tibbles for the info. Super easy.</p>
+<p><a href="https://github.com/stephenturner/annotables" class="uri">https://github.com/stephenturner/annotables</a></p>
+<pre class="r"><code>## install steps, run once
+# install.packages(&quot;devtools&quot;)
+# devtools::install_github(&quot;stephenturner/annotables&quot;)
+
+library(annotables)
+library(tidyverse)</code></pre>
+<pre><code>## ── Attaching packages ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──</code></pre>
+<pre><code>## ✔ ggplot2 2.2.1     ✔ purrr   0.2.4
+## ✔ tibble  1.4.2     ✔ dplyr   0.7.5
+## ✔ tidyr   0.8.1     ✔ stringr 1.3.1
+## ✔ readr   1.1.1     ✔ forcats 0.3.0</code></pre>
+<pre><code>## ── Conflicts ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()</code></pre>
+<pre class="r"><code>grch38 %&gt;% head()</code></pre>
+<pre><code>## # A tibble: 6 x 9
+##   ensgene  entrez symbol chr    start    end strand biotype description   
+##   &lt;chr&gt;     &lt;int&gt; &lt;chr&gt;  &lt;chr&gt;  &lt;int&gt;  &lt;int&gt;  &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;         
+## 1 ENSG000…   7105 TSPAN6 X     1.01e8 1.01e8     -1 protei… tetraspanin 6…
+## 2 ENSG000…  64102 TNMD   X     1.01e8 1.01e8      1 protei… tenomodulin […
+## 3 ENSG000…   8813 DPM1   20    5.09e7 5.10e7     -1 protei… dolichyl-phos…
+## 4 ENSG000…  57147 SCYL3  1     1.70e8 1.70e8     -1 protei… SCY1 like pse…
+## 5 ENSG000…  55732 C1orf… 1     1.70e8 1.70e8      1 protei… chromosome 1 …
+## 6 ENSG000…   2268 FGR    1     2.76e7 2.76e7     -1 protei… FGR proto-onc…</code></pre>
+<pre class="r"><code># or grch37, grcm38, rnor6, galgal5, wbcel235, bdgp6, mmul801</code></pre>
+<p>But, he did not add Refseq names. So if you need to get RefSeq names into one of the others, you’ll have to do another step.</p>
+</div>
+<div id="biomart-refseq---ensembl---hgnc---entrez" class="section level2">
+<h2>biomaRt (RefSeq &lt;-&gt; (Ensembl &lt;-&gt; HGNC &lt;-&gt; Entrez))</h2>
+<p>Ensembl’s biomaRt tool is super powerful. And very annoying to use for me, as I find the syntax impossible to remember. Also it takes over the dplyr <code>select</code> function with its own <code>select</code>. You’ll notice here I do not load biomaRt.</p>
+<p>But it can convert just about anything to anything.</p>
+<pre class="r"><code>## install steps, run once
+# source(&quot;https://bioconductor.org/biocLite.R&quot;)
+# biocLite(&quot;biomaRt&quot;)
+# library(biomaRt) # &lt;- don&#39;t load!, just use the :: 
+mart&lt;- biomaRt::useMart(biomart = &#39;ensembl&#39;, dataset = &#39;hsapiens_gene_ensembl&#39;)
+# mapping example
+refseq_ids &lt;- c(&quot;NM_006573&quot;, &quot;NM_002985&quot;, &quot;NM_032965&quot;, &quot;NM_002987&quot;, &quot;NM_006274&quot;, &quot;NM_004591&quot;, &quot;NM_002990&quot;)
+  
+refseq_mapping &lt;- biomaRt::getBM(attributes = c(&quot;refseq_mrna&quot;,&quot;hgnc_symbol&quot;), 
+                        filters=&quot;refseq_mrna&quot;, # you swap out of this filter for whatever your input is
+                        values=refseq_ids, # vector of your NMf
+                        mart=mart)
+
+refseq_mapping </code></pre>
+<pre><code>##   refseq_mrna hgnc_symbol
+## 1   NM_002985        CCL5
+## 2   NM_002987       CCL17
+## 3   NM_002990       CCL22
+## 4   NM_004591       CCL20
+## 5   NM_006274       CCL19
+## 6   NM_006573    TNFSF13B
+## 7   NM_032965       CCL15</code></pre>
+<p>If you want to get the rest of the info in Annotables matched up with the RefSeq NM, then just do a <code>left_join</code></p>
+<pre class="r"><code>left_join(refseq_mapping %&gt;% select(refseq_mrna, symbol = hgnc_symbol), grch37)</code></pre>
+<pre><code>## Joining, by = &quot;symbol&quot;</code></pre>
+<pre><code>##   refseq_mrna   symbol         ensgene entrez         chr     start
+## 1   NM_002985     CCL5 ENSG00000161570   6352          17  34198495
+## 2   NM_002985     CCL5 ENSG00000271503   6352 HG385_PATCH  34198510
+## 3   NM_002987    CCL17 ENSG00000102970   6361          16  57438679
+## 4   NM_002990    CCL22 ENSG00000102962   6367          16  57392684
+## 5   NM_004591    CCL20 ENSG00000115009   6364           2 228678558
+## 6   NM_006274    CCL19 ENSG00000172724   6363           9  34689564
+## 7   NM_006573 TNFSF13B ENSG00000102524  10673          13 108903588
+## 8   NM_032965    CCL15 ENSG00000267596   6359          17  34323476
+##         end strand        biotype
+## 1  34207797     -1 protein_coding
+## 2  34207812     -1 protein_coding
+## 3  57449974      1 protein_coding
+## 4  57400102      1 protein_coding
+## 5 228682272      1 protein_coding
+## 6  34691274     -1 protein_coding
+## 7 108960832      1 protein_coding
+## 8  34329084     -1 protein_coding
+##                                                                             description
+## 1                         chemokine (C-C motif) ligand 5 [Source:HGNC Symbol;Acc:10632]
+## 2                         chemokine (C-C motif) ligand 5 [Source:HGNC Symbol;Acc:10632]
+## 3                        chemokine (C-C motif) ligand 17 [Source:HGNC Symbol;Acc:10615]
+## 4                        chemokine (C-C motif) ligand 22 [Source:HGNC Symbol;Acc:10621]
+## 5                        chemokine (C-C motif) ligand 20 [Source:HGNC Symbol;Acc:10619]
+## 6                        chemokine (C-C motif) ligand 19 [Source:HGNC Symbol;Acc:10617]
+## 7 tumor necrosis factor (ligand) superfamily, member 13b [Source:HGNC Symbol;Acc:11929]
+## 8                        chemokine (C-C motif) ligand 15 [Source:HGNC Symbol;Acc:10613]</code></pre>
+<pre class="r"><code># we have 8 rows now becuase CCL5 has two matching ensgenes mapped to different locations</code></pre>
+</div>
+<div id="sessioninfo" class="section level2">
+<h2>sessionInfo</h2>
+<pre class="r"><code>devtools::session_info()</code></pre>
+<pre><code>## Session info -------------------------------------------------------------</code></pre>
+<pre><code>##  setting  value                       
+##  version  R version 3.5.0 (2018-04-23)
+##  system   x86_64, darwin15.6.0        
+##  ui       X11                         
+##  language (EN)                        
+##  collate  en_US.UTF-8                 
+##  tz       America/New_York            
+##  date     2018-06-18</code></pre>
+<pre><code>## Packages -----------------------------------------------------------------</code></pre>
+<pre><code>##  package       * version   date      
+##  annotables    * 0.1.91    2018-06-18
+##  AnnotationDbi   1.42.1    2018-05-08
+##  assertthat      0.2.0     2017-04-11
+##  backports       1.1.2     2017-12-13
+##  base          * 3.5.0     2018-04-24
+##  bindr           0.1.1     2018-03-13
+##  bindrcpp        0.2.2     2018-03-29
+##  Biobase         2.40.0    2018-05-01
+##  BiocGenerics    0.26.0    2018-05-01
+##  biomaRt         2.36.1    2018-05-24
+##  bit             1.1-13    2018-05-15
+##  bit64           0.9-7     2017-05-08
+##  bitops          1.0-6     2013-08-17
+##  blob            1.1.1     2018-03-25
+##  blogdown        0.6       2018-04-18
+##  bookdown        0.7       2018-02-18
+##  broom           0.4.4     2018-03-29
+##  cellranger      1.1.0     2016-07-27
+##  cli             1.0.0     2017-11-05
+##  colorspace      1.3-2     2016-12-14
+##  compiler        3.5.0     2018-04-24
+##  crayon          1.3.4     2017-09-16
+##  curl            3.2       2018-03-28
+##  datasets      * 3.5.0     2018-04-24
+##  DBI             1.0.0     2018-05-02
+##  devtools        1.13.5    2018-02-18
+##  digest          0.6.15    2018-01-28
+##  dplyr         * 0.7.5     2018-05-19
+##  evaluate        0.10.1    2017-06-24
+##  forcats       * 0.3.0     2018-02-19
+##  foreign         0.8-70    2017-11-28
+##  ggplot2       * 2.2.1     2016-12-30
+##  glue            1.2.0     2017-10-29
+##  graphics      * 3.5.0     2018-04-24
+##  grDevices     * 3.5.0     2018-04-24
+##  grid            3.5.0     2018-04-24
+##  gtable          0.2.0     2016-02-26
+##  haven           1.1.1     2018-01-18
+##  hms             0.4.2     2018-03-10
+##  htmltools       0.3.6     2017-04-28
+##  httr            1.3.1     2017-08-20
+##  IRanges         2.14.10   2018-05-16
+##  jsonlite        1.5       2017-06-01
+##  knitr           1.20      2018-02-20
+##  lattice         0.20-35   2017-03-25
+##  lazyeval        0.2.1     2017-10-29
+##  lubridate       1.7.4     2018-04-11
+##  magrittr        1.5       2014-11-22
+##  memoise         1.1.0     2017-04-21
+##  methods       * 3.5.0     2018-04-24
+##  mnormt          1.5-5     2016-10-15
+##  modelr          0.1.2     2018-05-11
+##  munsell         0.4.3     2016-02-13
+##  nlme            3.1-137   2018-04-07
+##  parallel        3.5.0     2018-04-24
+##  pillar          1.2.3     2018-05-25
+##  pkgconfig       2.0.1     2017-03-21
+##  plyr            1.8.4     2016-06-08
+##  prettyunits     1.0.2     2015-07-13
+##  progress        1.1.2     2016-12-14
+##  psych           1.8.4     2018-05-06
+##  purrr         * 0.2.4     2017-10-18
+##  R6              2.2.2     2017-06-17
+##  Rcpp            0.12.17   2018-05-18
+##  RCurl           1.95-4.10 2018-01-04
+##  readr         * 1.1.1     2017-05-16
+##  readxl          1.1.0     2018-04-20
+##  reshape2        1.4.3     2017-12-11
+##  rlang           0.2.1     2018-05-30
+##  rmarkdown       1.9       2018-03-01
+##  rprojroot       1.3-2     2018-01-03
+##  RSQLite         2.1.1     2018-05-06
+##  rstudioapi      0.7       2017-09-07
+##  rvest           0.3.2     2016-06-17
+##  S4Vectors       0.18.2    2018-05-16
+##  scales          0.5.0     2017-08-24
+##  stats         * 3.5.0     2018-04-24
+##  stats4          3.5.0     2018-04-24
+##  stringi         1.2.2     2018-05-02
+##  stringr       * 1.3.1     2018-05-10
+##  tibble        * 1.4.2     2018-01-22
+##  tidyr         * 0.8.1     2018-05-18
+##  tidyselect      0.2.4     2018-02-26
+##  tidyverse     * 1.2.1     2017-11-14
+##  tools           3.5.0     2018-04-24
+##  utf8            1.1.4     2018-05-24
+##  utils         * 3.5.0     2018-04-24
+##  withr           2.1.2     2018-03-15
+##  xfun            0.1       2018-01-22
+##  XML             3.98-1.11 2018-04-16
+##  xml2            1.2.0     2018-01-24
+##  yaml            2.1.19    2018-05-01
+##  source                                   
+##  Github (stephenturner/annotables@958545a)
+##  Bioconductor                             
+##  CRAN (R 3.5.0)                           
+##  CRAN (R 3.5.0)                           
+##  local                                    
+##  CRAN (R 3.5.0)                           
+##  CRAN (R 3.5.0)                           
+##  Bioconductor                             
+##  Bioconductor                             
+##  Bioconductor                             
+##  CRAN (R 3.5.0)                           
+##  CRAN (R 3.5.0)                           
+##  CRAN (R 3.5.0)                           
+##  CRAN (R 3.5.0)                           
+##  CRAN (R 3.5.0)                           
+##  CRAN (R 3.5.0)                           
+##  CRAN (R 3.5.0)                           
+##  CRAN (R 3.5.0)                           
+##  CRAN (R 3.5.0)                           
+##  CRAN (R 3.5.0)                           
+##  local                                    
+##  CRAN (R 3.5.0)                           
+##  CRAN (R 3.5.0)                           
+##  local                                    
+##  CRAN (R 3.5.0)                           
+##  CRAN (R 3.5.0)                           
+##  CRAN (R 3.5.0)                           
+##  CRAN (R 3.5.0)                           
+##  CRAN (R 3.5.0)                           
+##  CRAN (R 3.5.0)                           
+##  CRAN (R 3.5.0)                           
+##  CRAN (R 3.5.0)                           
+##  CRAN (R 3.5.0)                           
+##  local                                    
+##  local                                    
+##  local                                    
+##  CRAN (R 3.5.0)                           
+##  CRAN (R 3.5.0)                           
+##  CRAN (R 3.5.0)                           
+##  CRAN (R 3.5.0)                           
+##  CRAN (R 3.5.0)                           
+##  Bioconductor                             
+##  CRAN (R 3.5.0)                           
+##  CRAN (R 3.5.0)                           
+##  CRAN (R 3.5.0)                           
+##  CRAN (R 3.5.0)                           
+##  CRAN (R 3.5.0)                           
+##  CRAN (R 3.5.0)                           
+##  CRAN (R 3.5.0)                           
+##  local                                    
+##  CRAN (R 3.5.0)                           
+##  CRAN (R 3.5.0)                           
+##  CRAN (R 3.5.0)                           
+##  CRAN (R 3.5.0)                           
+##  local                                    
+##  CRAN (R 3.5.0)                           
+##  CRAN (R 3.5.0)                           
+##  CRAN (R 3.5.0)                           
+##  CRAN (R 3.5.0)                           
+##  CRAN (R 3.5.0)                           
+##  CRAN (R 3.5.0)                           
+##  CRAN (R 3.5.0)                           
+##  CRAN (R 3.5.0)                           
+##  CRAN (R 3.5.0)                           
+##  CRAN (R 3.5.0)                           
+##  CRAN (R 3.5.0)                           
+##  CRAN (R 3.5.0)                           
+##  CRAN (R 3.5.0)                           
+##  CRAN (R 3.5.0)                           
+##  CRAN (R 3.5.0)                           
+##  CRAN (R 3.5.0)                           
+##  CRAN (R 3.5.0)                           
+##  CRAN (R 3.5.0)                           
+##  CRAN (R 3.5.0)                           
+##  Bioconductor                             
+##  CRAN (R 3.5.0)                           
+##  local                                    
+##  local                                    
+##  CRAN (R 3.5.0)                           
+##  CRAN (R 3.5.0)                           
+##  CRAN (R 3.5.0)                           
+##  CRAN (R 3.5.0)                           
+##  CRAN (R 3.5.0)                           
+##  CRAN (R 3.5.0)                           
+##  local                                    
+##  CRAN (R 3.5.0)                           
+##  local                                    
+##  CRAN (R 3.5.0)                           
+##  CRAN (R 3.5.0)                           
+##  CRAN (R 3.5.0)                           
+##  CRAN (R 3.5.0)                           
+##  CRAN (R 3.5.0)</code></pre>
+</div>
+
+    </div>
+
+    
+
+
+<div class="article-tags">
+  
+  <a class="btn btn-primary btn-outline" href="/tags/bioinformatics">bioinformatics</a>
+  
+</div>
+
+
+
+
+    
+    
+    <div class="article-widget">
+      <div class="hr-light"></div>
+      <h3>Related</h3>
+      <ul>
+        
+        <li><a href="/post/simple-heatmaps-with-complexheatmaps/">Let&#39;s Plot 6: Simple guide to heatmaps with ComplexHeatmaps</a></li>
+        
+        <li><a href="/post/easy-bam-downsampling/">Easy bam downsampling</a></li>
+        
+        <li><a href="/post/are-you-in-genomics-stop-using-roc-use-pr/">Are you in genomics and building models? Stop using ROC - use PR</a></li>
+        
+        <li><a href="/post/let-s-plot-4-r-vs-excel/">Let’s Plot 4: R vs Excel, Round 1</a></li>
+        
+        <li><a href="/post/let-s-plot-3-base-pair-resolution-ngs-exome-coverage-plots/">Let’s Plot 3: Base pair resolution NGS (exome) coverage plots - Part 2</a></li>
+        
+      </ul>
+    </div>
+    
+
+    
+
+    
+<section id="comments">
+  <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "davemcg-gitub-io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+
+  </div>
+</article>
+
+<footer class="site-footer">
+  <div class="container">
+    <p class="powered-by">
+
+      &copy; 2018 &middot; 
+
+      Powered by the
+      <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+      <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+      <span class="pull-right" aria-hidden="true">
+        <a href="#" id="back_to_top">
+          <span class="button_icon">
+            <i class="fa fa-chevron-up fa-2x"></i>
+          </span>
+        </a>
+      </span>
+
+    </p>
+  </div>
+</footer>
+
+
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close btn-large" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Cite</h4>
+      </div>
+      <div>
+        <pre><code class="modal-body tex"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-primary btn-outline js-copy-cite" href="#" target="_blank">
+          <i class="fa fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-primary btn-outline js-download-cite" href="#" target="_blank">
+          <i class="fa fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+    
+    <script id="dsq-count-scr" src="//davemcg-gitub-io.disqus.com/count.js" async></script>
+    
+
+    
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha512-3P8rXCuGJdNZOnUx/03c1jOTnMn3rP63nBip5gOP2qmUh5YAdVAvFZ1E+QLZZbC1rtMrQb+mah3AfYW11RUrWA==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.3/imagesloaded.pkgd.min.js" integrity="sha512-umsR78NN0D23AzgoZ11K7raBD+R6hqKojyBZs1w8WvYlsI+QuKRGBx3LFCwhatzBunCjDuJpDHwxD13sLMbpRA==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha512-iztkobsvnjKfAtTNdHkGVjAYTrrtlC7mGp/54c40wowO7LhURYl3gVzzcEqGl/qKXQltJ2HwMrdLcNUdo+N/RQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+    
+    
+    <script src="/js/hugo-academic.js"></script>
+    
+
+    
+    
+      
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+      
+
+      
+
+      
+
+      <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML" integrity="sha512-tOav5w1OjvsSJzePRtt2uQPFwBoHt1VZcUq8l8nm5284LEKE9FSJBQryzMBzHxY5P0zRdNqEcpLIRVYFNgu1jw==" crossorigin="anonymous"></script>
+    
+    
+
+  </body>
+</html>
+

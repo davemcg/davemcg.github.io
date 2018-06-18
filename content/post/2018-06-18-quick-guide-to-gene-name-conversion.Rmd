@@ -1,0 +1,87 @@
+---
+title: Quick Guide to Gene Name Conversion
+author: David McGaughey
+date: '2018-06-18'
+slug: quick-guide-to-gene-name-conversion
+categories:
+  - bioinformatics
+  - R
+tags:
+  - bioinformatics
+header:
+  caption: ''
+  image: ''
+---
+
+## Background
+
+There are several popular naming systems for (human) genes:
+
+1. RefSeq ([NM_000350](https://www.ncbi.nlm.nih.gov/nuccore/NM_000350))
+2. Ensembl ([ENSG00000198691](https://useast.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000198691;r=1:93992835-94121132))
+3. HGNC Symbol ([ABCA4](https://www.genenames.org/cgi-bin/gene_symbol_report?hgnc_id=HGNC:34))
+4. Entrez ([24](https://www.ncbi.nlm.nih.gov/gene/24))
+
+Given enough time in `#bioinformatics`, you will have to do every possible combination of conversions. 
+
+This post will very briefly explain the most expedient way to automatically convert between these formats with `R`. 
+
+## More exhaustive resources
+
+http://crazyhottommy.blogspot.com/2014/09/converting-gene-ids-using-bioconductor.html
+
+https://davetang.org/muse/2013/11/25/thoughts-converting-gene-identifiers/
+
+## Ensembl <-> HGNC <-> Entrez
+
+Stephen Turner has built a small set of data frames (well, tibbles) with core information, including transcript <-> gene info. You just install the library, run `library(annotables)` and you have tibbles for the info. Super easy.
+
+https://github.com/stephenturner/annotables
+
+```{r}
+## install steps, run once
+# install.packages("devtools")
+# devtools::install_github("stephenturner/annotables")
+
+library(annotables)
+library(tidyverse)
+grch38 %>% head()
+# or grch37, grcm38, rnor6, galgal5, wbcel235, bdgp6, mmul801
+```
+
+But, he did not add Refseq names. So if you need to get RefSeq names into one of the others, you'll have to do another step.
+
+## biomaRt (RefSeq <-> (Ensembl <-> HGNC <-> Entrez))
+
+Ensembl's biomaRt tool is super powerful. And very annoying to use for me, as I find the syntax impossible to remember. Also it takes over the dplyr `select` function with its own `select`. You'll notice here I do not load biomaRt. 
+
+But it can convert just about anything to anything. 
+
+```{r}
+## install steps, run once
+# source("https://bioconductor.org/biocLite.R")
+# biocLite("biomaRt")
+# library(biomaRt) # <- don't load!, just use the :: 
+mart<- biomaRt::useMart(biomart = 'ensembl', dataset = 'hsapiens_gene_ensembl')
+# mapping example
+refseq_ids <- c("NM_006573", "NM_002985", "NM_032965", "NM_002987", "NM_006274", "NM_004591", "NM_002990")
+  
+refseq_mapping <- biomaRt::getBM(attributes = c("refseq_mrna","hgnc_symbol"), 
+                        filters="refseq_mrna", # you swap out of this filter for whatever your input is
+                        values=refseq_ids, # vector of your NMf
+                        mart=mart)
+
+refseq_mapping 
+```
+
+If you want to get the rest of the info in Annotables matched up with the RefSeq NM, then just do a `left_join`
+
+```{r}
+left_join(refseq_mapping %>% select(refseq_mrna, symbol = hgnc_symbol), grch37)
+# we have 8 rows now becuase CCL5 has two matching ensgenes mapped to different locations
+```
+
+## sessionInfo
+```{r}
+devtools::session_info()
+```
