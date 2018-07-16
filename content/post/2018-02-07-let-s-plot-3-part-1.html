@@ -1,0 +1,377 @@
+---
+title: 'Let’s Plot 3: Base pair resolution NGS coverage plots (Part I)'
+author: David McGaughey
+date: '2018-02-07'
+slug: let-s-plot-3-part-I
+categories:
+  - bioinformatics
+  - Let’s Plot
+  - R
+tags:
+  - bioinformatics
+  - ggplot2
+  - Let's Plot
+  - quinlanverse
+  - R
+output:
+  blogdown::html_page:
+    toc: true
+---
+
+
+<div id="TOC">
+<ul>
+<li><a href="#load-data">Load data</a></li>
+<li><a href="#curious">Curious?</a></li>
+<li><a href="#data">Data</a></li>
+<li><a href="#how-many-genes-are-in-this-dataset">How many genes are in this dataset?</a></li>
+<li><a href="#what-genes-are-in-here">What genes are in here?</a></li>
+<li><a href="#how-many-data-points-bases-per-gene">How many data points (bases) per gene?</a></li>
+<li><a href="#how-many-exons-per-gene">How many exons per gene?</a></li>
+<li><a href="#how-many-base-pairs-of-abca4-well-abca4-exons-is-covered-by-more-than-10-reads">How many base pairs of ABCA4 (well, ABCA4 exons) is covered by more than 10 reads?</a></li>
+<li><a href="#reads">5 reads?</a></li>
+<li><a href="#lets-check-all-of-the-genes-to-see-which-are-the-worst-covered">Let’s check all of the genes to see which are the worst covered</a></li>
+<li><a href="#we-can-visually-display-the-data-also">We can visually display the data, also</a></li>
+<li><a href="#hard-to-see-what-is-going-on-lets-make-little-plots-for-each-gene">Hard to see what is going on, let’s make little plots for each gene</a></li>
+<li><a href="#where-are-genes-poorly-covered">Where are genes poorly covered?</a><ul>
+<li><a href="#bbip1">BBIP1</a></li>
+</ul></li>
+<li><a href="#make-a-coverage-plot-for-many-genes-this-is-advanced-stuff">Make a coverage plot for many genes (This is advanced stuff!!!)</a></li>
+</ul>
+</div>
+
+<div id="load-data" class="section level2">
+<h2>Load data</h2>
+<p>This is a departure from the previous installments, as we are loading in a very processed dataset. The reasons why are numerous:</p>
+<ol style="list-style-type: decimal">
+<li>The original data is 330mb, compressed</li>
+<li>After loading (2 minutes on my quite fast computer) and uncompressing, it takes over 10GB of RAM on my computer</li>
+<li>The original data needed a severe amount of massaging to make it quickly useable:
+- Annotating with gene name
+- Identifying primary transcript for gene
+- Expanding range data into row-form*</li>
+</ol>
+<ul>
+<li><code>mosdepth</code> provides read depth as ranges. So instead of writing a row for each of the three billion+ base pairs, <code>mosdepth</code> collapses adjacent rows with identical read depth together. This is crucial for saving space, especially for exomes, which have huge stretches of zero coverage since only ~3% of the genome is targeted.</li>
+</ul>
+</div>
+<div id="curious" class="section level2">
+<h2>Curious?</h2>
+<p>If you want to see how I did the above, see <a href="/post/let-s-plot-3-base-pair-resolution-ngs-exome-coverage-plots">Part 2</a>. This post also has some cooler plots.</p>
+</div>
+<div id="data" class="section level2">
+<h2>Data</h2>
+<p><code>dd_class.csv</code> can be found <a href="https://github.com/davemcg/Let_us_plot/raw/master/003_coverage/dd_class.csv">here</a></p>
+<pre class="r"><code>library(tidyverse)</code></pre>
+<pre><code>## ── Attaching packages ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──</code></pre>
+<pre><code>## ✔ ggplot2 3.0.0     ✔ purrr   0.2.4
+## ✔ tibble  1.4.2     ✔ dplyr   0.7.6
+## ✔ tidyr   0.8.1     ✔ stringr 1.3.1
+## ✔ readr   1.1.1     ✔ forcats 0.3.0</code></pre>
+<pre><code>## ── Conflicts ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()</code></pre>
+<pre class="r"><code>library(data.table)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;data.table&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:dplyr&#39;:
+## 
+##     between, first, last</code></pre>
+<pre><code>## The following object is masked from &#39;package:purrr&#39;:
+## 
+##     transpose</code></pre>
+<pre class="r"><code>library(cowplot) # you may need to install this with install.packages(&#39;cowplot&#39;)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;cowplot&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:ggplot2&#39;:
+## 
+##     ggsave</code></pre>
+<pre class="r"><code>dd_class &lt;- fread(&#39;~/git/Let_us_plot/003_coverage/dd_class.csv&#39;)
+
+head(dd_class)</code></pre>
+<pre><code>##           Transcript Exon Number    Start Chr      End Read_Depth Strand
+## 1: ENST00000020945.3           0 49831356   8 49831367        108      -
+## 2: ENST00000020945.3           0 49831357   8 49831367        108      -
+## 3: ENST00000020945.3           0 49831358   8 49831367        108      -
+## 4: ENST00000020945.3           0 49831359   8 49831367        108      -
+## 5: ENST00000020945.3           0 49831360   8 49831367        108      -
+## 6: ENST00000020945.3           0 49831361   8 49831367        108      -
+##    ExonStart  ExonEnd  Name
+## 1:  49831365 49831547 SNAI2
+## 2:  49831365 49831547 SNAI2
+## 3:  49831365 49831547 SNAI2
+## 4:  49831365 49831547 SNAI2
+## 5:  49831365 49831547 SNAI2
+## 6:  49831365 49831547 SNAI2</code></pre>
+</div>
+<div id="how-many-genes-are-in-this-dataset" class="section level2">
+<h2>How many genes are in this dataset?</h2>
+<pre class="r"><code>dd_class$Name %&gt;% unique() %&gt;% length()</code></pre>
+<pre><code>## [1] 118</code></pre>
+</div>
+<div id="what-genes-are-in-here" class="section level2">
+<h2>What genes are in here?</h2>
+<pre class="r"><code>dd_class$Name %&gt;% unique() %&gt;% sort()</code></pre>
+<pre><code>##   [1] &quot;ABCA4&quot;    &quot;ABCB6&quot;    &quot;AIPL1&quot;    &quot;ALDH1A3&quot;  &quot;ARL6&quot;     &quot;ATF6&quot;    
+##   [7] &quot;ATOH7&quot;    &quot;BBIP1&quot;    &quot;BBS1&quot;     &quot;BBS10&quot;    &quot;BBS12&quot;    &quot;BBS5&quot;    
+##  [13] &quot;BBS7&quot;     &quot;BBS9&quot;     &quot;BCOR&quot;     &quot;BMP4&quot;     &quot;CACNA1F&quot;  &quot;CACNA2D4&quot;
+##  [19] &quot;CASK&quot;     &quot;CDHR1&quot;    &quot;CEP290&quot;   &quot;CHD7&quot;     &quot;CNGB3&quot;    &quot;CNNM4&quot;   
+##  [25] &quot;COL4A1&quot;   &quot;COX7B&quot;    &quot;CRX&quot;      &quot;CYP1B1&quot;   &quot;DCDC1&quot;    &quot;EDN3&quot;    
+##  [31] &quot;EDNRB&quot;    &quot;ELP4&quot;     &quot;FKRP&quot;     &quot;FKTN&quot;     &quot;FOXC1&quot;    &quot;FOXC2&quot;   
+##  [37] &quot;FOXE3&quot;    &quot;GDF3&quot;     &quot;GDF6&quot;     &quot;GNAT2&quot;    &quot;HESX1&quot;    &quot;HMGB3&quot;   
+##  [43] &quot;HPS1&quot;     &quot;HPS3&quot;     &quot;HPS4&quot;     &quot;HPS5&quot;     &quot;HPS6&quot;     &quot;INPP5E&quot;  
+##  [49] &quot;ISPD&quot;     &quot;KCNJ13&quot;   &quot;KCNV2&quot;    &quot;KIT&quot;      &quot;LAMB2&quot;    &quot;LHX2&quot;    
+##  [55] &quot;LYST&quot;     &quot;LZTFL1&quot;   &quot;MAB21L2&quot;  &quot;MFRP&quot;     &quot;MITF&quot;     &quot;MKKS&quot;    
+##  [61] &quot;MKS1&quot;     &quot;MLPH&quot;     &quot;MYO5A&quot;    &quot;NAA10&quot;    &quot;NDP&quot;      &quot;NPHP1&quot;   
+##  [67] &quot;NRL&quot;      &quot;OCA2&quot;     &quot;OTX2&quot;     &quot;PAX2&quot;     &quot;PAX3&quot;     &quot;PAX6&quot;    
+##  [73] &quot;PDE6C&quot;    &quot;PDE6H&quot;    &quot;PITPNM3&quot;  &quot;PITX2&quot;    &quot;PITX3&quot;    &quot;POMT1&quot;   
+##  [79] &quot;POMT2&quot;    &quot;PROM1&quot;    &quot;PRPH2&quot;    &quot;PRSS56&quot;   &quot;RAB18&quot;    &quot;RAB27A&quot;  
+##  [85] &quot;RAB3GAP1&quot; &quot;RAB3GAP2&quot; &quot;RARB&quot;     &quot;RAX&quot;      &quot;RAX2&quot;     &quot;RDH5&quot;    
+##  [91] &quot;RET&quot;      &quot;RIMS1&quot;    &quot;RPGR&quot;     &quot;RPGRIP1&quot;  &quot;SDCCAG8&quot;  &quot;SEMA4A&quot;  
+##  [97] &quot;SHH&quot;      &quot;SIX3&quot;     &quot;SIX6&quot;     &quot;SLC24A5&quot;  &quot;SLC25A1&quot;  &quot;SLC38A8&quot; 
+## [103] &quot;SLC45A2&quot;  &quot;SNAI2&quot;    &quot;SNX3&quot;     &quot;SOX10&quot;    &quot;SOX2&quot;     &quot;SOX3&quot;    
+## [109] &quot;STRA6&quot;    &quot;TENM3&quot;    &quot;TMEM98&quot;   &quot;TRIM32&quot;   &quot;TTC8&quot;     &quot;TTLL5&quot;   
+## [115] &quot;UNC119&quot;   &quot;VAX1&quot;     &quot;VSX2&quot;     &quot;ZEB2&quot;</code></pre>
+</div>
+<div id="how-many-data-points-bases-per-gene" class="section level2">
+<h2>How many data points (bases) per gene?</h2>
+<pre class="r"><code>dd_class %&gt;% 
+  group_by(Name) %&gt;% 
+  summarise(Count=n())</code></pre>
+<pre><code>## # A tibble: 118 x 2
+##    Name    Count
+##    &lt;chr&gt;   &lt;int&gt;
+##  1 ABCA4    6804
+##  2 ABCB6    2527
+##  3 AIPL1    1159
+##  4 ALDH1A3  1550
+##  5 ARL6      569
+##  6 ATF6     2008
+##  7 ATOH7     457
+##  8 BBIP1     220
+##  9 BBS1     1773
+## 10 BBS10    2172
+## # ... with 108 more rows</code></pre>
+</div>
+<div id="how-many-exons-per-gene" class="section level2">
+<h2>How many exons per gene?</h2>
+<pre class="r"><code>dd_class %&gt;% 
+  select(Name, `Exon Number`) %&gt;% 
+  unique() %&gt;% 
+  group_by(Name) %&gt;% 
+  summarise(Count = n())</code></pre>
+<pre><code>## # A tibble: 118 x 2
+##    Name    Count
+##    &lt;chr&gt;   &lt;int&gt;
+##  1 ABCA4      50
+##  2 ABCB6      19
+##  3 AIPL1       6
+##  4 ALDH1A3    13
+##  5 ARL6        7
+##  6 ATF6       16
+##  7 ATOH7       1
+##  8 BBIP1       2
+##  9 BBS1       17
+## 10 BBS10       2
+## # ... with 108 more rows</code></pre>
+</div>
+<div id="how-many-base-pairs-of-abca4-well-abca4-exons-is-covered-by-more-than-10-reads" class="section level2">
+<h2>How many base pairs of ABCA4 (well, ABCA4 exons) is covered by more than 10 reads?</h2>
+<p>Base R style</p>
+<pre class="r"><code># Grab the Read_Depth vector from the data frame filtered by ABCA4 values
+depth_abca4 &lt;- dd_class %&gt;% 
+  filter(Name==&#39;ABCA4&#39;) %&gt;% 
+  pull(Read_Depth)
+sum(depth_abca4 &gt; 10)</code></pre>
+<pre><code>## [1] 6803</code></pre>
+</div>
+<div id="reads" class="section level2">
+<h2>5 reads?</h2>
+<pre class="r"><code>sum(depth_abca4 &gt; 5)</code></pre>
+<pre><code>## [1] 6804</code></pre>
+</div>
+<div id="lets-check-all-of-the-genes-to-see-which-are-the-worst-covered" class="section level2">
+<h2>Let’s check all of the genes to see which are the worst covered</h2>
+<pre class="r"><code>dd_class %&gt;% 
+  group_by(Name) %&gt;% 
+  summarise(Total_Bases = n(),
+            LT5 = sum(Read_Depth &lt; 5),
+            LT10 = sum(Read_Depth &lt; 10),
+            Good = sum(Read_Depth &gt;= 10),
+            P5 = LT5 / Total_Bases,
+            P10 = LT10 / Total_Bases) %&gt;% 
+  arrange(-P10)</code></pre>
+<pre><code>## # A tibble: 118 x 7
+##    Name    Total_Bases   LT5  LT10  Good      P5     P10
+##    &lt;chr&gt;         &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+##  1 BBIP1           220     0    61   159 0       0.277  
+##  2 ISPD           1339     0    57  1282 0       0.0426 
+##  3 CASK           2778     0    79  2699 0       0.0284 
+##  4 NAA10           725     0    10   715 0       0.0138 
+##  5 CNGB3          2436     0    18  2418 0       0.00739
+##  6 LYST          11400    13    66 11334 0.00114 0.00579
+##  7 PROM1          2601     0     8  2593 0       0.00308
+##  8 RET            3348     0     9  3339 0       0.00269
+##  9 CEP290         7456     0    18  7438 0       0.00241
+## 10 SLC25A1         933     0     2   931 0       0.00214
+## # ... with 108 more rows</code></pre>
+</div>
+<div id="we-can-visually-display-the-data-also" class="section level2">
+<h2>We can visually display the data, also</h2>
+<pre class="r"><code>dd_class %&gt;% 
+  ggplot(aes(x=Read_Depth, group=Name)) +
+  geom_density()</code></pre>
+<p><img src="/./post/2018-02-07-let-s-plot-3-part-1_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+</div>
+<div id="hard-to-see-what-is-going-on-lets-make-little-plots-for-each-gene" class="section level2">
+<h2>Hard to see what is going on, let’s make little plots for each gene</h2>
+<pre class="r"><code>dd_class %&gt;% 
+  ggplot(aes(x=Read_Depth, group=Name)) +
+  facet_wrap(~Name) + 
+  geom_density()</code></pre>
+<p><img src="/./post/2018-02-07-let-s-plot-3-part-1_files/figure-html/unnamed-chunk-10-1.png" width="960" />
+##<a href="/img/lets_plot3_density.png"></a></p>
+</div>
+<div id="where-are-genes-poorly-covered" class="section level2">
+<h2>Where are genes poorly covered?</h2>
+<div id="bbip1" class="section level3">
+<h3>BBIP1</h3>
+<pre class="r"><code>dd_class %&gt;% filter(Name==&#39;BBIP1&#39;) %&gt;% 
+  ggplot(aes(x=Start, y=Read_Depth)) + 
+  facet_wrap(~`Exon Number`, scales = &#39;free_x&#39;, nrow=1, strip.position = &#39;bottom&#39;) + 
+  geom_point(size=0.1) + theme_minimal() +
+  theme(axis.text.x=element_blank(), 
+        axis.ticks.x = element_blank(), 
+        panel.grid.minor = element_blank(), 
+        panel.grid.major.x = element_blank(),
+        legend.position = &#39;none&#39;) + 
+  ylab(&#39;Depth&#39;) + 
+  xlab(&#39;Exon Number&#39;)</code></pre>
+<p><img src="/./post/2018-02-07-let-s-plot-3-part-1_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+</div>
+</div>
+<div id="make-a-coverage-plot-for-many-genes-this-is-advanced-stuff" class="section level2">
+<h2>Make a coverage plot for many genes (This is advanced stuff!!!)</h2>
+<pre class="r"><code>gene_list &lt;- c(&#39;ABCA4&#39;, &#39;PITX2&#39;,&#39;VSX2&#39;,&#39;RPGR&#39;,&#39;SOX10&#39;)
+
+# set a custom color that will work even if a category is missing
+scale_colour_custom &lt;- function(...){
+  ggplot2:::manual_scale(&#39;colour&#39;, 
+                         values = setNames(c(&#39;darkred&#39;, &#39;red&#39;, &#39;black&#39;),
+                                           c(&#39;&lt; 10 Reads&#39;,&#39;&lt; 20 Reads&#39;,&#39;&gt;= 20 Reads&#39;)), 
+                         ...)
+}
+
+plot_maker &lt;- function(gene){
+  num_of_exons &lt;- dd_class%&gt;% filter(Name==gene) %&gt;% pull(`Exon Number`) %&gt;% as.numeric() %&gt;% max()
+   # expand to create a row for each sequence and fill in previous values
+  dd_class %&gt;% filter(Name==gene) %&gt;%
+    mutate(`Exon Number`= factor(`Exon Number`,levels=0:num_of_exons)) %&gt;%  
+    ggplot(aes(x=Start, y=Read_Depth)) + 
+    facet_wrap(~`Exon Number`, scales = &#39;free_x&#39;, nrow=1, strip.position = &#39;bottom&#39;) + 
+    geom_point(size=0.1) + theme_minimal() + scale_colour_custom() +
+    theme(axis.text.x=element_blank(), 
+          axis.ticks.x = element_blank(), 
+          panel.grid.minor = element_blank(), 
+          panel.grid.major.x = element_blank(),
+          legend.position = &#39;none&#39;) + 
+    ylab(&#39;Depth&#39;) + 
+    xlab(gene)
+}
+
+plots &lt;- list()
+for (i in gene_list){
+  plots[[i]] &lt;- plot_maker(i)
+}
+
+plot_grid(plotlist = plots, ncol=1)</code></pre>
+<p><img src="/img/lets_plot3_cow.png" width="100%" /></p>
+<pre class="r"><code>devtools::session_info()</code></pre>
+<pre><code>## Session info -------------------------------------------------------------</code></pre>
+<pre><code>##  setting  value                       
+##  version  R version 3.5.0 (2018-04-23)
+##  system   x86_64, darwin15.6.0        
+##  ui       X11                         
+##  language (EN)                        
+##  collate  en_US.UTF-8                 
+##  tz       America/New_York            
+##  date     2018-07-16</code></pre>
+<pre><code>## Packages -----------------------------------------------------------------</code></pre>
+<pre><code>##  package    * version date       source                           
+##  assertthat   0.2.0   2017-04-11 CRAN (R 3.5.0)                   
+##  backports    1.1.2   2017-12-13 CRAN (R 3.5.0)                   
+##  base       * 3.5.0   2018-04-24 local                            
+##  bindr        0.1.1   2018-03-13 CRAN (R 3.5.0)                   
+##  bindrcpp   * 0.2.2   2018-03-29 CRAN (R 3.5.0)                   
+##  blogdown     0.8.1   2018-07-16 Github (rstudio/blogdown@d54c39a)
+##  bookdown     0.7     2018-02-18 CRAN (R 3.5.0)                   
+##  broom        0.4.4   2018-03-29 CRAN (R 3.5.0)                   
+##  cellranger   1.1.0   2016-07-27 CRAN (R 3.5.0)                   
+##  cli          1.0.0   2017-11-05 CRAN (R 3.5.0)                   
+##  colorspace   1.3-2   2016-12-14 CRAN (R 3.5.0)                   
+##  compiler     3.5.0   2018-04-24 local                            
+##  cowplot    * 0.9.2   2017-12-17 CRAN (R 3.5.0)                   
+##  crayon       1.3.4   2017-09-16 CRAN (R 3.5.0)                   
+##  data.table * 1.11.4  2018-05-27 cran (@1.11.4)                   
+##  datasets   * 3.5.0   2018-04-24 local                            
+##  devtools     1.13.5  2018-02-18 CRAN (R 3.5.0)                   
+##  digest       0.6.15  2018-01-28 CRAN (R 3.5.0)                   
+##  dplyr      * 0.7.6   2018-06-29 cran (@0.7.6)                    
+##  evaluate     0.10.1  2017-06-24 CRAN (R 3.5.0)                   
+##  forcats    * 0.3.0   2018-02-19 CRAN (R 3.5.0)                   
+##  foreign      0.8-70  2017-11-28 CRAN (R 3.5.0)                   
+##  ggplot2    * 3.0.0   2018-07-03 cran (@3.0.0)                    
+##  glue         1.2.0   2017-10-29 CRAN (R 3.5.0)                   
+##  graphics   * 3.5.0   2018-04-24 local                            
+##  grDevices  * 3.5.0   2018-04-24 local                            
+##  grid         3.5.0   2018-04-24 local                            
+##  gtable       0.2.0   2016-02-26 CRAN (R 3.5.0)                   
+##  haven        1.1.1   2018-01-18 CRAN (R 3.5.0)                   
+##  hms          0.4.2   2018-03-10 CRAN (R 3.5.0)                   
+##  htmltools    0.3.6   2017-04-28 CRAN (R 3.5.0)                   
+##  httr         1.3.1   2017-08-20 CRAN (R 3.5.0)                   
+##  jsonlite     1.5     2017-06-01 CRAN (R 3.5.0)                   
+##  knitr        1.20    2018-02-20 CRAN (R 3.5.0)                   
+##  labeling     0.3     2014-08-23 CRAN (R 3.5.0)                   
+##  lattice      0.20-35 2017-03-25 CRAN (R 3.5.0)                   
+##  lazyeval     0.2.1   2017-10-29 CRAN (R 3.5.0)                   
+##  lubridate    1.7.4   2018-04-11 CRAN (R 3.5.0)                   
+##  magrittr     1.5     2014-11-22 CRAN (R 3.5.0)                   
+##  memoise      1.1.0   2017-04-21 CRAN (R 3.5.0)                   
+##  methods    * 3.5.0   2018-04-24 local                            
+##  mnormt       1.5-5   2016-10-15 CRAN (R 3.5.0)                   
+##  modelr       0.1.2   2018-05-11 CRAN (R 3.5.0)                   
+##  munsell      0.4.3   2016-02-13 CRAN (R 3.5.0)                   
+##  nlme         3.1-137 2018-04-07 CRAN (R 3.5.0)                   
+##  parallel     3.5.0   2018-04-24 local                            
+##  pillar       1.2.3   2018-05-25 CRAN (R 3.5.0)                   
+##  pkgconfig    2.0.1   2017-03-21 CRAN (R 3.5.0)                   
+##  plyr         1.8.4   2016-06-08 CRAN (R 3.5.0)                   
+##  psych        1.8.4   2018-05-06 CRAN (R 3.5.0)                   
+##  purrr      * 0.2.4   2017-10-18 CRAN (R 3.5.0)                   
+##  R6           2.2.2   2017-06-17 CRAN (R 3.5.0)                   
+##  Rcpp         0.12.17 2018-05-18 CRAN (R 3.5.0)                   
+##  readr      * 1.1.1   2017-05-16 CRAN (R 3.5.0)                   
+##  readxl       1.1.0   2018-04-20 CRAN (R 3.5.0)                   
+##  reshape2     1.4.3   2017-12-11 CRAN (R 3.5.0)                   
+##  rlang        0.2.1   2018-05-30 CRAN (R 3.5.0)                   
+##  rmarkdown    1.10    2018-06-11 cran (@1.10)                     
+##  rprojroot    1.3-2   2018-01-03 CRAN (R 3.5.0)                   
+##  rstudioapi   0.7     2017-09-07 CRAN (R 3.5.0)                   
+##  rvest        0.3.2   2016-06-17 CRAN (R 3.5.0)                   
+##  scales       0.5.0   2017-08-24 CRAN (R 3.5.0)                   
+##  stats      * 3.5.0   2018-04-24 local                            
+##  stringi      1.2.2   2018-05-02 CRAN (R 3.5.0)                   
+##  stringr    * 1.3.1   2018-05-10 CRAN (R 3.5.0)                   
+##  tibble     * 1.4.2   2018-01-22 CRAN (R 3.5.0)                   
+##  tidyr      * 0.8.1   2018-05-18 CRAN (R 3.5.0)                   
+##  tidyselect   0.2.4   2018-02-26 CRAN (R 3.5.0)                   
+##  tidyverse  * 1.2.1   2017-11-14 CRAN (R 3.5.0)                   
+##  tools        3.5.0   2018-04-24 local                            
+##  utf8         1.1.4   2018-05-24 CRAN (R 3.5.0)                   
+##  utils      * 3.5.0   2018-04-24 local                            
+##  withr        2.1.2   2018-03-15 CRAN (R 3.5.0)                   
+##  xfun         0.3     2018-07-06 cran (@0.3)                      
+##  xml2         1.2.0   2018-01-24 CRAN (R 3.5.0)                   
+##  yaml         2.1.19  2018-05-01 CRAN (R 3.5.0)</code></pre>
+</div>

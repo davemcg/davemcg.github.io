@@ -39,10 +39,7 @@ output:
 <p>The battle that we’ve all been waiting for. Excel vs. R. Bar plot versus a plot that actually shows the data.</p>
 <p>Yeah, this isn’t a fair fight.</p>
 <p>Bar plots are terrible. Why? Simple. They don’t show what your data looks like. A bar plot gives you zero idea how many data points there are. You can add error bars, but you don’t know if you are looking at standard error or standard deviation.</p>
-<div class="figure">
-<img src="/img/excel_bar_plot_bad.png" />
-
-</div>
+<p><img src="/img/excel_bar_plot_bad.png" /></p>
 <p>Box plots are <em>much</em> better. They display useful information like minimum, maximum, quartiles, and median. But they still can really mislead depending on how your data is structured.</p>
 <div class="figure">
 <img src="/img/BoxViolinSmaller.gif" alt="https://www.autodeskresearch.com/publications/samestats" />
@@ -62,24 +59,18 @@ output:
 <p>A variety of eye measurements between a wild-type zebrafish line and a mutant line.</p>
 <p>You can get the excel file <a href="https://github.com/davemcg/Let_us_plot/blob/master/004_r_vs_excel/Compiled%20eye%20measurements.xlsx">here</a></p>
 <pre class="r"><code>library(tidyverse)</code></pre>
-<pre><code>## Warning: package &#39;tidyverse&#39; was built under R version 3.4.2</code></pre>
-<pre><code>## ── Attaching packages ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──</code></pre>
-<pre><code>## ✔ ggplot2 2.2.1     ✔ purrr   0.2.4
-## ✔ tibble  1.4.2     ✔ dplyr   0.7.4
-## ✔ tidyr   0.7.2     ✔ stringr 1.2.0
-## ✔ readr   1.1.1     ✔ forcats 0.2.0</code></pre>
-<pre><code>## Warning: package &#39;tibble&#39; was built under R version 3.4.3</code></pre>
-<pre><code>## Warning: package &#39;tidyr&#39; was built under R version 3.4.2</code></pre>
-<pre><code>## Warning: package &#39;purrr&#39; was built under R version 3.4.2</code></pre>
-<pre><code>## Warning: package &#39;dplyr&#39; was built under R version 3.4.2</code></pre>
-<pre><code>## ── Conflicts ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+<pre><code>## ── Attaching packages ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──</code></pre>
+<pre><code>## ✔ ggplot2 3.0.0     ✔ purrr   0.2.4
+## ✔ tibble  1.4.2     ✔ dplyr   0.7.6
+## ✔ tidyr   0.8.1     ✔ stringr 1.3.1
+## ✔ readr   1.1.1     ✔ forcats 0.3.0</code></pre>
+<pre><code>## Warning: package &#39;dplyr&#39; was built under R version 3.5.1</code></pre>
+<pre><code>## ── Conflicts ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()</code></pre>
-<pre class="r"><code>library(ggsci)</code></pre>
-<pre><code>## Warning: package &#39;ggsci&#39; was built under R version 3.4.2</code></pre>
-<pre class="r"><code>library(ggbeeswarm)</code></pre>
-<pre><code>## Warning: package &#39;ggbeeswarm&#39; was built under R version 3.4.1</code></pre>
-<pre class="r"><code>micro &lt;- readxl::read_xlsx(&#39;~/git/Let_us_plot/004_r_vs_excel/Compiled eye measurements.xlsx&#39;)
+<pre class="r"><code>library(ggsci)
+library(ggbeeswarm)
+micro &lt;- readxl::read_xlsx(&#39;~/git/Let_us_plot/004_r_vs_excel/Compiled eye measurements.xlsx&#39;)
 head(micro)</code></pre>
 <pre><code>## # A tibble: 6 x 13
 ##   X__1  Day3   X__2  Day5  X__3  X__4  X__5  X__6  X__7  X__8  X__9  X__10
@@ -111,16 +102,16 @@ micro</code></pre>
 <pre><code>## # A tibble: 30 x 5
 ##    `Fish ID` Day3_Het Day3_Mut Day5_Het Day5_Mut
 ##    &lt;chr&gt;        &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
-##  1 1           0.0610   0.0480   0.0730   0.0670
-##  2 2           0.0710   0.0530   0.0720   0.0820
-##  3 3           0.0500   0.0540   0.0770   0.0710
-##  4 4           0.0630   0.0580   0.0720   0.0660
-##  5 5           0.0640   0.0580   0.0610   0.0710
-##  6 6           0.0650   0.0530   0.0750   0.0700
-##  7 7           0.0580   0.0560   0.0800   0.0700
-##  8 8           0.0570   0.0530   0.0630   0.0760
-##  9 9           0.0650   0.0680   0.0730   0.0710
-## 10 10          0.0620   0.0610   0.0720   0.0750
+##  1 1            0.061    0.048    0.073    0.067
+##  2 2            0.071    0.053    0.072    0.082
+##  3 3            0.05     0.054    0.077    0.071
+##  4 4            0.063    0.058    0.072    0.066
+##  5 5            0.064    0.058    0.061    0.071
+##  6 6            0.065    0.053    0.075    0.07 
+##  7 7            0.058    0.056    0.08     0.07 
+##  8 8            0.057    0.053    0.063    0.076
+##  9 9            0.065    0.068    0.073    0.071
+## 10 10           0.062    0.061    0.072    0.075
 ## # ... with 20 more rows</code></pre>
 </div>
 <div id="reformatting" class="section level2">
@@ -133,18 +124,18 @@ micro &lt;- micro %&gt;%
   separate(Date_Genotype, c(&#39;Date&#39;,&#39;Genotype&#39;))
 micro</code></pre>
 <pre><code>## # A tibble: 120 x 4
-##    `Fish ID` Date  Genotype   Size
-##  * &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt;     &lt;dbl&gt;
-##  1 1         Day3  Het      0.0610
-##  2 2         Day3  Het      0.0710
-##  3 3         Day3  Het      0.0500
-##  4 4         Day3  Het      0.0630
-##  5 5         Day3  Het      0.0640
-##  6 6         Day3  Het      0.0650
-##  7 7         Day3  Het      0.0580
-##  8 8         Day3  Het      0.0570
-##  9 9         Day3  Het      0.0650
-## 10 10        Day3  Het      0.0620
+##    `Fish ID` Date  Genotype  Size
+##    &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt;    &lt;dbl&gt;
+##  1 1         Day3  Het      0.061
+##  2 2         Day3  Het      0.071
+##  3 3         Day3  Het      0.05 
+##  4 4         Day3  Het      0.063
+##  5 5         Day3  Het      0.064
+##  6 6         Day3  Het      0.065
+##  7 7         Day3  Het      0.058
+##  8 8         Day3  Het      0.057
+##  9 9         Day3  Het      0.065
+## 10 10        Day3  Het      0.062
 ## # ... with 110 more rows</code></pre>
 </div>
 <div id="box-plot" class="section level2">
@@ -225,91 +216,91 @@ t.test(micro %&gt;% filter(Date==&#39;Day5&#39;) %&gt;% pull(Size) ~ micro %&gt;
 <pre class="r"><code>devtools::session_info()</code></pre>
 <pre><code>## Session info -------------------------------------------------------------</code></pre>
 <pre><code>##  setting  value                       
-##  version  R version 3.4.0 (2017-04-21)
+##  version  R version 3.5.0 (2018-04-23)
 ##  system   x86_64, darwin15.6.0        
 ##  ui       X11                         
 ##  language (EN)                        
 ##  collate  en_US.UTF-8                 
 ##  tz       America/New_York            
-##  date     2018-03-01</code></pre>
+##  date     2018-07-16</code></pre>
 <pre><code>## Packages -----------------------------------------------------------------</code></pre>
-<pre><code>##  package    * version    date       source                          
-##  assertthat   0.2.0      2017-04-11 CRAN (R 3.4.0)                  
-##  backports    1.1.1      2017-09-25 CRAN (R 3.4.2)                  
-##  base       * 3.4.0      2017-04-21 local                           
-##  beeswarm     0.2.3      2016-04-25 CRAN (R 3.4.0)                  
-##  bindr        0.1        2016-11-13 CRAN (R 3.4.0)                  
-##  bindrcpp   * 0.2        2017-06-17 CRAN (R 3.4.0)                  
-##  blogdown     0.5        2018-01-24 CRAN (R 3.4.3)                  
-##  bookdown     0.6        2018-01-25 CRAN (R 3.4.3)                  
-##  broom        0.4.3      2017-11-20 CRAN (R 3.4.0)                  
-##  cellranger   1.1.0      2016-07-27 CRAN (R 3.4.0)                  
-##  cli          1.0.0      2017-11-05 CRAN (R 3.4.2)                  
-##  colorspace   1.3-2      2016-12-14 CRAN (R 3.4.0)                  
-##  compiler     3.4.0      2017-04-21 local                           
-##  crayon       1.3.4      2017-09-16 CRAN (R 3.4.1)                  
-##  datasets   * 3.4.0      2017-04-21 local                           
-##  devtools     1.13.4     2017-11-09 CRAN (R 3.4.2)                  
-##  digest       0.6.12     2017-01-27 CRAN (R 3.4.0)                  
-##  dplyr      * 0.7.4      2017-09-28 CRAN (R 3.4.2)                  
-##  evaluate     0.10.1     2017-06-24 CRAN (R 3.4.1)                  
-##  forcats    * 0.2.0      2017-01-23 CRAN (R 3.4.0)                  
-##  foreign      0.8-69     2017-06-22 CRAN (R 3.4.1)                  
-##  ggbeeswarm * 0.6.0      2017-08-07 CRAN (R 3.4.1)                  
-##  ggplot2    * 2.2.1      2016-12-30 CRAN (R 3.4.0)                  
-##  ggsci      * 2.8        2017-09-30 CRAN (R 3.4.2)                  
-##  glue         1.2.0      2017-10-29 CRAN (R 3.4.2)                  
-##  graphics   * 3.4.0      2017-04-21 local                           
-##  grDevices  * 3.4.0      2017-04-21 local                           
-##  grid         3.4.0      2017-04-21 local                           
-##  gtable       0.2.0      2016-02-26 CRAN (R 3.4.0)                  
-##  haven        1.1.0      2017-07-09 CRAN (R 3.4.0)                  
-##  hms          0.3        2016-11-22 CRAN (R 3.4.0)                  
-##  htmltools    0.3.6      2017-04-28 CRAN (R 3.4.0)                  
-##  httr         1.3.1      2017-08-20 CRAN (R 3.4.1)                  
-##  jsonlite     1.5        2017-06-01 CRAN (R 3.4.0)                  
-##  knitr        1.17       2017-08-10 CRAN (R 3.4.1)                  
-##  labeling     0.3        2014-08-23 CRAN (R 3.4.0)                  
-##  lattice      0.20-35    2017-03-25 CRAN (R 3.4.0)                  
-##  lazyeval     0.2.1      2017-10-29 CRAN (R 3.4.2)                  
-##  lubridate    1.7.1      2017-11-03 CRAN (R 3.4.2)                  
-##  magrittr     1.5        2014-11-22 CRAN (R 3.4.0)                  
-##  memoise      1.1.0      2017-04-21 CRAN (R 3.4.0)                  
-##  methods    * 3.4.0      2017-04-21 local                           
-##  mnormt       1.5-5      2016-10-15 CRAN (R 3.4.0)                  
-##  modelr       0.1.1      2017-07-24 CRAN (R 3.4.1)                  
-##  munsell      0.4.3      2016-02-13 CRAN (R 3.4.0)                  
-##  nlme         3.1-131    2017-02-06 CRAN (R 3.4.0)                  
-##  parallel     3.4.0      2017-04-21 local                           
-##  pillar       1.1.0      2018-01-14 cran (@1.1.0)                   
-##  pkgconfig    2.0.1      2017-03-21 CRAN (R 3.4.0)                  
-##  plyr         1.8.4      2016-06-08 CRAN (R 3.4.0)                  
-##  psych        1.7.8      2017-09-09 CRAN (R 3.4.0)                  
-##  purrr      * 0.2.4      2017-10-18 CRAN (R 3.4.2)                  
-##  R6           2.2.2      2017-06-17 CRAN (R 3.4.0)                  
-##  Rcpp         0.12.13    2017-09-28 CRAN (R 3.4.2)                  
-##  readr      * 1.1.1      2017-05-16 CRAN (R 3.4.0)                  
-##  readxl       1.0.0      2017-04-18 CRAN (R 3.4.0)                  
-##  reshape2     1.4.2      2016-10-22 CRAN (R 3.4.0)                  
-##  rlang        0.1.6      2017-12-21 cran (@0.1.6)                   
-##  rmarkdown    1.8        2017-11-17 CRAN (R 3.4.2)                  
-##  rprojroot    1.2        2017-01-16 CRAN (R 3.4.0)                  
-##  rstudioapi   0.7        2017-09-07 CRAN (R 3.4.1)                  
-##  rvest        0.3.2      2016-06-17 CRAN (R 3.4.0)                  
-##  scales       0.5.0.9000 2017-09-20 Github (hadley/scales@d767915)  
-##  stats      * 3.4.0      2017-04-21 local                           
-##  stringi      1.1.6      2017-11-17 CRAN (R 3.4.2)                  
-##  stringr    * 1.2.0      2017-02-18 CRAN (R 3.4.0)                  
-##  tibble     * 1.4.2      2018-01-22 cran (@1.4.2)                   
-##  tidyr      * 0.7.2      2017-10-16 CRAN (R 3.4.2)                  
-##  tidyselect   0.2.3      2017-11-06 CRAN (R 3.4.2)                  
-##  tidyverse  * 1.2.1      2017-11-14 CRAN (R 3.4.2)                  
-##  tools        3.4.0      2017-04-21 local                           
-##  utf8         1.1.3      2018-01-03 cran (@1.1.3)                   
-##  utils      * 3.4.0      2017-04-21 local                           
-##  vipor        0.4.5      2017-03-22 CRAN (R 3.4.0)                  
-##  withr        2.1.0.9000 2017-11-22 Github (jimhester/withr@fe81c00)
-##  xfun         0.1        2018-01-22 CRAN (R 3.4.3)                  
-##  xml2         1.1.1      2017-01-24 CRAN (R 3.4.0)                  
-##  yaml         2.1.14     2016-11-12 CRAN (R 3.4.0)</code></pre>
+<pre><code>##  package    * version date       source                           
+##  assertthat   0.2.0   2017-04-11 CRAN (R 3.5.0)                   
+##  backports    1.1.2   2017-12-13 CRAN (R 3.5.0)                   
+##  base       * 3.5.0   2018-04-24 local                            
+##  beeswarm     0.2.3   2016-04-25 CRAN (R 3.5.0)                   
+##  bindr        0.1.1   2018-03-13 CRAN (R 3.5.0)                   
+##  bindrcpp   * 0.2.2   2018-03-29 CRAN (R 3.5.0)                   
+##  blogdown     0.8.1   2018-07-16 Github (rstudio/blogdown@d54c39a)
+##  bookdown     0.7     2018-02-18 CRAN (R 3.5.0)                   
+##  broom        0.4.4   2018-03-29 CRAN (R 3.5.0)                   
+##  cellranger   1.1.0   2016-07-27 CRAN (R 3.5.0)                   
+##  cli          1.0.0   2017-11-05 CRAN (R 3.5.0)                   
+##  colorspace   1.3-2   2016-12-14 CRAN (R 3.5.0)                   
+##  compiler     3.5.0   2018-04-24 local                            
+##  crayon       1.3.4   2017-09-16 CRAN (R 3.5.0)                   
+##  datasets   * 3.5.0   2018-04-24 local                            
+##  devtools     1.13.5  2018-02-18 CRAN (R 3.5.0)                   
+##  digest       0.6.15  2018-01-28 CRAN (R 3.5.0)                   
+##  dplyr      * 0.7.6   2018-06-29 cran (@0.7.6)                    
+##  evaluate     0.10.1  2017-06-24 CRAN (R 3.5.0)                   
+##  forcats    * 0.3.0   2018-02-19 CRAN (R 3.5.0)                   
+##  foreign      0.8-70  2017-11-28 CRAN (R 3.5.0)                   
+##  ggbeeswarm * 0.6.0   2017-08-07 CRAN (R 3.5.0)                   
+##  ggplot2    * 3.0.0   2018-07-03 cran (@3.0.0)                    
+##  ggsci      * 2.9     2018-05-14 CRAN (R 3.5.0)                   
+##  glue         1.2.0   2017-10-29 CRAN (R 3.5.0)                   
+##  graphics   * 3.5.0   2018-04-24 local                            
+##  grDevices  * 3.5.0   2018-04-24 local                            
+##  grid         3.5.0   2018-04-24 local                            
+##  gtable       0.2.0   2016-02-26 CRAN (R 3.5.0)                   
+##  haven        1.1.1   2018-01-18 CRAN (R 3.5.0)                   
+##  hms          0.4.2   2018-03-10 CRAN (R 3.5.0)                   
+##  htmltools    0.3.6   2017-04-28 CRAN (R 3.5.0)                   
+##  httr         1.3.1   2017-08-20 CRAN (R 3.5.0)                   
+##  jsonlite     1.5     2017-06-01 CRAN (R 3.5.0)                   
+##  knitr        1.20    2018-02-20 CRAN (R 3.5.0)                   
+##  labeling     0.3     2014-08-23 CRAN (R 3.5.0)                   
+##  lattice      0.20-35 2017-03-25 CRAN (R 3.5.0)                   
+##  lazyeval     0.2.1   2017-10-29 CRAN (R 3.5.0)                   
+##  lubridate    1.7.4   2018-04-11 CRAN (R 3.5.0)                   
+##  magrittr     1.5     2014-11-22 CRAN (R 3.5.0)                   
+##  memoise      1.1.0   2017-04-21 CRAN (R 3.5.0)                   
+##  methods    * 3.5.0   2018-04-24 local                            
+##  mnormt       1.5-5   2016-10-15 CRAN (R 3.5.0)                   
+##  modelr       0.1.2   2018-05-11 CRAN (R 3.5.0)                   
+##  munsell      0.4.3   2016-02-13 CRAN (R 3.5.0)                   
+##  nlme         3.1-137 2018-04-07 CRAN (R 3.5.0)                   
+##  parallel     3.5.0   2018-04-24 local                            
+##  pillar       1.2.3   2018-05-25 CRAN (R 3.5.0)                   
+##  pkgconfig    2.0.1   2017-03-21 CRAN (R 3.5.0)                   
+##  plyr         1.8.4   2016-06-08 CRAN (R 3.5.0)                   
+##  psych        1.8.4   2018-05-06 CRAN (R 3.5.0)                   
+##  purrr      * 0.2.4   2017-10-18 CRAN (R 3.5.0)                   
+##  R6           2.2.2   2017-06-17 CRAN (R 3.5.0)                   
+##  Rcpp         0.12.17 2018-05-18 CRAN (R 3.5.0)                   
+##  readr      * 1.1.1   2017-05-16 CRAN (R 3.5.0)                   
+##  readxl       1.1.0   2018-04-20 CRAN (R 3.5.0)                   
+##  reshape2     1.4.3   2017-12-11 CRAN (R 3.5.0)                   
+##  rlang        0.2.1   2018-05-30 CRAN (R 3.5.0)                   
+##  rmarkdown    1.10    2018-06-11 cran (@1.10)                     
+##  rprojroot    1.3-2   2018-01-03 CRAN (R 3.5.0)                   
+##  rstudioapi   0.7     2017-09-07 CRAN (R 3.5.0)                   
+##  rvest        0.3.2   2016-06-17 CRAN (R 3.5.0)                   
+##  scales       0.5.0   2017-08-24 CRAN (R 3.5.0)                   
+##  stats      * 3.5.0   2018-04-24 local                            
+##  stringi      1.2.2   2018-05-02 CRAN (R 3.5.0)                   
+##  stringr    * 1.3.1   2018-05-10 CRAN (R 3.5.0)                   
+##  tibble     * 1.4.2   2018-01-22 CRAN (R 3.5.0)                   
+##  tidyr      * 0.8.1   2018-05-18 CRAN (R 3.5.0)                   
+##  tidyselect   0.2.4   2018-02-26 CRAN (R 3.5.0)                   
+##  tidyverse  * 1.2.1   2017-11-14 CRAN (R 3.5.0)                   
+##  tools        3.5.0   2018-04-24 local                            
+##  utf8         1.1.4   2018-05-24 CRAN (R 3.5.0)                   
+##  utils      * 3.5.0   2018-04-24 local                            
+##  vipor        0.4.5   2017-03-22 CRAN (R 3.5.0)                   
+##  withr        2.1.2   2018-03-15 CRAN (R 3.5.0)                   
+##  xfun         0.3     2018-07-06 cran (@0.3)                      
+##  xml2         1.2.0   2018-01-24 CRAN (R 3.5.0)                   
+##  yaml         2.1.19  2018-05-01 CRAN (R 3.5.0)</code></pre>
 </div>

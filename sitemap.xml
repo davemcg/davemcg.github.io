@@ -5,6 +5,24 @@
     
     <url>
     
+      <loc>/./culture/onboarding/</loc>
+      <lastmod>2018-07-16T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/./culture/practices/</loc>
+      <lastmod>2018-07-16T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/./post/quick-guide-to-gene-name-conversion/</loc>
       <lastmod>2018-06-18T00:00:00+00:00</lastmod>
     </url>
@@ -77,8 +95,17 @@
     
     <url>
     
-      <loc>/./post/let-s-plot-3-base-pair-resolution-ngs-exome-coverage-plots/</loc>
+      <loc>/./post/let-s-plot-3-part-2/</loc>
       <lastmod>2018-02-08T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/./post/let-s-plot-3-part-i/</loc>
+      <lastmod>2018-02-07T00:00:00+00:00</lastmod>
     </url>
     
   
@@ -149,15 +176,6 @@
     
     <url>
     
-      <loc>/./talk/example-talk/</loc>
-      <lastmod>2017-01-01T00:00:00-05:00</lastmod>
-    </url>
-    
-  
-    
-    
-    <url>
-    
       <loc>/./post/</loc>
       <lastmod>2017-01-01T00:00:00-05:00</lastmod>
     </url>
@@ -167,34 +185,8 @@
     
     <url>
     
-      <loc>/./tags/academic/</loc>
-      <lastmod>2017-01-01T00:00:00+00:00</lastmod>
-    </url>
-    
-  
-    
-    
-    <url>
-    
       <loc>/./publication/</loc>
       <lastmod>2017-01-01T00:00:00+00:00</lastmod>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>/./talk/</loc>
-      <lastmod>2017-01-01T00:00:00+00:00</lastmod>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>/./post/2018-02-07-let-s-plot-3-base-pair-resolution-ngs-exome-coverage-plots-part-1/</loc>
     </url>
     
   
@@ -302,6 +294,26 @@
     
     <url>
     
+      <loc>/./tags/culture/</loc>
+      <lastmod>2018-07-16T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/./culture/</loc>
+      <lastmod>2018-07-16T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/./tags/current/</loc>
       <lastmod>2018-02-01T00:00:00+00:00</lastmod>
       <priority>0</priority>
@@ -392,8 +404,38 @@
     
     <url>
     
+      <loc>/./tags/onboarding/</loc>
+      <lastmod>2018-07-16T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/./categories/onboarding/</loc>
+      <lastmod>2018-07-16T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/./people/</loc>
       <lastmod>2018-02-01T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/./tags/programming/</loc>
+      <lastmod>2018-07-16T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -513,7 +555,7 @@
     <url>
     
       <loc>/./tags/</loc>
-      <lastmod>2017-01-01T00:00:00+00:00</lastmod>
+      <lastmod>2018-04-20T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     

@@ -1,0 +1,78 @@
+<table>
+<tbody>
+<tr class="odd">
+<td>title: Let’s Plot 3: Base pair resolution NGS coverage plots (Part I)</td>
+</tr>
+<tr class="even">
+<td>author: David McGaughey</td>
+</tr>
+<tr class="odd">
+<td>date: ‘2018-02-07’</td>
+</tr>
+<tr class="even">
+<td>slug: let-s-plot-3-part-I</td>
+</tr>
+<tr class="odd">
+<td>categories:</td>
+</tr>
+<tr class="even">
+<td>- bioinformatics</td>
+</tr>
+<tr class="odd">
+<td>- Let’s Plot</td>
+</tr>
+<tr class="even">
+<td>- R</td>
+</tr>
+<tr class="odd">
+<td>tags:</td>
+</tr>
+<tr class="even">
+<td>- bioinformatics</td>
+</tr>
+<tr class="odd">
+<td>- ggplot2</td>
+</tr>
+<tr class="even">
+<td>- Let’s Plot</td>
+</tr>
+<tr class="odd">
+<td>- quinlanverse</td>
+</tr>
+<tr class="even">
+<td>- R</td>
+</tr>
+<tr class="odd">
+<td>output:</td>
+</tr>
+<tr class="even">
+<td>blogdown::html_page:</td>
+</tr>
+<tr class="odd">
+<td>toc: true</td>
+</tr>
+</tbody>
+</table>
+<div id="load-data" class="section level2">
+<h2>Load data</h2>
+<p>This is a departure from the previous installments, as we are loading in a very processed dataset. The reasons why are numerous:</p>
+<ol style="list-style-type: decimal">
+<li>The original data is 330mb, compressed</li>
+<li>After loading (2 minutes on my quite fast computer) and uncompressing, it takes over 10GB of RAM on my computer</li>
+<li>The original data needed a severe amount of massaging to make it quickly useable:
+- Annotating with gene name
+- Identifying primary transcript for gene
+- Expanding range data into row-form*</li>
+</ol>
+<ul>
+<li><code>mosdepth</code> provides read depth as ranges. So instead of writing a row for each of the three billion+ base pairs, <code>mosdepth</code> collapses adjacent rows with identical read depth together. This is crucial for saving space, especially for exomes, which have huge stretches of zero coverage since only ~3% of the genome is targeted.</li>
+</ul>
+</div>
+<div id="curious" class="section level2">
+<h2>Curious?</h2>
+<p>If you want to see how I did the above, see <a href="/post/let-s-plot-3-base-pair-resolution-ngs-exome-coverage-plots">Part 2</a>. This post also has some cooler plots.</p>
+</div>
+<div id="data" class="section level2">
+<h2>Data</h2>
+<p><code>dd_class.csv</code> can be found <a href="https://github.com/davemcg/Let_us_plot/raw/master/003_coverage/dd_class.csv">here</a></p>
+</div>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Bioinformatics on eye Bioinformatician</title>
+    <link>/./tags/bioinformatics/</link>
+    <description>Recent content in Bioinformatics on eye Bioinformatician</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Mon, 18 Jun 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/./tags/bioinformatics/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Quick Guide to Gene Name Conversion</title>
+      <link>/./post/quick-guide-to-gene-name-conversion/</link>
+      <pubDate>Mon, 18 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/quick-guide-to-gene-name-conversion/</guid>
+      <description>Background There are several popular naming systems for (human) genes:
+RefSeq (NM_000350) Ensembl (ENSG00000198691) HGNC Symbol (ABCA4) Entrez (24)  Given enough time in #bioinformatics, you will have to do every possible combination of conversions.
+This post will very briefly explain the most expedient way to automatically convert between these formats with R.
+ More exhaustive resources http://crazyhottommy.blogspot.com/2014/09/converting-gene-ids-using-bioconductor.html
+https://davetang.org/muse/2013/11/25/thoughts-converting-gene-identifiers/
+ Ensembl &amp;lt;-&amp;gt; HGNC &amp;lt;-&amp;gt; Entrez Stephen Turner has built a small set of data frames (well, tibbles) with core information, including transcript &amp;lt;-&amp;gt; gene info.</description>
+    </item>
+    
+    <item>
+      <title>#BoG18: Talk Notes</title>
+      <link>/./post/bog18-notes/</link>
+      <pubDate>Tue, 08 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/bog18-notes/</guid>
+      <description>Intro Genome Engineering and Genome Editing (Tuesday Night) Jef Boeke Writing Genomes “dark matter” big dna  Greg Findlay (Jay Shendure) Stephen Levene (Andrew Fire) David Truong (Jef Boeke) Feng Zhang Molly Gasperini (Jay Shendure) Eilon Sharon (Hunter Fraser) Luca Pinello  Population Genomics (Wednesday morning) Mattias Joakobsson Jaemin Kim (Elaine Ostrander) Ipsita Agarwal (Molly Przeworski) Amnon Koren Sarah Tishkoff Patrick Albers (Gil McVean) Laura Hayward (Guy Sella)  Functional Genetics and Epigenomics Job Dekker Flora Vaccarino Carninci Johnathan Griffiths (Berthold Gottgens) Emma Farley Jake Yeung (Felix Naef) Minal Caliskan (Casey Brown) Parisa Razaz (Talkwoski)  Evolutionary and Non-human genomics Monica Justice Arang Rhie (Erich Jarvis, Adam Phillippy) Olga Dudchenko (Erez Lieberman Aiden) Kasper Munch Gavin Sherlock Anne Ruxandra Carvunis Elaine Ostrander Bobbie Cansdale (Claire Wade)  Cancer and Medical Genomics Trey Ideker Rajbir Batra (Carlos Caldas) Patrick Short (Matthew Hurles) Max Shen (David Gifford) Sharon Plon (PJ Lupo) Massa Shoura (Andrew Fire) Sidi Chen Marcin Imielinski  Computational Genomics (!</description>
+    </item>
+    
+    <item>
+      <title>Let&#39;s Plot 6: Simple guide to heatmaps with ComplexHeatmaps</title>
+      <link>/./post/simple-heatmaps-with-complexheatmaps/</link>
+      <pubDate>Mon, 07 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/simple-heatmaps-with-complexheatmaps/</guid>
+      <description>Introduction Data processing Load data Peek at expression Peek at metadata Brief outline on how the RNA-seq data was processed before we see it Load libraries Create a Sample - Sample distance heatmap Easy heatmap with ComplexHeatmap Complex heatmap Finished heatmap  Gene Heatmaps A bit simpler  Session Info   Introduction Heatmaps are a core competency for a bioinformatician. They are a compact way to visually demonstrate relationships and changes in values across conditions.</description>
+    </item>
+    
+    <item>
+      <title>Easy bam downsampling</title>
+      <link>/./post/easy-bam-downsampling/</link>
+      <pubDate>Fri, 20 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/easy-bam-downsampling/</guid>
+      <description>When you have a set of ChIP-seq (like) files, it is sometimes useful to downsample the larger samples to more closely match most of the samples. Tommy Tang goes into more detail in his blog post.
+Unfortunately the tool suites I use most for bam files (samtools and picard) only downsample to a percentage. Which isn’t ideal when you want your files to be no more than n reads.
+This post is just a slight one-upping of Tommy Tang’s process to easily downsample a bam.</description>
+    </item>
+    
+    <item>
+      <title>Are you in genomics and building models? Stop using ROC - use PR</title>
+      <link>/./post/are-you-in-genomics-stop-using-roc-use-pr/</link>
+      <pubDate>Sat, 03 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/are-you-in-genomics-stop-using-roc-use-pr/</guid>
+      <description>tldr Area Under the Curve (AUC) of Receiver Operating Characteristic (ROC) is a terrible metric for a genomics problem. Do not use it. This metric also goes by AUC or AUROC. Use Precision Recall AUC.
+ Inspiration for this post I am working on a machine learning problem in genomics I was getting really confused why AUROC was so worthless scienceTwitter featuring Anshul Kundaje  I want to save you (some time)   What’s a ROC?</description>
+    </item>
+    
+    <item>
+      <title>Let’s Plot 4: R vs Excel, Round 1</title>
+      <link>/./post/let-s-plot-4-r-vs-excel/</link>
+      <pubDate>Thu, 01 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/let-s-plot-4-r-vs-excel/</guid>
+      <description>Introduction Data Cleaning Reformatting Box Plot Boxplot with all the data displayed I used to prefer violin plots I’m a fan of beeswarm plots with boxplots Doing statistics. Session   Introduction The battle that we’ve all been waiting for. Excel vs. R. Bar plot versus a plot that actually shows the data.
+Yeah, this isn’t a fair fight.
+Bar plots are terrible. Why? Simple. They don’t show what your data looks like.</description>
+    </item>
+    
+    <item>
+      <title>Let’s Plot 3: Base pair resolution NGS (exome) coverage plots - Part 2</title>
+      <link>/./post/let-s-plot-3-part-2/</link>
+      <pubDate>Thu, 08 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/let-s-plot-3-part-2/</guid>
+      <description>Introduction Call mosdepth on bam to calculate bp-specific read depth Intersect base pair depth info with transcript and exon number Now it’s R time! Prepare Metadata Load mosdepth / bedtools intersect data and prep Plot Maker, version 1 Version 2 sessionInfo()    Introduction This is a barebones (but detailed enough, I hope) discussion of how to take a bam file, extract base pair resolution coverage data, then finagle the data into coverage plots by gene and exon.</description>
+    </item>
+    
+    <item>
+      <title>Let’s Plot 3: Base pair resolution NGS coverage plots (Part I)</title>
+      <link>/./post/let-s-plot-3-part-i/</link>
+      <pubDate>Wed, 07 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/let-s-plot-3-part-i/</guid>
+      <description>Load data Curious? Data How many genes are in this dataset? What genes are in here? How many data points (bases) per gene? How many exons per gene? How many base pairs of ABCA4 (well, ABCA4 exons) is covered by more than 10 reads? 5 reads? Let’s check all of the genes to see which are the worst covered We can visually display the data, also Hard to see what is going on, let’s make little plots for each gene Where are genes poorly covered?</description>
+    </item>
+    
+    <item>
+      <title>Split VCF into n pieces by coordinate</title>
+      <link>/./post/split-vcf-into-n-pieces-by-coordinate/</link>
+      <pubDate>Wed, 07 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/split-vcf-into-n-pieces-by-coordinate/</guid>
+      <description>Introduction Read in vcf header Parse out chr / contig sizes Split chr above 3e7 base pairs into equal(ish) size pieces print coordinates given a chromosome / contig calculate coordinates print ’em output ’em for python input (Snakemake) rscript Using the script output sessionInfo()   Introduction bcftools view -r 1:40000-50000 vcf.gz will output (to stdout) a vcf containing the header and variants on chromosome 1 between coordinates 40,000 and 50,000 base pairs.</description>
+    </item>
+    
+  </channel>
+</rss>

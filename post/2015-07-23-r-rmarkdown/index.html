@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="theme" content="hugo-academic">
-  <meta name="generator" content="Hugo 0.35" />
+  <meta name="generator" content="Hugo 0.40" />
   <meta name="author" content="David McGaughey">
 
   
@@ -48,7 +48,7 @@ summary(cars) ## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 2
   
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha512-6MXa8B6uaO18Hid6blRMetEIoPqHf7Ux1tnyIQdpt9qI5OACx7C+O3IVTr98vwGnlcg0LOLa02i9Y1HpVhlfiw==" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.1/css/academicons.min.css" integrity="sha512-NThgw3XKQ1absAahW6to7Ey42uycrVvfNfyjqcFNgCmOCQ5AR4AO0SiXrN+8ZtYeappp56lk1WtvjVmEa+VR6A==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
   
@@ -60,6 +60,20 @@ summary(cars) ## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 2
   <link rel="stylesheet" href="/styles.css">
   
 
+  
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-113461893-1', 'auto');
+      
+      ga('require', 'eventTracker');
+      ga('require', 'outboundLinkTracker');
+      ga('require', 'urlChangeTracker');
+      ga('send', 'pageview');
+    </script>
+    <script async src="//www.google-analytics.com/analytics.js"></script>
+    
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g==" crossorigin="anonymous"></script>
+    
   
 
   
@@ -75,8 +89,8 @@ summary(cars) ## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 2
 
   <meta property="twitter:card" content="summary_large_image">
   
-  <meta property="twitter:site" content="@David_McGaughey">
-  <meta property="twitter:creator" content="@David_McGaughey">
+  <meta property="twitter:site" content="@https://twitter.com/David_McGaughey">
+  <meta property="twitter:creator" content="@https://twitter.com/David_McGaughey">
   
   <meta property="og:site_name" content="eye Bioinformatician">
   <meta property="og:url" content="/./post/2015-07-23-r-rmarkdown/">
@@ -91,6 +105,7 @@ summary(cars) ## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 2
   <meta property="article:modified_time" content="2015-07-23T21:13:14-05:00">
   
 
+  
   
 
   <title>Hello R Markdown | eye Bioinformatician</title>
@@ -143,38 +158,32 @@ summary(cars) ## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 2
         
 
         
-        
-        
-        
-        
-          
-        
-
-        <li class="nav-item">
-          <a href="/#publications_selected">
-            
-            <span>Publications</span>
-            
-          </a>
-        </li>
-
-        
-        
-
-        
-        
-        
-        
-        
-          
-        
-
-        <li class="nav-item">
-          <a href="/#posts">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true">
             
             <span>Posts</span>
             
+            <span class="caret"></span>
           </a>
+          <ul class="dropdown-menu">
+            
+            <li class="nav-item">
+              <a href="/#posts">
+                
+                <span>Recent Posts</span>
+                
+              </a>
+            </li>
+            
+            <li class="nav-item">
+              <a href="/post">
+                
+                <span>All Posts</span>
+                
+              </a>
+            </li>
+            
+          </ul>
         </li>
 
         
@@ -208,9 +217,9 @@ summary(cars) ## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 2
         
 
         <li class="nav-item">
-          <a href="/#contact">
+          <a href="/#publications_selected">
             
-            <span>Contact</span>
+            <span>Publications</span>
             
           </a>
         </li>
@@ -258,6 +267,9 @@ summary(cars) ## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 2
 
   
   
+  <span class="middot-divider"></span>
+  <a href="/./post/2015-07-23-r-rmarkdown/#disqus_thread"></a>
+  
 
   
   
@@ -266,7 +278,7 @@ summary(cars) ## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 2
   <span class="article-categories">
     <i class="fa fa-folder"></i>
     
-    <a href="/categories/r">R</a
+    <a href="/./categories/r/">R</a
     >
     
   </span>
@@ -354,7 +366,7 @@ pie(
   init.angle = -50, border = NA
 )</code></pre>
 <div class="figure"><span id="fig:pie"></span>
-<img src="/./post/2015-07-23-r-rmarkdown_files/figure-html/pie-1.png" alt="A fancy pie chart." width="672" />
+<img src="/post/2015-07-23-r-rmarkdown_files/figure-html/pie-1.png" alt="A fancy pie chart." width="672" />
 <p class="caption">
 Figure 1: A fancy pie chart.
 </p>
@@ -368,11 +380,11 @@ Figure 1: A fancy pie chart.
 
 <div class="article-tags">
   
-  <a class="btn btn-primary btn-outline" href="/tags/r-markdown">R Markdown</a>
+  <a class="btn btn-primary btn-outline" href="/./tags/r-markdown/">R Markdown</a>
   
-  <a class="btn btn-primary btn-outline" href="/tags/plot">plot</a>
+  <a class="btn btn-primary btn-outline" href="/./tags/plot/">plot</a>
   
-  <a class="btn btn-primary btn-outline" href="/tags/regression">regression</a>
+  <a class="btn btn-primary btn-outline" href="/./tags/regression/">regression</a>
   
 </div>
 
@@ -385,6 +397,29 @@ Figure 1: A fancy pie chart.
     
 
     
+<section id="comments">
+  <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "davemcg-gitub-io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
 
 
   </div>
@@ -440,6 +475,8 @@ Figure 1: A fancy pie chart.
 
     
     
+    <script id="dsq-count-scr" src="//davemcg-gitub-io.disqus.com/count.js" async></script>
+    
 
     
 
@@ -468,6 +505,13 @@ Figure 1: A fancy pie chart.
       <script>hljs.initHighlightingOnLoad();</script>
     
 
+    
+    
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML" integrity="sha512-tOav5w1OjvsSJzePRtt2uQPFwBoHt1VZcUq8l8nm5284LEKE9FSJBQryzMBzHxY5P0zRdNqEcpLIRVYFNgu1jw==" crossorigin="anonymous"></script>
     
     
 

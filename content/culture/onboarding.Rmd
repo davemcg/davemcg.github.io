@@ -1,0 +1,57 @@
+---
+title: Onboarding
+author: David McGaughey
+date: '2018-07-16'
+slug: onboarding
+categories:
+  - onboarding
+tags:
+  - onboarding
+header:
+  caption: ''
+  image: ''
+---
+
+## Points of Contact
+Administrative
+
+  - Jairo Meija
+    - Jairo ("Hi Ro") is the administrative manager for the OGVFB
+  - Cathy Geer
+    - The administrative assistant for the branch
+  - If you have any admin-related questions, shoot one of them an email or 
+  go chat with them in 10N109
+
+Brian Brooks
+
+  - The boss. He is the NEI Clinical Director and the head of the OGVFB
+
+
+Tiziana Cogliati
+
+  - She is Brian's lab manager. She does the day to day administration of 
+  Brian's research lab and guides the research along with Brian
+  
+Cesar Perez-Gonzalez
+
+  - NEI Scientific Program Administrator
+  - He is the guy who oversees all trainees in NEI
+
+## Before the first day
+  - You should have made an appointment to get a NIH badge
+    - If this doesn't make any sense then 
+    [contact](https://ned.nih.gov/search/ViewDetails.aspx?NIHID=0011297616) Jairo
+
+## NIH training
+  - https://www.safetytraining.nih.gov/TrainingRequirements.aspx
+    - only required if you **know** you are doing bench work
+  - https://irtsectraining.nih.gov
+  - https://researchethics.od.nih.gov
+  
+## NIH resources
+  - [NEI Intranet](http://neinet.nei.nih.gov)
+    - only available after you get here
+    - internal page with org chart, meeting scheduling, etc et.c
+      - (http://neinet.nei.nih.gov/intramural/FellowsStudents/postbac.asp)
+  - [NIH Phone Book](https://ned.nih.gov/search/)
+  

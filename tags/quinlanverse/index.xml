@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Quinlanverse on eye Bioinformatician</title>
+    <link>/./tags/quinlanverse/</link>
+    <description>Recent content in Quinlanverse on eye Bioinformatician</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Thu, 08 Feb 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/./tags/quinlanverse/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Let’s Plot 3: Base pair resolution NGS (exome) coverage plots - Part 2</title>
+      <link>/./post/let-s-plot-3-part-2/</link>
+      <pubDate>Thu, 08 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/let-s-plot-3-part-2/</guid>
+      <description>Introduction Call mosdepth on bam to calculate bp-specific read depth Intersect base pair depth info with transcript and exon number Now it’s R time! Prepare Metadata Load mosdepth / bedtools intersect data and prep Plot Maker, version 1 Version 2 sessionInfo()    Introduction This is a barebones (but detailed enough, I hope) discussion of how to take a bam file, extract base pair resolution coverage data, then finagle the data into coverage plots by gene and exon.</description>
+    </item>
+    
+    <item>
+      <title>Let’s Plot 3: Base pair resolution NGS coverage plots (Part I)</title>
+      <link>/./post/let-s-plot-3-part-i/</link>
+      <pubDate>Wed, 07 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/let-s-plot-3-part-i/</guid>
+      <description>Load data Curious? Data How many genes are in this dataset? What genes are in here? How many data points (bases) per gene? How many exons per gene? How many base pairs of ABCA4 (well, ABCA4 exons) is covered by more than 10 reads? 5 reads? Let’s check all of the genes to see which are the worst covered We can visually display the data, also Hard to see what is going on, let’s make little plots for each gene Where are genes poorly covered?</description>
+    </item>
+    
+  </channel>
+</rss>

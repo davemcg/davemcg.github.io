@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tidyverse on eye Bioinformatician</title>
+    <link>/./tags/tidyverse/</link>
+    <description>Recent content in Tidyverse on eye Bioinformatician</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Mon, 07 May 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/./tags/tidyverse/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Let&#39;s Plot 6: Simple guide to heatmaps with ComplexHeatmaps</title>
+      <link>/./post/simple-heatmaps-with-complexheatmaps/</link>
+      <pubDate>Mon, 07 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/simple-heatmaps-with-complexheatmaps/</guid>
+      <description>Introduction Data processing Load data Peek at expression Peek at metadata Brief outline on how the RNA-seq data was processed before we see it Load libraries Create a Sample - Sample distance heatmap Easy heatmap with ComplexHeatmap Complex heatmap Finished heatmap  Gene Heatmaps A bit simpler  Session Info   Introduction Heatmaps are a core competency for a bioinformatician. They are a compact way to visually demonstrate relationships and changes in values across conditions.</description>
+    </item>
+    
+    <item>
+      <title>Let’s Plot 5: ridgeline density plots</title>
+      <link>/./post/let-s-plot-5-ridgeline-density-plots/</link>
+      <pubDate>Thu, 12 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/let-s-plot-5-ridgeline-density-plots/</guid>
+      <description>Intro For this installment of Let’s Plot (where anyone can make a figure!), we’ll be making the hottest visualization of 2017 - the joy plot or ridgeline plot.
+Joy plots are partially overlapping density line plots. They are useful for densely showing changes in many distributions over time / condition / etc.
+This type of visualization was inspired by the cover art from Joy Division’s album Unknown Pleasures and implemented in the R package ggridges by Claus Wilke.</description>
+    </item>
+    
+    <item>
+      <title>Let’s Plot 4: R vs Excel, Round 1</title>
+      <link>/./post/let-s-plot-4-r-vs-excel/</link>
+      <pubDate>Thu, 01 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/let-s-plot-4-r-vs-excel/</guid>
+      <description>Introduction Data Cleaning Reformatting Box Plot Boxplot with all the data displayed I used to prefer violin plots I’m a fan of beeswarm plots with boxplots Doing statistics. Session   Introduction The battle that we’ve all been waiting for. Excel vs. R. Bar plot versus a plot that actually shows the data.
+Yeah, this isn’t a fair fight.
+Bar plots are terrible. Why? Simple. They don’t show what your data looks like.</description>
+    </item>
+    
+    <item>
+      <title>Let’s Plot 2: Smoothed Lines</title>
+      <link>/./post/let-s-plot-2-smoothed-lines/</link>
+      <pubDate>Sun, 04 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/let-s-plot-2-smoothed-lines/</guid>
+      <description>Get data (two xls files) from here: Load data and look at structure (str) Head (first few lines) AUC, N1P1, Latency Summary of eel and cobra AUC What kind of time points or conditions or whatever do we have again? Summary by pig and region Plot AUC by time and region and pig Prettier plot with lines and more formatting N1P1 Plot Latency plot Bonus   Data from Aaron Rising.</description>
+    </item>
+    
+    <item>
+      <title>Let’s Plot 1: Going in circles </title>
+      <link>/./post/let-s-plot-1/</link>
+      <pubDate>Thu, 01 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/let-s-plot-1/</guid>
+      <description>What is going on? Where to get the code and data? Import data with readxl OK, first let’s remove the notes. However, we aren’t done. The data is “wide” instead of “long” and we have mixed session IDs (Amp 1-3 and Angle 1-3) with the value type. Now we need to extract the session (1,2,3) and the test type (Amp or Angle) Now we have two value types (Angle and Amplitude) in one column.</description>
+    </item>
+    
+    <item>
+      <title>What is Let’s Plot?</title>
+      <link>/./post/what-is-let-s-plot/</link>
+      <pubDate>Wed, 31 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/what-is-let-s-plot/</guid>
+      <description>Tooling How can I follow along?   The concept is simple - I get data from one of the scientists in my group. Or I get my own. Then I demonstrate, step-by-step, how I generate the plot(s). I’ll also toss in some data science concepts occasionally.
+They are a bit sparse on the words because I’m presenting these in person. But I believe they are clear enough for someone to follow along.</description>
+    </item>
+    
+  </channel>
+</rss>

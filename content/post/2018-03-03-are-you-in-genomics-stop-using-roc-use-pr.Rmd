@@ -169,8 +169,8 @@ Well, maybe we should make those confusion matrix things I showed earlier. Just 
 ```{r, warning = FALSE}
 cm_maker <- function(model, data, cutoff=0.5, mode = 'sens_spec') {
   new_predictions <- predict(model, data, type='prob') %>%
-    mutate(Answers = data$Status, Prediction = case_when(Pathogenic > cutoff ~ 'Pathogenic', TRUE ~ 'NotPathogenic'))
-  confusionMatrix(data = new_predictions$Prediction, reference = new_predictions$Answers, mode= mode)
+    mutate(Answers = as.factor(data$Status), Prediction = as.factor(case_when(Pathogenic > cutoff ~ 'Pathogenic', TRUE ~ 'NotPathogenic')))
+  confusionMatrix(data = new_predictions$Prediction, reference = as.factor(new_predictions$Answers), mode= mode)
 }
 
 for (i in names(my_models)){

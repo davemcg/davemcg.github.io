@@ -11,6 +11,111 @@
     <atom:link href="//" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Onboarding</title>
+      <link>/./culture/onboarding/</link>
+      <pubDate>Mon, 16 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./culture/onboarding/</guid>
+      <description>&lt;div id=&#34;points-of-contact&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Points of Contact&lt;/h2&gt;
+&lt;p&gt;Administrative&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Jairo Meija
+&lt;ul&gt;
+&lt;li&gt;Jairo (“Hi Ro”) is the administrative manager for the OGVFB&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Cathy Geer
+&lt;ul&gt;
+&lt;li&gt;The administrative assistant for the branch&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;If you have any admin-related questions, shoot one of them an email or
+go chat with them in 10N109&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Brian Brooks&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The boss. He is the NEI Clinical Director and the head of the OGVFB&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Tiziana Cogliati&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;She is Brian’s lab manager. She does the day to day administration of
+Brian’s research lab and guides the research along with Brian&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Cesar Perez-Gonzalez&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;NEI Scientific Program Administrator&lt;/li&gt;
+&lt;li&gt;He is the guy who oversees all trainees in NEI&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;before-the-first-day&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Before the first day&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;You should have made an appointment to get a NIH badge
+&lt;ul&gt;
+&lt;li&gt;If this doesn’t make any sense then
+&lt;a href=&#34;https://ned.nih.gov/search/ViewDetails.aspx?NIHID=0011297616&#34;&gt;contact&lt;/a&gt; Jairo&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;nih-training&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;NIH training&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.safetytraining.nih.gov/TrainingRequirements.aspx&#34; class=&#34;uri&#34;&gt;https://www.safetytraining.nih.gov/TrainingRequirements.aspx&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;only required if you &lt;strong&gt;know&lt;/strong&gt; you are doing bench work&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://irtsectraining.nih.gov&#34; class=&#34;uri&#34;&gt;https://irtsectraining.nih.gov&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://researchethics.od.nih.gov&#34; class=&#34;uri&#34;&gt;https://researchethics.od.nih.gov&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;nih-resources&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;NIH resources&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://neinet.nei.nih.gov&#34;&gt;NEI Intranet&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;only available after you get here&lt;/li&gt;
+&lt;li&gt;internal page with org chart, meeting scheduling, etc et.c
+&lt;ul&gt;
+&lt;li&gt;(&lt;a href=&#34;http://neinet.nei.nih.gov/intramural/FellowsStudents/postbac.asp&#34; class=&#34;uri&#34;&gt;http://neinet.nei.nih.gov/intramural/FellowsStudents/postbac.asp&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://ned.nih.gov/search/&#34;&gt;NIH Phone Book&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Programming Practices</title>
+      <link>/./culture/practices/</link>
+      <pubDate>Mon, 16 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./culture/practices/</guid>
+      <description>&lt;div id=&#34;version-tracking&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Version Tracking&lt;/h2&gt;
+&lt;p&gt;We use git.&lt;/p&gt;
+&lt;p&gt;You will use git.&lt;/p&gt;
+&lt;p&gt;You will have your own github.com (or equivalent, like gitlab) account.&lt;/p&gt;
+&lt;p&gt;Your projects will each have their own repository on github.com.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;language&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Language&lt;/h2&gt;
+&lt;p&gt;I use a combination of R, python, Snakemake, awk, and bash. I lean heavily on R to produce
+visualizations and interactive documents/sites and Snakemake to reproducibly process data
+in projects.&lt;/p&gt;
+&lt;p&gt;Projects you do with me will likely have to be written in some combination of the
+above languages, so they can be supported after you leave (or you’ll have to
+talk me into learning language X).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;reproducibility&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Reproducibility&lt;/h2&gt;
+&lt;p&gt;Everything you do is to be written in code. The expectation is you can run
+(ideally one) script/Snakemake file and reproduce virtually all of the downstream
+analyses from the &lt;strong&gt;raw&lt;/strong&gt; data.&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Quick Guide to Gene Name Conversion</title>
       <link>/./post/quick-guide-to-gene-name-conversion/</link>
       <pubDate>Mon, 18 Jun 2018 00:00:00 +0000</pubDate>
@@ -43,12 +148,13 @@
 
 library(annotables)
 library(tidyverse)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ── Attaching packages ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ✔ ggplot2 2.2.1     ✔ purrr   0.2.4
-## ✔ tibble  1.4.2     ✔ dplyr   0.7.5
+&lt;pre&gt;&lt;code&gt;## ── Attaching packages ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## ✔ ggplot2 3.0.0     ✔ purrr   0.2.4
+## ✔ tibble  1.4.2     ✔ dplyr   0.7.6
 ## ✔ tidyr   0.8.1     ✔ stringr 1.3.1
 ## ✔ readr   1.1.1     ✔ forcats 0.3.0&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ── Conflicts ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;dplyr&amp;#39; was built under R version 3.5.1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## ── Conflicts ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;grch38 %&amp;gt;% head()&lt;/code&gt;&lt;/pre&gt;
@@ -133,7 +239,7 @@ refseq_mapping &lt;/code&gt;&lt;/pre&gt;
 ##  language (EN)                        
 ##  collate  en_US.UTF-8                 
 ##  tz       America/New_York            
-##  date     2018-06-18&lt;/code&gt;&lt;/pre&gt;
+##  date     2018-07-16&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Packages -----------------------------------------------------------------&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##  package       * version   date      
 ##  annotables    * 0.1.91    2018-06-18
@@ -150,7 +256,7 @@ refseq_mapping &lt;/code&gt;&lt;/pre&gt;
 ##  bit64           0.9-7     2017-05-08
 ##  bitops          1.0-6     2013-08-17
 ##  blob            1.1.1     2018-03-25
-##  blogdown        0.6       2018-04-18
+##  blogdown        0.8.1     2018-07-16
 ##  bookdown        0.7       2018-02-18
 ##  broom           0.4.4     2018-03-29
 ##  cellranger      1.1.0     2016-07-27
@@ -163,11 +269,11 @@ refseq_mapping &lt;/code&gt;&lt;/pre&gt;
 ##  DBI             1.0.0     2018-05-02
 ##  devtools        1.13.5    2018-02-18
 ##  digest          0.6.15    2018-01-28
-##  dplyr         * 0.7.5     2018-05-19
+##  dplyr         * 0.7.6     2018-06-29
 ##  evaluate        0.10.1    2017-06-24
 ##  forcats       * 0.3.0     2018-02-19
 ##  foreign         0.8-70    2017-11-28
-##  ggplot2       * 2.2.1     2016-12-30
+##  ggplot2       * 3.0.0     2018-07-03
 ##  glue            1.2.0     2017-10-29
 ##  graphics      * 3.5.0     2018-04-24
 ##  grDevices     * 3.5.0     2018-04-24
@@ -205,7 +311,7 @@ refseq_mapping &lt;/code&gt;&lt;/pre&gt;
 ##  readxl          1.1.0     2018-04-20
 ##  reshape2        1.4.3     2017-12-11
 ##  rlang           0.2.1     2018-05-30
-##  rmarkdown       1.9       2018-03-01
+##  rmarkdown       1.10      2018-06-11
 ##  rprojroot       1.3-2     2018-01-03
 ##  RSQLite         2.1.1     2018-05-06
 ##  rstudioapi      0.7       2017-09-07
@@ -224,7 +330,7 @@ refseq_mapping &lt;/code&gt;&lt;/pre&gt;
 ##  utf8            1.1.4     2018-05-24
 ##  utils         * 3.5.0     2018-04-24
 ##  withr           2.1.2     2018-03-15
-##  xfun            0.1       2018-01-22
+##  xfun            0.3       2018-07-06
 ##  XML             3.98-1.11 2018-04-16
 ##  xml2            1.2.0     2018-01-24
 ##  yaml            2.1.19    2018-05-01
@@ -243,7 +349,7 @@ refseq_mapping &lt;/code&gt;&lt;/pre&gt;
 ##  CRAN (R 3.5.0)                           
 ##  CRAN (R 3.5.0)                           
 ##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.0)                           
+##  Github (rstudio/blogdown@d54c39a)        
 ##  CRAN (R 3.5.0)                           
 ##  CRAN (R 3.5.0)                           
 ##  CRAN (R 3.5.0)                           
@@ -256,11 +362,11 @@ refseq_mapping &lt;/code&gt;&lt;/pre&gt;
 ##  CRAN (R 3.5.0)                           
 ##  CRAN (R 3.5.0)                           
 ##  CRAN (R 3.5.0)                           
+##  cran (@0.7.6)                            
 ##  CRAN (R 3.5.0)                           
 ##  CRAN (R 3.5.0)                           
 ##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.0)                           
+##  cran (@3.0.0)                            
 ##  CRAN (R 3.5.0)                           
 ##  local                                    
 ##  local                                    
@@ -298,7 +404,7 @@ refseq_mapping &lt;/code&gt;&lt;/pre&gt;
 ##  CRAN (R 3.5.0)                           
 ##  CRAN (R 3.5.0)                           
 ##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.0)                           
+##  cran (@1.10)                             
 ##  CRAN (R 3.5.0)                           
 ##  CRAN (R 3.5.0)                           
 ##  CRAN (R 3.5.0)                           
@@ -317,7 +423,7 @@ refseq_mapping &lt;/code&gt;&lt;/pre&gt;
 ##  CRAN (R 3.5.0)                           
 ##  local                                    
 ##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.0)                           
+##  cran (@0.3)                              
 ##  CRAN (R 3.5.0)                           
 ##  CRAN (R 3.5.0)                           
 ##  CRAN (R 3.5.0)&lt;/code&gt;&lt;/pre&gt;
@@ -418,7 +524,8 @@ refseq_mapping &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;dark-matter&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;“dark matter”&lt;/h3&gt;
-&lt;p&gt;Can we use ‘big dna’ to functionally query mammalian genomes? ‘Synthetic haplotypes’&lt;/p&gt;
+&lt;p&gt;Can we use ‘big dna’ to functionally query mammalian genomes?
+‘Synthetic haplotypes’&lt;/p&gt;
 &lt;p&gt;Building dif combinations of haplotype blocks&lt;/p&gt;
 &lt;p&gt;synthetic hypervariation:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;- query enhancers
@@ -428,13 +535,17 @@ refseq_mapping &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;big-dna&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;big dna&lt;/h3&gt;
-&lt;p&gt;Can build big dna pieces CEGS grant will build 3 100kb+ loci / year want community input&lt;/p&gt;
+&lt;p&gt;Can build big dna pieces
+CEGS grant
+will build 3 100kb+ loci / year
+want community input&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;greg-findlay-jay-shendure&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Greg Findlay (Jay Shendure)&lt;/h2&gt;
 &lt;p&gt;Accurate classficiation of thousands of BRCA1 variants with saturation genome editing&lt;/p&gt;
-&lt;p&gt;vous a problem BRCA1:&lt;/p&gt;
+&lt;p&gt;vous a problem
+BRCA1:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;4243 clinvar snvs&lt;/li&gt;
 &lt;li&gt;&lt;blockquote&gt;
@@ -532,8 +643,10 @@ refseq_mapping &lt;/code&gt;&lt;/pre&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;can you jump start with atxr6 (does mono me)?
 &lt;ul&gt;
-&lt;li&gt;yes (confirmed with mass spec)&lt;/li&gt;
+&lt;li&gt;yes (confirmed with mass spec)
+&lt;ul&gt;
 &lt;li&gt;not super high levels (0.054% tri me)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
@@ -565,8 +678,10 @@ refseq_mapping &lt;/code&gt;&lt;/pre&gt;
 &lt;ul&gt;
 &lt;li&gt;925 off target with non-targeting guide!&lt;/li&gt;
 &lt;li&gt;so protein itself is not ideal….&lt;/li&gt;
-&lt;li&gt;identified non-binding residues of ADAR&lt;/li&gt;
+&lt;li&gt;identified non-binding residues of ADAR
+&lt;ul&gt;
 &lt;li&gt;mutated them&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;v2 works better
 &lt;ul&gt;
@@ -601,7 +716,8 @@ refseq_mapping &lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;matches up with histone chip-seq&lt;/li&gt;
 &lt;li&gt;34.3kb average distance from enhancer &amp;lt;-&amp;gt; gene&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;** new data! ** 4,801 enhancers&lt;/p&gt;
+&lt;p&gt;** new data! **
+4,801 enhancers&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;built logistic regression model on pilot to pick new candidates&lt;/li&gt;
 &lt;li&gt;30 guides / cell&lt;/li&gt;
@@ -617,7 +733,8 @@ refseq_mapping &lt;/code&gt;&lt;/pre&gt;
 &lt;h2&gt;Eilon Sharon (Hunter Fraser)&lt;/h2&gt;
 &lt;p&gt;Testing genetic var effect on fitness using precise genome editing&lt;/p&gt;
 &lt;p&gt;high throughput edigint&lt;/p&gt;
-&lt;p&gt;crispey: cas9 retron precise parallel editing via homology&lt;/p&gt;
+&lt;p&gt;crispey:
+cas9 retron precise parallel editing via homology&lt;/p&gt;
 &lt;p&gt;use bacterial reverse transcriptase and RNA retron to covalently link ssDNA donor to guide-tracrRNA&lt;/p&gt;
 &lt;p&gt;can insert long sequences&lt;/p&gt;
 &lt;p&gt;(yeast)&lt;/p&gt;
@@ -630,7 +747,8 @@ refseq_mapping &lt;/code&gt;&lt;/pre&gt;
 &lt;h2&gt;Luca Pinello&lt;/h2&gt;
 &lt;p&gt;CRISPR-SURF exploratory and interactive software for analyzing CRISPR-base tiling screens&lt;/p&gt;
 &lt;p&gt;Uncover non-coding functional regions&lt;/p&gt;
-&lt;p&gt;** Nice overview of CRISPR tiling strategy ** Mutate (tile across region) -&amp;gt; Measure pheno change (somehow) -&amp;gt; Assess (sequence gRNA)&lt;/p&gt;
+&lt;p&gt;** Nice overview of CRISPR tiling strategy **
+Mutate (tile across region) -&amp;gt; Measure pheno change (somehow) -&amp;gt; Assess (sequence gRNA)&lt;/p&gt;
 &lt;p&gt;No unified framework to analyze these kind of assays&lt;/p&gt;
 &lt;p&gt;many challenges&lt;/p&gt;
 &lt;ul&gt;
@@ -716,7 +834,8 @@ time |           XXX      XX
 &lt;li&gt;not ROBO1&lt;/li&gt;
 &lt;li&gt;TRPM3 (1.6e-3)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;CDH23 - increased tolerance to loud noise and low startle reflex - &lt;strong&gt;do hunting dogs have poor hearing?&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;CDH23 - increased tolerance to loud noise and low startle reflex
+- &lt;strong&gt;do hunting dogs have poor hearing?&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Useful stuff maybe for competitive dog breeders&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Q (Kellis?): polymorphic nature of traits across dogs. &lt;strong&gt;what’s the question?&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;A: complex traits, incomplete answers right now&lt;/p&gt;
@@ -762,7 +881,8 @@ time |           XXX      XX
 &lt;li&gt;60% singleton (50%) and doubletons (10%) for variants&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Looked for X-autosome difs&lt;/p&gt;
-&lt;p&gt;X/A diversity = (mutations(x) / all X) / (mutation(a) / all a) (a is autosome, x is chrX)&lt;/p&gt;
+&lt;p&gt;X/A diversity = (mutations(x) / all X) / (mutation(a) / all a)
+(a is autosome, x is chrX)&lt;/p&gt;
 &lt;p&gt;Bootstrap test for mutation types to make null distribution&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;big shift in X (more than expected)&lt;/li&gt;
@@ -834,7 +954,8 @@ time |           XXX      XX
 &lt;li&gt;getting causal SNPs with CAVIAR&lt;/li&gt;
 &lt;li&gt;enriched with active chromatin states&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;perhaps some QTL stabilize TF binding motifs - stuff happening in motifs&lt;/p&gt;
+&lt;p&gt;perhaps some QTL stabilize TF binding motifs
+- stuff happening in motifs&lt;/p&gt;
 &lt;p&gt;Q: look for associations with structural variation? (1000G data)&lt;/p&gt;
 &lt;p&gt;A: looking at this now&lt;/p&gt;
 &lt;p&gt;Q: cell type specific? (&lt;strong&gt;thank you&lt;/strong&gt;)&lt;/p&gt;
@@ -859,17 +980,47 @@ time |           XXX      XX
 &lt;li&gt;genomics&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;LOTS OF POSTERS&lt;/p&gt;
-&lt;p&gt;200 WGS Aricans - 35 million SNPS - 20% novel&lt;/p&gt;
+&lt;p&gt;200 WGS Aricans
+- 35 million SNPS
+- 20% novel&lt;/p&gt;
 &lt;p&gt;81% GWAS european&lt;/p&gt;
-&lt;p&gt;Skin color is adaptive trait - spectrophotometry of skin color - and take DNA - boom GWAS - 1600 people - found 8 regions&lt;/p&gt;
+&lt;p&gt;Skin color is adaptive trait
+- spectrophotometry of skin color
+- and take DNA
+- boom GWAS
+- 1600 people
+- found 8 regions&lt;/p&gt;
 &lt;p&gt;SLC24A5&lt;/p&gt;
-&lt;p&gt;MFSD12 - novel - transmembrane transporters - found enhnacer activity - functional work! - KO mRNA in melanocyptes - get more melanin - colocalizes with lysosome - ZF KO - yellow gone - mouse KO - diff colors - looks like gr/gr mouse - 9bp deletion in MFSD12!&lt;/p&gt;
-&lt;p&gt;DDB1 - DNA repair in UV damage - pigmentation in tomatoes - fine mapping hits TMEM128 - luciferase assay with enhancer activity - huge haplotype blocks of low het in europeans/asians - selective sweep, near complete fixation&lt;/p&gt;
-&lt;p&gt;OCA2/HERC2 - exon10 SNP alt splicing - rs1800404&lt;/p&gt;
-&lt;p&gt;convergent evolution of very dark skin - african and south asia&lt;/p&gt;
+&lt;p&gt;MFSD12
+- novel
+- transmembrane transporters
+- found enhnacer activity
+- functional work!
+- KO mRNA in melanocyptes
+- get more melanin
+- colocalizes with lysosome
+- ZF KO
+- yellow gone
+- mouse KO
+- diff colors
+- looks like gr/gr mouse
+- 9bp deletion in MFSD12!&lt;/p&gt;
+&lt;p&gt;DDB1
+- DNA repair in UV damage
+- pigmentation in tomatoes
+- fine mapping hits TMEM128
+- luciferase assay with enhancer activity
+- huge haplotype blocks of low het in europeans/asians
+- selective sweep, near complete fixation&lt;/p&gt;
+&lt;p&gt;OCA2/HERC2
+- exon10 SNP alt splicing
+- rs1800404&lt;/p&gt;
+&lt;p&gt;convergent evolution of very dark skin
+- african and south asia&lt;/p&gt;
 &lt;p&gt;q: speculate about lysosome?&lt;/p&gt;
 &lt;p&gt;a: pheomelanin made in lysosome (like) structure?&lt;/p&gt;
-&lt;p&gt;q: surprised to not find var close to mcr1 a: no&lt;/p&gt;
+&lt;p&gt;q: surprised to not find var close to mcr1
+a: no&lt;/p&gt;
 &lt;p&gt;q: chimp with no hair has vitiligo?&lt;/p&gt;
 &lt;p&gt;a: dont’ think so - have been assured chimps have light skin&lt;/p&gt;
 &lt;/div&gt;
@@ -893,21 +1044,39 @@ time |           XXX      XX
 &lt;li&gt;&lt;strong&gt;model with real data to pick parameters??&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;model - simulation with simple pop, const size, fixed mut rate - compare estimate with actual - good cor (0.953)&lt;/p&gt;
-&lt;p&gt;also tested in error-filled data - haplotypes, errors, phasing issues - still works, but overestimate young alleles (think they are older)&lt;/p&gt;
-&lt;p&gt;ran in simons genetci diversity project and 1000G - oldest var ~37.5k years in AFR - SAS 12.5K - EAS 11K - AMR 7.5K - EUR 6K (why so young? - admixture)&lt;/p&gt;
-&lt;p&gt;cumulative coalescent decoding (CCD) - what frac of your genome share with another genome back in time? - ran this pair-wise across 1000G dataset&lt;/p&gt;
+&lt;p&gt;model
+- simulation with simple pop, const size, fixed mut rate
+- compare estimate with actual
+- good cor (0.953)&lt;/p&gt;
+&lt;p&gt;also tested in error-filled data
+- haplotypes, errors, phasing issues
+- still works, but overestimate young alleles (think they are older)&lt;/p&gt;
+&lt;p&gt;ran in simons genetci diversity project and 1000G
+- oldest var ~37.5k years in AFR
+- SAS 12.5K
+- EAS 11K
+- AMR 7.5K
+- EUR 6K (why so young? - admixture)&lt;/p&gt;
+&lt;p&gt;cumulative coalescent decoding (CCD)
+- what frac of your genome share with another genome back in time?
+- ran this pair-wise across 1000G dataset&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;will release a genome-wide atlas of allele age &amp;gt;16 million variants&lt;/em&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;laura-hayward-guy-sella&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Laura Hayward (Guy Sella)&lt;/h2&gt;
 &lt;p&gt;Polygenic adaptation in response to sudden change in environment&lt;/p&gt;
 &lt;p&gt;What time scale? Mentioned Human expansion out of Africa, which is ~100k years&lt;/p&gt;
-&lt;p&gt;stabilizing selection reduces pheontypic variance (omega is width of trait distribution) - kingsolver et al. 2001&lt;/p&gt;
+&lt;p&gt;stabilizing selection reduces pheontypic variance (omega is width of trait distribution)
+- kingsolver et al. 2001&lt;/p&gt;
 &lt;p&gt;model change of phenotpye in environment change&lt;/p&gt;
 &lt;p&gt;OK…not following this talk well at all (pretty sure it’s me). Laura is copiously using cartoons, which is usually works for fools like me.&lt;/p&gt;
-&lt;p&gt;not cetain whether this stuff is driven by theory or data or both - no, no data - equations from first princples&lt;/p&gt;
-&lt;p&gt;conclusions: - polygenic adaption is rapid - short term: large effects drive change - long term: moderate effect alleles replace them&lt;/p&gt;
+&lt;p&gt;not cetain whether this stuff is driven by theory or data or both
+- no, no data
+- equations from first princples&lt;/p&gt;
+&lt;p&gt;conclusions:
+- polygenic adaption is rapid
+- short term: large effects drive change
+- long term: moderate effect alleles replace them&lt;/p&gt;
 &lt;p&gt;topol Q: is this like dogs? big changes in short term&lt;/p&gt;
 &lt;p&gt;a: no, not modeling dramatic changes like this&lt;/p&gt;
 &lt;/div&gt;
@@ -918,7 +1087,7 @@ time |           XXX      XX
 &lt;h2&gt;Job Dekker&lt;/h2&gt;
 &lt;p&gt;Folding, unfolding, and refolding genomes&lt;/p&gt;
 &lt;p&gt;How does the genome work? &lt;strong&gt;structured&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Dekker et al. 2002: 3C. &lt;strong&gt;I remember this paper. And totally failing at doing this tech myself&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Dekker et al. 2002: 3C. &lt;strong&gt;I remember this paper. And totally failing at doing this tech myself&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;A/B compartments….TAD…..enhancer - gene loops. One slide summarzing many publications and of cool work.&lt;/p&gt;
 &lt;pre class=&#34;ascii&#34;&gt;&lt;code&gt;                                TAD
                                                 loop (cohesin-mediated)
@@ -934,10 +1103,14 @@ time |           XXX      XX
  XXXX                           X                XXXXXXXX       XXXX
     XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX       XXX X XX
 ctcf                           ctcf                                 ctcf&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Interphase / metaphase - interphase has structure - metaphase erases structure (fat diagonal of 3c map)&lt;/p&gt;
-&lt;p&gt;meiotic chr fold as helical nested loop arrays (helix with loops coming off) - Gibcus…Dekker Science 2018&lt;/p&gt;
+&lt;p&gt;Interphase / metaphase
+- interphase has structure
+- metaphase erases structure (fat diagonal of 3c map)&lt;/p&gt;
+&lt;p&gt;meiotic chr fold as helical nested loop arrays (helix with loops coming off)
+- Gibcus…Dekker Science 2018&lt;/p&gt;
 &lt;p&gt;Using ATAC-seq, cut&amp;amp;ruhn to assay CTCF binding patterning in interphase / metaphase&lt;/p&gt;
-&lt;p&gt;FRAP to measure stable CTCF binding in interphase / metaphase - unstable in metaphase&lt;/p&gt;
+&lt;p&gt;FRAP to measure stable CTCF binding in interphase / metaphase
+- unstable in metaphase&lt;/p&gt;
 &lt;p&gt;Q: CTCF sites occupied in mitosis - why? Nucleosomes taking over?&lt;/p&gt;
 &lt;p&gt;A: Good q, don’t know. Think nucleosomes ‘sliding in’&lt;/p&gt;
 &lt;p&gt;Q: &lt;strong&gt;missed it&lt;/strong&gt;&lt;/p&gt;
@@ -955,7 +1128,8 @@ ctcf                           ctcf                                 ctcf&lt;/cod
 &lt;p&gt;RADICL-seq: novel tech for genome-wide mapping of RNA-chromatin interactions&lt;/p&gt;
 &lt;p&gt;Many many (~20k) functiona lncRNA&lt;/p&gt;
 &lt;p&gt;But what is role? Activate genes, promoter, enhancer? Repression of genes? Establish insulation?&lt;/p&gt;
-&lt;p&gt;RADICL-seq - capture RNA-DNA interactions with crosslinking (formaldehyde, 1-2%)&lt;/p&gt;
+&lt;p&gt;RADICL-seq
+- capture RNA-DNA interactions with crosslinking (formaldehyde, 1-2%)&lt;/p&gt;
 &lt;p&gt;Where do they map?&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Lots in the intron&lt;/li&gt;
@@ -1026,7 +1200,8 @@ ctcf                           ctcf                                 ctcf&lt;/cod
 &lt;p&gt;and &lt;em&gt;orientation&lt;/em&gt; (flipping motifs can break function)&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;suboptimization&lt;/em&gt; as design parameter hilarious and terrifying (great, let’s make things worse to control things more precisely)&lt;/p&gt;
 &lt;p&gt;wut - SHH enhancer that causes polydactyly….points out that SNP makes binding site &lt;em&gt;better&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;Deboever et al. Cell Stem Cell 2017 D’Antonion et al. Nature communication 2017&lt;/p&gt;
+&lt;p&gt;Deboever et al. Cell Stem Cell 2017
+D’Antonion et al. Nature communication 2017&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;jake-yeung-felix-naef&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Jake Yeung (Felix Naef)&lt;/h2&gt;
@@ -1048,7 +1223,8 @@ ctcf                           ctcf                                 ctcf&lt;/cod
 &lt;div id=&#34;minal-caliskan-casey-brown&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Minal Caliskan (Casey Brown)&lt;/h2&gt;
 &lt;p&gt;Genetic and epigenetic fine mapping of complex trait associated loci in the human liver&lt;/p&gt;
-&lt;p&gt;Genotype &amp;lt;-&amp;gt; RNA-seq &amp;lt;-&amp;gt; H3K4me3 &amp;lt;-&amp;gt; H3K27ac 50 &amp;lt;-&amp;gt; 50 &amp;lt;-&amp;gt; 10 &amp;lt;-&amp;gt; 10 (people)&lt;/p&gt;
+&lt;p&gt;Genotype &amp;lt;-&amp;gt; RNA-seq &amp;lt;-&amp;gt; H3K4me3 &amp;lt;-&amp;gt; H3K27ac
+50 &amp;lt;-&amp;gt; 50 &amp;lt;-&amp;gt; 10 &amp;lt;-&amp;gt; 10 (people)&lt;/p&gt;
 &lt;p&gt;Found eQTLs specific to liver (vs GTEX)&lt;/p&gt;
 &lt;p&gt;Found hQTLS also (histone)&lt;/p&gt;
 &lt;p&gt;eQTL + hQTL + RNA-seq to ‘fine map’ GWAS loci&lt;/p&gt;
@@ -1096,7 +1272,11 @@ ctcf                           ctcf                                 ctcf&lt;/cod
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;screen 3200 mice&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;exome seq G1 founder male for candidate phenotype - 20-99 new lesions - backcross - mate 10 G2 - analyze 10 G3 offspring&lt;/p&gt;
+&lt;p&gt;exome seq G1 founder male for candidate phenotype
+- 20-99 new lesions
+- backcross
+- mate 10 G2
+- analyze 10 G3 offspring&lt;/p&gt;
 &lt;p&gt;many pathways affected&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;including DNA repair and lipid metabolism&lt;/li&gt;
@@ -1176,7 +1356,7 @@ ctcf                           ctcf                                 ctcf&lt;/cod
 &lt;/ul&gt;
 &lt;p&gt;Evaluation:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;gEVAL (Chow et al. 2016)
+&lt;li&gt;gEVAL (Chow et al. 2016)
 &lt;ul&gt;
 &lt;li&gt;k-mer com-leteness&lt;/li&gt;
 &lt;li&gt;synteny&lt;/li&gt;
@@ -1274,7 +1454,8 @@ ctcf                           ctcf                                 ctcf&lt;/cod
 &lt;ul&gt;
 &lt;li&gt;yes&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;swept chr regions have less archaic admixture - Skov et al 2018 bioRxiv for method&lt;/p&gt;
+&lt;p&gt;swept chr regions have less archaic admixture
+- Skov et al 2018 bioRxiv for method&lt;/p&gt;
 &lt;p&gt;trying to get time window of sweep&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;45k years&lt;/li&gt;
@@ -1288,10 +1469,10 @@ ctcf                           ctcf                                 ctcf&lt;/cod
 &lt;ul&gt;
 &lt;li&gt;only one meet neanderthal&lt;/li&gt;
 &lt;li&gt;then merge&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;many small groups leave&lt;/li&gt;
 &lt;li&gt;later one big one leaves, which meets neanderthals&lt;/li&gt;
 &lt;li&gt;then all merge&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
@@ -1349,10 +1530,7 @@ ctcf                           ctcf                                 ctcf&lt;/cod
 &lt;div id=&#34;update&#34; class=&#34;section level4&#34;&gt;
 &lt;h4&gt;Update&lt;/h4&gt;
 &lt;p&gt;Bit unfair to Gavin here (I was just really hoping for some speculation on gene function!). His &lt;a href=&#34;https://twitter.com/gsherloc/status/994617999331069960&#34;&gt;tweet&lt;/a&gt; response:&lt;/p&gt;
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;/./img/bog_sherlock_tweet.png&#34; /&gt;
-
-&lt;/div&gt;
+&lt;p&gt;&lt;img src=&#34;/./img/bog_sherlock_tweet.png&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;anne-ruxandra-carvunis&#34; class=&#34;section level2&#34;&gt;
@@ -1389,8 +1567,10 @@ ctcf                           ctcf                                 ctcf&lt;/cod
 &lt;li&gt;#notweet
 &lt;ul&gt;
 &lt;li&gt;(not 100% certain in results yet)&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;happy that Anne is sharing a bit about general proto-gene functions&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;happy that Anne is sharing a bit about general proto-gene functions&lt;/strong&gt;
+&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;compelling stuff&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;bit confused on network integration …. didn’t see any evidence or discussion of it&lt;/strong&gt;
 &lt;ul&gt;
@@ -1407,7 +1587,7 @@ ctcf                           ctcf                                 ctcf&lt;/cod
 &lt;li&gt;easy to find LD block&lt;/li&gt;
 &lt;li&gt;hard to find mutation&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Parker et al. Cell Reports 2017&lt;/p&gt;
+&lt;p&gt;Parker et al. Cell Reports 2017&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;breed relatedness with neighbor joining tree (up to &amp;gt;200 dog breeds)&lt;/li&gt;
 &lt;li&gt;found haplotype sharing across breeds&lt;/li&gt;
@@ -1446,8 +1626,18 @@ ctcf                           ctcf                                 ctcf&lt;/cod
 &lt;div id=&#34;bobbie-cansdale-claire-wade&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Bobbie Cansdale (Claire Wade)&lt;/h2&gt;
 &lt;p&gt;3D modeling of Hi-C data to investigate spatial organization of the canine genome&lt;/p&gt;
-&lt;p&gt;TADs - modular units of genome struture/organization&lt;/p&gt;
-&lt;p&gt;Regions assessed: - MITF - ASIP - RALY - TYRP1 - MC1R - KRT71 - RSPO2 - MSRB3 - IFG1&lt;/p&gt;
+&lt;p&gt;TADs
+- modular units of genome struture/organization&lt;/p&gt;
+&lt;p&gt;Regions assessed:
+- MITF
+- ASIP
+- RALY
+- TYRP1
+- MC1R
+- KRT71
+- RSPO2
+- MSRB3
+- IFG1&lt;/p&gt;
 &lt;p&gt;Qualitative look at genes known to do stuff…and what genes are near them (in Hi-C TAD block)….as far as I could tell.&lt;/p&gt;
 &lt;p&gt;3D modeling….haven’t done yet….&lt;/p&gt;
 &lt;/div&gt;
@@ -1457,10 +1647,18 @@ ctcf                           ctcf                                 ctcf&lt;/cod
 &lt;div id=&#34;trey-ideker&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Trey Ideker&lt;/h2&gt;
 &lt;p&gt;Decoding patient genomes through the hierarchical pathway architecture of the cancer cell&lt;/p&gt;
-&lt;p&gt;‘somatic’ eQTL RNA expression + WGS + enhancers (mapped to genes with GeneHancer) + covariates to calc eQTL Found ~190 (including positive control TERT)&lt;/p&gt;
+&lt;p&gt;‘somatic’ eQTL
+RNA expression + WGS + enhancers (mapped to genes with GeneHancer) + covariates to calc eQTL
+Found ~190 (including positive control TERT)&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;yeast now&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;ppi (protein protein interactions) - Dutkowski et al 2013 nature methods&lt;/p&gt;
-&lt;p&gt;DCell - neural network guided by hierarchical cell bio - 3500 cell subsystems (&lt;strong&gt;from ppi?&lt;/strong&gt;) - 12 layers - 12 million yeast genotypes (single and pairwise KO) - &lt;a href=&#34;http://d-cell.ucsd.edu&#34; class=&#34;uri&#34;&gt;http://d-cell.ucsd.edu&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;ppi (protein protein interactions)
+- Dutkowski et al 2013 nature methods&lt;/p&gt;
+&lt;p&gt;DCell
+- neural network guided by hierarchical cell bio
+- 3500 cell subsystems (&lt;strong&gt;from ppi?&lt;/strong&gt;)
+- 12 layers
+- 12 million yeast genotypes (single and pairwise KO)
+- &lt;a href=&#34;http://d-cell.ucsd.edu&#34; class=&#34;uri&#34;&gt;http://d-cell.ucsd.edu&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;DCell a model for what to hope to do one day for human&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;rajbir-batra-carlos-caldas&#34; class=&#34;section level2&#34;&gt;
@@ -1505,7 +1703,7 @@ ctcf                           ctcf                                 ctcf&lt;/cod
 &lt;/ul&gt;
 &lt;p&gt;Model germline mutation rate&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Samocha et al. 2014&lt;/li&gt;
+&lt;li&gt;Samocha et al. 2014&lt;/li&gt;
 &lt;li&gt;enrichment in missense and PTV&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;What proportion of remaining cases may be regulatory?&lt;/p&gt;
@@ -1557,7 +1755,9 @@ ctcf                           ctcf                                 ctcf&lt;/cod
 &lt;/ul&gt;
 &lt;p&gt;so mutation patterns are semi-predictable (&lt;strong&gt;semi&lt;/strong&gt; is my language)&lt;/p&gt;
 &lt;p&gt;use model to design guideRNA to get more preditable outcome&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;nice web app&lt;/strong&gt; - &lt;strong&gt;can’t find it online…not ready yet&lt;/strong&gt; - **&lt;a href=&#34;https://github.com/maxwshen/indelphi-dataprocessinganalysis**&#34; class=&#34;uri&#34;&gt;https://github.com/maxwshen/indelphi-dataprocessinganalysis**&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;nice web app&lt;/strong&gt;
+- &lt;strong&gt;can’t find it online…not ready yet&lt;/strong&gt;
+- **&lt;a href=&#34;https://github.com/maxwshen/indelphi-dataprocessinganalysis**&#34; class=&#34;uri&#34;&gt;https://github.com/maxwshen/indelphi-dataprocessinganalysis**&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;sharon-plon-pj-lupo&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Sharon Plon (PJ Lupo)&lt;/h2&gt;
@@ -1567,7 +1767,11 @@ ctcf                           ctcf                                 ctcf&lt;/cod
 &lt;ul&gt;
 &lt;li&gt;look for overlap between cancer and genetic abnormalities (birth defect) in children&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;10 million births 0.5 million birth defects 15k cancer 1.8k birth defect &lt;em&gt;and&lt;/em&gt; cancer - &lt;strong&gt;napkin math would expect 750&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;10 million births
+0.5 million birth defects
+15k cancer
+1.8k birth defect &lt;em&gt;and&lt;/em&gt; cancer
+- &lt;strong&gt;napkin math would expect 750&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;more birth defects = greater chance of having cancer&lt;/p&gt;
 &lt;p&gt;different defects have diff cancer increase rates&lt;/p&gt;
 &lt;p&gt;can go back to the children&lt;/p&gt;
@@ -1716,7 +1920,9 @@ ctcf                           ctcf                                 ctcf&lt;/cod
 &lt;li&gt;50-200 eQTL genes (FDR &amp;lt;0.1) per step&lt;/li&gt;
 &lt;li&gt;replicates to independent iPSC eQTL study (Banovich Gen Res 2018)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Temporal dynamics - correlation of eQTL pairs summary stats - &lt;strong&gt;hey look - blocks&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Temporal dynamics
+- correlation of eQTL pairs summary stats
+- &lt;strong&gt;hey look - blocks&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;sparse matrix factorization to find &lt;em&gt;shared&lt;/em&gt; eQTL effect size (across time) patterns&lt;/p&gt;
 &lt;p&gt;this compression is correlating to time step blocks&lt;/p&gt;
 &lt;p&gt;id dynamic-QTL&lt;/p&gt;
@@ -1789,10 +1995,12 @@ ctcf                           ctcf                                 ctcf&lt;/cod
 &lt;li&gt;unique variants in sample
 &lt;ul&gt;
 &lt;li&gt;but scRNA is mega lossy&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;prob have to use many variants?&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;prob have to use many variants?&lt;/strong&gt;
+&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;how many?&lt;/strong&gt;
 &lt;ul&gt;
 &lt;li&gt;20 gives 98% ID&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -1902,7 +2110,8 @@ ctcf                           ctcf                                 ctcf&lt;/cod
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;CENTIPEDE next best (pretty close)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;f-VICE has 8.5 change in comparing CTCF (- cohesin) and CTCF (+ cohesin). - ~10-20X diff by FRAP&lt;/p&gt;
+&lt;p&gt;f-VICE has 8.5 change in comparing CTCF (- cohesin) and CTCF (+ cohesin).
+- ~10-20X diff by FRAP&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;No github?&lt;/strong&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;christina-leslie&#34; class=&#34;section level2&#34;&gt;
@@ -1952,8 +2161,10 @@ ctcf                           ctcf                                 ctcf&lt;/cod
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;but how can you &lt;em&gt;really&lt;/em&gt; rescue?
 &lt;ul&gt;
-&lt;li&gt;if you immunize in black 6 background&lt;/li&gt;
+&lt;li&gt;if you immunize in black 6 background
+&lt;ul&gt;
 &lt;li&gt;now epigenetic state changes&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;GLM to find epigenetic signatue of tolerance state&lt;/p&gt;
@@ -1964,7 +2175,8 @@ ctcf                           ctcf                                 ctcf&lt;/cod
 &lt;/div&gt;
 &lt;div id=&#34;pejman-mohammadi-tuuli-lappalainen&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Pejman Mohammadi (Tuuli Lappalainen)&lt;/h2&gt;
-&lt;p&gt;Using rare allelic expression data for studying rare disease biology &lt;span class=&#34;citation&#34;&gt;@pejminister&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Using rare allelic expression data for studying rare disease biology
+&lt;span class=&#34;citation&#34;&gt;@pejminister&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;Interpreting non-coding genome&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;regulatory var important in disease/phenotypes&lt;/li&gt;
@@ -2099,12 +2311,15 @@ ctcf                           ctcf                                 ctcf&lt;/cod
 &lt;li&gt;360 ChIP-Seq!
 &lt;ul&gt;
 &lt;li&gt;4 dropouts&lt;/li&gt;
-&lt;li&gt;require min seq depth&lt;/li&gt;
+&lt;li&gt;require min seq depth
+&lt;ul&gt;
 &lt;li&gt;20 million good reads for H3K27ac, H3k$me3&lt;/li&gt;
 &lt;li&gt;40 million for H3k4me1&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;promoter == H3K27ac and H3K4me3 enhancer == H3k27ac and H3k4me1&lt;/p&gt;
+&lt;p&gt;promoter == H3K27ac and H3K4me3
+enhancer == H3k27ac and H3k4me1&lt;/p&gt;
 &lt;p&gt;look between tissues/species&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;UpSet plot!&lt;/strong&gt;&lt;/li&gt;
@@ -2184,7 +2399,7 @@ load(&amp;#39;~/git/Let_us_plot/006_heatmaps/metadata.Rdata&amp;#39;)&lt;/code&g
 &lt;/div&gt;
 &lt;div id=&#34;peek-at-expression&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Peek at expression&lt;/h2&gt;
-&lt;p&gt;Rows are genes, columns are samples. Notice how the &lt;em&gt;number&lt;/em&gt; sample names got X appended to the beginning. This is because R variable names cannot start with a number. Generally R will ‘fix’ your sample names during a &lt;em&gt;base&lt;/em&gt; R handling.&lt;/p&gt;
+&lt;p&gt;Rows are genes, columns are samples. Notice how the &lt;em&gt;numeric&lt;/em&gt; sample names got X appended to the beginning. This is because R variable names cannot start with a number. Generally R will ‘fix’ your sample names during a &lt;em&gt;base&lt;/em&gt; R handling.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;head(expression)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##     Gene       X10       X11       X16       X17       X18        X2
 ## 1  ABCA1 13.973778 12.244265 12.628729 13.182851 11.383009 12.333361
@@ -2233,16 +2448,26 @@ dim(expression)&lt;/code&gt;&lt;/pre&gt;
 &lt;h2&gt;Load libraries&lt;/h2&gt;
 &lt;p&gt;I’ve rapidly become a fan of &lt;a href=&#34;https://www.bioconductor.org/packages/release/bioc/html/ComplexHeatmap.html&#34;&gt;ComplexHeatmap&lt;/a&gt;. It is capaable of creating just about anything &lt;strong&gt;and&lt;/strong&gt; has excellent documentation and examples.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ── Attaching packages ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ✔ ggplot2 2.2.1     ✔ purrr   0.2.4
-## ✔ tibble  1.4.2     ✔ dplyr   0.7.4
-## ✔ tidyr   0.8.0     ✔ stringr 1.3.0
+&lt;pre&gt;&lt;code&gt;## ── Attaching packages ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## ✔ ggplot2 3.0.0     ✔ purrr   0.2.4
+## ✔ tibble  1.4.2     ✔ dplyr   0.7.6
+## ✔ tidyr   0.8.1     ✔ stringr 1.3.1
 ## ✔ readr   1.1.1     ✔ forcats 0.3.0&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ── Conflicts ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+&lt;pre&gt;&lt;code&gt;## ── Conflicts ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ComplexHeatmap)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Loading required package: grid&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## ========================================
+## ComplexHeatmap version 1.18.0
+## Bioconductor page: http://bioconductor.org/packages/ComplexHeatmap/
+## Github page: https://github.com/jokergoo/ComplexHeatmap
+## Documentation: http://bioconductor.org/packages/ComplexHeatmap/
+## 
+## If you use it in published research, please cite:
+## Gu, Z. Complex heatmaps reveal patterns and correlations in multidimensional 
+##   genomic data. Bioinformatics 2016.
+## ========================================&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(viridis)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Loading required package: viridisLite&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
@@ -2376,114 +2601,97 @@ Heatmap(heatmap_expression,
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;devtools::session_info()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Session info -------------------------------------------------------------&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##  setting  value                       
-##  version  R version 3.4.0 (2017-04-21)
+##  version  R version 3.5.0 (2018-04-23)
 ##  system   x86_64, darwin15.6.0        
 ##  ui       X11                         
 ##  language (EN)                        
 ##  collate  en_US.UTF-8                 
 ##  tz       America/New_York            
-##  date     2018-05-07&lt;/code&gt;&lt;/pre&gt;
+##  date     2018-07-16&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Packages -----------------------------------------------------------------&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##  package        * version    date       source                        
-##  assertthat       0.2.0      2017-04-11 CRAN (R 3.4.0)                
-##  backports        1.1.2      2017-12-13 CRAN (R 3.4.3)                
-##  base           * 3.4.0      2017-04-21 local                         
-##  bindr            0.1.1      2018-03-13 CRAN (R 3.4.4)                
-##  bindrcpp       * 0.2        2017-06-17 CRAN (R 3.4.0)                
-##  blogdown         0.5        2018-01-24 CRAN (R 3.4.3)                
-##  bookdown         0.7        2018-02-18 CRAN (R 3.4.3)                
-##  broom            0.4.3      2017-11-20 CRAN (R 3.4.0)                
-##  cellranger       1.1.0      2016-07-27 CRAN (R 3.4.0)                
-##  circlize         0.4.3      2017-12-20 CRAN (R 3.4.3)                
-##  class            7.3-14     2015-08-30 CRAN (R 3.4.0)                
-##  cli              1.0.0      2017-11-05 CRAN (R 3.4.2)                
-##  cluster          2.0.6      2017-03-10 CRAN (R 3.4.0)                
-##  colorspace       1.3-2      2016-12-14 CRAN (R 3.4.0)                
-##  compiler         3.4.0      2017-04-21 local                         
-##  ComplexHeatmap * 1.14.0     2017-02-15 Bioconductor (R 3.4.0)        
-##  crayon           1.3.4      2017-09-16 CRAN (R 3.4.1)                
-##  datasets       * 3.4.0      2017-04-21 local                         
-##  dendextend       1.7.0      2018-02-11 CRAN (R 3.4.3)                
-##  DEoptimR         1.0-8      2016-11-19 CRAN (R 3.4.0)                
-##  devtools         1.13.5     2018-02-18 CRAN (R 3.4.3)                
-##  digest           0.6.15     2018-01-28 CRAN (R 3.4.3)                
-##  diptest          0.75-7     2016-12-05 CRAN (R 3.4.0)                
-##  dplyr          * 0.7.4      2017-09-28 CRAN (R 3.4.2)                
-##  evaluate         0.10.1     2017-06-24 CRAN (R 3.4.1)                
-##  flexmix          2.3-14     2017-04-28 CRAN (R 3.4.0)                
-##  forcats        * 0.3.0      2018-02-19 CRAN (R 3.4.3)                
-##  foreign          0.8-69     2017-06-22 CRAN (R 3.4.1)                
-##  fpc              2.1-11     2018-01-13 CRAN (R 3.4.3)                
-##  GetoptLong       0.1.6      2017-03-07 CRAN (R 3.4.0)                
-##  ggplot2        * 2.2.1      2016-12-30 CRAN (R 3.4.0)                
-##  GlobalOptions    0.0.13     2018-03-15 CRAN (R 3.4.4)                
-##  glue             1.2.0      2017-10-29 CRAN (R 3.4.2)                
-##  graphics       * 3.4.0      2017-04-21 local                         
-##  grDevices      * 3.4.0      2017-04-21 local                         
-##  grid           * 3.4.0      2017-04-21 local                         
-##  gridExtra        2.3        2017-09-09 CRAN (R 3.4.1)                
-##  gtable           0.2.0      2016-02-26 CRAN (R 3.4.0)                
-##  haven            1.1.1      2018-01-18 CRAN (R 3.4.3)                
-##  hms              0.4.2      2018-03-10 CRAN (R 3.4.4)                
-##  htmltools        0.3.6      2017-04-28 CRAN (R 3.4.0)                
-##  httr             1.3.1      2017-08-20 CRAN (R 3.4.1)                
-##  jsonlite         1.5        2017-06-01 CRAN (R 3.4.0)                
-##  kernlab          0.9-25     2016-10-03 CRAN (R 3.4.0)                
-##  knitr            1.20       2018-02-20 CRAN (R 3.4.3)                
-##  lattice          0.20-35    2017-03-25 CRAN (R 3.4.0)                
-##  lazyeval         0.2.1      2017-10-29 CRAN (R 3.4.2)                
-##  lubridate        1.7.3      2018-02-27 CRAN (R 3.4.3)                
-##  magrittr         1.5        2014-11-22 CRAN (R 3.4.0)                
-##  MASS             7.3-49     2018-02-23 CRAN (R 3.4.3)                
-##  mclust           5.4        2017-11-22 CRAN (R 3.4.3)                
-##  memoise          1.1.0      2017-04-21 CRAN (R 3.4.0)                
-##  methods        * 3.4.0      2017-04-21 local                         
-##  mnormt           1.5-5      2016-10-15 CRAN (R 3.4.0)                
-##  modelr           0.1.1      2017-07-24 CRAN (R 3.4.1)                
-##  modeltools       0.2-21     2013-09-02 CRAN (R 3.4.0)                
-##  munsell          0.4.3      2016-02-13 CRAN (R 3.4.0)                
-##  mvtnorm          1.0-7      2018-01-25 CRAN (R 3.4.3)                
-##  nlme             3.1-131.1  2018-02-16 CRAN (R 3.4.3)                
-##  nnet             7.3-12     2016-02-02 CRAN (R 3.4.0)                
-##  parallel         3.4.0      2017-04-21 local                         
-##  pillar           1.2.1      2018-02-27 CRAN (R 3.4.3)                
-##  pkgconfig        2.0.1      2017-03-21 CRAN (R 3.4.0)                
-##  plyr             1.8.4      2016-06-08 CRAN (R 3.4.0)                
-##  prabclus         2.2-6      2015-01-14 CRAN (R 3.4.0)                
-##  psych            1.7.8      2017-09-09 CRAN (R 3.4.0)                
-##  purrr          * 0.2.4      2017-10-18 CRAN (R 3.4.2)                
-##  R6               2.2.2      2017-06-17 CRAN (R 3.4.0)                
-##  RColorBrewer     1.1-2      2014-12-07 CRAN (R 3.4.0)                
-##  Rcpp             0.12.16    2018-03-13 CRAN (R 3.4.4)                
-##  readr          * 1.1.1      2017-05-16 CRAN (R 3.4.0)                
-##  readxl           1.0.0      2017-04-18 CRAN (R 3.4.0)                
-##  reshape2         1.4.3      2017-12-11 CRAN (R 3.4.3)                
-##  rjson            0.2.15     2014-11-03 CRAN (R 3.4.0)                
-##  rlang            0.2.0      2018-02-20 CRAN (R 3.4.3)                
-##  rmarkdown        1.9        2018-03-01 CRAN (R 3.4.3)                
-##  robustbase       0.92-8     2017-11-01 CRAN (R 3.4.2)                
-##  rprojroot        1.3-2      2018-01-03 CRAN (R 3.4.3)                
-##  rstudioapi       0.7        2017-09-07 CRAN (R 3.4.1)                
-##  rvest            0.3.2      2016-06-17 CRAN (R 3.4.0)                
-##  scales           0.5.0.9000 2017-09-20 Github (hadley/scales@d767915)
-##  shape            1.4.4      2018-02-07 CRAN (R 3.4.3)                
-##  stats          * 3.4.0      2017-04-21 local                         
-##  stats4           3.4.0      2017-04-21 local                         
-##  stringi          1.1.7      2018-03-12 CRAN (R 3.4.4)                
-##  stringr        * 1.3.0      2018-02-19 CRAN (R 3.4.3)                
-##  tibble         * 1.4.2      2018-01-22 cran (@1.4.2)                 
-##  tidyr          * 0.8.0      2018-01-29 CRAN (R 3.4.3)                
-##  tidyverse      * 1.2.1      2017-11-14 CRAN (R 3.4.2)                
-##  tools            3.4.0      2017-04-21 local                         
-##  trimcluster      0.1-2      2012-10-29 CRAN (R 3.4.0)                
-##  utils          * 3.4.0      2017-04-21 local                         
-##  viridis        * 0.5.0      2018-02-02 CRAN (R 3.4.3)                
-##  viridisLite    * 0.3.0      2018-02-01 CRAN (R 3.4.3)                
-##  whisker          0.3-2      2013-04-28 CRAN (R 3.4.0)                
-##  withr            2.1.2      2018-03-15 CRAN (R 3.4.4)                
-##  xfun             0.1        2018-01-22 CRAN (R 3.4.3)                
-##  xml2             1.2.0      2018-01-24 CRAN (R 3.4.3)                
-##  yaml             2.1.18     2018-03-08 CRAN (R 3.4.4)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##  package        * version date       source                           
+##  assertthat       0.2.0   2017-04-11 CRAN (R 3.5.0)                   
+##  backports        1.1.2   2017-12-13 CRAN (R 3.5.0)                   
+##  base           * 3.5.0   2018-04-24 local                            
+##  bindr            0.1.1   2018-03-13 CRAN (R 3.5.0)                   
+##  bindrcpp       * 0.2.2   2018-03-29 CRAN (R 3.5.0)                   
+##  blogdown         0.8.1   2018-07-16 Github (rstudio/blogdown@d54c39a)
+##  bookdown         0.7     2018-02-18 CRAN (R 3.5.0)                   
+##  broom            0.4.4   2018-03-29 CRAN (R 3.5.0)                   
+##  cellranger       1.1.0   2016-07-27 CRAN (R 3.5.0)                   
+##  circlize         0.4.3   2017-12-20 CRAN (R 3.5.0)                   
+##  cli              1.0.0   2017-11-05 CRAN (R 3.5.0)                   
+##  colorspace       1.3-2   2016-12-14 CRAN (R 3.5.0)                   
+##  compiler         3.5.0   2018-04-24 local                            
+##  ComplexHeatmap * 1.18.0  2017-10-25 Bioconductor (R 3.5.0)           
+##  crayon           1.3.4   2017-09-16 CRAN (R 3.5.0)                   
+##  datasets       * 3.5.0   2018-04-24 local                            
+##  devtools         1.13.5  2018-02-18 CRAN (R 3.5.0)                   
+##  digest           0.6.15  2018-01-28 CRAN (R 3.5.0)                   
+##  dplyr          * 0.7.6   2018-06-29 cran (@0.7.6)                    
+##  evaluate         0.10.1  2017-06-24 CRAN (R 3.5.0)                   
+##  forcats        * 0.3.0   2018-02-19 CRAN (R 3.5.0)                   
+##  foreign          0.8-70  2017-11-28 CRAN (R 3.5.0)                   
+##  GetoptLong       0.1.6   2017-03-07 CRAN (R 3.5.0)                   
+##  ggplot2        * 3.0.0   2018-07-03 cran (@3.0.0)                    
+##  GlobalOptions    0.0.13  2018-03-15 CRAN (R 3.5.0)                   
+##  glue             1.2.0   2017-10-29 CRAN (R 3.5.0)                   
+##  graphics       * 3.5.0   2018-04-24 local                            
+##  grDevices      * 3.5.0   2018-04-24 local                            
+##  grid           * 3.5.0   2018-04-24 local                            
+##  gridExtra        2.3     2017-09-09 CRAN (R 3.5.0)                   
+##  gtable           0.2.0   2016-02-26 CRAN (R 3.5.0)                   
+##  haven            1.1.1   2018-01-18 CRAN (R 3.5.0)                   
+##  hms              0.4.2   2018-03-10 CRAN (R 3.5.0)                   
+##  htmltools        0.3.6   2017-04-28 CRAN (R 3.5.0)                   
+##  httr             1.3.1   2017-08-20 CRAN (R 3.5.0)                   
+##  jsonlite         1.5     2017-06-01 CRAN (R 3.5.0)                   
+##  knitr            1.20    2018-02-20 CRAN (R 3.5.0)                   
+##  lattice          0.20-35 2017-03-25 CRAN (R 3.5.0)                   
+##  lazyeval         0.2.1   2017-10-29 CRAN (R 3.5.0)                   
+##  lubridate        1.7.4   2018-04-11 CRAN (R 3.5.0)                   
+##  magrittr         1.5     2014-11-22 CRAN (R 3.5.0)                   
+##  memoise          1.1.0   2017-04-21 CRAN (R 3.5.0)                   
+##  methods        * 3.5.0   2018-04-24 local                            
+##  mnormt           1.5-5   2016-10-15 CRAN (R 3.5.0)                   
+##  modelr           0.1.2   2018-05-11 CRAN (R 3.5.0)                   
+##  munsell          0.4.3   2016-02-13 CRAN (R 3.5.0)                   
+##  nlme             3.1-137 2018-04-07 CRAN (R 3.5.0)                   
+##  parallel         3.5.0   2018-04-24 local                            
+##  pillar           1.2.3   2018-05-25 CRAN (R 3.5.0)                   
+##  pkgconfig        2.0.1   2017-03-21 CRAN (R 3.5.0)                   
+##  plyr             1.8.4   2016-06-08 CRAN (R 3.5.0)                   
+##  psych            1.8.4   2018-05-06 CRAN (R 3.5.0)                   
+##  purrr          * 0.2.4   2017-10-18 CRAN (R 3.5.0)                   
+##  R6               2.2.2   2017-06-17 CRAN (R 3.5.0)                   
+##  RColorBrewer     1.1-2   2014-12-07 CRAN (R 3.5.0)                   
+##  Rcpp             0.12.17 2018-05-18 CRAN (R 3.5.0)                   
+##  readr          * 1.1.1   2017-05-16 CRAN (R 3.5.0)                   
+##  readxl           1.1.0   2018-04-20 CRAN (R 3.5.0)                   
+##  reshape2         1.4.3   2017-12-11 CRAN (R 3.5.0)                   
+##  rjson            0.2.19  2018-05-18 CRAN (R 3.5.0)                   
+##  rlang            0.2.1   2018-05-30 CRAN (R 3.5.0)                   
+##  rmarkdown        1.10    2018-06-11 cran (@1.10)                     
+##  rprojroot        1.3-2   2018-01-03 CRAN (R 3.5.0)                   
+##  rstudioapi       0.7     2017-09-07 CRAN (R 3.5.0)                   
+##  rvest            0.3.2   2016-06-17 CRAN (R 3.5.0)                   
+##  scales           0.5.0   2017-08-24 CRAN (R 3.5.0)                   
+##  shape            1.4.4   2018-02-07 CRAN (R 3.5.0)                   
+##  stats          * 3.5.0   2018-04-24 local                            
+##  stringi          1.2.2   2018-05-02 CRAN (R 3.5.0)                   
+##  stringr        * 1.3.1   2018-05-10 CRAN (R 3.5.0)                   
+##  tibble         * 1.4.2   2018-01-22 CRAN (R 3.5.0)                   
+##  tidyr          * 0.8.1   2018-05-18 CRAN (R 3.5.0)                   
+##  tidyselect       0.2.4   2018-02-26 CRAN (R 3.5.0)                   
+##  tidyverse      * 1.2.1   2017-11-14 CRAN (R 3.5.0)                   
+##  tools            3.5.0   2018-04-24 local                            
+##  utils          * 3.5.0   2018-04-24 local                            
+##  viridis        * 0.5.1   2018-03-29 CRAN (R 3.5.0)                   
+##  viridisLite    * 0.3.0   2018-02-01 CRAN (R 3.5.0)                   
+##  withr            2.1.2   2018-03-15 CRAN (R 3.5.0)                   
+##  xfun             0.3     2018-07-06 cran (@0.3)                      
+##  xml2             1.2.0   2018-01-24 CRAN (R 3.5.0)                   
+##  yaml             2.1.19  2018-05-01 CRAN (R 3.5.0)&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 </description>
     </item>
@@ -2683,7 +2891,8 @@ cell_area_counts_by_drug  %&amp;gt;%
 &lt;ol style=&#34;list-style-type: decimal&#34;&gt;
 &lt;li&gt;I am working on a machine learning problem in genomics&lt;/li&gt;
 &lt;li&gt;I was getting really confused why AUROC was so worthless&lt;/li&gt;
-&lt;li&gt;scienceTwitter featuring Anshul Kundaje &lt;img src=&#34;/./img/anshul_ROC_PR.png&#34; alt=&#34;https://twitter.com/anshulkundaje/status/965623852209352704&#34; /&gt;&lt;/li&gt;
+&lt;li&gt;scienceTwitter featuring Anshul Kundaje
+&lt;img src=&#34;/./img/anshul_ROC_PR.png&#34; alt=&#34;https://twitter.com/anshulkundaje/status/965623852209352704&#34; /&gt;&lt;/li&gt;
 &lt;li&gt;I want to save you (some time)&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;
@@ -2735,12 +2944,12 @@ cell_area_counts_by_drug  %&amp;gt;%
 &lt;p&gt;Load data. Briefly, they are ClinVar variants for a variety of eye disease. They’ve been classified as &lt;code&gt;Pathogenic&lt;/code&gt; or &lt;code&gt;NotPathogenic&lt;/code&gt; by groups submitting to ClinVar (ClinVar uses the term &lt;em&gt;benign&lt;/em&gt;). Each variant has been labeled with a variety of pathogenicity scores, population frequency info, and &lt;em&gt;in silico&lt;/em&gt; consequences. Empty values were assigned &lt;code&gt;-1&lt;/code&gt; (brief aside: I’m not sure if imputing missing data is a good idea here). One hot encoding was done to turn categorical information into numeric vectors. Each predictor (column) was centered and scaled.&lt;/p&gt;
 &lt;p&gt;You can download the &lt;code&gt;clinvar_one_hot_CS_toy_set.tsv.gz&lt;/code&gt; file &lt;a href=&#34;https://github.com/davemcg/eye_var_Pathogenicity/blob/master/processed_data/clinvar_one_hot_CS_toy_set.tsv.gz&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ── Attaching packages ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ✔ ggplot2 2.2.1     ✔ purrr   0.2.4
-## ✔ tibble  1.4.2     ✔ dplyr   0.7.4
-## ✔ tidyr   0.7.2     ✔ stringr 1.2.0
-## ✔ readr   1.1.1     ✔ forcats 0.2.0&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ── Conflicts ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+&lt;pre&gt;&lt;code&gt;## ── Attaching packages ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## ✔ ggplot2 3.0.0     ✔ purrr   0.2.4
+## ✔ tibble  1.4.2     ✔ dplyr   0.7.6
+## ✔ tidyr   0.8.1     ✔ stringr 1.3.1
+## ✔ readr   1.1.1     ✔ forcats 0.3.0&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## ── Conflicts ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;clinvar &amp;lt;- read_tsv(&amp;#39;~/git/eye_var_Pathogenicity/processed_data/clinvar_one_hot_CS_toy_set.tsv.gz&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
@@ -2846,7 +3055,8 @@ roc_maker &amp;lt;- function(model, data) {
 
 #bglm
 plot(roc_maker(bglmFit, test_set))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/././post/2018-03-03-are-you-in-genomics-stop-using-roc-use-pr_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt; Wow! 97% AUC for a bayesian generalized linear model for predicting pathogenicity! Let’s go straight to Nature/Cell/PNAS/Science!&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/././post/2018-03-03-are-you-in-genomics-stop-using-roc-use-pr_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;
+Wow! 97% AUC for a bayesian generalized linear model for predicting pathogenicity! Let’s go straight to Nature/Cell/PNAS/Science!&lt;/p&gt;
 &lt;p&gt;Well, let’s plot all three predictors at once. I did make three models after all.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;roc_data &amp;lt;- data.frame()
 for (i in names(my_models)){
@@ -2875,8 +3085,8 @@ roc&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Well, maybe we should make those confusion matrix things I showed earlier. Just to be careful.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;cm_maker &amp;lt;- function(model, data, cutoff=0.5, mode = &amp;#39;sens_spec&amp;#39;) {
   new_predictions &amp;lt;- predict(model, data, type=&amp;#39;prob&amp;#39;) %&amp;gt;%
-    mutate(Answers = data$Status, Prediction = case_when(Pathogenic &amp;gt; cutoff ~ &amp;#39;Pathogenic&amp;#39;, TRUE ~ &amp;#39;NotPathogenic&amp;#39;))
-  confusionMatrix(data = new_predictions$Prediction, reference = new_predictions$Answers, mode= mode)
+    mutate(Answers = as.factor(data$Status), Prediction = as.factor(case_when(Pathogenic &amp;gt; cutoff ~ &amp;#39;Pathogenic&amp;#39;, TRUE ~ &amp;#39;NotPathogenic&amp;#39;)))
+  confusionMatrix(data = new_predictions$Prediction, reference = as.factor(new_predictions$Answers), mode= mode)
 }
 
 for (i in names(my_models)){
@@ -2891,8 +3101,8 @@ for (i in names(my_models)){
 ## [1] &amp;quot;rfFit&amp;quot;
 ##                Reference
 ## Prediction      Pathogenic NotPathogenic
-##   Pathogenic            56            14
-##   NotPathogenic         37          4109
+##   Pathogenic            58            18
+##   NotPathogenic         35          4105
 ## [1] &amp;quot;cadd&amp;quot;
 ##                Reference
 ## Prediction      Pathogenic NotPathogenic
@@ -2986,10 +3196,7 @@ pr&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;The battle that we’ve all been waiting for. Excel vs. R. Bar plot versus a plot that actually shows the data.&lt;/p&gt;
 &lt;p&gt;Yeah, this isn’t a fair fight.&lt;/p&gt;
 &lt;p&gt;Bar plots are terrible. Why? Simple. They don’t show what your data looks like. A bar plot gives you zero idea how many data points there are. You can add error bars, but you don’t know if you are looking at standard error or standard deviation.&lt;/p&gt;
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;/./img/excel_bar_plot_bad.png&#34; /&gt;
-
-&lt;/div&gt;
+&lt;p&gt;&lt;img src=&#34;/./img/excel_bar_plot_bad.png&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Box plots are &lt;em&gt;much&lt;/em&gt; better. They display useful information like minimum, maximum, quartiles, and median. But they still can really mislead depending on how your data is structured.&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;
 &lt;img src=&#34;/./img/BoxViolinSmaller.gif&#34; alt=&#34;https://www.autodeskresearch.com/publications/samestats&#34; /&gt;
@@ -3009,24 +3216,18 @@ pr&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;A variety of eye measurements between a wild-type zebrafish line and a mutant line.&lt;/p&gt;
 &lt;p&gt;You can get the excel file &lt;a href=&#34;https://github.com/davemcg/Let_us_plot/blob/master/004_r_vs_excel/Compiled%20eye%20measurements.xlsx&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;tidyverse&amp;#39; was built under R version 3.4.2&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ── Attaching packages ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ✔ ggplot2 2.2.1     ✔ purrr   0.2.4
-## ✔ tibble  1.4.2     ✔ dplyr   0.7.4
-## ✔ tidyr   0.7.2     ✔ stringr 1.2.0
-## ✔ readr   1.1.1     ✔ forcats 0.2.0&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;tibble&amp;#39; was built under R version 3.4.3&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;tidyr&amp;#39; was built under R version 3.4.2&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;purrr&amp;#39; was built under R version 3.4.2&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;dplyr&amp;#39; was built under R version 3.4.2&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ── Conflicts ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+&lt;pre&gt;&lt;code&gt;## ── Attaching packages ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## ✔ ggplot2 3.0.0     ✔ purrr   0.2.4
+## ✔ tibble  1.4.2     ✔ dplyr   0.7.6
+## ✔ tidyr   0.8.1     ✔ stringr 1.3.1
+## ✔ readr   1.1.1     ✔ forcats 0.3.0&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;dplyr&amp;#39; was built under R version 3.5.1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## ── Conflicts ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggsci)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;ggsci&amp;#39; was built under R version 3.4.2&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggbeeswarm)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;ggbeeswarm&amp;#39; was built under R version 3.4.1&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;micro &amp;lt;- readxl::read_xlsx(&amp;#39;~/git/Let_us_plot/004_r_vs_excel/Compiled eye measurements.xlsx&amp;#39;)
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggsci)
+library(ggbeeswarm)
+micro &amp;lt;- readxl::read_xlsx(&amp;#39;~/git/Let_us_plot/004_r_vs_excel/Compiled eye measurements.xlsx&amp;#39;)
 head(micro)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## # A tibble: 6 x 13
 ##   X__1  Day3   X__2  Day5  X__3  X__4  X__5  X__6  X__7  X__8  X__9  X__10
@@ -3058,16 +3259,16 @@ micro&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## # A tibble: 30 x 5
 ##    `Fish ID` Day3_Het Day3_Mut Day5_Het Day5_Mut
 ##    &amp;lt;chr&amp;gt;        &amp;lt;dbl&amp;gt;    &amp;lt;dbl&amp;gt;    &amp;lt;dbl&amp;gt;    &amp;lt;dbl&amp;gt;
-##  1 1           0.0610   0.0480   0.0730   0.0670
-##  2 2           0.0710   0.0530   0.0720   0.0820
-##  3 3           0.0500   0.0540   0.0770   0.0710
-##  4 4           0.0630   0.0580   0.0720   0.0660
-##  5 5           0.0640   0.0580   0.0610   0.0710
-##  6 6           0.0650   0.0530   0.0750   0.0700
-##  7 7           0.0580   0.0560   0.0800   0.0700
-##  8 8           0.0570   0.0530   0.0630   0.0760
-##  9 9           0.0650   0.0680   0.0730   0.0710
-## 10 10          0.0620   0.0610   0.0720   0.0750
+##  1 1            0.061    0.048    0.073    0.067
+##  2 2            0.071    0.053    0.072    0.082
+##  3 3            0.05     0.054    0.077    0.071
+##  4 4            0.063    0.058    0.072    0.066
+##  5 5            0.064    0.058    0.061    0.071
+##  6 6            0.065    0.053    0.075    0.07 
+##  7 7            0.058    0.056    0.08     0.07 
+##  8 8            0.057    0.053    0.063    0.076
+##  9 9            0.065    0.068    0.073    0.071
+## 10 10           0.062    0.061    0.072    0.075
 ## # ... with 20 more rows&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;reformatting&#34; class=&#34;section level2&#34;&gt;
@@ -3080,18 +3281,18 @@ micro &amp;lt;- micro %&amp;gt;%
   separate(Date_Genotype, c(&amp;#39;Date&amp;#39;,&amp;#39;Genotype&amp;#39;))
 micro&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## # A tibble: 120 x 4
-##    `Fish ID` Date  Genotype   Size
-##  * &amp;lt;chr&amp;gt;     &amp;lt;chr&amp;gt; &amp;lt;chr&amp;gt;     &amp;lt;dbl&amp;gt;
-##  1 1         Day3  Het      0.0610
-##  2 2         Day3  Het      0.0710
-##  3 3         Day3  Het      0.0500
-##  4 4         Day3  Het      0.0630
-##  5 5         Day3  Het      0.0640
-##  6 6         Day3  Het      0.0650
-##  7 7         Day3  Het      0.0580
-##  8 8         Day3  Het      0.0570
-##  9 9         Day3  Het      0.0650
-## 10 10        Day3  Het      0.0620
+##    `Fish ID` Date  Genotype  Size
+##    &amp;lt;chr&amp;gt;     &amp;lt;chr&amp;gt; &amp;lt;chr&amp;gt;    &amp;lt;dbl&amp;gt;
+##  1 1         Day3  Het      0.061
+##  2 2         Day3  Het      0.071
+##  3 3         Day3  Het      0.05 
+##  4 4         Day3  Het      0.063
+##  5 5         Day3  Het      0.064
+##  6 6         Day3  Het      0.065
+##  7 7         Day3  Het      0.058
+##  8 8         Day3  Het      0.057
+##  9 9         Day3  Het      0.065
+## 10 10        Day3  Het      0.062
 ## # ... with 110 more rows&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;box-plot&#34; class=&#34;section level2&#34;&gt;
@@ -3172,103 +3373,103 @@ t.test(micro %&amp;gt;% filter(Date==&amp;#39;Day5&amp;#39;) %&amp;gt;% pull(Siz
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;devtools::session_info()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Session info -------------------------------------------------------------&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##  setting  value                       
-##  version  R version 3.4.0 (2017-04-21)
+##  version  R version 3.5.0 (2018-04-23)
 ##  system   x86_64, darwin15.6.0        
 ##  ui       X11                         
 ##  language (EN)                        
 ##  collate  en_US.UTF-8                 
 ##  tz       America/New_York            
-##  date     2018-03-01&lt;/code&gt;&lt;/pre&gt;
+##  date     2018-07-16&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Packages -----------------------------------------------------------------&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##  package    * version    date       source                          
-##  assertthat   0.2.0      2017-04-11 CRAN (R 3.4.0)                  
-##  backports    1.1.1      2017-09-25 CRAN (R 3.4.2)                  
-##  base       * 3.4.0      2017-04-21 local                           
-##  beeswarm     0.2.3      2016-04-25 CRAN (R 3.4.0)                  
-##  bindr        0.1        2016-11-13 CRAN (R 3.4.0)                  
-##  bindrcpp   * 0.2        2017-06-17 CRAN (R 3.4.0)                  
-##  blogdown     0.5        2018-01-24 CRAN (R 3.4.3)                  
-##  bookdown     0.6        2018-01-25 CRAN (R 3.4.3)                  
-##  broom        0.4.3      2017-11-20 CRAN (R 3.4.0)                  
-##  cellranger   1.1.0      2016-07-27 CRAN (R 3.4.0)                  
-##  cli          1.0.0      2017-11-05 CRAN (R 3.4.2)                  
-##  colorspace   1.3-2      2016-12-14 CRAN (R 3.4.0)                  
-##  compiler     3.4.0      2017-04-21 local                           
-##  crayon       1.3.4      2017-09-16 CRAN (R 3.4.1)                  
-##  datasets   * 3.4.0      2017-04-21 local                           
-##  devtools     1.13.4     2017-11-09 CRAN (R 3.4.2)                  
-##  digest       0.6.12     2017-01-27 CRAN (R 3.4.0)                  
-##  dplyr      * 0.7.4      2017-09-28 CRAN (R 3.4.2)                  
-##  evaluate     0.10.1     2017-06-24 CRAN (R 3.4.1)                  
-##  forcats    * 0.2.0      2017-01-23 CRAN (R 3.4.0)                  
-##  foreign      0.8-69     2017-06-22 CRAN (R 3.4.1)                  
-##  ggbeeswarm * 0.6.0      2017-08-07 CRAN (R 3.4.1)                  
-##  ggplot2    * 2.2.1      2016-12-30 CRAN (R 3.4.0)                  
-##  ggsci      * 2.8        2017-09-30 CRAN (R 3.4.2)                  
-##  glue         1.2.0      2017-10-29 CRAN (R 3.4.2)                  
-##  graphics   * 3.4.0      2017-04-21 local                           
-##  grDevices  * 3.4.0      2017-04-21 local                           
-##  grid         3.4.0      2017-04-21 local                           
-##  gtable       0.2.0      2016-02-26 CRAN (R 3.4.0)                  
-##  haven        1.1.0      2017-07-09 CRAN (R 3.4.0)                  
-##  hms          0.3        2016-11-22 CRAN (R 3.4.0)                  
-##  htmltools    0.3.6      2017-04-28 CRAN (R 3.4.0)                  
-##  httr         1.3.1      2017-08-20 CRAN (R 3.4.1)                  
-##  jsonlite     1.5        2017-06-01 CRAN (R 3.4.0)                  
-##  knitr        1.17       2017-08-10 CRAN (R 3.4.1)                  
-##  labeling     0.3        2014-08-23 CRAN (R 3.4.0)                  
-##  lattice      0.20-35    2017-03-25 CRAN (R 3.4.0)                  
-##  lazyeval     0.2.1      2017-10-29 CRAN (R 3.4.2)                  
-##  lubridate    1.7.1      2017-11-03 CRAN (R 3.4.2)                  
-##  magrittr     1.5        2014-11-22 CRAN (R 3.4.0)                  
-##  memoise      1.1.0      2017-04-21 CRAN (R 3.4.0)                  
-##  methods    * 3.4.0      2017-04-21 local                           
-##  mnormt       1.5-5      2016-10-15 CRAN (R 3.4.0)                  
-##  modelr       0.1.1      2017-07-24 CRAN (R 3.4.1)                  
-##  munsell      0.4.3      2016-02-13 CRAN (R 3.4.0)                  
-##  nlme         3.1-131    2017-02-06 CRAN (R 3.4.0)                  
-##  parallel     3.4.0      2017-04-21 local                           
-##  pillar       1.1.0      2018-01-14 cran (@1.1.0)                   
-##  pkgconfig    2.0.1      2017-03-21 CRAN (R 3.4.0)                  
-##  plyr         1.8.4      2016-06-08 CRAN (R 3.4.0)                  
-##  psych        1.7.8      2017-09-09 CRAN (R 3.4.0)                  
-##  purrr      * 0.2.4      2017-10-18 CRAN (R 3.4.2)                  
-##  R6           2.2.2      2017-06-17 CRAN (R 3.4.0)                  
-##  Rcpp         0.12.13    2017-09-28 CRAN (R 3.4.2)                  
-##  readr      * 1.1.1      2017-05-16 CRAN (R 3.4.0)                  
-##  readxl       1.0.0      2017-04-18 CRAN (R 3.4.0)                  
-##  reshape2     1.4.2      2016-10-22 CRAN (R 3.4.0)                  
-##  rlang        0.1.6      2017-12-21 cran (@0.1.6)                   
-##  rmarkdown    1.8        2017-11-17 CRAN (R 3.4.2)                  
-##  rprojroot    1.2        2017-01-16 CRAN (R 3.4.0)                  
-##  rstudioapi   0.7        2017-09-07 CRAN (R 3.4.1)                  
-##  rvest        0.3.2      2016-06-17 CRAN (R 3.4.0)                  
-##  scales       0.5.0.9000 2017-09-20 Github (hadley/scales@d767915)  
-##  stats      * 3.4.0      2017-04-21 local                           
-##  stringi      1.1.6      2017-11-17 CRAN (R 3.4.2)                  
-##  stringr    * 1.2.0      2017-02-18 CRAN (R 3.4.0)                  
-##  tibble     * 1.4.2      2018-01-22 cran (@1.4.2)                   
-##  tidyr      * 0.7.2      2017-10-16 CRAN (R 3.4.2)                  
-##  tidyselect   0.2.3      2017-11-06 CRAN (R 3.4.2)                  
-##  tidyverse  * 1.2.1      2017-11-14 CRAN (R 3.4.2)                  
-##  tools        3.4.0      2017-04-21 local                           
-##  utf8         1.1.3      2018-01-03 cran (@1.1.3)                   
-##  utils      * 3.4.0      2017-04-21 local                           
-##  vipor        0.4.5      2017-03-22 CRAN (R 3.4.0)                  
-##  withr        2.1.0.9000 2017-11-22 Github (jimhester/withr@fe81c00)
-##  xfun         0.1        2018-01-22 CRAN (R 3.4.3)                  
-##  xml2         1.1.1      2017-01-24 CRAN (R 3.4.0)                  
-##  yaml         2.1.14     2016-11-12 CRAN (R 3.4.0)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##  package    * version date       source                           
+##  assertthat   0.2.0   2017-04-11 CRAN (R 3.5.0)                   
+##  backports    1.1.2   2017-12-13 CRAN (R 3.5.0)                   
+##  base       * 3.5.0   2018-04-24 local                            
+##  beeswarm     0.2.3   2016-04-25 CRAN (R 3.5.0)                   
+##  bindr        0.1.1   2018-03-13 CRAN (R 3.5.0)                   
+##  bindrcpp   * 0.2.2   2018-03-29 CRAN (R 3.5.0)                   
+##  blogdown     0.8.1   2018-07-16 Github (rstudio/blogdown@d54c39a)
+##  bookdown     0.7     2018-02-18 CRAN (R 3.5.0)                   
+##  broom        0.4.4   2018-03-29 CRAN (R 3.5.0)                   
+##  cellranger   1.1.0   2016-07-27 CRAN (R 3.5.0)                   
+##  cli          1.0.0   2017-11-05 CRAN (R 3.5.0)                   
+##  colorspace   1.3-2   2016-12-14 CRAN (R 3.5.0)                   
+##  compiler     3.5.0   2018-04-24 local                            
+##  crayon       1.3.4   2017-09-16 CRAN (R 3.5.0)                   
+##  datasets   * 3.5.0   2018-04-24 local                            
+##  devtools     1.13.5  2018-02-18 CRAN (R 3.5.0)                   
+##  digest       0.6.15  2018-01-28 CRAN (R 3.5.0)                   
+##  dplyr      * 0.7.6   2018-06-29 cran (@0.7.6)                    
+##  evaluate     0.10.1  2017-06-24 CRAN (R 3.5.0)                   
+##  forcats    * 0.3.0   2018-02-19 CRAN (R 3.5.0)                   
+##  foreign      0.8-70  2017-11-28 CRAN (R 3.5.0)                   
+##  ggbeeswarm * 0.6.0   2017-08-07 CRAN (R 3.5.0)                   
+##  ggplot2    * 3.0.0   2018-07-03 cran (@3.0.0)                    
+##  ggsci      * 2.9     2018-05-14 CRAN (R 3.5.0)                   
+##  glue         1.2.0   2017-10-29 CRAN (R 3.5.0)                   
+##  graphics   * 3.5.0   2018-04-24 local                            
+##  grDevices  * 3.5.0   2018-04-24 local                            
+##  grid         3.5.0   2018-04-24 local                            
+##  gtable       0.2.0   2016-02-26 CRAN (R 3.5.0)                   
+##  haven        1.1.1   2018-01-18 CRAN (R 3.5.0)                   
+##  hms          0.4.2   2018-03-10 CRAN (R 3.5.0)                   
+##  htmltools    0.3.6   2017-04-28 CRAN (R 3.5.0)                   
+##  httr         1.3.1   2017-08-20 CRAN (R 3.5.0)                   
+##  jsonlite     1.5     2017-06-01 CRAN (R 3.5.0)                   
+##  knitr        1.20    2018-02-20 CRAN (R 3.5.0)                   
+##  labeling     0.3     2014-08-23 CRAN (R 3.5.0)                   
+##  lattice      0.20-35 2017-03-25 CRAN (R 3.5.0)                   
+##  lazyeval     0.2.1   2017-10-29 CRAN (R 3.5.0)                   
+##  lubridate    1.7.4   2018-04-11 CRAN (R 3.5.0)                   
+##  magrittr     1.5     2014-11-22 CRAN (R 3.5.0)                   
+##  memoise      1.1.0   2017-04-21 CRAN (R 3.5.0)                   
+##  methods    * 3.5.0   2018-04-24 local                            
+##  mnormt       1.5-5   2016-10-15 CRAN (R 3.5.0)                   
+##  modelr       0.1.2   2018-05-11 CRAN (R 3.5.0)                   
+##  munsell      0.4.3   2016-02-13 CRAN (R 3.5.0)                   
+##  nlme         3.1-137 2018-04-07 CRAN (R 3.5.0)                   
+##  parallel     3.5.0   2018-04-24 local                            
+##  pillar       1.2.3   2018-05-25 CRAN (R 3.5.0)                   
+##  pkgconfig    2.0.1   2017-03-21 CRAN (R 3.5.0)                   
+##  plyr         1.8.4   2016-06-08 CRAN (R 3.5.0)                   
+##  psych        1.8.4   2018-05-06 CRAN (R 3.5.0)                   
+##  purrr      * 0.2.4   2017-10-18 CRAN (R 3.5.0)                   
+##  R6           2.2.2   2017-06-17 CRAN (R 3.5.0)                   
+##  Rcpp         0.12.17 2018-05-18 CRAN (R 3.5.0)                   
+##  readr      * 1.1.1   2017-05-16 CRAN (R 3.5.0)                   
+##  readxl       1.1.0   2018-04-20 CRAN (R 3.5.0)                   
+##  reshape2     1.4.3   2017-12-11 CRAN (R 3.5.0)                   
+##  rlang        0.2.1   2018-05-30 CRAN (R 3.5.0)                   
+##  rmarkdown    1.10    2018-06-11 cran (@1.10)                     
+##  rprojroot    1.3-2   2018-01-03 CRAN (R 3.5.0)                   
+##  rstudioapi   0.7     2017-09-07 CRAN (R 3.5.0)                   
+##  rvest        0.3.2   2016-06-17 CRAN (R 3.5.0)                   
+##  scales       0.5.0   2017-08-24 CRAN (R 3.5.0)                   
+##  stats      * 3.5.0   2018-04-24 local                            
+##  stringi      1.2.2   2018-05-02 CRAN (R 3.5.0)                   
+##  stringr    * 1.3.1   2018-05-10 CRAN (R 3.5.0)                   
+##  tibble     * 1.4.2   2018-01-22 CRAN (R 3.5.0)                   
+##  tidyr      * 0.8.1   2018-05-18 CRAN (R 3.5.0)                   
+##  tidyselect   0.2.4   2018-02-26 CRAN (R 3.5.0)                   
+##  tidyverse  * 1.2.1   2017-11-14 CRAN (R 3.5.0)                   
+##  tools        3.5.0   2018-04-24 local                            
+##  utf8         1.1.4   2018-05-24 CRAN (R 3.5.0)                   
+##  utils      * 3.5.0   2018-04-24 local                            
+##  vipor        0.4.5   2017-03-22 CRAN (R 3.5.0)                   
+##  withr        2.1.2   2018-03-15 CRAN (R 3.5.0)                   
+##  xfun         0.3     2018-07-06 cran (@0.3)                      
+##  xml2         1.2.0   2018-01-24 CRAN (R 3.5.0)                   
+##  yaml         2.1.19  2018-05-01 CRAN (R 3.5.0)&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 </description>
     </item>
     
     <item>
       <title>Let’s Plot 3: Base pair resolution NGS (exome) coverage plots - Part 2</title>
-      <link>/./post/let-s-plot-3-base-pair-resolution-ngs-exome-coverage-plots/</link>
+      <link>/./post/let-s-plot-3-part-2/</link>
       <pubDate>Thu, 08 Feb 2018 00:00:00 +0000</pubDate>
       
-      <guid>/./post/let-s-plot-3-base-pair-resolution-ngs-exome-coverage-plots/</guid>
+      <guid>/./post/let-s-plot-3-part-2/</guid>
       <description>&lt;div id=&#34;TOC&#34;&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#introduction&#34;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
@@ -3318,12 +3519,12 @@ bedtools intersect -wa -wb -a 41001412010527.per-base.bed.gz -b /data/mcgaugheyd
 &lt;p&gt;The second file is used to semi-accurately pick the ‘canonical’ transcript for a gene (pick the appris transcript, then the longest)&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(data.table)
 library(tidyverse)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ── Attaching packages ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ✔ ggplot2 2.2.1     ✔ purrr   0.2.4
-## ✔ tibble  1.4.2     ✔ dplyr   0.7.4
-## ✔ tidyr   0.8.0     ✔ stringr 1.3.0
+&lt;pre&gt;&lt;code&gt;## ── Attaching packages ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## ✔ ggplot2 3.0.0     ✔ purrr   0.2.4
+## ✔ tibble  1.4.2     ✔ dplyr   0.7.6
+## ✔ tidyr   0.8.1     ✔ stringr 1.3.1
 ## ✔ readr   1.1.1     ✔ forcats 0.3.0&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ── Conflicts ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+&lt;pre&gt;&lt;code&gt;## ── Conflicts ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::between()   masks data.table::between()
 ## ✖ dplyr::filter()    masks stats::filter()
 ## ✖ dplyr::first()     masks data.table::first()
@@ -3339,18 +3540,8 @@ library(tidyverse)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(stringr)
 metadata &amp;lt;- fread(&amp;#39;gzcat ~/GenomicData/gencode.v27lift37.metadata.HGNC.gz&amp;#39;, header=F)
 colnames(metadata) &amp;lt;- c(&amp;#39;Transcript&amp;#39;,&amp;#39;Name&amp;#39;)
-gencode &amp;lt;- fread(&amp;#39;gzcat ~/GenomicData/gencode.v27lift37.basic.annotation.gtf.gz&amp;#39;, header=F, skip=4)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## 
-Read 1.8% of 1651703 rows
-Read 14.5% of 1651703 rows
-Read 27.9% of 1651703 rows
-Read 45.4% of 1651703 rows
-Read 47.8% of 1651703 rows
-Read 61.1% of 1651703 rows
-Read 75.1% of 1651703 rows
-Read 93.2% of 1651703 rows
-Read 1651703 rows and 9 (of 9) columns from 0.822 GB file in 00:00:11&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gencode2 &amp;lt;- gencode %&amp;gt;% filter(V3==&amp;#39;transcript&amp;#39;) %&amp;gt;% 
+gencode &amp;lt;- fread(&amp;#39;gzcat ~/GenomicData/gencode.v27lift37.basic.annotation.gtf.gz&amp;#39;, header=F, skip=4)
+gencode2 &amp;lt;- gencode %&amp;gt;% filter(V3==&amp;#39;transcript&amp;#39;) %&amp;gt;% 
   filter(grepl(&amp;#39;appris_principal&amp;#39;, V9)) %&amp;gt;% 
   rowwise() %&amp;gt;%  
   mutate(Transcript = str_extract(V9,&amp;#39;ENST\\d{11}\\.\\d+&amp;#39;), # use regex to graph ensembl transcript 
@@ -3364,34 +3555,8 @@ Read 1651703 rows and 9 (of 9) columns from 0.822 GB file in 00:00:11&lt;/code&g
 &lt;div id=&#34;load-mosdepth-bedtools-intersect-data-and-prep&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Load mosdepth / bedtools intersect data and prep&lt;/h2&gt;
 &lt;p&gt;Label coverage chunks with the depth of their coverage with case_when and extract the transcript name and exon number with a bunch of &lt;code&gt;separate&lt;/code&gt; commands&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;depth_data &amp;lt;- fread(&amp;#39;gzcat ~/Desktop/41001412010527.per-base.labeled.bed.gz&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## 
-Read 0.0% of 50955214 rows
-Read 4.6% of 50955214 rows
-Read 8.9% of 50955214 rows
-Read 13.2% of 50955214 rows
-Read 17.4% of 50955214 rows
-Read 21.7% of 50955214 rows
-Read 24.4% of 50955214 rows
-Read 29.0% of 50955214 rows
-Read 33.7% of 50955214 rows
-Read 34.6% of 50955214 rows
-Read 39.3% of 50955214 rows
-Read 43.9% of 50955214 rows
-Read 48.6% of 50955214 rows
-Read 53.3% of 50955214 rows
-Read 57.9% of 50955214 rows
-Read 62.6% of 50955214 rows
-Read 67.3% of 50955214 rows
-Read 71.9% of 50955214 rows
-Read 76.6% of 50955214 rows
-Read 81.2% of 50955214 rows
-Read 85.7% of 50955214 rows
-Read 90.1% of 50955214 rows
-Read 94.5% of 50955214 rows
-Read 99.1% of 50955214 rows
-Read 50955214 rows and 10 (of 10) columns from 4.490 GB file in 00:00:40&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;dd_processed &amp;lt;- depth_data %&amp;gt;% 
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;depth_data &amp;lt;- fread(&amp;#39;gzcat ~/Desktop/41001412010527.per-base.labeled.bed.gz&amp;#39;)
+dd_processed &amp;lt;- depth_data %&amp;gt;% 
   separate(V8, c(&amp;#39;Transcript&amp;#39;,&amp;#39;Rest&amp;#39;), &amp;#39;_cds_&amp;#39;) %&amp;gt;% 
   separate(Rest, c(&amp;#39;Before&amp;#39;,&amp;#39;Stuff&amp;#39;),&amp;#39;_chr&amp;#39;) %&amp;gt;% 
   separate(Before, c(&amp;#39;Exon Number&amp;#39;,&amp;#39;Num2&amp;#39;),sep=&amp;#39;_&amp;#39;) %&amp;gt;% 
@@ -3486,98 +3651,463 @@ ggplot() +
         panel.grid.major.x = element_blank())+
   guides(fill=FALSE) + 
   ylab(&amp;#39;Read Depth&amp;#39;) &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/././post/2018-02-08-let-s-plot-3-base-pair-resolution-ngs-exome-coverage-plots_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/././post/2018-02-08-let-s-plot-3-part-2_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;sessioninfo&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;sessionInfo()&lt;/h2&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;devtools::session_info()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Session info -------------------------------------------------------------&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##  setting  value                       
-##  version  R version 3.4.0 (2017-04-21)
+##  version  R version 3.5.0 (2018-04-23)
 ##  system   x86_64, darwin15.6.0        
 ##  ui       X11                         
 ##  language (EN)                        
 ##  collate  en_US.UTF-8                 
 ##  tz       America/New_York            
-##  date     2018-04-13&lt;/code&gt;&lt;/pre&gt;
+##  date     2018-07-16&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Packages -----------------------------------------------------------------&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##  package    * version    date       source                        
-##  assertthat   0.2.0      2017-04-11 CRAN (R 3.4.0)                
-##  backports    1.1.2      2017-12-13 CRAN (R 3.4.3)                
-##  base       * 3.4.0      2017-04-21 local                         
-##  bindr        0.1.1      2018-03-13 CRAN (R 3.4.4)                
-##  bindrcpp   * 0.2        2017-06-17 CRAN (R 3.4.0)                
-##  blogdown     0.5        2018-01-24 CRAN (R 3.4.3)                
-##  bookdown     0.7        2018-02-18 CRAN (R 3.4.3)                
-##  broom        0.4.3      2017-11-20 CRAN (R 3.4.0)                
-##  cellranger   1.1.0      2016-07-27 CRAN (R 3.4.0)                
-##  cli          1.0.0      2017-11-05 CRAN (R 3.4.2)                
-##  colorspace   1.3-2      2016-12-14 CRAN (R 3.4.0)                
-##  compiler     3.4.0      2017-04-21 local                         
-##  cowplot    * 0.9.2      2017-12-17 CRAN (R 3.4.3)                
-##  crayon       1.3.4      2017-09-16 CRAN (R 3.4.1)                
-##  data.table * 1.10.4-3   2017-10-27 CRAN (R 3.4.2)                
-##  datasets   * 3.4.0      2017-04-21 local                         
-##  devtools     1.13.5     2018-02-18 CRAN (R 3.4.3)                
-##  digest       0.6.15     2018-01-28 CRAN (R 3.4.3)                
-##  dplyr      * 0.7.4      2017-09-28 CRAN (R 3.4.2)                
-##  evaluate     0.10.1     2017-06-24 CRAN (R 3.4.1)                
-##  forcats    * 0.3.0      2018-02-19 CRAN (R 3.4.3)                
-##  foreign      0.8-69     2017-06-22 CRAN (R 3.4.1)                
-##  ggplot2    * 2.2.1      2016-12-30 CRAN (R 3.4.0)                
-##  glue         1.2.0      2017-10-29 CRAN (R 3.4.2)                
-##  graphics   * 3.4.0      2017-04-21 local                         
-##  grDevices  * 3.4.0      2017-04-21 local                         
-##  grid         3.4.0      2017-04-21 local                         
-##  gtable       0.2.0      2016-02-26 CRAN (R 3.4.0)                
-##  haven        1.1.1      2018-01-18 CRAN (R 3.4.3)                
-##  hms          0.4.2      2018-03-10 CRAN (R 3.4.4)                
-##  htmltools    0.3.6      2017-04-28 CRAN (R 3.4.0)                
-##  httr         1.3.1      2017-08-20 CRAN (R 3.4.1)                
-##  jsonlite     1.5        2017-06-01 CRAN (R 3.4.0)                
-##  knitr        1.20       2018-02-20 CRAN (R 3.4.3)                
-##  labeling     0.3        2014-08-23 CRAN (R 3.4.0)                
-##  lattice      0.20-35    2017-03-25 CRAN (R 3.4.0)                
-##  lazyeval     0.2.1      2017-10-29 CRAN (R 3.4.2)                
-##  lubridate    1.7.3      2018-02-27 CRAN (R 3.4.3)                
-##  magrittr     1.5        2014-11-22 CRAN (R 3.4.0)                
-##  memoise      1.1.0      2017-04-21 CRAN (R 3.4.0)                
-##  methods    * 3.4.0      2017-04-21 local                         
-##  mnormt       1.5-5      2016-10-15 CRAN (R 3.4.0)                
-##  modelr       0.1.1      2017-07-24 CRAN (R 3.4.1)                
-##  munsell      0.4.3      2016-02-13 CRAN (R 3.4.0)                
-##  nlme         3.1-131.1  2018-02-16 CRAN (R 3.4.3)                
-##  parallel     3.4.0      2017-04-21 local                         
-##  pillar       1.2.1      2018-02-27 CRAN (R 3.4.3)                
-##  pkgconfig    2.0.1      2017-03-21 CRAN (R 3.4.0)                
-##  plyr         1.8.4      2016-06-08 CRAN (R 3.4.0)                
-##  psych        1.7.8      2017-09-09 CRAN (R 3.4.0)                
-##  purrr      * 0.2.4      2017-10-18 CRAN (R 3.4.2)                
-##  R6           2.2.2      2017-06-17 CRAN (R 3.4.0)                
-##  Rcpp         0.12.16    2018-03-13 CRAN (R 3.4.4)                
-##  readr      * 1.1.1      2017-05-16 CRAN (R 3.4.0)                
-##  readxl       1.0.0      2017-04-18 CRAN (R 3.4.0)                
-##  reshape2     1.4.3      2017-12-11 CRAN (R 3.4.3)                
-##  rlang        0.2.0      2018-02-20 CRAN (R 3.4.3)                
-##  rmarkdown    1.9        2018-03-01 CRAN (R 3.4.3)                
-##  rprojroot    1.3-2      2018-01-03 CRAN (R 3.4.3)                
-##  rstudioapi   0.7        2017-09-07 CRAN (R 3.4.1)                
-##  rvest        0.3.2      2016-06-17 CRAN (R 3.4.0)                
-##  scales       0.5.0.9000 2017-09-20 Github (hadley/scales@d767915)
-##  stats      * 3.4.0      2017-04-21 local                         
-##  stringi      1.1.7      2018-03-12 CRAN (R 3.4.4)                
-##  stringr    * 1.3.0      2018-02-19 CRAN (R 3.4.3)                
-##  tibble     * 1.4.2      2018-01-22 cran (@1.4.2)                 
-##  tidyr      * 0.8.0      2018-01-29 CRAN (R 3.4.3)                
-##  tidyselect   0.2.4      2018-02-26 CRAN (R 3.4.3)                
-##  tidyverse  * 1.2.1      2017-11-14 CRAN (R 3.4.2)                
-##  tools        3.4.0      2017-04-21 local                         
-##  utils      * 3.4.0      2017-04-21 local                         
-##  withr        2.1.2      2018-03-15 CRAN (R 3.4.4)                
-##  xfun         0.1        2018-01-22 CRAN (R 3.4.3)                
-##  xml2         1.2.0      2018-01-24 CRAN (R 3.4.3)                
-##  yaml         2.1.18     2018-03-08 CRAN (R 3.4.4)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##  package    * version date       source                           
+##  assertthat   0.2.0   2017-04-11 CRAN (R 3.5.0)                   
+##  backports    1.1.2   2017-12-13 CRAN (R 3.5.0)                   
+##  base       * 3.5.0   2018-04-24 local                            
+##  bindr        0.1.1   2018-03-13 CRAN (R 3.5.0)                   
+##  bindrcpp   * 0.2.2   2018-03-29 CRAN (R 3.5.0)                   
+##  blogdown     0.8.1   2018-07-16 Github (rstudio/blogdown@d54c39a)
+##  bookdown     0.7     2018-02-18 CRAN (R 3.5.0)                   
+##  broom        0.4.4   2018-03-29 CRAN (R 3.5.0)                   
+##  cellranger   1.1.0   2016-07-27 CRAN (R 3.5.0)                   
+##  cli          1.0.0   2017-11-05 CRAN (R 3.5.0)                   
+##  colorspace   1.3-2   2016-12-14 CRAN (R 3.5.0)                   
+##  compiler     3.5.0   2018-04-24 local                            
+##  cowplot    * 0.9.2   2017-12-17 CRAN (R 3.5.0)                   
+##  crayon       1.3.4   2017-09-16 CRAN (R 3.5.0)                   
+##  data.table * 1.11.4  2018-05-27 cran (@1.11.4)                   
+##  datasets   * 3.5.0   2018-04-24 local                            
+##  devtools     1.13.5  2018-02-18 CRAN (R 3.5.0)                   
+##  digest       0.6.15  2018-01-28 CRAN (R 3.5.0)                   
+##  dplyr      * 0.7.6   2018-06-29 cran (@0.7.6)                    
+##  evaluate     0.10.1  2017-06-24 CRAN (R 3.5.0)                   
+##  forcats    * 0.3.0   2018-02-19 CRAN (R 3.5.0)                   
+##  foreign      0.8-70  2017-11-28 CRAN (R 3.5.0)                   
+##  ggplot2    * 3.0.0   2018-07-03 cran (@3.0.0)                    
+##  glue         1.2.0   2017-10-29 CRAN (R 3.5.0)                   
+##  graphics   * 3.5.0   2018-04-24 local                            
+##  grDevices  * 3.5.0   2018-04-24 local                            
+##  grid         3.5.0   2018-04-24 local                            
+##  gtable       0.2.0   2016-02-26 CRAN (R 3.5.0)                   
+##  haven        1.1.1   2018-01-18 CRAN (R 3.5.0)                   
+##  hms          0.4.2   2018-03-10 CRAN (R 3.5.0)                   
+##  htmltools    0.3.6   2017-04-28 CRAN (R 3.5.0)                   
+##  httr         1.3.1   2017-08-20 CRAN (R 3.5.0)                   
+##  jsonlite     1.5     2017-06-01 CRAN (R 3.5.0)                   
+##  knitr        1.20    2018-02-20 CRAN (R 3.5.0)                   
+##  labeling     0.3     2014-08-23 CRAN (R 3.5.0)                   
+##  lattice      0.20-35 2017-03-25 CRAN (R 3.5.0)                   
+##  lazyeval     0.2.1   2017-10-29 CRAN (R 3.5.0)                   
+##  lubridate    1.7.4   2018-04-11 CRAN (R 3.5.0)                   
+##  magrittr     1.5     2014-11-22 CRAN (R 3.5.0)                   
+##  memoise      1.1.0   2017-04-21 CRAN (R 3.5.0)                   
+##  methods    * 3.5.0   2018-04-24 local                            
+##  mnormt       1.5-5   2016-10-15 CRAN (R 3.5.0)                   
+##  modelr       0.1.2   2018-05-11 CRAN (R 3.5.0)                   
+##  munsell      0.4.3   2016-02-13 CRAN (R 3.5.0)                   
+##  nlme         3.1-137 2018-04-07 CRAN (R 3.5.0)                   
+##  parallel     3.5.0   2018-04-24 local                            
+##  pillar       1.2.3   2018-05-25 CRAN (R 3.5.0)                   
+##  pkgconfig    2.0.1   2017-03-21 CRAN (R 3.5.0)                   
+##  plyr         1.8.4   2016-06-08 CRAN (R 3.5.0)                   
+##  psych        1.8.4   2018-05-06 CRAN (R 3.5.0)                   
+##  purrr      * 0.2.4   2017-10-18 CRAN (R 3.5.0)                   
+##  R6           2.2.2   2017-06-17 CRAN (R 3.5.0)                   
+##  Rcpp         0.12.17 2018-05-18 CRAN (R 3.5.0)                   
+##  readr      * 1.1.1   2017-05-16 CRAN (R 3.5.0)                   
+##  readxl       1.1.0   2018-04-20 CRAN (R 3.5.0)                   
+##  reshape2     1.4.3   2017-12-11 CRAN (R 3.5.0)                   
+##  rlang        0.2.1   2018-05-30 CRAN (R 3.5.0)                   
+##  rmarkdown    1.10    2018-06-11 cran (@1.10)                     
+##  rprojroot    1.3-2   2018-01-03 CRAN (R 3.5.0)                   
+##  rstudioapi   0.7     2017-09-07 CRAN (R 3.5.0)                   
+##  rvest        0.3.2   2016-06-17 CRAN (R 3.5.0)                   
+##  scales       0.5.0   2017-08-24 CRAN (R 3.5.0)                   
+##  stats      * 3.5.0   2018-04-24 local                            
+##  stringi      1.2.2   2018-05-02 CRAN (R 3.5.0)                   
+##  stringr    * 1.3.1   2018-05-10 CRAN (R 3.5.0)                   
+##  tibble     * 1.4.2   2018-01-22 CRAN (R 3.5.0)                   
+##  tidyr      * 0.8.1   2018-05-18 CRAN (R 3.5.0)                   
+##  tidyselect   0.2.4   2018-02-26 CRAN (R 3.5.0)                   
+##  tidyverse  * 1.2.1   2017-11-14 CRAN (R 3.5.0)                   
+##  tools        3.5.0   2018-04-24 local                            
+##  utils      * 3.5.0   2018-04-24 local                            
+##  withr        2.1.2   2018-03-15 CRAN (R 3.5.0)                   
+##  xfun         0.3     2018-07-06 cran (@0.3)                      
+##  xml2         1.2.0   2018-01-24 CRAN (R 3.5.0)                   
+##  yaml         2.1.19  2018-05-01 CRAN (R 3.5.0)&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Let’s Plot 3: Base pair resolution NGS coverage plots (Part I)</title>
+      <link>/./post/let-s-plot-3-part-i/</link>
+      <pubDate>Wed, 07 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/let-s-plot-3-part-i/</guid>
+      <description>&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#load-data&#34;&gt;Load data&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#curious&#34;&gt;Curious?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#data&#34;&gt;Data&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#how-many-genes-are-in-this-dataset&#34;&gt;How many genes are in this dataset?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#what-genes-are-in-here&#34;&gt;What genes are in here?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#how-many-data-points-bases-per-gene&#34;&gt;How many data points (bases) per gene?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#how-many-exons-per-gene&#34;&gt;How many exons per gene?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#how-many-base-pairs-of-abca4-well-abca4-exons-is-covered-by-more-than-10-reads&#34;&gt;How many base pairs of ABCA4 (well, ABCA4 exons) is covered by more than 10 reads?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#reads&#34;&gt;5 reads?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#lets-check-all-of-the-genes-to-see-which-are-the-worst-covered&#34;&gt;Let’s check all of the genes to see which are the worst covered&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#we-can-visually-display-the-data-also&#34;&gt;We can visually display the data, also&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#hard-to-see-what-is-going-on-lets-make-little-plots-for-each-gene&#34;&gt;Hard to see what is going on, let’s make little plots for each gene&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#where-are-genes-poorly-covered&#34;&gt;Where are genes poorly covered?&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#bbip1&#34;&gt;BBIP1&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#make-a-coverage-plot-for-many-genes-this-is-advanced-stuff&#34;&gt;Make a coverage plot for many genes (This is advanced stuff!!!)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;load-data&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Load data&lt;/h2&gt;
+&lt;p&gt;This is a departure from the previous installments, as we are loading in a very processed dataset. The reasons why are numerous:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;The original data is 330mb, compressed&lt;/li&gt;
+&lt;li&gt;After loading (2 minutes on my quite fast computer) and uncompressing, it takes over 10GB of RAM on my computer&lt;/li&gt;
+&lt;li&gt;The original data needed a severe amount of massaging to make it quickly useable:
+- Annotating with gene name
+- Identifying primary transcript for gene
+- Expanding range data into row-form*&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;mosdepth&lt;/code&gt; provides read depth as ranges. So instead of writing a row for each of the three billion+ base pairs, &lt;code&gt;mosdepth&lt;/code&gt; collapses adjacent rows with identical read depth together. This is crucial for saving space, especially for exomes, which have huge stretches of zero coverage since only ~3% of the genome is targeted.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;curious&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Curious?&lt;/h2&gt;
+&lt;p&gt;If you want to see how I did the above, see &lt;a href=&#34;/./post/let-s-plot-3-base-pair-resolution-ngs-exome-coverage-plots&#34;&gt;Part 2&lt;/a&gt;. This post also has some cooler plots.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;data&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Data&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;dd_class.csv&lt;/code&gt; can be found &lt;a href=&#34;https://github.com/davemcg/Let_us_plot/raw/master/003_coverage/dd_class.csv&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## ── Attaching packages ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## ✔ ggplot2 3.0.0     ✔ purrr   0.2.4
+## ✔ tibble  1.4.2     ✔ dplyr   0.7.6
+## ✔ tidyr   0.8.1     ✔ stringr 1.3.1
+## ✔ readr   1.1.1     ✔ forcats 0.3.0&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## ── Conflicts ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(data.table)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## Attaching package: &amp;#39;data.table&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## The following objects are masked from &amp;#39;package:dplyr&amp;#39;:
+## 
+##     between, first, last&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## The following object is masked from &amp;#39;package:purrr&amp;#39;:
+## 
+##     transpose&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(cowplot) # you may need to install this with install.packages(&amp;#39;cowplot&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## Attaching package: &amp;#39;cowplot&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## The following object is masked from &amp;#39;package:ggplot2&amp;#39;:
+## 
+##     ggsave&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;dd_class &amp;lt;- fread(&amp;#39;~/git/Let_us_plot/003_coverage/dd_class.csv&amp;#39;)
+
+head(dd_class)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##           Transcript Exon Number    Start Chr      End Read_Depth Strand
+## 1: ENST00000020945.3           0 49831356   8 49831367        108      -
+## 2: ENST00000020945.3           0 49831357   8 49831367        108      -
+## 3: ENST00000020945.3           0 49831358   8 49831367        108      -
+## 4: ENST00000020945.3           0 49831359   8 49831367        108      -
+## 5: ENST00000020945.3           0 49831360   8 49831367        108      -
+## 6: ENST00000020945.3           0 49831361   8 49831367        108      -
+##    ExonStart  ExonEnd  Name
+## 1:  49831365 49831547 SNAI2
+## 2:  49831365 49831547 SNAI2
+## 3:  49831365 49831547 SNAI2
+## 4:  49831365 49831547 SNAI2
+## 5:  49831365 49831547 SNAI2
+## 6:  49831365 49831547 SNAI2&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;how-many-genes-are-in-this-dataset&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;How many genes are in this dataset?&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;dd_class$Name %&amp;gt;% unique() %&amp;gt;% length()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 118&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;what-genes-are-in-here&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;What genes are in here?&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;dd_class$Name %&amp;gt;% unique() %&amp;gt;% sort()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   [1] &amp;quot;ABCA4&amp;quot;    &amp;quot;ABCB6&amp;quot;    &amp;quot;AIPL1&amp;quot;    &amp;quot;ALDH1A3&amp;quot;  &amp;quot;ARL6&amp;quot;     &amp;quot;ATF6&amp;quot;    
+##   [7] &amp;quot;ATOH7&amp;quot;    &amp;quot;BBIP1&amp;quot;    &amp;quot;BBS1&amp;quot;     &amp;quot;BBS10&amp;quot;    &amp;quot;BBS12&amp;quot;    &amp;quot;BBS5&amp;quot;    
+##  [13] &amp;quot;BBS7&amp;quot;     &amp;quot;BBS9&amp;quot;     &amp;quot;BCOR&amp;quot;     &amp;quot;BMP4&amp;quot;     &amp;quot;CACNA1F&amp;quot;  &amp;quot;CACNA2D4&amp;quot;
+##  [19] &amp;quot;CASK&amp;quot;     &amp;quot;CDHR1&amp;quot;    &amp;quot;CEP290&amp;quot;   &amp;quot;CHD7&amp;quot;     &amp;quot;CNGB3&amp;quot;    &amp;quot;CNNM4&amp;quot;   
+##  [25] &amp;quot;COL4A1&amp;quot;   &amp;quot;COX7B&amp;quot;    &amp;quot;CRX&amp;quot;      &amp;quot;CYP1B1&amp;quot;   &amp;quot;DCDC1&amp;quot;    &amp;quot;EDN3&amp;quot;    
+##  [31] &amp;quot;EDNRB&amp;quot;    &amp;quot;ELP4&amp;quot;     &amp;quot;FKRP&amp;quot;     &amp;quot;FKTN&amp;quot;     &amp;quot;FOXC1&amp;quot;    &amp;quot;FOXC2&amp;quot;   
+##  [37] &amp;quot;FOXE3&amp;quot;    &amp;quot;GDF3&amp;quot;     &amp;quot;GDF6&amp;quot;     &amp;quot;GNAT2&amp;quot;    &amp;quot;HESX1&amp;quot;    &amp;quot;HMGB3&amp;quot;   
+##  [43] &amp;quot;HPS1&amp;quot;     &amp;quot;HPS3&amp;quot;     &amp;quot;HPS4&amp;quot;     &amp;quot;HPS5&amp;quot;     &amp;quot;HPS6&amp;quot;     &amp;quot;INPP5E&amp;quot;  
+##  [49] &amp;quot;ISPD&amp;quot;     &amp;quot;KCNJ13&amp;quot;   &amp;quot;KCNV2&amp;quot;    &amp;quot;KIT&amp;quot;      &amp;quot;LAMB2&amp;quot;    &amp;quot;LHX2&amp;quot;    
+##  [55] &amp;quot;LYST&amp;quot;     &amp;quot;LZTFL1&amp;quot;   &amp;quot;MAB21L2&amp;quot;  &amp;quot;MFRP&amp;quot;     &amp;quot;MITF&amp;quot;     &amp;quot;MKKS&amp;quot;    
+##  [61] &amp;quot;MKS1&amp;quot;     &amp;quot;MLPH&amp;quot;     &amp;quot;MYO5A&amp;quot;    &amp;quot;NAA10&amp;quot;    &amp;quot;NDP&amp;quot;      &amp;quot;NPHP1&amp;quot;   
+##  [67] &amp;quot;NRL&amp;quot;      &amp;quot;OCA2&amp;quot;     &amp;quot;OTX2&amp;quot;     &amp;quot;PAX2&amp;quot;     &amp;quot;PAX3&amp;quot;     &amp;quot;PAX6&amp;quot;    
+##  [73] &amp;quot;PDE6C&amp;quot;    &amp;quot;PDE6H&amp;quot;    &amp;quot;PITPNM3&amp;quot;  &amp;quot;PITX2&amp;quot;    &amp;quot;PITX3&amp;quot;    &amp;quot;POMT1&amp;quot;   
+##  [79] &amp;quot;POMT2&amp;quot;    &amp;quot;PROM1&amp;quot;    &amp;quot;PRPH2&amp;quot;    &amp;quot;PRSS56&amp;quot;   &amp;quot;RAB18&amp;quot;    &amp;quot;RAB27A&amp;quot;  
+##  [85] &amp;quot;RAB3GAP1&amp;quot; &amp;quot;RAB3GAP2&amp;quot; &amp;quot;RARB&amp;quot;     &amp;quot;RAX&amp;quot;      &amp;quot;RAX2&amp;quot;     &amp;quot;RDH5&amp;quot;    
+##  [91] &amp;quot;RET&amp;quot;      &amp;quot;RIMS1&amp;quot;    &amp;quot;RPGR&amp;quot;     &amp;quot;RPGRIP1&amp;quot;  &amp;quot;SDCCAG8&amp;quot;  &amp;quot;SEMA4A&amp;quot;  
+##  [97] &amp;quot;SHH&amp;quot;      &amp;quot;SIX3&amp;quot;     &amp;quot;SIX6&amp;quot;     &amp;quot;SLC24A5&amp;quot;  &amp;quot;SLC25A1&amp;quot;  &amp;quot;SLC38A8&amp;quot; 
+## [103] &amp;quot;SLC45A2&amp;quot;  &amp;quot;SNAI2&amp;quot;    &amp;quot;SNX3&amp;quot;     &amp;quot;SOX10&amp;quot;    &amp;quot;SOX2&amp;quot;     &amp;quot;SOX3&amp;quot;    
+## [109] &amp;quot;STRA6&amp;quot;    &amp;quot;TENM3&amp;quot;    &amp;quot;TMEM98&amp;quot;   &amp;quot;TRIM32&amp;quot;   &amp;quot;TTC8&amp;quot;     &amp;quot;TTLL5&amp;quot;   
+## [115] &amp;quot;UNC119&amp;quot;   &amp;quot;VAX1&amp;quot;     &amp;quot;VSX2&amp;quot;     &amp;quot;ZEB2&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;how-many-data-points-bases-per-gene&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;How many data points (bases) per gene?&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;dd_class %&amp;gt;% 
+  group_by(Name) %&amp;gt;% 
+  summarise(Count=n())&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 118 x 2
+##    Name    Count
+##    &amp;lt;chr&amp;gt;   &amp;lt;int&amp;gt;
+##  1 ABCA4    6804
+##  2 ABCB6    2527
+##  3 AIPL1    1159
+##  4 ALDH1A3  1550
+##  5 ARL6      569
+##  6 ATF6     2008
+##  7 ATOH7     457
+##  8 BBIP1     220
+##  9 BBS1     1773
+## 10 BBS10    2172
+## # ... with 108 more rows&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;how-many-exons-per-gene&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;How many exons per gene?&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;dd_class %&amp;gt;% 
+  select(Name, `Exon Number`) %&amp;gt;% 
+  unique() %&amp;gt;% 
+  group_by(Name) %&amp;gt;% 
+  summarise(Count = n())&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 118 x 2
+##    Name    Count
+##    &amp;lt;chr&amp;gt;   &amp;lt;int&amp;gt;
+##  1 ABCA4      50
+##  2 ABCB6      19
+##  3 AIPL1       6
+##  4 ALDH1A3    13
+##  5 ARL6        7
+##  6 ATF6       16
+##  7 ATOH7       1
+##  8 BBIP1       2
+##  9 BBS1       17
+## 10 BBS10       2
+## # ... with 108 more rows&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;how-many-base-pairs-of-abca4-well-abca4-exons-is-covered-by-more-than-10-reads&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;How many base pairs of ABCA4 (well, ABCA4 exons) is covered by more than 10 reads?&lt;/h2&gt;
+&lt;p&gt;Base R style&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Grab the Read_Depth vector from the data frame filtered by ABCA4 values
+depth_abca4 &amp;lt;- dd_class %&amp;gt;% 
+  filter(Name==&amp;#39;ABCA4&amp;#39;) %&amp;gt;% 
+  pull(Read_Depth)
+sum(depth_abca4 &amp;gt; 10)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 6803&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;reads&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;5 reads?&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;sum(depth_abca4 &amp;gt; 5)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 6804&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;lets-check-all-of-the-genes-to-see-which-are-the-worst-covered&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Let’s check all of the genes to see which are the worst covered&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;dd_class %&amp;gt;% 
+  group_by(Name) %&amp;gt;% 
+  summarise(Total_Bases = n(),
+            LT5 = sum(Read_Depth &amp;lt; 5),
+            LT10 = sum(Read_Depth &amp;lt; 10),
+            Good = sum(Read_Depth &amp;gt;= 10),
+            P5 = LT5 / Total_Bases,
+            P10 = LT10 / Total_Bases) %&amp;gt;% 
+  arrange(-P10)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 118 x 7
+##    Name    Total_Bases   LT5  LT10  Good      P5     P10
+##    &amp;lt;chr&amp;gt;         &amp;lt;int&amp;gt; &amp;lt;int&amp;gt; &amp;lt;int&amp;gt; &amp;lt;int&amp;gt;   &amp;lt;dbl&amp;gt;   &amp;lt;dbl&amp;gt;
+##  1 BBIP1           220     0    61   159 0       0.277  
+##  2 ISPD           1339     0    57  1282 0       0.0426 
+##  3 CASK           2778     0    79  2699 0       0.0284 
+##  4 NAA10           725     0    10   715 0       0.0138 
+##  5 CNGB3          2436     0    18  2418 0       0.00739
+##  6 LYST          11400    13    66 11334 0.00114 0.00579
+##  7 PROM1          2601     0     8  2593 0       0.00308
+##  8 RET            3348     0     9  3339 0       0.00269
+##  9 CEP290         7456     0    18  7438 0       0.00241
+## 10 SLC25A1         933     0     2   931 0       0.00214
+## # ... with 108 more rows&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;we-can-visually-display-the-data-also&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;We can visually display the data, also&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;dd_class %&amp;gt;% 
+  ggplot(aes(x=Read_Depth, group=Name)) +
+  geom_density()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/././post/2018-02-07-let-s-plot-3-part-1_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;hard-to-see-what-is-going-on-lets-make-little-plots-for-each-gene&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Hard to see what is going on, let’s make little plots for each gene&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;dd_class %&amp;gt;% 
+  ggplot(aes(x=Read_Depth, group=Name)) +
+  facet_wrap(~Name) + 
+  geom_density()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/././post/2018-02-07-let-s-plot-3-part-1_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;960&#34; /&gt;
+##&lt;a href=&#34;/./img/lets_plot3_density.png&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;where-are-genes-poorly-covered&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Where are genes poorly covered?&lt;/h2&gt;
+&lt;div id=&#34;bbip1&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;BBIP1&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;dd_class %&amp;gt;% filter(Name==&amp;#39;BBIP1&amp;#39;) %&amp;gt;% 
+  ggplot(aes(x=Start, y=Read_Depth)) + 
+  facet_wrap(~`Exon Number`, scales = &amp;#39;free_x&amp;#39;, nrow=1, strip.position = &amp;#39;bottom&amp;#39;) + 
+  geom_point(size=0.1) + theme_minimal() +
+  theme(axis.text.x=element_blank(), 
+        axis.ticks.x = element_blank(), 
+        panel.grid.minor = element_blank(), 
+        panel.grid.major.x = element_blank(),
+        legend.position = &amp;#39;none&amp;#39;) + 
+  ylab(&amp;#39;Depth&amp;#39;) + 
+  xlab(&amp;#39;Exon Number&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/././post/2018-02-07-let-s-plot-3-part-1_files/figure-html/unnamed-chunk-11-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;make-a-coverage-plot-for-many-genes-this-is-advanced-stuff&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Make a coverage plot for many genes (This is advanced stuff!!!)&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gene_list &amp;lt;- c(&amp;#39;ABCA4&amp;#39;, &amp;#39;PITX2&amp;#39;,&amp;#39;VSX2&amp;#39;,&amp;#39;RPGR&amp;#39;,&amp;#39;SOX10&amp;#39;)
+
+# set a custom color that will work even if a category is missing
+scale_colour_custom &amp;lt;- function(...){
+  ggplot2:::manual_scale(&amp;#39;colour&amp;#39;, 
+                         values = setNames(c(&amp;#39;darkred&amp;#39;, &amp;#39;red&amp;#39;, &amp;#39;black&amp;#39;),
+                                           c(&amp;#39;&amp;lt; 10 Reads&amp;#39;,&amp;#39;&amp;lt; 20 Reads&amp;#39;,&amp;#39;&amp;gt;= 20 Reads&amp;#39;)), 
+                         ...)
+}
+
+plot_maker &amp;lt;- function(gene){
+  num_of_exons &amp;lt;- dd_class%&amp;gt;% filter(Name==gene) %&amp;gt;% pull(`Exon Number`) %&amp;gt;% as.numeric() %&amp;gt;% max()
+   # expand to create a row for each sequence and fill in previous values
+  dd_class %&amp;gt;% filter(Name==gene) %&amp;gt;%
+    mutate(`Exon Number`= factor(`Exon Number`,levels=0:num_of_exons)) %&amp;gt;%  
+    ggplot(aes(x=Start, y=Read_Depth)) + 
+    facet_wrap(~`Exon Number`, scales = &amp;#39;free_x&amp;#39;, nrow=1, strip.position = &amp;#39;bottom&amp;#39;) + 
+    geom_point(size=0.1) + theme_minimal() + scale_colour_custom() +
+    theme(axis.text.x=element_blank(), 
+          axis.ticks.x = element_blank(), 
+          panel.grid.minor = element_blank(), 
+          panel.grid.major.x = element_blank(),
+          legend.position = &amp;#39;none&amp;#39;) + 
+    ylab(&amp;#39;Depth&amp;#39;) + 
+    xlab(gene)
+}
+
+plots &amp;lt;- list()
+for (i in gene_list){
+  plots[[i]] &amp;lt;- plot_maker(i)
+}
+
+plot_grid(plotlist = plots, ncol=1)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/./img/lets_plot3_cow.png&#34; width=&#34;100%&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;devtools::session_info()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Session info -------------------------------------------------------------&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##  setting  value                       
+##  version  R version 3.5.0 (2018-04-23)
+##  system   x86_64, darwin15.6.0        
+##  ui       X11                         
+##  language (EN)                        
+##  collate  en_US.UTF-8                 
+##  tz       America/New_York            
+##  date     2018-07-16&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Packages -----------------------------------------------------------------&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##  package    * version date       source                           
+##  assertthat   0.2.0   2017-04-11 CRAN (R 3.5.0)                   
+##  backports    1.1.2   2017-12-13 CRAN (R 3.5.0)                   
+##  base       * 3.5.0   2018-04-24 local                            
+##  bindr        0.1.1   2018-03-13 CRAN (R 3.5.0)                   
+##  bindrcpp   * 0.2.2   2018-03-29 CRAN (R 3.5.0)                   
+##  blogdown     0.8.1   2018-07-16 Github (rstudio/blogdown@d54c39a)
+##  bookdown     0.7     2018-02-18 CRAN (R 3.5.0)                   
+##  broom        0.4.4   2018-03-29 CRAN (R 3.5.0)                   
+##  cellranger   1.1.0   2016-07-27 CRAN (R 3.5.0)                   
+##  cli          1.0.0   2017-11-05 CRAN (R 3.5.0)                   
+##  colorspace   1.3-2   2016-12-14 CRAN (R 3.5.0)                   
+##  compiler     3.5.0   2018-04-24 local                            
+##  cowplot    * 0.9.2   2017-12-17 CRAN (R 3.5.0)                   
+##  crayon       1.3.4   2017-09-16 CRAN (R 3.5.0)                   
+##  data.table * 1.11.4  2018-05-27 cran (@1.11.4)                   
+##  datasets   * 3.5.0   2018-04-24 local                            
+##  devtools     1.13.5  2018-02-18 CRAN (R 3.5.0)                   
+##  digest       0.6.15  2018-01-28 CRAN (R 3.5.0)                   
+##  dplyr      * 0.7.6   2018-06-29 cran (@0.7.6)                    
+##  evaluate     0.10.1  2017-06-24 CRAN (R 3.5.0)                   
+##  forcats    * 0.3.0   2018-02-19 CRAN (R 3.5.0)                   
+##  foreign      0.8-70  2017-11-28 CRAN (R 3.5.0)                   
+##  ggplot2    * 3.0.0   2018-07-03 cran (@3.0.0)                    
+##  glue         1.2.0   2017-10-29 CRAN (R 3.5.0)                   
+##  graphics   * 3.5.0   2018-04-24 local                            
+##  grDevices  * 3.5.0   2018-04-24 local                            
+##  grid         3.5.0   2018-04-24 local                            
+##  gtable       0.2.0   2016-02-26 CRAN (R 3.5.0)                   
+##  haven        1.1.1   2018-01-18 CRAN (R 3.5.0)                   
+##  hms          0.4.2   2018-03-10 CRAN (R 3.5.0)                   
+##  htmltools    0.3.6   2017-04-28 CRAN (R 3.5.0)                   
+##  httr         1.3.1   2017-08-20 CRAN (R 3.5.0)                   
+##  jsonlite     1.5     2017-06-01 CRAN (R 3.5.0)                   
+##  knitr        1.20    2018-02-20 CRAN (R 3.5.0)                   
+##  labeling     0.3     2014-08-23 CRAN (R 3.5.0)                   
+##  lattice      0.20-35 2017-03-25 CRAN (R 3.5.0)                   
+##  lazyeval     0.2.1   2017-10-29 CRAN (R 3.5.0)                   
+##  lubridate    1.7.4   2018-04-11 CRAN (R 3.5.0)                   
+##  magrittr     1.5     2014-11-22 CRAN (R 3.5.0)                   
+##  memoise      1.1.0   2017-04-21 CRAN (R 3.5.0)                   
+##  methods    * 3.5.0   2018-04-24 local                            
+##  mnormt       1.5-5   2016-10-15 CRAN (R 3.5.0)                   
+##  modelr       0.1.2   2018-05-11 CRAN (R 3.5.0)                   
+##  munsell      0.4.3   2016-02-13 CRAN (R 3.5.0)                   
+##  nlme         3.1-137 2018-04-07 CRAN (R 3.5.0)                   
+##  parallel     3.5.0   2018-04-24 local                            
+##  pillar       1.2.3   2018-05-25 CRAN (R 3.5.0)                   
+##  pkgconfig    2.0.1   2017-03-21 CRAN (R 3.5.0)                   
+##  plyr         1.8.4   2016-06-08 CRAN (R 3.5.0)                   
+##  psych        1.8.4   2018-05-06 CRAN (R 3.5.0)                   
+##  purrr      * 0.2.4   2017-10-18 CRAN (R 3.5.0)                   
+##  R6           2.2.2   2017-06-17 CRAN (R 3.5.0)                   
+##  Rcpp         0.12.17 2018-05-18 CRAN (R 3.5.0)                   
+##  readr      * 1.1.1   2017-05-16 CRAN (R 3.5.0)                   
+##  readxl       1.1.0   2018-04-20 CRAN (R 3.5.0)                   
+##  reshape2     1.4.3   2017-12-11 CRAN (R 3.5.0)                   
+##  rlang        0.2.1   2018-05-30 CRAN (R 3.5.0)                   
+##  rmarkdown    1.10    2018-06-11 cran (@1.10)                     
+##  rprojroot    1.3-2   2018-01-03 CRAN (R 3.5.0)                   
+##  rstudioapi   0.7     2017-09-07 CRAN (R 3.5.0)                   
+##  rvest        0.3.2   2016-06-17 CRAN (R 3.5.0)                   
+##  scales       0.5.0   2017-08-24 CRAN (R 3.5.0)                   
+##  stats      * 3.5.0   2018-04-24 local                            
+##  stringi      1.2.2   2018-05-02 CRAN (R 3.5.0)                   
+##  stringr    * 1.3.1   2018-05-10 CRAN (R 3.5.0)                   
+##  tibble     * 1.4.2   2018-01-22 CRAN (R 3.5.0)                   
+##  tidyr      * 0.8.1   2018-05-18 CRAN (R 3.5.0)                   
+##  tidyselect   0.2.4   2018-02-26 CRAN (R 3.5.0)                   
+##  tidyverse  * 1.2.1   2017-11-14 CRAN (R 3.5.0)                   
+##  tools        3.5.0   2018-04-24 local                            
+##  utf8         1.1.4   2018-05-24 CRAN (R 3.5.0)                   
+##  utils      * 3.5.0   2018-04-24 local                            
+##  withr        2.1.2   2018-03-15 CRAN (R 3.5.0)                   
+##  xfun         0.3     2018-07-06 cran (@0.3)                      
+##  xml2         1.2.0   2018-01-24 CRAN (R 3.5.0)                   
+##  yaml         2.1.19  2018-05-01 CRAN (R 3.5.0)&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 </description>
     </item>
@@ -3617,12 +4147,12 @@ ggplot() +
 &lt;div id=&#34;read-in-vcf-header&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Read in vcf header&lt;/h2&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ── Attaching packages ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ✔ ggplot2 2.2.1     ✔ purrr   0.2.4
-## ✔ tibble  1.4.2     ✔ dplyr   0.7.4
-## ✔ tidyr   0.7.2     ✔ stringr 1.2.0
-## ✔ readr   1.1.1     ✔ forcats 0.2.0&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ── Conflicts ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+&lt;pre&gt;&lt;code&gt;## ── Attaching packages ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## ✔ ggplot2 3.0.0     ✔ purrr   0.2.4
+## ✔ tibble  1.4.2     ✔ dplyr   0.7.6
+## ✔ tidyr   0.8.1     ✔ stringr 1.3.1
+## ✔ readr   1.1.1     ✔ forcats 0.3.0&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## ── Conflicts ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(stringr)
@@ -3925,88 +4455,88 @@ write(contig_size %&amp;gt;% filter(length &amp;lt; 3e7, contig != &amp;#39;hs37
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;devtools::session_info()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Session info -------------------------------------------------------------&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##  setting  value                       
-##  version  R version 3.4.0 (2017-04-21)
+##  version  R version 3.5.0 (2018-04-23)
 ##  system   x86_64, darwin15.6.0        
 ##  ui       X11                         
 ##  language (EN)                        
 ##  collate  en_US.UTF-8                 
 ##  tz       America/New_York            
-##  date     2018-02-13&lt;/code&gt;&lt;/pre&gt;
+##  date     2018-07-16&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Packages -----------------------------------------------------------------&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##  package    * version    date       source                          
-##  assertthat   0.2.0      2017-04-11 CRAN (R 3.4.0)                  
-##  backports    1.1.1      2017-09-25 CRAN (R 3.4.2)                  
-##  base       * 3.4.0      2017-04-21 local                           
-##  bindr        0.1        2016-11-13 CRAN (R 3.4.0)                  
-##  bindrcpp   * 0.2        2017-06-17 CRAN (R 3.4.0)                  
-##  blogdown     0.5        2018-01-24 CRAN (R 3.4.3)                  
-##  bookdown     0.6        2018-01-25 CRAN (R 3.4.3)                  
-##  broom        0.4.3      2017-11-20 CRAN (R 3.4.0)                  
-##  cellranger   1.1.0      2016-07-27 CRAN (R 3.4.0)                  
-##  cli          1.0.0      2017-11-05 CRAN (R 3.4.2)                  
-##  colorspace   1.3-2      2016-12-14 CRAN (R 3.4.0)                  
-##  compiler     3.4.0      2017-04-21 local                           
-##  crayon       1.3.4      2017-09-16 CRAN (R 3.4.1)                  
-##  datasets   * 3.4.0      2017-04-21 local                           
-##  devtools     1.13.4     2017-11-09 CRAN (R 3.4.2)                  
-##  digest       0.6.12     2017-01-27 CRAN (R 3.4.0)                  
-##  dplyr      * 0.7.4      2017-09-28 CRAN (R 3.4.2)                  
-##  evaluate     0.10.1     2017-06-24 CRAN (R 3.4.1)                  
-##  forcats    * 0.2.0      2017-01-23 CRAN (R 3.4.0)                  
-##  foreign      0.8-69     2017-06-22 CRAN (R 3.4.1)                  
-##  ggplot2    * 2.2.1      2016-12-30 CRAN (R 3.4.0)                  
-##  glue         1.2.0      2017-10-29 CRAN (R 3.4.2)                  
-##  graphics   * 3.4.0      2017-04-21 local                           
-##  grDevices  * 3.4.0      2017-04-21 local                           
-##  grid         3.4.0      2017-04-21 local                           
-##  gtable       0.2.0      2016-02-26 CRAN (R 3.4.0)                  
-##  haven        1.1.0      2017-07-09 CRAN (R 3.4.0)                  
-##  hms          0.3        2016-11-22 CRAN (R 3.4.0)                  
-##  htmltools    0.3.6      2017-04-28 CRAN (R 3.4.0)                  
-##  httr         1.3.1      2017-08-20 CRAN (R 3.4.1)                  
-##  jsonlite     1.5        2017-06-01 CRAN (R 3.4.0)                  
-##  knitr        1.17       2017-08-10 CRAN (R 3.4.1)                  
-##  lattice      0.20-35    2017-03-25 CRAN (R 3.4.0)                  
-##  lazyeval     0.2.1      2017-10-29 CRAN (R 3.4.2)                  
-##  lubridate    1.7.1      2017-11-03 CRAN (R 3.4.2)                  
-##  magrittr     1.5        2014-11-22 CRAN (R 3.4.0)                  
-##  memoise      1.1.0      2017-04-21 CRAN (R 3.4.0)                  
-##  methods    * 3.4.0      2017-04-21 local                           
-##  mnormt       1.5-5      2016-10-15 CRAN (R 3.4.0)                  
-##  modelr       0.1.1      2017-07-24 CRAN (R 3.4.1)                  
-##  munsell      0.4.3      2016-02-13 CRAN (R 3.4.0)                  
-##  nlme         3.1-131    2017-02-06 CRAN (R 3.4.0)                  
-##  parallel     3.4.0      2017-04-21 local                           
-##  pillar       1.1.0      2018-01-14 cran (@1.1.0)                   
-##  pkgconfig    2.0.1      2017-03-21 CRAN (R 3.4.0)                  
-##  plyr         1.8.4      2016-06-08 CRAN (R 3.4.0)                  
-##  psych        1.7.8      2017-09-09 CRAN (R 3.4.0)                  
-##  purrr      * 0.2.4      2017-10-18 CRAN (R 3.4.2)                  
-##  R6           2.2.2      2017-06-17 CRAN (R 3.4.0)                  
-##  Rcpp         0.12.13    2017-09-28 CRAN (R 3.4.2)                  
-##  readr      * 1.1.1      2017-05-16 CRAN (R 3.4.0)                  
-##  readxl       1.0.0      2017-04-18 CRAN (R 3.4.0)                  
-##  reshape2     1.4.2      2016-10-22 CRAN (R 3.4.0)                  
-##  rlang        0.1.6      2017-12-21 cran (@0.1.6)                   
-##  rmarkdown    1.8        2017-11-17 CRAN (R 3.4.2)                  
-##  rprojroot    1.2        2017-01-16 CRAN (R 3.4.0)                  
-##  rstudioapi   0.7        2017-09-07 CRAN (R 3.4.1)                  
-##  rvest        0.3.2      2016-06-17 CRAN (R 3.4.0)                  
-##  scales       0.5.0.9000 2017-09-20 Github (hadley/scales@d767915)  
-##  stats      * 3.4.0      2017-04-21 local                           
-##  stringi      1.1.6      2017-11-17 CRAN (R 3.4.2)                  
-##  stringr    * 1.2.0      2017-02-18 CRAN (R 3.4.0)                  
-##  tibble     * 1.4.2      2018-01-22 cran (@1.4.2)                   
-##  tidyr      * 0.7.2      2017-10-16 CRAN (R 3.4.2)                  
-##  tidyselect   0.2.3      2017-11-06 CRAN (R 3.4.2)                  
-##  tidyverse  * 1.2.1      2017-11-14 CRAN (R 3.4.2)                  
-##  tools        3.4.0      2017-04-21 local                           
-##  utf8         1.1.3      2018-01-03 cran (@1.1.3)                   
-##  utils      * 3.4.0      2017-04-21 local                           
-##  withr        2.1.0.9000 2017-11-22 Github (jimhester/withr@fe81c00)
-##  xfun         0.1        2018-01-22 CRAN (R 3.4.3)                  
-##  xml2         1.1.1      2017-01-24 CRAN (R 3.4.0)                  
-##  yaml         2.1.14     2016-11-12 CRAN (R 3.4.0)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##  package    * version date       source                           
+##  assertthat   0.2.0   2017-04-11 CRAN (R 3.5.0)                   
+##  backports    1.1.2   2017-12-13 CRAN (R 3.5.0)                   
+##  base       * 3.5.0   2018-04-24 local                            
+##  bindr        0.1.1   2018-03-13 CRAN (R 3.5.0)                   
+##  bindrcpp   * 0.2.2   2018-03-29 CRAN (R 3.5.0)                   
+##  blogdown     0.8.1   2018-07-16 Github (rstudio/blogdown@d54c39a)
+##  bookdown     0.7     2018-02-18 CRAN (R 3.5.0)                   
+##  broom        0.4.4   2018-03-29 CRAN (R 3.5.0)                   
+##  cellranger   1.1.0   2016-07-27 CRAN (R 3.5.0)                   
+##  cli          1.0.0   2017-11-05 CRAN (R 3.5.0)                   
+##  colorspace   1.3-2   2016-12-14 CRAN (R 3.5.0)                   
+##  compiler     3.5.0   2018-04-24 local                            
+##  crayon       1.3.4   2017-09-16 CRAN (R 3.5.0)                   
+##  datasets   * 3.5.0   2018-04-24 local                            
+##  devtools     1.13.5  2018-02-18 CRAN (R 3.5.0)                   
+##  digest       0.6.15  2018-01-28 CRAN (R 3.5.0)                   
+##  dplyr      * 0.7.6   2018-06-29 cran (@0.7.6)                    
+##  evaluate     0.10.1  2017-06-24 CRAN (R 3.5.0)                   
+##  forcats    * 0.3.0   2018-02-19 CRAN (R 3.5.0)                   
+##  foreign      0.8-70  2017-11-28 CRAN (R 3.5.0)                   
+##  ggplot2    * 3.0.0   2018-07-03 cran (@3.0.0)                    
+##  glue         1.2.0   2017-10-29 CRAN (R 3.5.0)                   
+##  graphics   * 3.5.0   2018-04-24 local                            
+##  grDevices  * 3.5.0   2018-04-24 local                            
+##  grid         3.5.0   2018-04-24 local                            
+##  gtable       0.2.0   2016-02-26 CRAN (R 3.5.0)                   
+##  haven        1.1.1   2018-01-18 CRAN (R 3.5.0)                   
+##  hms          0.4.2   2018-03-10 CRAN (R 3.5.0)                   
+##  htmltools    0.3.6   2017-04-28 CRAN (R 3.5.0)                   
+##  httr         1.3.1   2017-08-20 CRAN (R 3.5.0)                   
+##  jsonlite     1.5     2017-06-01 CRAN (R 3.5.0)                   
+##  knitr        1.20    2018-02-20 CRAN (R 3.5.0)                   
+##  lattice      0.20-35 2017-03-25 CRAN (R 3.5.0)                   
+##  lazyeval     0.2.1   2017-10-29 CRAN (R 3.5.0)                   
+##  lubridate    1.7.4   2018-04-11 CRAN (R 3.5.0)                   
+##  magrittr     1.5     2014-11-22 CRAN (R 3.5.0)                   
+##  memoise      1.1.0   2017-04-21 CRAN (R 3.5.0)                   
+##  methods    * 3.5.0   2018-04-24 local                            
+##  mnormt       1.5-5   2016-10-15 CRAN (R 3.5.0)                   
+##  modelr       0.1.2   2018-05-11 CRAN (R 3.5.0)                   
+##  munsell      0.4.3   2016-02-13 CRAN (R 3.5.0)                   
+##  nlme         3.1-137 2018-04-07 CRAN (R 3.5.0)                   
+##  parallel     3.5.0   2018-04-24 local                            
+##  pillar       1.2.3   2018-05-25 CRAN (R 3.5.0)                   
+##  pkgconfig    2.0.1   2017-03-21 CRAN (R 3.5.0)                   
+##  plyr         1.8.4   2016-06-08 CRAN (R 3.5.0)                   
+##  psych        1.8.4   2018-05-06 CRAN (R 3.5.0)                   
+##  purrr      * 0.2.4   2017-10-18 CRAN (R 3.5.0)                   
+##  R6           2.2.2   2017-06-17 CRAN (R 3.5.0)                   
+##  Rcpp         0.12.17 2018-05-18 CRAN (R 3.5.0)                   
+##  readr      * 1.1.1   2017-05-16 CRAN (R 3.5.0)                   
+##  readxl       1.1.0   2018-04-20 CRAN (R 3.5.0)                   
+##  reshape2     1.4.3   2017-12-11 CRAN (R 3.5.0)                   
+##  rlang        0.2.1   2018-05-30 CRAN (R 3.5.0)                   
+##  rmarkdown    1.10    2018-06-11 cran (@1.10)                     
+##  rprojroot    1.3-2   2018-01-03 CRAN (R 3.5.0)                   
+##  rstudioapi   0.7     2017-09-07 CRAN (R 3.5.0)                   
+##  rvest        0.3.2   2016-06-17 CRAN (R 3.5.0)                   
+##  scales       0.5.0   2017-08-24 CRAN (R 3.5.0)                   
+##  stats      * 3.5.0   2018-04-24 local                            
+##  stringi      1.2.2   2018-05-02 CRAN (R 3.5.0)                   
+##  stringr    * 1.3.1   2018-05-10 CRAN (R 3.5.0)                   
+##  tibble     * 1.4.2   2018-01-22 CRAN (R 3.5.0)                   
+##  tidyr      * 0.8.1   2018-05-18 CRAN (R 3.5.0)                   
+##  tidyselect   0.2.4   2018-02-26 CRAN (R 3.5.0)                   
+##  tidyverse  * 1.2.1   2017-11-14 CRAN (R 3.5.0)                   
+##  tools        3.5.0   2018-04-24 local                            
+##  utf8         1.1.4   2018-05-24 CRAN (R 3.5.0)                   
+##  utils      * 3.5.0   2018-04-24 local                            
+##  withr        2.1.2   2018-03-15 CRAN (R 3.5.0)                   
+##  xfun         0.3     2018-07-06 cran (@0.3)                      
+##  xml2         1.2.0   2018-01-24 CRAN (R 3.5.0)                   
+##  yaml         2.1.19  2018-05-01 CRAN (R 3.5.0)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;```&lt;/p&gt;
 &lt;/div&gt;
 </description>
@@ -4049,12 +4579,12 @@ write(contig_size %&amp;gt;% filter(length &amp;lt; 3e7, contig != &amp;#39;hs37
 &lt;div id=&#34;load-data-and-look-at-structure-str&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Load data and look at structure (str)&lt;/h2&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ── Attaching packages ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ✔ ggplot2 2.2.1     ✔ purrr   0.2.4
-## ✔ tibble  1.4.2     ✔ dplyr   0.7.4
-## ✔ tidyr   0.7.2     ✔ stringr 1.2.0
-## ✔ readr   1.1.1     ✔ forcats 0.2.0&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ── Conflicts ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+&lt;pre&gt;&lt;code&gt;## ── Attaching packages ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## ✔ ggplot2 3.0.0     ✔ purrr   0.2.4
+## ✔ tibble  1.4.2     ✔ dplyr   0.7.6
+## ✔ tidyr   0.8.1     ✔ stringr 1.3.1
+## ✔ readr   1.1.1     ✔ forcats 0.3.0&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## ── Conflicts ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggsci)
@@ -4088,22 +4618,22 @@ eel %&amp;gt;% str()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## # A tibble: 6 x 8
 ##   Pig_Name   Week Region          Cells Output     GroupCount  Data    STD
 ##   &amp;lt;chr&amp;gt;     &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;           &amp;lt;lgl&amp;gt; &amp;lt;chr&amp;gt;           &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt;  &amp;lt;dbl&amp;gt;
-## 1 Cobra 749     0 Healthy_Implant F     Area-Unde…       3.00  1.00 0.0994
-## 2 Cobra 749     0 Healthy_Implant F     HFC-Scalar       3.00  1.00 0.349 
-## 3 Cobra 749     0 Healthy_Implant F     LFC-Scalar       3.00  1.00 0.226 
-## 4 Cobra 749     0 Healthy_Implant F     N1               3.00  1.00 0.106 
-## 5 Cobra 749     0 Healthy_Implant F     N1-Latency       3.00 15.7  0.577 
-## 6 Cobra 749     0 Healthy_Implant F     N1-Prom          3.00  1.00 0.177&lt;/code&gt;&lt;/pre&gt;
+## 1 Cobra 749     0 Healthy_Implant FALSE Area-Unde…          3   1   0.0994
+## 2 Cobra 749     0 Healthy_Implant FALSE HFC-Scalar          3   1.  0.349 
+## 3 Cobra 749     0 Healthy_Implant FALSE LFC-Scalar          3   1   0.226 
+## 4 Cobra 749     0 Healthy_Implant FALSE N1                  3   1.  0.106 
+## 5 Cobra 749     0 Healthy_Implant FALSE N1-Latency          3  15.7 0.577 
+## 6 Cobra 749     0 Healthy_Implant FALSE N1-Prom             3   1   0.177&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;eel %&amp;gt;% head()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## # A tibble: 6 x 8
 ##   Pig_Name  Week Region       Cells Output         GroupCount  Data    STD
 ##   &amp;lt;chr&amp;gt;    &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;        &amp;lt;lgl&amp;gt; &amp;lt;chr&amp;gt;               &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt;  &amp;lt;dbl&amp;gt;
-## 1 Eel 668      0 Healthy_Sham F     Area-Under-Cu…       3.00  1.00 0.0537
-## 2 Eel 668      0 Healthy_Sham F     HFC-Scalar           3.00  1.00 0.514 
-## 3 Eel 668      0 Healthy_Sham F     LFC-Scalar           3.00  1.00 0.135 
-## 4 Eel 668      0 Healthy_Sham F     N1                   3.00  1.00 0.0631
-## 5 Eel 668      0 Healthy_Sham F     N1-Latency           3.00 20.7  0.577 
-## 6 Eel 668      0 Healthy_Sham F     N1-Prom              3.00  1.00 0.0781&lt;/code&gt;&lt;/pre&gt;
+## 1 Eel 668      0 Healthy_Sham FALSE Area-Under-Cu…          3   1   0.0537
+## 2 Eel 668      0 Healthy_Sham FALSE HFC-Scalar              3   1.  0.514 
+## 3 Eel 668      0 Healthy_Sham FALSE LFC-Scalar              3   1   0.135 
+## 4 Eel 668      0 Healthy_Sham FALSE N1                      3   1.  0.0631
+## 5 Eel 668      0 Healthy_Sham FALSE N1-Latency              3  20.7 0.577 
+## 6 Eel 668      0 Healthy_Sham FALSE N1-Prom                 3   1.  0.0781&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Looks like we have implant (cobra) vs sham (eel)?&lt;/p&gt;
 &lt;p&gt;We have several types of &lt;code&gt;Output&lt;/code&gt; (Area-Under-Curve, HFC-Scalar, LFC-Scalar, N1, N1-Latency, N1-Prom, N1-Width, N1P1, N2, N2-Latency, N2-Prom, N2-Width, N2P2, P1, P1-Latency, P1-Prom, P1-Width, P1N2, P2, P2-Latency, P2-Prom, P2-Width, Pos.-Area-Under-Curve, RMS-HFC) which are different variables that have been measured. I asked Aaron what he cared most about and he suggested AUC, N1P1, and Latency&lt;/p&gt;
 &lt;/div&gt;
@@ -4144,14 +4674,14 @@ eel %&amp;gt;% str()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## # A tibble: 8 x 8
 ##   Pig_Name   Week Region          Cells Output     GroupCount  Data    STD
 ##   &amp;lt;chr&amp;gt;     &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;           &amp;lt;lgl&amp;gt; &amp;lt;chr&amp;gt;           &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt;  &amp;lt;dbl&amp;gt;
-## 1 Cobra 749   0   Healthy_Implant F     Area-Unde…       3.00 1.00  0.0994
-## 2 Cobra 749  14.0 Healthy_Implant F     Area-Unde…       3.00 0.690 0.0877
-## 3 Cobra 749  35.0 Healthy_Implant F     Area-Unde…       3.00 0.689 0.119 
-## 4 Cobra 749  58.0 Healthy_Implant F     Area-Unde…       3.00 0.957 0.208 
-## 5 Cobra 749   0   Implant_NoLx    F     Area-Unde…       3.00 1.00  0.0868
-## 6 Cobra 749  14.0 Implant_NoLx    F     Area-Unde…       3.00 0.365 0.0964
-## 7 Cobra 749  35.0 Implant_NoLx    F     Area-Unde…       3.00 0.409 0.102 
-## 8 Cobra 749  58.0 Implant_NoLx    F     Area-Unde…       3.00 0.481 0.212&lt;/code&gt;&lt;/pre&gt;
+## 1 Cobra 749     0 Healthy_Implant FALSE Area-Unde…          3 1     0.0994
+## 2 Cobra 749    14 Healthy_Implant FALSE Area-Unde…          3 0.690 0.0877
+## 3 Cobra 749    35 Healthy_Implant FALSE Area-Unde…          3 0.689 0.119 
+## 4 Cobra 749    58 Healthy_Implant FALSE Area-Unde…          3 0.957 0.208 
+## 5 Cobra 749     0 Implant_NoLx    FALSE Area-Unde…          3 1     0.0868
+## 6 Cobra 749    14 Implant_NoLx    FALSE Area-Unde…          3 0.365 0.0964
+## 7 Cobra 749    35 Implant_NoLx    FALSE Area-Unde…          3 0.409 0.102 
+## 8 Cobra 749    58 Implant_NoLx    FALSE Area-Unde…          3 0.481 0.212&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Oh, we have &lt;em&gt;two kinds or regions&lt;/em&gt;. Didn’t see that before. So the above summary doesn’t take that into account.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;summary-by-pig-and-region&#34; class=&#34;section level2&#34;&gt;
@@ -4200,7 +4730,7 @@ cobra_eel_AUC %&amp;gt;%
   geom_smooth() + ## this draws the smoothed lines through the four points. It auto picks an algorithm that works. loess was used here
   theme_bw() + scale_colour_npg() +
   ylab(&amp;#39;N1P1&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## `geom_smooth()` using method = &amp;#39;loess&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## `geom_smooth()` using method = &amp;#39;loess&amp;#39; and formula &amp;#39;y ~ x&amp;#39;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;/././post/2018-02-04-let-s-plot-2-smoothed-lines_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;latency-plot&#34; class=&#34;section level2&#34;&gt;
@@ -4211,7 +4741,7 @@ cobra_eel_AUC %&amp;gt;%
   geom_smooth() + ## this draws the smoothed lines through the four points. It auto picks an algorithm that works. loess was used here
   theme_bw() + scale_colour_npg() +
   ylab(&amp;#39;N1-Latency&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## `geom_smooth()` using method = &amp;#39;loess&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## `geom_smooth()` using method = &amp;#39;loess&amp;#39; and formula &amp;#39;y ~ x&amp;#39;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;/././post/2018-02-04-let-s-plot-2-smoothed-lines_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;bonus&#34; class=&#34;section level2&#34;&gt;
@@ -4255,339 +4785,6 @@ ggplot(all_pigs, aes(x=PC1, y=PC4, color=as.factor(Week), shape=Region)) +
 &lt;h2 id=&#34;next-position&#34;&gt;Next position&lt;/h2&gt;
 
 &lt;p&gt;[BLANK] Medical School&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Let’s Plot 1: Going in circles </title>
-      <link>/./post/let-s-plot-1/</link>
-      <pubDate>Thu, 01 Feb 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/./post/let-s-plot-1/</guid>
-      <description>&lt;div id=&#34;TOC&#34;&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#what-is-going-on&#34;&gt;What is going on?&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#where-to-get-the-code-and-data&#34;&gt;Where to get the code and data?&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#import-data-with-readxl&#34;&gt;Import data with readxl&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#ok-first-lets-remove-the-notes.&#34;&gt;OK, first let’s remove the notes.&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#however-we-arent-done.-the-data-is-wide-instead-of-long-and-we-have-mixed-session-ids-amp-1-3-and-angle-1-3-with-the-value-type.&#34;&gt;However, we aren’t done. The data is “wide” instead of “long” and we have mixed session IDs (Amp 1-3 and Angle 1-3) with the value type.&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#now-we-need-to-extract-the-session-123-and-the-test-type-amp-or-angle&#34;&gt;Now we need to extract the session (1,2,3) and the test type (Amp or Angle)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#now-we-have-two-value-types-angle-and-amplitude-in-one-column.-so-we-need-to-go-from-long-to-wide-to-split-them-apart.&#34;&gt;Now we have two value types (Angle and Amplitude) in one column. So we need to go from long to wide to split them apart.&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#putting-it-all-together-and-saving-so-we-dont-have-to-see-this-big-code-block-later.&#34;&gt;Putting it all together and saving so we don’t have to see this big code block later.&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#first-plot.-does-this-work&#34;&gt;First plot. Does this work?&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#but-wait-this-is-a-polar-plot.&#34;&gt;But wait, this is a polar plot….&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#not-bad-but-we-have-a-lot-of-little-things-to-do.&#34;&gt;Not bad, but we have a lot of little things to do.&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#yeah-so-we-need-to-tell-ggplot-what-the-range-of-values-is.&#34;&gt;Yeah, so we need to tell ggplot what the range of values is.&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#cool-the-range-goes-to-360-as-expected.-still-a-few-more-things-to-do&#34;&gt;Cool, the range goes to 360 as expected. Still a few more things to do:&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#hmm-wrong-way.-want-180-on-the-left-lets-make-it-negative.&#34;&gt;Hmm, wrong way. (want 180 on the left) Let’s make it negative.&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#ok-final-plot-with-some-color-and-geom_point-tweaking&#34;&gt;OK, Final plot with some color and geom_point tweaking!&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#sessioninfo&#34;&gt;sessionInfo&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-
-&lt;div id=&#34;what-is-going-on&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;What is going on?&lt;/h2&gt;
-&lt;p&gt;See &lt;a href=&#34;https://davemcg.github.io/post/what-is-let-s-plot/&#34; class=&#34;uri&#34;&gt;https://davemcg.github.io/post/what-is-let-s-plot/&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;where-to-get-the-code-and-data&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Where to get the code and data?&lt;/h2&gt;
-&lt;p&gt;Rmarkdown document: &lt;a href=&#34;https://github.com/davemcg/Let_us_plot/blob/master/001_polar_figure/polar_plot.Rmd&#34; class=&#34;uri&#34;&gt;https://github.com/davemcg/Let_us_plot/blob/master/001_polar_figure/polar_plot.Rmd&lt;/a&gt; Data: &lt;a href=&#34;https://github.com/davemcg/Let_us_plot/blob/master/001_polar_figure/polar_values.xlsx&#34; class=&#34;uri&#34;&gt;https://github.com/davemcg/Let_us_plot/blob/master/001_polar_figure/polar_values.xlsx&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;First time making a polar plot….let’s see if ggplot2 can do it.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;import-data-with-readxl&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Import data with readxl&lt;/h2&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ── Attaching packages ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ✔ ggplot2 2.2.1     ✔ purrr   0.2.4
-## ✔ tibble  1.4.2     ✔ dplyr   0.7.4
-## ✔ tidyr   0.7.2     ✔ stringr 1.2.0
-## ✔ readr   1.1.1     ✔ forcats 0.2.0&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ── Conflicts ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
-## ✖ dplyr::filter() masks stats::filter()
-## ✖ dplyr::lag()    masks stats::lag()&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(stringr)
-polar_values &amp;lt;- readxl::read_xlsx(&amp;#39;~/git/Let_us_plot/001_polar_figure/polar_values.xlsx&amp;#39;)
-polar_values&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## # A tibble: 8 x 8
-##   X__1         `Od Amp1` `Od Amp2` `Od Amp3` X__2  `Od Angle1` `Od Angle2`
-##   &amp;lt;chr&amp;gt;            &amp;lt;dbl&amp;gt;     &amp;lt;dbl&amp;gt;     &amp;lt;dbl&amp;gt; &amp;lt;lgl&amp;gt;       &amp;lt;dbl&amp;gt;       &amp;lt;dbl&amp;gt;
-## 1 3                2.10      3.01      2.96  NA           66.0        67.7
-## 2 5                1.56      1.36      1.54  NA           19.6        14.7
-## 3 14               4.79      4.73      4.72  NA          360         353  
-## 4 15               0.350     0.320     0.300 NA          257         234  
-## 5 18               0.910     0.830     1.12  NA          350         344  
-## 6 &amp;lt;NA&amp;gt;            NA        NA        NA     NA           NA          NA  
-## 7 1,2,3 are t…    NA        NA        NA     NA           NA          NA  
-## 8 Amp and Ang…    NA        NA        NA     NA           NA          NA  
-## # ... with 1 more variable: `Od Angle3` &amp;lt;dbl&amp;gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;ok-first-lets-remove-the-notes.&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;OK, first let’s remove the notes.&lt;/h2&gt;
-&lt;p&gt;We first slice the first 5 rows, then fix the encoding for &lt;code&gt;Od Amp1&lt;/code&gt;, then remove the empty column in between&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;polar_values &amp;lt;- polar_values %&amp;gt;% 
-  slice(1:5) %&amp;gt;% 
-  mutate(Patient=as.factor(X__1)) %&amp;gt;% 
-  select(Patient,`Od Amp1`:`Od Amp3`, `Od Angle1`:`Od Angle3`)
-polar_values&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## # A tibble: 5 x 7
-##   Patient `Od Amp1` `Od Amp2` `Od Amp3` `Od Angle1` `Od Angle2`
-##   &amp;lt;fct&amp;gt;       &amp;lt;dbl&amp;gt;     &amp;lt;dbl&amp;gt;     &amp;lt;dbl&amp;gt;       &amp;lt;dbl&amp;gt;       &amp;lt;dbl&amp;gt;
-## 1 3           2.10      3.01      2.96         66.0        67.7
-## 2 5           1.56      1.36      1.54         19.6        14.7
-## 3 14          4.79      4.73      4.72        360         353  
-## 4 15          0.350     0.320     0.300       257         234  
-## 5 18          0.910     0.830     1.12        350         344  
-## # ... with 1 more variable: `Od Angle3` &amp;lt;dbl&amp;gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;however-we-arent-done.-the-data-is-wide-instead-of-long-and-we-have-mixed-session-ids-amp-1-3-and-angle-1-3-with-the-value-type.&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;However, we aren’t done. The data is “wide” instead of “long” and we have mixed session IDs (Amp 1-3 and Angle 1-3) with the value type.&lt;/h2&gt;
-&lt;p&gt;Let’s first deal with the wide issue. If we google “R wide to long” we find this page near the top &lt;a href=&#34;http://www.cookbook-r.com/Manipulating_data/Converting_data_between_wide_and_long_format/&#34; class=&#34;uri&#34;&gt;http://www.cookbook-r.com/Manipulating_data/Converting_data_between_wide_and_long_format/&lt;/a&gt; which tells us that &lt;code&gt;gather&lt;/code&gt; is the function we want.&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;Test_Session&lt;/code&gt; is the name for the column containing &lt;code&gt;Od Amp1 to Od Angle&lt;/code&gt; &lt;code&gt;Value&lt;/code&gt; is the name for the column holding the test measurements.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;polar_values %&amp;gt;% 
-  gather(Test_Session, Value, `Od Amp1`:`Od Angle3`) &lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## # A tibble: 30 x 3
-##    Patient Test_Session Value
-##    &amp;lt;fct&amp;gt;   &amp;lt;chr&amp;gt;        &amp;lt;dbl&amp;gt;
-##  1 3       Od Amp1      2.10 
-##  2 5       Od Amp1      1.56 
-##  3 14      Od Amp1      4.79 
-##  4 15      Od Amp1      0.350
-##  5 18      Od Amp1      0.910
-##  6 3       Od Amp2      3.01 
-##  7 5       Od Amp2      1.36 
-##  8 14      Od Amp2      4.73 
-##  9 15      Od Amp2      0.320
-## 10 18      Od Amp2      0.830
-## # ... with 20 more rows&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;now-we-need-to-extract-the-session-123-and-the-test-type-amp-or-angle&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Now we need to extract the session (1,2,3) and the test type (Amp or Angle)&lt;/h2&gt;
-&lt;p&gt;We will use the fact that the session is &lt;em&gt;always&lt;/em&gt; at the end to our advantage.&lt;/p&gt;
-&lt;p&gt;The str_sub function from the stringr package allows you to pick ‘negative’ positions in the string. So we pick last value and the first to the second last position to get what we need.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;polar_values %&amp;gt;% 
-  gather(Test_Session, Value, `Od Amp1`:`Od Angle3`) %&amp;gt;% 
-  mutate(Session = str_sub(Test_Session, -1), Test = str_sub(Test_Session,1,-2))&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## # A tibble: 30 x 5
-##    Patient Test_Session Value Session Test  
-##    &amp;lt;fct&amp;gt;   &amp;lt;chr&amp;gt;        &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;   &amp;lt;chr&amp;gt; 
-##  1 3       Od Amp1      2.10  1       Od Amp
-##  2 5       Od Amp1      1.56  1       Od Amp
-##  3 14      Od Amp1      4.79  1       Od Amp
-##  4 15      Od Amp1      0.350 1       Od Amp
-##  5 18      Od Amp1      0.910 1       Od Amp
-##  6 3       Od Amp2      3.01  2       Od Amp
-##  7 5       Od Amp2      1.36  2       Od Amp
-##  8 14      Od Amp2      4.73  2       Od Amp
-##  9 15      Od Amp2      0.320 2       Od Amp
-## 10 18      Od Amp2      0.830 2       Od Amp
-## # ... with 20 more rows&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;now-we-have-two-value-types-angle-and-amplitude-in-one-column.-so-we-need-to-go-from-long-to-wide-to-split-them-apart.&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Now we have two value types (Angle and Amplitude) in one column. So we need to go from long to wide to split them apart.&lt;/h2&gt;
-&lt;p&gt;We drop the now useless Test_Session column, grab the session number from the end with &lt;code&gt;str_sub&lt;/code&gt;, then us the &lt;code&gt;spread&lt;/code&gt; function to use the Test and Value columns to get it wide.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;polar_values %&amp;gt;% 
-  gather(Test_Session, Value, `Od Amp1`:`Od Angle3`) %&amp;gt;% 
-  mutate(Session = str_sub(Test_Session, -1), Test = str_sub(Test_Session,1,-2)) %&amp;gt;% 
-  select(-Test_Session) %&amp;gt;% 
-  spread(Test, Value)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## # A tibble: 15 x 4
-##    Patient Session `Od Amp` `Od Angle`
-##  * &amp;lt;fct&amp;gt;   &amp;lt;chr&amp;gt;      &amp;lt;dbl&amp;gt;      &amp;lt;dbl&amp;gt;
-##  1 14      1          4.79       360  
-##  2 14      2          4.73       353  
-##  3 14      3          4.72       353  
-##  4 15      1          0.350      257  
-##  5 15      2          0.320      234  
-##  6 15      3          0.300      276  
-##  7 18      1          0.910      350  
-##  8 18      2          0.830      344  
-##  9 18      3          1.12       349  
-## 10 3       1          2.10        66.0
-## 11 3       2          3.01        67.7
-## 12 3       3          2.96        65.7
-## 13 5       1          1.56        19.6
-## 14 5       2          1.36        14.7
-## 15 5       3          1.54       360&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Boom. Mic drop.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;putting-it-all-together-and-saving-so-we-dont-have-to-see-this-big-code-block-later.&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Putting it all together and saving so we don’t have to see this big code block later.&lt;/h2&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;reformatted_values &amp;lt;- 
-  polar_values %&amp;gt;% 
-  gather(Test_Session, Value, `Od Amp1`:`Od Angle3`) %&amp;gt;% 
-  mutate(Session = str_sub(Test_Session, -1), Test = str_sub(Test_Session,1,-2)) %&amp;gt;% 
-  select(-Test_Session) %&amp;gt;% 
-  spread(Test, Value)
-
-reformatted_values&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## # A tibble: 15 x 4
-##    Patient Session `Od Amp` `Od Angle`
-##  * &amp;lt;fct&amp;gt;   &amp;lt;chr&amp;gt;      &amp;lt;dbl&amp;gt;      &amp;lt;dbl&amp;gt;
-##  1 14      1          4.79       360  
-##  2 14      2          4.73       353  
-##  3 14      3          4.72       353  
-##  4 15      1          0.350      257  
-##  5 15      2          0.320      234  
-##  6 15      3          0.300      276  
-##  7 18      1          0.910      350  
-##  8 18      2          0.830      344  
-##  9 18      3          1.12       349  
-## 10 3       1          2.10        66.0
-## 11 3       2          3.01        67.7
-## 12 3       3          2.96        65.7
-## 13 5       1          1.56        19.6
-## 14 5       2          1.36        14.7
-## 15 5       3          1.54       360&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;first-plot.-does-this-work&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;First plot. Does this work?&lt;/h2&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;reformatted_values %&amp;gt;% ggplot(aes(y=`Od Amp`, x=`Od Angle`)) + geom_point()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/././post/2018-02-01-let-s-plot-1_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;but-wait-this-is-a-polar-plot.&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;But wait, this is a polar plot….&lt;/h2&gt;
-&lt;p&gt;Fortunately ggplot has a function to transform cartesian values into polar values: &lt;code&gt;coord_polar&lt;/code&gt;&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;reformatted_values %&amp;gt;% ggplot(aes(y=`Od Amp`, x=`Od Angle`)) + coord_polar() + geom_point()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/././post/2018-02-01-let-s-plot-1_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;not-bad-but-we-have-a-lot-of-little-things-to-do.&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Not bad, but we have a lot of little things to do.&lt;/h2&gt;
-&lt;p&gt;First, I’m suspicious that the ranges of values is from the smallest to the largest. Or maybe 0 to the largest. We can test this by filtering out the bigger values.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;reformatted_values %&amp;gt;% 
-  filter(`Od Angle` &amp;lt; 300) %&amp;gt;% 
-  ggplot(aes(y=`Od Amp`, x=`Od Angle`)) + coord_polar() + geom_point()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/././post/2018-02-01-let-s-plot-1_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;yeah-so-we-need-to-tell-ggplot-what-the-range-of-values-is.&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Yeah, so we need to tell ggplot what the range of values is.&lt;/h2&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;reformatted_values %&amp;gt;% filter(`Od Angle` &amp;lt; 300) %&amp;gt;% 
-  ggplot(aes(y=`Od Amp`, x=`Od Angle`)) + 
-  coord_polar() + 
-  geom_point() +
-  scale_x_continuous(limits=c(0,360), breaks = c(0,30,60,90,120,150,180,210,240,270,300,330)) &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/././post/2018-02-01-let-s-plot-1_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;cool-the-range-goes-to-360-as-expected.-still-a-few-more-things-to-do&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Cool, the range goes to 360 as expected. Still a few more things to do:&lt;/h2&gt;
-&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
-&lt;li&gt;Rotate the start point so 90 is the top&lt;/li&gt;
-&lt;li&gt;Change directions of values from CW to CCW&lt;/li&gt;
-&lt;li&gt;Add color and prettify&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;We examine the coord_polar options (type &lt;code&gt;?coord_polar&lt;/code&gt; in the R console) and see that &lt;code&gt;start&lt;/code&gt; and &lt;code&gt;direction&lt;/code&gt; are options. We want to shift 90 degrees…but the &lt;code&gt;start&lt;/code&gt; parameter is in radians. Some quick googling let’s us know that 90 degree ~ 1.57 radians. Let’s use that. And -1 for direction to make it counter clockwise.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;reformatted_values %&amp;gt;% 
-  ggplot(aes(y=`Od Amp`, x=`Od Angle`)) + 
-  coord_polar(start = 1.57, direction = -1) + 
-  geom_point() +
-  scale_x_continuous(limits=c(0,360), breaks = c(0,30,60,90,120,150,180,210,240,270,300,330)) &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/././post/2018-02-01-let-s-plot-1_files/figure-html/unnamed-chunk-11-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;hmm-wrong-way.-want-180-on-the-left-lets-make-it-negative.&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Hmm, wrong way. (want 180 on the left) Let’s make it negative.&lt;/h2&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;reformatted_values %&amp;gt;% 
-  ggplot(aes(y=`Od Amp`, x=`Od Angle`)) + 
-  coord_polar(start = -1.57, direction = -1) + 
-  geom_point() +
-  scale_x_continuous(limits=c(0,360), breaks = c(0,30,60,90,120,150,180,210,240,270,300,330)) &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/././post/2018-02-01-let-s-plot-1_files/figure-html/unnamed-chunk-12-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;ok-final-plot-with-some-color-and-geom_point-tweaking&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;OK, Final plot with some color and geom_point tweaking!&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;theme_bw&lt;/code&gt; makes the background white instead of gray, which I prefer&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;alpha&lt;/code&gt; in &lt;code&gt;geom_point&lt;/code&gt; makes the points semi-transparent&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;scale_colour_brewer&lt;/code&gt; is a nicer color palette, in my opinion&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;colour&lt;/code&gt; and &lt;code&gt;shape&lt;/code&gt; in ggplot() gives us color and shape for the patients and three sessions&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;reformatted_values %&amp;gt;% ggplot(aes(y=`Od Amp`, x=`Od Angle`, colour=Patient, shape=Session)) + 
-  coord_polar(start = -1.57, direction = -1) + 
-  geom_point(size=3, alpha=0.7) + 
-  theme_bw() + 
-  scale_x_continuous(limits=c(0,360), breaks = c(0,30,60,90,120,150,180,210,240,270,300,330)) + 
-  scale_color_brewer(palette =&amp;#39;Set1&amp;#39;) + xlab(&amp;#39;Angle&amp;#39;) + ylab(&amp;#39;Amplitude&amp;#39;) + ggtitle(&amp;#39;OD&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/././post/2018-02-01-let-s-plot-1_files/figure-html/unnamed-chunk-13-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;sessioninfo&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;sessionInfo&lt;/h1&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;sessionInfo()&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## R version 3.4.0 (2017-04-21)
-## Platform: x86_64-apple-darwin15.6.0 (64-bit)
-## Running under: OS X El Capitan 10.11.6
-## 
-## Matrix products: default
-## BLAS: /Library/Frameworks/R.framework/Versions/3.4/Resources/lib/libRblas.0.dylib
-## LAPACK: /Library/Frameworks/R.framework/Versions/3.4/Resources/lib/libRlapack.dylib
-## 
-## locale:
-## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
-## 
-## attached base packages:
-## [1] methods   stats     graphics  grDevices utils     datasets  base     
-## 
-## other attached packages:
-##  [1] bindrcpp_0.2    forcats_0.2.0   stringr_1.2.0   dplyr_0.7.4    
-##  [5] purrr_0.2.4     readr_1.1.1     tidyr_0.7.2     tibble_1.4.2   
-##  [9] ggplot2_2.2.1   tidyverse_1.2.1
-## 
-## loaded via a namespace (and not attached):
-##  [1] tidyselect_0.2.3   xfun_0.1           reshape2_1.4.2    
-##  [4] haven_1.1.0        lattice_0.20-35    colorspace_1.3-2  
-##  [7] htmltools_0.3.6    yaml_2.1.14        utf8_1.1.3        
-## [10] rlang_0.1.6        pillar_1.1.0       foreign_0.8-69    
-## [13] glue_1.2.0         RColorBrewer_1.1-2 modelr_0.1.1      
-## [16] readxl_1.0.0       bindr_0.1          plyr_1.8.4        
-## [19] munsell_0.4.3      blogdown_0.5       gtable_0.2.0      
-## [22] cellranger_1.1.0   rvest_0.3.2        psych_1.7.8       
-## [25] evaluate_0.10.1    labeling_0.3       knitr_1.17        
-## [28] parallel_3.4.0     broom_0.4.3        Rcpp_0.12.13      
-## [31] backports_1.1.1    scales_0.5.0.9000  jsonlite_1.5      
-## [34] mnormt_1.5-5       hms_0.3            digest_0.6.12     
-## [37] stringi_1.1.6      bookdown_0.6       grid_3.4.0        
-## [40] rprojroot_1.2      cli_1.0.0          tools_3.4.0       
-## [43] magrittr_1.5       lazyeval_0.2.1     crayon_1.3.4      
-## [46] pkgconfig_2.0.1    xml2_1.1.1         lubridate_1.7.1   
-## [49] assertthat_0.2.0   rmarkdown_1.8      httr_1.3.1        
-## [52] rstudioapi_0.7     R6_2.2.2           nlme_3.1-131      
-## [55] compiler_3.4.0&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>eyeIntegration</title>
-      <link>/./project/eyeintegration/</link>
-      <pubDate>Thu, 01 Feb 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/./project/eyeintegration/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>What is Let’s Plot?</title>
-      <link>/./post/what-is-let-s-plot/</link>
-      <pubDate>Wed, 31 Jan 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/./post/what-is-let-s-plot/</guid>
-      <description>&lt;div id=&#34;TOC&#34;&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#tooling&#34;&gt;Tooling&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#how-can-i-follow-along&#34;&gt;How can I follow along?&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-
-&lt;p&gt;The concept is simple - I get data from one of the scientists in my group. Or I get my own. Then I demonstrate, step-by-step, how I generate the plot(s). I’ll also toss in some &lt;em&gt;data science&lt;/em&gt; concepts occasionally.&lt;/p&gt;
-&lt;p&gt;They are a bit sparse on the words because I’m presenting these in person. But I believe they are clear enough for someone to follow along. Let me know if I’m wrong.&lt;/p&gt;
-&lt;div id=&#34;tooling&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Tooling&lt;/h1&gt;
-&lt;p&gt;I like R. I like ggplot. I like the tidyverse. That’s what I’ll be using.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;how-can-i-follow-along&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;How can I follow along?&lt;/h1&gt;
-&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
-&lt;li&gt;Download and install R: &lt;a href=&#34;https://cran.r-project.org/&#34; class=&#34;uri&#34;&gt;https://cran.r-project.org/&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Download and install Rstudio: &lt;a href=&#34;https://www.rstudio.com/products/rstudio/download/#download&#34; class=&#34;uri&#34;&gt;https://www.rstudio.com/products/rstudio/download/#download&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;In Rstudio install any libraries that throw an error when you run &lt;code&gt;library (LIBRARYNAME)&lt;/code&gt; with &lt;code&gt;install.packages(LIBRARYNAME)&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Then you can (largely) go line by line through the blog post&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/div&gt;
 </description>
     </item>
     

@@ -1,0 +1,38 @@
+---
+title: Programming Practices
+author: David McGaughey
+date: '2018-07-16'
+slug: practices
+categories:
+  - onboarding
+tags:
+  - onboarding
+  - programming
+  - culture
+header:
+  caption: ''
+  image: ''
+---
+## Version Tracking
+We use git. 
+
+You will use git.
+
+You will have your own github.com (or equivalent, like gitlab) account. 
+
+Your projects will each have their own repository on github.com. 
+
+## Language
+I use a combination of R, python, Snakemake, awk, and bash. I lean heavily on R to produce
+visualizations and interactive documents/sites and Snakemake to reproducibly process data
+in projects. 
+
+Projects you do with me will likely have to be written in some combination of the 
+above languages, so they can be supported after you leave (or you'll have to 
+talk me into learning language X).
+
+## Reproducibility
+
+Everything you do is to be written in code. The expectation is you can run 
+(ideally one) script/Snakemake file and reproduce virtually all of the downstream
+analyses from the **raw** data. 

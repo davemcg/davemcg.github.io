@@ -8,14 +8,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="theme" content="hugo-academic">
-  <meta name="generator" content="Hugo 0.35" />
+  <meta name="generator" content="Hugo 0.40" />
   <meta name="author" content="David McGaughey">
 
   
   
   
   
-  <meta name="description" content="Staff Scientist, Bioinformatics Group">
+  <meta name="description" content="Staff Scientist">
 
   
   <link rel="alternate" hreflang="en-us" href="/./tags/regression/">
@@ -44,7 +44,7 @@
   
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha512-6MXa8B6uaO18Hid6blRMetEIoPqHf7Ux1tnyIQdpt9qI5OACx7C+O3IVTr98vwGnlcg0LOLa02i9Y1HpVhlfiw==" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.1/css/academicons.min.css" integrity="sha512-NThgw3XKQ1absAahW6to7Ey42uycrVvfNfyjqcFNgCmOCQ5AR4AO0SiXrN+8ZtYeappp56lk1WtvjVmEa+VR6A==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
   
@@ -57,10 +57,24 @@
   
 
   
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-113461893-1', 'auto');
+      
+      ga('require', 'eventTracker');
+      ga('require', 'outboundLinkTracker');
+      ga('require', 'urlChangeTracker');
+      ga('send', 'pageview');
+    </script>
+    <script async src="//www.google-analytics.com/analytics.js"></script>
+    
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g==" crossorigin="anonymous"></script>
+    
+  
 
   
-  <link rel="alternate" href="/./index.xml" type="application/rss+xml" title="eye Bioinformatician">
-  <link rel="feed" href="/./index.xml" type="application/rss+xml" title="eye Bioinformatician">
+  <link rel="alternate" href="/./tags/regression/index.xml" type="application/rss+xml" title="eye Bioinformatician">
+  <link rel="feed" href="/./tags/regression/index.xml" type="application/rss+xml" title="eye Bioinformatician">
   
 
   <link rel="manifest" href="/site.webmanifest">
@@ -71,18 +85,19 @@
 
   <meta property="twitter:card" content="summary_large_image">
   
-  <meta property="twitter:site" content="@David_McGaughey">
-  <meta property="twitter:creator" content="@David_McGaughey">
+  <meta property="twitter:site" content="@https://twitter.com/David_McGaughey">
+  <meta property="twitter:creator" content="@https://twitter.com/David_McGaughey">
   
   <meta property="og:site_name" content="eye Bioinformatician">
   <meta property="og:url" content="/./tags/regression/">
   <meta property="og:title" content="Regression | eye Bioinformatician">
-  <meta property="og:description" content="Staff Scientist, Bioinformatics Group">
+  <meta property="og:description" content="Staff Scientist">
   <meta property="og:locale" content="en-us">
   
   <meta property="og:updated_time" content="2015-07-23T21:13:14-05:00">
   
 
+  
   
 
   <title>Regression | eye Bioinformatician</title>
@@ -135,38 +150,32 @@
         
 
         
-        
-        
-        
-        
-          
-        
-
-        <li class="nav-item">
-          <a href="/#publications_selected">
-            
-            <span>Publications</span>
-            
-          </a>
-        </li>
-
-        
-        
-
-        
-        
-        
-        
-        
-          
-        
-
-        <li class="nav-item">
-          <a href="/#posts">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true">
             
             <span>Posts</span>
             
+            <span class="caret"></span>
           </a>
+          <ul class="dropdown-menu">
+            
+            <li class="nav-item">
+              <a href="/#posts">
+                
+                <span>Recent Posts</span>
+                
+              </a>
+            </li>
+            
+            <li class="nav-item">
+              <a href="/post">
+                
+                <span>All Posts</span>
+                
+              </a>
+            </li>
+            
+          </ul>
         </li>
 
         
@@ -200,9 +209,9 @@
         
 
         <li class="nav-item">
-          <a href="/#contact">
+          <a href="/#publications_selected">
             
-            <span>Contact</span>
+            <span>Publications</span>
             
           </a>
         </li>
@@ -296,6 +305,8 @@ summary(cars) ## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 2
 
     
     
+    <script id="dsq-count-scr" src="//davemcg-gitub-io.disqus.com/count.js" async></script>
+    
 
     
 
@@ -324,6 +335,13 @@ summary(cars) ## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 2
       <script>hljs.initHighlightingOnLoad();</script>
     
 
+    
+    
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML" integrity="sha512-tOav5w1OjvsSJzePRtt2uQPFwBoHt1VZcUq8l8nm5284LEKE9FSJBQryzMBzHxY5P0zRdNqEcpLIRVYFNgu1jw==" crossorigin="anonymous"></script>
     
     
 

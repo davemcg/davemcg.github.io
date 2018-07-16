@@ -99,11 +99,20 @@ Bar plots are terrible. Why? Simple. They don’t show what your data looks like
     
     <item>
       <title>Let’s Plot 3: Base pair resolution NGS (exome) coverage plots - Part 2</title>
-      <link>/./post/let-s-plot-3-base-pair-resolution-ngs-exome-coverage-plots/</link>
+      <link>/./post/let-s-plot-3-part-2/</link>
       <pubDate>Thu, 08 Feb 2018 00:00:00 +0000</pubDate>
       
-      <guid>/./post/let-s-plot-3-base-pair-resolution-ngs-exome-coverage-plots/</guid>
+      <guid>/./post/let-s-plot-3-part-2/</guid>
       <description>Introduction Call mosdepth on bam to calculate bp-specific read depth Intersect base pair depth info with transcript and exon number Now it’s R time! Prepare Metadata Load mosdepth / bedtools intersect data and prep Plot Maker, version 1 Version 2 sessionInfo()    Introduction This is a barebones (but detailed enough, I hope) discussion of how to take a bam file, extract base pair resolution coverage data, then finagle the data into coverage plots by gene and exon.</description>
+    </item>
+    
+    <item>
+      <title>Let’s Plot 3: Base pair resolution NGS coverage plots (Part I)</title>
+      <link>/./post/let-s-plot-3-part-i/</link>
+      <pubDate>Wed, 07 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/let-s-plot-3-part-i/</guid>
+      <description>Load data Curious? Data How many genes are in this dataset? What genes are in here? How many data points (bases) per gene? How many exons per gene? How many base pairs of ABCA4 (well, ABCA4 exons) is covered by more than 10 reads? 5 reads? Let’s check all of the genes to see which are the worst covered We can visually display the data, also Hard to see what is going on, let’s make little plots for each gene Where are genes poorly covered?</description>
     </item>
     
     <item>
@@ -141,15 +150,6 @@ Bar plots are terrible. Why? Simple. They don’t show what your data looks like
       <guid>/./post/what-is-let-s-plot/</guid>
       <description>Tooling How can I follow along?   The concept is simple - I get data from one of the scientists in my group. Or I get my own. Then I demonstrate, step-by-step, how I generate the plot(s). I’ll also toss in some data science concepts occasionally.
 They are a bit sparse on the words because I’m presenting these in person. But I believe they are clear enough for someone to follow along.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>/./post/2018-02-07-let-s-plot-3-base-pair-resolution-ngs-exome-coverage-plots-part-1/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/./post/2018-02-07-let-s-plot-3-base-pair-resolution-ngs-exome-coverage-plots-part-1/</guid>
-      <description>title: Let’s Plot 3: Base pair resolution NGS (exome) coverage plots - Part 1  author: David McGaughey  date: ‘2018-02-07’  slug: let-s-plot-3-base-pair-resolution-ngs-exome-coverage-plots-part-1  categories:  - bioinformatics  - Let’s Plot  - R  tags:  - bioinformatics  - ggplot2  - Let’s Plot  - quinlanverse  - R  output:  blogdown::html_page:  toc: true    Load data This is a departure from the previous installments, as we are loading in a very processed dataset.</description>
     </item>
     
   </channel>

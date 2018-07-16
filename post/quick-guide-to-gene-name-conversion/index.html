@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="theme" content="hugo-academic">
-  <meta name="generator" content="Hugo 0.35" />
+  <meta name="generator" content="Hugo 0.40" />
   <meta name="author" content="David McGaughey">
 
   
@@ -51,7 +51,7 @@ https://davetang.org/muse/2013/11/25/thoughts-converting-gene-identifiers/
   
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha512-6MXa8B6uaO18Hid6blRMetEIoPqHf7Ux1tnyIQdpt9qI5OACx7C+O3IVTr98vwGnlcg0LOLa02i9Y1HpVhlfiw==" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.1/css/academicons.min.css" integrity="sha512-NThgw3XKQ1absAahW6to7Ey42uycrVvfNfyjqcFNgCmOCQ5AR4AO0SiXrN+8ZtYeappp56lk1WtvjVmEa+VR6A==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
   
@@ -67,6 +67,7 @@ https://davetang.org/muse/2013/11/25/thoughts-converting-gene-identifiers/
     <script>
       window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
       ga('create', 'UA-113461893-1', 'auto');
+      
       ga('require', 'eventTracker');
       ga('require', 'outboundLinkTracker');
       ga('require', 'urlChangeTracker');
@@ -110,6 +111,7 @@ https://davetang.org/muse/2013/11/25/thoughts-converting-gene-identifiers/
   <meta property="article:modified_time" content="2018-06-18T00:00:00&#43;00:00">
   
 
+  
   
 
   <title>Quick Guide to Gene Name Conversion | eye Bioinformatician</title>
@@ -221,6 +223,25 @@ https://davetang.org/muse/2013/11/25/thoughts-converting-gene-identifiers/
         
 
         <li class="nav-item">
+          <a href="/#culture">
+            
+            <span>Culture</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
           <a href="/#publications_selected">
             
             <span>Publications</span>
@@ -282,10 +303,10 @@ https://davetang.org/muse/2013/11/25/thoughts-converting-gene-identifiers/
   <span class="article-categories">
     <i class="fa fa-folder"></i>
     
-    <a href="/categories/bioinformatics">bioinformatics</a
+    <a href="/./categories/bioinformatics/">bioinformatics</a
     >, 
     
-    <a href="/categories/r">R</a
+    <a href="/./categories/r/">R</a
     >
     
   </span>
@@ -367,12 +388,13 @@ https://davetang.org/muse/2013/11/25/thoughts-converting-gene-identifiers/
 
 library(annotables)
 library(tidyverse)</code></pre>
-<pre><code>## ── Attaching packages ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──</code></pre>
-<pre><code>## ✔ ggplot2 2.2.1     ✔ purrr   0.2.4
-## ✔ tibble  1.4.2     ✔ dplyr   0.7.5
+<pre><code>## ── Attaching packages ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──</code></pre>
+<pre><code>## ✔ ggplot2 3.0.0     ✔ purrr   0.2.4
+## ✔ tibble  1.4.2     ✔ dplyr   0.7.6
 ## ✔ tidyr   0.8.1     ✔ stringr 1.3.1
 ## ✔ readr   1.1.1     ✔ forcats 0.3.0</code></pre>
-<pre><code>## ── Conflicts ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+<pre><code>## Warning: package &#39;dplyr&#39; was built under R version 3.5.1</code></pre>
+<pre><code>## ── Conflicts ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()</code></pre>
 <pre class="r"><code>grch38 %&gt;% head()</code></pre>
@@ -457,7 +479,7 @@ refseq_mapping </code></pre>
 ##  language (EN)                        
 ##  collate  en_US.UTF-8                 
 ##  tz       America/New_York            
-##  date     2018-06-18</code></pre>
+##  date     2018-07-16</code></pre>
 <pre><code>## Packages -----------------------------------------------------------------</code></pre>
 <pre><code>##  package       * version   date      
 ##  annotables    * 0.1.91    2018-06-18
@@ -474,7 +496,7 @@ refseq_mapping </code></pre>
 ##  bit64           0.9-7     2017-05-08
 ##  bitops          1.0-6     2013-08-17
 ##  blob            1.1.1     2018-03-25
-##  blogdown        0.6       2018-04-18
+##  blogdown        0.8.1     2018-07-16
 ##  bookdown        0.7       2018-02-18
 ##  broom           0.4.4     2018-03-29
 ##  cellranger      1.1.0     2016-07-27
@@ -487,11 +509,11 @@ refseq_mapping </code></pre>
 ##  DBI             1.0.0     2018-05-02
 ##  devtools        1.13.5    2018-02-18
 ##  digest          0.6.15    2018-01-28
-##  dplyr         * 0.7.5     2018-05-19
+##  dplyr         * 0.7.6     2018-06-29
 ##  evaluate        0.10.1    2017-06-24
 ##  forcats       * 0.3.0     2018-02-19
 ##  foreign         0.8-70    2017-11-28
-##  ggplot2       * 2.2.1     2016-12-30
+##  ggplot2       * 3.0.0     2018-07-03
 ##  glue            1.2.0     2017-10-29
 ##  graphics      * 3.5.0     2018-04-24
 ##  grDevices     * 3.5.0     2018-04-24
@@ -529,7 +551,7 @@ refseq_mapping </code></pre>
 ##  readxl          1.1.0     2018-04-20
 ##  reshape2        1.4.3     2017-12-11
 ##  rlang           0.2.1     2018-05-30
-##  rmarkdown       1.9       2018-03-01
+##  rmarkdown       1.10      2018-06-11
 ##  rprojroot       1.3-2     2018-01-03
 ##  RSQLite         2.1.1     2018-05-06
 ##  rstudioapi      0.7       2017-09-07
@@ -548,7 +570,7 @@ refseq_mapping </code></pre>
 ##  utf8            1.1.4     2018-05-24
 ##  utils         * 3.5.0     2018-04-24
 ##  withr           2.1.2     2018-03-15
-##  xfun            0.1       2018-01-22
+##  xfun            0.3       2018-07-06
 ##  XML             3.98-1.11 2018-04-16
 ##  xml2            1.2.0     2018-01-24
 ##  yaml            2.1.19    2018-05-01
@@ -567,7 +589,7 @@ refseq_mapping </code></pre>
 ##  CRAN (R 3.5.0)                           
 ##  CRAN (R 3.5.0)                           
 ##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.0)                           
+##  Github (rstudio/blogdown@d54c39a)        
 ##  CRAN (R 3.5.0)                           
 ##  CRAN (R 3.5.0)                           
 ##  CRAN (R 3.5.0)                           
@@ -580,11 +602,11 @@ refseq_mapping </code></pre>
 ##  CRAN (R 3.5.0)                           
 ##  CRAN (R 3.5.0)                           
 ##  CRAN (R 3.5.0)                           
+##  cran (@0.7.6)                            
 ##  CRAN (R 3.5.0)                           
 ##  CRAN (R 3.5.0)                           
 ##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.0)                           
+##  cran (@3.0.0)                            
 ##  CRAN (R 3.5.0)                           
 ##  local                                    
 ##  local                                    
@@ -622,7 +644,7 @@ refseq_mapping </code></pre>
 ##  CRAN (R 3.5.0)                           
 ##  CRAN (R 3.5.0)                           
 ##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.0)                           
+##  cran (@1.10)                             
 ##  CRAN (R 3.5.0)                           
 ##  CRAN (R 3.5.0)                           
 ##  CRAN (R 3.5.0)                           
@@ -641,7 +663,7 @@ refseq_mapping </code></pre>
 ##  CRAN (R 3.5.0)                           
 ##  local                                    
 ##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.0)                           
+##  cran (@0.3)                              
 ##  CRAN (R 3.5.0)                           
 ##  CRAN (R 3.5.0)                           
 ##  CRAN (R 3.5.0)</code></pre>
@@ -654,7 +676,7 @@ refseq_mapping </code></pre>
 
 <div class="article-tags">
   
-  <a class="btn btn-primary btn-outline" href="/tags/bioinformatics">bioinformatics</a>
+  <a class="btn btn-primary btn-outline" href="/./tags/bioinformatics/">bioinformatics</a>
   
 </div>
 

@@ -25,7 +25,8 @@ tags:
 <ol style="list-style-type: decimal">
 <li>I am working on a machine learning problem in genomics</li>
 <li>I was getting really confused why AUROC was so worthless</li>
-<li>scienceTwitter featuring Anshul Kundaje <img src="/img/anshul_ROC_PR.png" alt="https://twitter.com/anshulkundaje/status/965623852209352704" /></li>
+<li>scienceTwitter featuring Anshul Kundaje
+<img src="/img/anshul_ROC_PR.png" alt="https://twitter.com/anshulkundaje/status/965623852209352704" /></li>
 <li>I want to save you (some time)</li>
 </ol>
 </div>
@@ -77,12 +78,12 @@ tags:
 <p>Load data. Briefly, they are ClinVar variants for a variety of eye disease. They’ve been classified as <code>Pathogenic</code> or <code>NotPathogenic</code> by groups submitting to ClinVar (ClinVar uses the term <em>benign</em>). Each variant has been labeled with a variety of pathogenicity scores, population frequency info, and <em>in silico</em> consequences. Empty values were assigned <code>-1</code> (brief aside: I’m not sure if imputing missing data is a good idea here). One hot encoding was done to turn categorical information into numeric vectors. Each predictor (column) was centered and scaled.</p>
 <p>You can download the <code>clinvar_one_hot_CS_toy_set.tsv.gz</code> file <a href="https://github.com/davemcg/eye_var_Pathogenicity/blob/master/processed_data/clinvar_one_hot_CS_toy_set.tsv.gz">here</a></p>
 <pre class="r"><code>library(tidyverse)</code></pre>
-<pre><code>## ── Attaching packages ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──</code></pre>
-<pre><code>## ✔ ggplot2 2.2.1     ✔ purrr   0.2.4
-## ✔ tibble  1.4.2     ✔ dplyr   0.7.4
-## ✔ tidyr   0.7.2     ✔ stringr 1.2.0
-## ✔ readr   1.1.1     ✔ forcats 0.2.0</code></pre>
-<pre><code>## ── Conflicts ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+<pre><code>## ── Attaching packages ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──</code></pre>
+<pre><code>## ✔ ggplot2 3.0.0     ✔ purrr   0.2.4
+## ✔ tibble  1.4.2     ✔ dplyr   0.7.6
+## ✔ tidyr   0.8.1     ✔ stringr 1.3.1
+## ✔ readr   1.1.1     ✔ forcats 0.3.0</code></pre>
+<pre><code>## ── Conflicts ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()</code></pre>
 <pre class="r"><code>clinvar &lt;- read_tsv(&#39;~/git/eye_var_Pathogenicity/processed_data/clinvar_one_hot_CS_toy_set.tsv.gz&#39;)</code></pre>
@@ -188,7 +189,8 @@ roc_maker &lt;- function(model, data) {
 
 #bglm
 plot(roc_maker(bglmFit, test_set))</code></pre>
-<p><img src="/./post/2018-03-03-are-you-in-genomics-stop-using-roc-use-pr_files/figure-html/unnamed-chunk-7-1.png" width="672" /> Wow! 97% AUC for a bayesian generalized linear model for predicting pathogenicity! Let’s go straight to Nature/Cell/PNAS/Science!</p>
+<p><img src="/./post/2018-03-03-are-you-in-genomics-stop-using-roc-use-pr_files/figure-html/unnamed-chunk-7-1.png" width="672" />
+Wow! 97% AUC for a bayesian generalized linear model for predicting pathogenicity! Let’s go straight to Nature/Cell/PNAS/Science!</p>
 <p>Well, let’s plot all three predictors at once. I did make three models after all.</p>
 <pre class="r"><code>roc_data &lt;- data.frame()
 for (i in names(my_models)){
@@ -217,8 +219,8 @@ roc</code></pre>
 <p>Well, maybe we should make those confusion matrix things I showed earlier. Just to be careful.</p>
 <pre class="r"><code>cm_maker &lt;- function(model, data, cutoff=0.5, mode = &#39;sens_spec&#39;) {
   new_predictions &lt;- predict(model, data, type=&#39;prob&#39;) %&gt;%
-    mutate(Answers = data$Status, Prediction = case_when(Pathogenic &gt; cutoff ~ &#39;Pathogenic&#39;, TRUE ~ &#39;NotPathogenic&#39;))
-  confusionMatrix(data = new_predictions$Prediction, reference = new_predictions$Answers, mode= mode)
+    mutate(Answers = as.factor(data$Status), Prediction = as.factor(case_when(Pathogenic &gt; cutoff ~ &#39;Pathogenic&#39;, TRUE ~ &#39;NotPathogenic&#39;)))
+  confusionMatrix(data = new_predictions$Prediction, reference = as.factor(new_predictions$Answers), mode= mode)
 }
 
 for (i in names(my_models)){
@@ -233,8 +235,8 @@ for (i in names(my_models)){
 ## [1] &quot;rfFit&quot;
 ##                Reference
 ## Prediction      Pathogenic NotPathogenic
-##   Pathogenic            56            14
-##   NotPathogenic         37          4109
+##   Pathogenic            58            18
+##   NotPathogenic         35          4105
 ## [1] &quot;cadd&quot;
 ##                Reference
 ## Prediction      Pathogenic NotPathogenic

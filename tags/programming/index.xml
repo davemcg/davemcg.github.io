@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Programming on eye Bioinformatician</title>
+    <link>/./tags/programming/</link>
+    <description>Recent content in Programming on eye Bioinformatician</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Mon, 16 Jul 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/./tags/programming/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Programming Practices</title>
+      <link>/./culture/practices/</link>
+      <pubDate>Mon, 16 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./culture/practices/</guid>
+      <description>Version Tracking We use git.
+You will use git.
+You will have your own github.com (or equivalent, like gitlab) account.
+Your projects will each have their own repository on github.com.
+ Language I use a combination of R, python, Snakemake, awk, and bash. I lean heavily on R to produce visualizations and interactive documents/sites and Snakemake to reproducibly process data in projects.
+Projects you do with me will likely have to be written in some combination of the above languages, so they can be supported after you leave (or you’ll have to talk me into learning language X).</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Script on eye Bioinformatician</title>
+    <link>/./tags/script/</link>
+    <description>Recent content in Script on eye Bioinformatician</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Wed, 07 Feb 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/./tags/script/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Split VCF into n pieces by coordinate</title>
+      <link>/./post/split-vcf-into-n-pieces-by-coordinate/</link>
+      <pubDate>Wed, 07 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/split-vcf-into-n-pieces-by-coordinate/</guid>
+      <description>Introduction Read in vcf header Parse out chr / contig sizes Split chr above 3e7 base pairs into equal(ish) size pieces print coordinates given a chromosome / contig calculate coordinates print ’em output ’em for python input (Snakemake) rscript Using the script output sessionInfo()   Introduction bcftools view -r 1:40000-50000 vcf.gz will output (to stdout) a vcf containing the header and variants on chromosome 1 between coordinates 40,000 and 50,000 base pairs.</description>
+    </item>
+    
+  </channel>
+</rss>

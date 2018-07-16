@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="theme" content="hugo-academic">
-  <meta name="generator" content="Hugo 0.35" />
+  <meta name="generator" content="Hugo 0.40" />
   <meta name="author" content="David McGaughey">
 
   
@@ -35,7 +35,7 @@
   
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha512-6MXa8B6uaO18Hid6blRMetEIoPqHf7Ux1tnyIQdpt9qI5OACx7C+O3IVTr98vwGnlcg0LOLa02i9Y1HpVhlfiw==" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.1/css/academicons.min.css" integrity="sha512-NThgw3XKQ1absAahW6to7Ey42uycrVvfNfyjqcFNgCmOCQ5AR4AO0SiXrN+8ZtYeappp56lk1WtvjVmEa+VR6A==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
   
@@ -51,6 +51,7 @@
     <script>
       window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
       ga('create', 'UA-113461893-1', 'auto');
+      
       ga('require', 'eventTracker');
       ga('require', 'outboundLinkTracker');
       ga('require', 'urlChangeTracker');
@@ -84,9 +85,10 @@
   <meta property="og:description" content="Staff Scientist">
   <meta property="og:locale" content="en-us">
   
-  <meta property="og:updated_time" content="2018-02-04T00:00:00&#43;00:00">
+  <meta property="og:updated_time" content="2018-02-07T00:00:00&#43;00:00">
   
 
+  
   
 
   <title>Posts | eye Bioinformatician</title>
@@ -198,6 +200,25 @@
         
 
         <li class="nav-item">
+          <a href="/#culture">
+            
+            <span>Culture</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
           <a href="/#publications_selected">
             
             <span>Publications</span>
@@ -230,6 +251,83 @@
   
     
     
+      
+
+<div class="card-simple" itemscope itemprop="blogPost" itemtype="http://schema.org/BlogPosting">
+  
+
+<div class="article-metadata">
+
+  <span class="article-date">
+    
+    <time datetime="2018-02-07 00:00:00 &#43;0000 UTC" itemprop="datePublished dateModified">
+      Feb 7, 2018
+    </time>
+  </span>
+  <span itemscope itemprop="author publisher" itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="David McGaughey">
+  </span>
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    10 min read
+  </span>
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <a href="/./post/split-vcf-into-n-pieces-by-coordinate/#disqus_thread"></a>
+  
+
+  
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fa fa-folder"></i>
+    
+    <a href="/./categories/r/">R</a
+    >, 
+    
+    <a href="/./categories/bioinformatics/">bioinformatics</a
+    >, 
+    
+    <a href="/./categories/script/">script</a
+    >
+    
+  </span>
+  
+  
+
+  
+
+</div>
+
+
+  
+  
+  <h3 class="article-title" itemprop="headline">
+    <a href="/./post/split-vcf-into-n-pieces-by-coordinate/" itemprop="url">Split VCF into n pieces by coordinate</a>
+  </h3>
+  <div class="article-style" itemprop="articleBody">
+    
+    Introduction Read in vcf header Parse out chr / contig sizes Split chr above 3e7 base pairs into equal(ish) size pieces print coordinates given a chromosome / contig calculate coordinates print ’em output ’em for python input (Snakemake) rscript Using the script output sessionInfo()   Introduction bcftools view -r 1:40000-50000 vcf.gz will output (to stdout) a vcf containing the header and variants on chromosome 1 between coordinates 40,000 and 50,000 base pairs.
+    
+  </div>
+  <p class="read-more" itemprop="mainEntityOfPage">
+    <a href="/./post/split-vcf-into-n-pieces-by-coordinate/" class="btn btn-primary btn-outline">
+      CONTINUE READING
+    </a>
+  </p>
+</div>
+
+    
+  
+    
+    
+      
 
 <div class="card-simple" itemscope itemprop="blogPost" itemtype="http://schema.org/BlogPosting">
   
@@ -266,10 +364,10 @@
   <span class="article-categories">
     <i class="fa fa-folder"></i>
     
-    <a href="/categories/lets-plot">Let’s Plot</a
+    <a href="/./categories/lets-plot/">Let’s Plot</a
     >, 
     
-    <a href="/categories/r">R</a
+    <a href="/./categories/r/">R</a
     >
     
   </span>
@@ -298,9 +396,11 @@
   </p>
 </div>
 
+    
   
     
     
+      
 
 <div class="card-simple" itemscope itemprop="blogPost" itemtype="http://schema.org/BlogPosting">
   
@@ -337,10 +437,10 @@
   <span class="article-categories">
     <i class="fa fa-folder"></i>
     
-    <a href="/categories/lets-plot">Let’s Plot</a
+    <a href="/./categories/lets-plot/">Let’s Plot</a
     >, 
     
-    <a href="/categories/r">R</a
+    <a href="/./categories/r/">R</a
     >
     
   </span>
@@ -369,9 +469,11 @@
   </p>
 </div>
 
+    
   
     
     
+      
 
 <div class="card-simple" itemscope itemprop="blogPost" itemtype="http://schema.org/BlogPosting">
   
@@ -408,10 +510,10 @@
   <span class="article-categories">
     <i class="fa fa-folder"></i>
     
-    <a href="/categories/lets-plot">Let’s Plot</a
+    <a href="/./categories/lets-plot/">Let’s Plot</a
     >, 
     
-    <a href="/categories/r">R</a
+    <a href="/./categories/r/">R</a
     >
     
   </span>
@@ -441,62 +543,7 @@ They are a bit sparse on the words because I’m presenting these in person. But
   </p>
 </div>
 
-  
     
-    
-
-<div class="card-simple" itemscope itemprop="blogPost" itemtype="http://schema.org/BlogPosting">
-  
-
-<div class="article-metadata">
-
-  <span class="article-date">
-    
-    <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished dateModified">
-      Jan 1, 0001
-    </time>
-  </span>
-  <span itemscope itemprop="author publisher" itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="David McGaughey">
-  </span>
-
-  
-  <span class="middot-divider"></span>
-  <span class="article-reading-time">
-    9 min read
-  </span>
-  
-
-  
-  
-  <span class="middot-divider"></span>
-  <a href="/./post/2018-02-07-let-s-plot-3-base-pair-resolution-ngs-exome-coverage-plots-part-1/#disqus_thread"></a>
-  
-
-  
-
-  
-
-</div>
-
-
-  
-  
-  <h3 class="article-title" itemprop="headline">
-    <a href="/./post/2018-02-07-let-s-plot-3-base-pair-resolution-ngs-exome-coverage-plots-part-1/" itemprop="url"></a>
-  </h3>
-  <div class="article-style" itemprop="articleBody">
-    
-    title: Let’s Plot 3: Base pair resolution NGS (exome) coverage plots - Part 1  author: David McGaughey  date: ‘2018-02-07’  slug: let-s-plot-3-base-pair-resolution-ngs-exome-coverage-plots-part-1  categories:  - bioinformatics  - Let’s Plot  - R  tags:  - bioinformatics  - ggplot2  - Let’s Plot  - quinlanverse  - R  output:  blogdown::html_page:  toc: true    Load data This is a departure from the previous installments, as we are loading in a very processed dataset.
-    
-  </div>
-  <p class="read-more" itemprop="mainEntityOfPage">
-    <a href="/./post/2018-02-07-let-s-plot-3-base-pair-resolution-ngs-exome-coverage-plots-part-1/" class="btn btn-primary btn-outline">
-      CONTINUE READING
-    </a>
-  </p>
-</div>
-
   
 
   

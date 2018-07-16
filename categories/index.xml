@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on eye Bioinformatician</title>
+    <link>/./categories/</link>
+    <description>Recent content in Categories on eye Bioinformatician</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Fri, 20 Apr 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/./categories/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Bash</title>
+      <link>/./categories/bash/</link>
+      <pubDate>Fri, 20 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./categories/bash/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Bioinformatics</title>
+      <link>/./categories/bioinformatics/</link>
+      <pubDate>Mon, 18 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./categories/bioinformatics/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Bog18</title>
+      <link>/./categories/bog18/</link>
+      <pubDate>Tue, 08 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./categories/bog18/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Let’s Plot</title>
+      <link>/./categories/lets-plot/</link>
+      <pubDate>Mon, 07 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./categories/lets-plot/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>MachineLearning</title>
+      <link>/./categories/machinelearning/</link>
+      <pubDate>Sat, 03 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./categories/machinelearning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Onboarding</title>
+      <link>/./categories/onboarding/</link>
+      <pubDate>Mon, 16 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./categories/onboarding/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>R</title>
+      <link>/./categories/r/</link>
+      <pubDate>Mon, 18 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./categories/r/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Script</title>
+      <link>/./categories/script/</link>
+      <pubDate>Wed, 07 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./categories/script/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

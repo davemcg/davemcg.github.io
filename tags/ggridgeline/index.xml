@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ggridgeline on eye Bioinformatician</title>
+    <link>/./tags/ggridgeline/</link>
+    <description>Recent content in Ggridgeline on eye Bioinformatician</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Thu, 12 Apr 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/./tags/ggridgeline/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Let’s Plot 5: ridgeline density plots</title>
+      <link>/./post/let-s-plot-5-ridgeline-density-plots/</link>
+      <pubDate>Thu, 12 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/let-s-plot-5-ridgeline-density-plots/</guid>
+      <description>Intro For this installment of Let’s Plot (where anyone can make a figure!), we’ll be making the hottest visualization of 2017 - the joy plot or ridgeline plot.
+Joy plots are partially overlapping density line plots. They are useful for densely showing changes in many distributions over time / condition / etc.
+This type of visualization was inspired by the cover art from Joy Division’s album Unknown Pleasures and implemented in the R package ggridges by Claus Wilke.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Bash on eye Bioinformatician</title>
+    <link>/./tags/bash/</link>
+    <description>Recent content in Bash on eye Bioinformatician</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Fri, 20 Apr 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/./tags/bash/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Easy bam downsampling</title>
+      <link>/./post/easy-bam-downsampling/</link>
+      <pubDate>Fri, 20 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/easy-bam-downsampling/</guid>
+      <description>When you have a set of ChIP-seq (like) files, it is sometimes useful to downsample the larger samples to more closely match most of the samples. Tommy Tang goes into more detail in his blog post.
+Unfortunately the tool suites I use most for bam files (samtools and picard) only downsample to a percentage. Which isn’t ideal when you want your files to be no more than n reads.
+This post is just a slight one-upping of Tommy Tang’s process to easily downsample a bam.</description>
+    </item>
+    
+  </channel>
+</rss>

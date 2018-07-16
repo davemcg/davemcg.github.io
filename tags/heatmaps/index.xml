@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Heatmaps on eye Bioinformatician</title>
+    <link>/./tags/heatmaps/</link>
+    <description>Recent content in Heatmaps on eye Bioinformatician</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Mon, 07 May 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/./tags/heatmaps/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Let&#39;s Plot 6: Simple guide to heatmaps with ComplexHeatmaps</title>
+      <link>/./post/simple-heatmaps-with-complexheatmaps/</link>
+      <pubDate>Mon, 07 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/simple-heatmaps-with-complexheatmaps/</guid>
+      <description>Introduction Data processing Load data Peek at expression Peek at metadata Brief outline on how the RNA-seq data was processed before we see it Load libraries Create a Sample - Sample distance heatmap Easy heatmap with ComplexHeatmap Complex heatmap Finished heatmap  Gene Heatmaps A bit simpler  Session Info   Introduction Heatmaps are a core competency for a bioinformatician. They are a compact way to visually demonstrate relationships and changes in values across conditions.</description>
+    </item>
+    
+  </channel>
+</rss>
