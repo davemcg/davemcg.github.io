@@ -1,0 +1,75 @@
+---
+
+title: 'Something Different: Automated Neighborhood Traffic Monitoring'
+author: David McGaughey
+date: '2018-03-03'
+slug: traffic-monitoring-intro
+categories:
+  - R
+  - python
+  - raspberry
+  - pi
+tags:
+  - R
+  - python
+  - raspberry
+  - pi
+---
+
+## Introduction
+
+This is, obviously, a personal project. Traffic is a concern in my town. Cut-through,
+speeding, etc. The town has paid for a couple of  (very expensive!) traffic surveys, but
+the reports are not very useful as the company only sets up in town for a few days (if that)
+and then only reports stuff like 'number of cars for a one hour period.' I want
+to know how many cars are passing my house per day, per hour, per weekday, per weekend,
+etc. I'd also like to know how many cars are going above the 15 mph speed limit
+on my round (why 15 mph?! - there's a very tight turn of the road). 
+
+## Solution?
+
+Well, I figured a video feed hooked up to a computer could be set up in my house, 
+facing the road. Motion could be detected, then logged. Since the distance is (approximately constant) 
+between the car and the camera, it would be possible to detect a car and approximate
+its speed. I didn't want to dedicated a laptop for this project because I imagine this
+would be most useful with continuous observation. This sounded like a perfect use for a Raspberry Pi, which I have been
+wanting an excuse to buy. Some quick Googling for "speed camera raspberry pi"
+led me to this [GitHub project](https://github.com/pageauc/speed-camera). Someone
+had used [OpenCV](https://opencv.org) and Python to do exactly what I thought
+may be possible.
+
+## Stuff I bought
+
+I thought I bought a Raspberry Pi 3 B+, but after looking at my Amazon history I realized
+I bought a 3 B. Oops. The 3 B+ has faster WiFi and a higher CPU clock. Oh well.
+
+Anyways, the kit came with a 16gb microSD card with NOOBS (some kind of loader
+for multiple operating systems), a case, an HDMI cable, and a power supply.
+
+I also bought a "Arducam" 5mp camera. The official Raspberry Pi camera was double the price 
+and the reviews seemed OK (~$25 instead of ~$13). 
+
+## Brief setup
+
+I was hoping I could just SSH into the Pi on start-up, but I could not see the 
+ethernet-connected Pi on my network. I then used an HDMI cable to hook it up to 
+a TV and a grubby USB keyboard I found in my basement. I realized
+that the NOOBs loader needed to be told what OS to install. I picked the basic Raspian OS, 
+as I was not going to use any GUI stuff. Then I did some Googling to figure out
+how to give it the WiFi network info and after that I could just SSH into it. 
+
+## Software installed
+
+I am almost certainly going to regret that I just ran `sudo apt-get install` for
+each piece of software I wanted by hand when I want to set up a new one. 
+
+I am not a good admin.
+
+I installed python3, [opencv](https://www.pyimagesearch.com/2016/04/18/install-guide-raspberry-pi-3-raspbian-jessie-opencv-3/) 
+(which was a PITA), git, R, and all of the dependencies those four things complained about. 
+
+I then installed the [speed-camera project](https://github.com/pageauc/speed-camera).
+
+## Calibration
+
+The speed-camera software
