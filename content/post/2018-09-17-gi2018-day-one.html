@@ -24,13 +24,12 @@ output:
 <ul>
 <li><a href="#intro">Intro</a></li>
 <li><a href="#section">2018-09-17</a></li>
-<li><a href="#quinlan-intro">Quinlan Intro</a><ul>
 <li><a href="#sarah-teichmann-teichmann-lab">Sarah Teichmann (Teichmann Lab)</a></li>
-</ul></li>
 <li><a href="#girgio-gonnella-stefan-kurtz">Girgio Gonnella (Stefan Kurtz)</a></li>
 <li><a href="#luke-zappia-oshlack">Luke Zappia (Oshlack?)</a></li>
 <li><a href="#laura-huerta-papatheodorou">Laura Huerta (Papatheodorou)</a></li>
 <li><a href="#casey-greene-greene">Casey Greene (Greene)</a></li>
+<li><a href="#sergei-yakneen">Sergei Yakneen</a></li>
 </ul>
 </div>
 
@@ -45,10 +44,8 @@ output:
 <div id="section" class="section level1">
 <h1>2018-09-17</h1>
 </div>
-<div id="quinlan-intro" class="section level1">
-<h1>Quinlan Intro</h1>
-<div id="sarah-teichmann-teichmann-lab" class="section level2">
-<h2>Sarah Teichmann (Teichmann Lab)</h2>
+<div id="sarah-teichmann-teichmann-lab" class="section level1">
+<h1>Sarah Teichmann (Teichmann Lab)</h1>
 <p>Cell Atlas Technologies and the Maternal-Fetal Interface</p>
 <p><a href="humancellatlas.org">Human Cell Atlas plug</a></p>
 <ul>
@@ -88,7 +85,6 @@ output:
 <li><em>tumor like</em></li>
 <li>scRNA + WGS resolved fetal/maternal adn cell tyes</li>
 </ul>
-</div>
 </div>
 <div id="girgio-gonnella-stefan-kurtz" class="section level1">
 <h1>Girgio Gonnella (Stefan Kurtz)</h1>
@@ -206,4 +202,27 @@ output:
 <li>slides: <a href="https://www.dropbox.com/sh/j0ysaojqmac29qv/AADBHy-3y8qzWHr34F7M39QIa?dl=0" class="uri">https://www.dropbox.com/sh/j0ysaojqmac29qv/AADBHy-3y8qzWHr34F7M39QIa?dl=0</a></li>
 </ul>
 <p>Pitch for <a href="http://researchparasite.com" class="uri">http://researchparasite.com</a></p>
+</div>
+<div id="sergei-yakneen" class="section level1">
+<h1>Sergei Yakneen</h1>
+<p>Butler: a framework for large-scale scientific analysis on the cloud</p>
+<p>[github.com/llevar/butler]</p>
+<p>PCAWG</p>
+<ul>
+<li>pan cancer analysis of whole genomes</li>
+<li>2,834 donors, 70,313 files, 729 TB</li>
+</ul>
+<p>Show graph scaling off as pipelines choke as more samples get added</p>
+<p>If progress was linear, <em>years</em> of compute (?) time could be saved</p>
+<p>Key needs:</p>
+<ul>
+<li>provisioning</li>
+<li>config management</li>
+<li>workflow</li>
+<li>operations management</li>
+</ul>
+<p>Tried to use “off the shelf” infrastructure / processes to build Butler</p>
+<p>Workflows are … CWL?</p>
+<p><strong>This seems targeted towards a pretty small audience - people running huge compute platforms?</strong></p>
+<p>** I guess you could use this for a smaller projects and deploy to cloud, but I would think that the overhead of learning this would likely overwhelm the potential savings relative to using Snakemake / Docker / Conda. **</p>
 </div>

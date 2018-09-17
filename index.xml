@@ -20,13 +20,12 @@
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#intro&#34;&gt;Intro&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#section&#34;&gt;2018-09-17&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#quinlan-intro&#34;&gt;Quinlan Intro&lt;/a&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#sarah-teichmann-teichmann-lab&#34;&gt;Sarah Teichmann (Teichmann Lab)&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#girgio-gonnella-stefan-kurtz&#34;&gt;Girgio Gonnella (Stefan Kurtz)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#luke-zappia-oshlack&#34;&gt;Luke Zappia (Oshlack?)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#laura-huerta-papatheodorou&#34;&gt;Laura Huerta (Papatheodorou)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#casey-greene-greene&#34;&gt;Casey Greene (Greene)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#sergei-yakneen&#34;&gt;Sergei Yakneen&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -41,10 +40,8 @@
 &lt;div id=&#34;section&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;2018-09-17&lt;/h1&gt;
 &lt;/div&gt;
-&lt;div id=&#34;quinlan-intro&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Quinlan Intro&lt;/h1&gt;
-&lt;div id=&#34;sarah-teichmann-teichmann-lab&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Sarah Teichmann (Teichmann Lab)&lt;/h2&gt;
+&lt;div id=&#34;sarah-teichmann-teichmann-lab&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Sarah Teichmann (Teichmann Lab)&lt;/h1&gt;
 &lt;p&gt;Cell Atlas Technologies and the Maternal-Fetal Interface&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;humancellatlas.org&#34;&gt;Human Cell Atlas plug&lt;/a&gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -84,7 +81,6 @@
 &lt;li&gt;&lt;em&gt;tumor like&lt;/em&gt;&lt;/li&gt;
 &lt;li&gt;scRNA + WGS resolved fetal/maternal adn cell tyes&lt;/li&gt;
 &lt;/ul&gt;
-&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;girgio-gonnella-stefan-kurtz&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Girgio Gonnella (Stefan Kurtz)&lt;/h1&gt;
@@ -202,6 +198,29 @@
 &lt;li&gt;slides: &lt;a href=&#34;https://www.dropbox.com/sh/j0ysaojqmac29qv/AADBHy-3y8qzWHr34F7M39QIa?dl=0&#34; class=&#34;uri&#34;&gt;https://www.dropbox.com/sh/j0ysaojqmac29qv/AADBHy-3y8qzWHr34F7M39QIa?dl=0&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Pitch for &lt;a href=&#34;http://researchparasite.com&#34; class=&#34;uri&#34;&gt;http://researchparasite.com&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;sergei-yakneen&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Sergei Yakneen&lt;/h1&gt;
+&lt;p&gt;Butler: a framework for large-scale scientific analysis on the cloud&lt;/p&gt;
+&lt;p&gt;[github.com/llevar/butler]&lt;/p&gt;
+&lt;p&gt;PCAWG&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;pan cancer analysis of whole genomes&lt;/li&gt;
+&lt;li&gt;2,834 donors, 70,313 files, 729 TB&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Show graph scaling off as pipelines choke as more samples get added&lt;/p&gt;
+&lt;p&gt;If progress was linear, &lt;em&gt;years&lt;/em&gt; of compute (?) time could be saved&lt;/p&gt;
+&lt;p&gt;Key needs:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;provisioning&lt;/li&gt;
+&lt;li&gt;config management&lt;/li&gt;
+&lt;li&gt;workflow&lt;/li&gt;
+&lt;li&gt;operations management&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Tried to use “off the shelf” infrastructure / processes to build Butler&lt;/p&gt;
+&lt;p&gt;Workflows are … CWL?&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;This seems targeted towards a pretty small audience - people running huge compute platforms?&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;** I guess you could use this for a smaller projects and deploy to cloud, but I would think that the overhead of learning this would likely overwhelm the potential savings relative to using Snakemake / Docker / Conda. **&lt;/p&gt;
 &lt;/div&gt;
 </description>
     </item>

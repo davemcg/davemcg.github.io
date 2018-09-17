@@ -33,9 +33,7 @@ Speaker (Lab | Group)
 
 # 2018-09-17
 
-# Quinlan Intro
-
-## Sarah Teichmann (Teichmann Lab)
+# Sarah Teichmann (Teichmann Lab)
 
 Cell Atlas Technologies and the Maternal-Fetal Interface
 
@@ -217,5 +215,40 @@ Can you learn patterns from large datasets then *transfer* to individual dataset
   - slides: https://www.dropbox.com/sh/j0ysaojqmac29qv/AADBHy-3y8qzWHr34F7M39QIa?dl=0
   
 Pitch for http://researchparasite.com
+
+# Sergei Yakneen
+Butler: a framework for large-scale scientific analysis on the cloud
+
+[github.com/llevar/butler]
+
+PCAWG
+
+  - pan cancer analysis of whole genomes
+  - 2,834 donors, 70,313 files, 729 TB
+  
+Show graph scaling off as pipelines choke as more samples get added
+
+If progress was linear, *years* of compute (?) time could be saved
+
+Key needs:
+
+  - provisioning
+  - config management
+  - workflow
+  - operations management
+
+Tried to use "off the shelf" infrastructure / processes to build Butler
+
+Workflows are ... CWL?
+
+**This seems targeted towards a pretty small audience - people running huge compute platforms?**
+
+** I guess you could use this for a smaller projects and deploy to cloud, but I would think that the overhead of learning this would likely overwhelm the potential savings relative to using Snakemake / Docker / Conda. **
+
+
+
+
+
+
 
 
