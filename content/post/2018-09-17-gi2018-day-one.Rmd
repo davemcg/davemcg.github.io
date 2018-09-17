@@ -29,6 +29,8 @@ I've tried to respect \#notwitter. Will be updated periodically.
 
 Speaker (Lab | Group)
 
+**MY VOICE**
+
 # 2018-09-17
 
 # Quinlan Intro
@@ -112,9 +114,9 @@ Release is *later this year*
 Using clustering trees to visualize scRNA-seq data
 
 (caps my own)
-** SO MANY CLUSTERING TOOLS **
+**SO MANY CLUSTERING TOOLS**
 
-** T-SNE IS NOT CLUSTERING **
+**T-SNE IS NOT CLUSTERING**
 
 How do we decide how many clusters?
 
@@ -132,10 +134,11 @@ Real data
   - also see a stable region
   - see low proportion edges if you really increase the k
   
-** I can't doodle on the computer, which would be helpful here but this stuff looks really helpful **
-** Using edge porportion (above eq.) and cluster relatinoships you get a decent sense of whether the clustering makes sense**
+**I can't doodle on the computer, which would be helpful here but this stuff looks really helpful**
 
-** WHAT SO COOL **
+**Using edge porportion (above eq.) and cluster relatinoships you get a decent sense of whether the clustering makes sense**
+
+**WHAT SO COOL**
 (overlap of cluster trees on t-SNE)
 
 
