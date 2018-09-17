@@ -189,3 +189,33 @@ Future:
   
 Q: How is data updated with genome build change?
 A: In lock step, can view old versions
+
+# Casey Greene (Greene)
+Can "big data" help us tackle rare diseases?
+
+~3.7 million assays / datasets
+
+~3.8 billion USD
+
+Really tough to compare *across* datasets with the "modular" approach
+
+PLIER: decompose dataset into latent variables by genes and sample:
+
+  - Mao et al biorxiv 2017
+  
+Latent variables in individual datasets not helpful for dataset comparison
+  - but could you run PLIER on datasetS and see whether it "works"
+  - with SLE (lupus)....yes
+  - with only 7 datasets, can find vars that are NOT dataset specific
+  
+Can you learn patterns from large datasets then *transfer* to individual dataset / problem?
+  
+  - [MultiPLIER](bit.ly/MultiPLIER)
+  - ran with recount2 data on SLE (looking at ANC-associated)
+  - top loadings known info
+  - see how loading score drops in other (non SLE) tissues
+  - slides: https://www.dropbox.com/sh/j0ysaojqmac29qv/AADBHy-3y8qzWHr34F7M39QIa?dl=0
+  
+Pitch for http://researchparasite.com
+
+

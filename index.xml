@@ -26,6 +26,7 @@
 &lt;li&gt;&lt;a href=&#34;#girgio-gonnella-stefan-kurtz&#34;&gt;Girgio Gonnella (Stefan Kurtz)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#luke-zappia-oshlack&#34;&gt;Luke Zappia (Oshlack?)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#laura-huerta-papatheodorou&#34;&gt;Laura Huerta (Papatheodorou)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#casey-greene-greene&#34;&gt;Casey Greene (Greene)&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -180,6 +181,27 @@
 &lt;li&gt;….something else I missed about metadata?&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Q: How is data updated with genome build change? A: In lock step, can view old versions&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;casey-greene-greene&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Casey Greene (Greene)&lt;/h1&gt;
+&lt;p&gt;Can “big data” help us tackle rare diseases?&lt;/p&gt;
+&lt;p&gt;~3.7 million assays / datasets&lt;/p&gt;
+&lt;p&gt;~3.8 billion USD&lt;/p&gt;
+&lt;p&gt;Really tough to compare &lt;em&gt;across&lt;/em&gt; datasets with the “modular” approach&lt;/p&gt;
+&lt;p&gt;PLIER: decompose dataset into latent variables by genes and sample:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Mao et al biorxiv 2017&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Latent variables in individual datasets not helpful for dataset comparison - but could you run PLIER on datasetS and see whether it “works” - with SLE (lupus)….yes - with only 7 datasets, can find vars that are NOT dataset specific&lt;/p&gt;
+&lt;p&gt;Can you learn patterns from large datasets then &lt;em&gt;transfer&lt;/em&gt; to individual dataset / problem?&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;bit.ly/MultiPLIER&#34;&gt;MultiPLIER&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;ran with recount2 data on SLE (looking at ANC-associated)&lt;/li&gt;
+&lt;li&gt;top loadings known info&lt;/li&gt;
+&lt;li&gt;see how loading score drops in other (non SLE) tissues&lt;/li&gt;
+&lt;li&gt;slides: &lt;a href=&#34;https://www.dropbox.com/sh/j0ysaojqmac29qv/AADBHy-3y8qzWHr34F7M39QIa?dl=0&#34; class=&#34;uri&#34;&gt;https://www.dropbox.com/sh/j0ysaojqmac29qv/AADBHy-3y8qzWHr34F7M39QIa?dl=0&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Pitch for &lt;a href=&#34;http://researchparasite.com&#34; class=&#34;uri&#34;&gt;http://researchparasite.com&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
 </description>
     </item>

@@ -17,7 +17,7 @@
       
     
   
-  <meta name="description" content="Intro 2018-09-17 Quinlan Intro Sarah Teichmann (Teichmann Lab)  Girgio Gonnella (Stefan Kurtz) Luke Zappia (Oshlack?) Laura Huerta (Papatheodorou)   Intro Very sparse and poorly written notes covering #GI2018.
+  <meta name="description" content="Intro 2018-09-17 Quinlan Intro Sarah Teichmann (Teichmann Lab)  Girgio Gonnella (Stefan Kurtz) Luke Zappia (Oshlack?) Laura Huerta (Papatheodorou) Casey Greene (Greene)   Intro Very sparse and poorly written notes covering #GI2018.
 Typos everywhere. Things may change dramatically over time as I scan back through notes.
 I’ve tried to respect #notwitter. Will be updated periodically.
 Speaker (Lab | Group)
@@ -98,7 +98,7 @@ BOLDED is voice
   <meta property="og:site_name" content="eye Bioinformatician">
   <meta property="og:url" content="/./post/gi2018-day-one/">
   <meta property="og:title" content="#GI2018 - Day One | eye Bioinformatician">
-  <meta property="og:description" content="Intro 2018-09-17 Quinlan Intro Sarah Teichmann (Teichmann Lab)  Girgio Gonnella (Stefan Kurtz) Luke Zappia (Oshlack?) Laura Huerta (Papatheodorou)   Intro Very sparse and poorly written notes covering #GI2018.
+  <meta property="og:description" content="Intro 2018-09-17 Quinlan Intro Sarah Teichmann (Teichmann Lab)  Girgio Gonnella (Stefan Kurtz) Luke Zappia (Oshlack?) Laura Huerta (Papatheodorou) Casey Greene (Greene)   Intro Very sparse and poorly written notes covering #GI2018.
 Typos everywhere. Things may change dramatically over time as I scan back through notes.
 I’ve tried to respect #notwitter. Will be updated periodically.
 Speaker (Lab | Group)
@@ -371,6 +371,7 @@ BOLDED is voice
 <li><a href="#girgio-gonnella-stefan-kurtz">Girgio Gonnella (Stefan Kurtz)</a></li>
 <li><a href="#luke-zappia-oshlack">Luke Zappia (Oshlack?)</a></li>
 <li><a href="#laura-huerta-papatheodorou">Laura Huerta (Papatheodorou)</a></li>
+<li><a href="#casey-greene-greene">Casey Greene (Greene)</a></li>
 </ul>
 </div>
 
@@ -525,6 +526,27 @@ BOLDED is voice
 <li>….something else I missed about metadata?</li>
 </ul>
 <p>Q: How is data updated with genome build change? A: In lock step, can view old versions</p>
+</div>
+<div id="casey-greene-greene" class="section level1">
+<h1>Casey Greene (Greene)</h1>
+<p>Can “big data” help us tackle rare diseases?</p>
+<p>~3.7 million assays / datasets</p>
+<p>~3.8 billion USD</p>
+<p>Really tough to compare <em>across</em> datasets with the “modular” approach</p>
+<p>PLIER: decompose dataset into latent variables by genes and sample:</p>
+<ul>
+<li>Mao et al biorxiv 2017</li>
+</ul>
+<p>Latent variables in individual datasets not helpful for dataset comparison - but could you run PLIER on datasetS and see whether it “works” - with SLE (lupus)….yes - with only 7 datasets, can find vars that are NOT dataset specific</p>
+<p>Can you learn patterns from large datasets then <em>transfer</em> to individual dataset / problem?</p>
+<ul>
+<li><a href="bit.ly/MultiPLIER">MultiPLIER</a></li>
+<li>ran with recount2 data on SLE (looking at ANC-associated)</li>
+<li>top loadings known info</li>
+<li>see how loading score drops in other (non SLE) tissues</li>
+<li>slides: <a href="https://www.dropbox.com/sh/j0ysaojqmac29qv/AADBHy-3y8qzWHr34F7M39QIa?dl=0" class="uri">https://www.dropbox.com/sh/j0ysaojqmac29qv/AADBHy-3y8qzWHr34F7M39QIa?dl=0</a></li>
+</ul>
+<p>Pitch for <a href="http://researchparasite.com" class="uri">http://researchparasite.com</a></p>
 </div>
 
     </div>
