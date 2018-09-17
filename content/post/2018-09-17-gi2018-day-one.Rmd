@@ -112,9 +112,9 @@ Release is *later this year*
 Using clustering trees to visualize scRNA-seq data
 
 (caps my own)
-SO MANY CLUSTERING TOOLS
+** SO MANY CLUSTERING TOOLS **
 
-T-SNE IS NOT CLUSTERING
+** T-SNE IS NOT CLUSTERING **
 
 How do we decide how many clusters?
 
@@ -123,4 +123,20 @@ When deciding k (cluster num) you can think of a graph and with edge weights to 
 Cells on edge / num of cells in high res cluster
 
 Above equation good way to think about usefulness of cluster groups
+
+As we increase k, we can see how the graph changes and can get a sense of whether k should be changed
+
+Real data
+  - used Seurat to cluster
+  - see a branch with is distinct and doesn't interact with anything else
+  - also see a stable region
+  - see low proportion edges if you really increase the k
+  
+** I can't doodle on the computer, which would be helpful here but this stuff looks really helpful **
+** Using edge porportion (above eq.) and cluster relatinoships you get a decent sense of whether the clustering makes sense**
+
+** WHAT SO COOL **
+(overlap of cluster trees on t-SNE)
+
+
 
