@@ -156,10 +156,11 @@ Real data
 Q: could this be used to magic pick a k?
 A: Everyone asks this....please don't....no idea what would happen
 
-Laura Huerta
-Data curation integration and visuzliation
+# Laura Huerta (Papatheodorou)
 
-**Oh boy, a viz talk that I'm going to cover with works**
+Data curation integration and visualization
+
+**Oh boy, a viz talk that I'm going to cover with words**
 
 Expression Atlas
 
@@ -167,5 +168,21 @@ Expression Atlas
   - **super useful resource, unfortunately in my experience pain to get data into R with their R packages**
     - **I find it easier to just find the tsv output link and then slurp that into R**
   - **big value in consistent computational workflows**
-  - >3,300 datasets
+  - >3,300 datasets, from all the big consortia (GTEx, FANTOM, etc)
+  
+clusterSeq package
+  
+  - **missed what this does but looks like a good thing to check out...**
+  
+Can embed Expression Atlas data on other pages (ensembl does this)
+
+scRNA-seq data also
+  - again public data, consistent processing (extension of iRAP)
+  - can see whether gene is considered a *marker* gene (**not sure how this is picked**)
+  - have a t-SNE(?) interactive plot view and shows your favorite gene colored
+
+Future:
+
+  - merge bulk and scRNA data
+  - ....something else I missed about metadata?
   
