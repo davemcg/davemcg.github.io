@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="theme" content="hugo-academic">
-  <meta name="generator" content="Hugo 0.40" />
+  <meta name="generator" content="Hugo 0.35" />
   <meta name="author" content="David McGaughey">
 
   
@@ -378,19 +378,18 @@
 </div>
 <div id="where-to-get-the-code-and-data" class="section level2">
 <h2>Where to get the code and data?</h2>
-<p>Rmarkdown document: <a href="https://github.com/davemcg/Let_us_plot/blob/master/001_polar_figure/polar_plot.Rmd" class="uri">https://github.com/davemcg/Let_us_plot/blob/master/001_polar_figure/polar_plot.Rmd</a>
-Data: <a href="https://github.com/davemcg/Let_us_plot/blob/master/001_polar_figure/polar_values.xlsx" class="uri">https://github.com/davemcg/Let_us_plot/blob/master/001_polar_figure/polar_values.xlsx</a></p>
+<p>Rmarkdown document: <a href="https://github.com/davemcg/Let_us_plot/blob/master/001_polar_figure/polar_plot.Rmd" class="uri">https://github.com/davemcg/Let_us_plot/blob/master/001_polar_figure/polar_plot.Rmd</a> Data: <a href="https://github.com/davemcg/Let_us_plot/blob/master/001_polar_figure/polar_values.xlsx" class="uri">https://github.com/davemcg/Let_us_plot/blob/master/001_polar_figure/polar_values.xlsx</a></p>
 <p>First time making a polar plot….let’s see if ggplot2 can do it.</p>
 </div>
 <div id="import-data-with-readxl" class="section level2">
 <h2>Import data with readxl</h2>
 <pre class="r"><code>library(tidyverse)</code></pre>
-<pre><code>## ── Attaching packages ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──</code></pre>
-<pre><code>## ✔ ggplot2 3.0.0     ✔ purrr   0.2.4
+<pre><code>## ── Attaching packages ────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──</code></pre>
+<pre><code>## ✔ ggplot2 3.0.0     ✔ purrr   0.2.5
 ## ✔ tibble  1.4.2     ✔ dplyr   0.7.6
 ## ✔ tidyr   0.8.1     ✔ stringr 1.3.1
 ## ✔ readr   1.1.1     ✔ forcats 0.3.0</code></pre>
-<pre><code>## ── Conflicts ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+<pre><code>## ── Conflicts ───────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()</code></pre>
 <pre class="r"><code>library(stringr)
@@ -430,8 +429,7 @@ polar_values</code></pre>
 <div id="however-we-arent-done.-the-data-is-wide-instead-of-long-and-we-have-mixed-session-ids-amp-1-3-and-angle-1-3-with-the-value-type." class="section level2">
 <h2>However, we aren’t done. The data is “wide” instead of “long” and we have mixed session IDs (Amp 1-3 and Angle 1-3) with the value type.</h2>
 <p>Let’s first deal with the wide issue. If we google “R wide to long” we find this page near the top <a href="http://www.cookbook-r.com/Manipulating_data/Converting_data_between_wide_and_long_format/" class="uri">http://www.cookbook-r.com/Manipulating_data/Converting_data_between_wide_and_long_format/</a> which tells us that <code>gather</code> is the function we want.</p>
-<p><code>Test_Session</code> is the name for the column containing <code>Od Amp1 to Od Angle</code>
-<code>Value</code> is the name for the column holding the test measurements.</p>
+<p><code>Test_Session</code> is the name for the column containing <code>Od Amp1 to Od Angle</code> <code>Value</code> is the name for the column holding the test measurements.</p>
 <pre class="r"><code>polar_values %&gt;% 
   gather(Test_Session, Value, `Od Amp1`:`Od Angle3`) </code></pre>
 <pre><code>## # A tibble: 30 x 3
@@ -599,7 +597,7 @@ reformatted_values</code></pre>
 <pre class="r"><code>sessionInfo()</code></pre>
 <pre><code>## R version 3.5.0 (2018-04-23)
 ## Platform: x86_64-apple-darwin15.6.0 (64-bit)
-## Running under: OS X El Capitan 10.11.6
+## Running under: macOS High Sierra 10.13.6
 ## 
 ## Matrix products: default
 ## BLAS: /Library/Frameworks/R.framework/Versions/3.5/Resources/lib/libRblas.0.dylib
@@ -613,7 +611,7 @@ reformatted_values</code></pre>
 ## 
 ## other attached packages:
 ##  [1] bindrcpp_0.2.2  forcats_0.3.0   stringr_1.3.1   dplyr_0.7.6    
-##  [5] purrr_0.2.4     readr_1.1.1     tidyr_0.8.1     tibble_1.4.2   
+##  [5] purrr_0.2.5     readr_1.1.1     tidyr_0.8.1     tibble_1.4.2   
 ##  [9] ggplot2_3.0.0   tidyverse_1.2.1
 ## 
 ## loaded via a namespace (and not attached):
@@ -623,7 +621,7 @@ reformatted_values</code></pre>
 ## [10] rlang_0.2.1        pillar_1.2.3       withr_2.1.2       
 ## [13] foreign_0.8-70     glue_1.2.0         RColorBrewer_1.1-2
 ## [16] modelr_0.1.2       readxl_1.1.0       bindr_0.1.1       
-## [19] plyr_1.8.4         munsell_0.4.3      blogdown_0.8.1    
+## [19] plyr_1.8.4         munsell_0.4.3      blogdown_0.8      
 ## [22] gtable_0.2.0       cellranger_1.1.0   rvest_0.3.2       
 ## [25] psych_1.8.4        evaluate_0.10.1    labeling_0.3      
 ## [28] knitr_1.20         parallel_3.5.0     broom_0.4.4       

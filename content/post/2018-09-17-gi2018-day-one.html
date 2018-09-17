@@ -1,0 +1,81 @@
+---
+title: '#GI2018 - Day One'
+author: David McGaughey
+date: '2018-09-17'
+slug: gi2018-day-one
+categories:
+  - GI2018
+  - bioinformatics
+tags:
+  - conference
+  - GI2018
+  - bioinformatics
+  - talks
+header:
+  caption: ''
+  image: ''
+output:
+  blogdown::html_page:
+    toc: true
+---
+
+
+<div id="TOC">
+<ul>
+<li><a href="#intro">Intro</a></li>
+<li><a href="#section">2018-09-17</a></li>
+<li><a href="#quinlan-intro">Quinlan Intro</a><ul>
+<li><a href="#sarah-teichmann-teichmann-lab">Sarah Teichmann (Teichmann Lab)</a></li>
+</ul></li>
+<li><a href="#girgio-gonnella-stefan-kurtz">Girgio Gonnella (Stefan Kurtz)</a></li>
+<li><a href="#luke-zappia-oshlack">Luke Zappia (Oshlack?)</a></li>
+</ul>
+</div>
+
+<div id="intro" class="section level1">
+<h1>Intro</h1>
+<p>Very sparse and poorly written notes covering <a href="https://twitter.com/hashtag/GI2018?src=hash">#GI2018</a>.</p>
+<p>Typos everywhere. Things may change dramatically over time as I scan back through notes.</p>
+<p>I’ve tried to respect #notwitter. Will be updated periodically.</p>
+<p>Speaker (Lab | Group)</p>
+</div>
+<div id="section" class="section level1">
+<h1>2018-09-17</h1>
+</div>
+<div id="quinlan-intro" class="section level1">
+<h1>Quinlan Intro</h1>
+<div id="sarah-teichmann-teichmann-lab" class="section level2">
+<h2>Sarah Teichmann (Teichmann Lab)</h2>
+<p>Cell Atlas Technologies and the Maternal-Fetal Interface</p>
+<p><a href="humancellatlas.org">Human Cell Atlas plug</a> - 600 scientists - scRNAseq + spatial methods</p>
+<p>scRNA works OK - 70%+ pearson cor (among genes?) - Detection limit pretty good after 1 million reads - <a href="https://www.biorxiv.org/content/early/2016/09/08/073692">Svensson and Teichmann preprint</a></p>
+<p>Spatial Tech - i.e. gene expression at voxel resolution in a non-destroyed tissue - 1 voxel ~ 20 cells - Hope to ID spatially variable genes - [github.com/TeichLab/SpatialDE] - Svensson and Teichmann</p>
+<p>Braga and Stegle: Merge Spatial TX with scRNA</p>
+<p>Future stuffs: Histology merged with scRNA</p>
+<p>Back to HCA - Many tissues, many scientists, many countries - curious if any integration with Chan-Zuckerberg</p>
+<p>Moving onto to Maternal-fetal interface - tricky area - immune component - two organisms - <em>tumor like</em> - scRNA + WGS resolved fetal/maternal adn cell tyes</p>
+</div>
+</div>
+<div id="girgio-gonnella-stefan-kurtz" class="section level1">
+<h1>Girgio Gonnella (Stefan Kurtz)</h1>
+<p>Flexible and interactive visualization of GFA sequence graphs</p>
+<p>Graphical Fragment Assembly - format for representing sequence graphs - contig output not as informative as graphs</p>
+<p>GFA1 proposal format from Heng Li releaseed in 2016-09</p>
+<p>GFA2 2017-01 more general</p>
+<p>Today more assemblers are using</p>
+<p>GFA2 format: - header - sequences - relationships - RGFA (Ruby) - Gfapy (python)</p>
+<p>GfaViz - visualization of GFA2 (and GFA1) - C++, QT, OGDF - GUI and CLI - Two layouts, many options to customize views</p>
+<p>Scaffolding graphs - dealing with pos gaps (missing seq) and neg gaps (contig overlap by repeats) - Show how it looks with Bandage, no gap info - much busier with GfaViz - but now can see gap info between the pieces</p>
+<p>Long reads - local alignments are messy (noisy data) - GFA2 has <em>internal</em> alignments</p>
+<p>Release is <em>later this year</em> - ggonnella on github - email: <a href="mailto:gonnella@zbh.uni-hamburg.de">gonnella@zbh.uni-hamburg.de</a></p>
+</div>
+<div id="luke-zappia-oshlack" class="section level1">
+<h1>Luke Zappia (Oshlack?)</h1>
+<p>Using clustering trees to visualize scRNA-seq data</p>
+<p>(caps my own) SO MANY CLUSTERING TOOLS</p>
+<p>T-SNE IS NOT CLUSTERING</p>
+<p>How do we decide how many clusters?</p>
+<p>When deciding k (cluster num) you can think of a graph and with edge weights to assess interesting groups</p>
+<p>Cells on edge / num of cells in high res cluster</p>
+<p>Above equation good way to think about usefulness of cluster groups</p>
+</div>

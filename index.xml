@@ -7,8 +7,76 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
-    <lastBuildDate>Sun, 15 Oct 2017 00:00:00 -0400</lastBuildDate>
+    <lastBuildDate>Sun, 15 Oct 2017 00:00:00 +0100</lastBuildDate>
     <atom:link href="//" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>#GI2018 - Day One</title>
+      <link>/./post/gi2018-day-one/</link>
+      <pubDate>Mon, 17 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/gi2018-day-one/</guid>
+      <description>&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#intro&#34;&gt;Intro&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#section&#34;&gt;2018-09-17&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#quinlan-intro&#34;&gt;Quinlan Intro&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#sarah-teichmann-teichmann-lab&#34;&gt;Sarah Teichmann (Teichmann Lab)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#girgio-gonnella-stefan-kurtz&#34;&gt;Girgio Gonnella (Stefan Kurtz)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#luke-zappia-oshlack&#34;&gt;Luke Zappia (Oshlack?)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;intro&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Intro&lt;/h1&gt;
+&lt;p&gt;Very sparse and poorly written notes covering &lt;a href=&#34;https://twitter.com/hashtag/GI2018?src=hash&#34;&gt;#GI2018&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Typos everywhere. Things may change dramatically over time as I scan back through notes.&lt;/p&gt;
+&lt;p&gt;I’ve tried to respect #notwitter. Will be updated periodically.&lt;/p&gt;
+&lt;p&gt;Speaker (Lab | Group)&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;section&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;2018-09-17&lt;/h1&gt;
+&lt;/div&gt;
+&lt;div id=&#34;quinlan-intro&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Quinlan Intro&lt;/h1&gt;
+&lt;div id=&#34;sarah-teichmann-teichmann-lab&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Sarah Teichmann (Teichmann Lab)&lt;/h2&gt;
+&lt;p&gt;Cell Atlas Technologies and the Maternal-Fetal Interface&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;humancellatlas.org&#34;&gt;Human Cell Atlas plug&lt;/a&gt; - 600 scientists - scRNAseq + spatial methods&lt;/p&gt;
+&lt;p&gt;scRNA works OK - 70%+ pearson cor (among genes?) - Detection limit pretty good after 1 million reads - &lt;a href=&#34;https://www.biorxiv.org/content/early/2016/09/08/073692&#34;&gt;Svensson and Teichmann preprint&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Spatial Tech - i.e. gene expression at voxel resolution in a non-destroyed tissue - 1 voxel ~ 20 cells - Hope to ID spatially variable genes - [github.com/TeichLab/SpatialDE] - Svensson and Teichmann&lt;/p&gt;
+&lt;p&gt;Braga and Stegle: Merge Spatial TX with scRNA&lt;/p&gt;
+&lt;p&gt;Future stuffs: Histology merged with scRNA&lt;/p&gt;
+&lt;p&gt;Back to HCA - Many tissues, many scientists, many countries - curious if any integration with Chan-Zuckerberg&lt;/p&gt;
+&lt;p&gt;Moving onto to Maternal-fetal interface - tricky area - immune component - two organisms - &lt;em&gt;tumor like&lt;/em&gt; - scRNA + WGS resolved fetal/maternal adn cell tyes&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;girgio-gonnella-stefan-kurtz&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Girgio Gonnella (Stefan Kurtz)&lt;/h1&gt;
+&lt;p&gt;Flexible and interactive visualization of GFA sequence graphs&lt;/p&gt;
+&lt;p&gt;Graphical Fragment Assembly - format for representing sequence graphs - contig output not as informative as graphs&lt;/p&gt;
+&lt;p&gt;GFA1 proposal format from Heng Li releaseed in 2016-09&lt;/p&gt;
+&lt;p&gt;GFA2 2017-01 more general&lt;/p&gt;
+&lt;p&gt;Today more assemblers are using&lt;/p&gt;
+&lt;p&gt;GFA2 format: - header - sequences - relationships - RGFA (Ruby) - Gfapy (python)&lt;/p&gt;
+&lt;p&gt;GfaViz - visualization of GFA2 (and GFA1) - C++, QT, OGDF - GUI and CLI - Two layouts, many options to customize views&lt;/p&gt;
+&lt;p&gt;Scaffolding graphs - dealing with pos gaps (missing seq) and neg gaps (contig overlap by repeats) - Show how it looks with Bandage, no gap info - much busier with GfaViz - but now can see gap info between the pieces&lt;/p&gt;
+&lt;p&gt;Long reads - local alignments are messy (noisy data) - GFA2 has &lt;em&gt;internal&lt;/em&gt; alignments&lt;/p&gt;
+&lt;p&gt;Release is &lt;em&gt;later this year&lt;/em&gt; - ggonnella on github - email: &lt;a href=&#34;mailto:gonnella@zbh.uni-hamburg.de&#34;&gt;gonnella@zbh.uni-hamburg.de&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;luke-zappia-oshlack&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Luke Zappia (Oshlack?)&lt;/h1&gt;
+&lt;p&gt;Using clustering trees to visualize scRNA-seq data&lt;/p&gt;
+&lt;p&gt;(caps my own) SO MANY CLUSTERING TOOLS&lt;/p&gt;
+&lt;p&gt;T-SNE IS NOT CLUSTERING&lt;/p&gt;
+&lt;p&gt;How do we decide how many clusters?&lt;/p&gt;
+&lt;p&gt;When deciding k (cluster num) you can think of a graph and with edge weights to assess interesting groups&lt;/p&gt;
+&lt;p&gt;Cells on edge / num of cells in high res cluster&lt;/p&gt;
+&lt;p&gt;Above equation good way to think about usefulness of cluster groups&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>Onboarding</title>
@@ -28,8 +96,7 @@
 &lt;ul&gt;
 &lt;li&gt;The administrative assistant for the branch&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;If you have any admin-related questions, shoot one of them an email or
-go chat with them in 10N109&lt;/li&gt;
+&lt;li&gt;If you have any admin-related questions, shoot one of them an email or go chat with them in 10N109&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Brian Brooks&lt;/p&gt;
 &lt;ul&gt;
@@ -37,8 +104,7 @@ go chat with them in 10N109&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Tiziana Cogliati&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;She is Brian’s lab manager. She does the day to day administration of
-Brian’s research lab and guides the research along with Brian&lt;/li&gt;
+&lt;li&gt;She is Brian’s lab manager. She does the day to day administration of Brian’s research lab and guides the research along with Brian&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Cesar Perez-Gonzalez&lt;/p&gt;
 &lt;ul&gt;
@@ -51,8 +117,7 @@ Brian’s research lab and guides the research along with Brian&lt;/li&gt;
 &lt;ul&gt;
 &lt;li&gt;You should have made an appointment to get a NIH badge
 &lt;ul&gt;
-&lt;li&gt;If this doesn’t make any sense then
-&lt;a href=&#34;https://ned.nih.gov/search/ViewDetails.aspx?NIHID=0011297616&#34;&gt;contact&lt;/a&gt; Jairo&lt;/li&gt;
+&lt;li&gt;If this doesn’t make any sense then &lt;a href=&#34;https://ned.nih.gov/search/ViewDetails.aspx?NIHID=0011297616&#34;&gt;contact&lt;/a&gt; Jairo&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
@@ -73,10 +138,8 @@ Brian’s research lab and guides the research along with Brian&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://neinet.nei.nih.gov&#34;&gt;NEI Intranet&lt;/a&gt;
 &lt;ul&gt;
 &lt;li&gt;only available after you get here&lt;/li&gt;
-&lt;li&gt;internal page with org chart, meeting scheduling, etc et.c
-&lt;ul&gt;
+&lt;li&gt;internal page with org chart, meeting scheduling, etc et.c&lt;/li&gt;
 &lt;li&gt;(&lt;a href=&#34;http://neinet.nei.nih.gov/intramural/FellowsStudents/postbac.asp&#34; class=&#34;uri&#34;&gt;http://neinet.nei.nih.gov/intramural/FellowsStudents/postbac.asp&lt;/a&gt;)&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://ned.nih.gov/search/&#34;&gt;NIH Phone Book&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -99,18 +162,12 @@ Brian’s research lab and guides the research along with Brian&lt;/li&gt;
 &lt;/div&gt;
 &lt;div id=&#34;language&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Language&lt;/h2&gt;
-&lt;p&gt;I use a combination of R, python, Snakemake, awk, and bash. I lean heavily on R to produce
-visualizations and interactive documents/sites and Snakemake to reproducibly process data
-in projects.&lt;/p&gt;
-&lt;p&gt;Projects you do with me will likely have to be written in some combination of the
-above languages, so they can be supported after you leave (or you’ll have to
-talk me into learning language X).&lt;/p&gt;
+&lt;p&gt;I use a combination of R, python, Snakemake, awk, and bash. I lean heavily on R to produce visualizations and interactive documents/sites and Snakemake to reproducibly process data in projects.&lt;/p&gt;
+&lt;p&gt;Projects you do with me will likely have to be written in some combination of the above languages, so they can be supported after you leave (or you’ll have to talk me into learning language X).&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;reproducibility&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Reproducibility&lt;/h2&gt;
-&lt;p&gt;Everything you do is to be written in code. The expectation is you can run
-(ideally one) script/Snakemake file and reproduce virtually all of the downstream
-analyses from the &lt;strong&gt;raw&lt;/strong&gt; data.&lt;/p&gt;
+&lt;p&gt;Everything you do is to be written in code. The expectation is you can run (ideally one) script/Snakemake file and reproduce virtually all of the downstream analyses from the &lt;strong&gt;raw&lt;/strong&gt; data.&lt;/p&gt;
 &lt;/div&gt;
 </description>
     </item>
@@ -3171,6 +3228,46 @@ pr&lt;/code&gt;&lt;/pre&gt;
     </item>
     
     <item>
+      <title>Something Different: Automated Neighborhood Traffic Monitoring</title>
+      <link>/./post/traffic-monitoring-intro/</link>
+      <pubDate>Sat, 03 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/traffic-monitoring-intro/</guid>
+      <description>&lt;hr /&gt;
+&lt;p&gt;title: ‘Something Different: Automated Neighborhood Traffic Monitoring’ author: David McGaughey date: ‘2018-03-03’ slug: traffic-monitoring-intro categories: - R - python - raspberry - pi tags: - R - python - raspberry - pi —&lt;/p&gt;
+&lt;div id=&#34;introduction&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;This is, obviously, a personal project. Traffic is a concern in my town. Cut-through, speeding, etc. The town has paid for a couple of (very expensive!) traffic surveys, but the reports are not very useful as the company only sets up in town for a few days (if that) and then only reports stuff like ‘number of cars for a one hour period.’ I want to know how many cars are passing my house per day, per hour, per weekday, per weekend, etc. I’d also like to know how many cars are going above the 15 mph speed limit on my round (why 15 mph?! - there’s a very tight turn of the road).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;solution&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Solution?&lt;/h2&gt;
+&lt;p&gt;Well, I figured a video feed hooked up to a computer could be set up in my house, facing the road. Motion could be detected, then logged. Since the distance is (approximately constant) between the car and the camera, it would be possible to detect a car and approximate its speed. I didn’t want to dedicated a laptop for this project because I imagine this would be most useful with continuous observation. This sounded like a perfect use for a Raspberry Pi, which I have been wanting an excuse to buy. Some quick Googling for “speed camera raspberry pi” led me to this &lt;a href=&#34;https://github.com/pageauc/speed-camera&#34;&gt;GitHub project&lt;/a&gt;. Someone had used &lt;a href=&#34;https://opencv.org&#34;&gt;OpenCV&lt;/a&gt; and Python to do exactly what I thought may be possible.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;stuff-i-bought&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Stuff I bought&lt;/h2&gt;
+&lt;p&gt;I thought I bought a Raspberry Pi 3 B+, but after looking at my Amazon history I realized I bought a 3 B. Oops. The 3 B+ has faster WiFi and a higher CPU clock. Oh well.&lt;/p&gt;
+&lt;p&gt;Anyways, the kit came with a 16gb microSD card with NOOBS (some kind of loader for multiple operating systems), a case, an HDMI cable, and a power supply.&lt;/p&gt;
+&lt;p&gt;I also bought a “Arducam” 5mp camera. The official Raspberry Pi camera was double the price and the reviews seemed OK (~$25 instead of ~$13).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;brief-setup&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Brief setup&lt;/h2&gt;
+&lt;p&gt;I was hoping I could just SSH into the Pi on start-up, but I could not see the ethernet-connected Pi on my network. I then used an HDMI cable to hook it up to a TV and a grubby USB keyboard I found in my basement. I realized that the NOOBs loader needed to be told what OS to install. I picked the basic Raspian OS, as I was not going to use any GUI stuff. Then I did some Googling to figure out how to give it the WiFi network info and after that I could just SSH into it.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;software-installed&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Software installed&lt;/h2&gt;
+&lt;p&gt;I am almost certainly going to regret that I just ran &lt;code&gt;sudo apt-get install&lt;/code&gt; for each piece of software I wanted by hand when I want to set up a new one.&lt;/p&gt;
+&lt;p&gt;I am not a good admin.&lt;/p&gt;
+&lt;p&gt;I installed python3, &lt;a href=&#34;https://www.pyimagesearch.com/2016/04/18/install-guide-raspberry-pi-3-raspbian-jessie-opencv-3/&#34;&gt;opencv&lt;/a&gt; (which was a PITA), git, R, and all of the dependencies those four things complained about.&lt;/p&gt;
+&lt;p&gt;I then installed the &lt;a href=&#34;https://github.com/pageauc/speed-camera&#34;&gt;speed-camera project&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;calibration&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Calibration&lt;/h2&gt;
+&lt;p&gt;The speed-camera software&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Let’s Plot 4: R vs Excel, Round 1</title>
       <link>/./post/let-s-plot-4-r-vs-excel/</link>
       <pubDate>Thu, 01 Mar 2018 00:00:00 +0000</pubDate>
@@ -3781,9 +3878,11 @@ ggplot() +
 &lt;li&gt;The original data is 330mb, compressed&lt;/li&gt;
 &lt;li&gt;After loading (2 minutes on my quite fast computer) and uncompressing, it takes over 10GB of RAM on my computer&lt;/li&gt;
 &lt;li&gt;The original data needed a severe amount of massaging to make it quickly useable:
-- Annotating with gene name
-- Identifying primary transcript for gene
-- Expanding range data into row-form*&lt;/li&gt;
+&lt;ul&gt;
+&lt;li&gt;Annotating with gene name&lt;/li&gt;
+&lt;li&gt;Identifying primary transcript for gene&lt;/li&gt;
+&lt;li&gt;Expanding range data into row-form*&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;mosdepth&lt;/code&gt; provides read depth as ranges. So instead of writing a row for each of the three billion+ base pairs, &lt;code&gt;mosdepth&lt;/code&gt; collapses adjacent rows with identical read depth together. This is crucial for saving space, especially for exomes, which have huge stretches of zero coverage since only ~3% of the genome is targeted.&lt;/li&gt;
@@ -3797,12 +3896,12 @@ ggplot() +
 &lt;h2&gt;Data&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;dd_class.csv&lt;/code&gt; can be found &lt;a href=&#34;https://github.com/davemcg/Let_us_plot/raw/master/003_coverage/dd_class.csv&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ── Attaching packages ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ✔ ggplot2 3.0.0     ✔ purrr   0.2.4
+&lt;pre&gt;&lt;code&gt;## ── Attaching packages ────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## ✔ ggplot2 3.0.0     ✔ purrr   0.2.5
 ## ✔ tibble  1.4.2     ✔ dplyr   0.7.6
 ## ✔ tidyr   0.8.1     ✔ stringr 1.3.1
 ## ✔ readr   1.1.1     ✔ forcats 0.3.0&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ── Conflicts ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+&lt;pre&gt;&lt;code&gt;## ── Conflicts ───────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(data.table)&lt;/code&gt;&lt;/pre&gt;
@@ -3963,8 +4062,7 @@ sum(depth_abca4 &amp;gt; 10)&lt;/code&gt;&lt;/pre&gt;
   ggplot(aes(x=Read_Depth, group=Name)) +
   facet_wrap(~Name) + 
   geom_density()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/././post/2018-02-07-let-s-plot-3-part-1_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;960&#34; /&gt;
-##&lt;a href=&#34;/./img/lets_plot3_density.png&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/././post/2018-02-07-let-s-plot-3-part-1_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;960&#34; /&gt; ##&lt;a href=&#34;/./img/lets_plot3_density.png&#34;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;where-are-genes-poorly-covered&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Where are genes poorly covered?&lt;/h2&gt;
@@ -4028,85 +4126,85 @@ plot_grid(plotlist = plots, ncol=1)&lt;/code&gt;&lt;/pre&gt;
 ##  ui       X11                         
 ##  language (EN)                        
 ##  collate  en_US.UTF-8                 
-##  tz       America/New_York            
-##  date     2018-07-16&lt;/code&gt;&lt;/pre&gt;
+##  tz       Europe/London               
+##  date     2018-09-17&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Packages -----------------------------------------------------------------&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##  package    * version date       source                           
-##  assertthat   0.2.0   2017-04-11 CRAN (R 3.5.0)                   
-##  backports    1.1.2   2017-12-13 CRAN (R 3.5.0)                   
-##  base       * 3.5.0   2018-04-24 local                            
-##  bindr        0.1.1   2018-03-13 CRAN (R 3.5.0)                   
-##  bindrcpp   * 0.2.2   2018-03-29 CRAN (R 3.5.0)                   
-##  blogdown     0.8.1   2018-07-16 Github (rstudio/blogdown@d54c39a)
-##  bookdown     0.7     2018-02-18 CRAN (R 3.5.0)                   
-##  broom        0.4.4   2018-03-29 CRAN (R 3.5.0)                   
-##  cellranger   1.1.0   2016-07-27 CRAN (R 3.5.0)                   
-##  cli          1.0.0   2017-11-05 CRAN (R 3.5.0)                   
-##  colorspace   1.3-2   2016-12-14 CRAN (R 3.5.0)                   
-##  compiler     3.5.0   2018-04-24 local                            
-##  cowplot    * 0.9.2   2017-12-17 CRAN (R 3.5.0)                   
-##  crayon       1.3.4   2017-09-16 CRAN (R 3.5.0)                   
-##  data.table * 1.11.4  2018-05-27 cran (@1.11.4)                   
-##  datasets   * 3.5.0   2018-04-24 local                            
-##  devtools     1.13.5  2018-02-18 CRAN (R 3.5.0)                   
-##  digest       0.6.15  2018-01-28 CRAN (R 3.5.0)                   
-##  dplyr      * 0.7.6   2018-06-29 cran (@0.7.6)                    
-##  evaluate     0.10.1  2017-06-24 CRAN (R 3.5.0)                   
-##  forcats    * 0.3.0   2018-02-19 CRAN (R 3.5.0)                   
-##  foreign      0.8-70  2017-11-28 CRAN (R 3.5.0)                   
-##  ggplot2    * 3.0.0   2018-07-03 cran (@3.0.0)                    
-##  glue         1.2.0   2017-10-29 CRAN (R 3.5.0)                   
-##  graphics   * 3.5.0   2018-04-24 local                            
-##  grDevices  * 3.5.0   2018-04-24 local                            
-##  grid         3.5.0   2018-04-24 local                            
-##  gtable       0.2.0   2016-02-26 CRAN (R 3.5.0)                   
-##  haven        1.1.1   2018-01-18 CRAN (R 3.5.0)                   
-##  hms          0.4.2   2018-03-10 CRAN (R 3.5.0)                   
-##  htmltools    0.3.6   2017-04-28 CRAN (R 3.5.0)                   
-##  httr         1.3.1   2017-08-20 CRAN (R 3.5.0)                   
-##  jsonlite     1.5     2017-06-01 CRAN (R 3.5.0)                   
-##  knitr        1.20    2018-02-20 CRAN (R 3.5.0)                   
-##  labeling     0.3     2014-08-23 CRAN (R 3.5.0)                   
-##  lattice      0.20-35 2017-03-25 CRAN (R 3.5.0)                   
-##  lazyeval     0.2.1   2017-10-29 CRAN (R 3.5.0)                   
-##  lubridate    1.7.4   2018-04-11 CRAN (R 3.5.0)                   
-##  magrittr     1.5     2014-11-22 CRAN (R 3.5.0)                   
-##  memoise      1.1.0   2017-04-21 CRAN (R 3.5.0)                   
-##  methods    * 3.5.0   2018-04-24 local                            
-##  mnormt       1.5-5   2016-10-15 CRAN (R 3.5.0)                   
-##  modelr       0.1.2   2018-05-11 CRAN (R 3.5.0)                   
-##  munsell      0.4.3   2016-02-13 CRAN (R 3.5.0)                   
-##  nlme         3.1-137 2018-04-07 CRAN (R 3.5.0)                   
-##  parallel     3.5.0   2018-04-24 local                            
-##  pillar       1.2.3   2018-05-25 CRAN (R 3.5.0)                   
-##  pkgconfig    2.0.1   2017-03-21 CRAN (R 3.5.0)                   
-##  plyr         1.8.4   2016-06-08 CRAN (R 3.5.0)                   
-##  psych        1.8.4   2018-05-06 CRAN (R 3.5.0)                   
-##  purrr      * 0.2.4   2017-10-18 CRAN (R 3.5.0)                   
-##  R6           2.2.2   2017-06-17 CRAN (R 3.5.0)                   
-##  Rcpp         0.12.17 2018-05-18 CRAN (R 3.5.0)                   
-##  readr      * 1.1.1   2017-05-16 CRAN (R 3.5.0)                   
-##  readxl       1.1.0   2018-04-20 CRAN (R 3.5.0)                   
-##  reshape2     1.4.3   2017-12-11 CRAN (R 3.5.0)                   
-##  rlang        0.2.1   2018-05-30 CRAN (R 3.5.0)                   
-##  rmarkdown    1.10    2018-06-11 cran (@1.10)                     
-##  rprojroot    1.3-2   2018-01-03 CRAN (R 3.5.0)                   
-##  rstudioapi   0.7     2017-09-07 CRAN (R 3.5.0)                   
-##  rvest        0.3.2   2016-06-17 CRAN (R 3.5.0)                   
-##  scales       0.5.0   2017-08-24 CRAN (R 3.5.0)                   
-##  stats      * 3.5.0   2018-04-24 local                            
-##  stringi      1.2.2   2018-05-02 CRAN (R 3.5.0)                   
-##  stringr    * 1.3.1   2018-05-10 CRAN (R 3.5.0)                   
-##  tibble     * 1.4.2   2018-01-22 CRAN (R 3.5.0)                   
-##  tidyr      * 0.8.1   2018-05-18 CRAN (R 3.5.0)                   
-##  tidyselect   0.2.4   2018-02-26 CRAN (R 3.5.0)                   
-##  tidyverse  * 1.2.1   2017-11-14 CRAN (R 3.5.0)                   
-##  tools        3.5.0   2018-04-24 local                            
-##  utf8         1.1.4   2018-05-24 CRAN (R 3.5.0)                   
-##  utils      * 3.5.0   2018-04-24 local                            
-##  withr        2.1.2   2018-03-15 CRAN (R 3.5.0)                   
-##  xfun         0.3     2018-07-06 cran (@0.3)                      
-##  xml2         1.2.0   2018-01-24 CRAN (R 3.5.0)                   
+&lt;pre&gt;&lt;code&gt;##  package    * version date       source        
+##  assertthat   0.2.0   2017-04-11 CRAN (R 3.5.0)
+##  backports    1.1.2   2017-12-13 CRAN (R 3.5.0)
+##  base       * 3.5.0   2018-04-24 local         
+##  bindr        0.1.1   2018-03-13 CRAN (R 3.5.0)
+##  bindrcpp   * 0.2.2   2018-03-29 CRAN (R 3.5.0)
+##  blogdown     0.8     2018-07-15 CRAN (R 3.5.0)
+##  bookdown     0.7     2018-02-18 CRAN (R 3.5.0)
+##  broom        0.4.4   2018-03-29 CRAN (R 3.5.0)
+##  cellranger   1.1.0   2016-07-27 CRAN (R 3.5.0)
+##  cli          1.0.0   2017-11-05 CRAN (R 3.5.0)
+##  colorspace   1.3-2   2016-12-14 CRAN (R 3.5.0)
+##  compiler     3.5.0   2018-04-24 local         
+##  cowplot    * 0.9.3   2018-07-15 cran (@0.9.3) 
+##  crayon       1.3.4   2017-09-16 CRAN (R 3.5.0)
+##  data.table * 1.11.4  2018-05-27 CRAN (R 3.5.0)
+##  datasets   * 3.5.0   2018-04-24 local         
+##  devtools     1.13.6  2018-06-27 CRAN (R 3.5.0)
+##  digest       0.6.15  2018-01-28 CRAN (R 3.5.0)
+##  dplyr      * 0.7.6   2018-06-29 cran (@0.7.6) 
+##  evaluate     0.10.1  2017-06-24 CRAN (R 3.5.0)
+##  forcats    * 0.3.0   2018-02-19 CRAN (R 3.5.0)
+##  foreign      0.8-70  2017-11-28 CRAN (R 3.5.0)
+##  ggplot2    * 3.0.0   2018-07-03 cran (@3.0.0) 
+##  glue         1.2.0   2017-10-29 CRAN (R 3.5.0)
+##  graphics   * 3.5.0   2018-04-24 local         
+##  grDevices  * 3.5.0   2018-04-24 local         
+##  grid         3.5.0   2018-04-24 local         
+##  gtable       0.2.0   2016-02-26 CRAN (R 3.5.0)
+##  haven        1.1.1   2018-01-18 CRAN (R 3.5.0)
+##  hms          0.4.2   2018-03-10 CRAN (R 3.5.0)
+##  htmltools    0.3.6   2017-04-28 CRAN (R 3.5.0)
+##  httr         1.3.1   2017-08-20 CRAN (R 3.5.0)
+##  jsonlite     1.5     2017-06-01 CRAN (R 3.5.0)
+##  knitr        1.20    2018-02-20 CRAN (R 3.5.0)
+##  labeling     0.3     2014-08-23 CRAN (R 3.5.0)
+##  lattice      0.20-35 2017-03-25 CRAN (R 3.5.0)
+##  lazyeval     0.2.1   2017-10-29 CRAN (R 3.5.0)
+##  lubridate    1.7.4   2018-04-11 CRAN (R 3.5.0)
+##  magrittr     1.5     2014-11-22 CRAN (R 3.5.0)
+##  memoise      1.1.0   2017-04-21 CRAN (R 3.5.0)
+##  methods    * 3.5.0   2018-04-24 local         
+##  mnormt       1.5-5   2016-10-15 CRAN (R 3.5.0)
+##  modelr       0.1.2   2018-05-11 CRAN (R 3.5.0)
+##  munsell      0.4.3   2016-02-13 CRAN (R 3.5.0)
+##  nlme         3.1-137 2018-04-07 CRAN (R 3.5.0)
+##  parallel     3.5.0   2018-04-24 local         
+##  pillar       1.2.3   2018-05-25 CRAN (R 3.5.0)
+##  pkgconfig    2.0.1   2017-03-21 CRAN (R 3.5.0)
+##  plyr         1.8.4   2016-06-08 CRAN (R 3.5.0)
+##  psych        1.8.4   2018-05-06 CRAN (R 3.5.0)
+##  purrr      * 0.2.5   2018-05-29 CRAN (R 3.5.0)
+##  R6           2.2.2   2017-06-17 CRAN (R 3.5.0)
+##  Rcpp         0.12.17 2018-05-18 CRAN (R 3.5.0)
+##  readr      * 1.1.1   2017-05-16 CRAN (R 3.5.0)
+##  readxl       1.1.0   2018-04-20 CRAN (R 3.5.0)
+##  reshape2     1.4.3   2017-12-11 CRAN (R 3.5.0)
+##  rlang        0.2.1   2018-05-30 CRAN (R 3.5.0)
+##  rmarkdown    1.10    2018-06-11 cran (@1.10)  
+##  rprojroot    1.3-2   2018-01-03 CRAN (R 3.5.0)
+##  rstudioapi   0.7     2017-09-07 CRAN (R 3.5.0)
+##  rvest        0.3.2   2016-06-17 CRAN (R 3.5.0)
+##  scales       0.5.0   2017-08-24 CRAN (R 3.5.0)
+##  stats      * 3.5.0   2018-04-24 local         
+##  stringi      1.2.2   2018-05-02 CRAN (R 3.5.0)
+##  stringr    * 1.3.1   2018-05-10 CRAN (R 3.5.0)
+##  tibble     * 1.4.2   2018-01-22 CRAN (R 3.5.0)
+##  tidyr      * 0.8.1   2018-05-18 CRAN (R 3.5.0)
+##  tidyselect   0.2.4   2018-02-26 CRAN (R 3.5.0)
+##  tidyverse  * 1.2.1   2017-11-14 CRAN (R 3.5.0)
+##  tools        3.5.0   2018-04-24 local         
+##  utf8         1.1.4   2018-05-24 CRAN (R 3.5.0)
+##  utils      * 3.5.0   2018-04-24 local         
+##  withr        2.1.2   2018-03-15 CRAN (R 3.5.0)
+##  xfun         0.3     2018-07-06 CRAN (R 3.5.0)
+##  xml2         1.2.0   2018-01-24 CRAN (R 3.5.0)
 ##  yaml         2.1.19  2018-05-01 CRAN (R 3.5.0)&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 </description>
@@ -4147,12 +4245,12 @@ plot_grid(plotlist = plots, ncol=1)&lt;/code&gt;&lt;/pre&gt;
 &lt;div id=&#34;read-in-vcf-header&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Read in vcf header&lt;/h2&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ── Attaching packages ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ✔ ggplot2 3.0.0     ✔ purrr   0.2.4
+&lt;pre&gt;&lt;code&gt;## ── Attaching packages ────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## ✔ ggplot2 3.0.0     ✔ purrr   0.2.5
 ## ✔ tibble  1.4.2     ✔ dplyr   0.7.6
 ## ✔ tidyr   0.8.1     ✔ stringr 1.3.1
 ## ✔ readr   1.1.1     ✔ forcats 0.3.0&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ── Conflicts ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+&lt;pre&gt;&lt;code&gt;## ── Conflicts ───────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(stringr)
@@ -4460,331 +4558,85 @@ write(contig_size %&amp;gt;% filter(length &amp;lt; 3e7, contig != &amp;#39;hs37
 ##  ui       X11                         
 ##  language (EN)                        
 ##  collate  en_US.UTF-8                 
-##  tz       America/New_York            
-##  date     2018-07-16&lt;/code&gt;&lt;/pre&gt;
+##  tz       Europe/London               
+##  date     2018-09-17&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Packages -----------------------------------------------------------------&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##  package    * version date       source                           
-##  assertthat   0.2.0   2017-04-11 CRAN (R 3.5.0)                   
-##  backports    1.1.2   2017-12-13 CRAN (R 3.5.0)                   
-##  base       * 3.5.0   2018-04-24 local                            
-##  bindr        0.1.1   2018-03-13 CRAN (R 3.5.0)                   
-##  bindrcpp   * 0.2.2   2018-03-29 CRAN (R 3.5.0)                   
-##  blogdown     0.8.1   2018-07-16 Github (rstudio/blogdown@d54c39a)
-##  bookdown     0.7     2018-02-18 CRAN (R 3.5.0)                   
-##  broom        0.4.4   2018-03-29 CRAN (R 3.5.0)                   
-##  cellranger   1.1.0   2016-07-27 CRAN (R 3.5.0)                   
-##  cli          1.0.0   2017-11-05 CRAN (R 3.5.0)                   
-##  colorspace   1.3-2   2016-12-14 CRAN (R 3.5.0)                   
-##  compiler     3.5.0   2018-04-24 local                            
-##  crayon       1.3.4   2017-09-16 CRAN (R 3.5.0)                   
-##  datasets   * 3.5.0   2018-04-24 local                            
-##  devtools     1.13.5  2018-02-18 CRAN (R 3.5.0)                   
-##  digest       0.6.15  2018-01-28 CRAN (R 3.5.0)                   
-##  dplyr      * 0.7.6   2018-06-29 cran (@0.7.6)                    
-##  evaluate     0.10.1  2017-06-24 CRAN (R 3.5.0)                   
-##  forcats    * 0.3.0   2018-02-19 CRAN (R 3.5.0)                   
-##  foreign      0.8-70  2017-11-28 CRAN (R 3.5.0)                   
-##  ggplot2    * 3.0.0   2018-07-03 cran (@3.0.0)                    
-##  glue         1.2.0   2017-10-29 CRAN (R 3.5.0)                   
-##  graphics   * 3.5.0   2018-04-24 local                            
-##  grDevices  * 3.5.0   2018-04-24 local                            
-##  grid         3.5.0   2018-04-24 local                            
-##  gtable       0.2.0   2016-02-26 CRAN (R 3.5.0)                   
-##  haven        1.1.1   2018-01-18 CRAN (R 3.5.0)                   
-##  hms          0.4.2   2018-03-10 CRAN (R 3.5.0)                   
-##  htmltools    0.3.6   2017-04-28 CRAN (R 3.5.0)                   
-##  httr         1.3.1   2017-08-20 CRAN (R 3.5.0)                   
-##  jsonlite     1.5     2017-06-01 CRAN (R 3.5.0)                   
-##  knitr        1.20    2018-02-20 CRAN (R 3.5.0)                   
-##  lattice      0.20-35 2017-03-25 CRAN (R 3.5.0)                   
-##  lazyeval     0.2.1   2017-10-29 CRAN (R 3.5.0)                   
-##  lubridate    1.7.4   2018-04-11 CRAN (R 3.5.0)                   
-##  magrittr     1.5     2014-11-22 CRAN (R 3.5.0)                   
-##  memoise      1.1.0   2017-04-21 CRAN (R 3.5.0)                   
-##  methods    * 3.5.0   2018-04-24 local                            
-##  mnormt       1.5-5   2016-10-15 CRAN (R 3.5.0)                   
-##  modelr       0.1.2   2018-05-11 CRAN (R 3.5.0)                   
-##  munsell      0.4.3   2016-02-13 CRAN (R 3.5.0)                   
-##  nlme         3.1-137 2018-04-07 CRAN (R 3.5.0)                   
-##  parallel     3.5.0   2018-04-24 local                            
-##  pillar       1.2.3   2018-05-25 CRAN (R 3.5.0)                   
-##  pkgconfig    2.0.1   2017-03-21 CRAN (R 3.5.0)                   
-##  plyr         1.8.4   2016-06-08 CRAN (R 3.5.0)                   
-##  psych        1.8.4   2018-05-06 CRAN (R 3.5.0)                   
-##  purrr      * 0.2.4   2017-10-18 CRAN (R 3.5.0)                   
-##  R6           2.2.2   2017-06-17 CRAN (R 3.5.0)                   
-##  Rcpp         0.12.17 2018-05-18 CRAN (R 3.5.0)                   
-##  readr      * 1.1.1   2017-05-16 CRAN (R 3.5.0)                   
-##  readxl       1.1.0   2018-04-20 CRAN (R 3.5.0)                   
-##  reshape2     1.4.3   2017-12-11 CRAN (R 3.5.0)                   
-##  rlang        0.2.1   2018-05-30 CRAN (R 3.5.0)                   
-##  rmarkdown    1.10    2018-06-11 cran (@1.10)                     
-##  rprojroot    1.3-2   2018-01-03 CRAN (R 3.5.0)                   
-##  rstudioapi   0.7     2017-09-07 CRAN (R 3.5.0)                   
-##  rvest        0.3.2   2016-06-17 CRAN (R 3.5.0)                   
-##  scales       0.5.0   2017-08-24 CRAN (R 3.5.0)                   
-##  stats      * 3.5.0   2018-04-24 local                            
-##  stringi      1.2.2   2018-05-02 CRAN (R 3.5.0)                   
-##  stringr    * 1.3.1   2018-05-10 CRAN (R 3.5.0)                   
-##  tibble     * 1.4.2   2018-01-22 CRAN (R 3.5.0)                   
-##  tidyr      * 0.8.1   2018-05-18 CRAN (R 3.5.0)                   
-##  tidyselect   0.2.4   2018-02-26 CRAN (R 3.5.0)                   
-##  tidyverse  * 1.2.1   2017-11-14 CRAN (R 3.5.0)                   
-##  tools        3.5.0   2018-04-24 local                            
-##  utf8         1.1.4   2018-05-24 CRAN (R 3.5.0)                   
-##  utils      * 3.5.0   2018-04-24 local                            
-##  withr        2.1.2   2018-03-15 CRAN (R 3.5.0)                   
-##  xfun         0.3     2018-07-06 cran (@0.3)                      
-##  xml2         1.2.0   2018-01-24 CRAN (R 3.5.0)                   
+&lt;pre&gt;&lt;code&gt;##  package    * version date       source        
+##  assertthat   0.2.0   2017-04-11 CRAN (R 3.5.0)
+##  backports    1.1.2   2017-12-13 CRAN (R 3.5.0)
+##  base       * 3.5.0   2018-04-24 local         
+##  bindr        0.1.1   2018-03-13 CRAN (R 3.5.0)
+##  bindrcpp   * 0.2.2   2018-03-29 CRAN (R 3.5.0)
+##  blogdown     0.8     2018-07-15 CRAN (R 3.5.0)
+##  bookdown     0.7     2018-02-18 CRAN (R 3.5.0)
+##  broom        0.4.4   2018-03-29 CRAN (R 3.5.0)
+##  cellranger   1.1.0   2016-07-27 CRAN (R 3.5.0)
+##  cli          1.0.0   2017-11-05 CRAN (R 3.5.0)
+##  colorspace   1.3-2   2016-12-14 CRAN (R 3.5.0)
+##  compiler     3.5.0   2018-04-24 local         
+##  crayon       1.3.4   2017-09-16 CRAN (R 3.5.0)
+##  datasets   * 3.5.0   2018-04-24 local         
+##  devtools     1.13.6  2018-06-27 CRAN (R 3.5.0)
+##  digest       0.6.15  2018-01-28 CRAN (R 3.5.0)
+##  dplyr      * 0.7.6   2018-06-29 cran (@0.7.6) 
+##  evaluate     0.10.1  2017-06-24 CRAN (R 3.5.0)
+##  forcats    * 0.3.0   2018-02-19 CRAN (R 3.5.0)
+##  foreign      0.8-70  2017-11-28 CRAN (R 3.5.0)
+##  ggplot2    * 3.0.0   2018-07-03 cran (@3.0.0) 
+##  glue         1.2.0   2017-10-29 CRAN (R 3.5.0)
+##  graphics   * 3.5.0   2018-04-24 local         
+##  grDevices  * 3.5.0   2018-04-24 local         
+##  grid         3.5.0   2018-04-24 local         
+##  gtable       0.2.0   2016-02-26 CRAN (R 3.5.0)
+##  haven        1.1.1   2018-01-18 CRAN (R 3.5.0)
+##  hms          0.4.2   2018-03-10 CRAN (R 3.5.0)
+##  htmltools    0.3.6   2017-04-28 CRAN (R 3.5.0)
+##  httr         1.3.1   2017-08-20 CRAN (R 3.5.0)
+##  jsonlite     1.5     2017-06-01 CRAN (R 3.5.0)
+##  knitr        1.20    2018-02-20 CRAN (R 3.5.0)
+##  lattice      0.20-35 2017-03-25 CRAN (R 3.5.0)
+##  lazyeval     0.2.1   2017-10-29 CRAN (R 3.5.0)
+##  lubridate    1.7.4   2018-04-11 CRAN (R 3.5.0)
+##  magrittr     1.5     2014-11-22 CRAN (R 3.5.0)
+##  memoise      1.1.0   2017-04-21 CRAN (R 3.5.0)
+##  methods    * 3.5.0   2018-04-24 local         
+##  mnormt       1.5-5   2016-10-15 CRAN (R 3.5.0)
+##  modelr       0.1.2   2018-05-11 CRAN (R 3.5.0)
+##  munsell      0.4.3   2016-02-13 CRAN (R 3.5.0)
+##  nlme         3.1-137 2018-04-07 CRAN (R 3.5.0)
+##  parallel     3.5.0   2018-04-24 local         
+##  pillar       1.2.3   2018-05-25 CRAN (R 3.5.0)
+##  pkgconfig    2.0.1   2017-03-21 CRAN (R 3.5.0)
+##  plyr         1.8.4   2016-06-08 CRAN (R 3.5.0)
+##  psych        1.8.4   2018-05-06 CRAN (R 3.5.0)
+##  purrr      * 0.2.5   2018-05-29 CRAN (R 3.5.0)
+##  R6           2.2.2   2017-06-17 CRAN (R 3.5.0)
+##  Rcpp         0.12.17 2018-05-18 CRAN (R 3.5.0)
+##  readr      * 1.1.1   2017-05-16 CRAN (R 3.5.0)
+##  readxl       1.1.0   2018-04-20 CRAN (R 3.5.0)
+##  reshape2     1.4.3   2017-12-11 CRAN (R 3.5.0)
+##  rlang        0.2.1   2018-05-30 CRAN (R 3.5.0)
+##  rmarkdown    1.10    2018-06-11 cran (@1.10)  
+##  rprojroot    1.3-2   2018-01-03 CRAN (R 3.5.0)
+##  rstudioapi   0.7     2017-09-07 CRAN (R 3.5.0)
+##  rvest        0.3.2   2016-06-17 CRAN (R 3.5.0)
+##  scales       0.5.0   2017-08-24 CRAN (R 3.5.0)
+##  stats      * 3.5.0   2018-04-24 local         
+##  stringi      1.2.2   2018-05-02 CRAN (R 3.5.0)
+##  stringr    * 1.3.1   2018-05-10 CRAN (R 3.5.0)
+##  tibble     * 1.4.2   2018-01-22 CRAN (R 3.5.0)
+##  tidyr      * 0.8.1   2018-05-18 CRAN (R 3.5.0)
+##  tidyselect   0.2.4   2018-02-26 CRAN (R 3.5.0)
+##  tidyverse  * 1.2.1   2017-11-14 CRAN (R 3.5.0)
+##  tools        3.5.0   2018-04-24 local         
+##  utf8         1.1.4   2018-05-24 CRAN (R 3.5.0)
+##  utils      * 3.5.0   2018-04-24 local         
+##  withr        2.1.2   2018-03-15 CRAN (R 3.5.0)
+##  xfun         0.3     2018-07-06 CRAN (R 3.5.0)
+##  xml2         1.2.0   2018-01-24 CRAN (R 3.5.0)
 ##  yaml         2.1.19  2018-05-01 CRAN (R 3.5.0)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;```&lt;/p&gt;
 &lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Let’s Plot 2: Smoothed Lines</title>
-      <link>/./post/let-s-plot-2-smoothed-lines/</link>
-      <pubDate>Sun, 04 Feb 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/./post/let-s-plot-2-smoothed-lines/</guid>
-      <description>&lt;div id=&#34;TOC&#34;&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#get-data-two-xls-files-from-here&#34;&gt;Get data (two xls files) from here:&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#load-data-and-look-at-structure-str&#34;&gt;Load data and look at structure (str)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#head-first-few-lines&#34;&gt;Head (first few lines)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#auc-n1p1-latency&#34;&gt;AUC, N1P1, Latency&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#summary-of-eel-and-cobra-auc&#34;&gt;Summary of eel and cobra AUC&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#what-kind-of-time-points-or-conditions-or-whatever-do-we-have-again&#34;&gt;What kind of time points or conditions or whatever do we have again?&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#summary-by-pig-and-region&#34;&gt;Summary by pig and region&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#plot-auc-by-time-and-region-and-pig&#34;&gt;Plot AUC by time and region and pig&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#prettier-plot-with-lines-and-more-formatting&#34;&gt;Prettier plot with lines and more formatting&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#n1p1-plot&#34;&gt;N1P1 Plot&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#latency-plot&#34;&gt;Latency plot&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#bonus&#34;&gt;Bonus&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Data from Aaron Rising.&lt;/p&gt;
-&lt;div id=&#34;get-data-two-xls-files-from-here&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Get data (two xls files) from here:&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/davemcg/Let_us_plot/tree/master/002_smoothed_lines&#34; class=&#34;uri&#34;&gt;https://github.com/davemcg/Let_us_plot/tree/master/002_smoothed_lines&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;The rmd is also here if you want the source code&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Two different excel files (Cobra and Eel). Pig names?&lt;/p&gt;
-&lt;p&gt;They have metrics for eye function across time.&lt;/p&gt;
-&lt;p&gt;Aaron told me to take the ‘first tab’ in each excel file. Which is not the case, as at least to me, ‘Sheet 1’ is empty in both. So I’m using the next tab in both, which is ‘Normalized 2 Base For Comb’&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;load-data-and-look-at-structure-str&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Load data and look at structure (str)&lt;/h2&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ── Attaching packages ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ✔ ggplot2 3.0.0     ✔ purrr   0.2.4
-## ✔ tibble  1.4.2     ✔ dplyr   0.7.6
-## ✔ tidyr   0.8.1     ✔ stringr 1.3.1
-## ✔ readr   1.1.1     ✔ forcats 0.3.0&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ── Conflicts ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
-## ✖ dplyr::filter() masks stats::filter()
-## ✖ dplyr::lag()    masks stats::lag()&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggsci)
-
-cobra &amp;lt;- readxl::read_xls(&amp;#39;~/git/Let_us_plot/002_smoothed_lines/Cobra 749--_Normalized_Data_.xls&amp;#39;, sheet = &amp;#39;Normalized 2 Base For Comb&amp;#39;)
-cobra %&amp;gt;% str()&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Classes &amp;#39;tbl_df&amp;#39;, &amp;#39;tbl&amp;#39; and &amp;#39;data.frame&amp;#39;:    187 obs. of  8 variables:
-##  $ Pig_Name  : chr  &amp;quot;Cobra 749&amp;quot; &amp;quot;Cobra 749&amp;quot; &amp;quot;Cobra 749&amp;quot; &amp;quot;Cobra 749&amp;quot; ...
-##  $ Week      : num  0 0 0 0 0 0 0 0 0 0 ...
-##  $ Region    : chr  &amp;quot;Healthy_Implant&amp;quot; &amp;quot;Healthy_Implant&amp;quot; &amp;quot;Healthy_Implant&amp;quot; &amp;quot;Healthy_Implant&amp;quot; ...
-##  $ Cells     : logi  FALSE FALSE FALSE FALSE FALSE FALSE ...
-##  $ Output    : chr  &amp;quot;Area-Under-Curve&amp;quot; &amp;quot;HFC-Scalar&amp;quot; &amp;quot;LFC-Scalar&amp;quot; &amp;quot;N1&amp;quot; ...
-##  $ GroupCount: num  3 3 3 3 3 3 3 3 3 3 ...
-##  $ Data      : num  1 1 1 1 15.7 ...
-##  $ STD       : num  0.0994 0.3493 0.2259 0.1063 0.5774 ...&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;eel &amp;lt;- readxl::read_xls(&amp;#39;~/git/Let_us_plot/002_smoothed_lines/Eel 668--_Normalized_Data_.xls&amp;#39;, sheet = &amp;#39;Normalized 2 Base For Comb&amp;#39;)
-eel %&amp;gt;% str()&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Classes &amp;#39;tbl_df&amp;#39;, &amp;#39;tbl&amp;#39; and &amp;#39;data.frame&amp;#39;:    192 obs. of  8 variables:
-##  $ Pig_Name  : chr  &amp;quot;Eel 668&amp;quot; &amp;quot;Eel 668&amp;quot; &amp;quot;Eel 668&amp;quot; &amp;quot;Eel 668&amp;quot; ...
-##  $ Week      : num  0 0 0 0 0 0 0 0 0 0 ...
-##  $ Region    : chr  &amp;quot;Healthy_Sham&amp;quot; &amp;quot;Healthy_Sham&amp;quot; &amp;quot;Healthy_Sham&amp;quot; &amp;quot;Healthy_Sham&amp;quot; ...
-##  $ Cells     : logi  FALSE FALSE FALSE FALSE FALSE FALSE ...
-##  $ Output    : chr  &amp;quot;Area-Under-Curve&amp;quot; &amp;quot;HFC-Scalar&amp;quot; &amp;quot;LFC-Scalar&amp;quot; &amp;quot;N1&amp;quot; ...
-##  $ GroupCount: num  3 3 3 3 3 3 3 3 3 3 ...
-##  $ Data      : num  1 1 1 1 20.7 ...
-##  $ STD       : num  0.0537 0.5141 0.1355 0.0631 0.5774 ...&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;head-first-few-lines&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Head (first few lines)&lt;/h2&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;cobra %&amp;gt;% head()&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## # A tibble: 6 x 8
-##   Pig_Name   Week Region          Cells Output     GroupCount  Data    STD
-##   &amp;lt;chr&amp;gt;     &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;           &amp;lt;lgl&amp;gt; &amp;lt;chr&amp;gt;           &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt;  &amp;lt;dbl&amp;gt;
-## 1 Cobra 749     0 Healthy_Implant FALSE Area-Unde…          3   1   0.0994
-## 2 Cobra 749     0 Healthy_Implant FALSE HFC-Scalar          3   1.  0.349 
-## 3 Cobra 749     0 Healthy_Implant FALSE LFC-Scalar          3   1   0.226 
-## 4 Cobra 749     0 Healthy_Implant FALSE N1                  3   1.  0.106 
-## 5 Cobra 749     0 Healthy_Implant FALSE N1-Latency          3  15.7 0.577 
-## 6 Cobra 749     0 Healthy_Implant FALSE N1-Prom             3   1   0.177&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;eel %&amp;gt;% head()&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## # A tibble: 6 x 8
-##   Pig_Name  Week Region       Cells Output         GroupCount  Data    STD
-##   &amp;lt;chr&amp;gt;    &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;        &amp;lt;lgl&amp;gt; &amp;lt;chr&amp;gt;               &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt;  &amp;lt;dbl&amp;gt;
-## 1 Eel 668      0 Healthy_Sham FALSE Area-Under-Cu…          3   1   0.0537
-## 2 Eel 668      0 Healthy_Sham FALSE HFC-Scalar              3   1.  0.514 
-## 3 Eel 668      0 Healthy_Sham FALSE LFC-Scalar              3   1   0.135 
-## 4 Eel 668      0 Healthy_Sham FALSE N1                      3   1.  0.0631
-## 5 Eel 668      0 Healthy_Sham FALSE N1-Latency              3  20.7 0.577 
-## 6 Eel 668      0 Healthy_Sham FALSE N1-Prom                 3   1.  0.0781&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Looks like we have implant (cobra) vs sham (eel)?&lt;/p&gt;
-&lt;p&gt;We have several types of &lt;code&gt;Output&lt;/code&gt; (Area-Under-Curve, HFC-Scalar, LFC-Scalar, N1, N1-Latency, N1-Prom, N1-Width, N1P1, N2, N2-Latency, N2-Prom, N2-Width, N2P2, P1, P1-Latency, P1-Prom, P1-Width, P1N2, P2, P2-Latency, P2-Prom, P2-Width, Pos.-Area-Under-Curve, RMS-HFC) which are different variables that have been measured. I asked Aaron what he cared most about and he suggested AUC, N1P1, and Latency&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;auc-n1p1-latency&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;AUC, N1P1, Latency&lt;/h2&gt;
-&lt;p&gt;We need to get the exact names for those variables&lt;/p&gt;
-&lt;p&gt;We can extract all of the &lt;code&gt;Output&lt;/code&gt; values and only print the unique ones&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;eel$Output %&amp;gt;% unique()&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##  [1] &amp;quot;Area-Under-Curve&amp;quot;      &amp;quot;HFC-Scalar&amp;quot;           
-##  [3] &amp;quot;LFC-Scalar&amp;quot;            &amp;quot;N1&amp;quot;                   
-##  [5] &amp;quot;N1-Latency&amp;quot;            &amp;quot;N1-Prom&amp;quot;              
-##  [7] &amp;quot;N1-Width&amp;quot;              &amp;quot;N1P1&amp;quot;                 
-##  [9] &amp;quot;N2&amp;quot;                    &amp;quot;N2-Latency&amp;quot;           
-## [11] &amp;quot;N2-Prom&amp;quot;               &amp;quot;N2-Width&amp;quot;             
-## [13] &amp;quot;N2P2&amp;quot;                  &amp;quot;P1&amp;quot;                   
-## [15] &amp;quot;P1-Latency&amp;quot;            &amp;quot;P1-Prom&amp;quot;              
-## [17] &amp;quot;P1-Width&amp;quot;              &amp;quot;P1N2&amp;quot;                 
-## [19] &amp;quot;P2&amp;quot;                    &amp;quot;P2-Latency&amp;quot;           
-## [21] &amp;quot;P2-Prom&amp;quot;               &amp;quot;P2-Width&amp;quot;             
-## [23] &amp;quot;Pos.-Area-Under-Curve&amp;quot; &amp;quot;RMS-HFC&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;OK, so &lt;code&gt;Area-Under-Curve&lt;/code&gt;, &lt;code&gt;N1P1&lt;/code&gt;, and &lt;code&gt;N1-Latency&lt;/code&gt; are the three variables we’ll take a look at. Or fewer if I get confused.&lt;/p&gt;
-&lt;p&gt;Let’s start by just looking at AUC. Generically it is a machine learning measure of how often an algorithm will distinguish the right answer over the wrong one. 1 is perfect. 0 is perfect wrong. 0.5 is a monkey flipping coins. Not sure what it means here.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;summary-of-eel-and-cobra-auc&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Summary of eel and cobra AUC&lt;/h2&gt;
-&lt;p&gt;Get the summary data from just the AUC values for each pig&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;cobra %&amp;gt;% filter(Output == &amp;#39;Area-Under-Curve&amp;#39;) %&amp;gt;% pull(Data) %&amp;gt;% summary()&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.3653  0.4629  0.6895  0.6989  0.9675  1.0000&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;eel %&amp;gt;% filter(Output == &amp;#39;Area-Under-Curve&amp;#39;) %&amp;gt;% pull(Data) %&amp;gt;% summary()&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.6022  0.7717  0.9596  0.8698  0.9959  1.0000&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;So the sham (eel) has a better AUC?&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;what-kind-of-time-points-or-conditions-or-whatever-do-we-have-again&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;What kind of time points or conditions or whatever do we have again?&lt;/h2&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;cobra %&amp;gt;% filter(Output == &amp;#39;Area-Under-Curve&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## # A tibble: 8 x 8
-##   Pig_Name   Week Region          Cells Output     GroupCount  Data    STD
-##   &amp;lt;chr&amp;gt;     &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;           &amp;lt;lgl&amp;gt; &amp;lt;chr&amp;gt;           &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt;  &amp;lt;dbl&amp;gt;
-## 1 Cobra 749     0 Healthy_Implant FALSE Area-Unde…          3 1     0.0994
-## 2 Cobra 749    14 Healthy_Implant FALSE Area-Unde…          3 0.690 0.0877
-## 3 Cobra 749    35 Healthy_Implant FALSE Area-Unde…          3 0.689 0.119 
-## 4 Cobra 749    58 Healthy_Implant FALSE Area-Unde…          3 0.957 0.208 
-## 5 Cobra 749     0 Implant_NoLx    FALSE Area-Unde…          3 1     0.0868
-## 6 Cobra 749    14 Implant_NoLx    FALSE Area-Unde…          3 0.365 0.0964
-## 7 Cobra 749    35 Implant_NoLx    FALSE Area-Unde…          3 0.409 0.102 
-## 8 Cobra 749    58 Implant_NoLx    FALSE Area-Unde…          3 0.481 0.212&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Oh, we have &lt;em&gt;two kinds or regions&lt;/em&gt;. Didn’t see that before. So the above summary doesn’t take that into account.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;summary-by-pig-and-region&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Summary by pig and region&lt;/h2&gt;
-&lt;p&gt;This summary is &lt;code&gt;group_by(Region)&lt;/code&gt; so we’ll get summary data (&lt;code&gt;mean&lt;/code&gt; and &lt;code&gt;median&lt;/code&gt;) by Region now&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;cobra %&amp;gt;% filter(Output == &amp;#39;Area-Under-Curve&amp;#39;) %&amp;gt;% group_by(Region) %&amp;gt;% summarise(mean = mean(Data), median= median(Data))&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## # A tibble: 2 x 3
-##   Region           mean median
-##   &amp;lt;chr&amp;gt;           &amp;lt;dbl&amp;gt;  &amp;lt;dbl&amp;gt;
-## 1 Healthy_Implant 0.834  0.823
-## 2 Implant_NoLx    0.564  0.445&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;eel %&amp;gt;% filter(Output == &amp;#39;Area-Under-Curve&amp;#39;) %&amp;gt;% group_by(Region) %&amp;gt;% summarise(mean = mean(Data), median= median(Data))&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## # A tibble: 2 x 3
-##   Region        mean median
-##   &amp;lt;chr&amp;gt;        &amp;lt;dbl&amp;gt;  &amp;lt;dbl&amp;gt;
-## 1 Healthy_Sham 0.978  0.992
-## 2 Implant-Sham 0.761  0.721&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;We also have time (Week). This will be our x axis when we plot, as this data is sampled across time&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;plot-auc-by-time-and-region-and-pig&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Plot AUC by time and region and pig&lt;/h2&gt;
-&lt;p&gt;x axis is time, y axis is AUC, and split by region/pig&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;cobra_eel_AUC &amp;lt;- rbind(cobra %&amp;gt;% filter(Output == &amp;#39;Area-Under-Curve&amp;#39;), 
-                       eel %&amp;gt;% filter(Output == &amp;#39;Area-Under-Curve&amp;#39;))
-cobra_eel_AUC %&amp;gt;% 
-  ggplot(aes(x=Week, y=Data, shape=Region, colour=Region)) + 
-   geom_point()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/././post/2018-02-04-let-s-plot-2-smoothed-lines_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;prettier-plot-with-lines-and-more-formatting&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Prettier plot with lines and more formatting&lt;/h2&gt;
-&lt;p&gt;Using the ggsci library with the Nature Publishing Group color scheme (&lt;code&gt;scale_colour_npg()&lt;/code&gt;)&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;cobra_eel_AUC %&amp;gt;% 
-  ggplot(aes(x=Week, y=Data, colour=Region, shape = Pig_Name)) + 
-  geom_point(size=4) + 
-  geom_smooth(method = &amp;#39;loess&amp;#39;) + ## this draws the smoothed lines through the four points. It auto picks an algorithm that works. loess was used here
-  theme_bw() + scale_colour_npg() +
-  ylab(&amp;#39;AUC&amp;#39;) &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/././post/2018-02-04-let-s-plot-2-smoothed-lines_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;n1p1-plot&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;N1P1 Plot&lt;/h2&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;rbind(cobra %&amp;gt;% filter(Output == &amp;#39;N1P1&amp;#39;), eel %&amp;gt;% filter(Output == &amp;#39;N1P1&amp;#39;)) %&amp;gt;% 
-  ggplot(aes(x=Week, y=Data, colour=Region, shape = Pig_Name)) + 
-  geom_point(size=4) + 
-  geom_smooth() + ## this draws the smoothed lines through the four points. It auto picks an algorithm that works. loess was used here
-  theme_bw() + scale_colour_npg() +
-  ylab(&amp;#39;N1P1&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## `geom_smooth()` using method = &amp;#39;loess&amp;#39; and formula &amp;#39;y ~ x&amp;#39;&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/././post/2018-02-04-let-s-plot-2-smoothed-lines_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;latency-plot&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Latency plot&lt;/h2&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;rbind(cobra %&amp;gt;% filter(Output == &amp;#39;N1-Latency&amp;#39;), eel %&amp;gt;% filter(Output == &amp;#39;N1-Latency&amp;#39;)) %&amp;gt;% 
-  ggplot(aes(x=Week, y=Data, colour=Region, shape = Pig_Name)) + 
-  geom_point(size=4) + 
-  geom_smooth() + ## this draws the smoothed lines through the four points. It auto picks an algorithm that works. loess was used here
-  theme_bw() + scale_colour_npg() +
-  ylab(&amp;#39;N1-Latency&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## `geom_smooth()` using method = &amp;#39;loess&amp;#39; and formula &amp;#39;y ~ x&amp;#39;&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/././post/2018-02-04-let-s-plot-2-smoothed-lines_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;bonus&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Bonus&lt;/h2&gt;
-&lt;p&gt;We have many variables. We can get a quick sense of how all of the variables separate out the major data categories with a PCA&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;all_pigs &amp;lt;- rbind(cobra, eel) %&amp;gt;% 
-  select(Region, Pig_Name, Week, Output, Data) %&amp;gt;% 
-  spread(Output, Data)
-## toss P-Prime-Latency column
-all_pigs &amp;lt;- all_pigs %&amp;gt;% select(-`P-Prime-Latency`)
-## remove columns with NA
-all_pigs &amp;lt;- all_pigs[complete.cases(all_pigs), complete.cases(t(all_pigs))]
-pca &amp;lt;- prcomp(all_pigs[,4:ncol(all_pigs)], scale. = T)
-
-## pull out PCA coordinates (pca$x) and add to all_pigs with the cbind
-all_pigs &amp;lt;- cbind(all_pigs, pca$x)
-
-ggplot(all_pigs, aes(x=PC1, y=PC4, color=as.factor(Week), shape=Region)) + 
-  geom_point(size=5, alpha=0.7) + 
-  theme_bw() + 
-  scale_colour_npg() &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/././post/2018-02-04-let-s-plot-2-smoothed-lines_files/figure-html/unnamed-chunk-11-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>John Bryan</title>
-      <link>/./people/john_bryan/</link>
-      <pubDate>Thu, 01 Feb 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/./people/john_bryan/</guid>
-      <description>
-
-&lt;h2 id=&#34;november-2016-may-2018&#34;&gt;November 2016 - May 2018&lt;/h2&gt;
-
-&lt;h2 id=&#34;education&#34;&gt;Education&lt;/h2&gt;
-
-&lt;p&gt;BA, Mathematics Major, from Clarement 2016&lt;/p&gt;
-
-&lt;h2 id=&#34;next-position&#34;&gt;Next position&lt;/h2&gt;
-
-&lt;p&gt;[BLANK] Medical School&lt;/p&gt;
 </description>
     </item>
     

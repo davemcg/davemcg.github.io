@@ -1,0 +1,126 @@
+---
+title: '#GI2018 - Day One'
+author: David McGaughey
+date: '2018-09-17'
+slug: gi2018-day-one
+categories:
+  - GI2018
+  - bioinformatics
+tags:
+  - conference
+  - GI2018
+  - bioinformatics
+  - talks
+header:
+  caption: ''
+  image: ''
+output:
+  blogdown::html_page:
+    toc: true
+---
+
+
+# Intro
+Very sparse and poorly written notes covering [#GI2018](https://twitter.com/hashtag/GI2018?src=hash). 
+
+Typos everywhere. Things may change dramatically over time as I scan back through notes.
+
+I've tried to respect \#notwitter. Will be updated periodically. 
+
+Speaker (Lab | Group)
+
+# 2018-09-17
+
+# Quinlan Intro
+
+## Sarah Teichmann (Teichmann Lab)
+
+Cell Atlas Technologies and the Maternal-Fetal Interface
+
+[Human Cell Atlas plug](humancellatlas.org)
+  - 600 scientists
+  - scRNAseq + spatial methods
+
+scRNA works OK
+  - 70%+ pearson cor (among genes?)
+  - Detection limit pretty good after 1 million reads
+  - [Svensson and Teichmann preprint](https://www.biorxiv.org/content/early/2016/09/08/073692)
+
+Spatial Tech
+  - i.e. gene expression at voxel resolution in a non-destroyed tissue
+    - 1 voxel ~ 20 cells
+  - Hope to ID spatially variable genes
+    - [github.com/TeichLab/SpatialDE]
+    - Svensson and Teichmann
+
+Braga and Stegle: Merge Spatial TX with scRNA
+
+Future stuffs: Histology merged with scRNA
+
+Back to HCA
+  - Many tissues, many scientists, many countries
+  - curious if any integration with Chan-Zuckerberg
+  
+Moving onto to Maternal-fetal interface
+  - tricky area
+  - immune component
+  - two organisms
+  - *tumor like*
+  - scRNA + WGS resolved fetal/maternal adn cell tyes
+
+# Girgio Gonnella (Stefan Kurtz)
+Flexible and interactive visualization of GFA sequence graphs
+
+Graphical Fragment Assembly
+  - format for representing sequence graphs
+  - contig output not as informative as graphs
+
+GFA1 proposal format from Heng Li releaseed in 2016-09
+
+GFA2 2017-01 more general
+
+Today more assemblers are using
+
+GFA2 format:
+  - header
+  - sequences
+  - relationships
+  - RGFA (Ruby)
+  - Gfapy (python)
+  
+GfaViz
+  - visualization of GFA2 (and GFA1)
+  - C++, QT, OGDF
+  - GUI and CLI
+  - Two layouts, many options to customize views
+  
+Scaffolding graphs
+  - dealing with pos gaps (missing seq) and neg gaps (contig overlap by repeats)
+  - Show how it looks with Bandage, no gap info
+  - much busier with GfaViz 
+    - but now can see gap info between the pieces
+
+Long reads
+  - local alignments are messy (noisy data)
+  - GFA2 has *internal* alignments
+  
+Release is *later this year*
+  - ggonnella on github 
+  - email: gonnella@zbh.uni-hamburg.de
+  
+# Luke Zappia (Oshlack?)
+Using clustering trees to visualize scRNA-seq data
+
+(caps my own)
+SO MANY CLUSTERING TOOLS
+
+T-SNE IS NOT CLUSTERING
+
+How do we decide how many clusters?
+
+When deciding k (cluster num) you can think of a graph and with edge weights to assess interesting groups
+
+Cells on edge / num of cells in high res cluster
+
+Above equation good way to think about usefulness of cluster groups
+

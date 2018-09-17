@@ -5,6 +5,15 @@
     
     <url>
     
+      <loc>/./post/gi2018-day-one/</loc>
+      <lastmod>2018-09-17T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/./culture/onboarding/</loc>
       <lastmod>2018-07-16T00:00:00+00:00</lastmod>
     </url>
@@ -78,6 +87,15 @@
     <url>
     
       <loc>/./post/are-you-in-genomics-stop-using-roc-use-pr/</loc>
+      <lastmod>2018-03-03T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/./post/traffic-monitoring-intro/</loc>
       <lastmod>2018-03-03T00:00:00+00:00</lastmod>
     </url>
     
@@ -177,7 +195,7 @@
     <url>
     
       <loc>/./post/</loc>
-      <lastmod>2017-01-01T00:00:00-05:00</lastmod>
+      <lastmod>2017-01-01T00:00:00+00:00</lastmod>
     </url>
     
   
@@ -204,16 +222,6 @@
     
     <url>
     
-      <loc>/./tags/bash/</loc>
-      <lastmod>2018-04-20T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
       <loc>/./categories/bash/</loc>
       <lastmod>2018-04-20T00:00:00+00:00</lastmod>
       <priority>0</priority>
@@ -224,8 +232,8 @@
     
     <url>
     
-      <loc>/./tags/bioinformatics/</loc>
-      <lastmod>2018-06-18T00:00:00+00:00</lastmod>
+      <loc>/./tags/bash/</loc>
+      <lastmod>2018-04-20T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -235,7 +243,7 @@
     <url>
     
       <loc>/./categories/bioinformatics/</loc>
-      <lastmod>2018-06-18T00:00:00+00:00</lastmod>
+      <lastmod>2018-09-17T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -244,8 +252,8 @@
     
     <url>
     
-      <loc>/./tags/bog18/</loc>
-      <lastmod>2018-05-08T00:00:00+00:00</lastmod>
+      <loc>/./tags/bioinformatics/</loc>
+      <lastmod>2018-09-17T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -255,6 +263,16 @@
     <url>
     
       <loc>/./categories/bog18/</loc>
+      <lastmod>2018-05-08T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/./tags/bog18/</loc>
       <lastmod>2018-05-08T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -285,7 +303,7 @@
     <url>
     
       <loc>/./tags/conference/</loc>
-      <lastmod>2018-05-08T00:00:00+00:00</lastmod>
+      <lastmod>2018-09-17T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -326,6 +344,26 @@
     
       <loc>/./tags/eyeintegration/</loc>
       <lastmod>2018-02-01T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/./categories/gi2018/</loc>
+      <lastmod>2018-09-17T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/./tags/gi2018/</loc>
+      <lastmod>2018-09-17T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -404,7 +442,7 @@
     
     <url>
     
-      <loc>/./tags/onboarding/</loc>
+      <loc>/./categories/onboarding/</loc>
       <lastmod>2018-07-16T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -414,7 +452,7 @@
     
     <url>
     
-      <loc>/./categories/onboarding/</loc>
+      <loc>/./tags/onboarding/</loc>
       <lastmod>2018-07-16T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -426,6 +464,26 @@
     
       <loc>/./people/</loc>
       <lastmod>2018-02-01T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/./categories/pi/</loc>
+      <lastmod>2018-03-03T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/./tags/pi/</loc>
+      <lastmod>2018-03-03T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -474,8 +532,8 @@
     
     <url>
     
-      <loc>/./tags/quinlanverse/</loc>
-      <lastmod>2018-02-08T00:00:00+00:00</lastmod>
+      <loc>/./categories/python/</loc>
+      <lastmod>2018-03-03T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -484,8 +542,18 @@
     
     <url>
     
-      <loc>/./tags/r/</loc>
-      <lastmod>2018-05-07T00:00:00+00:00</lastmod>
+      <loc>/./tags/python/</loc>
+      <lastmod>2018-03-03T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/./tags/quinlanverse/</loc>
+      <lastmod>2018-02-08T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -504,8 +572,38 @@
     
     <url>
     
+      <loc>/./tags/r/</loc>
+      <lastmod>2018-05-07T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/./tags/rna/</loc>
       <lastmod>2018-02-01T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/./categories/raspberry/</loc>
+      <lastmod>2018-03-03T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/./tags/raspberry/</loc>
+      <lastmod>2018-03-03T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -534,7 +632,7 @@
     
     <url>
     
-      <loc>/./tags/script/</loc>
+      <loc>/./categories/script/</loc>
       <lastmod>2018-02-07T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -544,7 +642,7 @@
     
     <url>
     
-      <loc>/./categories/script/</loc>
+      <loc>/./tags/script/</loc>
       <lastmod>2018-02-07T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -565,7 +663,7 @@
     <url>
     
       <loc>/./tags/talks/</loc>
-      <lastmod>2018-05-08T00:00:00+00:00</lastmod>
+      <lastmod>2018-09-17T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -585,7 +683,7 @@
     <url>
     
       <loc>/./</loc>
-      <lastmod>2017-10-15T00:00:00-04:00</lastmod>
+      <lastmod>2017-10-15T00:00:00+01:00</lastmod>
       <priority>0</priority>
     </url>
     
