@@ -168,11 +168,12 @@ Expression Atlas
   - **super useful resource, unfortunately in my experience pain to get data into R with their R packages**
     - **I find it easier to just find the tsv output link and then slurp that into R**
   - **big value in consistent computational workflows**
-  - >3,300 datasets, from all the big consortia (GTEx, FANTOM, etc)
+  - `>3,300` datasets, from all the big consortia (GTEx, FANTOM, etc)
   
 clusterSeq package
   
   - **missed what this does but looks like a good thing to check out...**
+  - from bioconductor page: *Identification of clusters of co-expressed genes based on their expression across multiple (replicated) biological samples.*
   
 Can embed Expression Atlas data on other pages (ensembl does this)
 
@@ -186,3 +187,5 @@ Future:
   - merge bulk and scRNA data
   - ....something else I missed about metadata?
   
+Q: How is data updated with genome build change?
+A: In lock step, can view old versions

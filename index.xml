@@ -165,13 +165,12 @@
 &lt;li&gt;&lt;strong&gt;I find it easier to just find the tsv output link and then slurp that into R&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;big value in consistent computational workflows&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;blockquote&gt;
-&lt;p&gt;3,300 datasets, from all the big consortia (GTEx, FANTOM, etc)&lt;/p&gt;
-&lt;/blockquote&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;gt;3,300&lt;/code&gt; datasets, from all the big consortia (GTEx, FANTOM, etc)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;clusterSeq package&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;missed what this does but looks like a good thing to check out…&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;from bioconductor page: &lt;em&gt;Identification of clusters of co-expressed genes based on their expression across multiple (replicated) biological samples.&lt;/em&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Can embed Expression Atlas data on other pages (ensembl does this)&lt;/p&gt;
 &lt;p&gt;scRNA-seq data also - again public data, consistent processing (extension of iRAP) - can see whether gene is considered a &lt;em&gt;marker&lt;/em&gt; gene (&lt;strong&gt;not sure how this is picked&lt;/strong&gt;) - have a t-SNE(?) interactive plot view and shows your favorite gene colored&lt;/p&gt;
@@ -180,6 +179,7 @@
 &lt;li&gt;merge bulk and scRNA data&lt;/li&gt;
 &lt;li&gt;….something else I missed about metadata?&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;Q: How is data updated with genome build change? A: In lock step, can view old versions&lt;/p&gt;
 &lt;/div&gt;
 </description>
     </item>
