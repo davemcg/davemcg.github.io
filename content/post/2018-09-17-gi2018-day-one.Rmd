@@ -29,7 +29,7 @@ I've tried to respect \#notwitter. Will be updated periodically.
 
 Speaker (Lab | Group)
 
-**MY VOICE**
+**BOLDED is voice**
 
 # 2018-09-17
 
@@ -40,15 +40,18 @@ Speaker (Lab | Group)
 Cell Atlas Technologies and the Maternal-Fetal Interface
 
 [Human Cell Atlas plug](humancellatlas.org)
+
   - 600 scientists
   - scRNAseq + spatial methods
 
 scRNA works OK
+
   - 70%+ pearson cor (among genes?)
   - Detection limit pretty good after 1 million reads
   - [Svensson and Teichmann preprint](https://www.biorxiv.org/content/early/2016/09/08/073692)
 
 Spatial Tech
+
   - i.e. gene expression at voxel resolution in a non-destroyed tissue
     - 1 voxel ~ 20 cells
   - Hope to ID spatially variable genes
@@ -60,10 +63,12 @@ Braga and Stegle: Merge Spatial TX with scRNA
 Future stuffs: Histology merged with scRNA
 
 Back to HCA
+
   - Many tissues, many scientists, many countries
   - curious if any integration with Chan-Zuckerberg
   
 Moving onto to Maternal-fetal interface
+
   - tricky area
   - immune component
   - two organisms
@@ -74,6 +79,7 @@ Moving onto to Maternal-fetal interface
 Flexible and interactive visualization of GFA sequence graphs
 
 Graphical Fragment Assembly
+
   - format for representing sequence graphs
   - contig output not as informative as graphs
 
@@ -84,6 +90,7 @@ GFA2 2017-01 more general
 Today more assemblers are using
 
 GFA2 format:
+
   - header
   - sequences
   - relationships
@@ -91,22 +98,26 @@ GFA2 format:
   - Gfapy (python)
   
 GfaViz
+
   - visualization of GFA2 (and GFA1)
   - C++, QT, OGDF
   - GUI and CLI
   - Two layouts, many options to customize views
   
 Scaffolding graphs
+
   - dealing with pos gaps (missing seq) and neg gaps (contig overlap by repeats)
   - Show how it looks with Bandage, no gap info
   - much busier with GfaViz 
     - but now can see gap info between the pieces
 
 Long reads
+
   - local alignments are messy (noisy data)
   - GFA2 has *internal* alignments
   
 Release is *later this year*
+
   - ggonnella on github 
   - email: gonnella@zbh.uni-hamburg.de
   
@@ -129,6 +140,7 @@ Above equation good way to think about usefulness of cluster groups
 As we increase k, we can see how the graph changes and can get a sense of whether k should be changed
 
 Real data
+
   - used Seurat to cluster
   - see a branch with is distinct and doesn't interact with anything else
   - also see a stable region
@@ -141,5 +153,19 @@ Real data
 **WHAT SO COOL**
 (overlap of cluster trees on t-SNE)
 
+Q: could this be used to magic pick a k?
+A: Everyone asks this....please don't....no idea what would happen
 
+Laura Huerta
+Data curation integration and visuzliation
 
+**Oh boy, a viz talk that I'm going to cover with works**
+
+Expression Atlas
+
+  - open science resource for holding expression data
+  - **super useful resource, unfortunately in my experience pain to get data into R with their R packages**
+    - **I find it easier to just find the tsv output link and then slurp that into R**
+  - **big value in consistent computational workflows**
+  - >3,300 datasets
+  

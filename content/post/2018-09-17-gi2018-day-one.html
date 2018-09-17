@@ -38,7 +38,7 @@ output:
 <p>Typos everywhere. Things may change dramatically over time as I scan back through notes.</p>
 <p>I’ve tried to respect #notwitter. Will be updated periodically.</p>
 <p>Speaker (Lab | Group)</p>
-<p><strong>MY VOICE</strong></p>
+<p><strong>BOLDED is voice</strong></p>
 </div>
 <div id="section" class="section level1">
 <h1>2018-09-17</h1>
@@ -48,27 +48,91 @@ output:
 <div id="sarah-teichmann-teichmann-lab" class="section level2">
 <h2>Sarah Teichmann (Teichmann Lab)</h2>
 <p>Cell Atlas Technologies and the Maternal-Fetal Interface</p>
-<p><a href="humancellatlas.org">Human Cell Atlas plug</a> - 600 scientists - scRNAseq + spatial methods</p>
-<p>scRNA works OK - 70%+ pearson cor (among genes?) - Detection limit pretty good after 1 million reads - <a href="https://www.biorxiv.org/content/early/2016/09/08/073692">Svensson and Teichmann preprint</a></p>
-<p>Spatial Tech - i.e. gene expression at voxel resolution in a non-destroyed tissue - 1 voxel ~ 20 cells - Hope to ID spatially variable genes - [github.com/TeichLab/SpatialDE] - Svensson and Teichmann</p>
+<p><a href="humancellatlas.org">Human Cell Atlas plug</a></p>
+<ul>
+<li>600 scientists</li>
+<li>scRNAseq + spatial methods</li>
+</ul>
+<p>scRNA works OK</p>
+<ul>
+<li>70%+ pearson cor (among genes?)</li>
+<li>Detection limit pretty good after 1 million reads</li>
+<li><a href="https://www.biorxiv.org/content/early/2016/09/08/073692">Svensson and Teichmann preprint</a></li>
+</ul>
+<p>Spatial Tech</p>
+<ul>
+<li>i.e. gene expression at voxel resolution in a non-destroyed tissue
+<ul>
+<li>1 voxel ~ 20 cells</li>
+</ul></li>
+<li>Hope to ID spatially variable genes
+<ul>
+<li>[github.com/TeichLab/SpatialDE]</li>
+<li>Svensson and Teichmann</li>
+</ul></li>
+</ul>
 <p>Braga and Stegle: Merge Spatial TX with scRNA</p>
 <p>Future stuffs: Histology merged with scRNA</p>
-<p>Back to HCA - Many tissues, many scientists, many countries - curious if any integration with Chan-Zuckerberg</p>
-<p>Moving onto to Maternal-fetal interface - tricky area - immune component - two organisms - <em>tumor like</em> - scRNA + WGS resolved fetal/maternal adn cell tyes</p>
+<p>Back to HCA</p>
+<ul>
+<li>Many tissues, many scientists, many countries</li>
+<li>curious if any integration with Chan-Zuckerberg</li>
+</ul>
+<p>Moving onto to Maternal-fetal interface</p>
+<ul>
+<li>tricky area</li>
+<li>immune component</li>
+<li>two organisms</li>
+<li><em>tumor like</em></li>
+<li>scRNA + WGS resolved fetal/maternal adn cell tyes</li>
+</ul>
 </div>
 </div>
 <div id="girgio-gonnella-stefan-kurtz" class="section level1">
 <h1>Girgio Gonnella (Stefan Kurtz)</h1>
 <p>Flexible and interactive visualization of GFA sequence graphs</p>
-<p>Graphical Fragment Assembly - format for representing sequence graphs - contig output not as informative as graphs</p>
+<p>Graphical Fragment Assembly</p>
+<ul>
+<li>format for representing sequence graphs</li>
+<li>contig output not as informative as graphs</li>
+</ul>
 <p>GFA1 proposal format from Heng Li releaseed in 2016-09</p>
 <p>GFA2 2017-01 more general</p>
 <p>Today more assemblers are using</p>
-<p>GFA2 format: - header - sequences - relationships - RGFA (Ruby) - Gfapy (python)</p>
-<p>GfaViz - visualization of GFA2 (and GFA1) - C++, QT, OGDF - GUI and CLI - Two layouts, many options to customize views</p>
-<p>Scaffolding graphs - dealing with pos gaps (missing seq) and neg gaps (contig overlap by repeats) - Show how it looks with Bandage, no gap info - much busier with GfaViz - but now can see gap info between the pieces</p>
-<p>Long reads - local alignments are messy (noisy data) - GFA2 has <em>internal</em> alignments</p>
-<p>Release is <em>later this year</em> - ggonnella on github - email: <a href="mailto:gonnella@zbh.uni-hamburg.de">gonnella@zbh.uni-hamburg.de</a></p>
+<p>GFA2 format:</p>
+<ul>
+<li>header</li>
+<li>sequences</li>
+<li>relationships</li>
+<li>RGFA (Ruby)</li>
+<li>Gfapy (python)</li>
+</ul>
+<p>GfaViz</p>
+<ul>
+<li>visualization of GFA2 (and GFA1)</li>
+<li>C++, QT, OGDF</li>
+<li>GUI and CLI</li>
+<li>Two layouts, many options to customize views</li>
+</ul>
+<p>Scaffolding graphs</p>
+<ul>
+<li>dealing with pos gaps (missing seq) and neg gaps (contig overlap by repeats)</li>
+<li>Show how it looks with Bandage, no gap info</li>
+<li>much busier with GfaViz
+<ul>
+<li>but now can see gap info between the pieces</li>
+</ul></li>
+</ul>
+<p>Long reads</p>
+<ul>
+<li>local alignments are messy (noisy data)</li>
+<li>GFA2 has <em>internal</em> alignments</li>
+</ul>
+<p>Release is <em>later this year</em></p>
+<ul>
+<li>ggonnella on github</li>
+<li>email: <a href="mailto:gonnella@zbh.uni-hamburg.de">gonnella@zbh.uni-hamburg.de</a></li>
+</ul>
 </div>
 <div id="luke-zappia-oshlack" class="section level1">
 <h1>Luke Zappia (Oshlack?)</h1>
@@ -80,8 +144,29 @@ output:
 <p>Cells on edge / num of cells in high res cluster</p>
 <p>Above equation good way to think about usefulness of cluster groups</p>
 <p>As we increase k, we can see how the graph changes and can get a sense of whether k should be changed</p>
-<p>Real data - used Seurat to cluster - see a branch with is distinct and doesn’t interact with anything else - also see a stable region - see low proportion edges if you really increase the k</p>
+<p>Real data</p>
+<ul>
+<li>used Seurat to cluster</li>
+<li>see a branch with is distinct and doesn’t interact with anything else</li>
+<li>also see a stable region</li>
+<li>see low proportion edges if you really increase the k</li>
+</ul>
 <p><strong>I can’t doodle on the computer, which would be helpful here but this stuff looks really helpful</strong></p>
 <p><strong>Using edge porportion (above eq.) and cluster relatinoships you get a decent sense of whether the clustering makes sense</strong></p>
 <p><strong>WHAT SO COOL</strong> (overlap of cluster trees on t-SNE)</p>
+<p>Q: could this be used to magic pick a k? A: Everyone asks this….please don’t….no idea what would happen</p>
+<p>Laura Huerta Data curation integration and visuzliation</p>
+<p><strong>Oh boy, a viz talk that I’m going to cover with works</strong></p>
+<p>Expression Atlas</p>
+<ul>
+<li>open science resource for holding expression data</li>
+<li><strong>super useful resource, unfortunately in my experience pain to get data into R with their R packages</strong>
+<ul>
+<li><strong>I find it easier to just find the tsv output link and then slurp that into R</strong></li>
+</ul></li>
+<li><strong>big value in consistent computational workflows</strong></li>
+<li><blockquote>
+<p>3,300 datasets</p>
+</blockquote></li>
+</ul>
 </div>
