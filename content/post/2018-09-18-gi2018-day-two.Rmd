@@ -1,0 +1,100 @@
+---
+title: '#GI2018 - Day Two'
+author: David McGaughey
+date: '2018-09-18'
+slug: gi2018-day-two
+categories:
+  - GI2018
+  - bioinformatics
+tags:
+  - conference
+  - GI2018
+  - bioinformatics
+  - talks
+header:
+  caption: ''
+  image: ''
+output:
+  blogdown::html_page:
+    toc: true
+---
+
+# Day Two
+
+## Katie Pollard
+A population genetic view of human chromatin organization
+
+Noncoding human mutation and disease
+  
+  - which are causal?
+  - how do they alter gene expression?
+  - what genes / pathways do they affect?
+  
+core idea:
+
+  - motif disruption (i.e. mutation alter binding site)
+  
+but, how about we think about genome as structure?
+
+  - if structure (3D folding) is functional, any variation that modifies that would be deleterious
+  
+chromatin structure and pop genetics
+
+discussion of TADs / HiC / BE (boundary elements)
+
+compare rare variants in patients, variants in healthy humans, fixed diffs between primates
+
+  - deletions depleted at boundary elements (strong negative selection)
+  - also holds up across non-primates
+  - less depletion in disease cohort (autism) variants
+  
+"suggestion broad role for enhancer hijacking in disease"
+
+noncoding variation assessment should be TAD aware
+
+try to predict how mutations change TAD/BE
+
+  - kind of working (not as "sharp" as the real data)
+  
+chromatin and genetic structure (LD) both have similar struture
+
+  - are they correlated?
+  - not the same sizes (LD blocks shorter)
+  - not correlated at 5kb to 2Mb
+  
+chromatin interactions (HiC) more enriched for (compared to closest gene or LD):
+  
+  - eQTL 
+  - GO enrichment terms
+  - "most distal noncoding variants do not target closest expressed gene"
+  
+sequence motifs fail to explain key aspects of protein-DNA binding
+
+  - 30% of top 2000 ChIP-seq peaks have no sequence motif
+  - many DNA binding proteins have very similar motifs but have disparate binding
+  - seq motifs don't capture DNA shape well (major / minor groove)
+
+hypothesis: "DNA binding proteins recognize DNA shape beyond seq. motifs"
+
+  - ShapeMF ([DNAshape R package](https://www.bioconductor.org/packages/release/bioc/html/DNAshapeR.html))
+  - compare to classic motif with ENCODE ChIP-seq and HT-SELEX 
+  
+shape motifs match up between ENCODE and HT-SELEX
+
+shape motifs can occur without sequence motifs
+
+  - most have both shape and motif patterns
+  - some shape only and some motif only
+  
+Machine learning in genomics comments
+
+  - try to model enhancer interaction with konwn enhancers, expressed genes, Hi-C data (TargetFinder)
+  - common issues:
+    - balanced training data (genomic data [usually isn't](http://davemcg.github.io/post/are-you-in-genomics-stop-using-roc-use-pr/))
+    - select features from whole dataset (feature selection should be *inside* cross validation)
+    - use biologically appropriate examples
+    - use the right statistic (PR, ROC, etc?)
+    - most ML models assume observations are *independent* and *identically distributed*
+      - genomic data is inherently **not** independent and identically distributed
+      - not trivial....different genome regions are inherently different (model doesn't transfer)
+      

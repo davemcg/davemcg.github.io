@@ -94,7 +94,7 @@
   <meta property="og:description" content="Staff Scientist">
   <meta property="og:locale" content="en-us">
   
-  
+  <meta property="og:updated_time" content="2018-02-07T00:00:00&#43;00:00">
   
 
   
@@ -259,14 +259,10 @@
   
   
   <div>
-    <h2><a href="/./post/bog18-notes/">#GI2018: Day 1</a></h2>
+    <h2><a href="/./post/split-vcf-into-n-pieces-by-coordinate/">Split VCF into n pieces by coordinate</a></h2>
     <div class="article-style">
       
-      Intro 2018-09-17 Quinlan Intro Sarah Teichmann (Teichmann Lab)  Girgio Gonnella (Stefan Kurtz) Luke Zappia (Oshlack?)   Intro Very sparse and poorly written notes covering #GI2018.
-Typos everywhere. Things may change dramatically over time as I scan back through notes.
-I’ve tried to respect #notwitter. Will be updated periodically.
-Speaker (Lab | Group)
- 2018-09-17  Quinlan Intro Sarah Teichmann (Teichmann Lab) Cell Atlas Technologies and the Maternal-Fetal Interface
+      Introduction Read in vcf header Parse out chr / contig sizes Split chr above 3e7 base pairs into equal(ish) size pieces print coordinates given a chromosome / contig calculate coordinates print ’em output ’em for python input (Snakemake) rscript Using the script output sessionInfo()   Introduction bcftools view -r 1:40000-50000 vcf.gz will output (to stdout) a vcf containing the header and variants on chromosome 1 between coordinates 40,000 and 50,000 base pairs.
       
     </div>
   </div>

@@ -1,0 +1,108 @@
+---
+title: '#GI2018 - Day Two'
+author: David McGaughey
+date: '2018-09-18'
+slug: gi2018-day-two
+categories:
+  - GI2018
+  - bioinformatics
+tags:
+  - conference
+  - GI2018
+  - bioinformatics
+  - talks
+header:
+  caption: ''
+  image: ''
+output:
+  blogdown::html_page:
+    toc: true
+---
+
+
+<div id="TOC">
+<ul>
+<li><a href="#day-two">Day Two</a><ul>
+<li><a href="#katie-pollard">Katie Pollard</a></li>
+</ul></li>
+</ul>
+</div>
+
+<div id="day-two" class="section level1">
+<h1>Day Two</h1>
+<div id="katie-pollard" class="section level2">
+<h2>Katie Pollard</h2>
+<p>A population genetic view of human chromatin organization</p>
+<p>Noncoding human mutation and disease</p>
+<ul>
+<li>which are causal?</li>
+<li>how do they alter gene expression?</li>
+<li>what genes / pathways do they affect?</li>
+</ul>
+<p>core idea:</p>
+<ul>
+<li>motif disruption (i.e. mutation alter binding site)</li>
+</ul>
+<p>but, how about we think about genome as structure?</p>
+<ul>
+<li>if structure (3D folding) is functional, any variation that modifies that would be deleterious</li>
+</ul>
+<p>chromatin structure and pop genetics</p>
+<p>discussion of TADs / HiC / BE (boundary elements)</p>
+<p>compare rare variants in patients, variants in healthy humans, fixed diffs between primates</p>
+<ul>
+<li>deletions depleted at boundary elements (strong negative selection)</li>
+<li>also holds up across non-primates</li>
+<li>less depletion in disease cohort (autism) variants</li>
+</ul>
+<p>“suggestion broad role for enhancer hijacking in disease”</p>
+<p>noncoding variation assessment should be TAD aware</p>
+<p>try to predict how mutations change TAD/BE</p>
+<ul>
+<li>kind of working (not as “sharp” as the real data)</li>
+</ul>
+<p>chromatin and genetic structure (LD) both have similar struture</p>
+<ul>
+<li>are they correlated?</li>
+<li>not the same sizes (LD blocks shorter)</li>
+<li>not correlated at 5kb to 2Mb</li>
+</ul>
+<p>chromatin interactions (HiC) more enriched for (compared to closest gene or LD):</p>
+<ul>
+<li>eQTL</li>
+<li>GO enrichment terms</li>
+<li>“most distal noncoding variants do not target closest expressed gene”</li>
+</ul>
+<p>sequence motifs fail to explain key aspects of protein-DNA binding</p>
+<ul>
+<li>30% of top 2000 ChIP-seq peaks have no sequence motif</li>
+<li>many DNA binding proteins have very similar motifs but have disparate binding</li>
+<li>seq motifs don’t capture DNA shape well (major / minor groove)</li>
+</ul>
+<p>hypothesis: “DNA binding proteins recognize DNA shape beyond seq. motifs”</p>
+<ul>
+<li>ShapeMF (<a href="https://www.bioconductor.org/packages/release/bioc/html/DNAshapeR.html">DNAshape R package</a>)</li>
+<li>compare to classic motif with ENCODE ChIP-seq and HT-SELEX</li>
+</ul>
+<p>shape motifs match up between ENCODE and HT-SELEX</p>
+<p>shape motifs can occur without sequence motifs</p>
+<ul>
+<li>most have both shape and motif patterns</li>
+<li>some shape only and some motif only</li>
+</ul>
+<p>Machine learning in genomics comments</p>
+<ul>
+<li>try to model enhancer interaction with konwn enhancers, expressed genes, Hi-C data (TargetFinder)</li>
+<li>common issues:
+<ul>
+<li>balanced training data (genomic data <a href="http://davemcg.github.io/post/are-you-in-genomics-stop-using-roc-use-pr/">usually isn’t</a>)</li>
+<li>select features from whole dataset (feature selection should be <em>inside</em> cross validation)</li>
+<li>use biologically appropriate examples</li>
+<li>use the right statistic (PR, ROC, etc?)</li>
+<li>most ML models assume observations are <em>independent</em> and <em>identically distributed</em></li>
+<li>genomic data is inherently <strong>not</strong> independent and identically distributed</li>
+<li>not trivial….different genome regions are inherently different (model doesn’t transfer)</li>
+</ul></li>
+</ul>
+</div>
+</div>

@@ -11,6 +11,101 @@
     <atom:link href="//" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>#GI2018 - Day Two</title>
+      <link>/./post/gi2018-day-two/</link>
+      <pubDate>Tue, 18 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/gi2018-day-two/</guid>
+      <description>&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#day-two&#34;&gt;Day Two&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#katie-pollard&#34;&gt;Katie Pollard&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;day-two&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Day Two&lt;/h1&gt;
+&lt;div id=&#34;katie-pollard&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Katie Pollard&lt;/h2&gt;
+&lt;p&gt;A population genetic view of human chromatin organization&lt;/p&gt;
+&lt;p&gt;Noncoding human mutation and disease&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;which are causal?&lt;/li&gt;
+&lt;li&gt;how do they alter gene expression?&lt;/li&gt;
+&lt;li&gt;what genes / pathways do they affect?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;core idea:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;motif disruption (i.e. mutation alter binding site)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;but, how about we think about genome as structure?&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;if structure (3D folding) is functional, any variation that modifies that would be deleterious&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;chromatin structure and pop genetics&lt;/p&gt;
+&lt;p&gt;discussion of TADs / HiC / BE (boundary elements)&lt;/p&gt;
+&lt;p&gt;compare rare variants in patients, variants in healthy humans, fixed diffs between primates&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;deletions depleted at boundary elements (strong negative selection)&lt;/li&gt;
+&lt;li&gt;also holds up across non-primates&lt;/li&gt;
+&lt;li&gt;less depletion in disease cohort (autism) variants&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;“suggestion broad role for enhancer hijacking in disease”&lt;/p&gt;
+&lt;p&gt;noncoding variation assessment should be TAD aware&lt;/p&gt;
+&lt;p&gt;try to predict how mutations change TAD/BE&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;kind of working (not as “sharp” as the real data)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;chromatin and genetic structure (LD) both have similar struture&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;are they correlated?&lt;/li&gt;
+&lt;li&gt;not the same sizes (LD blocks shorter)&lt;/li&gt;
+&lt;li&gt;not correlated at 5kb to 2Mb&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;chromatin interactions (HiC) more enriched for (compared to closest gene or LD):&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;eQTL&lt;/li&gt;
+&lt;li&gt;GO enrichment terms&lt;/li&gt;
+&lt;li&gt;“most distal noncoding variants do not target closest expressed gene”&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;sequence motifs fail to explain key aspects of protein-DNA binding&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;30% of top 2000 ChIP-seq peaks have no sequence motif&lt;/li&gt;
+&lt;li&gt;many DNA binding proteins have very similar motifs but have disparate binding&lt;/li&gt;
+&lt;li&gt;seq motifs don’t capture DNA shape well (major / minor groove)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;hypothesis: “DNA binding proteins recognize DNA shape beyond seq. motifs”&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ShapeMF (&lt;a href=&#34;https://www.bioconductor.org/packages/release/bioc/html/DNAshapeR.html&#34;&gt;DNAshape R package&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;compare to classic motif with ENCODE ChIP-seq and HT-SELEX&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;shape motifs match up between ENCODE and HT-SELEX&lt;/p&gt;
+&lt;p&gt;shape motifs can occur without sequence motifs&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;most have both shape and motif patterns&lt;/li&gt;
+&lt;li&gt;some shape only and some motif only&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Machine learning in genomics comments&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;try to model enhancer interaction with konwn enhancers, expressed genes, Hi-C data (TargetFinder)&lt;/li&gt;
+&lt;li&gt;common issues:
+&lt;ul&gt;
+&lt;li&gt;balanced training data (genomic data &lt;a href=&#34;http://davemcg.github.io/post/are-you-in-genomics-stop-using-roc-use-pr/&#34;&gt;usually isn’t&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;select features from whole dataset (feature selection should be &lt;em&gt;inside&lt;/em&gt; cross validation)&lt;/li&gt;
+&lt;li&gt;use biologically appropriate examples&lt;/li&gt;
+&lt;li&gt;use the right statistic (PR, ROC, etc?)&lt;/li&gt;
+&lt;li&gt;most ML models assume observations are &lt;em&gt;independent&lt;/em&gt; and &lt;em&gt;identically distributed&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;genomic data is inherently &lt;strong&gt;not&lt;/strong&gt; independent and identically distributed&lt;/li&gt;
+&lt;li&gt;not trivial….different genome regions are inherently different (model doesn’t transfer)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>#GI2018 - Day One</title>
       <link>/./post/gi2018-day-one/</link>
       <pubDate>Mon, 17 Sep 2018 00:00:00 +0000</pubDate>
@@ -4353,436 +4448,6 @@ plot_grid(plotlist = plots, ncol=1)&lt;/code&gt;&lt;/pre&gt;
 ##  xfun         0.3     2018-07-06 CRAN (R 3.5.0)
 ##  xml2         1.2.0   2018-01-24 CRAN (R 3.5.0)
 ##  yaml         2.1.19  2018-05-01 CRAN (R 3.5.0)&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Split VCF into n pieces by coordinate</title>
-      <link>/./post/split-vcf-into-n-pieces-by-coordinate/</link>
-      <pubDate>Wed, 07 Feb 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/./post/split-vcf-into-n-pieces-by-coordinate/</guid>
-      <description>&lt;div id=&#34;TOC&#34;&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#introduction&#34;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#read-in-vcf-header&#34;&gt;Read in vcf header&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#parse-out-chr-contig-sizes&#34;&gt;Parse out chr / contig sizes&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#split-chr-above-3e7-base-pairs-into-equalish-size-pieces&#34;&gt;Split chr above 3e7 base pairs into equal(ish) size pieces&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#print-coordinates-given-a-chromosome-contig&#34;&gt;print coordinates given a chromosome / contig&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#calculate-coordinates&#34;&gt;calculate coordinates&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#print-em&#34;&gt;print ’em&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#output-em-for-python-input-snakemake&#34;&gt;output ’em for python input (Snakemake)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#rscript&#34;&gt;rscript&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#using-the-script-output&#34;&gt;Using the script output&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#sessioninfo&#34;&gt;sessionInfo()&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-
-&lt;div id=&#34;introduction&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Introduction&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;bcftools view -r 1:40000-50000 vcf.gz&lt;/code&gt; will output (to stdout) a vcf containing the header and variants on chromosome 1 between coordinates 40,000 and 50,000 base pairs.&lt;/p&gt;
-&lt;p&gt;I need to break down a large vcf into smaller pieces to dramatically speed up annotation. Let’s try 100 pieces.&lt;/p&gt;
-&lt;p&gt;The human genome is &lt;em&gt;approximately&lt;/em&gt; 3 gigabases or 3e9 base pairs.&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[ \frac{3 * 10^9\ base\ pairs}{100\ pieces} = 3*10^7\ base\ pairs\ per\ piece \]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;That’s our target size.&lt;/p&gt;
-&lt;p&gt;This is made a bit tricky since the genome is laid by chromosome. So we have to break into 3e7 pieces, accounting for chromosomes. There are also &lt;strong&gt;many&lt;/strong&gt; contigs, most of which are well under 3e7 in size. Those can be processed as a group with &lt;code&gt;bcftools&lt;/code&gt; by splitting each contig by a &lt;code&gt;,&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;Let’s read in the header. It contains chromosome (and contig) sizes, which I’ve extracted from the vcf with &lt;code&gt;zcat EGAD00001002656.GATK.vcf.gz | head -n 1000 | grep ^## &amp;gt; /home/mcgaugheyd/git/OGVFB_one_offs/mcgaughey/split_VCFs_into_n_pieces/EGAD00001002656.header&lt;/code&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;read-in-vcf-header&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Read in vcf header&lt;/h2&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ── Attaching packages ────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ✔ ggplot2 3.0.0     ✔ purrr   0.2.5
-## ✔ tibble  1.4.2     ✔ dplyr   0.7.6
-## ✔ tidyr   0.8.1     ✔ stringr 1.3.1
-## ✔ readr   1.1.1     ✔ forcats 0.3.0&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ── Conflicts ───────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
-## ✖ dplyr::filter() masks stats::filter()
-## ✖ dplyr::lag()    masks stats::lag()&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(stringr)
-vcf_header = scan(&amp;#39;~/git/OGVFB_one_offs/mcgaughey/split_VCFs_into_n_pieces/EGAD00001002656.header&amp;#39;, what=&amp;#39;character&amp;#39;)
-vcf_header[grepl(&amp;#39;contig&amp;#39;,vcf_header)]&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##  [1] &amp;quot;##contig=&amp;lt;ID=1,length=249250621,assembly=b37&amp;gt;&amp;quot;      
-##  [2] &amp;quot;##contig=&amp;lt;ID=2,length=243199373,assembly=b37&amp;gt;&amp;quot;      
-##  [3] &amp;quot;##contig=&amp;lt;ID=3,length=198022430,assembly=b37&amp;gt;&amp;quot;      
-##  [4] &amp;quot;##contig=&amp;lt;ID=4,length=191154276,assembly=b37&amp;gt;&amp;quot;      
-##  [5] &amp;quot;##contig=&amp;lt;ID=5,length=180915260,assembly=b37&amp;gt;&amp;quot;      
-##  [6] &amp;quot;##contig=&amp;lt;ID=6,length=171115067,assembly=b37&amp;gt;&amp;quot;      
-##  [7] &amp;quot;##contig=&amp;lt;ID=7,length=159138663,assembly=b37&amp;gt;&amp;quot;      
-##  [8] &amp;quot;##contig=&amp;lt;ID=8,length=146364022,assembly=b37&amp;gt;&amp;quot;      
-##  [9] &amp;quot;##contig=&amp;lt;ID=9,length=141213431,assembly=b37&amp;gt;&amp;quot;      
-## [10] &amp;quot;##contig=&amp;lt;ID=10,length=135534747,assembly=b37&amp;gt;&amp;quot;     
-## [11] &amp;quot;##contig=&amp;lt;ID=11,length=135006516,assembly=b37&amp;gt;&amp;quot;     
-## [12] &amp;quot;##contig=&amp;lt;ID=12,length=133851895,assembly=b37&amp;gt;&amp;quot;     
-## [13] &amp;quot;##contig=&amp;lt;ID=13,length=115169878,assembly=b37&amp;gt;&amp;quot;     
-## [14] &amp;quot;##contig=&amp;lt;ID=14,length=107349540,assembly=b37&amp;gt;&amp;quot;     
-## [15] &amp;quot;##contig=&amp;lt;ID=15,length=102531392,assembly=b37&amp;gt;&amp;quot;     
-## [16] &amp;quot;##contig=&amp;lt;ID=16,length=90354753,assembly=b37&amp;gt;&amp;quot;      
-## [17] &amp;quot;##contig=&amp;lt;ID=17,length=81195210,assembly=b37&amp;gt;&amp;quot;      
-## [18] &amp;quot;##contig=&amp;lt;ID=18,length=78077248,assembly=b37&amp;gt;&amp;quot;      
-## [19] &amp;quot;##contig=&amp;lt;ID=19,length=59128983,assembly=b37&amp;gt;&amp;quot;      
-## [20] &amp;quot;##contig=&amp;lt;ID=20,length=63025520,assembly=b37&amp;gt;&amp;quot;      
-## [21] &amp;quot;##contig=&amp;lt;ID=21,length=48129895,assembly=b37&amp;gt;&amp;quot;      
-## [22] &amp;quot;##contig=&amp;lt;ID=22,length=51304566,assembly=b37&amp;gt;&amp;quot;      
-## [23] &amp;quot;##contig=&amp;lt;ID=X,length=155270560,assembly=b37&amp;gt;&amp;quot;      
-## [24] &amp;quot;##contig=&amp;lt;ID=Y,length=59373566,assembly=b37&amp;gt;&amp;quot;       
-## [25] &amp;quot;##contig=&amp;lt;ID=MT,length=16569,assembly=b37&amp;gt;&amp;quot;         
-## [26] &amp;quot;##contig=&amp;lt;ID=GL000207.1,length=4262,assembly=b37&amp;gt;&amp;quot;  
-## [27] &amp;quot;##contig=&amp;lt;ID=GL000226.1,length=15008,assembly=b37&amp;gt;&amp;quot; 
-## [28] &amp;quot;##contig=&amp;lt;ID=GL000229.1,length=19913,assembly=b37&amp;gt;&amp;quot; 
-## [29] &amp;quot;##contig=&amp;lt;ID=GL000231.1,length=27386,assembly=b37&amp;gt;&amp;quot; 
-## [30] &amp;quot;##contig=&amp;lt;ID=GL000210.1,length=27682,assembly=b37&amp;gt;&amp;quot; 
-## [31] &amp;quot;##contig=&amp;lt;ID=GL000239.1,length=33824,assembly=b37&amp;gt;&amp;quot; 
-## [32] &amp;quot;##contig=&amp;lt;ID=GL000235.1,length=34474,assembly=b37&amp;gt;&amp;quot; 
-## [33] &amp;quot;##contig=&amp;lt;ID=GL000201.1,length=36148,assembly=b37&amp;gt;&amp;quot; 
-## [34] &amp;quot;##contig=&amp;lt;ID=GL000247.1,length=36422,assembly=b37&amp;gt;&amp;quot; 
-## [35] &amp;quot;##contig=&amp;lt;ID=GL000245.1,length=36651,assembly=b37&amp;gt;&amp;quot; 
-## [36] &amp;quot;##contig=&amp;lt;ID=GL000197.1,length=37175,assembly=b37&amp;gt;&amp;quot; 
-## [37] &amp;quot;##contig=&amp;lt;ID=GL000203.1,length=37498,assembly=b37&amp;gt;&amp;quot; 
-## [38] &amp;quot;##contig=&amp;lt;ID=GL000246.1,length=38154,assembly=b37&amp;gt;&amp;quot; 
-## [39] &amp;quot;##contig=&amp;lt;ID=GL000249.1,length=38502,assembly=b37&amp;gt;&amp;quot; 
-## [40] &amp;quot;##contig=&amp;lt;ID=GL000196.1,length=38914,assembly=b37&amp;gt;&amp;quot; 
-## [41] &amp;quot;##contig=&amp;lt;ID=GL000248.1,length=39786,assembly=b37&amp;gt;&amp;quot; 
-## [42] &amp;quot;##contig=&amp;lt;ID=GL000244.1,length=39929,assembly=b37&amp;gt;&amp;quot; 
-## [43] &amp;quot;##contig=&amp;lt;ID=GL000238.1,length=39939,assembly=b37&amp;gt;&amp;quot; 
-## [44] &amp;quot;##contig=&amp;lt;ID=GL000202.1,length=40103,assembly=b37&amp;gt;&amp;quot; 
-## [45] &amp;quot;##contig=&amp;lt;ID=GL000234.1,length=40531,assembly=b37&amp;gt;&amp;quot; 
-## [46] &amp;quot;##contig=&amp;lt;ID=GL000232.1,length=40652,assembly=b37&amp;gt;&amp;quot; 
-## [47] &amp;quot;##contig=&amp;lt;ID=GL000206.1,length=41001,assembly=b37&amp;gt;&amp;quot; 
-## [48] &amp;quot;##contig=&amp;lt;ID=GL000240.1,length=41933,assembly=b37&amp;gt;&amp;quot; 
-## [49] &amp;quot;##contig=&amp;lt;ID=GL000236.1,length=41934,assembly=b37&amp;gt;&amp;quot; 
-## [50] &amp;quot;##contig=&amp;lt;ID=GL000241.1,length=42152,assembly=b37&amp;gt;&amp;quot; 
-## [51] &amp;quot;##contig=&amp;lt;ID=GL000243.1,length=43341,assembly=b37&amp;gt;&amp;quot; 
-## [52] &amp;quot;##contig=&amp;lt;ID=GL000242.1,length=43523,assembly=b37&amp;gt;&amp;quot; 
-## [53] &amp;quot;##contig=&amp;lt;ID=GL000230.1,length=43691,assembly=b37&amp;gt;&amp;quot; 
-## [54] &amp;quot;##contig=&amp;lt;ID=GL000237.1,length=45867,assembly=b37&amp;gt;&amp;quot; 
-## [55] &amp;quot;##contig=&amp;lt;ID=GL000233.1,length=45941,assembly=b37&amp;gt;&amp;quot; 
-## [56] &amp;quot;##contig=&amp;lt;ID=GL000204.1,length=81310,assembly=b37&amp;gt;&amp;quot; 
-## [57] &amp;quot;##contig=&amp;lt;ID=GL000198.1,length=90085,assembly=b37&amp;gt;&amp;quot; 
-## [58] &amp;quot;##contig=&amp;lt;ID=GL000208.1,length=92689,assembly=b37&amp;gt;&amp;quot; 
-## [59] &amp;quot;##contig=&amp;lt;ID=GL000191.1,length=106433,assembly=b37&amp;gt;&amp;quot;
-## [60] &amp;quot;##contig=&amp;lt;ID=GL000227.1,length=128374,assembly=b37&amp;gt;&amp;quot;
-## [61] &amp;quot;##contig=&amp;lt;ID=GL000228.1,length=129120,assembly=b37&amp;gt;&amp;quot;
-## [62] &amp;quot;##contig=&amp;lt;ID=GL000214.1,length=137718,assembly=b37&amp;gt;&amp;quot;
-## [63] &amp;quot;##contig=&amp;lt;ID=GL000221.1,length=155397,assembly=b37&amp;gt;&amp;quot;
-## [64] &amp;quot;##contig=&amp;lt;ID=GL000209.1,length=159169,assembly=b37&amp;gt;&amp;quot;
-## [65] &amp;quot;##contig=&amp;lt;ID=GL000218.1,length=161147,assembly=b37&amp;gt;&amp;quot;
-## [66] &amp;quot;##contig=&amp;lt;ID=GL000220.1,length=161802,assembly=b37&amp;gt;&amp;quot;
-## [67] &amp;quot;##contig=&amp;lt;ID=GL000213.1,length=164239,assembly=b37&amp;gt;&amp;quot;
-## [68] &amp;quot;##contig=&amp;lt;ID=GL000211.1,length=166566,assembly=b37&amp;gt;&amp;quot;
-## [69] &amp;quot;##contig=&amp;lt;ID=GL000199.1,length=169874,assembly=b37&amp;gt;&amp;quot;
-## [70] &amp;quot;##contig=&amp;lt;ID=GL000217.1,length=172149,assembly=b37&amp;gt;&amp;quot;
-## [71] &amp;quot;##contig=&amp;lt;ID=GL000216.1,length=172294,assembly=b37&amp;gt;&amp;quot;
-## [72] &amp;quot;##contig=&amp;lt;ID=GL000215.1,length=172545,assembly=b37&amp;gt;&amp;quot;
-## [73] &amp;quot;##contig=&amp;lt;ID=GL000205.1,length=174588,assembly=b37&amp;gt;&amp;quot;
-## [74] &amp;quot;##contig=&amp;lt;ID=GL000219.1,length=179198,assembly=b37&amp;gt;&amp;quot;
-## [75] &amp;quot;##contig=&amp;lt;ID=GL000224.1,length=179693,assembly=b37&amp;gt;&amp;quot;
-## [76] &amp;quot;##contig=&amp;lt;ID=GL000223.1,length=180455,assembly=b37&amp;gt;&amp;quot;
-## [77] &amp;quot;##contig=&amp;lt;ID=GL000195.1,length=182896,assembly=b37&amp;gt;&amp;quot;
-## [78] &amp;quot;##contig=&amp;lt;ID=GL000212.1,length=186858,assembly=b37&amp;gt;&amp;quot;
-## [79] &amp;quot;##contig=&amp;lt;ID=GL000222.1,length=186861,assembly=b37&amp;gt;&amp;quot;
-## [80] &amp;quot;##contig=&amp;lt;ID=GL000200.1,length=187035,assembly=b37&amp;gt;&amp;quot;
-## [81] &amp;quot;##contig=&amp;lt;ID=GL000193.1,length=189789,assembly=b37&amp;gt;&amp;quot;
-## [82] &amp;quot;##contig=&amp;lt;ID=GL000194.1,length=191469,assembly=b37&amp;gt;&amp;quot;
-## [83] &amp;quot;##contig=&amp;lt;ID=GL000225.1,length=211173,assembly=b37&amp;gt;&amp;quot;
-## [84] &amp;quot;##contig=&amp;lt;ID=GL000192.1,length=547496,assembly=b37&amp;gt;&amp;quot;
-## [85] &amp;quot;##contig=&amp;lt;ID=NC_007605,length=171823,assembly=b37&amp;gt;&amp;quot; 
-## [86] &amp;quot;##contig=&amp;lt;ID=hs37d5,length=35477943,assembly=b37&amp;gt;&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;parse-out-chr-contig-sizes&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Parse out chr / contig sizes&lt;/h2&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# turn into data frame (well, a tibble)
-contig_size &amp;lt;- vcf_header[grepl(&amp;#39;contig&amp;#39;, vcf_header)] %&amp;gt;% 
-  data.frame() %&amp;gt;% 
-  select(1, &amp;#39;header&amp;#39; = 1) %&amp;gt;% 
-  # separate by ,
-  separate(header, c(&amp;#39;contig&amp;#39;,&amp;#39;length&amp;#39;,&amp;#39;assembly&amp;#39;),&amp;#39;,&amp;#39;) %&amp;gt;% 
-  # extract values by splitting against = and taking the last element (first after reversing)
-  rowwise() %&amp;gt;% 
-  mutate(contig = str_split(contig,&amp;#39;=&amp;#39;)[[1]] %&amp;gt;% gsub(&amp;#39;&amp;gt;&amp;#39;,&amp;#39;&amp;#39;,.) %&amp;gt;% rev() %&amp;gt;% .[[1]],
-         length = str_split(length,&amp;#39;=&amp;#39;)[[1]] %&amp;gt;% gsub(&amp;#39;&amp;gt;&amp;#39;,&amp;#39;&amp;#39;,.) %&amp;gt;% rev() %&amp;gt;% .[[1]] %&amp;gt;% as.numeric(),
-         assembly = str_split(assembly,&amp;#39;=&amp;#39;)[[1]] %&amp;gt;% gsub(&amp;#39;&amp;gt;&amp;#39;,&amp;#39;&amp;#39;,.) %&amp;gt;% rev() %&amp;gt;% .[[1]])
-contig_size&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Source: local data frame [86 x 3]
-## Groups: &amp;lt;by row&amp;gt;
-## 
-## # A tibble: 86 x 3
-##    contig    length assembly
-##    &amp;lt;chr&amp;gt;      &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;   
-##  1 1      249250621 b37     
-##  2 2      243199373 b37     
-##  3 3      198022430 b37     
-##  4 4      191154276 b37     
-##  5 5      180915260 b37     
-##  6 6      171115067 b37     
-##  7 7      159138663 b37     
-##  8 8      146364022 b37     
-##  9 9      141213431 b37     
-## 10 10     135534747 b37     
-## # ... with 76 more rows&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;split-chr-above-3e7-base-pairs-into-equalish-size-pieces&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Split chr above 3e7 base pairs into equal(ish) size pieces&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;ceiling&lt;/code&gt; will allow intervals a bit less than 3e7 by rounding up the number of pieces per chromsome. Would rather have more splits with less than the target size.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;n_split &amp;lt;- function(size){
-  pieces &amp;lt;- ceiling(size / 3e7)
-  seq(1, size, size/pieces)
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;print-coordinates-given-a-chromosome-contig&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;print coordinates given a chromosome / contig&lt;/h2&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;n_printer &amp;lt;- function(chr) {
-  # grab the legnth of chr or contig
-  size &amp;lt;- contig_size %&amp;gt;% filter(contig == chr) %&amp;gt;% pull(length)
-  # split into ~30e7 sized pieces
-  sequence &amp;lt;- n_split(size)
-  # add the max size to end (plus another base pair since the loop below reduces size by 1 to eliminate overlaps)
-  sequence &amp;lt;- c(sequence, size+1)
-  df &amp;lt;- data.frame()
-  for(i in 1:length(sequence)){
-    row &amp;lt;- cbind(chr, as.integer(sequence[max(i-1,1)]), # for first row, makes sure you don&amp;#39;t pick the 0 position, which doesn&amp;#39;t exit
-                 as.integer(sequence[i]-1)) # decrements by one so you don&amp;#39;t overlap
-    df &amp;lt;- rbind(df, row)
-  }
-  colnames(df) &amp;lt;- c(&amp;#39;chr&amp;#39;,&amp;#39;start&amp;#39;,&amp;#39;end&amp;#39;)
-  # skip first row which has dummy values
-  df[-1,]
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;calculate-coordinates&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;calculate coordinates&lt;/h2&gt;
-&lt;p&gt;Will skip contig &amp;lt; 3e7 (all but hs37d5, which I don’t process, so it will be eliminated). The contigs will be printed comma separated for &lt;code&gt;bcftools view -r&lt;/code&gt; purposes.&lt;/p&gt;
-&lt;p&gt;How many regions do we have? Should have a bit more than 100.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;regions &amp;lt;- data.frame()
-for (i in contig_size %&amp;gt;% filter(length &amp;gt; 3e7, contig != &amp;#39;hs37d5&amp;#39;) %&amp;gt;% pull(contig)){
-  regions &amp;lt;- rbind(regions,(n_printer(i)))
-}
-regions %&amp;gt;% nrow()&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 115&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;print-em&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;print ’em&lt;/h2&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;regions %&amp;gt;% mutate(f = paste(paste(chr, start, sep =&amp;#39;:&amp;#39;), end, sep=&amp;#39;-&amp;#39;)) %&amp;gt;% select(f)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##                          f
-## 1             1:1-27694513
-## 2      1:27694514-55389026
-## 3      1:55389027-83083540
-## 4     1:83083541-110778053
-## 5    1:110778054-138472567
-## 6    1:138472568-166167080
-## 7    1:166167081-193861594
-## 8    1:193861595-221556107
-## 9    1:221556108-249250621
-## 10            2:1-27022152
-## 11     2:27022153-54044305
-## 12     2:54044306-81066457
-## 13    2:81066458-108088610
-## 14   2:108088611-135110762
-## 15   2:135110763-162132915
-## 16   2:162132916-189155067
-## 17   2:189155068-216177220
-## 18   2:216177221-243199373
-## 19            3:1-28288918
-## 20     3:28288919-56577837
-## 21     3:56577838-84866755
-## 22    3:84866756-113155674
-## 23   3:113155675-141444592
-## 24   3:141444593-169733511
-## 25   3:169733512-198022430
-## 26            4:1-27307753
-## 27     4:27307754-54615507
-## 28     4:54615508-81923261
-## 29    4:81923262-109231014
-## 30   4:109231015-136538768
-## 31   4:136538769-163846522
-## 32   4:163846523-191154276
-## 33            5:1-25845037
-## 34     5:25845038-51690074
-## 35     5:51690075-77535111
-## 36    5:77535112-103380148
-## 37   5:103380149-129225185
-## 38   5:129225186-155070222
-## 39   5:155070223-180915260
-## 40            6:1-28519177
-## 41     6:28519178-57038355
-## 42     6:57038356-85557533
-## 43    6:85557534-114076711
-## 44   6:114076712-142595889
-## 45   6:142595890-171115067
-## 46            7:1-26523110
-## 47     7:26523111-53046221
-## 48     7:53046222-79569331
-## 49    7:79569332-106092442
-## 50   7:106092443-132615552
-## 51   7:132615553-159138663
-## 52            8:1-29272804
-## 53     8:29272805-58545608
-## 54     8:58545609-87818413
-## 55    8:87818414-117091217
-## 56   8:117091218-146364022
-## 57            9:1-28242686
-## 58     9:28242687-56485372
-## 59     9:56485373-84728058
-## 60    9:84728059-112970744
-## 61   9:112970745-141213431
-## 62           10:1-27106949
-## 63    10:27106950-54213898
-## 64    10:54213899-81320848
-## 65   10:81320849-108427797
-## 66  10:108427798-135534747
-## 67           11:1-27001303
-## 68    11:27001304-54002606
-## 69    11:54002607-81003909
-## 70   11:81003910-108005212
-## 71  11:108005213-135006516
-## 72           12:1-26770379
-## 73    12:26770380-53540758
-## 74    12:53540759-80311137
-## 75   12:80311138-107081516
-## 76  12:107081517-133851895
-## 77           13:1-28792469
-## 78    13:28792470-57584939
-## 79    13:57584940-86377408
-## 80   13:86377409-115169878
-## 81           14:1-26837385
-## 82    14:26837386-53674770
-## 83    14:53674771-80512155
-## 84   14:80512156-107349540
-## 85           15:1-25632848
-## 86    15:25632849-51265696
-## 87    15:51265697-76898544
-## 88   15:76898545-102531392
-## 89           16:1-22588688
-## 90    16:22588689-45177376
-## 91    16:45177377-67766064
-## 92    16:67766065-90354753
-## 93           17:1-27065070
-## 94    17:27065071-54130140
-## 95    17:54130141-81195210
-## 96           18:1-26025749
-## 97    18:26025750-52051498
-## 98    18:52051499-78077248
-## 99           19:1-29564491
-## 100   19:29564492-59128983
-## 101          20:1-21008506
-## 102   20:21008507-42017013
-## 103   20:42017014-63025520
-## 104          21:1-24064947
-## 105   21:24064948-48129895
-## 106          22:1-25652283
-## 107   22:25652284-51304566
-## 108           X:1-25878426
-## 109    X:25878427-51756853
-## 110    X:51756854-77635280
-## 111   X:77635281-103513706
-## 112  X:103513707-129392133
-## 113  X:129392134-155270560
-## 114           Y:1-29686783
-## 115    Y:29686784-59373566&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;output-em-for-python-input-snakemake&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;output ’em for python input (Snakemake)&lt;/h2&gt;
-&lt;p&gt;The second write command appends all of the chromosomes or contigs (in this case, just contigs) that are less than 3e7 in length to the output file. It comma separates them, which is how &lt;code&gt;bcftools view -r&lt;/code&gt; takes in multiple chromosomes or contigs. The &lt;code&gt;paste(., collapse=&#39;,&#39;)&lt;/code&gt; command at the end collapses the vector of contigs into a string with comma separation.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;write(regions %&amp;gt;% mutate(f = paste(paste(chr, start, sep =&amp;#39;:&amp;#39;), end, sep=&amp;#39;-&amp;#39;)) %&amp;gt;% pull(f), file=&amp;#39;vcf_region_split_coords.txt&amp;#39;)
-write(contig_size %&amp;gt;% filter(length &amp;lt; 3e7, contig != &amp;#39;hs37d5&amp;#39;) %&amp;gt;% pull(contig) %&amp;gt;% paste(., collapse=&amp;#39;,&amp;#39;), file=&amp;#39;vcf_region_split_coords.txt&amp;#39;, append = T)&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;rscript&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;rscript&lt;/h2&gt;
-&lt;p&gt;I’ve wrapped up the functions and handling as a Rscript that takes the header of a vcf as input and outputs and writes to a user-given file the regions. The script also allows you to select desired number of regions (you will almost always get a few more), the output file name, and the genome size (defaults to human genome). The script is &lt;a href=&#34;/./files/scripts/split_vcf_into_n_pieces.R&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;using-the-script-output&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Using the script output&lt;/h2&gt;
-&lt;p&gt;I’m using it in a Snakemake pipeline. &lt;code&gt;bcftools&lt;/code&gt; can use it with &lt;code&gt;-R&lt;/code&gt; (region) if you run the script like this (see source for comments): &lt;code&gt;Rscript split_vcf_into_n_pieces.R yourVCF.header 200 vcf_region_split_200_coords.txt 3e9 bed&lt;/code&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;sessioninfo&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;sessionInfo()&lt;/h2&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;devtools::session_info()&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Session info -------------------------------------------------------------&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##  setting  value                       
-##  version  R version 3.5.0 (2018-04-23)
-##  system   x86_64, darwin15.6.0        
-##  ui       X11                         
-##  language (EN)                        
-##  collate  en_US.UTF-8                 
-##  tz       Europe/London               
-##  date     2018-09-17&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Packages -----------------------------------------------------------------&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##  package    * version date       source        
-##  assertthat   0.2.0   2017-04-11 CRAN (R 3.5.0)
-##  backports    1.1.2   2017-12-13 CRAN (R 3.5.0)
-##  base       * 3.5.0   2018-04-24 local         
-##  bindr        0.1.1   2018-03-13 CRAN (R 3.5.0)
-##  bindrcpp   * 0.2.2   2018-03-29 CRAN (R 3.5.0)
-##  blogdown     0.8     2018-07-15 CRAN (R 3.5.0)
-##  bookdown     0.7     2018-02-18 CRAN (R 3.5.0)
-##  broom        0.4.4   2018-03-29 CRAN (R 3.5.0)
-##  cellranger   1.1.0   2016-07-27 CRAN (R 3.5.0)
-##  cli          1.0.0   2017-11-05 CRAN (R 3.5.0)
-##  colorspace   1.3-2   2016-12-14 CRAN (R 3.5.0)
-##  compiler     3.5.0   2018-04-24 local         
-##  crayon       1.3.4   2017-09-16 CRAN (R 3.5.0)
-##  datasets   * 3.5.0   2018-04-24 local         
-##  devtools     1.13.6  2018-06-27 CRAN (R 3.5.0)
-##  digest       0.6.15  2018-01-28 CRAN (R 3.5.0)
-##  dplyr      * 0.7.6   2018-06-29 cran (@0.7.6) 
-##  evaluate     0.10.1  2017-06-24 CRAN (R 3.5.0)
-##  forcats    * 0.3.0   2018-02-19 CRAN (R 3.5.0)
-##  foreign      0.8-70  2017-11-28 CRAN (R 3.5.0)
-##  ggplot2    * 3.0.0   2018-07-03 cran (@3.0.0) 
-##  glue         1.2.0   2017-10-29 CRAN (R 3.5.0)
-##  graphics   * 3.5.0   2018-04-24 local         
-##  grDevices  * 3.5.0   2018-04-24 local         
-##  grid         3.5.0   2018-04-24 local         
-##  gtable       0.2.0   2016-02-26 CRAN (R 3.5.0)
-##  haven        1.1.1   2018-01-18 CRAN (R 3.5.0)
-##  hms          0.4.2   2018-03-10 CRAN (R 3.5.0)
-##  htmltools    0.3.6   2017-04-28 CRAN (R 3.5.0)
-##  httr         1.3.1   2017-08-20 CRAN (R 3.5.0)
-##  jsonlite     1.5     2017-06-01 CRAN (R 3.5.0)
-##  knitr        1.20    2018-02-20 CRAN (R 3.5.0)
-##  lattice      0.20-35 2017-03-25 CRAN (R 3.5.0)
-##  lazyeval     0.2.1   2017-10-29 CRAN (R 3.5.0)
-##  lubridate    1.7.4   2018-04-11 CRAN (R 3.5.0)
-##  magrittr     1.5     2014-11-22 CRAN (R 3.5.0)
-##  memoise      1.1.0   2017-04-21 CRAN (R 3.5.0)
-##  methods    * 3.5.0   2018-04-24 local         
-##  mnormt       1.5-5   2016-10-15 CRAN (R 3.5.0)
-##  modelr       0.1.2   2018-05-11 CRAN (R 3.5.0)
-##  munsell      0.4.3   2016-02-13 CRAN (R 3.5.0)
-##  nlme         3.1-137 2018-04-07 CRAN (R 3.5.0)
-##  parallel     3.5.0   2018-04-24 local         
-##  pillar       1.2.3   2018-05-25 CRAN (R 3.5.0)
-##  pkgconfig    2.0.1   2017-03-21 CRAN (R 3.5.0)
-##  plyr         1.8.4   2016-06-08 CRAN (R 3.5.0)
-##  psych        1.8.4   2018-05-06 CRAN (R 3.5.0)
-##  purrr      * 0.2.5   2018-05-29 CRAN (R 3.5.0)
-##  R6           2.2.2   2017-06-17 CRAN (R 3.5.0)
-##  Rcpp         0.12.17 2018-05-18 CRAN (R 3.5.0)
-##  readr      * 1.1.1   2017-05-16 CRAN (R 3.5.0)
-##  readxl       1.1.0   2018-04-20 CRAN (R 3.5.0)
-##  reshape2     1.4.3   2017-12-11 CRAN (R 3.5.0)
-##  rlang        0.2.1   2018-05-30 CRAN (R 3.5.0)
-##  rmarkdown    1.10    2018-06-11 cran (@1.10)  
-##  rprojroot    1.3-2   2018-01-03 CRAN (R 3.5.0)
-##  rstudioapi   0.7     2017-09-07 CRAN (R 3.5.0)
-##  rvest        0.3.2   2016-06-17 CRAN (R 3.5.0)
-##  scales       0.5.0   2017-08-24 CRAN (R 3.5.0)
-##  stats      * 3.5.0   2018-04-24 local         
-##  stringi      1.2.2   2018-05-02 CRAN (R 3.5.0)
-##  stringr    * 1.3.1   2018-05-10 CRAN (R 3.5.0)
-##  tibble     * 1.4.2   2018-01-22 CRAN (R 3.5.0)
-##  tidyr      * 0.8.1   2018-05-18 CRAN (R 3.5.0)
-##  tidyselect   0.2.4   2018-02-26 CRAN (R 3.5.0)
-##  tidyverse  * 1.2.1   2017-11-14 CRAN (R 3.5.0)
-##  tools        3.5.0   2018-04-24 local         
-##  utf8         1.1.4   2018-05-24 CRAN (R 3.5.0)
-##  utils      * 3.5.0   2018-04-24 local         
-##  withr        2.1.2   2018-03-15 CRAN (R 3.5.0)
-##  xfun         0.3     2018-07-06 CRAN (R 3.5.0)
-##  xml2         1.2.0   2018-01-24 CRAN (R 3.5.0)
-##  yaml         2.1.19  2018-05-01 CRAN (R 3.5.0)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;```&lt;/p&gt;
 &lt;/div&gt;
 </description>
     </item>
