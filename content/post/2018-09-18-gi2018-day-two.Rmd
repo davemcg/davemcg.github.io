@@ -21,7 +21,7 @@ output:
 
 # Day Two
 
-## Katie Pollard
+## Katie Pollard Keynote
 A population genetic view of human chromatin organization
 
 Noncoding human mutation and disease
@@ -86,7 +86,7 @@ shape motifs can occur without sequence motifs
   - most have both shape and motif patterns
   - some shape only and some motif only
   
-Machine learning in genomics comments
+Machine learning in genomics comments (Pollard kindly taking time out her talk to discuss geneeral ML issues)
 
   - try to model enhancer interaction with konwn enhancers, expressed genes, Hi-C data (TargetFinder)
   - common issues:
@@ -98,3 +98,30 @@ Machine learning in genomics comments
       - genomic data is inherently **not** independent and identically distributed
       - not trivial....different genome regions are inherently different (model doesn't transfer)
       
+# Sri Kosuri (Kosuri)
+Functional Impacts Of Rare Genetic Variation On Exome Recognition
+
+Experimental assays (but huge)
+
+multiplexed reporter assays (100k+ experiments) + DNA synthesis to do reverse genomics
+
+https://www.biorxiv.org/content/early/2018/03/10/199927
+
+Average genome has 4-5 million common variants and 50-100K rare variants (<0.5% AF)
+
+how do rare variants exert large effect changes?
+
+  - you see them in GTEx (under and over expression outliers)
+  
+Massively parallel exon splicing reporter
+
+  - which mutations cause exon splicing issues
+  - assayed 28k across 2,200 exon
+  - mostly at splice junctions
+  - but you still see plenty in exons and further away
+  - *in silico* predictions are pretty bad (splicing specific models OK)
+  - 3.8% (1,505 / 27,900) led to large loss of exon recognition
+  - can't predict them.... (with existing tools)
+  - nice to see a whole slide on why this isn't the most perfect experiment ever
+    - short (100nt) exons used (biased)
+    

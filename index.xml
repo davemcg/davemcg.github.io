@@ -19,15 +19,16 @@
       <description>&lt;div id=&#34;TOC&#34;&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#day-two&#34;&gt;Day Two&lt;/a&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#katie-pollard&#34;&gt;Katie Pollard&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#katie-pollard-keynote&#34;&gt;Katie Pollard Keynote&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#sri-kosuri-kosuri&#34;&gt;Sri Kosuri (Kosuri)&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 
 &lt;div id=&#34;day-two&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Day Two&lt;/h1&gt;
-&lt;div id=&#34;katie-pollard&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Katie Pollard&lt;/h2&gt;
+&lt;div id=&#34;katie-pollard-keynote&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Katie Pollard Keynote&lt;/h2&gt;
 &lt;p&gt;A population genetic view of human chromatin organization&lt;/p&gt;
 &lt;p&gt;Noncoding human mutation and disease&lt;/p&gt;
 &lt;ul&gt;
@@ -86,7 +87,7 @@
 &lt;li&gt;most have both shape and motif patterns&lt;/li&gt;
 &lt;li&gt;some shape only and some motif only&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Machine learning in genomics comments&lt;/p&gt;
+&lt;p&gt;Machine learning in genomics comments (Pollard kindly taking time out her talk to discuss geneeral ML issues)&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;try to model enhancer interaction with konwn enhancers, expressed genes, Hi-C data (TargetFinder)&lt;/li&gt;
 &lt;li&gt;common issues:
@@ -101,6 +102,32 @@
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;sri-kosuri-kosuri&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Sri Kosuri (Kosuri)&lt;/h1&gt;
+&lt;p&gt;Functional Impacts Of Rare Genetic Variation On Exome Recognition&lt;/p&gt;
+&lt;p&gt;Experimental assays (but huge)&lt;/p&gt;
+&lt;p&gt;multiplexed reporter assays (100k+ experiments) + DNA synthesis to do reverse genomics&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.biorxiv.org/content/early/2018/03/10/199927&#34; class=&#34;uri&#34;&gt;https://www.biorxiv.org/content/early/2018/03/10/199927&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Average genome has 4-5 million common variants and 50-100K rare variants (&amp;lt;0.5% AF)&lt;/p&gt;
+&lt;p&gt;how do rare variants exert large effect changes?&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;you see them in GTEx (under and over expression outliers)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Massively parallel exon splicing reporter&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;which mutations cause exon splicing issues&lt;/li&gt;
+&lt;li&gt;assayed 28k across 2,200 exon&lt;/li&gt;
+&lt;li&gt;mostly at splice junctions&lt;/li&gt;
+&lt;li&gt;but you still see plenty in exons and further away&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;in silico&lt;/em&gt; predictions are pretty bad (splicing specific models OK)&lt;/li&gt;
+&lt;li&gt;3.8% (1,505 / 27,900) led to large loss of exon recognition&lt;/li&gt;
+&lt;li&gt;can’t predict them…. (with existing tools)&lt;/li&gt;
+&lt;li&gt;nice to see a whole slide on why this isn’t the most perfect experiment ever
+&lt;ul&gt;
+&lt;li&gt;short (100nt) exons used (biased)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/div&gt;
 </description>
     </item>
