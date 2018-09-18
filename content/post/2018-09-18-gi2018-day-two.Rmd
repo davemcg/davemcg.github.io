@@ -98,7 +98,7 @@ Machine learning in genomics comments (Pollard kindly taking time out her talk t
       - genomic data is inherently **not** independent and identically distributed
       - not trivial....different genome regions are inherently different (model doesn't transfer)
       
-# Sri Kosuri (Kosuri)
+## Sri Kosuri (Kosuri)
 Functional Impacts Of Rare Genetic Variation On Exome Recognition
 
 Experimental assays (but huge)
