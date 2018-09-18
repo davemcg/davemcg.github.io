@@ -161,7 +161,7 @@ Case study IDing fusion gene between MET and RBPMS (chr 7 <-> chr 8)
 
 Keep using 'Churchill' term for their software....annoying they don't credit the tools that actually power it (GATK?)
 
-# Kaitlin Samocha (Hurles)
+## Kaitlin Samocha (Hurles)
 Evaluating the role of rare variation in children with developmental disorders
 
 DDD
@@ -208,7 +208,7 @@ digenic inheritance?
   - parents each have damaging mutations (but dif from each other)
   - probably not (no strong enrichment in undiagnosed vs diagnosed)
   
-# Tracy Ballinger (Semple)
+## Tracy Ballinger (Semple)
 Modeling Double Strand Breaks to Interrogate Structural Variation in Cancer
 
 SV (structural variation) prevalent across cancer
@@ -231,7 +231,7 @@ cancer 'coldspots':
 
   - enriched for active chromatin and deplted in fragile sites
   
-# Lucia Spangenberg (Naya)
+## Lucia Spangenberg (Naya)
 Retrieving Charras genomic tracts from the Uruguayan admixed population
 
 Charras all killed by state 187 years ago
@@ -292,7 +292,7 @@ host-parasite association (looking at merozoite SNPs, which interacts with human
 
   - get one nice looking peak in parasite gene MSP4 / MSP2 and human GCTN2 and GBGT1
   
-# Luca Penso-Dolfin (Di Palma)
+## Luca Penso-Dolfin (Di Palma)
 The role of structural variants in the adaptive radiation of African Cichlids
 
 African cichclids are canonical example of adaptive radition
@@ -325,12 +325,42 @@ lot fewer inversions
 
 SECOND NO_TWITTER
 
-  - cool enrichment of some genes in inversions
+  - cool enrichment of some genes / GO terms in inversions
   
-# Marta Farré (Larkin)
-Coevolution of chromosome changes and gene regulation in ruminants
+## Mario Caccamo (NIAB)
+Understanding the genetic components controlling apomixis
 
-@marta_f_b
+**WHAT IS APOMIXIS I HAVE NO IDEA**
+
+**SOMETHING WITH CROPS?**
+
+Plants often have polyploid genomes
+
+Wheat is hexaploid .... and 17Gb (reminder human is 3Gb)
+
+There are 60k wheat lines. (**Whoah**)
+
+Apomixis!
+
+  - clonal reproduction through seeds
+  - asexual reproduction
   
+Weeping lovegrass
 
+  - grass from southern africa
+  - polyploid
+  - transcriptome from sexual and asexual
+    - 4 candidate genes
+    
+Make diploid -> pacbio + dovetail -> assembly
 
+**OH NO CRAZY VENN DIAGRAM USE AN UpSet YO**
+
+Then sequenced tetraploid and the asexual types and mapped back to assembly
+
+4 candidate genes missing in 2x assembly
+
+  - hypothesis is that they get dropped / incompatible with sexual state
+  - no mention of the genes
+  - functional characteriziation work in arabidopsis and rice in progress
+  
