@@ -125,3 +125,30 @@ Massively parallel exon splicing reporter
   - nice to see a whole slide on why this isn't the most perfect experiment ever
     - short (100nt) exons used (biased)
     
+## Patrick Brennan (Nationwide Children's)
+Integration of whole genome, whole exome, and transcriptome pipeline for comprehensive genomic profiling of 60 pediatric cancer subjects
+
+250x WES, 60X WGS (tumor + normal)
+RNA-seq (tumor only)
+
+7 diff fusion detection algorithms
+
+  - ugh, 7 way venn
+  - they focus on the few which are consistently called (or rather ranked on overlap and evidence support)
+  
+RNA-seq
+
+  - DESeq, Salmon, then Ingenuity for pathway analysis (TPM as input)
+
+Differential comparison (RNA)
+
+  - but to what???
+  - oh the 'treehouse' data (not sure what this is)
+  
+Case study matching indel in gene with RNA expression difference, which helped to suggest tyrosine kinase inhibitor treatment
+
+Case study IDing fusion gene between MET and RBPMS (chr 7 <-> chr 8)
+
+Keep using 'Churchill' term for their software....annoying they don't credit the tools that actually power it (GATK?)
+
+

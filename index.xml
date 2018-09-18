@@ -21,6 +21,7 @@
 &lt;li&gt;&lt;a href=&#34;#day-two&#34;&gt;Day Two&lt;/a&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#katie-pollard-keynote&#34;&gt;Katie Pollard Keynote&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#sri-kosuri-kosuri&#34;&gt;Sri Kosuri (Kosuri)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#patrick-brennan-nationwide-childrens&#34;&gt;Patrick Brennan (Nationwide Children’s)&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
@@ -127,6 +128,28 @@
 &lt;li&gt;short (100nt) exons used (biased)&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;patrick-brennan-nationwide-childrens&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Patrick Brennan (Nationwide Children’s)&lt;/h2&gt;
+&lt;p&gt;Integration of whole genome, whole exome, and transcriptome pipeline for comprehensive genomic profiling of 60 pediatric cancer subjects&lt;/p&gt;
+&lt;p&gt;250x WES, 60X WGS (tumor + normal) RNA-seq (tumor only)&lt;/p&gt;
+&lt;p&gt;7 diff fusion detection algorithms&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ugh, 7 way venn&lt;/li&gt;
+&lt;li&gt;they focus on the few which are consistently called (or rather ranked on overlap and evidence support)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;RNA-seq&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;DESeq, Salmon, then Ingenuity for pathway analysis (TPM as input)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Differential comparison (RNA)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;but to what???&lt;/li&gt;
+&lt;li&gt;oh the ‘treehouse’ data (not sure what this is)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Case study matching indel in gene with RNA expression difference, which helped to suggest tyrosine kinase inhibitor treatment&lt;/p&gt;
+&lt;p&gt;Case study IDing fusion gene between MET and RBPMS (chr 7 &amp;lt;-&amp;gt; chr 8)&lt;/p&gt;
+&lt;p&gt;Keep using ‘Churchill’ term for their software….annoying they don’t credit the tools that actually power it (GATK?)&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 </description>
