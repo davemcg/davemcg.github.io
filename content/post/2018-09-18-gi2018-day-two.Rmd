@@ -21,6 +21,16 @@ output:
 
 # Day Two
 
+# Personal and Medical Genomics
+
+Very sparse and poorly written notes covering [#GI2018](https://twitter.com/hashtag/GI2018?src=hash). 
+
+Typos everywhere. Things may change dramatically over time as I scan back through notes.
+
+I've tried to respect \#notwitter. Will be updated periodically. 
+
+Speaker (Lab | Group)
+
 ## Katie Pollard Keynote
 A population genetic view of human chromatin organization
 
@@ -150,5 +160,177 @@ Case study matching indel in gene with RNA expression difference, which helped t
 Case study IDing fusion gene between MET and RBPMS (chr 7 <-> chr 8)
 
 Keep using 'Churchill' term for their software....annoying they don't credit the tools that actually power it (GATK?)
+
+# Kaitlin Samocha (Hurles)
+Evaluating the role of rare variation in children with developmental disorders
+
+DDD
+
+  - represent UK well
+  - diagnostic rate of 35%
+  
+4,300 trios have 94 genes with high gene burden
+
+  - gene test with poisson tests outputting p values for LoF, missense, synonymous
+  
+New approach
+
+  - weight different types of mutations separately
+  - gene score composed of weighted scores
+  - multiple hypothesis correction (use prior knowledge)
+
+where do weights come from?
+
+  - observations from DDD cohort, comparing DDD enrichment by class (LoF, etc) to CADD
+  
+new method
+
+  - finds more genes relative to poisson (old) method
+  - applying to 10k trios
+  
+inherited variation
+
+  - do cases have more rare damaging variants
+  - cadd > 21
+  - observed once or more ExAC
+  - effect size of ~1.7 for probands with affect parents
+  - ~1.2 for other probands
+
+causative enriched in high pLI genes
+
+is this from cryptic recessive diagnoses?
+
+  - probably not
+  - high pLI genes not enriched for recessive disease genes
+  
+digenic inheritance?
+
+  - parents each have damaging mutations (but dif from each other)
+  - probably not (no strong enrichment in undiagnosed vs diagnosed)
+  
+# Tracy Ballinger (Semple)
+Modeling Double Strand Breaks to Interrogate Structural Variation in Cancer
+
+SV (structural variation) prevalent across cancer
+
+Nonrandom distribution
+
+  - chromatin structure, sequence composition, and nuclear organization influence SV 
+  
+built Random Forest model that correlates well with real data
+
+  - Replication seq, open chromatin (DNase), pol2db, most important features
+  - predicts well across different cell types
+  
+Compare SV prediction to cancer breakpoints 
+
+  - ID regions with more or less SV breakpoints than expected
+  - also "passenger" regions which are not enriched
+  
+cancer 'coldspots':
+
+  - enriched for active chromatin and deplted in fragile sites
+  
+# Lucia Spangenberg (Naya)
+Retrieving Charras genomic tracts from the Uruguayan admixed population
+
+Charras all killed by state 187 years ago
+
+80 Uruguayan genomes (Just 10 for this project?)
+
+Q1: Still have Charrua in Uruguayan genomes?
+
+Calculated local ancestry (rel to EUR or AFR)
+
+PCA to see clustering of Native Uruguayan. Also had 20 genomes from Simons
+
+Want to calculate Fst Tree with other ancient/original ameican populations
+
+  - clusters with Guarani and Chane (expected!)
+  
+Build protogenome by merging the 10 WGS they did
+
+  - 99% covered
+  
+# Comparative, Evolutionary, Metagenomics
+
+## Ellen Leffler (Kwiatkowski)
+Paired sequencing of host and parasite genomes in severe malaria cases
+
+191 million cases / year!
+
+plasmodium falciparum (most commmon in Africa) and vivax (more common in not Africa)
+
+MalariaGEN
+
+  - GWAS for severe malaria cases (falciparum), matched population controls
+  - found new structural var in GYPA/B/E 
+  
+Big Questions: 
+
+  - parasite variation? 
+  - genotype <-> parasite susceptibilty? 
+  - co-evolution? 
+  - individual disease risk?
+  
+can we sequence parasite DNA from human blood samples?
+
+  - 1 - 5 million parasites per ul blood
+  - napkin math gives 80X+ coverage for over 10,000 parasites / ul
+  
+align WGS to human and parasite genome
+
+  - mean 197X coverage
+  - eyeball median of 100X?
+  
+selective amplification of plasmodium falciparum gneome which gives ~50X enrichment
+
+1.5 million SNPs total (parasite)
+10 million SNPs total (human)
+
+host-parasite association (looking at merozoite SNPs, which interacts with human)
+
+  - get one nice looking peak in parasite gene MSP4 / MSP2 and human GCTN2 and GBGT1
+  
+# Luca Penso-Dolfin (Di Palma)
+The role of structural variants in the adaptive radiation of African Cichlids
+
+African cichclids are canonical example of adaptive radition
+
+Also, are freshwater fish, if you didn't know
+
+Hundreds of species, variation in jaw morphology, color, vision, behavior
+
+Most studies focus on gene evolution
+
+Looking at structural variation across three great East African lakes
+
+M. zebra, P. nyererei, A. burtoni, N. brichardi (already sequenced)
+
+One outgroup (O. niloticus)
+
+Talking about SV identification using paired end reads and looking for internal distance and split reads
+
+  - **Is he rolling his own SV caller???**
+
+FIRST NO_TWITTER!
+
+  - SV pipeline....which uses existing SV tools....not certain why NO_TWITTER...but I won't give any details
+  
+duplication net gain of 9.2 events per million years across the four species
+
+lot fewer inversions
+
+  - about 0.5 events per million years
+
+SECOND NO_TWITTER
+
+  - cool enrichment of some genes in inversions
+  
+# Marta Farré (Larkin)
+Coevolution of chromosome changes and gene regulation in ruminants
+
+@marta_f_b
+  
 
 

@@ -27,11 +27,18 @@ output:
 <li><a href="#sri-kosuri-kosuri">Sri Kosuri (Kosuri)</a></li>
 <li><a href="#patrick-brennan-nationwide-childrens">Patrick Brennan (Nationwide Children’s)</a></li>
 </ul></li>
+<li><a href="#kaitlin-samocha-hurles">Kaitlin Samocha (Hurles)</a></li>
+<li><a href="#tracy-ballinger-semple">Tracy Ballinger (Semple)</a></li>
+<li><a href="#lucia-spangenberg-naya">Lucia Spangenberg (Naya)</a></li>
 </ul>
 </div>
 
 <div id="day-two" class="section level1">
 <h1>Day Two</h1>
+<p>Very sparse and poorly written notes covering <a href="https://twitter.com/hashtag/GI2018?src=hash">#GI2018</a>.</p>
+<p>Typos everywhere. Things may change dramatically over time as I scan back through notes.</p>
+<p>I’ve tried to respect #notwitter. Will be updated periodically.</p>
+<p>Speaker (Lab | Group)</p>
 <div id="katie-pollard-keynote" class="section level2">
 <h2>Katie Pollard Keynote</h2>
 <p>A population genetic view of human chromatin organization</p>
@@ -155,4 +162,91 @@ output:
 <p>Case study IDing fusion gene between MET and RBPMS (chr 7 &lt;-&gt; chr 8)</p>
 <p>Keep using ‘Churchill’ term for their software….annoying they don’t credit the tools that actually power it (GATK?)</p>
 </div>
+</div>
+<div id="kaitlin-samocha-hurles" class="section level1">
+<h1>Kaitlin Samocha (Hurles)</h1>
+<p>Evaluating the role of rare variation in children with developmental disorders</p>
+<p>DDD</p>
+<ul>
+<li>represent UK well</li>
+<li>diagnostic rate of 35%</li>
+</ul>
+<p>4,300 trios have 94 genes with high gene burden</p>
+<ul>
+<li>gene test with poisson tests outputting p values for LoF, missense, synonymous</li>
+</ul>
+<p>New approach</p>
+<ul>
+<li>weight different types of mutations separately</li>
+<li>gene score composed of weighted scores</li>
+<li>multiple hypothesis correction (use prior knowledge)</li>
+</ul>
+<p>where do weights come from?</p>
+<ul>
+<li>observations from DDD cohort, comparing DDD enrichment by class (LoF, etc) to CADD</li>
+</ul>
+<p>new method</p>
+<ul>
+<li>finds more genes relative to poisson (old) method</li>
+<li>applying to 10k trios</li>
+</ul>
+<p>inherited variation</p>
+<ul>
+<li>do cases have more rare damaging variants</li>
+<li>cadd &gt; 21</li>
+<li>observed once or more ExAC</li>
+<li>effect size of ~1.7 for probands with affect parents</li>
+<li>~1.2 for other probands</li>
+</ul>
+<p>causative enriched in high pLI genes</p>
+<p>is this from cryptic recessive diagnoses?</p>
+<ul>
+<li>probably not</li>
+<li>high pLI genes not enriched for recessive disease genes</li>
+</ul>
+<p>digenic inheritance?</p>
+<ul>
+<li>parents each have damaging mutations (but dif from each other)</li>
+<li>probably not (no strong enrichment in undiagnosed vs diagnosed)</li>
+</ul>
+</div>
+<div id="tracy-ballinger-semple" class="section level1">
+<h1>Tracy Ballinger (Semple)</h1>
+<p>Modeling Double Strand Breaks to Interrogate Structural Variation in Cancer</p>
+<p>SV (structural variation) prevalent across cancer</p>
+<p>Nonrandom distribution</p>
+<ul>
+<li>chromatin structure, sequence composition, and nuclear organization influence SV</li>
+</ul>
+<p>built Random Forest model that correlates well with real data</p>
+<ul>
+<li>Replication seq, open chromatin (DNase), pol2db, most important features</li>
+<li>predicts well across different cell types</li>
+</ul>
+<p>Compare SV prediction to cancer breakpoints</p>
+<ul>
+<li>ID regions with more or less SV breakpoints than expected</li>
+<li>also “passenger” regions which are not enriched</li>
+</ul>
+<p>cancer ‘coldspots’:</p>
+<ul>
+<li>enriched for active chromatin and deplted in fragile sites</li>
+</ul>
+</div>
+<div id="lucia-spangenberg-naya" class="section level1">
+<h1>Lucia Spangenberg (Naya)</h1>
+<p>Retrieving Charras genomic tracts from the Uruguayan admixed population</p>
+<p>Charras all killed by state 187 years ago</p>
+<p>80 Uruguayan genomes (Just 10 for this project?)</p>
+<p>Q1: Still have Charrua in Uruguayan genomes?</p>
+<p>Calculated local ancestry (rel to EUR or AFR)</p>
+<p>PCA to see clustering of Native Uruguayan. Also had 20 genomes from Simons</p>
+<p>Want to calculate Fst Tree with other ancient/original ameican populations</p>
+<ul>
+<li>clusters with Guarani and Chane (expected!)</li>
+</ul>
+<p>Build protogenome by merging the 10 WGS they did</p>
+<ul>
+<li>99% covered</li>
+</ul>
 </div>
