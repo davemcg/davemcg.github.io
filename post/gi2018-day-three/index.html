@@ -17,11 +17,8 @@
       
     
   
-  <meta name="description" content="Day 3 Rafael Irizarry Keynote Session 4: Transcriptomics, Alternative Splicing and Gene Predictions Mark Robinson (Robinson) Hagen Tilgner (Tilgner) Nikka Keivanfar (Church, 10X) Koen Van den Berge (Clement)    Day 3 Very sparse and poorly written notes covering #GI2018.
-Typos everywhere. Things may change dramatically over time as I scan back through notes.
-I’ve tried to respect #notwitter. Will be updated periodically.
-Speaker (Lab | Group)
- Rafael Irizarry Keynote Understanding variabliity in high throughput data">
+  <meta name="description" content="Day 3 Rafael Irizarry Keynote Session 4: Transcriptomics, Alternative Splicing and Gene Predictions Mark Robinson (Robinson) Hagen Tilgner (Tilgner) Nikka Keivanfar (Church, 10X) Koen Van den Berge (Clement) Barbara Englehardt (Englehardt) Jeff Gaither (White) Fiona Dick (Tzoulis)  Epigenetics and non-coding genome Jordana Bell (Bell) Wouter Meuleman (Stamatoyannopoulos)    Day 3 Very sparse and poorly written notes covering #GI2018.
+Typos everywhere. Things may change dramatically over time as I scan back through notes.">
 
   
   <link rel="alternate" hreflang="en-us" href="/./post/gi2018-day-three/">
@@ -97,11 +94,8 @@ Speaker (Lab | Group)
   <meta property="og:site_name" content="eye Bioinformatician">
   <meta property="og:url" content="/./post/gi2018-day-three/">
   <meta property="og:title" content="#GI2018 - Day Three | eye Bioinformatician">
-  <meta property="og:description" content="Day 3 Rafael Irizarry Keynote Session 4: Transcriptomics, Alternative Splicing and Gene Predictions Mark Robinson (Robinson) Hagen Tilgner (Tilgner) Nikka Keivanfar (Church, 10X) Koen Van den Berge (Clement)    Day 3 Very sparse and poorly written notes covering #GI2018.
-Typos everywhere. Things may change dramatically over time as I scan back through notes.
-I’ve tried to respect #notwitter. Will be updated periodically.
-Speaker (Lab | Group)
- Rafael Irizarry Keynote Understanding variabliity in high throughput data">
+  <meta property="og:description" content="Day 3 Rafael Irizarry Keynote Session 4: Transcriptomics, Alternative Splicing and Gene Predictions Mark Robinson (Robinson) Hagen Tilgner (Tilgner) Nikka Keivanfar (Church, 10X) Koen Van den Berge (Clement) Barbara Englehardt (Englehardt) Jeff Gaither (White) Fiona Dick (Tzoulis)  Epigenetics and non-coding genome Jordana Bell (Bell) Wouter Meuleman (Stamatoyannopoulos)    Day 3 Very sparse and poorly written notes covering #GI2018.
+Typos everywhere. Things may change dramatically over time as I scan back through notes.">
   <meta property="og:locale" content="en-us">
   
   <meta property="article:published_time" content="2018-09-19T00:00:00&#43;00:00">
@@ -284,7 +278,7 @@ Speaker (Lab | Group)
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    5 min read
+    8 min read
   </span>
   
 
@@ -368,6 +362,13 @@ Speaker (Lab | Group)
 <li><a href="#hagen-tilgner-tilgner">Hagen Tilgner (Tilgner)</a></li>
 <li><a href="#nikka-keivanfar-church-10x">Nikka Keivanfar (Church, 10X)</a></li>
 <li><a href="#koen-van-den-berge-clement">Koen Van den Berge (Clement)</a></li>
+<li><a href="#barbara-englehardt-englehardt">Barbara Englehardt (Englehardt)</a></li>
+<li><a href="#jeff-gaither-white">Jeff Gaither (White)</a></li>
+<li><a href="#fiona-dick-tzoulis">Fiona Dick (Tzoulis)</a></li>
+</ul></li>
+<li><a href="#epigenetics-and-non-coding-genome">Epigenetics and non-coding genome</a><ul>
+<li><a href="#jordana-bell-bell">Jordana Bell (Bell)</a></li>
+<li><a href="#wouter-meuleman-stamatoyannopoulos">Wouter Meuleman (Stamatoyannopoulos)</a></li>
 </ul></li>
 </ul>
 </div>
@@ -534,7 +535,10 @@ Speaker (Lab | Group)
 <p>Continuous DE</p>
 <ul>
 <li>following SC across developmental trajectory</li>
-<li>slingshot tool (Street et al. 2018)</li>
+<li>slingshot tool (Street et al. 2018)
+<ul>
+<li><a href="https://github.com/kstreet13/slingshot" class="uri">https://github.com/kstreet13/slingshot</a></li>
+</ul></li>
 </ul>
 <p>What do you do downstream of the trajectory analyses???</p>
 <ul>
@@ -553,6 +557,148 @@ Speaker (Lab | Group)
 <li><strong>this is pretty slick</strong></li>
 <li>“very preliminary”</li>
 </ul>
+</div>
+<div id="barbara-englehardt-englehardt" class="section level2">
+<h2>Barbara Englehardt (Englehardt)</h2>
+<p>A generative model for single-cell RNA-sequencing</p>
+<p>Goal: develop low-dimensional generative model to address confounders</p>
+<p>What is useful about this?</p>
+<ul>
+<li>normalization</li>
+<li>batch correction</li>
+<li>imputation</li>
+<li>visualization</li>
+</ul>
+<p>Student’s t Gaussian process laternt varaible model (tGPLVM)</p>
+<p>Compare viz results of tGPLVM to t-SNE, PCA, ZIFA</p>
+<p>Many many examples … hard to explain. Looks roughly comparable to ZIFA, t-SNE for cell type / gene expression</p>
+<p>Nice trajectory tree plotting</p>
+<ul>
+<li>absolutely no idea how the plot was made. Some kind of branching tree thing</li>
+</ul>
+</div>
+<div id="jeff-gaither-white" class="section level2">
+<h2>Jeff Gaither (White)</h2>
+<p>Constraint for mRNA structure in human synonymous mutations</p>
+<p>Synonymous mutations that alter mRNA stability have lower incidence rate in humas</p>
+<p>AT -&gt; CG stabilizing CG -&gt; AT de-stabilizing</p>
+<p>Bigger shift in stability (their own metric, no idea what it is) are less common (gnomAD)</p>
+<p>mRNA sturcture previously implicated in</p>
+<ul>
+<li>translation speed</li>
+<li>mRNA half life</li>
+<li>miRNA/protein binding</li>
+</ul>
+<p>Measure ‘deform structure’ with <a href="https://www.tbi.univie.ac.at/RNA/">ViennaRNA</a></p>
+<p>dMFE is delta minimum free energy</p>
+<ul>
+<li>low is stabilizing</li>
+<li>high is de-stabilizing</li>
+</ul>
+<p>CpG transitions that are destabilizing are selected against</p>
+<p>But is this causative???</p>
+<ul>
+<li>CpG content is partially responsible</li>
+<li>as is GC content</li>
+</ul>
+</div>
+<div id="fiona-dick-tzoulis" class="section level2">
+<h2>Fiona Dick (Tzoulis)</h2>
+<p>Differential isoform usage in Parkinson’s disease</p>
+<p>Discussing DTE vs DTU E is for expression U is for usage DT is for Differential Transcript</p>
+<p>U is more for proportion of transcript</p>
+<p>Ribo-Zero capture (reduce 5’ 3’ bias) -&gt; Salmon -&gt; Tximport -&gt; EVERYTHING*</p>
+<ul>
+<li></li>
+<li>DRIMSeq –&gt; StageR</li>
+<li>DEXSeq –&gt; StageR</li>
+<li>ISAR + DRIMSEq</li>
+<li>ISAR (IsoformSwitchAnalyzeR)</li>
+</ul>
+<p>Intersected all results -&gt; OI ANOTHER CRAZY VENN</p>
+<p>ISAR returned far fewer results</p>
+<ul>
+<li>it filters out a ton of transcripts</li>
+</ul>
+<p>Of the 6 genes that all tools agree -&gt; 5 switch from protein coding to not protein coding</p>
+</div>
+</div>
+<div id="epigenetics-and-non-coding-genome" class="section level1">
+<h1>Epigenetics and non-coding genome</h1>
+<div id="jordana-bell-bell" class="section level2">
+<h2>Jordana Bell (Bell)</h2>
+<p>Interpreting variation in the human methylome</p>
+<p>DNA methylation heritability in TwinSUK</p>
+<ul>
+<li>400 female twins</li>
+<li>Imputed genotypes</li>
+<li>Infinium MethylationEPIC (772k CpGs after QC)</li>
+</ul>
+<p>Heritability of MZ vs DZ twins</p>
+<ul>
+<li>MZ have higher cor, than DZ, which is higher than unrelated</li>
+<li>calculated heritability (h2)&gt; 40% in 10.5% of methylome</li>
+<li>enhancer more heritable, promoter less so (really?)</li>
+</ul>
+<p>meQTLs</p>
+<ul>
+<li>found a bunch (200k)</li>
+<li>more in CpG islands, promoters</li>
+</ul>
+<p>Extending/validating in new cohort</p>
+<ul>
+<li>another 2k people</li>
+</ul>
+<p>GoDMC consortium</p>
+<ul>
+<li><a href="godmc.org.uk" class="uri">godmc.org.uk</a></li>
+<li>blood, Illumina 450k, 1000G imputation</li>
+<li>27k samples</li>
+<li>many many covariates</li>
+<li>190k (45%) of CpGs have &gt;=1 mQTL
+<ul>
+<li>90% in cis</li>
+</ul></li>
+<li>Grouped CpGs with many cis and trans links (“community”)</li>
+</ul>
+</div>
+<div id="wouter-meuleman-stamatoyannopoulos" class="section level2">
+<h2>Wouter Meuleman (Stamatoyannopoulos)</h2>
+<p>Delineation and annotation of the human regulatory landscape across 400+ cell types and states</p>
+<p><span class="citation">@nameluem</span></p>
+<p>Quick overview of DNaseI HS assay</p>
+<p>400+ cell types and states</p>
+<ul>
+<li>733 DNase-seq</li>
+<li>439 unique cellular combinations</li>
+</ul>
+<p>Convert continuous signal into consensus summits</p>
+<ul>
+<li>3.5 million+ DNase1 HS sites</li>
+<li>21% of genome</li>
+<li>primarily distal to TSS</li>
+<li>minority of DHs are constitutive
+<ul>
+<li>most are unique to sample / cell</li>
+</ul></li>
+</ul>
+<p>Decompose DHS x cell matrix into Non-negative matrix factorization (NMF)</p>
+<ul>
+<li>picked k of 16</li>
+<li><strong>k is kind of like cluster</strong></li>
+<li>which they hand assign to cell type / role</li>
+<li>Can even further drop down and assign genes to predominant k / color / assignment
+<ul>
+<li>20% of protein coding genes can get a label (Bonferonni FWER &lt; 0.05)</li>
+</ul></li>
+</ul>
+<p>Interpret genetic variation</p>
+<ul>
+<li>match against GWAS catalogs</li>
+<li>find matches for k / color against GWAS diseases</li>
+<li>regulatory terms informative in GWAS</li>
+</ul>
+<p><strong>Very cool work, I’ve found in my <a href="https://github.com/davemcg/distill">Distill</a> project that the k/cluster assignment across the genome provided value in assignment of pathogenicity for DNA mutation</strong></p>
 </div>
 </div>
 

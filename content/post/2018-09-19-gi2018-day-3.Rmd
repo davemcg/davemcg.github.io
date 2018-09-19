@@ -210,6 +210,7 @@ Continuous DE
 
   - following SC across developmental trajectory
   - slingshot tool (Street et al. 2018)
+    - [https://github.com/kstreet13/slingshot](https://github.com/kstreet13/slingshot)
   
 What do you do downstream of the trajectory analyses???
 
@@ -226,4 +227,154 @@ Propose NB-GAM
   - **this is pretty slick**
   - "very preliminary"
 
+## Barbara Englehardt (Englehardt)
+A generative model for single-cell RNA-sequencing
 
+Goal: develop low-dimensional generative model to address confounders
+
+What is useful about this?
+
+  - normalization
+  - batch correction
+  - imputation
+  - visualization
+  
+Student's t Gaussian process laternt varaible model (tGPLVM)
+
+Compare viz results of tGPLVM to t-SNE, PCA, ZIFA
+
+Many many examples ... hard to explain. Looks roughly comparable to ZIFA, t-SNE for cell type / gene expression
+
+Nice trajectory tree plotting
+
+  - absolutely no idea how the plot was made. Some kind of branching tree thing
+
+## Jeff Gaither (White)
+Constraint for mRNA structure in human synonymous mutations
+
+Synonymous mutations that alter mRNA stability have lower incidence rate in humas
+
+AT -> CG stabilizing
+CG -> AT de-stabilizing
+
+Bigger shift in stability (their own metric, no idea what it is) are less common (gnomAD)
+
+mRNA sturcture previously implicated in
+
+  - translation speed
+  - mRNA half life
+  - miRNA/protein binding
+  
+Measure 'deform structure' with [ViennaRNA](https://www.tbi.univie.ac.at/RNA/)
+
+dMFE is delta minimum free energy
+
+  - low is stabilizing
+  - high is de-stabilizing
+  
+CpG transitions that are destabilizing are selected against
+
+But is this causative???
+
+  - CpG content is partially responsible
+  - as is GC content
+  
+## Fiona Dick (Tzoulis)
+Differential isoform usage in Parkinson's disease
+
+Discussing DTE vs DTU
+E is for expression
+U is for usage
+DT is for Differential Transcript
+
+U is more for proportion of transcript
+
+Ribo-Zero capture (reduce 5' 3' bias) -> Salmon -> Tximport -> EVERYTHING*
+
+*
+
+  - DRIMSeq --> StageR
+  - DEXSeq --> StageR
+  - ISAR + DRIMSEq
+  - ISAR (IsoformSwitchAnalyzeR)
+
+Intersected all results -> OI ANOTHER CRAZY VENN
+
+ISAR returned far fewer results
+
+  - it filters out a ton of transcripts
+  
+Of the 6 genes that all tools agree -> 5 switch from protein coding to not protein coding
+
+# Epigenetics and non-coding genome 
+
+
+## Jordana Bell (Bell)
+Interpreting variation in the human methylome
+
+DNA methylation heritability in TwinSUK
+
+  - 400 female twins
+  - Imputed genotypes
+  - Infinium MethylationEPIC (772k CpGs after QC)
+
+Heritability of MZ vs DZ twins
+
+  - MZ have higher cor, than DZ, which is higher than unrelated 
+  - calculated heritability (h2)> 40% in 10.5% of methylome
+  - enhancer more heritable, promoter less so (really?)
+  
+meQTLs
+
+  - found a bunch (200k)
+  - more in CpG islands, promoters
+  
+Extending/validating in new cohort
+
+  - another 2k people
+  
+GoDMC consortium
+
+  - [godmc.org.uk](godmc.org.uk)
+  - blood, Illumina 450k, 1000G imputation
+  - 27k samples 
+  - many many covariates
+  - 190k (45%) of CpGs have >=1 mQTL
+    - 90% in cis
+  - Grouped CpGs with many cis and trans links ("community")
+
+## Wouter Meuleman (Stamatoyannopoulos)
+Delineation and annotation of the human regulatory landscape across 400+ cell types and states
+
+@nameluem
+
+Quick overview of DNaseI HS assay
+
+400+ cell types and states
+
+  - 733 DNase-seq
+  - 439 unique cellular combinations
+
+Convert continuous signal into consensus summits
+
+  - 3.5 million+ DNase1 HS sites
+  - 21% of genome
+  - primarily distal to TSS
+  - minority of DHs are constitutive
+    - most are unique to sample / cell
+    
+Decompose DHS x cell matrix into Non-negative matrix factorization (NMF)
+
+  - picked k of 16
+  - **k is kind of like cluster**
+  - which they hand assign to cell type / role
+  - Can even further drop down and assign genes to predominant k / color / assignment
+      - 20% of protein coding genes can get a label (Bonferonni FWER < 0.05)
+      
+Interpret genetic variation
+
+  - match against GWAS catalogs
+  - find matches for k / color against GWAS diseases
+  - regulatory terms informative in GWAS 
+  
+**Very cool work, I've found in my [Distill](https://github.com/davemcg/distill) project that the k/cluster assignment across the genome provided value in assignment of pathogenicity for DNA mutation**
