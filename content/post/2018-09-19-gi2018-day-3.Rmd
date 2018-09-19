@@ -130,4 +130,100 @@ Diff expression analysis
   - once you account for way lower depth (again 1M vs 30M) for ONT, roughly comparable
   
 Definitely not time to jump over for more standard DE type RNAseq tests
+
+## Hagen Tilgner (Tilgner)
+Single-cell isoform RNA sequencing (ScISOr-Seq) across thousands of cells reveals isoforms of cerebellar cell types.
+
+Need long-read RNA seq to confidently ID isoforms
+
+ScISOr-Seq
+
+  - 10X uses 3' sequencing
+  - Add PacBio ISO-Seq and find the 10X barcode
+  - blend 10X and PacBio data
   
+Barcode ID (long read data can be noisy...)
+
+  - 99.99% specificity with PacBio
+  - Only 58% of molecules have barcode (74% in Illumina)
+    - not catastrophic, more annoying
+    
+It works
+
+  - validate some junctions with MS/MS
+  
+Plug for [isoformAtlas.com](isoformAtlas.com)
+
+See some compelling cell type specific isoform usage
+
+## Nikka Keivanfar (Church, 10X)
+Bootstrapping Biology: Quick and easy de novo genome assembly to enable single cell gene expression analysis
+
+Linked-Reads  + Supernova + Cactus/CAT
+
+Supernova does assembly (with phase)
+
+Supernova v2 can get N50 over 100+ kb for many species (HUman, Hummingbird, Drosophila)
+
+  - Zebrafish is tougher (only around 20kb)
+  
+CAT
+
+  - Comparative Annotation Toolkit
+  - "provides a flexible way to simultaneously annotate entire clades and identify orthology relationships"
+  - doi.org/10.1101/231118
+  - https://genome.cshlp.org/content/28/7/1029
+  
+"Blackjack" (Donkey) blood sequenced with 10X
+
+  - made assembly with Supernova
+  - better metrics than other donkey genomes
+  
+Used assembly (+CAT to get gene info) for scRNA-seq of the blood
+
+  - labels major blood types (T cells, B cells, NK, monocytes, plasma, etc)
+  
+## Koen Van den Berge (Clement)
+Discrete and continuous differential expression analysis for single-cell RNA-seq data
+
+scRNA-seq data is WAY noiser than bulk RNA-seq (at least cell to cell)
+
+Bulk RNAseq generally use negative binomial models (edgeR, DESeq2)
+
+Sort of surprisingly, these bulk RNAseq methods seem to work well in scRNA
+
+But zeros.....showing simulations where adding zeros getting weird dispersion patterns
+
+  - **Why not ZINB-WAaE??**
+
+In real also see some odd dispersion
+
+Propose zero inflated negative binomal (ZINB) distribution
+  
+  - **Oh, this is the ZINB-WaVE author**
+  
+Downweighting excess zeros helps reduce variance and improve power
+
+[https://genomebiology.biomedcentral.com/articles/10.1186/s13059-018-1406-4](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-018-1406-4)
+
+Continuous DE
+
+  - following SC across developmental trajectory
+  - slingshot tool (Street et al. 2018)
+  
+What do you do downstream of the trajectory analyses???
+
+  - most do DE between clusters
+  - which he argues is sub-optimal
+    - no fixed biological meaning
+    - hetergeneous
+    - inflate FDR with so many comparisons required
+    
+Propose NB-GAM 
+
+  - so smooth out pseudotime trajectory with offset of sequencing depth (or other covariates?)
+  - cubic spline smoother right now
+  - **this is pretty slick**
+  - "very preliminary"
+
+

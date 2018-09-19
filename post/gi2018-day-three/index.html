@@ -17,12 +17,11 @@
       
     
   
-  <meta name="description" content="Day 3 Rafael Irizarry Keynote Session 4: Transcriptomics, Alternative Splicing and Gene Predictions Mark Robinson (Robinson)    Day 3 Very sparse and poorly written notes covering #GI2018.
+  <meta name="description" content="Day 3 Rafael Irizarry Keynote Session 4: Transcriptomics, Alternative Splicing and Gene Predictions Mark Robinson (Robinson) Hagen Tilgner (Tilgner) Nikka Keivanfar (Church, 10X) Koen Van den Berge (Clement)    Day 3 Very sparse and poorly written notes covering #GI2018.
 Typos everywhere. Things may change dramatically over time as I scan back through notes.
 I’ve tried to respect #notwitter. Will be updated periodically.
 Speaker (Lab | Group)
- Rafael Irizarry Keynote Understanding variabliity in high throughput data
-Typical workflow raw data -&gt; pre-processing -&gt; analysis -&gt; discovery (false?">
+ Rafael Irizarry Keynote Understanding variabliity in high throughput data">
 
   
   <link rel="alternate" hreflang="en-us" href="/./post/gi2018-day-three/">
@@ -98,12 +97,11 @@ Typical workflow raw data -&gt; pre-processing -&gt; analysis -&gt; discovery (f
   <meta property="og:site_name" content="eye Bioinformatician">
   <meta property="og:url" content="/./post/gi2018-day-three/">
   <meta property="og:title" content="#GI2018 - Day Three | eye Bioinformatician">
-  <meta property="og:description" content="Day 3 Rafael Irizarry Keynote Session 4: Transcriptomics, Alternative Splicing and Gene Predictions Mark Robinson (Robinson)    Day 3 Very sparse and poorly written notes covering #GI2018.
+  <meta property="og:description" content="Day 3 Rafael Irizarry Keynote Session 4: Transcriptomics, Alternative Splicing and Gene Predictions Mark Robinson (Robinson) Hagen Tilgner (Tilgner) Nikka Keivanfar (Church, 10X) Koen Van den Berge (Clement)    Day 3 Very sparse and poorly written notes covering #GI2018.
 Typos everywhere. Things may change dramatically over time as I scan back through notes.
 I’ve tried to respect #notwitter. Will be updated periodically.
 Speaker (Lab | Group)
- Rafael Irizarry Keynote Understanding variabliity in high throughput data
-Typical workflow raw data -&gt; pre-processing -&gt; analysis -&gt; discovery (false?">
+ Rafael Irizarry Keynote Understanding variabliity in high throughput data">
   <meta property="og:locale" content="en-us">
   
   <meta property="article:published_time" content="2018-09-19T00:00:00&#43;00:00">
@@ -286,7 +284,7 @@ Typical workflow raw data -&gt; pre-processing -&gt; analysis -&gt; discovery (f
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    3 min read
+    5 min read
   </span>
   
 
@@ -367,6 +365,9 @@ Typical workflow raw data -&gt; pre-processing -&gt; analysis -&gt; discovery (f
 <li><a href="#rafael-irizarry-keynote">Rafael Irizarry Keynote</a></li>
 <li><a href="#session-4-transcriptomics-alternative-splicing-and-gene-predictions">Session 4: Transcriptomics, Alternative Splicing and Gene Predictions</a><ul>
 <li><a href="#mark-robinson-robinson">Mark Robinson (Robinson)</a></li>
+<li><a href="#hagen-tilgner-tilgner">Hagen Tilgner (Tilgner)</a></li>
+<li><a href="#nikka-keivanfar-church-10x">Nikka Keivanfar (Church, 10X)</a></li>
+<li><a href="#koen-van-den-berge-clement">Koen Van den Berge (Clement)</a></li>
 </ul></li>
 </ul>
 </div>
@@ -461,6 +462,97 @@ Typical workflow raw data -&gt; pre-processing -&gt; analysis -&gt; discovery (f
 <li>once you account for way lower depth (again 1M vs 30M) for ONT, roughly comparable</li>
 </ul>
 <p>Definitely not time to jump over for more standard DE type RNAseq tests</p>
+</div>
+<div id="hagen-tilgner-tilgner" class="section level2">
+<h2>Hagen Tilgner (Tilgner)</h2>
+<p>Single-cell isoform RNA sequencing (ScISOr-Seq) across thousands of cells reveals isoforms of cerebellar cell types.</p>
+<p>Need long-read RNA seq to confidently ID isoforms</p>
+<p>ScISOr-Seq</p>
+<ul>
+<li>10X uses 3’ sequencing</li>
+<li>Add PacBio ISO-Seq and find the 10X barcode</li>
+<li>blend 10X and PacBio data</li>
+</ul>
+<p>Barcode ID (long read data can be noisy…)</p>
+<ul>
+<li>99.99% specificity with PacBio</li>
+<li>Only 58% of molecules have barcode (74% in Illumina)
+<ul>
+<li>not catastrophic, more annoying</li>
+</ul></li>
+</ul>
+<p>It works</p>
+<ul>
+<li>validate some junctions with MS/MS</li>
+</ul>
+<p>Plug for <a href="isoformAtlas.com" class="uri">isoformAtlas.com</a></p>
+<p>See some compelling cell type specific isoform usage</p>
+</div>
+<div id="nikka-keivanfar-church-10x" class="section level2">
+<h2>Nikka Keivanfar (Church, 10X)</h2>
+<p>Bootstrapping Biology: Quick and easy de novo genome assembly to enable single cell gene expression analysis</p>
+<p>Linked-Reads + Supernova + Cactus/CAT</p>
+<p>Supernova does assembly (with phase)</p>
+<p>Supernova v2 can get N50 over 100+ kb for many species (HUman, Hummingbird, Drosophila)</p>
+<ul>
+<li>Zebrafish is tougher (only around 20kb)</li>
+</ul>
+<p>CAT</p>
+<ul>
+<li>Comparative Annotation Toolkit</li>
+<li>“provides a flexible way to simultaneously annotate entire clades and identify orthology relationships”</li>
+<li>doi.org/10.1101/231118</li>
+<li><a href="https://genome.cshlp.org/content/28/7/1029" class="uri">https://genome.cshlp.org/content/28/7/1029</a></li>
+</ul>
+<p>“Blackjack” (Donkey) blood sequenced with 10X</p>
+<ul>
+<li>made assembly with Supernova</li>
+<li>better metrics than other donkey genomes</li>
+</ul>
+<p>Used assembly (+CAT to get gene info) for scRNA-seq of the blood</p>
+<ul>
+<li>labels major blood types (T cells, B cells, NK, monocytes, plasma, etc)</li>
+</ul>
+</div>
+<div id="koen-van-den-berge-clement" class="section level2">
+<h2>Koen Van den Berge (Clement)</h2>
+<p>Discrete and continuous differential expression analysis for single-cell RNA-seq data</p>
+<p>scRNA-seq data is WAY noiser than bulk RNA-seq (at least cell to cell)</p>
+<p>Bulk RNAseq generally use negative binomial models (edgeR, DESeq2)</p>
+<p>Sort of surprisingly, these bulk RNAseq methods seem to work well in scRNA</p>
+<p>But zeros…..showing simulations where adding zeros getting weird dispersion patterns</p>
+<ul>
+<li><strong>Why not ZINB-WAaE??</strong></li>
+</ul>
+<p>In real also see some odd dispersion</p>
+<p>Propose zero inflated negative binomal (ZINB) distribution</p>
+<ul>
+<li><strong>Oh, this is the ZINB-WaVE author</strong></li>
+</ul>
+<p>Downweighting excess zeros helps reduce variance and improve power</p>
+<p><a href="https://genomebiology.biomedcentral.com/articles/10.1186/s13059-018-1406-4" class="uri">https://genomebiology.biomedcentral.com/articles/10.1186/s13059-018-1406-4</a></p>
+<p>Continuous DE</p>
+<ul>
+<li>following SC across developmental trajectory</li>
+<li>slingshot tool (Street et al. 2018)</li>
+</ul>
+<p>What do you do downstream of the trajectory analyses???</p>
+<ul>
+<li>most do DE between clusters</li>
+<li>which he argues is sub-optimal
+<ul>
+<li>no fixed biological meaning</li>
+<li>hetergeneous</li>
+<li>inflate FDR with so many comparisons required</li>
+</ul></li>
+</ul>
+<p>Propose NB-GAM</p>
+<ul>
+<li>so smooth out pseudotime trajectory with offset of sequencing depth (or other covariates?)</li>
+<li>cubic spline smoother right now</li>
+<li><strong>this is pretty slick</strong></li>
+<li>“very preliminary”</li>
+</ul>
 </div>
 </div>
 
