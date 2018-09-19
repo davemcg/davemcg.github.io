@@ -86,5 +86,8 @@ Do we trust individual measurements?
   - can also shuffle data (shuffle samples, not points) and see how often a diff can occur by chance
   - region + bootstrapping powerful approach (plus looking at replicates individually!!!)
   
+# Session 4: Transcriptomics, Alternative Splicing and Gene Predictions
+## Mark Robinson (Robinson)
+On the analysis of long-read sequencing data for gene expression
 
 

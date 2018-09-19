@@ -20,6 +20,9 @@
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#day-3&#34;&gt;Day 3&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#rafael-irizarry-keynote&#34;&gt;Rafael Irizarry Keynote&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#session-4-transcriptomics-alternative-splicing-and-gene-predictions&#34;&gt;Session 4: Transcriptomics, Alternative Splicing and Gene Predictions&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#mark-robinson-robinson&#34;&gt;Mark Robinson (Robinson)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -73,6 +76,13 @@
 &lt;li&gt;can also shuffle data (shuffle samples, not points) and see how often a diff can occur by chance&lt;/li&gt;
 &lt;li&gt;region + bootstrapping powerful approach (plus looking at replicates individually!!!)&lt;/li&gt;
 &lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;session-4-transcriptomics-alternative-splicing-and-gene-predictions&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Session 4: Transcriptomics, Alternative Splicing and Gene Predictions&lt;/h1&gt;
+&lt;div id=&#34;mark-robinson-robinson&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Mark Robinson (Robinson)&lt;/h2&gt;
+&lt;p&gt;On the analysis of long-read sequencing data for gene expression&lt;/p&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 </description>
     </item>
