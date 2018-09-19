@@ -5,6 +5,15 @@
     
     <url>
     
+      <loc>/./post/gi2018-day-three/</loc>
+      <lastmod>2018-09-19T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/./post/gi2018-day-two/</loc>
       <lastmod>2018-09-18T00:00:00+00:00</lastmod>
     </url>
@@ -252,7 +261,7 @@
     <url>
     
       <loc>/./tags/bioinformatics/</loc>
-      <lastmod>2018-09-18T00:00:00+00:00</lastmod>
+      <lastmod>2018-09-19T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -262,7 +271,7 @@
     <url>
     
       <loc>/./categories/bioinformatics/</loc>
-      <lastmod>2018-09-18T00:00:00+00:00</lastmod>
+      <lastmod>2018-09-19T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -312,7 +321,7 @@
     <url>
     
       <loc>/./tags/conference/</loc>
-      <lastmod>2018-09-18T00:00:00+00:00</lastmod>
+      <lastmod>2018-09-19T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -362,7 +371,7 @@
     <url>
     
       <loc>/./tags/gi2018/</loc>
-      <lastmod>2018-09-18T00:00:00+00:00</lastmod>
+      <lastmod>2018-09-19T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -372,7 +381,7 @@
     <url>
     
       <loc>/./categories/gi2018/</loc>
-      <lastmod>2018-09-18T00:00:00+00:00</lastmod>
+      <lastmod>2018-09-19T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -672,7 +681,7 @@
     <url>
     
       <loc>/./tags/talks/</loc>
-      <lastmod>2018-09-18T00:00:00+00:00</lastmod>
+      <lastmod>2018-09-19T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     

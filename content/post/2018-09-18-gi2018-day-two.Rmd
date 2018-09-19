@@ -364,3 +364,39 @@ Then sequenced tetraploid and the asexual types and mapped back to assembly
   - no mention of the genes
   - functional characteriziation work in arabidopsis and rice in progress
   
+
+## Carla Cummins (Flicek)
+Comparative analysis of hundreds of vertebrate genomes in Ensembl
+
+What is Ensembl?
+
+  - genome stuffs (**my summary**)
+  - [ensembl.org](ensembl.org)
+  
+Data won't stop coming
+
+  - Ensembl release 94
+  - 154 vertebrate genomes
+  - clade based analysis
+  - huge jump: 41 teleosts this release
+
+Bottlenecks:
+
+  - all vs all methods scale quadratically 
+    - so try to remove redundancies
+    - work more within in clades
+  - read/write speeds
+    - genome in FastA, indexed and read with [Bio::DB::HTS (htslib)](https://github.com/Ensembl/Bio-DB-HTS)
+  - multiple sequence alignment
+    - do on server (5x faster)
+  - humans
+    - automate manual tasks
+    - infer species tree with Mash and NJ
+  
+workflows
+  - rule based (XML)
+  - infer parameters 
+  
+get more algorithms on linear growth
+  - ProgressCactus (?)
+    - [https://github.com/glennhickey/progressiveCactus ?](https://github.com/glennhickey/progressiveCactus)

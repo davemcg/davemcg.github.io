@@ -17,7 +17,7 @@
       
     
   
-  <meta name="description" content="Day Two Personal and Medical Genomics Katie Pollard Keynote Sri Kosuri (Kosuri) Patrick Brennan (Nationwide Children’s) Kaitlin Samocha (Hurles) Tracy Ballinger (Semple) Lucia Spangenberg (Naya)  Comparative, Evolutionary, Metagenomics Ellen Leffler (Kwiatkowski) Luca Penso-Dolfin (Di Palma) Mario Caccamo (NIAB)    Day Two  Personal and Medical Genomics Very sparse and poorly written notes covering #GI2018.
+  <meta name="description" content="Day Two Personal and Medical Genomics Katie Pollard Keynote Sri Kosuri (Kosuri) Patrick Brennan (Nationwide Children’s) Kaitlin Samocha (Hurles) Tracy Ballinger (Semple) Lucia Spangenberg (Naya)  Comparative, Evolutionary, Metagenomics Ellen Leffler (Kwiatkowski) Luca Penso-Dolfin (Di Palma) Mario Caccamo (NIAB) Carla Cummins (Flicek)    Day Two  Personal and Medical Genomics Very sparse and poorly written notes covering #GI2018.
 Typos everywhere. Things may change dramatically over time as I scan back through notes.">
 
   
@@ -94,7 +94,7 @@ Typos everywhere. Things may change dramatically over time as I scan back throug
   <meta property="og:site_name" content="eye Bioinformatician">
   <meta property="og:url" content="/./post/gi2018-day-two/">
   <meta property="og:title" content="#GI2018 - Day Two | eye Bioinformatician">
-  <meta property="og:description" content="Day Two Personal and Medical Genomics Katie Pollard Keynote Sri Kosuri (Kosuri) Patrick Brennan (Nationwide Children’s) Kaitlin Samocha (Hurles) Tracy Ballinger (Semple) Lucia Spangenberg (Naya)  Comparative, Evolutionary, Metagenomics Ellen Leffler (Kwiatkowski) Luca Penso-Dolfin (Di Palma) Mario Caccamo (NIAB)    Day Two  Personal and Medical Genomics Very sparse and poorly written notes covering #GI2018.
+  <meta property="og:description" content="Day Two Personal and Medical Genomics Katie Pollard Keynote Sri Kosuri (Kosuri) Patrick Brennan (Nationwide Children’s) Kaitlin Samocha (Hurles) Tracy Ballinger (Semple) Lucia Spangenberg (Naya)  Comparative, Evolutionary, Metagenomics Ellen Leffler (Kwiatkowski) Luca Penso-Dolfin (Di Palma) Mario Caccamo (NIAB) Carla Cummins (Flicek)    Day Two  Personal and Medical Genomics Very sparse and poorly written notes covering #GI2018.
 Typos everywhere. Things may change dramatically over time as I scan back through notes.">
   <meta property="og:locale" content="en-us">
   
@@ -278,7 +278,7 @@ Typos everywhere. Things may change dramatically over time as I scan back throug
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    7 min read
+    8 min read
   </span>
   
 
@@ -368,6 +368,7 @@ Typos everywhere. Things may change dramatically over time as I scan back throug
 <li><a href="#ellen-leffler-kwiatkowski">Ellen Leffler (Kwiatkowski)</a></li>
 <li><a href="#luca-penso-dolfin-di-palma">Luca Penso-Dolfin (Di Palma)</a></li>
 <li><a href="#mario-caccamo-niab">Mario Caccamo (NIAB)</a></li>
+<li><a href="#carla-cummins-flicek">Carla Cummins (Flicek)</a></li>
 </ul></li>
 </ul>
 </div>
@@ -687,6 +688,45 @@ Typos everywhere. Things may change dramatically over time as I scan back throug
 <li>no mention of the genes</li>
 <li>functional characteriziation work in arabidopsis and rice in progress</li>
 </ul>
+</div>
+<div id="carla-cummins-flicek" class="section level2">
+<h2>Carla Cummins (Flicek)</h2>
+<p>Comparative analysis of hundreds of vertebrate genomes in Ensembl</p>
+<p>What is Ensembl?</p>
+<ul>
+<li>genome stuffs (<strong>my summary</strong>)</li>
+<li><a href="ensembl.org" class="uri">ensembl.org</a></li>
+</ul>
+<p>Data won’t stop coming</p>
+<ul>
+<li>Ensembl release 94</li>
+<li>154 vertebrate genomes</li>
+<li>clade based analysis</li>
+<li>huge jump: 41 teleosts this release</li>
+</ul>
+<p>Bottlenecks:</p>
+<ul>
+<li>all vs all methods scale quadratically
+<ul>
+<li>so try to remove redundancies</li>
+<li>work more within in clades</li>
+</ul></li>
+<li>read/write speeds
+<ul>
+<li>genome in FastA, indexed and read with <a href="https://github.com/Ensembl/Bio-DB-HTS">Bio::DB::HTS (htslib)</a></li>
+</ul></li>
+<li>multiple sequence alignment
+<ul>
+<li>do on server (5x faster)</li>
+</ul></li>
+<li>humans
+<ul>
+<li>automate manual tasks</li>
+<li>infer species tree with Mash and NJ</li>
+</ul></li>
+</ul>
+<p>workflows - rule based (XML) - infer parameters</p>
+<p>get more algorithms on linear growth - ProgressCactus (?) - <a href="https://github.com/glennhickey/progressiveCactus">https://github.com/glennhickey/progressiveCactus ?</a></p>
 </div>
 </div>
 

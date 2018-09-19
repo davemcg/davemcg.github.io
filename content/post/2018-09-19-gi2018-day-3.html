@@ -1,0 +1,80 @@
+---
+title: '#GI2018 - Day Three'
+author: David McGaughey
+date: '2018-09-19'
+slug: gi2018-day-three
+categories:
+  - GI2018
+  - bioinformatics
+tags:
+  - conference
+  - GI2018
+  - bioinformatics
+  - talks
+header:
+  caption: ''
+  image: ''
+output:
+  blogdown::html_page:
+    toc: true
+---
+
+
+<div id="TOC">
+<ul>
+<li><a href="#day-3">Day 3</a></li>
+<li><a href="#rafael-irizarry-keynote">Rafael Irizarry Keynote</a></li>
+</ul>
+</div>
+
+<div id="day-3" class="section level1">
+<h1>Day 3</h1>
+<p>Very sparse and poorly written notes covering <a href="https://twitter.com/hashtag/GI2018?src=hash">#GI2018</a>.</p>
+<p>Typos everywhere. Things may change dramatically over time as I scan back through notes.</p>
+<p>I’ve tried to respect #notwitter. Will be updated periodically.</p>
+<p>Speaker (Lab | Group)</p>
+</div>
+<div id="rafael-irizarry-keynote" class="section level1">
+<h1>Rafael Irizarry Keynote</h1>
+<p>Understanding variabliity in high throughput data</p>
+<p>Typical workflow raw data -&gt; pre-processing -&gt; analysis -&gt; discovery (false?????)</p>
+<p>“When you find an <strong>unexpected result</strong>, be skeptical, check for systematic errors”</p>
+<p>“Always, look at the data”</p>
+<p>“Dynamite plots needs to die” (barplot + SE/SD)</p>
+<ul>
+<li>Plug for a blog post by me: <a href="http://davemcg.github.io/post/let-s-plot-4-r-vs-excel/" class="uri">http://davemcg.github.io/post/let-s-plot-4-r-vs-excel/</a></li>
+<li>Show the data (boxplot + individual points)</li>
+</ul>
+<p>Showing batch effect example where huge diff in gene expression between groups is actually derived from technical issues (two groups were effectively done at different times)</p>
+<p>Lin et al. 2014 (notorious paper comparing tx between human and mouse the claimed dif tissues within species more common to each other)</p>
+<p>Yoav Gilad quickly pointed out that the mouse and human were done on different sequencers</p>
+<p>So they re-did on same sequencer machine….got similar result</p>
+<p>Not a new “result” (yanai 2004 had similar conclusion with microarray)</p>
+<p>Rafael pointing out that high genes are high and low are low…always, so correlation will always be high.</p>
+<p>Once you fix probe bias (microarray), then tissues cluster together.</p>
+<p>But what about Lin RNA-seq?</p>
+<p>A lot is explained by:</p>
+<ul>
+<li>number of transcripts</li>
+<li>GC content</li>
+</ul>
+<p>Single Cell RNA-seq</p>
+<ul>
+<li>trying to disentangle batch effect from tumor type</li>
+<li>actually proportion of zeros is driving variability
+<ul>
+<li>this is probably not biology</li>
+</ul></li>
+</ul>
+<p>Do DNAm(ethylation) changes drive gene expression changes?</p>
+<p>Discussing Ford et al. 2017 <em>bioRxiv</em></p>
+<p>“Distinguishing consistent differences from random ones is challenging”</p>
+<p>Talking about how technical variability and biological variability are different and must be considered when designing experiment (moar replicates!)</p>
+<p>Do we trust individual measurements?</p>
+<ul>
+<li>when you do lots of tests, individual tests can be wrong</li>
+<li>region test was done for CpG methylation (DMR test Jaffe 2012)</li>
+<li>can also shuffle data (shuffle samples, not points) and see how often a diff can occur by chance</li>
+<li>region + bootstrapping powerful approach (plus looking at replicates individually!!!)</li>
+</ul>
+</div>

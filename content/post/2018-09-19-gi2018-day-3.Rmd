@@ -1,0 +1,90 @@
+---
+title: '#GI2018 - Day Three'
+author: David McGaughey
+date: '2018-09-19'
+slug: gi2018-day-three
+categories:
+  - GI2018
+  - bioinformatics
+tags:
+  - conference
+  - GI2018
+  - bioinformatics
+  - talks
+header:
+  caption: ''
+  image: ''
+output:
+  blogdown::html_page:
+    toc: true
+---
+# Day 3
+
+Very sparse and poorly written notes covering [#GI2018](https://twitter.com/hashtag/GI2018?src=hash). 
+
+Typos everywhere. Things may change dramatically over time as I scan back through notes.
+
+I've tried to respect \#notwitter. Will be updated periodically. 
+
+Speaker (Lab | Group)
+
+
+# Rafael Irizarry Keynote
+Understanding variabliity in high throughput data
+
+Typical workflow
+raw data -> pre-processing -> analysis -> discovery (false?????)
+
+"When you find an **unexpected result**, be skeptical, check for systematic errors"
+
+"Always, look at the data"
+
+"Dynamite plots needs to die" (barplot + SE/SD)
+  
+  - Plug for a blog post by me: [http://davemcg.github.io/post/let-s-plot-4-r-vs-excel/](http://davemcg.github.io/post/let-s-plot-4-r-vs-excel/)
+  - Show the data (boxplot + individual points)
+
+Showing batch effect example where huge diff in gene expression between groups is actually derived from technical issues (two groups were effectively done at different times)
+
+Lin et al. 2014 (notorious paper comparing tx between human and mouse the claimed dif tissues within species more common to each other)
+
+Yoav Gilad quickly pointed out that the mouse and human were done on different sequencers
+
+So they re-did on same sequencer machine....got similar result
+
+Not a new "result" (yanai 2004 had similar conclusion with microarray)
+
+Rafael pointing out that high genes are high and low are low...always, so correlation will always be high.
+
+Once you fix probe bias (microarray), then tissues cluster together.
+
+But what about Lin RNA-seq?
+
+A lot is explained by:
+  
+  - number of transcripts 
+  - GC content
+  
+Single Cell RNA-seq
+
+  - trying to disentangle batch effect from tumor type
+  - actually proportion of zeros is driving variability
+    - this is probably not biology
+    
+Do DNAm(ethylation) changes drive gene expression changes?
+
+Discussing Ford et al. 2017 *bioRxiv*
+
+"Distinguishing consistent differences from random ones is challenging"
+
+Talking about how technical variability and biological variability are different and must be considered when designing experiment (moar replicates!)
+
+Do we trust individual measurements?
+
+  - when you do lots of tests, individual tests can be wrong
+  - region test was done for CpG methylation (DMR test Jaffe 2012)
+  - can also shuffle data (shuffle samples, not points) and see how often a diff can occur by chance
+  - region + bootstrapping powerful approach (plus looking at replicates individually!!!)
+  
+
+
