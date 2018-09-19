@@ -90,4 +90,43 @@ Do we trust individual measurements?
 ## Mark Robinson (Robinson)
 On the analysis of long-read sequencing data for gene expression
 
+Illumina <-> ONT (Oxford Nanopore)
+cheap <-> expensive
+short fragments <-> full length
+lower error rates <-> higher error rates
 
+DataSet
+
+  - WT vs Srpk1-KO
+  - ONT (various preps) and Illumina
+  - 1M reads / sample (ONT); 30M reads / sample (Illumina)
+  
+25% mismatch with ONT vs <1% for Illumina (but they still map)
+
+ONT doesn't look useful for variation in sequence (way too noisy)
+
+Do we actually get full length transcripts?
+
+  - for longer ones...not really
+  - showing how a longer transcript has worse coverage with ONT
+  
+Quantification ONT <-> Illumina
+
+  - looks pretty good for protein coding genes
+  - more discrepancy at the tx level (still OK)
+  
+ONT
+
+  - minimap2 + salmon current choice for tooling
+  
+ONT direct RNA or ONT cDNA???
+
+  - look pretty comparable 
+  - direct RNA requires crazy input amounts, probably not worth it unless you are looking at RNA base modifications
+  - ONT has new stranded cDNA protocol / kit
+
+Diff expression analysis 
+
+  - once you account for way lower depth (again 1M vs 30M) for ONT, roughly comparable
+  
+  

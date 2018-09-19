@@ -286,7 +286,7 @@ Typical workflow raw data -&gt; pre-processing -&gt; analysis -&gt; discovery (f
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    2 min read
+    3 min read
   </span>
   
 
@@ -427,6 +427,39 @@ Typical workflow raw data -&gt; pre-processing -&gt; analysis -&gt; discovery (f
 <div id="mark-robinson-robinson" class="section level2">
 <h2>Mark Robinson (Robinson)</h2>
 <p>On the analysis of long-read sequencing data for gene expression</p>
+<p>Illumina &lt;-&gt; ONT (Oxford Nanopore) cheap &lt;-&gt; expensive short fragments &lt;-&gt; full length lower error rates &lt;-&gt; higher error rates</p>
+<p>DataSet</p>
+<ul>
+<li>WT vs Srpk1-KO</li>
+<li>ONT (various preps) and Illumina</li>
+<li>1M reads / sample (ONT); 30M reads / sample (Illumina)</li>
+</ul>
+<p>25% mismatch with ONT vs &lt;1% for Illumina (but they still map)</p>
+<p>ONT doesn’t look useful for variation in sequence (way too noisy)</p>
+<p>Do we actually get full length transcripts?</p>
+<ul>
+<li>for longer ones…not really</li>
+<li>showing how a longer transcript has worse coverage with ONT</li>
+</ul>
+<p>Quantification ONT &lt;-&gt; Illumina</p>
+<ul>
+<li>looks pretty good for protein coding genes</li>
+<li>more discrepancy at the tx level (still OK)</li>
+</ul>
+<p>ONT</p>
+<ul>
+<li>minimap2 + salmon current choice for tooling</li>
+</ul>
+<p>ONT direct RNA or ONT cDNA???</p>
+<ul>
+<li>look pretty comparable</li>
+<li>direct RNA requires crazy input amounts, probably not worth it unless you are looking at RNA base modifications</li>
+<li>ONT has new stranded cDNA protocol / kit</li>
+</ul>
+<p>Diff expression analysis</p>
+<ul>
+<li>once you account for way lower depth (again 1M vs 30M) for ONT, roughly comparable</li>
+</ul>
 </div>
 </div>
 
