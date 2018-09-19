@@ -129,4 +129,5 @@ Diff expression analysis
 
   - once you account for way lower depth (again 1M vs 30M) for ONT, roughly comparable
   
+Definitely not time to jump over for more standard DE type RNAseq tests
   
