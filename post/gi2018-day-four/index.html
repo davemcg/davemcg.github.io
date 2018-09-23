@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
@@ -15,10 +13,18 @@
   
   
   
-  <meta name="description" content="Staff Scientist">
+    
+      
+    
+  
+  <meta name="description" content="Variant Discovery and Genome Assembly Melissa Wilson Sayres  Prithika Sritharan (Dicks) Zemin Ning (Durbin)   Variant Discovery and Genome Assembly Melissa Wilson Sayres Sex Differences in Reference Genome Affect Variant Calling and Differential Expression
+X and Y homology dotplot
+ a few regions of alignment (PAR)  @sexchrlab
+doi.org/10.1101/346940
+ https://www.biorxiv.org/content/early/2018/07/18/346940 preprint on correct tech biases on sex chr in NGS data infer sex chromosome complement pointing out regions on autosomes with sex chr - like alignment  which is screwing up read balance which presumably could influence variant calling   chrY var calls will have many errors">
 
   
-  <link rel="alternate" hreflang="en-us" href="/./tags/bioinformatics/">
+  <link rel="alternate" hreflang="en-us" href="/./post/gi2018-day-four/">
 
   
 
@@ -81,7 +87,7 @@
   <link rel="icon" type="image/png" href="/img/icon.png">
   <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
 
-  <link rel="canonical" href="/./tags/bioinformatics/">
+  <link rel="canonical" href="/./post/gi2018-day-four/">
 
   <meta property="twitter:card" content="summary_large_image">
   
@@ -89,18 +95,24 @@
   <meta property="twitter:creator" content="@https://twitter.com/David_McGaughey">
   
   <meta property="og:site_name" content="eye Bioinformatician">
-  <meta property="og:url" content="/./tags/bioinformatics/">
-  <meta property="og:title" content="Bioinformatics | eye Bioinformatician">
-  <meta property="og:description" content="Staff Scientist">
+  <meta property="og:url" content="/./post/gi2018-day-four/">
+  <meta property="og:title" content="#GI2018 - Day Four | eye Bioinformatician">
+  <meta property="og:description" content="Variant Discovery and Genome Assembly Melissa Wilson Sayres  Prithika Sritharan (Dicks) Zemin Ning (Durbin)   Variant Discovery and Genome Assembly Melissa Wilson Sayres Sex Differences in Reference Genome Affect Variant Calling and Differential Expression
+X and Y homology dotplot
+ a few regions of alignment (PAR)  @sexchrlab
+doi.org/10.1101/346940
+ https://www.biorxiv.org/content/early/2018/07/18/346940 preprint on correct tech biases on sex chr in NGS data infer sex chromosome complement pointing out regions on autosomes with sex chr - like alignment  which is screwing up read balance which presumably could influence variant calling   chrY var calls will have many errors">
   <meta property="og:locale" content="en-us">
   
-  <meta property="og:updated_time" content="2018-02-08T00:00:00&#43;00:00">
+  <meta property="article:published_time" content="2018-09-20T00:00:00&#43;00:00">
+  
+  <meta property="article:modified_time" content="2018-09-20T00:00:00&#43;00:00">
   
 
   
   
 
-  <title>Bioinformatics | eye Bioinformatician</title>
+  <title>#GI2018 - Day Four | eye Bioinformatician</title>
 
 </head>
 <body id="top" data-spy="scroll" data-target="#toc" data-offset="71" >
@@ -247,58 +259,257 @@
 </nav>
 
 
-
-
-
-<div class="universal-wrapper">
-
-  <h1>Bioinformatics</h1>
+<article class="article" itemscope itemtype="http://schema.org/Article">
 
   
 
-  
-  
-  <div>
-    <h2><a href="/./post/let-s-plot-3-part-2/">Let’s Plot 3: Base pair resolution NGS (exome) coverage plots - Part 2</a></h2>
-    <div class="article-style">
-      
-      Introduction Call mosdepth on bam to calculate bp-specific read depth Intersect base pair depth info with transcript and exon number Now it’s R time! Prepare Metadata Load mosdepth / bedtools intersect data and prep Plot Maker, version 1 Version 2 sessionInfo()    Introduction This is a barebones (but detailed enough, I hope) discussion of how to take a bam file, extract base pair resolution coverage data, then finagle the data into coverage plots by gene and exon.
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/./post/let-s-plot-3-part-i/">Let’s Plot 3: Base pair resolution NGS coverage plots (Part I)</a></h2>
-    <div class="article-style">
-      
-      Load data Curious? Data How many genes are in this dataset? What genes are in here? How many data points (bases) per gene? How many exons per gene? How many base pairs of ABCA4 (well, ABCA4 exons) is covered by more than 10 reads? 5 reads? Let’s check all of the genes to see which are the worst covered We can visually display the data, also Hard to see what is going on, let’s make little plots for each gene Where are genes poorly covered?
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/./post/split-vcf-into-n-pieces-by-coordinate/">Split VCF into n pieces by coordinate</a></h2>
-    <div class="article-style">
-      
-      Introduction Read in vcf header Parse out chr / contig sizes Split chr above 3e7 base pairs into equal(ish) size pieces print coordinates given a chromosome / contig calculate coordinates print ’em output ’em for python input (Snakemake) rscript Using the script output sessionInfo()   Introduction bcftools view -r 1:40000-50000 vcf.gz will output (to stdout) a vcf containing the header and variants on chromosome 1 between coordinates 40,000 and 50,000 base pairs.
-      
-    </div>
-  </div>
-  
 
-  
-<nav>
-  <ul class="pager">
+  <div class="article-container">
+    <h1 itemprop="name">#GI2018 - Day Four</h1>
+
     
-    <li><a href="/tags/bioinformatics/">&lt;</a></li>
+
+<div class="article-metadata">
+
+  <span class="article-date">
     
+    <time datetime="2018-09-20 00:00:00 &#43;0000 UTC" itemprop="datePublished dateModified">
+      Sep 20, 2018
+    </time>
+  </span>
+  <span itemscope itemprop="author publisher" itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="David McGaughey">
+  </span>
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    2 min read
+  </span>
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <a href="/./post/gi2018-day-four/#disqus_thread"></a>
+  
+
+  
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fa fa-folder"></i>
     
+    <a href="/./categories/gi2018/">GI2018</a
+    >, 
+    
+    <a href="/./categories/bioinformatics/">bioinformatics</a
+    >
+    
+  </span>
+  
+  
+
+  
+  
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=%23GI2018%20-%20Day%20Four&amp;url=%2f.%2fpost%2fgi2018-day-four%2f"
+         target="_blank" rel="noopener">
+        <i class="fa fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=%2f.%2fpost%2fgi2018-day-four%2f"
+         target="_blank" rel="noopener">
+        <i class="fa fa-facebook"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2f.%2fpost%2fgi2018-day-four%2f&amp;title=%23GI2018%20-%20Day%20Four"
+         target="_blank" rel="noopener">
+        <i class="fa fa-linkedin"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=%2f.%2fpost%2fgi2018-day-four%2f&amp;title=%23GI2018%20-%20Day%20Four"
+         target="_blank" rel="noopener">
+        <i class="fa fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=%23GI2018%20-%20Day%20Four&amp;body=%2f.%2fpost%2fgi2018-day-four%2f">
+        <i class="fa fa-envelope"></i>
+      </a>
+    </li>
   </ul>
-</nav>
+</div>
 
 
+  
 
 </div>
+
+
+    <div class="article-style" itemprop="articleBody">
+      <div id="TOC">
+<ul>
+<li><a href="#variant-discovery-and-genome-assembly">Variant Discovery and Genome Assembly</a><ul>
+<li><a href="#melissa-wilson-sayres">Melissa Wilson Sayres</a></li>
+</ul></li>
+<li><a href="#prithika-sritharan-dicks">Prithika Sritharan (Dicks)</a></li>
+<li><a href="#zemin-ning-durbin">Zemin Ning (Durbin)</a></li>
+</ul>
+</div>
+
+<div id="variant-discovery-and-genome-assembly" class="section level1">
+<h1>Variant Discovery and Genome Assembly</h1>
+<div id="melissa-wilson-sayres" class="section level2">
+<h2>Melissa Wilson Sayres</h2>
+<p>Sex Differences in Reference Genome Affect Variant Calling and Differential Expression</p>
+<p>X and Y homology dotplot</p>
+<ul>
+<li>a few regions of alignment (PAR)</li>
+</ul>
+<p><span class="citation">@sexchrlab</span></p>
+<p>doi.org/10.1101/346940</p>
+<ul>
+<li><a href="https://www.biorxiv.org/content/early/2018/07/18/346940" class="uri">https://www.biorxiv.org/content/early/2018/07/18/346940</a></li>
+<li>preprint on correct tech biases on sex chr in NGS data</li>
+<li>infer sex chromosome complement</li>
+<li>pointing out regions on autosomes with sex chr - like alignment
+<ul>
+<li>which is screwing up read balance</li>
+<li>which presumably could influence variant calling</li>
+</ul></li>
+</ul>
+<p>chrY var calls will have many errors</p>
+<ul>
+<li>10,000 variants can be missed</li>
+<li>mostly in PAR</li>
+</ul>
+</div>
+</div>
+<div id="prithika-sritharan-dicks" class="section level1">
+<h1>Prithika Sritharan (Dicks)</h1>
+<p>Encoding yeast genomic diversity using variation graphs</p>
+<p>Yeast</p>
+<p>“one of earliest species to be domesticated”</p>
+<p>NCYC</p>
+<ul>
+<li>4,000 strains of 530 species of yeast</li>
+<li>1,000 have been sequenced</li>
+</ul>
+<p>Want to characterize these</p>
+<p>Want to avoid conventional ref genome</p>
+<ul>
+<li>doesn’t represesent all species well</li>
+</ul>
+<p>Variation Graphs</p>
+<ul>
+<li>using VG Toolkit (Garrison et al. 2017)
+<ul>
+<li><a href="https://github.com/vgteam/vg" class="uri">https://github.com/vgteam/vg</a></li>
+</ul></li>
+<li>can align way more to VG than a traditional linear reference
+<ul>
+<li>looks WAY more, but y axis kind of deceiving (87-99% scale)</li>
+</ul></li>
+</ul>
+</div>
+<div id="zemin-ning-durbin" class="section level1">
+<h1>Zemin Ning (Durbin)</h1>
+<p>ScaffHiC Genome Scaffolding by Modelling Distributions of Hi-C Paired-end Reads</p>
+<p>Contact matrix</p>
+<ul>
+<li>C(i,j) num of paired reads between i and j contigs</li>
+<li>curve fit contact distance with (rougly) quadratic model</li>
+<li>also use orientation of reads</li>
+</ul>
+<p>Quantify contig distance index</p>
+<p>difficult to pick ‘favorite’ contig partner</p>
+<p>showing stats of icefish genome assmembly which has better n50 etc stats than other tools</p>
+</div>
+
+    </div>
+
+    
+
+
+<div class="article-tags">
+  
+  <a class="btn btn-primary btn-outline" href="/./tags/conference/">conference</a>
+  
+  <a class="btn btn-primary btn-outline" href="/./tags/gi2018/">GI2018</a>
+  
+  <a class="btn btn-primary btn-outline" href="/./tags/bioinformatics/">bioinformatics</a>
+  
+  <a class="btn btn-primary btn-outline" href="/./tags/talks/">talks</a>
+  
+</div>
+
+
+
+
+    
+    
+    <div class="article-widget">
+      <div class="hr-light"></div>
+      <h3>Related</h3>
+      <ul>
+        
+        <li><a href="/post/gi2018-day-three/">#GI2018 - Day Three</a></li>
+        
+        <li><a href="/post/gi2018-day-two/">#GI2018 - Day Two</a></li>
+        
+        <li><a href="/post/gi2018-day-one/">#GI2018 - Day One</a></li>
+        
+        <li><a href="/post/bog18-notes/">#BoG18: Talk Notes</a></li>
+        
+        <li><a href="/post/quick-guide-to-gene-name-conversion/">Quick Guide to Gene Name Conversion</a></li>
+        
+      </ul>
+    </div>
+    
+
+    
+
+    
+<section id="comments">
+  <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "davemcg-gitub-io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+
+  </div>
+</article>
+
 <footer class="site-footer">
   <div class="container">
     <p class="powered-by">
@@ -391,6 +602,4 @@
 
   </body>
 </html>
-
-
 

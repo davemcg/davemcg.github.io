@@ -1,0 +1,85 @@
+---
+title: '#GI2018 - Day Four'
+author: David McGaughey
+date: '2018-09-20'
+slug: gi2018-day-four
+categories:
+  - GI2018
+  - bioinformatics
+tags:
+  - conference
+  - GI2018
+  - bioinformatics
+  - talks
+header:
+  caption: ''
+  image: ''
+output:
+  blogdown::html_page:
+    toc: true
+---
+# Variant Discovery and Genome Assembly
+
+## Melissa Wilson Sayres
+Sex Differences in Reference Genome Affect Variant Calling and Differential Expression
+
+X and Y homology dotplot
+
+  - a few regions of alignment (PAR)
+
+@sexchrlab
+
+doi.org/10.1101/346940
+
+  - https://www.biorxiv.org/content/early/2018/07/18/346940
+  - preprint on correct tech biases on sex chr in NGS data
+  - infer sex chromosome complement
+  - pointing out regions on autosomes with sex chr - like alignment
+    - which is screwing up read balance
+    - which presumably could influence variant calling
+    
+chrY var calls will have many errors
+
+  - 10,000 variants can be missed
+  - mostly in PAR
+  
+# Prithika Sritharan (Dicks)
+Encoding yeast genomic diversity using variation graphs
+
+Yeast
+
+"one of earliest species to be domesticated"
+
+NCYC
+
+  - 4,000 strains of 530 species of yeast
+  - 1,000 have been sequenced
+  
+Want to characterize these
+
+Want to avoid conventional ref genome
+
+  - doesn't represesent all species well
+  
+Variation Graphs
+
+  - using VG Toolkit (Garrison et al. 2017)
+    - https://github.com/vgteam/vg
+  - can align way more to VG than a traditional linear reference
+    - looks WAY more, but y axis kind of deceiving (87-99% scale)
+    
+# Zemin Ning (Durbin)
+ScaffHiC Genome Scaffolding by Modelling Distributions of Hi-C Paired-end Reads
+
+Contact matrix
+
+  - C(i,j) num of paired reads between i and j contigs
+  - curve fit contact distance with (rougly) quadratic model
+  - also use orientation of reads
+  
+Quantify contig distance index
+
+difficult to pick 'favorite' contig partner
+
+showing stats of icefish genome assmembly which has better n50 etc stats than other tools
+

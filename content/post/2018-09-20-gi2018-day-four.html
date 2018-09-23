@@ -1,0 +1,100 @@
+---
+title: '#GI2018 - Day Four'
+author: David McGaughey
+date: '2018-09-20'
+slug: gi2018-day-four
+categories:
+  - GI2018
+  - bioinformatics
+tags:
+  - conference
+  - GI2018
+  - bioinformatics
+  - talks
+header:
+  caption: ''
+  image: ''
+output:
+  blogdown::html_page:
+    toc: true
+---
+
+
+<div id="TOC">
+<ul>
+<li><a href="#variant-discovery-and-genome-assembly">Variant Discovery and Genome Assembly</a><ul>
+<li><a href="#melissa-wilson-sayres">Melissa Wilson Sayres</a></li>
+</ul></li>
+<li><a href="#prithika-sritharan-dicks">Prithika Sritharan (Dicks)</a></li>
+<li><a href="#zemin-ning-durbin">Zemin Ning (Durbin)</a></li>
+</ul>
+</div>
+
+<div id="variant-discovery-and-genome-assembly" class="section level1">
+<h1>Variant Discovery and Genome Assembly</h1>
+<div id="melissa-wilson-sayres" class="section level2">
+<h2>Melissa Wilson Sayres</h2>
+<p>Sex Differences in Reference Genome Affect Variant Calling and Differential Expression</p>
+<p>X and Y homology dotplot</p>
+<ul>
+<li>a few regions of alignment (PAR)</li>
+</ul>
+<p><span class="citation">@sexchrlab</span></p>
+<p>doi.org/10.1101/346940</p>
+<ul>
+<li><a href="https://www.biorxiv.org/content/early/2018/07/18/346940" class="uri">https://www.biorxiv.org/content/early/2018/07/18/346940</a></li>
+<li>preprint on correct tech biases on sex chr in NGS data</li>
+<li>infer sex chromosome complement</li>
+<li>pointing out regions on autosomes with sex chr - like alignment
+<ul>
+<li>which is screwing up read balance</li>
+<li>which presumably could influence variant calling</li>
+</ul></li>
+</ul>
+<p>chrY var calls will have many errors</p>
+<ul>
+<li>10,000 variants can be missed</li>
+<li>mostly in PAR</li>
+</ul>
+</div>
+</div>
+<div id="prithika-sritharan-dicks" class="section level1">
+<h1>Prithika Sritharan (Dicks)</h1>
+<p>Encoding yeast genomic diversity using variation graphs</p>
+<p>Yeast</p>
+<p>“one of earliest species to be domesticated”</p>
+<p>NCYC</p>
+<ul>
+<li>4,000 strains of 530 species of yeast</li>
+<li>1,000 have been sequenced</li>
+</ul>
+<p>Want to characterize these</p>
+<p>Want to avoid conventional ref genome</p>
+<ul>
+<li>doesn’t represesent all species well</li>
+</ul>
+<p>Variation Graphs</p>
+<ul>
+<li>using VG Toolkit (Garrison et al. 2017)
+<ul>
+<li><a href="https://github.com/vgteam/vg" class="uri">https://github.com/vgteam/vg</a></li>
+</ul></li>
+<li>can align way more to VG than a traditional linear reference
+<ul>
+<li>looks WAY more, but y axis kind of deceiving (87-99% scale)</li>
+</ul></li>
+</ul>
+</div>
+<div id="zemin-ning-durbin" class="section level1">
+<h1>Zemin Ning (Durbin)</h1>
+<p>ScaffHiC Genome Scaffolding by Modelling Distributions of Hi-C Paired-end Reads</p>
+<p>Contact matrix</p>
+<ul>
+<li>C(i,j) num of paired reads between i and j contigs</li>
+<li>curve fit contact distance with (rougly) quadratic model</li>
+<li>also use orientation of reads</li>
+</ul>
+<p>Quantify contig distance index</p>
+<p>difficult to pick ‘favorite’ contig partner</p>
+<p>showing stats of icefish genome assmembly which has better n50 etc stats than other tools</p>
+</div>

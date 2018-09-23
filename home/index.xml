@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
-    <lastBuildDate>Sun, 15 Oct 2017 00:00:00 +0100</lastBuildDate>
+    <lastBuildDate>Sun, 15 Oct 2017 00:00:00 -0400</lastBuildDate>
     
 	<atom:link href="/./home/index.xml" rel="self" type="application/rss+xml" />
     
@@ -15,7 +15,7 @@
     <item>
       <title>&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</title>
       <link>/./home/hero/</link>
-      <pubDate>Sun, 15 Oct 2017 00:00:00 +0100</pubDate>
+      <pubDate>Sun, 15 Oct 2017 00:00:00 -0400</pubDate>
       
       <guid>/./home/hero/</guid>
       <description></description>
@@ -74,7 +74,7 @@ Programming Practices</description>
     <item>
       <title>Recent Publications</title>
       <link>/./home/publications/</link>
-      <pubDate>Wed, 20 Apr 2016 00:00:00 +0100</pubDate>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 -0400</pubDate>
       
       <guid>/./home/publications/</guid>
       <description></description>
@@ -83,7 +83,7 @@ Programming Practices</description>
     <item>
       <title>Tags</title>
       <link>/./home/tags/</link>
-      <pubDate>Wed, 20 Sep 2017 00:00:00 +0100</pubDate>
+      <pubDate>Wed, 20 Sep 2017 00:00:00 -0400</pubDate>
       
       <guid>/./home/tags/</guid>
       <description></description>

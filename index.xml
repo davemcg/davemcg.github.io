@@ -7,8 +7,95 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
-    <lastBuildDate>Sun, 15 Oct 2017 00:00:00 +0100</lastBuildDate>
+    <lastBuildDate>Sun, 15 Oct 2017 00:00:00 -0400</lastBuildDate>
     <atom:link href="//" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>#GI2018 - Day Four</title>
+      <link>/./post/gi2018-day-four/</link>
+      <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/gi2018-day-four/</guid>
+      <description>&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#variant-discovery-and-genome-assembly&#34;&gt;Variant Discovery and Genome Assembly&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#melissa-wilson-sayres&#34;&gt;Melissa Wilson Sayres&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#prithika-sritharan-dicks&#34;&gt;Prithika Sritharan (Dicks)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#zemin-ning-durbin&#34;&gt;Zemin Ning (Durbin)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;variant-discovery-and-genome-assembly&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Variant Discovery and Genome Assembly&lt;/h1&gt;
+&lt;div id=&#34;melissa-wilson-sayres&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Melissa Wilson Sayres&lt;/h2&gt;
+&lt;p&gt;Sex Differences in Reference Genome Affect Variant Calling and Differential Expression&lt;/p&gt;
+&lt;p&gt;X and Y homology dotplot&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;a few regions of alignment (PAR)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span class=&#34;citation&#34;&gt;@sexchrlab&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;doi.org/10.1101/346940&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.biorxiv.org/content/early/2018/07/18/346940&#34; class=&#34;uri&#34;&gt;https://www.biorxiv.org/content/early/2018/07/18/346940&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;preprint on correct tech biases on sex chr in NGS data&lt;/li&gt;
+&lt;li&gt;infer sex chromosome complement&lt;/li&gt;
+&lt;li&gt;pointing out regions on autosomes with sex chr - like alignment
+&lt;ul&gt;
+&lt;li&gt;which is screwing up read balance&lt;/li&gt;
+&lt;li&gt;which presumably could influence variant calling&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;chrY var calls will have many errors&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;10,000 variants can be missed&lt;/li&gt;
+&lt;li&gt;mostly in PAR&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;prithika-sritharan-dicks&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Prithika Sritharan (Dicks)&lt;/h1&gt;
+&lt;p&gt;Encoding yeast genomic diversity using variation graphs&lt;/p&gt;
+&lt;p&gt;Yeast&lt;/p&gt;
+&lt;p&gt;“one of earliest species to be domesticated”&lt;/p&gt;
+&lt;p&gt;NCYC&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;4,000 strains of 530 species of yeast&lt;/li&gt;
+&lt;li&gt;1,000 have been sequenced&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Want to characterize these&lt;/p&gt;
+&lt;p&gt;Want to avoid conventional ref genome&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;doesn’t represesent all species well&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Variation Graphs&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;using VG Toolkit (Garrison et al. 2017)
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/vgteam/vg&#34; class=&#34;uri&#34;&gt;https://github.com/vgteam/vg&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;can align way more to VG than a traditional linear reference
+&lt;ul&gt;
+&lt;li&gt;looks WAY more, but y axis kind of deceiving (87-99% scale)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;zemin-ning-durbin&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Zemin Ning (Durbin)&lt;/h1&gt;
+&lt;p&gt;ScaffHiC Genome Scaffolding by Modelling Distributions of Hi-C Paired-end Reads&lt;/p&gt;
+&lt;p&gt;Contact matrix&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;C(i,j) num of paired reads between i and j contigs&lt;/li&gt;
+&lt;li&gt;curve fit contact distance with (rougly) quadratic model&lt;/li&gt;
+&lt;li&gt;also use orientation of reads&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Quantify contig distance index&lt;/p&gt;
+&lt;p&gt;difficult to pick ‘favorite’ contig partner&lt;/p&gt;
+&lt;p&gt;showing stats of icefish genome assmembly which has better n50 etc stats than other tools&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>#GI2018 - Day Three</title>
@@ -32,6 +119,9 @@
 &lt;li&gt;&lt;a href=&#34;#epigenetics-and-non-coding-genome&#34;&gt;Epigenetics and non-coding genome&lt;/a&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#jordana-bell-bell&#34;&gt;Jordana Bell (Bell)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#wouter-meuleman-stamatoyannopoulos&#34;&gt;Wouter Meuleman (Stamatoyannopoulos)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#masa-roller-flicek&#34;&gt;Maša Roller (Flicek)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#alexander-suh-suh&#34;&gt;Alexander Suh (Suh)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#raquel-garcia-perez-juan&#34;&gt;Raquel Garcia-Perez (Juan)&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
@@ -362,6 +452,80 @@
 &lt;li&gt;regulatory terms informative in GWAS&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;Very cool work, I’ve found in my &lt;a href=&#34;https://github.com/davemcg/distill&#34;&gt;Distill&lt;/a&gt; project that the k/cluster assignment across the genome provided value in assignment of pathogenicity for DNA mutation&lt;/strong&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;masa-roller-flicek&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Maša Roller (Flicek)&lt;/h2&gt;
+&lt;p&gt;Tissue-specific enhancer and promoter evolution in mammals&lt;/p&gt;
+&lt;p&gt;Gene expression / promoters more conserved than enhancers across great evolutionary distance&lt;/p&gt;
+&lt;p&gt;4 tissues, 10 mammals, 3 ChIP-seq, RNA-seq, 3 biological replicates&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;H3K4me3, H3K27ac, H3K4me1 used to delineate active promoters, active enhnancers, primed enhancers&lt;/li&gt;
+&lt;li&gt;fairly stable n of promoters, enhancers across evolution&lt;/li&gt;
+&lt;li&gt;brain has largest num of active enhnacers&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Maša IS USING AN &lt;a href=&#34;http://caleydo.org/tools/upset/&#34;&gt;UpSET&lt;/a&gt; I AM SO HAPPY&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;showing counts of tissue shared and tissue specific enhnacers
+&lt;ul&gt;
+&lt;li&gt;active are more tissue specific, poised much less so&lt;/li&gt;
+&lt;li&gt;this would be a nightmare with a venn diagram&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Primed enhancers evolving more rapidly than active enhancers&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;or are less conserved&lt;/li&gt;
+&lt;li&gt;tissue specific even less conserved&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Regulatory element re-use&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;enhancers used over and over again across tissues through evolution
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;implication is that sets of enhancers crucial for activity?&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;alexander-suh-suh&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Alexander Suh (Suh)&lt;/h2&gt;
+&lt;p&gt;Mind the gap – interrogating the non-coding genome with single-molecule technologies&lt;/p&gt;
+&lt;p&gt;Discussion of genome assembly gaps with short reads with the puzzle analogy&lt;/p&gt;
+&lt;p&gt;Chicken genome is well assembled (big $ in chickens)&lt;/p&gt;
+&lt;p&gt;Look at bird of paradise&lt;/p&gt;
+&lt;p&gt;Paradise grove bird used as reference&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;PACBIO&lt;/li&gt;
+&lt;li&gt;Dovetail&lt;/li&gt;
+&lt;li&gt;Illumina&lt;/li&gt;
+&lt;li&gt;10X linked-reads&lt;/li&gt;
+&lt;li&gt;Hi-C PHASE genomics&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Birds full of repeats&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;especially sex chr&lt;/li&gt;
+&lt;li&gt;make assembly tricky&lt;/li&gt;
+&lt;li&gt;crazy collinearity plots (&lt;strong&gt;not sure if this is the right name for the plots that lay out chr level genome vs genome alignment&lt;/strong&gt;)&lt;/li&gt;
+&lt;li&gt;SO MANY LTRs in the sex chr for the paradise grove bird
+&lt;ul&gt;
+&lt;li&gt;hundreds vs tens for the autosomes&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;How to align over complex / long repeats?&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;optical mapping helps get longer (20kb -&amp;gt; 500kb or so)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;raquel-garcia-perez-juan&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Raquel Garcia-Perez (Juan)&lt;/h2&gt;
+&lt;p&gt;Recent evolution of the epigenetic regulatory landscape in human and other primates&lt;/p&gt;
+&lt;p&gt;Comparative epigenomics&lt;/p&gt;
+&lt;p&gt;WGBS ChIP-seq (main ones) ATAC-Seq RNA-Seq&lt;/p&gt;
+&lt;p&gt;Across primates&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;What tissue(s)???&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;chromHMM -&amp;gt; 16 state model, orthologous regulatory elements&lt;/p&gt;
+&lt;p&gt;Gene annotation + 3C chromatin interactions = match enhancers with promoters or enhancers&lt;/p&gt;
+&lt;p&gt;trying to model gene expression differences with histone marks&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;semi-succesful (explain 40% of variance)&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 </description>
@@ -4446,289 +4610,6 @@ t.test(micro %&amp;gt;% filter(Date==&amp;#39;Day5&amp;#39;) %&amp;gt;% pull(Siz
 ##  xfun         0.3     2018-07-06 cran (@0.3)                      
 ##  xml2         1.2.0   2018-01-24 CRAN (R 3.5.0)                   
 ##  yaml         2.1.19  2018-05-01 CRAN (R 3.5.0)&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Let’s Plot 3: Base pair resolution NGS (exome) coverage plots - Part 2</title>
-      <link>/./post/let-s-plot-3-part-2/</link>
-      <pubDate>Thu, 08 Feb 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/./post/let-s-plot-3-part-2/</guid>
-      <description>&lt;div id=&#34;TOC&#34;&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#introduction&#34;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#call-mosdepth-on-bam-to-calculate-bp-specific-read-depth&#34;&gt;Call mosdepth on bam to calculate bp-specific read depth&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#intersect-base-pair-depth-info-with-transcript-and-exon-number&#34;&gt;Intersect base pair depth info with transcript and exon number&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#now-its-r-time&#34;&gt;Now it’s R time!&lt;/a&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#prepare-metadata&#34;&gt;Prepare Metadata&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#load-mosdepth-bedtools-intersect-data-and-prep&#34;&gt;Load mosdepth / bedtools intersect data and prep&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#plot-maker-version-1&#34;&gt;Plot Maker, version 1&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#version-2&#34;&gt;Version 2&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#sessioninfo&#34;&gt;sessionInfo()&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-
-&lt;div id=&#34;introduction&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Introduction&lt;/h2&gt;
-&lt;p&gt;This is a barebones (but detailed enough, I hope) discussion of how to take a bam file, extract base pair resolution coverage data, then finagle the data into coverage plots by gene and exon. No data will be given for the below code. I’m not sharing a bam file. Also, not much point to sharing the bed, HGNC name, and gtf file, as there’s a decent chance they won’t work for your bam.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;call-mosdepth-on-bam-to-calculate-bp-specific-read-depth&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Call mosdepth on bam to calculate bp-specific read depth&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;https://github.com/brentp/mosdepth&#34;&gt;mosdepth&lt;/a&gt;, by default, will generate base pair resolution coverage across the entire genome. Another fantastic tool from Brent Peterson and Aaron Quinlan (some point I’ll do a gushy post on &lt;a href=&#34;http://peddy.readthedocs.io/en/latest/&#34;&gt;all&lt;/a&gt; &lt;a href=&#34;http://gemini.readthedocs.io/en/latest/&#34;&gt;of&lt;/a&gt; &lt;a href=&#34;http://bedtools.readthedocs.io/en/latest/&#34;&gt;the&lt;/a&gt; useful tools &lt;a href=&#34;http://quinlanlab.org/#software&#34;&gt;Quinlan and company have made&lt;/a&gt;).&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;mosdepth&lt;/code&gt; will run &lt;em&gt;very&lt;/em&gt; quickly (minutes instead of hours), compared to &lt;code&gt;bedtools genomecov&lt;/code&gt;.&lt;/p&gt;
-&lt;pre class=&#34;bash&#34;&gt;&lt;code&gt;# bash 
-sinteractive --cpus-per-task 16
-module load mosdepth
-mosdepth -t 16 41001412010527 41001412010527_realigned_recal.bam &amp;amp;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;intersect-base-pair-depth-info-with-transcript-and-exon-number&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Intersect base pair depth info with transcript and exon number&lt;/h2&gt;
-&lt;p&gt;The intersect is to select regions overlapping exons and to label them with the transcript name and exon number present in &lt;code&gt;gencode_genes_v27lift37.codingExons.ensembl.bed.gz&lt;/code&gt;. See the code below for how to make your own.&lt;/p&gt;
-&lt;pre class=&#34;bash&#34;&gt;&lt;code&gt;# bash
-
-# gencode_genes_v27lift37.codingExons.bed was downloaded from the UCSC table browser from genocde gene v27lift37 and &amp;#39;coding exons&amp;#39; with 0 padding were selected as the output for the bed file
-# my https://github.com/davemcg/ChromosomeMappings/ convert_notation.py script was then used to convert the UCSC notation in ensembl notation, which my bam uses
-# files in biowulf2:/data/mcgaugheyd/genomes/GRCh37/
-module load bedtools
-~/git/ChromosomeMappings/convert_notation.py -c ~/git/ChromosomeMappings/GRCh37_gencode2ensembl.txt -f gencode_genes_v27lift37.codingExons.bed | sort -k1,1 -k2,2n | gzip &amp;gt; gencode_genes_v27lift37.codingExons.ensembl.bed.gz
-bedtools intersect -wa -wb -a 41001412010527.per-base.bed.gz -b /data/mcgaugheyd/genomes/GRCh37/gencode_genes_v27lift37.codingExons.ensembl.bed.gz | bgzip  &amp;gt; 41001412010527.per-base.labeled.bed.gz &amp;amp;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;now-its-r-time&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Now it’s R time!&lt;/h1&gt;
-&lt;div id=&#34;prepare-metadata&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Prepare Metadata&lt;/h2&gt;
-&lt;p&gt;You’ll need &lt;a href=&#34;ftp://ftp.sanger.ac.uk/pub/gencode/Gencode_human/release_27/GRCh37_mapping/gencode.v27lift37.metadata.HGNC.gz&#34;&gt;HGNC &amp;lt;-&amp;gt; Ensembl Transcript converter&lt;/a&gt; and the &lt;a href=&#34;ftp://ftp.sanger.ac.uk/pub/gencode/Gencode_human/release_27/GRCh37_mapping/gencode.v27lift37.basic.annotation.gtf.gz&#34;&gt;Gencode GTF&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;The first file is used to match gene ‘names’ with ensembl transcript ID&lt;/p&gt;
-&lt;p&gt;The second file is used to semi-accurately pick the ‘canonical’ transcript for a gene (pick the appris transcript, then the longest)&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(data.table)
-library(tidyverse)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ── Attaching packages ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ✔ ggplot2 3.0.0     ✔ purrr   0.2.4
-## ✔ tibble  1.4.2     ✔ dplyr   0.7.6
-## ✔ tidyr   0.8.1     ✔ stringr 1.3.1
-## ✔ readr   1.1.1     ✔ forcats 0.3.0&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ── Conflicts ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
-## ✖ dplyr::between()   masks data.table::between()
-## ✖ dplyr::filter()    masks stats::filter()
-## ✖ dplyr::first()     masks data.table::first()
-## ✖ dplyr::lag()       masks stats::lag()
-## ✖ dplyr::last()      masks data.table::last()
-## ✖ purrr::transpose() masks data.table::transpose()&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(cowplot)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## 
-## Attaching package: &amp;#39;cowplot&amp;#39;&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## The following object is masked from &amp;#39;package:ggplot2&amp;#39;:
-## 
-##     ggsave&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(stringr)
-metadata &amp;lt;- fread(&amp;#39;gzcat ~/GenomicData/gencode.v27lift37.metadata.HGNC.gz&amp;#39;, header=F)
-colnames(metadata) &amp;lt;- c(&amp;#39;Transcript&amp;#39;,&amp;#39;Name&amp;#39;)
-gencode &amp;lt;- fread(&amp;#39;gzcat ~/GenomicData/gencode.v27lift37.basic.annotation.gtf.gz&amp;#39;, header=F, skip=4)
-gencode2 &amp;lt;- gencode %&amp;gt;% filter(V3==&amp;#39;transcript&amp;#39;) %&amp;gt;% 
-  filter(grepl(&amp;#39;appris_principal&amp;#39;, V9)) %&amp;gt;% 
-  rowwise() %&amp;gt;%  
-  mutate(Transcript = str_extract(V9,&amp;#39;ENST\\d{11}\\.\\d+&amp;#39;), # use regex to graph ensembl transcript 
-         Gene = str_extract(V9, &amp;#39;gene_name\\s\\&amp;quot;.*?;&amp;#39;), # and the gene name
-         Size=V5-V4) %&amp;gt;% 
-  separate(Gene, c(&amp;#39;skip&amp;#39;,&amp;#39;Name&amp;#39;,&amp;#39;skip2&amp;#39;),&amp;#39;\&amp;quot;&amp;#39;) %&amp;gt;% # now you have to remove the &amp;#39;gene name&amp;#39; part  
-  select(-skip, -skip2) %&amp;gt;% 
-  group_by(Name) %&amp;gt;% top_n(1)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Selecting by Size&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;load-mosdepth-bedtools-intersect-data-and-prep&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Load mosdepth / bedtools intersect data and prep&lt;/h2&gt;
-&lt;p&gt;Label coverage chunks with the depth of their coverage with case_when and extract the transcript name and exon number with a bunch of &lt;code&gt;separate&lt;/code&gt; commands&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;depth_data &amp;lt;- fread(&amp;#39;gzcat ~/Desktop/41001412010527.per-base.labeled.bed.gz&amp;#39;)
-dd_processed &amp;lt;- depth_data %&amp;gt;% 
-  separate(V8, c(&amp;#39;Transcript&amp;#39;,&amp;#39;Rest&amp;#39;), &amp;#39;_cds_&amp;#39;) %&amp;gt;% 
-  separate(Rest, c(&amp;#39;Before&amp;#39;,&amp;#39;Stuff&amp;#39;),&amp;#39;_chr&amp;#39;) %&amp;gt;% 
-  separate(Before, c(&amp;#39;Exon Number&amp;#39;,&amp;#39;Num2&amp;#39;),sep=&amp;#39;_&amp;#39;) %&amp;gt;% 
-  mutate(Depth = case_when(V4 &amp;lt; 10 ~ &amp;#39;&amp;lt; 10 Reads&amp;#39;, 
-                           V4 &amp;lt; 20 ~ &amp;#39;&amp;lt; 20 Reads&amp;#39;, 
-                           TRUE ~ &amp;#39;&amp;gt;= 20 Reads&amp;#39;)) %&amp;gt;% 
-  mutate(Depth=factor(Depth, levels=c(&amp;#39;&amp;lt; 10 Reads&amp;#39;,&amp;#39;&amp;lt; 20 Reads&amp;#39;,&amp;#39;&amp;gt;= 20 Reads&amp;#39;))) %&amp;gt;% 
-  mutate(Transcript=case_when(grepl(&amp;#39;_&amp;#39;,Transcript) ~ gsub(&amp;#39;_.&amp;#39;,&amp;#39;&amp;#39;,Transcript), 
-                              TRUE ~ Transcript)) %&amp;gt;% 
-  select(Chr=V1, Start=V2, End=V3, Read_Depth=V4, Transcript, Strand=V10, Depth, `Exon Number`, ExonStart=V6, ExonEnd=V7)
-
-dd_processed &amp;lt;- left_join(dd_processed, metadata, by=c(&amp;#39;Transcript&amp;#39;))&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;plot-maker-version-1&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Plot Maker, version 1&lt;/h2&gt;
-&lt;p&gt;Faceted by exon. One plot per gene and using cowplot to &lt;em&gt;glue&lt;/em&gt; them together&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;genes &amp;lt;- c(&amp;#39;PAX6&amp;#39;,&amp;#39;ABCA4&amp;#39;,&amp;#39;NRL&amp;#39;,&amp;#39;CRX&amp;#39;,&amp;#39;RPGR&amp;#39;)
-transcripts = gencode2 %&amp;gt;% filter(Name %in% genes) %&amp;gt;% pull(Transcript)
-
-# set a custom color that will work even if a category is missing
-scale_colour_custom &amp;lt;- function(...){
-  ggplot2:::manual_scale(&amp;#39;colour&amp;#39;, 
-                         values = setNames(c(&amp;#39;darkred&amp;#39;, &amp;#39;red&amp;#39;, &amp;#39;black&amp;#39;),
-                                           c(&amp;#39;&amp;lt; 10 Reads&amp;#39;,&amp;#39;&amp;lt; 20 Reads&amp;#39;,&amp;#39;&amp;gt;= 20 Reads&amp;#39;)), 
-                         ...)
-}
-
-plot_maker &amp;lt;- function(tx){
-  num_of_exons &amp;lt;- dd_processed %&amp;gt;% filter(Transcript==tx) %&amp;gt;% pull(`Exon Number`) %&amp;gt;% as.numeric() %&amp;gt;% max()
-  gene_name &amp;lt;-  dd_processed %&amp;gt;% filter(Transcript==tx) %&amp;gt;% pull(Name) %&amp;gt;% unique()
-  # expand to create a row for each sequence and fill in previous values
-  dd_processed %&amp;gt;% filter(Transcript==tx) %&amp;gt;% group_by(`Exon Number`) %&amp;gt;% 
-    expand(Start=full_seq(c(Start,End),1)) %&amp;gt;% 
-    left_join(.,  dd_processed %&amp;gt;% filter(Transcript==tx)) %&amp;gt;% # create one row per base position, grouped by Exon Number https://stackoverflow.com/questions/42866119/fill-missing-values-in-data-frame-using-dplyr-complete-within-groups
-    fill(Chr:Name) %&amp;gt;% # fill missing values https://stackoverflow.com/questions/40040834/r-replace-na-with-previous-or-next-value-by-group-using-dplyr
-    ungroup() %&amp;gt;% # drop the exon number grouping, so I can mutate below
-    mutate(`Exon Number`= factor(`Exon Number`,levels=0:num_of_exons)) %&amp;gt;% # Ah, reordering. I need it to be a factor, but then I have to explicitly give the order   
-    mutate(Depth = factor(Depth, levels=c(&amp;#39;&amp;lt; 10 Reads&amp;#39;,&amp;#39;&amp;lt; 20 Reads&amp;#39;,&amp;#39;&amp;gt;= 20 Reads&amp;#39;))) %&amp;gt;%  # create three categories for coloring
-    ggplot(aes(x=Start, xend=End, y=Read_Depth, yend=Read_Depth, colour=Depth)) + 
-    facet_wrap(~`Exon Number`, scales = &amp;#39;free_x&amp;#39;, nrow=1, strip.position = &amp;#39;bottom&amp;#39;) + 
-    geom_point(size=0.1) + theme_minimal()+ scale_colour_custom() +  # use my custom color set above for my three categories
-    theme(axis.text.x=element_blank(), 
-          axis.ticks.x = element_blank(), 
-          panel.grid.minor = element_blank(), 
-          panel.grid.major.x = element_blank(),
-          legend.position = &amp;#39;none&amp;#39;) + 
-    ylab(&amp;#39;Depth&amp;#39;) + 
-    xlab(paste0(gene_name[1]))
-}
-
-# little for loop to roll through the transcripts and make plot, storing in a list
-plots &amp;lt;- list()
-for (i in transcripts){
-  plots[[i]] &amp;lt;- plot_maker(i)
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Joining, by = c(&amp;quot;Exon Number&amp;quot;, &amp;quot;Start&amp;quot;)
-## Joining, by = c(&amp;quot;Exon Number&amp;quot;, &amp;quot;Start&amp;quot;)
-## Joining, by = c(&amp;quot;Exon Number&amp;quot;, &amp;quot;Start&amp;quot;)
-## Joining, by = c(&amp;quot;Exon Number&amp;quot;, &amp;quot;Start&amp;quot;)
-## Joining, by = c(&amp;quot;Exon Number&amp;quot;, &amp;quot;Start&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;legend &amp;lt;- get_legend(plots[[names(plots)[1]]] + theme(legend.position=&amp;#39;right&amp;#39;))
-# cowplot can take a list and glue the plots together
-# I&amp;#39;m commenting out the below line because blogdown makes it too damn small. You need to run it to make the plot
-# plot_grid(plot_grid(plotlist = plots, ncol=1, hjust=-2), legend, ncol=2, rel_widths = c(5,0.5))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/./img/lets_plot_3.png&#34; /&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;version-2&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Version 2&lt;/h2&gt;
-&lt;p&gt;A bit tighter. Recalculates coordinates to glue all of the exons together in one plot. I can facet by gene. A bit harder to read, but is more accurate as the exons and gene lengths are proportional&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;genes &amp;lt;- c(&amp;#39;PAX6&amp;#39;,&amp;#39;ABCA4&amp;#39;,&amp;#39;NRL&amp;#39;,&amp;#39;CRX&amp;#39;,&amp;#39;RPGR&amp;#39;)
-tx = gencode2 %&amp;gt;% filter(Name %in% genes) %&amp;gt;% pull(Transcript)
-
-dd_expanded &amp;lt;- dd_processed %&amp;gt;% filter(Transcript %in% tx) %&amp;gt;% group_by(Transcript, `Exon Number`) %&amp;gt;% 
-  expand(Start=full_seq(c(Start,End),1)) %&amp;gt;% 
-  left_join(.,  dd_processed %&amp;gt;% filter(Transcript %in% tx)) %&amp;gt;% # create one row per base position, grouped by Exon Number https://stackoverflow.com/questions/42866119/fill-missing-values-in-data-frame-using-dplyr-complete-within-groups
-  fill(Chr:Name) # fill missing values https://stackoverflow.com/questions/40040834/r-replace-na-with-previous-or-next-value-by-group-using-dplyr&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Joining, by = c(&amp;quot;Transcript&amp;quot;, &amp;quot;Exon Number&amp;quot;, &amp;quot;Start&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;dd_expanded &amp;lt;- dd_expanded %&amp;gt;% group_by(Name) %&amp;gt;% mutate(Pos = 1:n())
-even_odds_marking &amp;lt;- dd_expanded %&amp;gt;% group_by(Name, `Exon Number`) %&amp;gt;% summarise(Start=min(Pos), End=max(Pos)) %&amp;gt;% mutate(Exon = case_when(as.numeric(`Exon Number`) %% 2 == 0 ~ &amp;#39;even&amp;#39;, TRUE ~ &amp;#39;odd&amp;#39;))
-plot_data&amp;lt;-bind_rows(dd_expanded,even_odds_marking)
-
-ggplot() + 
-  geom_point(data =  plot_data %&amp;gt;% filter(is.na(Exon)), aes(x=Pos, y=Read_Depth, colour=Depth),size=0.1)  + 
-  facet_wrap(~Name, ncol=1) + 
-  geom_rect(data = plot_data %&amp;gt;% filter(!is.na(Exon)), aes(xmin=Start, xmax=End, ymin=-Inf, ymax=Inf, fill=Exon)) +  
-  scale_fill_manual(values = alpha(c(&amp;quot;gray&amp;quot;, &amp;quot;white&amp;quot;), .3)) +  
-  scale_colour_custom() +
-  theme_minimal() +  
-  theme(axis.text.x=element_blank(), 
-        axis.ticks.x = element_blank(),
-        panel.grid.minor = element_blank(), 
-        panel.grid.major.x = element_blank())+
-  guides(fill=FALSE) + 
-  ylab(&amp;#39;Read Depth&amp;#39;) &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/././post/2018-02-08-let-s-plot-3-part-2_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;sessioninfo&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;sessionInfo()&lt;/h2&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;devtools::session_info()&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Session info -------------------------------------------------------------&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##  setting  value                       
-##  version  R version 3.5.0 (2018-04-23)
-##  system   x86_64, darwin15.6.0        
-##  ui       X11                         
-##  language (EN)                        
-##  collate  en_US.UTF-8                 
-##  tz       America/New_York            
-##  date     2018-07-16&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Packages -----------------------------------------------------------------&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##  package    * version date       source                           
-##  assertthat   0.2.0   2017-04-11 CRAN (R 3.5.0)                   
-##  backports    1.1.2   2017-12-13 CRAN (R 3.5.0)                   
-##  base       * 3.5.0   2018-04-24 local                            
-##  bindr        0.1.1   2018-03-13 CRAN (R 3.5.0)                   
-##  bindrcpp   * 0.2.2   2018-03-29 CRAN (R 3.5.0)                   
-##  blogdown     0.8.1   2018-07-16 Github (rstudio/blogdown@d54c39a)
-##  bookdown     0.7     2018-02-18 CRAN (R 3.5.0)                   
-##  broom        0.4.4   2018-03-29 CRAN (R 3.5.0)                   
-##  cellranger   1.1.0   2016-07-27 CRAN (R 3.5.0)                   
-##  cli          1.0.0   2017-11-05 CRAN (R 3.5.0)                   
-##  colorspace   1.3-2   2016-12-14 CRAN (R 3.5.0)                   
-##  compiler     3.5.0   2018-04-24 local                            
-##  cowplot    * 0.9.2   2017-12-17 CRAN (R 3.5.0)                   
-##  crayon       1.3.4   2017-09-16 CRAN (R 3.5.0)                   
-##  data.table * 1.11.4  2018-05-27 cran (@1.11.4)                   
-##  datasets   * 3.5.0   2018-04-24 local                            
-##  devtools     1.13.5  2018-02-18 CRAN (R 3.5.0)                   
-##  digest       0.6.15  2018-01-28 CRAN (R 3.5.0)                   
-##  dplyr      * 0.7.6   2018-06-29 cran (@0.7.6)                    
-##  evaluate     0.10.1  2017-06-24 CRAN (R 3.5.0)                   
-##  forcats    * 0.3.0   2018-02-19 CRAN (R 3.5.0)                   
-##  foreign      0.8-70  2017-11-28 CRAN (R 3.5.0)                   
-##  ggplot2    * 3.0.0   2018-07-03 cran (@3.0.0)                    
-##  glue         1.2.0   2017-10-29 CRAN (R 3.5.0)                   
-##  graphics   * 3.5.0   2018-04-24 local                            
-##  grDevices  * 3.5.0   2018-04-24 local                            
-##  grid         3.5.0   2018-04-24 local                            
-##  gtable       0.2.0   2016-02-26 CRAN (R 3.5.0)                   
-##  haven        1.1.1   2018-01-18 CRAN (R 3.5.0)                   
-##  hms          0.4.2   2018-03-10 CRAN (R 3.5.0)                   
-##  htmltools    0.3.6   2017-04-28 CRAN (R 3.5.0)                   
-##  httr         1.3.1   2017-08-20 CRAN (R 3.5.0)                   
-##  jsonlite     1.5     2017-06-01 CRAN (R 3.5.0)                   
-##  knitr        1.20    2018-02-20 CRAN (R 3.5.0)                   
-##  labeling     0.3     2014-08-23 CRAN (R 3.5.0)                   
-##  lattice      0.20-35 2017-03-25 CRAN (R 3.5.0)                   
-##  lazyeval     0.2.1   2017-10-29 CRAN (R 3.5.0)                   
-##  lubridate    1.7.4   2018-04-11 CRAN (R 3.5.0)                   
-##  magrittr     1.5     2014-11-22 CRAN (R 3.5.0)                   
-##  memoise      1.1.0   2017-04-21 CRAN (R 3.5.0)                   
-##  methods    * 3.5.0   2018-04-24 local                            
-##  mnormt       1.5-5   2016-10-15 CRAN (R 3.5.0)                   
-##  modelr       0.1.2   2018-05-11 CRAN (R 3.5.0)                   
-##  munsell      0.4.3   2016-02-13 CRAN (R 3.5.0)                   
-##  nlme         3.1-137 2018-04-07 CRAN (R 3.5.0)                   
-##  parallel     3.5.0   2018-04-24 local                            
-##  pillar       1.2.3   2018-05-25 CRAN (R 3.5.0)                   
-##  pkgconfig    2.0.1   2017-03-21 CRAN (R 3.5.0)                   
-##  plyr         1.8.4   2016-06-08 CRAN (R 3.5.0)                   
-##  psych        1.8.4   2018-05-06 CRAN (R 3.5.0)                   
-##  purrr      * 0.2.4   2017-10-18 CRAN (R 3.5.0)                   
-##  R6           2.2.2   2017-06-17 CRAN (R 3.5.0)                   
-##  Rcpp         0.12.17 2018-05-18 CRAN (R 3.5.0)                   
-##  readr      * 1.1.1   2017-05-16 CRAN (R 3.5.0)                   
-##  readxl       1.1.0   2018-04-20 CRAN (R 3.5.0)                   
-##  reshape2     1.4.3   2017-12-11 CRAN (R 3.5.0)                   
-##  rlang        0.2.1   2018-05-30 CRAN (R 3.5.0)                   
-##  rmarkdown    1.10    2018-06-11 cran (@1.10)                     
-##  rprojroot    1.3-2   2018-01-03 CRAN (R 3.5.0)                   
-##  rstudioapi   0.7     2017-09-07 CRAN (R 3.5.0)                   
-##  rvest        0.3.2   2016-06-17 CRAN (R 3.5.0)                   
-##  scales       0.5.0   2017-08-24 CRAN (R 3.5.0)                   
-##  stats      * 3.5.0   2018-04-24 local                            
-##  stringi      1.2.2   2018-05-02 CRAN (R 3.5.0)                   
-##  stringr    * 1.3.1   2018-05-10 CRAN (R 3.5.0)                   
-##  tibble     * 1.4.2   2018-01-22 CRAN (R 3.5.0)                   
-##  tidyr      * 0.8.1   2018-05-18 CRAN (R 3.5.0)                   
-##  tidyselect   0.2.4   2018-02-26 CRAN (R 3.5.0)                   
-##  tidyverse  * 1.2.1   2017-11-14 CRAN (R 3.5.0)                   
-##  tools        3.5.0   2018-04-24 local                            
-##  utils      * 3.5.0   2018-04-24 local                            
-##  withr        2.1.2   2018-03-15 CRAN (R 3.5.0)                   
-##  xfun         0.3     2018-07-06 cran (@0.3)                      
-##  xml2         1.2.0   2018-01-24 CRAN (R 3.5.0)                   
-##  yaml         2.1.19  2018-05-01 CRAN (R 3.5.0)&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 &lt;/div&gt;
 </description>
     </item>

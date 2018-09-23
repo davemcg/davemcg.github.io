@@ -378,3 +378,85 @@ Interpret genetic variation
   - regulatory terms informative in GWAS 
   
 **Very cool work, I've found in my [Distill](https://github.com/davemcg/distill) project that the k/cluster assignment across the genome provided value in assignment of pathogenicity for DNA mutation**
+
+## Maša Roller (Flicek)
+Tissue-specific enhancer and promoter evolution in mammals
+
+Gene expression / promoters more conserved than enhancers across great evolutionary distance
+
+4 tissues, 10 mammals, 3 ChIP-seq, RNA-seq, 3 biological replicates
+
+  - H3K4me3, H3K27ac, H3K4me1 used to delineate active promoters, active enhnancers, primed enhancers
+  - fairly stable n of promoters, enhancers across evolution
+  - brain has largest num of active enhnacers
+
+**Maša IS USING AN [UpSET](http://caleydo.org/tools/upset/) I AM SO HAPPY**
+
+  - showing counts of tissue shared and tissue specific enhnacers
+    - active are more tissue specific, poised much less so
+    - this would be a nightmare with a venn diagram
+
+Primed enhancers evolving more rapidly than active enhancers
+
+  - or are less conserved
+  - tissue specific even less conserved 
+  
+Regulatory element re-use
+
+  - enhancers used over and over again across tissues through evolution
+    - **implication is that sets of enhancers crucial for activity?**
+    
+## Alexander Suh (Suh)
+Mind the gap – interrogating the non-coding genome with single-molecule technologies
+
+Discussion of genome assembly gaps with short reads with the puzzle analogy
+
+Chicken genome is well assembled (big $ in chickens)
+
+Look at bird of paradise
+
+Paradise grove bird used as reference
+
+  - PACBIO
+  - Dovetail
+  - Illumina
+  - 10X linked-reads
+  - Hi-C PHASE genomics
+  
+Birds full of repeats
+
+  - especially sex chr
+  - make assembly tricky
+  - crazy collinearity plots (**not sure if this is the right name for the plots that lay out chr level genome vs genome alignment**)
+  - SO MANY LTRs in the sex chr for the paradise grove bird 
+    - hundreds vs tens for the autosomes
+  
+How to align over complex / long repeats?
+
+  - optical mapping helps get longer (20kb -> 500kb or so)
+  
+## Raquel Garcia-Perez (Juan)
+Recent evolution of the epigenetic regulatory landscape in human and other primates
+
+Comparative epigenomics
+
+WGBS
+ChIP-seq (main ones)
+ATAC-Seq
+RNA-Seq
+
+Across primates
+
+**What tissue(s)???**
+
+chromHMM -> 16 state model, orthologous regulatory elements
+
+Gene annotation + 3C chromatin interactions = match enhancers with promoters or enhancers
+
+trying to model gene expression differences with histone marks
+
+  - semi-succesful (explain 40% of variance)
+  
+
+    
+
