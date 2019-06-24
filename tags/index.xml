@@ -24,7 +24,7 @@
     <item>
       <title>Bioinformatics</title>
       <link>/./tags/bioinformatics/</link>
-      <pubDate>Mon, 18 Jun 2018 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 24 Jun 2019 00:00:00 +0000</pubDate>
       
       <guid>/./tags/bioinformatics/</guid>
       <description></description>
@@ -51,7 +51,7 @@
     <item>
       <title>Conference</title>
       <link>/./tags/conference/</link>
-      <pubDate>Tue, 08 May 2018 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>/./tags/conference/</guid>
       <description></description>
@@ -81,6 +81,15 @@
       <pubDate>Thu, 01 Feb 2018 00:00:00 +0000</pubDate>
       
       <guid>/./tags/eyeintegration/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>GI2018</title>
+      <link>/./tags/gi2018/</link>
+      <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./tags/gi2018/</guid>
       <description></description>
     </item>
     
@@ -139,6 +148,15 @@
     </item>
     
     <item>
+      <title>Pi</title>
+      <link>/./tags/pi/</link>
+      <pubDate>Sat, 03 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./tags/pi/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Programming</title>
       <link>/./tags/programming/</link>
       <pubDate>Mon, 16 Jul 2018 00:00:00 +0000</pubDate>
@@ -157,6 +175,15 @@
     </item>
     
     <item>
+      <title>Python</title>
+      <link>/./tags/python/</link>
+      <pubDate>Sat, 03 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Quinlanverse</title>
       <link>/./tags/quinlanverse/</link>
       <pubDate>Thu, 08 Feb 2018 00:00:00 +0000</pubDate>
@@ -168,7 +195,7 @@
     <item>
       <title>R</title>
       <link>/./tags/r/</link>
-      <pubDate>Mon, 07 May 2018 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 24 Jun 2019 00:00:00 +0000</pubDate>
       
       <guid>/./tags/r/</guid>
       <description></description>
@@ -180,6 +207,15 @@
       <pubDate>Thu, 01 Feb 2018 00:00:00 +0000</pubDate>
       
       <guid>/./tags/rna/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Raspberry</title>
+      <link>/./tags/raspberry/</link>
+      <pubDate>Sat, 03 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./tags/raspberry/</guid>
       <description></description>
     </item>
     
@@ -211,9 +247,18 @@
     </item>
     
     <item>
+      <title>Shiny</title>
+      <link>/./tags/shiny/</link>
+      <pubDate>Mon, 24 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/./tags/shiny/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Talks</title>
       <link>/./tags/talks/</link>
-      <pubDate>Tue, 08 May 2018 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>/./tags/talks/</guid>
       <description></description>

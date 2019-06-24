@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Raspberry on eye Bioinformatician</title>
+    <link>/./categories/raspberry/</link>
+    <description>Recent content in Raspberry on eye Bioinformatician</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Sat, 03 Mar 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/./categories/raspberry/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Something Different: Automated Neighborhood Traffic Monitoring</title>
+      <link>/./post/traffic-monitoring-intro/</link>
+      <pubDate>Sat, 03 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/traffic-monitoring-intro/</guid>
+      <description>title: ‘Something Different: Automated Neighborhood Traffic Monitoring’ author: David McGaughey date: ‘2018-03-03’ slug: traffic-monitoring-intro categories: - R - python - raspberry - pi tags: - R - python - raspberry - pi —
+Introduction This is, obviously, a personal project. Traffic is a concern in my town. Cut-through, speeding, etc. The town has paid for a couple of (very expensive!) traffic surveys, but the reports are not very useful as the company only sets up in town for a few days (if that) and then only reports stuff like ‘number of cars for a one hour period.</description>
+    </item>
+    
+  </channel>
+</rss>

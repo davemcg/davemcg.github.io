@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="theme" content="hugo-academic">
-  <meta name="generator" content="Hugo 0.35" />
+  <meta name="generator" content="Hugo 0.40" />
   <meta name="author" content="David McGaughey">
 
   
@@ -73,8 +73,8 @@
   
 
   
-  <link rel="alternate" href="/./index.xml" type="application/rss+xml" title="eye Bioinformatician">
-  <link rel="feed" href="/./index.xml" type="application/rss+xml" title="eye Bioinformatician">
+  <link rel="alternate" href="/./categories/r/index.xml" type="application/rss+xml" title="eye Bioinformatician">
+  <link rel="feed" href="/./categories/r/index.xml" type="application/rss+xml" title="eye Bioinformatician">
   
 
   <link rel="manifest" href="/site.webmanifest">
@@ -94,7 +94,7 @@
   <meta property="og:description" content="Staff Scientist">
   <meta property="og:locale" content="en-us">
   
-  <meta property="og:updated_time" content="2018-06-18T00:00:00&#43;00:00">
+  <meta property="og:updated_time" content="2019-06-24T00:00:00&#43;00:00">
   
 
   
@@ -259,6 +259,27 @@
   
   
   <div>
+    <h2><a href="/./post/one-developer-portal-genesis/">One Developer Portal: eyeIntegration Genesis</a></h2>
+    <div class="article-style">
+      
+      News! eyeIntegration version 1.0 went live early this year (2019-01-16) and recently was accepted for publication in [IOVS]<a href="https://eyeIntegration.nei.nih.gov/" target="_blank">eyeIntegration</a>. In celebration of the news, I’m posting a small series of posts about the genesis, development, upgrades, and future of eyeIntegration.
+You can find our latest manuscript on bioRxiv. The latest update should go live soon.
+ Background eyeIntegration was developed to serve as a quick and easy to use normal gene expression portal in eye tissues.
+      
+    </div>
+  </div>
+  
+  <div>
+    <h2><a href="/./post/one-developer-portal-optimization/">One Developer Portal: eyeIntegration Web Optimization</a></h2>
+    <div class="article-style">
+      
+      This post is a continuation from here.
+Really important stuff I learned to make a performant web site in Shiny After a few months of tinkering I had a working web app on my local computer, which is a 32GB of RAM, 1TB SSD Mac Pro trashcan. All of the data objects were .Rdata, which were load() when the site was initialized. This was fine in the beginning and in fact the shiny site was deployed with this structure in May of 2017.
+      
+    </div>
+  </div>
+  
+  <div>
     <h2><a href="/./post/quick-guide-to-gene-name-conversion/">Quick Guide to Gene Name Conversion</a></h2>
     <div class="article-style">
       
@@ -338,24 +359,6 @@ Bar plots are terrible. Why? Simple. They don’t show what your data looks like
     <div class="article-style">
       
       Introduction Call mosdepth on bam to calculate bp-specific read depth Intersect base pair depth info with transcript and exon number Now it’s R time! Prepare Metadata Load mosdepth / bedtools intersect data and prep Plot Maker, version 1 Version 2 sessionInfo()    Introduction This is a barebones (but detailed enough, I hope) discussion of how to take a bam file, extract base pair resolution coverage data, then finagle the data into coverage plots by gene and exon.
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/./post/let-s-plot-3-part-i/">Let’s Plot 3: Base pair resolution NGS coverage plots (Part I)</a></h2>
-    <div class="article-style">
-      
-      Load data Curious? Data How many genes are in this dataset? What genes are in here? How many data points (bases) per gene? How many exons per gene? How many base pairs of ABCA4 (well, ABCA4 exons) is covered by more than 10 reads? 5 reads? Let’s check all of the genes to see which are the worst covered We can visually display the data, also Hard to see what is going on, let’s make little plots for each gene Where are genes poorly covered?
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/./post/split-vcf-into-n-pieces-by-coordinate/">Split VCF into n pieces by coordinate</a></h2>
-    <div class="article-style">
-      
-      Introduction Read in vcf header Parse out chr / contig sizes Split chr above 3e7 base pairs into equal(ish) size pieces print coordinates given a chromosome / contig calculate coordinates print ’em output ’em for python input (Snakemake) rscript Using the script output sessionInfo()   Introduction bcftools view -r 1:40000-50000 vcf.gz will output (to stdout) a vcf containing the header and variants on chromosome 1 between coordinates 40,000 and 50,000 base pairs.
       
     </div>
   </div>

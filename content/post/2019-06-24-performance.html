@@ -1,0 +1,102 @@
+---
+title: "One Developer Portal: eyeIntegration Web Optimization"
+author: David McGaughey
+date: '2019-06-24'
+slug: one-developer-portal-optimization
+categories:
+  - bioinformatics
+  - R
+  - shiny
+tags:
+  - bioinformatics
+  - R
+  - shiny
+header:
+  caption: ''
+  image: ''
+---
+
+
+
+<p>This post is a continuation from <a href="/post/one-developer-portal-genesis">here</a>.</p>
+<div id="really-important-stuff-i-learned-to-make-a-performant-web-site-in-shiny" class="section level2">
+<h2>Really important stuff I learned to make a performant web site in Shiny</h2>
+<p>After a few months of tinkering I had a working web app on my local computer, which
+is a 32GB of RAM, 1TB SSD Mac Pro trashcan. All of the data objects were
+<code>.Rdata</code>, which were <code>load()</code> when the site was initialized. This was fine
+in the beginning and in fact the shiny site was deployed with this structure
+in May of 2017. I fairly quickly realized that this was a really bad idea.</p>
+<p>As there are 20,000+ genes and I was storing the gene expression information
+for hundreds of samples, this was a sort of large data set (about 20e6 total data points).</p>
+<p>On my computer I could get the site started up in about 15 seconds or so. On the
+slower server it took upwards of 45 seconds to initialize the site. Which
+was a problem as the Shiny Server puts a site to “sleep” whenever there’s a lack of activity
+of around 5 minutes (this can be changed in your own Shiny Server).
+Plus it was using a LOT of memory and when I tried to load the site at home, on my
+not insanely fast internet connection, it would take a minute or so to get the
+site running.</p>
+<p>I then discovered the crucial tool <a href="https://rstudio.github.io/profvis/">Profvis</a> which
+allows you to benchmark exactly how much time each function / process is taking
+on a Shiny site. Here I learned two important (and in hindsight, super obvious)
+things:</p>
+<ol style="list-style-type: decimal">
+<li>Loading hundreds of megaabytes <code>.Rdata</code> objects takes a while (this was 90% of the slow site initializing time)</li>
+<li>Having the <code>ui.R</code> (browser) side load gene lists (vectors which are 20,000+ in length)
+and big images just kills people with slow internet connections</li>
+</ol>
+<div id="solving-problem-1-.rdata-objects" class="section level3">
+<h3>Solving Problem 1: <code>.Rdata</code> objects</h3>
+<p>Using <code>.Rdata</code> to store the objects was clearly a bad idea as it made the site
+slow to load and made it impractical to further expand the data set (e.g. more samples and
+transcript-level information).</p>
+<div class="figure">
+<img src="/img/profvis_eyeInt_pre.png" alt="Profvis pre-optimization. The wall/actual time is 38 seconds. Notice how long the load section is on a fast SSD. This was substantially worse on the actual server." />
+<p class="caption"><em>Profvis pre-optimization. The wall/actual time is 38 seconds. Notice how long the <code>load</code> section is on a fast SSD. This was substantially worse on the actual server.</em></p>
+</div>
+<p>So I need some sort of data structure that could store the information in a way
+that R could access it without holding the whole thing in memory. The answer I chose
+was <a href="https://db.rstudio.com/databases/sqlite/">SQLite</a>. Why not some other database
+structure? Well, my needs were fairly simple - one web site that reads one database.
+I’d also dabbled with SQLite before and found it pretty simple to write SQL queries.</p>
+<p>It ended up being pretty simple to implement, as RStudio has put substantial
+effort in getting SQLite (and other database types) to interface with R.</p>
+<p>The biggest problem was that I originally tried to just replicate my data structure,
+which was organized with samples (&gt;1000) as columns and genes (&gt;20,000) as rows</p>
+<p><code>SQLITE_MAX_COLUMN</code> was set to 1000, I think. So a straight copy didn’t work. After
+some Googling I realized I was being an idiot and SQLite databases
+were supposed to be <em>LONG</em>.</p>
+<p>So I restructured the database to have three columns:</p>
+<ol style="list-style-type: decimal">
+<li>Gene name</li>
+<li>Sample name</li>
+<li>Gene expression value</li>
+</ol>
+<p>This isn’t disk space efficient (especially since SQLite can’t be compressed!)
+but that’s not a concern as disk is cheap.</p>
+<p>After restructuring the <code>server.R</code> file to use the SQLite, the initializing time
+dropped from ~38 seconds to ~5 seconds!</p>
+<div class="figure">
+<img src="/img/profvis_eyeInt_post.png" alt="Profvis post-optimization. The wall/actual time is 5 seconds. See how the load section is now about 1 second." />
+<p class="caption"><em>Profvis post-optimization. The wall/actual time is 5 seconds. See how the <code>load</code> section is now about 1 second.</em></p>
+</div>
+</div>
+<div id="solving-problem-2-slow-load-times-with-slow-internet" class="section level3">
+<h3>Solving Problem 2: Slow load times with slow internet</h3>
+<p><img src="/img/gene_drop_down.png" alt="Don’t make the user load this via ui.R!" />
+The <code>updateSelectizeInput</code> function provides user selectable from a drop-down list.
+I use this to allow the user to pick a gene of interest to get expression information.
+Problem is that a 20,000 long vector is a few megabytes - which has to be re-downloaded
+to the user’s browser EVERY TIME THEY VIST THE SITE.</p>
+<div class="figure">
+<img src="/img/selectize_server.png" alt="The crucial bit." />
+<p class="caption"><em>The crucial bit.</em></p>
+</div>
+<p>Fotunately the Shiny authors also realized that this could be a problem and provided
+an option (<code>server</code>) in <code>updateSelectizeInput</code> which shifts the burden of holding
+the list to the server. This was implemented pretty quickly by having the server
+load the gene list and setting <code>server = TRUE</code>.</p>
+<p>After doing this and removing some stupid large images the site load time went
+from tens of seconds (!) to instaneous with fast internet and a couple of seconds
+with slower internet.</p>
+</div>
+</div>

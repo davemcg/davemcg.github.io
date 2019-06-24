@@ -11,6 +11,169 @@
     <atom:link href="//" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>One Developer Portal: eyeIntegration Genesis</title>
+      <link>/./post/one-developer-portal-genesis/</link>
+      <pubDate>Mon, 24 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/one-developer-portal-genesis/</guid>
+      <description>&lt;div id=&#34;news&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;News!&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://eyeIntegration.nei.nih.gov/&#34;&gt;eyeIntegration&lt;/a&gt; version 1.0 went live early this year (2019-01-16)
+and recently was accepted for publication in [IOVS][eyeIntegration](&lt;a href=&#34;https://eyeIntegration.nei.nih.gov/&#34; class=&#34;uri&#34;&gt;https://eyeIntegration.nei.nih.gov/&lt;/a&gt;). In celebration
+of the news, I’m posting a small series of posts about the genesis, development, upgrades, and future of
+eyeIntegration.&lt;/p&gt;
+&lt;p&gt;You can find our latest manuscript on &lt;a href=&#34;https://www.biorxiv.org/content/10.1101/579482v1&#34;&gt;bioRxiv&lt;/a&gt;. The latest update
+should go live soon.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;background&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Background&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://eyeIntegration.nei.nih.gov/&#34;&gt;eyeIntegration&lt;/a&gt; was developed to serve as a
+quick and easy to use &lt;em&gt;normal&lt;/em&gt; gene expression portal in eye tissues.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/./img/eyeIntegration_shot.png&#34; alt=&#34;eyeIntegration&#34; /&gt;
+The inspiration came from &lt;a href=&#34;https://gtexportal.org/home/index.html&#34;&gt;GTEx&lt;/a&gt;, which contains dozens of
+post-mortem tissue types from hundreds of samples (and samples are people who have donated their
+body to science - thanks!).&lt;/p&gt;
+&lt;p&gt;Knowing what the &lt;em&gt;normal&lt;/em&gt; gene expression is a crucial piece of information when
+doing novel gene function research. You are going to be a lot less excited about an interesting
+gene if you also know it has zero expression in the retina.&lt;/p&gt;
+&lt;p&gt;Since no eye tissues are collected by GTEx, I had to build my own version. The &lt;em&gt;best&lt;/em&gt;
+solution would involve setting up a very expensive study - with a carefully designed
+tissue collection, DNA/RNA extraction, etc. protocols along with huge amounts of paperwork
+required when working with people. This would also be very expensive and take multiple
+years.&lt;/p&gt;
+&lt;p&gt;As I have approximately zero research dollars (see why below), I did the next best thing and just
+grabbed all the publicly available RNA-seq eye samples from &lt;a href=&#34;https://www.ncbi.nlm.nih.gov/geo/&#34;&gt;GEO&lt;/a&gt;
+/ &lt;a href=&#34;https://www.ncbi.nlm.nih.gov/sra&#34;&gt;SRA&lt;/a&gt; / &lt;a href=&#34;https://www.ebi.ac.uk/ena&#34;&gt;ENA&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Since I knew R and did not know any web development stuffs I chose to use &lt;a href=&#34;https://shiny.rstudio.com&#34;&gt;Shiny&lt;/a&gt;
+to build the web portal. In 2016 (my first commit was May 24th, 2016), when this project got started this seemed sort
+of nuts to do this. But the documentation was pretty good and it wasn’t too hard
+to spin up a Shiny server on a linux box I had under my desk. Over the past three years
+&lt;a href=&#34;https://www.rstudio.com&#34;&gt;RStudio&lt;/a&gt; has continued to develop Shiny and I’m feeling
+better and better about going this route.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;what-do-you-mean-by-one-developer-portal&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;What do you mean by &lt;code&gt;One Developer Portal&lt;/code&gt;?&lt;/h2&gt;
+&lt;p&gt;I work for the National Eye Institute (&lt;a href=&#34;https://nei.nih.gov&#34;&gt;NEI&lt;/a&gt;), which controls about $700 million dollars
+to fund eye research.&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;/./img/nei_funding.png&#34; alt=&#34;http://www.eyeresearch.org/advocacy/adv_nih-nea-appr.html&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;&lt;a href=&#34;http://www.eyeresearch.org/advocacy/adv_nih-nea-appr.html&#34; class=&#34;uri&#34;&gt;http://www.eyeresearch.org/advocacy/adv_nih-nea-appr.html&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Most of that money goes as grants to the extramural community (e.g. research labs
+at your local university). I am a &lt;a href=&#34;https://oir.nih.gov/sourcebook/personnel/ipds-appointment-mechanisms/staff-scientist&#34;&gt;staff scientist&lt;/a&gt;
+(not a PI/professor - which means I don’t have a pot of $ to do research) who was
+hired to provide bioinformatic support / data analysis for a &lt;a href=&#34;https://nei.nih.gov/intramural/ogcsb&#34;&gt;branch&lt;/a&gt; in NEI.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://eyeIntegration.nei.nih.gov/&#34;&gt;eyeIntegration&lt;/a&gt; is a essentially a
+side-project I’ve done in my “spare time” and is run by myself
+(with important features written by two &lt;a href=&#34;https://www.training.nih.gov/programs/postbac_irta&#34;&gt;post-bacs&lt;/a&gt;
+, John Bryan and Vinay Swamy)). It is possible to make and support
+a resource like this &lt;strong&gt;because&lt;/strong&gt; of &lt;a href=&#34;https://hpc.nih.gov&#34;&gt;available compute&lt;/a&gt; and great software.&lt;/p&gt;
+&lt;p&gt;The long-term goal is to keep eyeIntegration current (e.g. take in new samples)
+with part-time effort from one person (me) with periodic bursts of activity
+to add new features.&lt;/p&gt;
+&lt;p&gt;This is getting sort of long so I’m going to break it into several pieces:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;a href=&#34;/./post/one-developer-portal-optimization&#34;&gt;Making a performant site&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;What does eyeIntegration 1.0 mean? (future post)&lt;/li&gt;
+&lt;li&gt;Crucial software bits (future post)&lt;/li&gt;
+&lt;li&gt;What will eyeIntegration 2.0 be? (future post)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>One Developer Portal: eyeIntegration Web Optimization</title>
+      <link>/./post/one-developer-portal-optimization/</link>
+      <pubDate>Mon, 24 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/one-developer-portal-optimization/</guid>
+      <description>&lt;p&gt;This post is a continuation from &lt;a href=&#34;/./post/one-developer-portal-genesis&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;div id=&#34;really-important-stuff-i-learned-to-make-a-performant-web-site-in-shiny&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Really important stuff I learned to make a performant web site in Shiny&lt;/h2&gt;
+&lt;p&gt;After a few months of tinkering I had a working web app on my local computer, which
+is a 32GB of RAM, 1TB SSD Mac Pro trashcan. All of the data objects were
+&lt;code&gt;.Rdata&lt;/code&gt;, which were &lt;code&gt;load()&lt;/code&gt; when the site was initialized. This was fine
+in the beginning and in fact the shiny site was deployed with this structure
+in May of 2017. I fairly quickly realized that this was a really bad idea.&lt;/p&gt;
+&lt;p&gt;As there are 20,000+ genes and I was storing the gene expression information
+for hundreds of samples, this was a sort of large data set (about 20e6 total data points).&lt;/p&gt;
+&lt;p&gt;On my computer I could get the site started up in about 15 seconds or so. On the
+slower server it took upwards of 45 seconds to initialize the site. Which
+was a problem as the Shiny Server puts a site to “sleep” whenever there’s a lack of activity
+of around 5 minutes (this can be changed in your own Shiny Server).
+Plus it was using a LOT of memory and when I tried to load the site at home, on my
+not insanely fast internet connection, it would take a minute or so to get the
+site running.&lt;/p&gt;
+&lt;p&gt;I then discovered the crucial tool &lt;a href=&#34;https://rstudio.github.io/profvis/&#34;&gt;Profvis&lt;/a&gt; which
+allows you to benchmark exactly how much time each function / process is taking
+on a Shiny site. Here I learned two important (and in hindsight, super obvious)
+things:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Loading hundreds of megaabytes &lt;code&gt;.Rdata&lt;/code&gt; objects takes a while (this was 90% of the slow site initializing time)&lt;/li&gt;
+&lt;li&gt;Having the &lt;code&gt;ui.R&lt;/code&gt; (browser) side load gene lists (vectors which are 20,000+ in length)
+and big images just kills people with slow internet connections&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div id=&#34;solving-problem-1-.rdata-objects&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Solving Problem 1: &lt;code&gt;.Rdata&lt;/code&gt; objects&lt;/h3&gt;
+&lt;p&gt;Using &lt;code&gt;.Rdata&lt;/code&gt; to store the objects was clearly a bad idea as it made the site
+slow to load and made it impractical to further expand the data set (e.g. more samples and
+transcript-level information).&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;/./img/profvis_eyeInt_pre.png&#34; alt=&#34;Profvis pre-optimization. The wall/actual time is 38 seconds. Notice how long the load section is on a fast SSD. This was substantially worse on the actual server.&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;&lt;em&gt;Profvis pre-optimization. The wall/actual time is 38 seconds. Notice how long the &lt;code&gt;load&lt;/code&gt; section is on a fast SSD. This was substantially worse on the actual server.&lt;/em&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;So I need some sort of data structure that could store the information in a way
+that R could access it without holding the whole thing in memory. The answer I chose
+was &lt;a href=&#34;https://db.rstudio.com/databases/sqlite/&#34;&gt;SQLite&lt;/a&gt;. Why not some other database
+structure? Well, my needs were fairly simple - one web site that reads one database.
+I’d also dabbled with SQLite before and found it pretty simple to write SQL queries.&lt;/p&gt;
+&lt;p&gt;It ended up being pretty simple to implement, as RStudio has put substantial
+effort in getting SQLite (and other database types) to interface with R.&lt;/p&gt;
+&lt;p&gt;The biggest problem was that I originally tried to just replicate my data structure,
+which was organized with samples (&amp;gt;1000) as columns and genes (&amp;gt;20,000) as rows&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;SQLITE_MAX_COLUMN&lt;/code&gt; was set to 1000, I think. So a straight copy didn’t work. After
+some Googling I realized I was being an idiot and SQLite databases
+were supposed to be &lt;em&gt;LONG&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;So I restructured the database to have three columns:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Gene name&lt;/li&gt;
+&lt;li&gt;Sample name&lt;/li&gt;
+&lt;li&gt;Gene expression value&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;This isn’t disk space efficient (especially since SQLite can’t be compressed!)
+but that’s not a concern as disk is cheap.&lt;/p&gt;
+&lt;p&gt;After restructuring the &lt;code&gt;server.R&lt;/code&gt; file to use the SQLite, the initializing time
+dropped from ~38 seconds to ~5 seconds!&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;/./img/profvis_eyeInt_post.png&#34; alt=&#34;Profvis post-optimization. The wall/actual time is 5 seconds. See how the load section is now about 1 second.&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;&lt;em&gt;Profvis post-optimization. The wall/actual time is 5 seconds. See how the &lt;code&gt;load&lt;/code&gt; section is now about 1 second.&lt;/em&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;solving-problem-2-slow-load-times-with-slow-internet&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Solving Problem 2: Slow load times with slow internet&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;/./img/gene_drop_down.png&#34; alt=&#34;Don’t make the user load this via ui.R!&#34; /&gt;
+The &lt;code&gt;updateSelectizeInput&lt;/code&gt; function provides user selectable from a drop-down list.
+I use this to allow the user to pick a gene of interest to get expression information.
+Problem is that a 20,000 long vector is a few megabytes - which has to be re-downloaded
+to the user’s browser EVERY TIME THEY VIST THE SITE.&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;/./img/selectize_server.png&#34; alt=&#34;The crucial bit.&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;&lt;em&gt;The crucial bit.&lt;/em&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Fotunately the Shiny authors also realized that this could be a problem and provided
+an option (&lt;code&gt;server&lt;/code&gt;) in &lt;code&gt;updateSelectizeInput&lt;/code&gt; which shifts the burden of holding
+the list to the server. This was implemented pretty quickly by having the server
+load the gene list and setting &lt;code&gt;server = TRUE&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;After doing this and removing some stupid large images the site load time went
+from tens of seconds (!) to instaneous with fast internet and a couple of seconds
+with slower internet.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>#GI2018 - Day Four</title>
       <link>/./post/gi2018-day-four/</link>
       <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
@@ -4276,340 +4439,6 @@ pr&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;If you have some more time, go read Lior Pachter’s &lt;a href=&#34;https://liorpachter.wordpress.com/2016/12/21/confusion-matrix-terminology-is-taxicab-trigonometry/&#34;&gt;post&lt;/a&gt; on metrics for assessing performance.&lt;/p&gt;
 &lt;p&gt;Also check this tweet &lt;a href=&#34;https://twitter.com/michaelhoffman/status/969261327331061760&#34;&gt;conversation&lt;/a&gt; between Michael Hoffman and Anshul Kundaje.&lt;/p&gt;
 &lt;p&gt;There are also several web posts that explain &lt;a href=&#34;https://www.kaggle.com/general/7517&#34;&gt;why&lt;/a&gt; &lt;a href=&#34;https://www.kaggle.com/lct14558/imbalanced-data-why-you-should-not-use-roc-curve&#34;&gt;ROC&lt;/a&gt; is bad for unbalanced classes and even a published &lt;a href=&#34;https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4349800/&#34;&gt;paper&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Something Different: Automated Neighborhood Traffic Monitoring</title>
-      <link>/./post/traffic-monitoring-intro/</link>
-      <pubDate>Sat, 03 Mar 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/./post/traffic-monitoring-intro/</guid>
-      <description>&lt;hr /&gt;
-&lt;p&gt;title: ‘Something Different: Automated Neighborhood Traffic Monitoring’ author: David McGaughey date: ‘2018-03-03’ slug: traffic-monitoring-intro categories: - R - python - raspberry - pi tags: - R - python - raspberry - pi —&lt;/p&gt;
-&lt;div id=&#34;introduction&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Introduction&lt;/h2&gt;
-&lt;p&gt;This is, obviously, a personal project. Traffic is a concern in my town. Cut-through, speeding, etc. The town has paid for a couple of (very expensive!) traffic surveys, but the reports are not very useful as the company only sets up in town for a few days (if that) and then only reports stuff like ‘number of cars for a one hour period.’ I want to know how many cars are passing my house per day, per hour, per weekday, per weekend, etc. I’d also like to know how many cars are going above the 15 mph speed limit on my round (why 15 mph?! - there’s a very tight turn of the road).&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;solution&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Solution?&lt;/h2&gt;
-&lt;p&gt;Well, I figured a video feed hooked up to a computer could be set up in my house, facing the road. Motion could be detected, then logged. Since the distance is (approximately constant) between the car and the camera, it would be possible to detect a car and approximate its speed. I didn’t want to dedicated a laptop for this project because I imagine this would be most useful with continuous observation. This sounded like a perfect use for a Raspberry Pi, which I have been wanting an excuse to buy. Some quick Googling for “speed camera raspberry pi” led me to this &lt;a href=&#34;https://github.com/pageauc/speed-camera&#34;&gt;GitHub project&lt;/a&gt;. Someone had used &lt;a href=&#34;https://opencv.org&#34;&gt;OpenCV&lt;/a&gt; and Python to do exactly what I thought may be possible.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;stuff-i-bought&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Stuff I bought&lt;/h2&gt;
-&lt;p&gt;I thought I bought a Raspberry Pi 3 B+, but after looking at my Amazon history I realized I bought a 3 B. Oops. The 3 B+ has faster WiFi and a higher CPU clock. Oh well.&lt;/p&gt;
-&lt;p&gt;Anyways, the kit came with a 16gb microSD card with NOOBS (some kind of loader for multiple operating systems), a case, an HDMI cable, and a power supply.&lt;/p&gt;
-&lt;p&gt;I also bought a “Arducam” 5mp camera. The official Raspberry Pi camera was double the price and the reviews seemed OK (~$25 instead of ~$13).&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;brief-setup&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Brief setup&lt;/h2&gt;
-&lt;p&gt;I was hoping I could just SSH into the Pi on start-up, but I could not see the ethernet-connected Pi on my network. I then used an HDMI cable to hook it up to a TV and a grubby USB keyboard I found in my basement. I realized that the NOOBs loader needed to be told what OS to install. I picked the basic Raspian OS, as I was not going to use any GUI stuff. Then I did some Googling to figure out how to give it the WiFi network info and after that I could just SSH into it.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;software-installed&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Software installed&lt;/h2&gt;
-&lt;p&gt;I am almost certainly going to regret that I just ran &lt;code&gt;sudo apt-get install&lt;/code&gt; for each piece of software I wanted by hand when I want to set up a new one.&lt;/p&gt;
-&lt;p&gt;I am not a good admin.&lt;/p&gt;
-&lt;p&gt;I installed python3, &lt;a href=&#34;https://www.pyimagesearch.com/2016/04/18/install-guide-raspberry-pi-3-raspbian-jessie-opencv-3/&#34;&gt;opencv&lt;/a&gt; (which was a PITA), git, R, and all of the dependencies those four things complained about.&lt;/p&gt;
-&lt;p&gt;I then installed the &lt;a href=&#34;https://github.com/pageauc/speed-camera&#34;&gt;speed-camera project&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;calibration&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Calibration&lt;/h2&gt;
-&lt;p&gt;The speed-camera software&lt;/p&gt;
-&lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Let’s Plot 4: R vs Excel, Round 1</title>
-      <link>/./post/let-s-plot-4-r-vs-excel/</link>
-      <pubDate>Thu, 01 Mar 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/./post/let-s-plot-4-r-vs-excel/</guid>
-      <description>&lt;div id=&#34;TOC&#34;&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#introduction&#34;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#data&#34;&gt;Data&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#cleaning&#34;&gt;Cleaning&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#reformatting&#34;&gt;Reformatting&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#box-plot&#34;&gt;Box Plot&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#boxplot-with-all-the-data-displayed&#34;&gt;Boxplot with all the data displayed&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#i-used-to-prefer-violin-plots&#34;&gt;I used to prefer violin plots&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#im-a-fan-of-beeswarm-plots-with-boxplots&#34;&gt;I’m a fan of beeswarm plots with boxplots&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#doing-statistics.&#34;&gt;Doing statistics.&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#session&#34;&gt;Session&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-
-&lt;div id=&#34;introduction&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Introduction&lt;/h2&gt;
-&lt;p&gt;The battle that we’ve all been waiting for. Excel vs. R. Bar plot versus a plot that actually shows the data.&lt;/p&gt;
-&lt;p&gt;Yeah, this isn’t a fair fight.&lt;/p&gt;
-&lt;p&gt;Bar plots are terrible. Why? Simple. They don’t show what your data looks like. A bar plot gives you zero idea how many data points there are. You can add error bars, but you don’t know if you are looking at standard error or standard deviation.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/./img/excel_bar_plot_bad.png&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;Box plots are &lt;em&gt;much&lt;/em&gt; better. They display useful information like minimum, maximum, quartiles, and median. But they still can really mislead depending on how your data is structured.&lt;/p&gt;
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;/./img/BoxViolinSmaller.gif&#34; alt=&#34;https://www.autodeskresearch.com/publications/samestats&#34; /&gt;
-&lt;p class=&#34;caption&#34;&gt;&lt;a href=&#34;https://www.autodeskresearch.com/publications/samestats&#34; class=&#34;uri&#34;&gt;https://www.autodeskresearch.com/publications/samestats&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;/./img/journal.pbio.1002128.g001.png&#34; alt=&#34;https://doi.org/10.1371/journal.pbio.1002128&#34; /&gt;
-&lt;p class=&#34;caption&#34;&gt;&lt;a href=&#34;https://doi.org/10.1371/journal.pbio.1002128&#34; class=&#34;uri&#34;&gt;https://doi.org/10.1371/journal.pbio.1002128&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;p&gt;Why do so many scientists keep using bar (or box) plots? Well, simple. Excel makes bar plots with one click. Excel &lt;em&gt;can&lt;/em&gt; make box plots, but it is &lt;a href=&#34;https://support.office.com/en-us/article/create-a-box-plot-10204530-8cdf-40fe-a711-2eb9785e510f&#34;&gt;not easy&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Excel, as far as I can tell, can’t do what I’m about to show you: violin plots or box plots with the &lt;em&gt;raw data displayed inline&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;As a bonus, I made a short video to demonstrate how you can skip the below data cleaning in R with some clicking and dragging in Excel - then just plot in R.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=_teDfnv0gUE&amp;amp;feature=youtu.be&#34;&gt;Click here&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;data&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Data&lt;/h2&gt;
-&lt;p&gt;A variety of eye measurements between a wild-type zebrafish line and a mutant line.&lt;/p&gt;
-&lt;p&gt;You can get the excel file &lt;a href=&#34;https://github.com/davemcg/Let_us_plot/blob/master/004_r_vs_excel/Compiled%20eye%20measurements.xlsx&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ── Attaching packages ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ✔ ggplot2 3.0.0     ✔ purrr   0.2.4
-## ✔ tibble  1.4.2     ✔ dplyr   0.7.6
-## ✔ tidyr   0.8.1     ✔ stringr 1.3.1
-## ✔ readr   1.1.1     ✔ forcats 0.3.0&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;dplyr&amp;#39; was built under R version 3.5.1&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ── Conflicts ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
-## ✖ dplyr::filter() masks stats::filter()
-## ✖ dplyr::lag()    masks stats::lag()&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggsci)
-library(ggbeeswarm)
-micro &amp;lt;- readxl::read_xlsx(&amp;#39;~/git/Let_us_plot/004_r_vs_excel/Compiled eye measurements.xlsx&amp;#39;)
-head(micro)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## # A tibble: 6 x 13
-##   X__1  Day3   X__2  Day5  X__3  X__4  X__5  X__6  X__7  X__8  X__9  X__10
-##   &amp;lt;chr&amp;gt; &amp;lt;chr&amp;gt;  &amp;lt;chr&amp;gt; &amp;lt;chr&amp;gt; &amp;lt;chr&amp;gt; &amp;lt;lgl&amp;gt; &amp;lt;lgl&amp;gt; &amp;lt;lgl&amp;gt; &amp;lt;chr&amp;gt; &amp;lt;chr&amp;gt; &amp;lt;chr&amp;gt; &amp;lt;chr&amp;gt;
-## 1 Fish  WT/Het Mut   WT/H… Mut   NA    NA    NA    &amp;lt;NA&amp;gt;  &amp;lt;NA&amp;gt;  &amp;lt;NA&amp;gt;  &amp;lt;NA&amp;gt; 
-## 2 1     6.099… 4.80… 7.29… 6.70… NA    NA    NA    &amp;lt;NA&amp;gt;  Day3  &amp;lt;NA&amp;gt;  Day5 
-## 3 2     7.099… 5.29… 7.19… 8.20… NA    NA    NA    &amp;lt;NA&amp;gt;  WT/H… Mut   WT/H…
-## 4 3     0.05   5.39… 7.69… 7.09… NA    NA    NA    avg   6.06… 5.37… 7.31…
-## 5 4     6.3E-2 5.80… 7.19… 6.60… NA    NA    NA    &amp;lt;NA&amp;gt;  &amp;lt;NA&amp;gt;  &amp;lt;NA&amp;gt;  &amp;lt;NA&amp;gt; 
-## 6 5     6.400… 5.80… 6.09… 7.09… NA    NA    NA    se    1.50… 1.12… 1.12…
-## # ... with 1 more variable: X__11 &amp;lt;chr&amp;gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;cleaning&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Cleaning&lt;/h2&gt;
-&lt;p&gt;OK, a bit messy since this isn’t a computer-formatted file. I’m going to grab the relevant data (ignoring the summarize stats) by looking at the data and slicing and selecting by coordinates. Not worth doing anything fancier (regex, grep, neural network) to automate this.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# clean
-micro &amp;lt;- micro %&amp;gt;% 
-  slice(2:31) %&amp;gt;% 
-  select(`Fish ID` = X__1, 
-         Day3_Het = Day3, 
-         Day3_Mut = X__2, 
-         Day5_Het = Day5, 
-         Day5_Mut = X__3) %&amp;gt;% 
-  mutate(Day3_Het = as.numeric(Day3_Het),
-         Day3_Mut = as.numeric(Day3_Mut),
-         Day5_Het = as.numeric(Day5_Het),
-         Day5_Mut = as.numeric(Day5_Mut))
-micro&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## # A tibble: 30 x 5
-##    `Fish ID` Day3_Het Day3_Mut Day5_Het Day5_Mut
-##    &amp;lt;chr&amp;gt;        &amp;lt;dbl&amp;gt;    &amp;lt;dbl&amp;gt;    &amp;lt;dbl&amp;gt;    &amp;lt;dbl&amp;gt;
-##  1 1            0.061    0.048    0.073    0.067
-##  2 2            0.071    0.053    0.072    0.082
-##  3 3            0.05     0.054    0.077    0.071
-##  4 4            0.063    0.058    0.072    0.066
-##  5 5            0.064    0.058    0.061    0.071
-##  6 6            0.065    0.053    0.075    0.07 
-##  7 7            0.058    0.056    0.08     0.07 
-##  8 8            0.057    0.053    0.063    0.076
-##  9 9            0.065    0.068    0.073    0.071
-## 10 10           0.062    0.061    0.072    0.075
-## # ... with 20 more rows&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;reformatting&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Reformatting&lt;/h2&gt;
-&lt;p&gt;We are also going to have to reformat the data since Date and Genotype are mixed together in a column. Would rather have all the data in one column and the date and genotype in their own columns. Confused? Well, just compare the above data to the modified data.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Remember&lt;/strong&gt; - if this is too intimidating right now, then it is fine to just manually move the data around with Excel to make it look like the below data. Then you can just focus on making the figure.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# wide to long
-micro &amp;lt;- micro %&amp;gt;% 
-  gather(Date_Genotype, Size, -`Fish ID`) %&amp;gt;% 
-  separate(Date_Genotype, c(&amp;#39;Date&amp;#39;,&amp;#39;Genotype&amp;#39;))
-micro&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## # A tibble: 120 x 4
-##    `Fish ID` Date  Genotype  Size
-##    &amp;lt;chr&amp;gt;     &amp;lt;chr&amp;gt; &amp;lt;chr&amp;gt;    &amp;lt;dbl&amp;gt;
-##  1 1         Day3  Het      0.061
-##  2 2         Day3  Het      0.071
-##  3 3         Day3  Het      0.05 
-##  4 4         Day3  Het      0.063
-##  5 5         Day3  Het      0.064
-##  6 6         Day3  Het      0.065
-##  7 7         Day3  Het      0.058
-##  8 8         Day3  Het      0.057
-##  9 9         Day3  Het      0.065
-## 10 10        Day3  Het      0.062
-## # ... with 110 more rows&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;box-plot&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Box Plot&lt;/h2&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;micro %&amp;gt;% ggplot(aes(x=Genotype, y=Size, colour=Genotype)) + 
-  facet_wrap(~Date) +
-  geom_boxplot() + 
-  theme_minimal() + 
-  scale_color_aaas()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/././post/2018-03-01-let-s-plot-r-vs-excel_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;boxplot-with-all-the-data-displayed&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Boxplot with all the data displayed&lt;/h2&gt;
-&lt;p&gt;So easy with ggplot2&lt;/p&gt;
-&lt;p&gt;Remember to have your &lt;code&gt;geom_boxplot&lt;/code&gt; remove display of outliers (since you are showing them now with &lt;code&gt;geom_jitter&lt;/code&gt;)&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;micro %&amp;gt;% ggplot(aes(x=Genotype, y=Size, colour=Genotype)) + facet_wrap(~Date) +
-  geom_boxplot(outlier.shape = NA) + 
-  geom_jitter() + 
-  theme_minimal() + 
-  scale_color_aaas()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/././post/2018-03-01-let-s-plot-r-vs-excel_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;i-used-to-prefer-violin-plots&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;I used to prefer violin plots&lt;/h2&gt;
-&lt;p&gt;But the smoothing for outlier points can be misleading. They also confuse people who haven’t seen them before &lt;strong&gt;and&lt;/strong&gt; you lose the quartile / median info a boxplot provides.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;micro %&amp;gt;% ggplot(aes(x=Genotype, y=Size, colour=Genotype)) + facet_wrap(~Date) +
-  geom_violin() + 
-  geom_jitter() + 
-  theme_minimal() + 
-  scale_color_aaas()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/././post/2018-03-01-let-s-plot-r-vs-excel_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;im-a-fan-of-beeswarm-plots-with-boxplots&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;I’m a fan of beeswarm plots with boxplots&lt;/h2&gt;
-&lt;p&gt;You get the violin plot structure and the quartile / median info of boxplots. Win win.&lt;/p&gt;
-&lt;p&gt;I’ve reduced the alpha (opacity) of the points to put more emphasis on the boxplot.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;micro %&amp;gt;% ggplot(aes(x=Genotype, y=Size, colour=Genotype)) + facet_wrap(~Date) +
-  geom_boxplot(outlier.shape = NA) + 
-  geom_quasirandom(alpha=0.4) + 
-  theme_minimal() + 
-  scale_color_aaas()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/././post/2018-03-01-let-s-plot-r-vs-excel_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;doing-statistics.&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Doing statistics.&lt;/h2&gt;
-&lt;p&gt;Are the differences significant between genotype on Day3 and Day5? More precisely, can we reject the null hypothesis (no mean difference in size)?&lt;/p&gt;
-&lt;p&gt;Let’s use the venerable t.test. The data eyeballs as normally distributed. I’m using &lt;code&gt;dplyr&lt;/code&gt; &lt;code&gt;filter&lt;/code&gt; to test Day 3 and Day 5 separately, testing for differences in mean between genotypes (hence the right half of the equation below ends with &lt;code&gt;pull(Genotype)&lt;/code&gt;)&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Day 3
-t.test(micro %&amp;gt;% filter(Date==&amp;#39;Day3&amp;#39;) %&amp;gt;% pull(Size) ~ micro %&amp;gt;% filter(Date==&amp;#39;Day3&amp;#39;) %&amp;gt;% pull(Genotype))&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## 
-##  Welch Two Sample t-test
-## 
-## data:  micro %&amp;gt;% filter(Date == &amp;quot;Day3&amp;quot;) %&amp;gt;% pull(Size) by micro %&amp;gt;% filter(Date == &amp;quot;Day3&amp;quot;) %&amp;gt;% pull(Genotype)
-## t = 3.5888, df = 53.629, p-value = 0.0007197
-## alternative hypothesis: true difference in means is not equal to 0
-## 95 percent confidence interval:
-##  0.003029977 0.010703357
-## sample estimates:
-## mean in group Het mean in group Mut 
-##        0.06060000        0.05373333&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Day 5
-t.test(micro %&amp;gt;% filter(Date==&amp;#39;Day5&amp;#39;) %&amp;gt;% pull(Size) ~ micro %&amp;gt;% filter(Date==&amp;#39;Day5&amp;#39;) %&amp;gt;% pull(Genotype))&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## 
-##  Welch Two Sample t-test
-## 
-## data:  micro %&amp;gt;% filter(Date == &amp;quot;Day5&amp;quot;) %&amp;gt;% pull(Size) by micro %&amp;gt;% filter(Date == &amp;quot;Day5&amp;quot;) %&amp;gt;% pull(Genotype)
-## t = 1.4851, df = 52.164, p-value = 0.1435
-## alternative hypothesis: true difference in means is not equal to 0
-## 95 percent confidence interval:
-##  -0.001029920  0.006896587
-## sample estimates:
-## mean in group Het mean in group Mut 
-##        0.07313333        0.07020000&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Yes for Day 3, no for Day 5.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;session&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Session&lt;/h1&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;devtools::session_info()&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Session info -------------------------------------------------------------&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##  setting  value                       
-##  version  R version 3.5.0 (2018-04-23)
-##  system   x86_64, darwin15.6.0        
-##  ui       X11                         
-##  language (EN)                        
-##  collate  en_US.UTF-8                 
-##  tz       America/New_York            
-##  date     2018-07-16&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Packages -----------------------------------------------------------------&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##  package    * version date       source                           
-##  assertthat   0.2.0   2017-04-11 CRAN (R 3.5.0)                   
-##  backports    1.1.2   2017-12-13 CRAN (R 3.5.0)                   
-##  base       * 3.5.0   2018-04-24 local                            
-##  beeswarm     0.2.3   2016-04-25 CRAN (R 3.5.0)                   
-##  bindr        0.1.1   2018-03-13 CRAN (R 3.5.0)                   
-##  bindrcpp   * 0.2.2   2018-03-29 CRAN (R 3.5.0)                   
-##  blogdown     0.8.1   2018-07-16 Github (rstudio/blogdown@d54c39a)
-##  bookdown     0.7     2018-02-18 CRAN (R 3.5.0)                   
-##  broom        0.4.4   2018-03-29 CRAN (R 3.5.0)                   
-##  cellranger   1.1.0   2016-07-27 CRAN (R 3.5.0)                   
-##  cli          1.0.0   2017-11-05 CRAN (R 3.5.0)                   
-##  colorspace   1.3-2   2016-12-14 CRAN (R 3.5.0)                   
-##  compiler     3.5.0   2018-04-24 local                            
-##  crayon       1.3.4   2017-09-16 CRAN (R 3.5.0)                   
-##  datasets   * 3.5.0   2018-04-24 local                            
-##  devtools     1.13.5  2018-02-18 CRAN (R 3.5.0)                   
-##  digest       0.6.15  2018-01-28 CRAN (R 3.5.0)                   
-##  dplyr      * 0.7.6   2018-06-29 cran (@0.7.6)                    
-##  evaluate     0.10.1  2017-06-24 CRAN (R 3.5.0)                   
-##  forcats    * 0.3.0   2018-02-19 CRAN (R 3.5.0)                   
-##  foreign      0.8-70  2017-11-28 CRAN (R 3.5.0)                   
-##  ggbeeswarm * 0.6.0   2017-08-07 CRAN (R 3.5.0)                   
-##  ggplot2    * 3.0.0   2018-07-03 cran (@3.0.0)                    
-##  ggsci      * 2.9     2018-05-14 CRAN (R 3.5.0)                   
-##  glue         1.2.0   2017-10-29 CRAN (R 3.5.0)                   
-##  graphics   * 3.5.0   2018-04-24 local                            
-##  grDevices  * 3.5.0   2018-04-24 local                            
-##  grid         3.5.0   2018-04-24 local                            
-##  gtable       0.2.0   2016-02-26 CRAN (R 3.5.0)                   
-##  haven        1.1.1   2018-01-18 CRAN (R 3.5.0)                   
-##  hms          0.4.2   2018-03-10 CRAN (R 3.5.0)                   
-##  htmltools    0.3.6   2017-04-28 CRAN (R 3.5.0)                   
-##  httr         1.3.1   2017-08-20 CRAN (R 3.5.0)                   
-##  jsonlite     1.5     2017-06-01 CRAN (R 3.5.0)                   
-##  knitr        1.20    2018-02-20 CRAN (R 3.5.0)                   
-##  labeling     0.3     2014-08-23 CRAN (R 3.5.0)                   
-##  lattice      0.20-35 2017-03-25 CRAN (R 3.5.0)                   
-##  lazyeval     0.2.1   2017-10-29 CRAN (R 3.5.0)                   
-##  lubridate    1.7.4   2018-04-11 CRAN (R 3.5.0)                   
-##  magrittr     1.5     2014-11-22 CRAN (R 3.5.0)                   
-##  memoise      1.1.0   2017-04-21 CRAN (R 3.5.0)                   
-##  methods    * 3.5.0   2018-04-24 local                            
-##  mnormt       1.5-5   2016-10-15 CRAN (R 3.5.0)                   
-##  modelr       0.1.2   2018-05-11 CRAN (R 3.5.0)                   
-##  munsell      0.4.3   2016-02-13 CRAN (R 3.5.0)                   
-##  nlme         3.1-137 2018-04-07 CRAN (R 3.5.0)                   
-##  parallel     3.5.0   2018-04-24 local                            
-##  pillar       1.2.3   2018-05-25 CRAN (R 3.5.0)                   
-##  pkgconfig    2.0.1   2017-03-21 CRAN (R 3.5.0)                   
-##  plyr         1.8.4   2016-06-08 CRAN (R 3.5.0)                   
-##  psych        1.8.4   2018-05-06 CRAN (R 3.5.0)                   
-##  purrr      * 0.2.4   2017-10-18 CRAN (R 3.5.0)                   
-##  R6           2.2.2   2017-06-17 CRAN (R 3.5.0)                   
-##  Rcpp         0.12.17 2018-05-18 CRAN (R 3.5.0)                   
-##  readr      * 1.1.1   2017-05-16 CRAN (R 3.5.0)                   
-##  readxl       1.1.0   2018-04-20 CRAN (R 3.5.0)                   
-##  reshape2     1.4.3   2017-12-11 CRAN (R 3.5.0)                   
-##  rlang        0.2.1   2018-05-30 CRAN (R 3.5.0)                   
-##  rmarkdown    1.10    2018-06-11 cran (@1.10)                     
-##  rprojroot    1.3-2   2018-01-03 CRAN (R 3.5.0)                   
-##  rstudioapi   0.7     2017-09-07 CRAN (R 3.5.0)                   
-##  rvest        0.3.2   2016-06-17 CRAN (R 3.5.0)                   
-##  scales       0.5.0   2017-08-24 CRAN (R 3.5.0)                   
-##  stats      * 3.5.0   2018-04-24 local                            
-##  stringi      1.2.2   2018-05-02 CRAN (R 3.5.0)                   
-##  stringr    * 1.3.1   2018-05-10 CRAN (R 3.5.0)                   
-##  tibble     * 1.4.2   2018-01-22 CRAN (R 3.5.0)                   
-##  tidyr      * 0.8.1   2018-05-18 CRAN (R 3.5.0)                   
-##  tidyselect   0.2.4   2018-02-26 CRAN (R 3.5.0)                   
-##  tidyverse  * 1.2.1   2017-11-14 CRAN (R 3.5.0)                   
-##  tools        3.5.0   2018-04-24 local                            
-##  utf8         1.1.4   2018-05-24 CRAN (R 3.5.0)                   
-##  utils      * 3.5.0   2018-04-24 local                            
-##  vipor        0.4.5   2017-03-22 CRAN (R 3.5.0)                   
-##  withr        2.1.2   2018-03-15 CRAN (R 3.5.0)                   
-##  xfun         0.3     2018-07-06 cran (@0.3)                      
-##  xml2         1.2.0   2018-01-24 CRAN (R 3.5.0)                   
-##  yaml         2.1.19  2018-05-01 CRAN (R 3.5.0)&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 </description>
     </item>

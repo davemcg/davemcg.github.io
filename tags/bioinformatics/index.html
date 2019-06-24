@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="theme" content="hugo-academic">
-  <meta name="generator" content="Hugo 0.35" />
+  <meta name="generator" content="Hugo 0.40" />
   <meta name="author" content="David McGaughey">
 
   
@@ -73,8 +73,8 @@
   
 
   
-  <link rel="alternate" href="/./index.xml" type="application/rss+xml" title="eye Bioinformatician">
-  <link rel="feed" href="/./index.xml" type="application/rss+xml" title="eye Bioinformatician">
+  <link rel="alternate" href="/./tags/bioinformatics/index.xml" type="application/rss+xml" title="eye Bioinformatician">
+  <link rel="feed" href="/./tags/bioinformatics/index.xml" type="application/rss+xml" title="eye Bioinformatician">
   
 
   <link rel="manifest" href="/site.webmanifest">
@@ -94,7 +94,7 @@
   <meta property="og:description" content="Staff Scientist">
   <meta property="og:locale" content="en-us">
   
-  <meta property="og:updated_time" content="2018-09-20T00:00:00&#43;00:00">
+  <meta property="og:updated_time" content="2019-06-24T00:00:00&#43;00:00">
   
 
   
@@ -259,6 +259,27 @@
   
   
   <div>
+    <h2><a href="/./post/one-developer-portal-genesis/">One Developer Portal: eyeIntegration Genesis</a></h2>
+    <div class="article-style">
+      
+      News! eyeIntegration version 1.0 went live early this year (2019-01-16) and recently was accepted for publication in [IOVS]<a href="https://eyeIntegration.nei.nih.gov/" target="_blank">eyeIntegration</a>. In celebration of the news, I’m posting a small series of posts about the genesis, development, upgrades, and future of eyeIntegration.
+You can find our latest manuscript on bioRxiv. The latest update should go live soon.
+ Background eyeIntegration was developed to serve as a quick and easy to use normal gene expression portal in eye tissues.
+      
+    </div>
+  </div>
+  
+  <div>
+    <h2><a href="/./post/one-developer-portal-optimization/">One Developer Portal: eyeIntegration Web Optimization</a></h2>
+    <div class="article-style">
+      
+      This post is a continuation from here.
+Really important stuff I learned to make a performant web site in Shiny After a few months of tinkering I had a working web app on my local computer, which is a 32GB of RAM, 1TB SSD Mac Pro trashcan. All of the data objects were .Rdata, which were load() when the site was initialized. This was fine in the beginning and in fact the shiny site was deployed with this structure in May of 2017.
+      
+    </div>
+  </div>
+  
+  <div>
     <h2><a href="/./post/gi2018-day-four/">#GI2018 - Day Four</a></h2>
     <div class="article-style">
       
@@ -343,27 +364,6 @@ This post will very briefly explain the most expedient way to automatically conv
       When you have a set of ChIP-seq (like) files, it is sometimes useful to downsample the larger samples to more closely match most of the samples. Tommy Tang goes into more detail in his blog post.
 Unfortunately the tool suites I use most for bam files (samtools and picard) only downsample to a percentage. Which isn’t ideal when you want your files to be no more than n reads.
 This post is just a slight one-upping of Tommy Tang’s process to easily downsample a bam.
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/./post/are-you-in-genomics-stop-using-roc-use-pr/">Are you in genomics and building models? Stop using ROC - use PR</a></h2>
-    <div class="article-style">
-      
-      tldr Area Under the Curve (AUC) of Receiver Operating Characteristic (ROC) is a terrible metric for a genomics problem. Do not use it. This metric also goes by AUC or AUROC. Use Precision Recall AUC.
- Inspiration for this post I am working on a machine learning problem in genomics I was getting really confused why AUROC was so worthless scienceTwitter featuring Anshul Kundaje  I want to save you (some time)   What’s a ROC?
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/./post/let-s-plot-4-r-vs-excel/">Let’s Plot 4: R vs Excel, Round 1</a></h2>
-    <div class="article-style">
-      
-      Introduction Data Cleaning Reformatting Box Plot Boxplot with all the data displayed I used to prefer violin plots I’m a fan of beeswarm plots with boxplots Doing statistics. Session   Introduction The battle that we’ve all been waiting for. Excel vs. R. Bar plot versus a plot that actually shows the data.
-Yeah, this isn’t a fair fight.
-Bar plots are terrible. Why? Simple. They don’t show what your data looks like.
       
     </div>
   </div>

@@ -1,0 +1,88 @@
+---
+title: "One Developer Portal: eyeIntegration Genesis"
+author: David McGaughey
+date: '2019-06-24'
+slug: one-developer-portal-genesis
+categories:
+  - bioinformatics
+  - R
+  - shiny
+tags:
+  - bioinformatics
+  - R
+  - shiny
+header:
+  caption: ''
+  image: ''
+---
+
+## News!
+[eyeIntegration](https://eyeIntegration.nei.nih.gov/) version 1.0 went live early this year (2019-01-16) 
+and recently was accepted for publication in [IOVS][eyeIntegration](https://eyeIntegration.nei.nih.gov/). In celebration
+of the news, I'm posting a small series of posts about the genesis, development, upgrades, and future of 
+eyeIntegration. 
+
+You can find our latest manuscript on [bioRxiv](https://www.biorxiv.org/content/10.1101/579482v1). The latest update
+should go live soon. 
+
+## Background
+[eyeIntegration](https://eyeIntegration.nei.nih.gov/) was developed to serve as a 
+quick and easy to use *normal* gene expression portal in eye tissues. 
+
+![eyeIntegration](/img/eyeIntegration_shot.png)
+The inspiration came from [GTEx](https://gtexportal.org/home/index.html), which contains dozens of 
+post-mortem tissue types from hundreds of samples (and samples are people who have donated their
+body to science - thanks!). 
+
+Knowing what the *normal* gene expression is a crucial piece of information when 
+doing novel gene function research. You are going to be a lot less excited about an interesting
+gene if you also know it has zero expression in the retina. 
+
+Since no eye tissues are collected by GTEx, I had to build my own version. The *best*
+solution would involve setting up a very expensive study - with a carefully designed 
+tissue collection, DNA/RNA extraction, etc. protocols along with huge amounts of paperwork
+required when working with people. This would also be very expensive and take multiple
+years. 
+
+As I have approximately zero research dollars (see why below), I did the next best thing and just 
+grabbed all the publicly available RNA-seq eye samples from [GEO](https://www.ncbi.nlm.nih.gov/geo/)
+ / [SRA](https://www.ncbi.nlm.nih.gov/sra) / [ENA](https://www.ebi.ac.uk/ena). 
+
+Since I knew R and did not know any web development stuffs I chose to use [Shiny](https://shiny.rstudio.com)
+to build the web portal. In 2016 (my first commit was May 24th, 2016), when this project got started this seemed sort
+of nuts to do this. But the documentation was pretty good and it wasn't too hard
+to spin up a Shiny server on a linux box I had under my desk. Over the past three years
+[RStudio](https://www.rstudio.com) has continued to develop Shiny and I'm feeling
+better and better about going this route. 
+
+## What do you mean by `One Developer Portal`?
+
+I work for the National Eye Institute ([NEI](https://nei.nih.gov)), which controls about $700 million dollars 
+to fund eye research. 
+
+![http://www.eyeresearch.org/advocacy/adv_nih-nea-appr.html](/img/nei_funding.png)
+
+Most of that money goes as grants to the extramural community (e.g. research labs
+at your local university). I am a [staff scientist](https://oir.nih.gov/sourcebook/personnel/ipds-appointment-mechanisms/staff-scientist)
+(not a PI/professor - which means I don't have a pot of $ to do research) who was 
+hired to provide bioinformatic support / data analysis for a [branch](https://nei.nih.gov/intramural/ogcsb) in NEI. 
+
+[eyeIntegration](https://eyeIntegration.nei.nih.gov/) is a essentially a 
+side-project I've done in my "spare time" and is run by myself 
+(with important features written by two [post-bacs](https://www.training.nih.gov/programs/postbac_irta)
+, John Bryan and Vinay Swamy)). It is possible to make and support
+a resource like this **because** of [available compute](https://hpc.nih.gov) and great software.
+
+The long-term goal is to keep eyeIntegration current (e.g. take in new samples)
+with part-time effort from one person (me) with periodic bursts of activity
+to add new features.
+
+This is getting sort of long so I'm going to break it into several pieces:
+
+1. [Making a performant site](/post/one-developer-portal-optimization)
+2. What does eyeIntegration 1.0 mean? (future post)
+3. Crucial software bits (future post)
+4. What will eyeIntegration 2.0 be? (future post)
+
+
+

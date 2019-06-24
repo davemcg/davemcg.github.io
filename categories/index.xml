@@ -24,7 +24,7 @@
     <item>
       <title>Bioinformatics</title>
       <link>/./categories/bioinformatics/</link>
-      <pubDate>Mon, 18 Jun 2018 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 24 Jun 2019 00:00:00 +0000</pubDate>
       
       <guid>/./categories/bioinformatics/</guid>
       <description></description>
@@ -36,6 +36,15 @@
       <pubDate>Tue, 08 May 2018 00:00:00 +0000</pubDate>
       
       <guid>/./categories/bog18/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>GI2018</title>
+      <link>/./categories/gi2018/</link>
+      <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./categories/gi2018/</guid>
       <description></description>
     </item>
     
@@ -67,11 +76,38 @@
     </item>
     
     <item>
+      <title>Pi</title>
+      <link>/./categories/pi/</link>
+      <pubDate>Sat, 03 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./categories/pi/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>/./categories/python/</link>
+      <pubDate>Sat, 03 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./categories/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>R</title>
       <link>/./categories/r/</link>
-      <pubDate>Mon, 18 Jun 2018 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 24 Jun 2019 00:00:00 +0000</pubDate>
       
       <guid>/./categories/r/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Raspberry</title>
+      <link>/./categories/raspberry/</link>
+      <pubDate>Sat, 03 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./categories/raspberry/</guid>
       <description></description>
     </item>
     
@@ -81,6 +117,15 @@
       <pubDate>Wed, 07 Feb 2018 00:00:00 +0000</pubDate>
       
       <guid>/./categories/script/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Shiny</title>
+      <link>/./categories/shiny/</link>
+      <pubDate>Mon, 24 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/./categories/shiny/</guid>
       <description></description>
     </item>
     

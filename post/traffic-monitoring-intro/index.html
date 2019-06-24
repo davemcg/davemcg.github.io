@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="theme" content="hugo-academic">
-  <meta name="generator" content="Hugo 0.35" />
+  <meta name="generator" content="Hugo 0.40" />
   <meta name="author" content="David McGaughey">
 
   
@@ -360,30 +360,68 @@ Introduction This is, obviously, a personal project. Traffic is a concern in my 
 
     <div class="article-style" itemprop="articleBody">
       <hr />
-<p>title: ‘Something Different: Automated Neighborhood Traffic Monitoring’ author: David McGaughey date: ‘2018-03-03’ slug: traffic-monitoring-intro categories: - R - python - raspberry - pi tags: - R - python - raspberry - pi —</p>
+<p>title: ‘Something Different: Automated Neighborhood Traffic Monitoring’
+author: David McGaughey
+date: ‘2018-03-03’
+slug: traffic-monitoring-intro
+categories:
+- R
+- python
+- raspberry
+- pi
+tags:
+- R
+- python
+- raspberry
+- pi
+—</p>
 <div id="introduction" class="section level2">
 <h2>Introduction</h2>
-<p>This is, obviously, a personal project. Traffic is a concern in my town. Cut-through, speeding, etc. The town has paid for a couple of (very expensive!) traffic surveys, but the reports are not very useful as the company only sets up in town for a few days (if that) and then only reports stuff like ‘number of cars for a one hour period.’ I want to know how many cars are passing my house per day, per hour, per weekday, per weekend, etc. I’d also like to know how many cars are going above the 15 mph speed limit on my round (why 15 mph?! - there’s a very tight turn of the road).</p>
+<p>This is, obviously, a personal project. Traffic is a concern in my town. Cut-through,
+speeding, etc. The town has paid for a couple of (very expensive!) traffic surveys, but
+the reports are not very useful as the company only sets up in town for a few days (if that)
+and then only reports stuff like ‘number of cars for a one hour period.’ I want
+to know how many cars are passing my house per day, per hour, per weekday, per weekend,
+etc. I’d also like to know how many cars are going above the 15 mph speed limit
+on my round (why 15 mph?! - there’s a very tight turn of the road).</p>
 </div>
 <div id="solution" class="section level2">
 <h2>Solution?</h2>
-<p>Well, I figured a video feed hooked up to a computer could be set up in my house, facing the road. Motion could be detected, then logged. Since the distance is (approximately constant) between the car and the camera, it would be possible to detect a car and approximate its speed. I didn’t want to dedicated a laptop for this project because I imagine this would be most useful with continuous observation. This sounded like a perfect use for a Raspberry Pi, which I have been wanting an excuse to buy. Some quick Googling for “speed camera raspberry pi” led me to this <a href="https://github.com/pageauc/speed-camera">GitHub project</a>. Someone had used <a href="https://opencv.org">OpenCV</a> and Python to do exactly what I thought may be possible.</p>
+<p>Well, I figured a video feed hooked up to a computer could be set up in my house,
+facing the road. Motion could be detected, then logged. Since the distance is (approximately constant)
+between the car and the camera, it would be possible to detect a car and approximate
+its speed. I didn’t want to dedicated a laptop for this project because I imagine this
+would be most useful with continuous observation. This sounded like a perfect use for a Raspberry Pi, which I have been
+wanting an excuse to buy. Some quick Googling for “speed camera raspberry pi”
+led me to this <a href="https://github.com/pageauc/speed-camera">GitHub project</a>. Someone
+had used <a href="https://opencv.org">OpenCV</a> and Python to do exactly what I thought
+may be possible.</p>
 </div>
 <div id="stuff-i-bought" class="section level2">
 <h2>Stuff I bought</h2>
-<p>I thought I bought a Raspberry Pi 3 B+, but after looking at my Amazon history I realized I bought a 3 B. Oops. The 3 B+ has faster WiFi and a higher CPU clock. Oh well.</p>
-<p>Anyways, the kit came with a 16gb microSD card with NOOBS (some kind of loader for multiple operating systems), a case, an HDMI cable, and a power supply.</p>
-<p>I also bought a “Arducam” 5mp camera. The official Raspberry Pi camera was double the price and the reviews seemed OK (~$25 instead of ~$13).</p>
+<p>I thought I bought a Raspberry Pi 3 B+, but after looking at my Amazon history I realized
+I bought a 3 B. Oops. The 3 B+ has faster WiFi and a higher CPU clock. Oh well.</p>
+<p>Anyways, the kit came with a 16gb microSD card with NOOBS (some kind of loader
+for multiple operating systems), a case, an HDMI cable, and a power supply.</p>
+<p>I also bought a “Arducam” 5mp camera. The official Raspberry Pi camera was double the price
+and the reviews seemed OK (~$25 instead of ~$13).</p>
 </div>
 <div id="brief-setup" class="section level2">
 <h2>Brief setup</h2>
-<p>I was hoping I could just SSH into the Pi on start-up, but I could not see the ethernet-connected Pi on my network. I then used an HDMI cable to hook it up to a TV and a grubby USB keyboard I found in my basement. I realized that the NOOBs loader needed to be told what OS to install. I picked the basic Raspian OS, as I was not going to use any GUI stuff. Then I did some Googling to figure out how to give it the WiFi network info and after that I could just SSH into it.</p>
+<p>I was hoping I could just SSH into the Pi on start-up, but I could not see the
+ethernet-connected Pi on my network. I then used an HDMI cable to hook it up to
+a TV and a grubby USB keyboard I found in my basement. I realized
+that the NOOBs loader needed to be told what OS to install. I picked the basic Raspian OS,
+as I was not going to use any GUI stuff. Then I did some Googling to figure out
+how to give it the WiFi network info and after that I could just SSH into it.</p>
 </div>
 <div id="software-installed" class="section level2">
 <h2>Software installed</h2>
-<p>I am almost certainly going to regret that I just ran <code>sudo apt-get install</code> for each piece of software I wanted by hand when I want to set up a new one.</p>
+<p>I am almost certainly going to regret that I just ran <code>sudo apt-get install</code> for
+each piece of software I wanted by hand when I want to set up a new one.</p>
 <p>I am not a good admin.</p>
-<p>I installed python3, <a href="https://www.pyimagesearch.com/2016/04/18/install-guide-raspberry-pi-3-raspbian-jessie-opencv-3/">opencv</a> (which was a PITA), git, R, and all of the dependencies those four things complained about.</p>
+<p>I installed python3, <a href="https://www.pyimagesearch.com/2016/04/18/install-guide-raspberry-pi-3-raspbian-jessie-opencv-3/">opencv</a>
+(which was a PITA), git, R, and all of the dependencies those four things complained about.</p>
 <p>I then installed the <a href="https://github.com/pageauc/speed-camera">speed-camera project</a>.</p>
 </div>
 <div id="calibration" class="section level2">
@@ -424,9 +462,9 @@ Introduction This is, obviously, a personal project. Traffic is a concern in my 
         
         <li><a href="/post/let-s-plot-3-part-2/">Let’s Plot 3: Base pair resolution NGS (exome) coverage plots - Part 2</a></li>
         
-        <li><a href="/post/let-s-plot-3-part-i/">Let’s Plot 3: Base pair resolution NGS coverage plots (Part I)</a></li>
-        
         <li><a href="/post/split-vcf-into-n-pieces-by-coordinate/">Split VCF into n pieces by coordinate</a></li>
+        
+        <li><a href="/post/let-s-plot-3-part-i/">Let’s Plot 3: Base pair resolution NGS coverage plots (Part I)</a></li>
         
       </ul>
     </div>

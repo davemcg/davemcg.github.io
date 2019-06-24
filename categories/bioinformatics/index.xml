@@ -7,10 +7,77 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
-    <lastBuildDate>Mon, 18 Jun 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 24 Jun 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/./categories/bioinformatics/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>One Developer Portal: eyeIntegration Genesis</title>
+      <link>/./post/one-developer-portal-genesis/</link>
+      <pubDate>Mon, 24 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/one-developer-portal-genesis/</guid>
+      <description>News! eyeIntegration version 1.0 went live early this year (2019-01-16) and recently was accepted for publication in [IOVS][eyeIntegration](https://eyeIntegration.nei.nih.gov/). In celebration of the news, I’m posting a small series of posts about the genesis, development, upgrades, and future of eyeIntegration.
+You can find our latest manuscript on bioRxiv. The latest update should go live soon.
+ Background eyeIntegration was developed to serve as a quick and easy to use normal gene expression portal in eye tissues.</description>
+    </item>
+    
+    <item>
+      <title>One Developer Portal: eyeIntegration Web Optimization</title>
+      <link>/./post/one-developer-portal-optimization/</link>
+      <pubDate>Mon, 24 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/one-developer-portal-optimization/</guid>
+      <description>This post is a continuation from here.
+Really important stuff I learned to make a performant web site in Shiny After a few months of tinkering I had a working web app on my local computer, which is a 32GB of RAM, 1TB SSD Mac Pro trashcan. All of the data objects were .Rdata, which were load() when the site was initialized. This was fine in the beginning and in fact the shiny site was deployed with this structure in May of 2017.</description>
+    </item>
+    
+    <item>
+      <title>#GI2018 - Day Four</title>
+      <link>/./post/gi2018-day-four/</link>
+      <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/gi2018-day-four/</guid>
+      <description>Variant Discovery and Genome Assembly Melissa Wilson Sayres  Prithika Sritharan (Dicks) Zemin Ning (Durbin)   Variant Discovery and Genome Assembly Melissa Wilson Sayres Sex Differences in Reference Genome Affect Variant Calling and Differential Expression
+X and Y homology dotplot
+ a few regions of alignment (PAR)  @sexchrlab
+doi.org/10.1101/346940
+ https://www.biorxiv.org/content/early/2018/07/18/346940 preprint on correct tech biases on sex chr in NGS data infer sex chromosome complement pointing out regions on autosomes with sex chr - like alignment  which is screwing up read balance which presumably could influence variant calling   chrY var calls will have many errors</description>
+    </item>
+    
+    <item>
+      <title>#GI2018 - Day Three</title>
+      <link>/./post/gi2018-day-three/</link>
+      <pubDate>Wed, 19 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/gi2018-day-three/</guid>
+      <description>Day 3 Rafael Irizarry Keynote Session 4: Transcriptomics, Alternative Splicing and Gene Predictions Mark Robinson (Robinson) Hagen Tilgner (Tilgner) Nikka Keivanfar (Church, 10X) Koen Van den Berge (Clement) Barbara Englehardt (Englehardt) Jeff Gaither (White) Fiona Dick (Tzoulis)  Epigenetics and non-coding genome Jordana Bell (Bell) Wouter Meuleman (Stamatoyannopoulos) Maša Roller (Flicek) Alexander Suh (Suh) Raquel Garcia-Perez (Juan)    Day 3 Very sparse and poorly written notes covering #GI2018.</description>
+    </item>
+    
+    <item>
+      <title>#GI2018 - Day Two</title>
+      <link>/./post/gi2018-day-two/</link>
+      <pubDate>Tue, 18 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/gi2018-day-two/</guid>
+      <description>Day Two Personal and Medical Genomics Katie Pollard Keynote Sri Kosuri (Kosuri) Patrick Brennan (Nationwide Children’s) Kaitlin Samocha (Hurles) Tracy Ballinger (Semple) Lucia Spangenberg (Naya)  Comparative, Evolutionary, Metagenomics Ellen Leffler (Kwiatkowski) Luca Penso-Dolfin (Di Palma) Mario Caccamo (NIAB) Carla Cummins (Flicek)    Day Two  Personal and Medical Genomics Very sparse and poorly written notes covering #GI2018.
+Typos everywhere. Things may change dramatically over time as I scan back through notes.</description>
+    </item>
+    
+    <item>
+      <title>#GI2018 - Day One</title>
+      <link>/./post/gi2018-day-one/</link>
+      <pubDate>Mon, 17 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/gi2018-day-one/</guid>
+      <description>Intro 2018-09-17 Sarah Teichmann (Teichmann Lab) Girgio Gonnella (Stefan Kurtz) Luke Zappia (Oshlack?) Laura Huerta (Papatheodorou) Casey Greene (Greene) Sergei Yakneen   Intro Very sparse and poorly written notes covering #GI2018.
+Typos everywhere. Things may change dramatically over time as I scan back through notes.
+I’ve tried to respect #notwitter. Will be updated periodically.
+Speaker (Lab | Group)
+BOLDED is voice
+ 2018-09-17  Sarah Teichmann (Teichmann Lab) Cell Atlas Technologies and the Maternal-Fetal Interface</description>
+    </item>
     
     <item>
       <title>Quick Guide to Gene Name Conversion</title>

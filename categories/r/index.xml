@@ -7,10 +7,31 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
-    <lastBuildDate>Mon, 18 Jun 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 24 Jun 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/./categories/r/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>One Developer Portal: eyeIntegration Genesis</title>
+      <link>/./post/one-developer-portal-genesis/</link>
+      <pubDate>Mon, 24 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/one-developer-portal-genesis/</guid>
+      <description>News! eyeIntegration version 1.0 went live early this year (2019-01-16) and recently was accepted for publication in [IOVS][eyeIntegration](https://eyeIntegration.nei.nih.gov/). In celebration of the news, I’m posting a small series of posts about the genesis, development, upgrades, and future of eyeIntegration.
+You can find our latest manuscript on bioRxiv. The latest update should go live soon.
+ Background eyeIntegration was developed to serve as a quick and easy to use normal gene expression portal in eye tissues.</description>
+    </item>
+    
+    <item>
+      <title>One Developer Portal: eyeIntegration Web Optimization</title>
+      <link>/./post/one-developer-portal-optimization/</link>
+      <pubDate>Mon, 24 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/one-developer-portal-optimization/</guid>
+      <description>This post is a continuation from here.
+Really important stuff I learned to make a performant web site in Shiny After a few months of tinkering I had a working web app on my local computer, which is a 32GB of RAM, 1TB SSD Mac Pro trashcan. All of the data objects were .Rdata, which were load() when the site was initialized. This was fine in the beginning and in fact the shiny site was deployed with this structure in May of 2017.</description>
+    </item>
     
     <item>
       <title>Quick Guide to Gene Name Conversion</title>
@@ -64,6 +85,16 @@ This type of visualization was inspired by the cover art from Joy Division’s a
       <guid>/./post/are-you-in-genomics-stop-using-roc-use-pr/</guid>
       <description>tldr Area Under the Curve (AUC) of Receiver Operating Characteristic (ROC) is a terrible metric for a genomics problem. Do not use it. This metric also goes by AUC or AUROC. Use Precision Recall AUC.
  Inspiration for this post I am working on a machine learning problem in genomics I was getting really confused why AUROC was so worthless scienceTwitter featuring Anshul Kundaje  I want to save you (some time)   What’s a ROC?</description>
+    </item>
+    
+    <item>
+      <title>Something Different: Automated Neighborhood Traffic Monitoring</title>
+      <link>/./post/traffic-monitoring-intro/</link>
+      <pubDate>Sat, 03 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/traffic-monitoring-intro/</guid>
+      <description>title: ‘Something Different: Automated Neighborhood Traffic Monitoring’ author: David McGaughey date: ‘2018-03-03’ slug: traffic-monitoring-intro categories: - R - python - raspberry - pi tags: - R - python - raspberry - pi —
+Introduction This is, obviously, a personal project. Traffic is a concern in my town. Cut-through, speeding, etc. The town has paid for a couple of (very expensive!) traffic surveys, but the reports are not very useful as the company only sets up in town for a few days (if that) and then only reports stuff like ‘number of cars for a one hour period.</description>
     </item>
     
     <item>

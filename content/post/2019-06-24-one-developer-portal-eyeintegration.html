@@ -1,0 +1,83 @@
+---
+title: "One Developer Portal: eyeIntegration Genesis"
+author: David McGaughey
+date: '2019-06-24'
+slug: one-developer-portal-genesis
+categories:
+  - bioinformatics
+  - R
+  - shiny
+tags:
+  - bioinformatics
+  - R
+  - shiny
+header:
+  caption: ''
+  image: ''
+---
+
+
+
+<div id="news" class="section level2">
+<h2>News!</h2>
+<p><a href="https://eyeIntegration.nei.nih.gov/">eyeIntegration</a> version 1.0 went live early this year (2019-01-16)
+and recently was accepted for publication in [IOVS][eyeIntegration](<a href="https://eyeIntegration.nei.nih.gov/" class="uri">https://eyeIntegration.nei.nih.gov/</a>). In celebration
+of the news, I’m posting a small series of posts about the genesis, development, upgrades, and future of
+eyeIntegration.</p>
+<p>You can find our latest manuscript on <a href="https://www.biorxiv.org/content/10.1101/579482v1">bioRxiv</a>. The latest update
+should go live soon.</p>
+</div>
+<div id="background" class="section level2">
+<h2>Background</h2>
+<p><a href="https://eyeIntegration.nei.nih.gov/">eyeIntegration</a> was developed to serve as a
+quick and easy to use <em>normal</em> gene expression portal in eye tissues.</p>
+<p><img src="/img/eyeIntegration_shot.png" alt="eyeIntegration" />
+The inspiration came from <a href="https://gtexportal.org/home/index.html">GTEx</a>, which contains dozens of
+post-mortem tissue types from hundreds of samples (and samples are people who have donated their
+body to science - thanks!).</p>
+<p>Knowing what the <em>normal</em> gene expression is a crucial piece of information when
+doing novel gene function research. You are going to be a lot less excited about an interesting
+gene if you also know it has zero expression in the retina.</p>
+<p>Since no eye tissues are collected by GTEx, I had to build my own version. The <em>best</em>
+solution would involve setting up a very expensive study - with a carefully designed
+tissue collection, DNA/RNA extraction, etc. protocols along with huge amounts of paperwork
+required when working with people. This would also be very expensive and take multiple
+years.</p>
+<p>As I have approximately zero research dollars (see why below), I did the next best thing and just
+grabbed all the publicly available RNA-seq eye samples from <a href="https://www.ncbi.nlm.nih.gov/geo/">GEO</a>
+/ <a href="https://www.ncbi.nlm.nih.gov/sra">SRA</a> / <a href="https://www.ebi.ac.uk/ena">ENA</a>.</p>
+<p>Since I knew R and did not know any web development stuffs I chose to use <a href="https://shiny.rstudio.com">Shiny</a>
+to build the web portal. In 2016 (my first commit was May 24th, 2016), when this project got started this seemed sort
+of nuts to do this. But the documentation was pretty good and it wasn’t too hard
+to spin up a Shiny server on a linux box I had under my desk. Over the past three years
+<a href="https://www.rstudio.com">RStudio</a> has continued to develop Shiny and I’m feeling
+better and better about going this route.</p>
+</div>
+<div id="what-do-you-mean-by-one-developer-portal" class="section level2">
+<h2>What do you mean by <code>One Developer Portal</code>?</h2>
+<p>I work for the National Eye Institute (<a href="https://nei.nih.gov">NEI</a>), which controls about $700 million dollars
+to fund eye research.</p>
+<div class="figure">
+<img src="/img/nei_funding.png" alt="http://www.eyeresearch.org/advocacy/adv_nih-nea-appr.html" />
+<p class="caption"><a href="http://www.eyeresearch.org/advocacy/adv_nih-nea-appr.html" class="uri">http://www.eyeresearch.org/advocacy/adv_nih-nea-appr.html</a></p>
+</div>
+<p>Most of that money goes as grants to the extramural community (e.g. research labs
+at your local university). I am a <a href="https://oir.nih.gov/sourcebook/personnel/ipds-appointment-mechanisms/staff-scientist">staff scientist</a>
+(not a PI/professor - which means I don’t have a pot of $ to do research) who was
+hired to provide bioinformatic support / data analysis for a <a href="https://nei.nih.gov/intramural/ogcsb">branch</a> in NEI.</p>
+<p><a href="https://eyeIntegration.nei.nih.gov/">eyeIntegration</a> is a essentially a
+side-project I’ve done in my “spare time” and is run by myself
+(with important features written by two <a href="https://www.training.nih.gov/programs/postbac_irta">post-bacs</a>
+, John Bryan and Vinay Swamy)). It is possible to make and support
+a resource like this <strong>because</strong> of <a href="https://hpc.nih.gov">available compute</a> and great software.</p>
+<p>The long-term goal is to keep eyeIntegration current (e.g. take in new samples)
+with part-time effort from one person (me) with periodic bursts of activity
+to add new features.</p>
+<p>This is getting sort of long so I’m going to break it into several pieces:</p>
+<ol style="list-style-type: decimal">
+<li><a href="/post/one-developer-portal-optimization">Making a performant site</a></li>
+<li>What does eyeIntegration 1.0 mean? (future post)</li>
+<li>Crucial software bits (future post)</li>
+<li>What will eyeIntegration 2.0 be? (future post)</li>
+</ol>
+</div>
