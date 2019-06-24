@@ -18,7 +18,7 @@ header:
 
 ## News!
 [eyeIntegration](https://eyeIntegration.nei.nih.gov/) version 1.0 went live early this year (2019-01-16) 
-and recently was accepted for publication in [IOVS][eyeIntegration](https://eyeIntegration.nei.nih.gov/). In celebration
+and recently was accepted for publication in [IOVS](https://iovs.arvojournals.org). In celebration
 of the news, I'm posting a small series of posts about the genesis, development, upgrades, and future of 
 eyeIntegration. 
 
