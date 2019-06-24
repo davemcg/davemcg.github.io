@@ -53,20 +53,20 @@ better and better about going this route.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;what-do-you-mean-by-one-developer-portal&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;What do you mean by &lt;code&gt;One Developer Portal&lt;/code&gt;?&lt;/h2&gt;
-&lt;p&gt;I work for the National Eye Institute (&lt;a href=&#34;https://nei.nih.gov&#34;&gt;NEI&lt;/a&gt;), which controls about $700 million dollars
-to fund eye research. They could toss some $ to build a web gene expression portal, right?!&lt;/p&gt;
+&lt;p&gt;I work for the National Eye Institute &lt;a href=&#34;https://nei.nih.gov&#34;&gt;NEI&lt;/a&gt;, which allocates about $700 million dollars
+to fund eye research. They could spendt some of that money to build a web gene expression portal, right?&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;
 &lt;img src=&#34;/./img/nei_funding.png&#34; alt=&#34;http://www.eyeresearch.org/advocacy/adv_nih-nea-appr.html&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;&lt;a href=&#34;http://www.eyeresearch.org/advocacy/adv_nih-nea-appr.html&#34; class=&#34;uri&#34;&gt;http://www.eyeresearch.org/advocacy/adv_nih-nea-appr.html&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
-&lt;p&gt;Most of that money goes as grants to the extramural community (e.g. research labs
+&lt;p&gt;Well, most of that money goes as grants to the extramural community (e.g. research labs
 at your local university). I am a &lt;a href=&#34;https://oir.nih.gov/sourcebook/personnel/ipds-appointment-mechanisms/staff-scientist&#34;&gt;staff scientist&lt;/a&gt;
 (not a PI/professor - which means I don’t have a pot of $ to do research) who was
 hired to provide bioinformatic support / data analysis for a &lt;a href=&#34;https://nei.nih.gov/intramural/ogcsb&#34;&gt;branch&lt;/a&gt; in NEI.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://eyeIntegration.nei.nih.gov/&#34;&gt;eyeIntegration&lt;/a&gt; is a essentially a
+&lt;p&gt;So, &lt;a href=&#34;https://eyeIntegration.nei.nih.gov/&#34;&gt;eyeIntegration&lt;/a&gt; is a essentially a
 side-project I’ve done in my “spare time” and is run by myself
 (with important features written by two &lt;a href=&#34;https://www.training.nih.gov/programs/postbac_irta&#34;&gt;post-bacs&lt;/a&gt;
-, John Bryan and Vinay Swamy)). It is possible to make and support
+, John Bryan and Vinay Swamy). It is possible to make and support
 a resource like this &lt;strong&gt;because&lt;/strong&gt; of &lt;a href=&#34;https://hpc.nih.gov&#34;&gt;available compute&lt;/a&gt; and great software.&lt;/p&gt;
 &lt;p&gt;The long-term goal is to keep eyeIntegration current (e.g. take in new samples)
 with part-time effort from one person (me) with periodic bursts of activity
