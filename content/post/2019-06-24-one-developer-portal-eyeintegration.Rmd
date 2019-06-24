@@ -58,7 +58,7 @@ better and better about going this route.
 ## What do you mean by `One Developer Portal`?
 
 I work for the National Eye Institute ([NEI](https://nei.nih.gov)), which controls about $700 million dollars 
-to fund eye research. 
+to fund eye research. They could toss some $ to build a web gene expression portal, right?!
 
 ![http://www.eyeresearch.org/advocacy/adv_nih-nea-appr.html](/img/nei_funding.png)
 
