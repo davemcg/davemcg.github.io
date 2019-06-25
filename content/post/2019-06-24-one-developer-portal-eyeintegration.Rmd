@@ -44,7 +44,7 @@ tissue collection, DNA/RNA extraction, etc. protocols along with huge amounts of
 required when working with people. This would also be very expensive and take multiple
 years. 
 
-As I have approximately zero research dollars (see why below), I did the next best thing and just 
+As I have approximately zero research dollars, I did the next best thing and just 
 grabbed all the publicly available RNA-seq eye samples from [GEO](https://www.ncbi.nlm.nih.gov/geo/)
  / [SRA](https://www.ncbi.nlm.nih.gov/sra) / [ENA](https://www.ebi.ac.uk/ena). 
 
@@ -57,17 +57,12 @@ better and better about going this route.
 
 ## What do you mean by `One Developer Portal`?
 
-I work for the National Eye Institute [NEI](https://nei.nih.gov), which allocates about $700 million dollars 
-to fund eye research. They could spendt some of that money to build a web gene expression portal, right?
+I work for the National Eye Institute [NEI](https://nei.nih.gov), as a 
+[staff scientist](https://oir.nih.gov/sourcebook/personnel/ipds-appointment-mechanisms/staff-scientist)
+(not a PI/professor - which means I don't have a pot of $ to do research). I provide 
+bioinformatic support / data analysis for a [branch](https://nei.nih.gov/intramural/ogcsb) in NEI. 
 
-![http://www.eyeresearch.org/advocacy/adv_nih-nea-appr.html](/img/nei_funding.png)
-
-Well, most of that money goes as grants to the extramural community (e.g. research labs
-at your local university). I am a [staff scientist](https://oir.nih.gov/sourcebook/personnel/ipds-appointment-mechanisms/staff-scientist)
-(not a PI/professor - which means I don't have a pot of $ to do research) who was 
-hired to provide bioinformatic support / data analysis for a [branch](https://nei.nih.gov/intramural/ogcsb) in NEI. 
-
-So, [eyeIntegration](https://eyeIntegration.nei.nih.gov/) is a essentially a 
+[eyeIntegration](https://eyeIntegration.nei.nih.gov/) is a essentially a 
 side-project I've done in my "spare time" and is run by myself 
 (with important features written by two [post-bacs](https://www.training.nih.gov/programs/postbac_irta)
 , John Bryan and Vinay Swamy). It is possible to make and support

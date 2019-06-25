@@ -41,7 +41,7 @@ solution would involve setting up a very expensive study - with a carefully desi
 tissue collection, DNA/RNA extraction, etc. protocols along with huge amounts of paperwork
 required when working with people. This would also be very expensive and take multiple
 years.&lt;/p&gt;
-&lt;p&gt;As I have approximately zero research dollars (see why below), I did the next best thing and just
+&lt;p&gt;As I have approximately zero research dollars, I did the next best thing and just
 grabbed all the publicly available RNA-seq eye samples from &lt;a href=&#34;https://www.ncbi.nlm.nih.gov/geo/&#34;&gt;GEO&lt;/a&gt;
 / &lt;a href=&#34;https://www.ncbi.nlm.nih.gov/sra&#34;&gt;SRA&lt;/a&gt; / &lt;a href=&#34;https://www.ebi.ac.uk/ena&#34;&gt;ENA&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Since I knew R and did not know any web development stuffs I chose to use &lt;a href=&#34;https://shiny.rstudio.com&#34;&gt;Shiny&lt;/a&gt;
@@ -53,17 +53,11 @@ better and better about going this route.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;what-do-you-mean-by-one-developer-portal&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;What do you mean by &lt;code&gt;One Developer Portal&lt;/code&gt;?&lt;/h2&gt;
-&lt;p&gt;I work for the National Eye Institute &lt;a href=&#34;https://nei.nih.gov&#34;&gt;NEI&lt;/a&gt;, which allocates about $700 million dollars
-to fund eye research. They could spendt some of that money to build a web gene expression portal, right?&lt;/p&gt;
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;/./img/nei_funding.png&#34; alt=&#34;http://www.eyeresearch.org/advocacy/adv_nih-nea-appr.html&#34; /&gt;
-&lt;p class=&#34;caption&#34;&gt;&lt;a href=&#34;http://www.eyeresearch.org/advocacy/adv_nih-nea-appr.html&#34; class=&#34;uri&#34;&gt;http://www.eyeresearch.org/advocacy/adv_nih-nea-appr.html&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;p&gt;Well, most of that money goes as grants to the extramural community (e.g. research labs
-at your local university). I am a &lt;a href=&#34;https://oir.nih.gov/sourcebook/personnel/ipds-appointment-mechanisms/staff-scientist&#34;&gt;staff scientist&lt;/a&gt;
-(not a PI/professor - which means I don’t have a pot of $ to do research) who was
-hired to provide bioinformatic support / data analysis for a &lt;a href=&#34;https://nei.nih.gov/intramural/ogcsb&#34;&gt;branch&lt;/a&gt; in NEI.&lt;/p&gt;
-&lt;p&gt;So, &lt;a href=&#34;https://eyeIntegration.nei.nih.gov/&#34;&gt;eyeIntegration&lt;/a&gt; is a essentially a
+&lt;p&gt;I work for the National Eye Institute &lt;a href=&#34;https://nei.nih.gov&#34;&gt;NEI&lt;/a&gt;, as a
+&lt;a href=&#34;https://oir.nih.gov/sourcebook/personnel/ipds-appointment-mechanisms/staff-scientist&#34;&gt;staff scientist&lt;/a&gt;
+(not a PI/professor - which means I don’t have a pot of $ to do research). I provide
+bioinformatic support / data analysis for a &lt;a href=&#34;https://nei.nih.gov/intramural/ogcsb&#34;&gt;branch&lt;/a&gt; in NEI.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://eyeIntegration.nei.nih.gov/&#34;&gt;eyeIntegration&lt;/a&gt; is a essentially a
 side-project I’ve done in my “spare time” and is run by myself
 (with important features written by two &lt;a href=&#34;https://www.training.nih.gov/programs/postbac_irta&#34;&gt;post-bacs&lt;/a&gt;
 , John Bryan and Vinay Swamy). It is possible to make and support
