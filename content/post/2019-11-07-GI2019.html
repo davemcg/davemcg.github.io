@@ -92,6 +92,42 @@ output:
 <div id="centroflyeassembling-centromeres-with-long-error-prone-reads" class="section level1">
 <h1>centroFlye—Assembling centromeres with long error-prone reads</h1>
 <p><strong>Andrey Bzikadze</strong>, Pavel A. Pevzner.</p>
+<p><span class="citation">@AndreyBzikadze</span></p>
+<p>biorxiv preprint (missed link)</p>
+<p>brings up t2t consortium (telomere to telomere)</p>
+<p>github.com/nanopore-wgs-consortium/CHM13</p>
+<p>mentions karen miga’s chrX t2t biorxiv preprint</p>
+<p>centromere:</p>
+<ul>
+<li>assembler’s favoriate region
+<ul>
+<li>probably not, but keeps them gainfully employed for now</li>
+</ul></li>
+<li>highly repetitive….etc etc.</li>
+<li>3% of genome - and because are unassembled, poor idea how they influence human diseasse</li>
+</ul>
+<p>centroFlye</p>
+<ul>
+<li>classify reads (prefix…something…suffix… what is going on? Andrey already moved on)
+<ul>
+<li>guessing something to do with begining / middle / end of repeat?</li>
+</ul></li>
+<li>find rare k-mers that can be used to anchor assembly</li>
+<li>but rare k-mers are usually <strong>errors</strong>
+<ul>
+<li>if the <strong>distance between two rare k-mers is conserved</strong> then they are likely real</li>
+<li>neat idea!</li>
+<li>but I’m not certain what conservation is…</li>
+</ul></li>
+<li>throw everything away except for rare k-mers</li>
+</ul>
+<p>centroFlye used to improve chrX centromere assembly</p>
+<ul>
+<li>greater length</li>
+<li>but how do you more robustly define success?</li>
+<li>one metric is to count shared (or discrepant) k-mers between assembly and a read</li>
+<li>discorance (a,b) = sharedRead(assembly A) - sharedRead(assembly B)</li>
+</ul>
 </div>
 <div id="genotyping-structural-variants-in-pangenome-graphs-using-the-vg-toolkit" class="section level1">
 <h1>Genotyping structural variants in pangenome graphs using the vg toolkit</h1>

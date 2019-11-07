@@ -81,8 +81,46 @@ Future stuffs
 # centroFlye—Assembling centromeres with long error-prone reads 
 **Andrey Bzikadze**, Pavel A. Pevzner.
 
+@AndreyBzikadze
+
+biorxiv preprint (missed link)
+
+brings up t2t consortium (telomere to telomere)
+
+github.com/nanopore-wgs-consortium/CHM13
+
+mentions karen miga's chrX t2t biorxiv preprint
+
+centromere:
+
+  - assembler's favoriate region
+    - probably not, but keeps them gainfully employed for now
+  - highly repetitive....etc etc.
+  - 3% of genome - and because are unassembled, poor idea how they influence human diseasse
+  
+centroFlye
+
+  - classify reads (prefix...something...suffix... what is going on? Andrey already moved on)
+    - guessing something to do with begining / middle / end of repeat?
+  - find rare k-mers that can be used to anchor assembly
+  - but rare k-mers are usually **errors** 
+    - if the **distance between two rare k-mers is conserved** then they are likely real
+    - neat idea!
+    - but I'm not certain what conservation is...
+  - throw everything away except for rare k-mers
+
+centroFlye used to improve chrX centromere assembly
+  
+  - greater length
+  - but how do you more robustly define success?
+  - one metric is to count shared (or discrepant) k-mers between assembly and a read
+  - discorance (a,b) = sharedRead(assembly A) - sharedRead(assembly B)
+
+
 # Genotyping structural variants in pangenome graphs using the vg toolkit
 **Jean Monlong**, Glenn Hickey, David Heller, Jonas Andreas Sibbesen, Jouni Siren, Jordan Eizenga, Eric T. Dawson, Erik Garrison, Adam Novak, Benedict Paten.
+
+
 
 # Rapidly mapping raw nanopore signal with UNCALLED to enable real-time targeted sequencing
 **Sam Kovaka**, Yunfan Fan, Winston Timp, Michael C. Schatz.
