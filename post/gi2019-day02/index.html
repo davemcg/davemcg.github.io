@@ -276,7 +276,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    3 min read
+    4 min read
   </span>
   
 
@@ -467,6 +467,48 @@
 <div id="genotyping-structural-variants-in-pangenome-graphs-using-the-vg-toolkit" class="section level1">
 <h1>Genotyping structural variants in pangenome graphs using the vg toolkit</h1>
 <p><strong>Jean Monlong</strong>, Glenn Hickey, David Heller, Jonas Andreas Sibbesen, Jouni Siren, Jordan Eizenga, Eric T. Dawson, Erik Garrison, Adam Novak, Benedict Paten.</p>
+<p>Yo time for graphs!</p>
+<p>Intro on value over linear genomes</p>
+<ul>
+<li>highly polymorphic regions should have better geontyping</li>
+<li>points out graphs not for discovery but for genotyping</li>
+</ul>
+<p>Increasing <em>n</em> of SV catalogs with long read data</p>
+<ul>
+<li>HGSVC (3 samples)</li>
+<li>SVPOP (15)</li>
+<li>GiaB (1)</li>
+</ul>
+<p>Probably lots of missing SV from 50-500bp (cmparing HGSVC against gnomadSV which is short-read based)</p>
+<p>github.com/vgteam/vg</p>
+<p>vg toolkit can make graphs, map reads, and call variants</p>
+<p>“can we genotype SVs from short-read datasets with vg toolkit”</p>
+<p>Build graph with long-read data, genotype SVs against it with short-reads</p>
+<p>R package to evaluate calls</p>
+<ul>
+<li>github.com/jmonlong/sveval</li>
+</ul>
+<p>with simulated data</p>
+<ul>
+<li>vg vs paragraph vs bayestyper vs delly vs SVTyper (last two are non-graph tolls)</li>
+<li>basestyper does best (not their tool)</li>
+<li>f1 score</li>
+</ul>
+<p>with real data from HGSVC</p>
+<ul>
+<li>all do worse</li>
+</ul>
+<p>simple repeat regions are hard to genotype</p>
+<ul>
+<li>line, sine, alu,</li>
+<li>for both insertion/deletion</li>
+</ul>
+<p>hard to work with vcf…representation confusion with equivalent representation and oversimplification</p>
+<ul>
+<li>just use the assemblies?!</li>
+<li><p>testing with yeast right now</p></li>
+<li><p>vg performance best/near best</p></li>
+</ul>
 </div>
 <div id="rapidly-mapping-raw-nanopore-signal-with-uncalled-to-enable-real-time-targeted-sequencing" class="section level1">
 <h1>Rapidly mapping raw nanopore signal with UNCALLED to enable real-time targeted sequencing</h1>

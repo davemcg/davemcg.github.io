@@ -120,6 +120,54 @@ centroFlye used to improve chrX centromere assembly
 # Genotyping structural variants in pangenome graphs using the vg toolkit
 **Jean Monlong**, Glenn Hickey, David Heller, Jonas Andreas Sibbesen, Jouni Siren, Jordan Eizenga, Eric T. Dawson, Erik Garrison, Adam Novak, Benedict Paten.
 
+Yo time for graphs!
+
+Intro on value over linear genomes
+
+  - highly polymorphic regions should have better geontyping
+  - points out graphs not for discovery but for genotyping
+  
+Increasing *n* of SV catalogs with long read  data
+
+  - HGSVC (3 samples)
+  - SVPOP (15)
+  - GiaB (1)
+  
+Probably lots of missing SV from 50-500bp (cmparing HGSVC against gnomadSV which is short-read based)
+
+github.com/vgteam/vg
+
+vg toolkit can make graphs, map reads, and call variants
+
+"can we genotype SVs from short-read datasets with vg toolkit"
+
+Build graph with long-read data, genotype SVs against it with short-reads
+
+R package to evaluate calls
+
+  - github.com/jmonlong/sveval
+  
+with simulated data
+
+  - vg vs paragraph vs bayestyper vs delly vs SVTyper (last two are non-graph tolls)
+  - basestyper does best (not their tool)
+  - f1 score
+
+with real data from HGSVC
+
+  - all do worse
+
+simple repeat regions are hard to genotype
+
+  - line, sine, alu, 
+  - for both insertion/deletion
+  
+hard to work with vcf...representation confusion with equivalent representation and oversimplification
+
+  - just use the assemblies?!
+  - testing with yeast right now
+
+  - vg performance best/near best
 
 
 # Rapidly mapping raw nanopore signal with UNCALLED to enable real-time targeted sequencing
