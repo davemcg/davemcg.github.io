@@ -17,7 +17,7 @@
       
     
   
-  <meta name="description" content="Day 2 - Session 2 Genomic sketching with HyperLogLog centroFlye—Assembling centromeres with long error-prone reads Genotyping structural variants in pangenome graphs using the vg toolkit Rapidly mapping raw nanopore signal with UNCALLED to enable real-time targeted sequencing The construct and utility of reference pan-genome graphs PRINCESS—A framework for comprehensive detection andphasing of SNPs and structural variants Efficient chromosome-scale haplotype-resolved assembly of human individuals Utilization of an ensemble approach for identification of driver fusions in pediatric cancer   Day 2 - Session 2 Genome Informatics 2019 at CSHL">
+  <meta name="description" content="Day 2 - Session 2 - SEQUENCING ALGORITHMS, VARIANT DISCOVERY AND GENOME ASSEMBLY Genomic sketching with HyperLogLog centroFlye—Assembling centromeres with long error-prone reads Genotyping structural variants in pangenome graphs using the vg toolkit Rapidly mapping raw nanopore signal with UNCALLED to enable real-time targeted sequencing The construct and utility of reference pan-genome graphs PRINCESS—A framework for comprehensive detection andphasing of SNPs and structural variants Efficient chromosome-scale haplotype-resolved assembly of human individuals Utilization of an ensemble approach for identification of driver fusions in pediatric cancer   Day 2 - Session 2 - SEQUENCING ALGORITHMS, VARIANT DISCOVERY AND GENOME ASSEMBLY Genome Informatics 2019 at CSHL">
 
   
   <link rel="alternate" hreflang="en-us" href="/./post/gi2019-day02/">
@@ -93,7 +93,7 @@
   <meta property="og:site_name" content="eye Bioinformatician">
   <meta property="og:url" content="/./post/gi2019-day02/">
   <meta property="og:title" content="#GI2019 2019 11 07 | eye Bioinformatician">
-  <meta property="og:description" content="Day 2 - Session 2 Genomic sketching with HyperLogLog centroFlye—Assembling centromeres with long error-prone reads Genotyping structural variants in pangenome graphs using the vg toolkit Rapidly mapping raw nanopore signal with UNCALLED to enable real-time targeted sequencing The construct and utility of reference pan-genome graphs PRINCESS—A framework for comprehensive detection andphasing of SNPs and structural variants Efficient chromosome-scale haplotype-resolved assembly of human individuals Utilization of an ensemble approach for identification of driver fusions in pediatric cancer   Day 2 - Session 2 Genome Informatics 2019 at CSHL">
+  <meta property="og:description" content="Day 2 - Session 2 - SEQUENCING ALGORITHMS, VARIANT DISCOVERY AND GENOME ASSEMBLY Genomic sketching with HyperLogLog centroFlye—Assembling centromeres with long error-prone reads Genotyping structural variants in pangenome graphs using the vg toolkit Rapidly mapping raw nanopore signal with UNCALLED to enable real-time targeted sequencing The construct and utility of reference pan-genome graphs PRINCESS—A framework for comprehensive detection andphasing of SNPs and structural variants Efficient chromosome-scale haplotype-resolved assembly of human individuals Utilization of an ensemble approach for identification of driver fusions in pediatric cancer   Day 2 - Session 2 - SEQUENCING ALGORITHMS, VARIANT DISCOVERY AND GENOME ASSEMBLY Genome Informatics 2019 at CSHL">
   <meta property="og:locale" content="en-us">
   
   <meta property="article:published_time" content="2019-11-07T00:00:00&#43;00:00">
@@ -276,7 +276,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    2 min read
+    3 min read
   </span>
   
 
@@ -359,7 +359,7 @@
     <div class="article-style" itemprop="articleBody">
       <div id="TOC">
 <ul>
-<li><a href="#day-2---session-2">Day 2 - Session 2</a></li>
+<li><a href="#day-2---session-2---sequencing-algorithms-variant-discovery-and-genome-assembly">Day 2 - Session 2 - SEQUENCING ALGORITHMS, VARIANT DISCOVERY AND GENOME ASSEMBLY</a></li>
 <li><a href="#genomic-sketching-with-hyperloglog">Genomic sketching with HyperLogLog</a></li>
 <li><a href="#centroflyeassembling-centromeres-with-long-error-prone-reads">centroFlye—Assembling centromeres with long error-prone reads</a></li>
 <li><a href="#genotyping-structural-variants-in-pangenome-graphs-using-the-vg-toolkit">Genotyping structural variants in pangenome graphs using the vg toolkit</a></li>
@@ -371,14 +371,58 @@
 </ul>
 </div>
 
-<div id="day-2---session-2" class="section level1">
-<h1>Day 2 - Session 2</h1>
+<div id="day-2---session-2---sequencing-algorithms-variant-discovery-and-genome-assembly" class="section level1">
+<h1>Day 2 - Session 2 - SEQUENCING ALGORITHMS, VARIANT DISCOVERY AND GENOME ASSEMBLY</h1>
 <p>Genome Informatics 2019 at CSHL</p>
 <p><strong>Bold</strong> is the speaker</p>
 </div>
 <div id="genomic-sketching-with-hyperloglog" class="section level1">
 <h1>Genomic sketching with HyperLogLog</h1>
 <p>Daniel N. Baker, <strong>Ben Langmead.</strong></p>
+<p>Slides at…crap missed it. Email Ben I guess?</p>
+<p>Sketching</p>
+<ul>
+<li>algorithm to collapse genomes into summary info</li>
+<li>fasta -&gt; kmers (“shingle”) -&gt; sample (smartly)</li>
+<li>showing set relationships</li>
+<li>the “minimum” of a set of sketches gives you useful info on the range you would expect</li>
+</ul>
+<p>Unions and Intersections</p>
+<ul>
+<li>space of possible coincidences requires multiple samples to get useful info</li>
+<li>bottom 3?</li>
+<li>or minimum in 3 partitions?</li>
+</ul>
+<p>MinHash uses bottom-k approach (Ondov / Phillipy)</p>
+<p>Tremendous talk - I feel like I understand what is happening. Invite Ben to talk at your place…I’d imagine you’d get a great talk.</p>
+<p>OK, so take <em>log log minimum</em></p>
+<p>Daniel Baker wrote:</p>
+<ul>
+<li>bit.ly/dash_pre</li>
+<li>github.com/dnbaker/dashing</li>
+<li>github.com/dnbaker/sketch</li>
+</ul>
+<p>HyperLogLog *HLL)</p>
+<ul>
+<li>k partition</li>
+<li>log<sub>2</sub>n</li>
+<li>exponent</li>
+<li>average, bias correction</li>
+</ul>
+<p>Highly vectorized (for speed! Massively parallel calculation)</p>
+<ul>
+<li>only on intel?</li>
+</ul>
+<p>Comparing to MinHash</p>
+<ul>
+<li>HLL deals with lopsided sets better (bottom k not ideal, better minimum k partition)</li>
+<li>Uses WAY less memory and wall clock</li>
+</ul>
+<p>Future stuffs</p>
+<ul>
+<li>multi-k (kmer lengths)</li>
+<li>weighted jaccard</li>
+</ul>
 </div>
 <div id="centroflyeassembling-centromeres-with-long-error-prone-reads" class="section level1">
 <h1>centroFlye—Assembling centromeres with long error-prone reads</h1>
@@ -440,9 +484,9 @@ Chou, John Aach, Jason Chin, Heng Li, George Church.</p>
         
         <li><a href="/post/gi2019-day01/">#GI2019 2019 11 06</a></li>
         
-        <li><a href="/post/one-developer-portal-genesis/">One Developer Portal: eyeIntegration Genesis</a></li>
-        
         <li><a href="/post/one-developer-portal-optimization/">One Developer Portal: eyeIntegration Web Optimization</a></li>
+        
+        <li><a href="/post/one-developer-portal-genesis/">One Developer Portal: eyeIntegration Genesis</a></li>
         
         <li><a href="/post/gi2018-day-four/">#GI2018 - Day Four</a></li>
         

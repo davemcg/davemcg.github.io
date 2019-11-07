@@ -21,7 +21,7 @@ output:
     toc: true
 ---
 
-# Day 2 - Session 2
+# Day 2 - Session 2 - SEQUENCING ALGORITHMS, VARIANT DISCOVERY AND GENOME ASSEMBLY
 
 Genome Informatics 2019 at CSHL
 
@@ -29,6 +29,54 @@ Genome Informatics 2019 at CSHL
 
 # Genomic sketching with HyperLogLog
 Daniel N. Baker, **Ben Langmead.**
+
+Slides at...crap missed it. Email Ben I guess?
+
+Sketching
+
+  - algorithm to collapse genomes into summary info
+  - fasta -> kmers ("shingle") -> sample (smartly)
+  - showing set relationships
+  - the "minimum" of a set of sketches gives you useful info on the range you would expect
+
+Unions and Intersections
+
+  - space of possible coincidences requires multiple samples to get useful info
+  - bottom 3? 
+  - or minimum in 3 partitions?
+  
+MinHash uses bottom-k approach (Ondov / Phillipy)
+
+Tremendous talk - I feel like I understand what is happening. Invite Ben to talk at your place...I'd imagine you'd get a great talk. 
+
+OK, so take *log log minimum*
+
+Daniel Baker wrote: 
+
+  - bit.ly/dash_pre
+  - github.com/dnbaker/dashing
+  - github.com/dnbaker/sketch
+  
+HyperLogLog *HLL)
+
+  - k partition
+  - log<sub>2</sub>n
+  - exponent
+  - average, bias correction
+  
+Highly vectorized (for speed! Massively parallel calculation)
+
+  - only on intel? 
+  
+Comparing to MinHash
+
+  - HLL deals with lopsided sets better (bottom k not ideal, better minimum k partition)
+  - Uses WAY less memory and wall clock
+  
+Future stuffs
+
+  - multi-k (kmer lengths)
+  - weighted jaccard
 
 # centroFlye—Assembling centromeres with long error-prone reads 
 **Andrey Bzikadze**, Pavel A. Pevzner.

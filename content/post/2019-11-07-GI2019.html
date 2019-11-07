@@ -24,7 +24,7 @@ output:
 
 <div id="TOC">
 <ul>
-<li><a href="#day-2---session-2">Day 2 - Session 2</a></li>
+<li><a href="#day-2---session-2---sequencing-algorithms-variant-discovery-and-genome-assembly">Day 2 - Session 2 - SEQUENCING ALGORITHMS, VARIANT DISCOVERY AND GENOME ASSEMBLY</a></li>
 <li><a href="#genomic-sketching-with-hyperloglog">Genomic sketching with HyperLogLog</a></li>
 <li><a href="#centroflyeassembling-centromeres-with-long-error-prone-reads">centroFlye—Assembling centromeres with long error-prone reads</a></li>
 <li><a href="#genotyping-structural-variants-in-pangenome-graphs-using-the-vg-toolkit">Genotyping structural variants in pangenome graphs using the vg toolkit</a></li>
@@ -36,14 +36,58 @@ output:
 </ul>
 </div>
 
-<div id="day-2---session-2" class="section level1">
-<h1>Day 2 - Session 2</h1>
+<div id="day-2---session-2---sequencing-algorithms-variant-discovery-and-genome-assembly" class="section level1">
+<h1>Day 2 - Session 2 - SEQUENCING ALGORITHMS, VARIANT DISCOVERY AND GENOME ASSEMBLY</h1>
 <p>Genome Informatics 2019 at CSHL</p>
 <p><strong>Bold</strong> is the speaker</p>
 </div>
 <div id="genomic-sketching-with-hyperloglog" class="section level1">
 <h1>Genomic sketching with HyperLogLog</h1>
 <p>Daniel N. Baker, <strong>Ben Langmead.</strong></p>
+<p>Slides at…crap missed it. Email Ben I guess?</p>
+<p>Sketching</p>
+<ul>
+<li>algorithm to collapse genomes into summary info</li>
+<li>fasta -&gt; kmers (“shingle”) -&gt; sample (smartly)</li>
+<li>showing set relationships</li>
+<li>the “minimum” of a set of sketches gives you useful info on the range you would expect</li>
+</ul>
+<p>Unions and Intersections</p>
+<ul>
+<li>space of possible coincidences requires multiple samples to get useful info</li>
+<li>bottom 3?</li>
+<li>or minimum in 3 partitions?</li>
+</ul>
+<p>MinHash uses bottom-k approach (Ondov / Phillipy)</p>
+<p>Tremendous talk - I feel like I understand what is happening. Invite Ben to talk at your place…I’d imagine you’d get a great talk.</p>
+<p>OK, so take <em>log log minimum</em></p>
+<p>Daniel Baker wrote:</p>
+<ul>
+<li>bit.ly/dash_pre</li>
+<li>github.com/dnbaker/dashing</li>
+<li>github.com/dnbaker/sketch</li>
+</ul>
+<p>HyperLogLog *HLL)</p>
+<ul>
+<li>k partition</li>
+<li>log<sub>2</sub>n</li>
+<li>exponent</li>
+<li>average, bias correction</li>
+</ul>
+<p>Highly vectorized (for speed! Massively parallel calculation)</p>
+<ul>
+<li>only on intel?</li>
+</ul>
+<p>Comparing to MinHash</p>
+<ul>
+<li>HLL deals with lopsided sets better (bottom k not ideal, better minimum k partition)</li>
+<li>Uses WAY less memory and wall clock</li>
+</ul>
+<p>Future stuffs</p>
+<ul>
+<li>multi-k (kmer lengths)</li>
+<li>weighted jaccard</li>
+</ul>
 </div>
 <div id="centroflyeassembling-centromeres-with-long-error-prone-reads" class="section level1">
 <h1>centroFlye—Assembling centromeres with long error-prone reads</h1>
