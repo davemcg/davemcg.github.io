@@ -16,13 +16,16 @@
       <pubDate>Wed, 06 Nov 2019 00:00:00 +0000</pubDate>
       
       <guid>/./post/gi2019-day01/</guid>
-      <description>&lt;p&gt;Genome Informatica 2019 at CSHL&lt;/p&gt;
+      <description>&lt;div id=&#34;day-1&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Day 1&lt;/h1&gt;
+&lt;p&gt;Genome Informatica 2019 at CSHL&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Italics Bold&lt;/em&gt; is the speaker&lt;/p&gt;
 &lt;p&gt;349 attendees. Largest?&lt;/p&gt;
 &lt;p&gt;189 posters&lt;/p&gt;
 &lt;p&gt;39 (?) talks&lt;/p&gt;
 &lt;p&gt;90 countries, 20 (US) states&lt;/p&gt;
 &lt;p&gt;High(est) % female, URM for gi&lt;/p&gt;
+&lt;/div&gt;
 &lt;div id=&#34;night-1&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Night 1&lt;/h1&gt;
 &lt;div id=&#34;comparative-3d-genome-organization-in-apicomplexan-parasites&#34; class=&#34;section level2&#34;&gt;
@@ -89,7 +92,35 @@
 &lt;/div&gt;
 &lt;div id=&#34;tissue-specific-enhancer-functional-networks-for-associating-distal-regulatory-regions-to-disease&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Tissue-specific enhancer functional networks for associating distal regulatory regions to disease&lt;/h2&gt;
-&lt;p&gt;&lt;em&gt;Xi Chen&lt;/em&gt;, Jian Zhou, Chandra L. Theesfeld, Ran Zhang, Aaron K. Wong, Olga G. Troyanskaya.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Xi Chen&lt;/strong&gt;, Jian Zhou, Chandra L. Theesfeld, Ran Zhang, Aaron K. Wong, Olga G. Troyanskaya.&lt;/p&gt;
+&lt;p&gt;How to predict function of enhancers?&lt;/p&gt;
+&lt;p&gt;Different ways enhancers associated with disease:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;enhancer -&amp;gt; gene (near)&lt;/li&gt;
+&lt;li&gt;enhancer(with SNP inside)&lt;/li&gt;
+&lt;li&gt;enhancer(rare mutation inside)&lt;/li&gt;
+&lt;li&gt;enhance without direct evidence&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Hypothesis:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;enhancer will have a functional relationship with another enhancer if:
+&lt;ul&gt;
+&lt;li&gt;3d interaction&lt;/li&gt;
+&lt;li&gt;co-activation with TF&lt;/li&gt;
+&lt;li&gt;regulate related genes&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;if all met, then &lt;em&gt;maybe&lt;/em&gt; disease associated&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;bayesian inference to model the above assumptions&lt;/p&gt;
+&lt;p&gt;how to see if this sort of works?&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;check brain specific super enhancers in non-brain tissues&lt;/li&gt;
+&lt;li&gt;get some enrichment&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href=&#34;https://fenrir.flatironinstitute.org&#34; class=&#34;uri&#34;&gt;https://fenrir.flatironinstitute.org&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;web tool&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/div&gt;
 &lt;div id=&#34;targeted-nanopore-sequencing-with-cas9-for-studies-of-methylation-structural-variants-and-mutations&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Targeted Nanopore sequencing with Cas9 for studies of methylation, structural variants, and mutations&lt;/h2&gt;

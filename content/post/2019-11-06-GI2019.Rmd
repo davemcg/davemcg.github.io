@@ -18,6 +18,8 @@ header:
   image: ''
 ---
 
+# Day 1
+
 Genome Informatica 2019 at CSHL
 
 *Italics Bold* is the speaker
@@ -100,7 +102,37 @@ work on phasing SV (cis vs trans vs unknown)
   
 
 ## Tissue-specific enhancer functional networks for associating distal regulatory regions to disease
-*Xi Chen*, Jian Zhou, Chandra L. Theesfeld, Ran Zhang, Aaron K. Wong, Olga G. Troyanskaya.
+**Xi Chen**, Jian Zhou, Chandra L. Theesfeld, Ran Zhang, Aaron K. Wong, Olga G. Troyanskaya.
+
+How to predict function of enhancers?
+
+Different ways enhancers associated with disease:
+
+  - enhancer -> gene (near)
+  - enhancer(with SNP inside)
+  - enhancer(rare mutation inside)
+  - enhance without direct evidence
+  
+Hypothesis:
+
+  - enhancer will have a functional relationship with another enhancer if:
+    - 3d interaction
+    - co-activation with TF
+    - regulate related genes
+  - if all met, then *maybe* disease associated
+  
+bayesian inference to model the above assumptions
+
+how to see if this sort of works?
+
+  - check brain specific super enhancers in non-brain tissues
+  - get some enrichment
+  
+https://fenrir.flatironinstitute.org
+
+  - web tool
+  
+
 
 ## Targeted Nanopore sequencing with Cas9 for studies of methylation, structural variants, and mutations
 *Timothy E. Gilpatrick*, Isac Lee, Fritz J. Sedlazek, Winston Timp.
