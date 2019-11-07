@@ -5,6 +5,15 @@
     
     <url>
     
+      <loc>/./post/gi2019-day02/</loc>
+      <lastmod>2019-11-07T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/./post/gi2019-day01/</loc>
       <lastmod>2019-11-06T00:00:00+00:00</lastmod>
     </url>
@@ -297,7 +306,7 @@
     <url>
     
       <loc>/./tags/bioinformatics/</loc>
-      <lastmod>2019-11-06T00:00:00+00:00</lastmod>
+      <lastmod>2019-11-07T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -307,7 +316,7 @@
     <url>
     
       <loc>/./categories/bioinformatics/</loc>
-      <lastmod>2019-11-06T00:00:00+00:00</lastmod>
+      <lastmod>2019-11-07T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -367,7 +376,7 @@
     <url>
     
       <loc>/./tags/conferences/</loc>
-      <lastmod>2019-11-06T00:00:00+00:00</lastmod>
+      <lastmod>2019-11-07T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -377,7 +386,7 @@
     <url>
     
       <loc>/./categories/conferences/</loc>
-      <lastmod>2019-11-06T00:00:00+00:00</lastmod>
+      <lastmod>2019-11-07T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -467,7 +476,7 @@
     <url>
     
       <loc>/./tags/gi2019/</loc>
-      <lastmod>2019-11-06T00:00:00+00:00</lastmod>
+      <lastmod>2019-11-07T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -477,7 +486,7 @@
     <url>
     
       <loc>/./categories/gi2019/</loc>
-      <lastmod>2019-11-06T00:00:00+00:00</lastmod>
+      <lastmod>2019-11-07T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -777,7 +786,7 @@
     <url>
     
       <loc>/./tags/talk/</loc>
-      <lastmod>2019-11-06T00:00:00+00:00</lastmod>
+      <lastmod>2019-11-07T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -787,7 +796,7 @@
     <url>
     
       <loc>/./categories/talk/</loc>
-      <lastmod>2019-11-06T00:00:00+00:00</lastmod>
+      <lastmod>2019-11-07T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     

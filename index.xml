@@ -11,23 +11,97 @@
     <atom:link href="//" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>#GI2019 2019 11 07</title>
+      <link>/./post/gi2019-day02/</link>
+      <pubDate>Thu, 07 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/gi2019-day02/</guid>
+      <description>&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#day-2---session-2&#34;&gt;Day 2 - Session 2&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#genomic-sketching-with-hyperloglog&#34;&gt;Genomic sketching with HyperLogLog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#centroflyeassembling-centromeres-with-long-error-prone-reads&#34;&gt;centroFlye—Assembling centromeres with long error-prone reads&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#genotyping-structural-variants-in-pangenome-graphs-using-the-vg-toolkit&#34;&gt;Genotyping structural variants in pangenome graphs using the vg toolkit&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#rapidly-mapping-raw-nanopore-signal-with-uncalled-to-enable-real-time-targeted-sequencing&#34;&gt;Rapidly mapping raw nanopore signal with UNCALLED to enable real-time targeted sequencing&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#the-construct-and-utility-of-reference-pan-genome-graphs&#34;&gt;The construct and utility of reference pan-genome graphs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#princessa-framework-for-comprehensive-detection-andphasing-of-snps-and-structural-variants&#34;&gt;PRINCESS—A framework for comprehensive detection andphasing of SNPs and structural variants&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#efficient-chromosome-scale-haplotype-resolved-assembly-of-human-individuals&#34;&gt;Efficient chromosome-scale haplotype-resolved assembly of human individuals&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#utilization-of-an-ensemble-approach-for-identification-of-driver-fusions-in-pediatric-cancer&#34;&gt;Utilization of an ensemble approach for identification of driver fusions in pediatric cancer&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;day-2---session-2&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Day 2 - Session 2&lt;/h1&gt;
+&lt;p&gt;Genome Informatics 2019 at CSHL&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Bold&lt;/strong&gt; is the speaker&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;genomic-sketching-with-hyperloglog&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Genomic sketching with HyperLogLog&lt;/h1&gt;
+&lt;p&gt;Daniel N. Baker, &lt;strong&gt;Ben Langmead.&lt;/strong&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;centroflyeassembling-centromeres-with-long-error-prone-reads&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;centroFlye—Assembling centromeres with long error-prone reads&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;Andrey Bzikadze&lt;/strong&gt;, Pavel A. Pevzner.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;genotyping-structural-variants-in-pangenome-graphs-using-the-vg-toolkit&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Genotyping structural variants in pangenome graphs using the vg toolkit&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;Jean Monlong&lt;/strong&gt;, Glenn Hickey, David Heller, Jonas Andreas Sibbesen, Jouni Siren, Jordan Eizenga, Eric T. Dawson, Erik Garrison, Adam Novak, Benedict Paten.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;rapidly-mapping-raw-nanopore-signal-with-uncalled-to-enable-real-time-targeted-sequencing&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Rapidly mapping raw nanopore signal with UNCALLED to enable real-time targeted sequencing&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;Sam Kovaka&lt;/strong&gt;, Yunfan Fan, Winston Timp, Michael C. Schatz.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;the-construct-and-utility-of-reference-pan-genome-graphs&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;The construct and utility of reference pan-genome graphs&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;Heng Li.&lt;/strong&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;princessa-framework-for-comprehensive-detection-andphasing-of-snps-and-structural-variants&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;PRINCESS—A framework for comprehensive detection andphasing of SNPs and structural variants&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;Medhat Mahmoud&lt;/strong&gt;, Winston Timp, Fritz J. Sedlazeck.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;efficient-chromosome-scale-haplotype-resolved-assembly-of-human-individuals&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Efficient chromosome-scale haplotype-resolved assembly of human individuals&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;Shilpa Garg&lt;/strong&gt;, Arkarachai Fungtammasan, Anthony Schmitt, Andrew
+Carroll, Paul Pelusol, Emily Hatas, Fritz Sedlazeck, Justin Zook, Mike
+Chou, John Aach, Jason Chin, Heng Li, George Church.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;utilization-of-an-ensemble-approach-for-identification-of-driver-fusions-in-pediatric-cancer&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Utilization of an ensemble approach for identification of driver fusions in pediatric cancer&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;Stephanine LaHaye&lt;/strong&gt;, Kyle Voytovich, James Fitch, Natalie Bir, Sean D. McGrath, Anthony Miller, Amy Wetzel, Vincent Magrini, Catherine E. Cottrell, Elaine R. Mardis, Richard K. Wilson.&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>#GI2019 2019 11 06</title>
       <link>/./post/gi2019-day01/</link>
       <pubDate>Wed, 06 Nov 2019 00:00:00 +0000</pubDate>
       
       <guid>/./post/gi2019-day01/</guid>
-      <description>&lt;div id=&#34;day-1&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Day 1&lt;/h1&gt;
-&lt;p&gt;Genome Informatica 2019 at CSHL&lt;/p&gt;
+      <description>&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#day-1---session-1&#34;&gt;Day 1 - Session 1&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#comparative-3d-genome-organization-in-apicomplexan-parasites&#34;&gt;Comparative 3D genome organization in Apicomplexan parasites&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#unscrambling-the-tumor-genome-via-integrated-analysis-of-structural-variation-and-copy-number&#34;&gt;Unscrambling the tumor genome via integrated analysis of structural variation and copy number&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#tissue-specific-enhancer-functional-networks-for-associating-distal-regulatory-regions-to-disease&#34;&gt;Tissue-specific enhancer functional networks for associating distal regulatory regions to disease&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#targeted-nanopore-sequencing-with-cas9-for-studies-of-methylation-structural-variants-and-mutations&#34;&gt;Targeted Nanopore sequencing with Cas9 for studies of methylation, structural variants, and mutations&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#long-read-sequencing-of-structurally-variant-genomes&#34;&gt;Long-read sequencing of structurally variant genomes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#exploring-the-3d-spatial-dependency-of-gene-expression-using-markov-random-fields&#34;&gt;Exploring the 3D spatial dependency of gene expression using Markov random fields&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#mapping-cis-eqtl-from-rna-seq-data-with-no-genotypes&#34;&gt;Mapping cis-eQTL from RNA-seq data with no genotypes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#exploring-short-tandem-repeat-expansions-at-both-known-and-novel-loci-in-the-human-genome&#34;&gt;Exploring short tandem repeat expansions at both known and novel loci in the human genome&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;day-1---session-1&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Day 1 - Session 1&lt;/h1&gt;
+&lt;p&gt;Genome Informatics 2019 at CSHL&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Bold&lt;/strong&gt; is the speaker&lt;/p&gt;
 &lt;p&gt;349 attendees. Largest?&lt;/p&gt;
 &lt;p&gt;189 posters&lt;/p&gt;
 &lt;p&gt;39 (?) talks&lt;/p&gt;
 &lt;p&gt;90 countries, 20 (US) states&lt;/p&gt;
 &lt;p&gt;High(est) % female, URM for gi&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;night-1&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Night 1&lt;/h1&gt;
 &lt;div id=&#34;comparative-3d-genome-organization-in-apicomplexan-parasites&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Comparative 3D genome organization in Apicomplexan parasites&lt;/h2&gt;
 &lt;p&gt;Evelien M. Bunnik, Aarthi Venkat, Ferhat Ay, &lt;strong&gt;Karine G. Le Roch.&lt;/strong&gt;&lt;/p&gt;
@@ -130,7 +204,7 @@
 &lt;/div&gt;
 &lt;div id=&#34;targeted-nanopore-sequencing-with-cas9-for-studies-of-methylation-structural-variants-and-mutations&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Targeted Nanopore sequencing with Cas9 for studies of methylation, structural variants, and mutations&lt;/h2&gt;
-&lt;p&gt;&lt;em&gt;Timothy E. Gilpatrick&lt;/em&gt;, Isac Lee, Fritz J. Sedlazek, Winston Timp.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Timothy E. Gilpatrick&lt;/strong&gt;, Isac Lee, Fritz J. Sedlazek, Winston Timp.&lt;/p&gt;
 &lt;p&gt;Want to enrich regions for genome&lt;/p&gt;
 &lt;p&gt;ROI -&amp;gt; cut out with CRISPR (cas9 on both sides of ROI) -&amp;gt; dA tail -&amp;gt; adapter ligate&lt;/p&gt;
 &lt;ul&gt;
@@ -236,7 +310,7 @@
 &lt;/div&gt;
 &lt;div id=&#34;exploring-the-3d-spatial-dependency-of-gene-expression-using-markov-random-fields&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Exploring the 3D spatial dependency of gene expression using Markov random fields&lt;/h2&gt;
-&lt;p&gt;&lt;em&gt;Naihui Zhou&lt;/em&gt;, Iddo Friedberg, Mark S. Kaiser.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Naihui Zhou&lt;/strong&gt;, Iddo Friedberg, Mark S. Kaiser.&lt;/p&gt;
 &lt;p&gt;The quantitative expression of gene regulation could manifest as spatial dependency&lt;/p&gt;
 &lt;p&gt;Hypothesis:&lt;/p&gt;
 &lt;ul&gt;
@@ -270,7 +344,7 @@
 &lt;/div&gt;
 &lt;div id=&#34;mapping-cis-eqtl-from-rna-seq-data-with-no-genotypes&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Mapping cis-eQTL from RNA-seq data with no genotypes&lt;/h2&gt;
-&lt;p&gt;&lt;em&gt;Elena Vigorito&lt;/em&gt;, Simon White, Chris Wallace.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Elena Vigorito&lt;/strong&gt;, Simon White, Chris Wallace.&lt;/p&gt;
 &lt;p&gt;Can’t always get genotypes….so would like eQTL without them….&lt;/p&gt;
 &lt;p&gt;Impute cis-SNP (G&lt;sub&gt;i&lt;/sub&gt;)&lt;/p&gt;
 &lt;p&gt;negative binomial weighted by probable genotype&lt;/p&gt;
@@ -285,7 +359,7 @@
 &lt;/div&gt;
 &lt;div id=&#34;exploring-short-tandem-repeat-expansions-at-both-known-and-novel-loci-in-the-human-genome&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Exploring short tandem repeat expansions at both known and novel loci in the human genome&lt;/h2&gt;
-&lt;p&gt;&lt;em&gt;Harriet Dashnow&lt;/em&gt;, Brent Pedersen, Daniel MacArthur, Alicia Oshlack, Aaron Quinlan.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Harriet Dashnow&lt;/strong&gt;, Brent Pedersen, Daniel MacArthur, Alicia Oshlack, Aaron Quinlan.&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;citation&#34;&gt;@hdashnow&lt;/span&gt; (twitter handle! good!)&lt;/p&gt;
 &lt;p&gt;STR is 1-6bp repeats. Microsatellites.&lt;/p&gt;
 &lt;p&gt;3% of human genome with high mutation rate and high polymorphism&lt;/p&gt;
@@ -4329,126 +4403,6 @@ devtools::session_info()
 &lt;div id=&#34;update&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;UPDATE&lt;/h1&gt;
 &lt;p&gt;Tommy pointed out that you should run this &lt;strong&gt;after&lt;/strong&gt; you have removed reads that are duplicated, singletons, and low quality. It is not unusual to see bam files with &amp;gt;50% duplicate reads.&lt;/p&gt;
-&lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Let’s Plot 5: ridgeline density plots</title>
-      <link>/./post/let-s-plot-5-ridgeline-density-plots/</link>
-      <pubDate>Thu, 12 Apr 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/./post/let-s-plot-5-ridgeline-density-plots/</guid>
-      <description>&lt;div id=&#34;intro&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Intro&lt;/h1&gt;
-&lt;p&gt;For this installment of Let’s Plot (where anyone can make a figure!), we’ll be making the hottest visualization of 2017 - the &lt;em&gt;joy plot&lt;/em&gt; or &lt;em&gt;ridgeline plot&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;Joy plots are partially overlapping density line plots. They are useful for densely showing changes in many distributions over time / condition / etc.&lt;/p&gt;
-&lt;p&gt;This type of visualization was inspired by the &lt;a href=&#34;https://en.wikipedia.org/wiki/Unknown_Pleasures&#34;&gt;cover art&lt;/a&gt; from Joy Division’s album Unknown Pleasures and implemented in the R package &lt;a href=&#34;http://cran.r-project.org/web/packages/ggridges&#34;&gt;ggridges&lt;/a&gt; by Claus Wilke.
-&lt;img src=&#34;/./img/lets_plot_5_cover.jpg&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;While the original term for this plot took off as &lt;em&gt;joy plot&lt;/em&gt; it has since been changed to a &lt;em&gt;ridgeline plot&lt;/em&gt; or &lt;em&gt;ridges plots&lt;/em&gt;, as discussed at length &lt;a href=&#34;http://serialmentor.com/blog/2017/9/15/goodbye-joyplots&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Anyways, Claus has a &lt;em&gt;beautiful&lt;/em&gt; intro to his package &lt;a href=&#34;https://cran.r-project.org/web/packages/ggridges/vignettes/gallery.html&#34;&gt;here&lt;/a&gt;. I will not reproduce any of his plots, as I want you to click the link. Plus they are way cooler looking than what we will be making. Which is real(ish) data from people in my division.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;load-davide-merged-data&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Load Davide merged data&lt;/h1&gt;
-&lt;p&gt;This is a highly cut down version of his original data - which is a 160mb csv file. The csv for this exercise can be found &lt;a href=&#34;https://github.com/davemcg/Let_us_plot/blob/master/005_ggridges/davide_cell_size_data.csv&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;It contains cell area size for thousands of cells which have had a drug perturbation, split by wells in a dish. One drug per well.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)
-library(ggridges)
-merged.df &amp;lt;- read_csv(&amp;#39;~/git/Let_us_plot/005_ggridges/davide_cell_size_data.csv&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;what-does-the-data-look-like&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;What does the data look like?&lt;/h1&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;head(merged.df)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## # A tibble: 6 x 3
-##   Well.names  Area Drug 
-##   &amp;lt;chr&amp;gt;      &amp;lt;int&amp;gt; &amp;lt;chr&amp;gt;
-## 1 D07          643 20(S 
-## 2 D07          388 20(S 
-## 3 D09          290 20(S 
-## 4 D08         1174 20(S 
-## 5 D09          186 20(S 
-## 6 D09         7062 20(S&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;first-we-create-a-fake-dmso-to-match-each-drug-so-we-can-see-the-null-distribution-matched-with-each-drug-in-the-visualization-below&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;First we create a fake DMSO to match each drug so we can see the ‘null’ distribution matched with each drug in the visualization below&lt;/h1&gt;
-&lt;p&gt;I know &lt;code&gt;for&lt;/code&gt; loops are out of trend, but I find them easier to write &lt;em&gt;and&lt;/em&gt; read compared to &lt;code&gt;purrr&lt;/code&gt;. A lot less compact, I concede.&lt;/p&gt;
-&lt;p&gt;This is a bit hacky, but I want to duplicate the DMSO data and assign it to each drug. Later we’ll be splitting the plot by drug, so we can see both the drug data &lt;em&gt;and&lt;/em&gt; the DMSO data in the section.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# for background DMSO plot
-fake_DMSO_drug &amp;lt;- data.frame()
-for (i in (merged.df$Drug %&amp;gt;% unique())){
-  print(i)
-  fake_DMSO_drug &amp;lt;- rbind(fake_DMSO_drug, merged.df %&amp;gt;% filter(Drug==&amp;#39;DMSO&amp;#39;) %&amp;gt;% mutate(Drug = i, Well.names=paste0(&amp;#39;0DMSO_&amp;#39;, i), DMSO=&amp;#39;Yes&amp;#39;))
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;20(S&amp;quot;
-## [1] &amp;quot;3-Am&amp;quot;
-## [1] &amp;quot;Brom&amp;quot;
-## [1] &amp;quot;Cili&amp;quot;
-## [1] &amp;quot;Ctrl&amp;quot;
-## [1] &amp;quot;DMSO&amp;quot;
-## [1] &amp;quot;ETP&amp;quot;
-## [1] &amp;quot;G-Pr&amp;quot;
-## [1] &amp;quot;GANT&amp;quot;
-## [1] &amp;quot;HA 1&amp;quot;
-## [1] &amp;quot;IMR-&amp;quot;
-## [1] &amp;quot;IWP-&amp;quot;
-## [1] &amp;quot;IWR-&amp;quot;
-## [1] &amp;quot;LGK-&amp;quot;
-## [1] &amp;quot;LY41&amp;quot;
-## [1] &amp;quot;Metf&amp;quot;
-## [1] &amp;quot;PJ 3&amp;quot;
-## [1] &amp;quot;SANT&amp;quot;
-## [1] &amp;quot;Sodi&amp;quot;
-## [1] &amp;quot;Tori&amp;quot;
-## [1] &amp;quot;UNC&amp;quot;
-## [1] &amp;quot;Valp&amp;quot;
-## [1] &amp;quot;Wnt-&amp;quot;
-## [1] &amp;quot;WYE&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# order drugs by median area
-drug_order &amp;lt;- merged.df %&amp;gt;% group_by(Drug) %&amp;gt;% summarise(MedianArea=median(Area)) %&amp;gt;% arrange(MedianArea) %&amp;gt;% pull(Drug)&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;ridgeline-plot-showing-each-well-separately&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;ridgeline plot, showing each well separately&lt;/h1&gt;
-&lt;p&gt;Several wells got the same drugs. So there are multiple plots per drug.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;bind_rows(merged.df %&amp;gt;% mutate(DMSO=&amp;#39;No&amp;#39;),fake_DMSO_drug) %&amp;gt;% 
-  filter(Drug!=&amp;#39;DMSO&amp;#39;, Drug!=&amp;#39;Pyr&amp;#39;) %&amp;gt;% # don&amp;#39;t need DMSO plot now and Pyr is empty
-  mutate(Drug=factor(Drug, levels=drug_order)) %&amp;gt;% # reorder drugs by drug_order above 
-  ggplot(aes(y = Drug, x=log2(Area), group=Well.names, fill=DMSO)) +
-  geom_density_ridges(alpha=0.6) + 
-  theme_ridges() + 
-  scale_fill_brewer(palette = &amp;#39;Set1&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Picking joint bandwidth of 0.258&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/././post/2018-04-12-let-s-plot-5-ridgeline-density-plots_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;same-but-merging-all-wells-together&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Same, but merging all wells together&lt;/h1&gt;
-&lt;p&gt;Now merge all the wells together. Notice how the group is now &lt;code&gt;Well.names2&lt;/code&gt;&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;bind_rows(merged.df %&amp;gt;% 
-            mutate(DMSO=&amp;#39;No&amp;#39;, Well.names2=paste0(&amp;#39;Orig&amp;#39;, Drug)),
-          fake_DMSO_drug %&amp;gt;% 
-            mutate(Well.names2 = Well.names)) %&amp;gt;% 
-  filter(Drug!=&amp;#39;DMSO&amp;#39;, Drug!=&amp;#39;Pyro&amp;#39;) %&amp;gt;% # dont&amp;#39; need DMSO plot now and Pyroxamine is empty
-  mutate(Drug=factor(Drug, levels=drug_order)) %&amp;gt;% # reorder drugs by drug_order above 
-  ggplot(aes(y = Drug, x = log2(Area), group=Well.names2, fill=DMSO)) +
-  geom_density_ridges(alpha=0.6) + 
-  theme_ridges() + 
-  scale_fill_brewer(palette = &amp;#39;Set1&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Picking joint bandwidth of 0.204&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/././post/2018-04-12-let-s-plot-5-ridgeline-density-plots_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;theres-a-large-variation-in-the-number-of-counts&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;There’s a large variation in the number of counts&lt;/h1&gt;
-&lt;p&gt;How did I know? Because a bunch of the density plots were super wavy - which means (almost always) that the number of counts in that sample is very low. Low numbers = high variance.&lt;/p&gt;
-&lt;p&gt;So IMR, IMP, Tori, and WYE are &lt;em&gt;problem&lt;/em&gt; tests. Perhaps they are just killing the cells? Something for Davide to examine.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;cell_area_counts_by_drug &amp;lt;- merged.df %&amp;gt;% 
-  group_by(Drug) %&amp;gt;% 
-  summarise(Count=n())
-
-cell_area_counts_by_drug  %&amp;gt;% 
-  ggplot(aes(x=Drug, y=Count)) +
-  geom_bar(stat=&amp;#39;identity&amp;#39;) + 
-  theme_minimal() +
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/././post/2018-04-12-let-s-plot-5-ridgeline-density-plots_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 </description>
     </item>

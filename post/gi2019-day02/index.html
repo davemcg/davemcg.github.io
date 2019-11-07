@@ -17,12 +17,10 @@
       
     
   
-  <meta name="description" content="When you have a set of ChIP-seq (like) files, it is sometimes useful to downsample the larger samples to more closely match most of the samples. Tommy Tang goes into more detail in his blog post.
-Unfortunately the tool suites I use most for bam files (samtools and picard) only downsample to a percentage. Which isn’t ideal when you want your files to be no more than n reads.
-This post is just a slight one-upping of Tommy Tang’s process to easily downsample a bam.">
+  <meta name="description" content="Day 2 - Session 2 Genomic sketching with HyperLogLog centroFlye—Assembling centromeres with long error-prone reads Genotyping structural variants in pangenome graphs using the vg toolkit Rapidly mapping raw nanopore signal with UNCALLED to enable real-time targeted sequencing The construct and utility of reference pan-genome graphs PRINCESS—A framework for comprehensive detection andphasing of SNPs and structural variants Efficient chromosome-scale haplotype-resolved assembly of human individuals Utilization of an ensemble approach for identification of driver fusions in pediatric cancer   Day 2 - Session 2 Genome Informatics 2019 at CSHL">
 
   
-  <link rel="alternate" hreflang="en-us" href="/./post/easy-bam-downsampling/">
+  <link rel="alternate" hreflang="en-us" href="/./post/gi2019-day02/">
 
   
 
@@ -85,7 +83,7 @@ This post is just a slight one-upping of Tommy Tang’s process to easily downsa
   <link rel="icon" type="image/png" href="/img/icon.png">
   <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
 
-  <link rel="canonical" href="/./post/easy-bam-downsampling/">
+  <link rel="canonical" href="/./post/gi2019-day02/">
 
   <meta property="twitter:card" content="summary_large_image">
   
@@ -93,22 +91,20 @@ This post is just a slight one-upping of Tommy Tang’s process to easily downsa
   <meta property="twitter:creator" content="@https://twitter.com/David_McGaughey">
   
   <meta property="og:site_name" content="eye Bioinformatician">
-  <meta property="og:url" content="/./post/easy-bam-downsampling/">
-  <meta property="og:title" content="Easy bam downsampling | eye Bioinformatician">
-  <meta property="og:description" content="When you have a set of ChIP-seq (like) files, it is sometimes useful to downsample the larger samples to more closely match most of the samples. Tommy Tang goes into more detail in his blog post.
-Unfortunately the tool suites I use most for bam files (samtools and picard) only downsample to a percentage. Which isn’t ideal when you want your files to be no more than n reads.
-This post is just a slight one-upping of Tommy Tang’s process to easily downsample a bam.">
+  <meta property="og:url" content="/./post/gi2019-day02/">
+  <meta property="og:title" content="#GI2019 2019 11 07 | eye Bioinformatician">
+  <meta property="og:description" content="Day 2 - Session 2 Genomic sketching with HyperLogLog centroFlye—Assembling centromeres with long error-prone reads Genotyping structural variants in pangenome graphs using the vg toolkit Rapidly mapping raw nanopore signal with UNCALLED to enable real-time targeted sequencing The construct and utility of reference pan-genome graphs PRINCESS—A framework for comprehensive detection andphasing of SNPs and structural variants Efficient chromosome-scale haplotype-resolved assembly of human individuals Utilization of an ensemble approach for identification of driver fusions in pediatric cancer   Day 2 - Session 2 Genome Informatics 2019 at CSHL">
   <meta property="og:locale" content="en-us">
   
-  <meta property="article:published_time" content="2018-04-20T00:00:00&#43;00:00">
+  <meta property="article:published_time" content="2019-11-07T00:00:00&#43;00:00">
   
-  <meta property="article:modified_time" content="2018-04-20T00:00:00&#43;00:00">
-  
-
-  
+  <meta property="article:modified_time" content="2019-11-07T00:00:00&#43;00:00">
   
 
-  <title>Easy bam downsampling | eye Bioinformatician</title>
+  
+  
+
+  <title>#GI2019 2019 11 07 | eye Bioinformatician</title>
 
 </head>
 <body id="top" data-spy="scroll" data-target="#toc" data-offset="71" >
@@ -261,7 +257,7 @@ This post is just a slight one-upping of Tommy Tang’s process to easily downsa
 
 
   <div class="article-container">
-    <h1 itemprop="name">Easy bam downsampling</h1>
+    <h1 itemprop="name">#GI2019 2019 11 07</h1>
 
     
 
@@ -269,8 +265,8 @@ This post is just a slight one-upping of Tommy Tang’s process to easily downsa
 
   <span class="article-date">
     
-    <time datetime="2018-04-20 00:00:00 &#43;0000 UTC" itemprop="datePublished dateModified">
-      Apr 20, 2018
+    <time datetime="2019-11-07 00:00:00 &#43;0000 UTC" itemprop="datePublished dateModified">
+      Nov 7, 2019
     </time>
   </span>
   <span itemscope itemprop="author publisher" itemtype="http://schema.org/Person">
@@ -280,14 +276,14 @@ This post is just a slight one-upping of Tommy Tang’s process to easily downsa
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    3 min read
+    2 min read
   </span>
   
 
   
   
   <span class="middot-divider"></span>
-  <a href="/./post/easy-bam-downsampling/#disqus_thread"></a>
+  <a href="/./post/gi2019-day02/#disqus_thread"></a>
   
 
   
@@ -300,7 +296,13 @@ This post is just a slight one-upping of Tommy Tang’s process to easily downsa
     <a href="/./categories/bioinformatics/">bioinformatics</a
     >, 
     
-    <a href="/./categories/bash/">bash</a
+    <a href="/./categories/gi2019/">gi2019</a
+    >, 
+    
+    <a href="/./categories/conferences/">conferences</a
+    >, 
+    
+    <a href="/./categories/talk/">talk</a
     >
     
   </span>
@@ -313,35 +315,35 @@ This post is just a slight one-upping of Tommy Tang’s process to easily downsa
   <ul class="share">
     <li>
       <a class="twitter"
-         href="https://twitter.com/intent/tweet?text=Easy%20bam%20downsampling&amp;url=%2f.%2fpost%2feasy-bam-downsampling%2f"
+         href="https://twitter.com/intent/tweet?text=%23GI2019%202019%2011%2007&amp;url=%2f.%2fpost%2fgi2019-day02%2f"
          target="_blank" rel="noopener">
         <i class="fa fa-twitter"></i>
       </a>
     </li>
     <li>
       <a class="facebook"
-         href="https://www.facebook.com/sharer.php?u=%2f.%2fpost%2feasy-bam-downsampling%2f"
+         href="https://www.facebook.com/sharer.php?u=%2f.%2fpost%2fgi2019-day02%2f"
          target="_blank" rel="noopener">
         <i class="fa fa-facebook"></i>
       </a>
     </li>
     <li>
       <a class="linkedin"
-         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2f.%2fpost%2feasy-bam-downsampling%2f&amp;title=Easy%20bam%20downsampling"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2f.%2fpost%2fgi2019-day02%2f&amp;title=%23GI2019%202019%2011%2007"
          target="_blank" rel="noopener">
         <i class="fa fa-linkedin"></i>
       </a>
     </li>
     <li>
       <a class="weibo"
-         href="http://service.weibo.com/share/share.php?url=%2f.%2fpost%2feasy-bam-downsampling%2f&amp;title=Easy%20bam%20downsampling"
+         href="http://service.weibo.com/share/share.php?url=%2f.%2fpost%2fgi2019-day02%2f&amp;title=%23GI2019%202019%2011%2007"
          target="_blank" rel="noopener">
         <i class="fa fa-weibo"></i>
       </a>
     </li>
     <li>
       <a class="email"
-         href="mailto:?subject=Easy%20bam%20downsampling&amp;body=%2f.%2fpost%2feasy-bam-downsampling%2f">
+         href="mailto:?subject=%23GI2019%202019%2011%2007&amp;body=%2f.%2fpost%2fgi2019-day02%2f">
         <i class="fa fa-envelope"></i>
       </a>
     </li>
@@ -355,22 +357,58 @@ This post is just a slight one-upping of Tommy Tang’s process to easily downsa
 
 
     <div class="article-style" itemprop="articleBody">
-      <p>When you have a set of ChIP-seq (like) files, it is sometimes useful to downsample the larger samples to more closely match most of the samples. Tommy Tang goes into more detail in his <a href="http://crazyhottommy.blogspot.com/2016/05/downsampling-for-bam-files-to-certain.html">blog post</a>.</p>
-<p>Unfortunately the tool suites I use most for bam files (samtools and picard) only downsample to a <em>percentage</em>. Which isn’t ideal when you want your files to be no more than <code>n</code> reads.</p>
-<p>This post is just a slight one-upping of Tommy Tang’s <a href="http://crazyhottommy.blogspot.com/2016/05/downsampling-for-bam-files-to-certain.html">process</a> to easily downsample a bam. If you do some googling you’ll find lots of <em>boutique</em> tools to downsample. Which I tend to avoid because I don’t want to have to sift through the source to make sure what they are doing looks reasonable and often-times there are dependencies to worry about. For something this simple, there <em>should</em> be a way to pipe together a few commands to get what we want. Which Tommy <em>almost</em> does.</p>
-<p>His little code snippet is <code>samtools idxstats example.bam | cut -f3 | awk 'BEGIN {total=0} {total += $1} END {print total}'</code>. It sums up the reads present in each chromosome/contig that the bam index holds. It is robust and will work unless the output format <code>idxstats</code> sub-program is altered. Which I think is unlikely.</p>
-<p>The problem is that you have to do a <em>little</em> more work to get the percentage to feed <code>samtools view -s</code>.</p>
-<p>So here’s my extension, using <code>awk</code> to calculate the percentage of the bam file to sample if you want to get to <code>n</code> reads. It also will return <code>1</code> if your bam file has fewer reads than your target.</p>
-<p><code>frac=$( samtools idxstats  input.bam | cut -f3 | awk 'BEGIN {total=0} {total += $1} END {frac=15000000/total; if (frac &gt; 1) {print 1} else {print frac}}' )</code></p>
-<p>If you <code>echo $frac</code> you get the downsample percentage: <code>0.334801</code> for one of my bam files. You replace the 15000000 (15 million) with whatever you want to the the maximum number of reads.</p>
-<p>If your bam has fewer than <code>n</code> reads you’ll get back <code>1</code>.</p>
-<p>You can then just feed this into <code>samtools view</code> like so: <code>samtools view -bs $frac input.bam &gt; subsample.bam</code></p>
-<p>Putting it all together we have a nice two step process which fits nicely into an automated pipeline / workflow:</p>
-<p><code>frac=$( samtools idxstats  input.bam | cut -f3 | awk 'BEGIN {total=0} {total += $1} END {frac=15000000/total; if (frac &gt; 1) {print 1} else {print frac}}' )</code></p>
-<p><code>samtools view -bs $frac input.bam &gt; subsample.bam</code></p>
-<div id="update" class="section level1">
-<h1>UPDATE</h1>
-<p>Tommy pointed out that you should run this <strong>after</strong> you have removed reads that are duplicated, singletons, and low quality. It is not unusual to see bam files with &gt;50% duplicate reads.</p>
+      <div id="TOC">
+<ul>
+<li><a href="#day-2---session-2">Day 2 - Session 2</a></li>
+<li><a href="#genomic-sketching-with-hyperloglog">Genomic sketching with HyperLogLog</a></li>
+<li><a href="#centroflyeassembling-centromeres-with-long-error-prone-reads">centroFlye—Assembling centromeres with long error-prone reads</a></li>
+<li><a href="#genotyping-structural-variants-in-pangenome-graphs-using-the-vg-toolkit">Genotyping structural variants in pangenome graphs using the vg toolkit</a></li>
+<li><a href="#rapidly-mapping-raw-nanopore-signal-with-uncalled-to-enable-real-time-targeted-sequencing">Rapidly mapping raw nanopore signal with UNCALLED to enable real-time targeted sequencing</a></li>
+<li><a href="#the-construct-and-utility-of-reference-pan-genome-graphs">The construct and utility of reference pan-genome graphs</a></li>
+<li><a href="#princessa-framework-for-comprehensive-detection-andphasing-of-snps-and-structural-variants">PRINCESS—A framework for comprehensive detection andphasing of SNPs and structural variants</a></li>
+<li><a href="#efficient-chromosome-scale-haplotype-resolved-assembly-of-human-individuals">Efficient chromosome-scale haplotype-resolved assembly of human individuals</a></li>
+<li><a href="#utilization-of-an-ensemble-approach-for-identification-of-driver-fusions-in-pediatric-cancer">Utilization of an ensemble approach for identification of driver fusions in pediatric cancer</a></li>
+</ul>
+</div>
+
+<div id="day-2---session-2" class="section level1">
+<h1>Day 2 - Session 2</h1>
+<p>Genome Informatics 2019 at CSHL</p>
+<p><strong>Bold</strong> is the speaker</p>
+</div>
+<div id="genomic-sketching-with-hyperloglog" class="section level1">
+<h1>Genomic sketching with HyperLogLog</h1>
+<p>Daniel N. Baker, <strong>Ben Langmead.</strong></p>
+</div>
+<div id="centroflyeassembling-centromeres-with-long-error-prone-reads" class="section level1">
+<h1>centroFlye—Assembling centromeres with long error-prone reads</h1>
+<p><strong>Andrey Bzikadze</strong>, Pavel A. Pevzner.</p>
+</div>
+<div id="genotyping-structural-variants-in-pangenome-graphs-using-the-vg-toolkit" class="section level1">
+<h1>Genotyping structural variants in pangenome graphs using the vg toolkit</h1>
+<p><strong>Jean Monlong</strong>, Glenn Hickey, David Heller, Jonas Andreas Sibbesen, Jouni Siren, Jordan Eizenga, Eric T. Dawson, Erik Garrison, Adam Novak, Benedict Paten.</p>
+</div>
+<div id="rapidly-mapping-raw-nanopore-signal-with-uncalled-to-enable-real-time-targeted-sequencing" class="section level1">
+<h1>Rapidly mapping raw nanopore signal with UNCALLED to enable real-time targeted sequencing</h1>
+<p><strong>Sam Kovaka</strong>, Yunfan Fan, Winston Timp, Michael C. Schatz.</p>
+</div>
+<div id="the-construct-and-utility-of-reference-pan-genome-graphs" class="section level1">
+<h1>The construct and utility of reference pan-genome graphs</h1>
+<p><strong>Heng Li.</strong></p>
+</div>
+<div id="princessa-framework-for-comprehensive-detection-andphasing-of-snps-and-structural-variants" class="section level1">
+<h1>PRINCESS—A framework for comprehensive detection andphasing of SNPs and structural variants</h1>
+<p><strong>Medhat Mahmoud</strong>, Winston Timp, Fritz J. Sedlazeck.</p>
+</div>
+<div id="efficient-chromosome-scale-haplotype-resolved-assembly-of-human-individuals" class="section level1">
+<h1>Efficient chromosome-scale haplotype-resolved assembly of human individuals</h1>
+<p><strong>Shilpa Garg</strong>, Arkarachai Fungtammasan, Anthony Schmitt, Andrew
+Carroll, Paul Pelusol, Emily Hatas, Fritz Sedlazeck, Justin Zook, Mike
+Chou, John Aach, Jason Chin, Heng Li, George Church.</p>
+</div>
+<div id="utilization-of-an-ensemble-approach-for-identification-of-driver-fusions-in-pediatric-cancer" class="section level1">
+<h1>Utilization of an ensemble approach for identification of driver fusions in pediatric cancer</h1>
+<p><strong>Stephanine LaHaye</strong>, Kyle Voytovich, James Fitch, Natalie Bir, Sean D. McGrath, Anthony Miller, Amy Wetzel, Vincent Magrini, Catherine E. Cottrell, Elaine R. Mardis, Richard K. Wilson.</p>
 </div>
 
     </div>
@@ -382,9 +420,11 @@ This post is just a slight one-upping of Tommy Tang’s process to easily downsa
   
   <a class="btn btn-primary btn-outline" href="/./tags/bioinformatics/">bioinformatics</a>
   
-  <a class="btn btn-primary btn-outline" href="/./tags/bash/">bash</a>
+  <a class="btn btn-primary btn-outline" href="/./tags/gi2019/">gi2019</a>
   
-  <a class="btn btn-primary btn-outline" href="/./tags/samtools/">samtools</a>
+  <a class="btn btn-primary btn-outline" href="/./tags/conferences/">conferences</a>
+  
+  <a class="btn btn-primary btn-outline" href="/./tags/talk/">talk</a>
   
 </div>
 
@@ -398,15 +438,15 @@ This post is just a slight one-upping of Tommy Tang’s process to easily downsa
       <h3>Related</h3>
       <ul>
         
-        <li><a href="/post/are-you-in-genomics-stop-using-roc-use-pr/">Are you in genomics and building models? Stop using ROC - use PR</a></li>
+        <li><a href="/post/gi2019-day01/">#GI2019 2019 11 06</a></li>
         
-        <li><a href="/post/let-s-plot-4-r-vs-excel/">Let’s Plot 4: R vs Excel, Round 1</a></li>
+        <li><a href="/post/one-developer-portal-genesis/">One Developer Portal: eyeIntegration Genesis</a></li>
         
-        <li><a href="/post/let-s-plot-3-part-2/">Let’s Plot 3: Base pair resolution NGS (exome) coverage plots - Part 2</a></li>
+        <li><a href="/post/one-developer-portal-optimization/">One Developer Portal: eyeIntegration Web Optimization</a></li>
         
-        <li><a href="/post/split-vcf-into-n-pieces-by-coordinate/">Split VCF into n pieces by coordinate</a></li>
+        <li><a href="/post/gi2018-day-four/">#GI2018 - Day Four</a></li>
         
-        <li><a href="/post/let-s-plot-3-part-i/">Let’s Plot 3: Base pair resolution NGS coverage plots (Part I)</a></li>
+        <li><a href="/post/gi2018-day-three/">#GI2018 - Day Three</a></li>
         
       </ul>
     </div>

@@ -1,0 +1,54 @@
+---
+title: "#GI2019 2019 11 07"
+author: David McGaughey
+date: '2019-11-07'
+slug: gi2019-day02
+categories:
+  - bioinformatics
+  - gi2019
+  - conferences
+  - talk
+tags:
+  - bioinformatics
+  - gi2019
+  - conferences
+  - talk
+header:
+  caption: ''
+  image: ''
+output:
+  blogdown::html_page:
+    toc: true
+---
+
+# Day 2 - Session 2
+
+Genome Informatics 2019 at CSHL
+
+**Bold** is the speaker
+
+# Genomic sketching with HyperLogLog
+Daniel N. Baker, **Ben Langmead.**
+
+# centroFlye—Assembling centromeres with long error-prone reads 
+**Andrey Bzikadze**, Pavel A. Pevzner.
+
+# Genotyping structural variants in pangenome graphs using the vg toolkit
+**Jean Monlong**, Glenn Hickey, David Heller, Jonas Andreas Sibbesen, Jouni Siren, Jordan Eizenga, Eric T. Dawson, Erik Garrison, Adam Novak, Benedict Paten.
+
+# Rapidly mapping raw nanopore signal with UNCALLED to enable real-time targeted sequencing
+**Sam Kovaka**, Yunfan Fan, Winston Timp, Michael C. Schatz.
+
+# The construct and utility of reference pan-genome graphs
+**Heng Li.**
+
+# PRINCESS—A framework for comprehensive detection andphasing of SNPs and structural variants
+**Medhat Mahmoud**, Winston Timp, Fritz J. Sedlazeck.  
+
+# Efficient chromosome-scale haplotype-resolved assembly of human individuals
+**Shilpa Garg**, Arkarachai Fungtammasan, Anthony Schmitt, Andrew
+Carroll, Paul Pelusol, Emily Hatas, Fritz Sedlazeck, Justin Zook, Mike
+Chou, John Aach, Jason Chin, Heng Li, George Church.
+
+# Utilization of an ensemble approach for identification of driver fusions in pediatric cancer
+**Stephanine LaHaye**, Kyle Voytovich, James Fitch, Natalie Bir, Sean D. McGrath, Anthony Miller, Amy Wetzel, Vincent Magrini, Catherine E. Cottrell, Elaine R. Mardis, Richard K. Wilson.

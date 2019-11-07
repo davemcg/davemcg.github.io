@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
-    <lastBuildDate>Wed, 06 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 07 Nov 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/./tags/talk/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>#GI2019 2019 11 07</title>
+      <link>/./post/gi2019-day02/</link>
+      <pubDate>Thu, 07 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/gi2019-day02/</guid>
+      <description>Day 2 - Session 2 Genomic sketching with HyperLogLog centroFlye—Assembling centromeres with long error-prone reads Genotyping structural variants in pangenome graphs using the vg toolkit Rapidly mapping raw nanopore signal with UNCALLED to enable real-time targeted sequencing The construct and utility of reference pan-genome graphs PRINCESS—A framework for comprehensive detection andphasing of SNPs and structural variants Efficient chromosome-scale haplotype-resolved assembly of human individuals Utilization of an ensemble approach for identification of driver fusions in pediatric cancer   Day 2 - Session 2 Genome Informatics 2019 at CSHL</description>
+    </item>
     
     <item>
       <title>#GI2019 2019 11 06</title>
@@ -18,16 +27,7 @@
       <pubDate>Wed, 06 Nov 2019 00:00:00 +0000</pubDate>
       
       <guid>/./post/gi2019-day01/</guid>
-      <description>Day 1 Genome Informatica 2019 at CSHL
-Bold is the speaker
-349 attendees. Largest?
-189 posters
-39 (?) talks
-90 countries, 20 (US) states
-High(est) % female, URM for gi
- Night 1 Comparative 3D genome organization in Apicomplexan parasites Evelien M. Bunnik, Aarthi Venkat, Ferhat Ay, Karine G. Le Roch.
-Apicomplexan parasites:
- toxoplasma gondii babesia most prevalent nad morbidity causing pathogens  Try to understand at genomic level</description>
+      <description>Day 1 - Session 1 Comparative 3D genome organization in Apicomplexan parasites Unscrambling the tumor genome via integrated analysis of structural variation and copy number Tissue-specific enhancer functional networks for associating distal regulatory regions to disease Targeted Nanopore sequencing with Cas9 for studies of methylation, structural variants, and mutations Long-read sequencing of structurally variant genomes Exploring the 3D spatial dependency of gene expression using Markov random fields Mapping cis-eQTL from RNA-seq data with no genotypes Exploring short tandem repeat expansions at both known and novel loci in the human genome    Day 1 - Session 1 Genome Informatics 2019 at CSHL</description>
     </item>
     
   </channel>

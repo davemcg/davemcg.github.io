@@ -16,11 +16,14 @@ tags:
 header:
   caption: ''
   image: ''
+output:
+  blogdown::html_page:
+    toc: true
 ---
 
-# Day 1
+# Day 1 - Session 1
 
-Genome Informatica 2019 at CSHL
+Genome Informatics 2019 at CSHL
 
 **Bold** is the speaker
 
@@ -34,7 +37,6 @@ Genome Informatica 2019 at CSHL
 
 High(est) % female, URM for gi
 
-# Night 1
 ## Comparative 3D genome organization in Apicomplexan parasites
 Evelien M. Bunnik, Aarthi Venkat, Ferhat Ay, **Karine G. Le Roch.**
 
@@ -140,7 +142,7 @@ dmcg note:
 
   
 ## Targeted Nanopore sequencing with Cas9 for studies of methylation, structural variants, and mutations
-*Timothy E. Gilpatrick*, Isac Lee, Fritz J. Sedlazek, Winston Timp.
+**Timothy E. Gilpatrick**, Isac Lee, Fritz J. Sedlazek, Winston Timp.
 
 Want to enrich regions for genome
 
@@ -260,7 +262,7 @@ Long reads getting centrome seq of chr8 (t2t consortium)
   
   
 ## Exploring the 3D spatial dependency of gene expression using Markov random fields
-*Naihui Zhou*, Iddo Friedberg, Mark S. Kaiser.
+**Naihui Zhou**, Iddo Friedberg, Mark S. Kaiser.
 
 The quantitative expression of gene regulation could manifest as spatial dependency
 
@@ -299,7 +301,7 @@ https://github.com/ashleyzhou972/PhiMRF
 
 
 ## Mapping cis-eQTL from RNA-seq data with no genotypes
-*Elena Vigorito*, Simon White, Chris Wallace.
+**Elena Vigorito**, Simon White, Chris Wallace.
 
 Can't always get genotypes....so would like eQTL without them....
 
@@ -320,7 +322,7 @@ R package out "soon"
 *only method for eQTL without genotypes*
 
 ## Exploring short tandem repeat expansions at both known and novel loci in the human genome
-*Harriet Dashnow*, Brent Pedersen, Daniel MacArthur, Alicia Oshlack, Aaron Quinlan.
+**Harriet Dashnow**, Brent Pedersen, Daniel MacArthur, Alicia Oshlack, Aaron Quinlan.
 
 @hdashnow (twitter handle! good!)
 
