@@ -301,5 +301,62 @@ https://github.com/ashleyzhou972/PhiMRF
 ## Mapping cis-eQTL from RNA-seq data with no genotypes
 *Elena Vigorito*, Simon White, Chris Wallace.
 
+Can't always get genotypes....so would like eQTL without them....
+
+Impute cis-SNP (G<sub>i</sub>)
+
+negative binomial weighted by probable genotype
+
+work in 500kb window to compute gene - SNP pairings
+
+benchmark against GEUVADIS reference data
+
+  - only chr22 (why? performance?)
+  - better sensitivity and specificity
+  
+  
+R package out "soon"
+
+*only method for eQTL without genotypes*
+
 ## Exploring short tandem repeat expansions at both known and novel loci in the human genome
 *Harriet Dashnow*, Brent Pedersen, Daniel MacArthur, Alicia Oshlack, Aaron Quinlan.
+
+@hdashnow (twitter handle! good!)
+
+STR is 1-6bp repeats. Microsatellites. 
+
+3% of human genome with high mutation rate and high polymorphism
+
+Huntington's, fragile X,  spinocerebellar ataxias
+
+Classically, longer is worse prognosis / higher severity
+
+STR alleles are WAY longer than short reads
+
+Harriet looking for NOVEL (str NOT IN REFERENCE GENOME)
+
+  - not so many methods fornovel (just ExpansionHunter? as of 2 months ago)
+  
+STR reads often mis-mapped
+  
+  - read STR...where does it go???
+  - sends it to just whatever STR or nowhere if really novel
+  
+STRling!
+
+  - https://github.com/quinlan-lab/STRling
+  - use kmers to find STR
+  - if read passes kmer threahold, then is a STR ... then re-map
+  - for longer pairs use linear regression to predict allele size
+  
+Validated acdross 9 (7 worked) disease expansions
+
+Found 5/5 novel expansions in CANVAS disease
+
+Also validation with PacBio
+
+Limitations! (yay! seriously love this)
+
+  - limited to large (>50 bp) STR expansions
+  

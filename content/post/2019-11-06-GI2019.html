@@ -275,9 +275,49 @@ header:
 <div id="mapping-cis-eqtl-from-rna-seq-data-with-no-genotypes" class="section level2">
 <h2>Mapping cis-eQTL from RNA-seq data with no genotypes</h2>
 <p><em>Elena Vigorito</em>, Simon White, Chris Wallace.</p>
+<p>Can’t always get genotypes….so would like eQTL without them….</p>
+<p>Impute cis-SNP (G<sub>i</sub>)</p>
+<p>negative binomial weighted by probable genotype</p>
+<p>work in 500kb window to compute gene - SNP pairings</p>
+<p>benchmark against GEUVADIS reference data</p>
+<ul>
+<li>only chr22 (why? performance?)</li>
+<li>better sensitivity and specificity</li>
+</ul>
+<p>R package out “soon”</p>
+<p><em>only method for eQTL without genotypes</em></p>
 </div>
 <div id="exploring-short-tandem-repeat-expansions-at-both-known-and-novel-loci-in-the-human-genome" class="section level2">
 <h2>Exploring short tandem repeat expansions at both known and novel loci in the human genome</h2>
 <p><em>Harriet Dashnow</em>, Brent Pedersen, Daniel MacArthur, Alicia Oshlack, Aaron Quinlan.</p>
+<p><span class="citation">@hdashnow</span> (twitter handle! good!)</p>
+<p>STR is 1-6bp repeats. Microsatellites.</p>
+<p>3% of human genome with high mutation rate and high polymorphism</p>
+<p>Huntington’s, fragile X, spinocerebellar ataxias</p>
+<p>Classically, longer is worse prognosis / higher severity</p>
+<p>STR alleles are WAY longer than short reads</p>
+<p>Harriet looking for NOVEL (str NOT IN REFERENCE GENOME)</p>
+<ul>
+<li>not so many methods fornovel (just ExpansionHunter? as of 2 months ago)</li>
+</ul>
+<p>STR reads often mis-mapped</p>
+<ul>
+<li>read STR…where does it go???</li>
+<li>sends it to just whatever STR or nowhere if really novel</li>
+</ul>
+<p>STRling!</p>
+<ul>
+<li><a href="https://github.com/quinlan-lab/STRling" class="uri">https://github.com/quinlan-lab/STRling</a></li>
+<li>use kmers to find STR</li>
+<li>if read passes kmer threahold, then is a STR … then re-map</li>
+<li>for longer pairs use linear regression to predict allele size</li>
+</ul>
+<p>Validated acdross 9 (7 worked) disease expansions</p>
+<p>Found 5/5 novel expansions in CANVAS disease</p>
+<p>Also validation with PacBio</p>
+<p>Limitations! (yay! seriously love this)</p>
+<ul>
+<li>limited to large (&gt;50 bp) STR expansions</li>
+</ul>
 </div>
 </div>
