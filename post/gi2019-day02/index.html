@@ -276,7 +276,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    7 min read
+    8 min read
   </span>
   
 
@@ -689,10 +689,85 @@
 <p><strong>Shilpa Garg</strong>, Arkarachai Fungtammasan, Anthony Schmitt, Andrew
 Carroll, Paul Pelusol, Emily Hatas, Fritz Sedlazeck, Justin Zook, Mike
 Chou, John Aach, Jason Chin, Heng Li, George Church.</p>
+<p>Discussing PacBio HiFi tech</p>
+<ul>
+<li>circularize DNA</li>
+<li>15k long</li>
+<li>99% with 5 passes</li>
+</ul>
+<p>Now Hi-C discussion/intro</p>
+<ul>
+<li>wild how common Hi-C is. I guess I’m getting old - in grad school this stuff was just IMPOSSIBLE to do</li>
+</ul>
+<p>now genome assembly discussion</p>
+<ul>
+<li>graph geneeration …. getting longer reads gives you fewer branches on your graph (contiguous assembly)</li>
+</ul>
+<p>PacBio alone not enough for full assembly/phasing</p>
+<ul>
+<li>but can use trios with Koren/Phillipy approach (at least works in goats)
+<ul>
+<li>trio canu</li>
+</ul></li>
+<li>but want full haplotypes <strong>without</strong> trios</li>
+</ul>
+<p>workflow</p>
+<ul>
+<li>PacBio CCS</li>
+<li>make contigs</li>
+<li>use Hi-C to scaffold</li>
+<li>peregrine -&gt; hirrise -&gt; deepvariant -&gt; whatshap + hapcut2 =&gt; whatshap -&gt; peregrine</li>
+<li>walltime: <strong>one day</strong></li>
+</ul>
+<p>benchmark with PGP1, HG002, NA12878</p>
+<ul>
+<li>contig n50, NGA50, phasing hamming error, phasing switch error</li>
+<li>compare against trio canu</li>
+<li>generally better than trio canu across all metrics</li>
+<li>consistent across diff genomes</li>
+</ul>
+<p>checking in HLA region</p>
+<ul>
+<li>can build HLA in two contigs</li>
+</ul>
+<p>Link!</p>
+<ul>
+<li>github.com/shilpagarg/WHdenovo</li>
+</ul>
 </div>
 <div id="utilization-of-an-ensemble-approach-for-identification-of-driver-fusions-in-pediatric-cancer" class="section level1">
 <h1>Utilization of an ensemble approach for identification of driver fusions in pediatric cancer</h1>
 <p><strong>Stephanine LaHaye</strong>, Kyle Voytovich, James Fitch, Natalie Bir, Sean D. McGrath, Anthony Miller, Amy Wetzel, Vincent Magrini, Catherine E. Cottrell, Elaine R. Mardis, Richard K. Wilson.</p>
+<p>Last talk of the session!</p>
+<p>ID fusions in cancer (pediatric)</p>
+<p>Interesting….pediatric cancer have fwer mutations (which I guess makes sense)</p>
+<ul>
+<li>SN Grobner et al Nature 2018</li>
+<li>fusions are helpful to classify cancers</li>
+<li>difficult via RNA-seq</li>
+</ul>
+<p>Used 4 (6?) different callers for an ensembl approach</p>
+<ul>
+<li>oh god a multi venn diagram</li>
+<li>USE AN UpSET plot!!!!</li>
+<li>anyways, not much agreement (but low n is a feature if they are true)</li>
+<li>not clear how they actually <strong>know</strong> most are false positive</li>
+<li>specificity != sensitivity</li>
+</ul>
+<p>LOL Runtimes</p>
+<ul>
+<li>vary from 30 minutes to 75 hours</li>
+<li>dragen the fast one</li>
+</ul>
+<p>Synthetic fusion gene cDNA for benchmarking</p>
+<ul>
+<li>more dilution == harder to detect</li>
+<li>1:50 dilution == OK, 1:250 == not so good</li>
+</ul>
+<p>Running this crazy big complicated pipeline in AWS serveeless config</p>
+<ul>
+<li>looks like they are paying AWS a lot of $</li>
+</ul>
 </div>
 
     </div>

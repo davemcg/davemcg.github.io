@@ -339,5 +339,82 @@ Now real data
 Carroll, Paul Pelusol, Emily Hatas, Fritz Sedlazeck, Justin Zook, Mike
 Chou, John Aach, Jason Chin, Heng Li, George Church.
 
+Discussing PacBio HiFi tech
+
+  - circularize DNA 
+  - 15k long
+  - 99% with 5 passes
+
+Now Hi-C discussion/intro
+
+  - wild how common Hi-C is. I guess I'm getting old - in grad school this stuff was just IMPOSSIBLE to do
+  
+now genome assembly discussion
+
+  - graph geneeration .... getting longer reads gives you fewer branches on your graph (contiguous assembly)
+
+PacBio alone not enough for full assembly/phasing
+  
+  - but can use trios with Koren/Phillipy approach (at least works in goats)
+    - trio canu
+  - but want full haplotypes **without** trios
+  
+workflow
+
+  - PacBio CCS
+  - make contigs
+  - use Hi-C to scaffold 
+  - peregrine -> hirrise -> deepvariant -> whatshap + hapcut2 => whatshap -> peregrine
+  - walltime: **one day**
+  
+benchmark with PGP1, HG002, NA12878
+
+  - contig n50, NGA50, phasing hamming error, phasing switch error
+  - compare against trio canu
+  - generally better than trio canu across all metrics
+  - consistent across diff genomes
+
+checking in HLA region
+
+  - can build HLA in two contigs
+  
+Link!
+
+  - github.com/shilpagarg/WHdenovo
+  
+  
 # Utilization of an ensemble approach for identification of driver fusions in pediatric cancer
 **Stephanine LaHaye**, Kyle Voytovich, James Fitch, Natalie Bir, Sean D. McGrath, Anthony Miller, Amy Wetzel, Vincent Magrini, Catherine E. Cottrell, Elaine R. Mardis, Richard K. Wilson.
+
+Last talk of the session! 
+
+ID fusions in cancer (pediatric)
+
+Interesting....pediatric cancer have fwer mutations (which I guess makes sense)
+
+  - SN Grobner et al Nature 2018
+  - fusions are helpful to classify cancers
+  - difficult via RNA-seq
+
+Used 4 (6?) different callers for an ensembl approach
+
+  - oh god a multi venn diagram
+  - USE AN UpSET plot!!!!
+  - anyways, not much agreement (but low n is a feature if they are true)
+  - not clear how they actually **know** most are false positive
+  - specificity != sensitivity
+  
+LOL Runtimes
+
+  - vary from 30 minutes to 75 hours
+  - dragen the fast one
+
+Synthetic fusion gene cDNA for benchmarking
+
+  - more dilution == harder to detect
+  - 1:50 dilution == OK, 1:250 == not so good
+  
+Running this crazy big complicated pipeline in AWS serveeless config
+
+  - looks like they are paying AWS a lot of $
+  
