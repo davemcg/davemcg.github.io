@@ -20,7 +20,7 @@ header:
 
 Genome Informatica 2019 at CSHL
 
-*Italics* is the speaker
+*Italics Bold* is the speaker
 
 349 attendees. Largest?
 
@@ -34,7 +34,7 @@ High(est) % female, URM for gi
 
 # Night 1
 ## Comparative 3D genome organization in Apicomplexan parasites
-Evelien M. Bunnik, Aarthi Venkat, Ferhat Ay, *Karine G. Le Roch.*
+Evelien M. Bunnik, Aarthi Venkat, Ferhat Ay, **Karine G. Le Roch.**
 
 Apicomplexan parasites:
 
@@ -73,7 +73,31 @@ Did more Hi-C across other parasites, unfortunately had to re-assemble several g
   - which is where many virulence genes are ...
   
 ## Unscrambling the tumor genome via integrated analysis of structural variation and copy number
-*Daniel L. Cameron*, Charles Shale, Jonathan Baber, Anthony T. Papenfuss, Peter Priestly.
+**Daniel L. Cameron**, Charles Shale, Jonathan Baber, Anthony T. Papenfuss, Peter Priestly.
+
+Hartwig has a fully automated oncology report ("no touch")
+
+  - needs to be highly sensitive and specific 
+  - use 110x tumor, 45x germline
+  - SV and CNV calling not ideal
+  
+GRIDSS -> PURPLE -> LINX
+
+SV-> CNV -> Interpretation
+
+https://github.com/PapenfussLab/gridss 
+
+full pipeline: https://github.com/hartwigmedical/gridss-purple-linx
+
+work on phasing SV (cis vs trans vs unknown)
+
+ - only good up to about 300bp
+ - but events are clustered, so works better than you'd expect
+ 
+ Benchmarking (includes GRIDSS)
+ 
+  - https://genomebiology.biomedcentral.com/articles/10.1186/s13059-019-1720-5
+  
 
 ## Tissue-specific enhancer functional networks for associating distal regulatory regions to disease
 *Xi Chen*, Jian Zhou, Chandra L. Theesfeld, Ran Zhang, Aaron K. Wong, Olga G. Troyanskaya.

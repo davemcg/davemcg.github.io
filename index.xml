@@ -17,7 +17,7 @@
       
       <guid>/./post/gi2019-day01/</guid>
       <description>&lt;p&gt;Genome Informatica 2019 at CSHL&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Italics&lt;/em&gt; is the speaker&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Italics Bold&lt;/em&gt; is the speaker&lt;/p&gt;
 &lt;p&gt;349 attendees. Largest?&lt;/p&gt;
 &lt;p&gt;189 posters&lt;/p&gt;
 &lt;p&gt;39 (?) talks&lt;/p&gt;
@@ -27,7 +27,7 @@
 &lt;h1&gt;Night 1&lt;/h1&gt;
 &lt;div id=&#34;comparative-3d-genome-organization-in-apicomplexan-parasites&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Comparative 3D genome organization in Apicomplexan parasites&lt;/h2&gt;
-&lt;p&gt;Evelien M. Bunnik, Aarthi Venkat, Ferhat Ay, &lt;em&gt;Karine G. Le Roch.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Evelien M. Bunnik, Aarthi Venkat, Ferhat Ay, &lt;strong&gt;Karine G. Le Roch.&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Apicomplexan parasites:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;toxoplasma gondii&lt;/li&gt;
@@ -66,7 +66,26 @@
 &lt;/div&gt;
 &lt;div id=&#34;unscrambling-the-tumor-genome-via-integrated-analysis-of-structural-variation-and-copy-number&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Unscrambling the tumor genome via integrated analysis of structural variation and copy number&lt;/h2&gt;
-&lt;p&gt;&lt;em&gt;Daniel L. Cameron&lt;/em&gt;, Charles Shale, Jonathan Baber, Anthony T. Papenfuss, Peter Priestly.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Daniel L. Cameron&lt;/strong&gt;, Charles Shale, Jonathan Baber, Anthony T. Papenfuss, Peter Priestly.&lt;/p&gt;
+&lt;p&gt;Hartwig has a fully automated oncology report (“no touch”)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;needs to be highly sensitive and specific&lt;/li&gt;
+&lt;li&gt;use 110x tumor, 45x germline&lt;/li&gt;
+&lt;li&gt;SV and CNV calling not ideal&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;GRIDSS -&amp;gt; PURPLE -&amp;gt; LINX&lt;/p&gt;
+&lt;p&gt;SV-&amp;gt; CNV -&amp;gt; Interpretation&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/PapenfussLab/gridss&#34; class=&#34;uri&#34;&gt;https://github.com/PapenfussLab/gridss&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;full pipeline: &lt;a href=&#34;https://github.com/hartwigmedical/gridss-purple-linx&#34; class=&#34;uri&#34;&gt;https://github.com/hartwigmedical/gridss-purple-linx&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;work on phasing SV (cis vs trans vs unknown)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;only good up to about 300bp&lt;/li&gt;
+&lt;li&gt;but events are clustered, so works better than you’d expect&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Benchmarking (includes GRIDSS)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://genomebiology.biomedcentral.com/articles/10.1186/s13059-019-1720-5&#34; class=&#34;uri&#34;&gt;https://genomebiology.biomedcentral.com/articles/10.1186/s13059-019-1720-5&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/div&gt;
 &lt;div id=&#34;tissue-specific-enhancer-functional-networks-for-associating-distal-regulatory-regions-to-disease&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Tissue-specific enhancer functional networks for associating distal regulatory regions to disease&lt;/h2&gt;
