@@ -157,6 +157,47 @@ On-target perentage (reads) is about 1-4%
   - most off-target randomly distributed
   - very little off-target cutting
   
+5% error rate!
+
+  - homopolymers sucks
+  - guppy v3 does better job at SNV calling
+  
+did downsampling test to check SNV performance
+
+  - tools
+    - mpileup
+    - Nanopolish (Simpson et al. ?)
+    - Medaka (ONT)
+    - Clair (Luo et al.)
+  - can get 95% sesnitivity...doesn't seem to great
+  - Clair gets worse with more coverage (trained on 25X apparently)
+  
+HE IS GOING SO FAST OMG
+  
+More discussion of benchmarking
+  - still in SNV calling
+  
+Now we are talking phasing
+
+  - in TP53 find all true variants, no FP
+
+Suggestion of CNV with phased data, more copies of one allele (60X vs 20X)
+
+Now CpG
+
+  - enriched stuff can still get detectable CpG calls
+
+SV & Repetitive
+
+  - still works
+
+dmcg note:
+  
+  - everything still works (isn't that expected?)
+  - on-target percentage VERY low (1-4% means you are "throwing" **lots** of data away)
+  - and yield is getting hammered...so doubly bad
+  - not doing anything like getting hundreds of genes...which I would think would be really necessary to be useful clinically
+  - size smaller? (length of DNA reads)
   
 
 ## Long-read sequencing of structurally variant genomes

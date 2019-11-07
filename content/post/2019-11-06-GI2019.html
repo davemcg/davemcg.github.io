@@ -147,6 +147,47 @@ header:
 <li>most off-target randomly distributed</li>
 <li>very little off-target cutting</li>
 </ul>
+<p>5% error rate!</p>
+<ul>
+<li>homopolymers sucks</li>
+<li>guppy v3 does better job at SNV calling</li>
+</ul>
+<p>did downsampling test to check SNV performance</p>
+<ul>
+<li>tools
+<ul>
+<li>mpileup</li>
+<li>Nanopolish (Simpson et al. ?)</li>
+<li>Medaka (ONT)</li>
+<li>Clair (Luo et al.)</li>
+</ul></li>
+<li>can get 95% sesnitivity…doesn’t seem to great</li>
+<li>Clair gets worse with more coverage (trained on 25X apparently)</li>
+</ul>
+<p>HE IS GOING SO FAST OMG</p>
+<p>More discussion of benchmarking
+- still in SNV calling</p>
+<p>Now we are talking phasing</p>
+<ul>
+<li>in TP53 find all true variants, no FP</li>
+</ul>
+<p>Suggestion of CNV with phased data, more copies of one allele (60X vs 20X)</p>
+<p>Now CpG</p>
+<ul>
+<li>enriched stuff can still get detectable CpG calls</li>
+</ul>
+<p>SV &amp; Repetitive</p>
+<ul>
+<li>still works</li>
+</ul>
+<p>dmcg note:</p>
+<ul>
+<li>everything still works (isn’t that expected?)</li>
+<li>on-target percentage VERY low (1-4% means you are “throwing” <strong>lots</strong> of data away)</li>
+<li>and yield is getting hammered…so doubly bad</li>
+<li>not doing anything like getting hundreds of genes…which I would think would be really necessary to be useful clinically</li>
+<li>size smaller? (length of DNA reads)</li>
+</ul>
 </div>
 <div id="long-read-sequencing-of-structurally-variant-genomes" class="section level2">
 <h2>Long-read sequencing of structurally variant genomes</h2>
