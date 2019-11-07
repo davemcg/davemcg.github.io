@@ -1,0 +1,94 @@
+---
+title: "#GI2019 2019 11 06"
+author: David McGaughey
+date: '2019-11-06'
+slug: gi2019-day01
+categories:
+  - bioinformatics
+  - gi2019
+  - conferences
+  - talk
+tags:
+  - bioinformatics
+  - gi2019
+  - conferences
+  - talk
+header:
+  caption: ''
+  image: ''
+---
+
+Genome Informatica 2019 at CSHL
+
+*Italics* is the speaker
+
+349 attendees. Largest?
+
+189 posters
+
+39 (?) talks
+
+90 countries, 20 (US) states
+
+High(est) % female, URM for gi
+
+# Night 1
+## Comparative 3D genome organization in Apicomplexan parasites
+Evelien M. Bunnik, Aarthi Venkat, Ferhat Ay, *Karine G. Le Roch.*
+
+Apicomplexan parasites:
+
+  - toxoplasma gondii
+  - babesia
+  - most prevalent nad morbidity causing pathogens
+  
+Try to understand at genomic level
+
+Malaria (plasmodium) genome published 18 years ago
+
+  - 82% AT rich
+  - grab bag of major -omics techniques
+  - still poor understanding of gene regulation
+  - believe under-representation of TFs identified (lower rate than human, yeast)
+  
+Did Hi-C (chrmatin conformation capture)
+
+  - at many stages
+  - 100kb resolution (at least for later work?)
+  - going through their literature of chromosome organization (Ay, Bunnik Genome Research 2014)
+  
+*Virulence* Genes
+
+  - mediates adherence of infected RGC to endothelium of infected RBC
+  - altered chromatin structure at some of these genes
+
+More examples of loops for other pathogenesis processes
+  
+  - see power of doing many stages (stage specific patterning of contact maps)
+  
+Did more Hi-C across other parasites, unfortunately had to re-assemble several genomes 
+
+  - Bunnik PNAS 2019
+  - more expression at genes near (in 3D space) telomore 
+  - which is where many virulence genes are ...
+  
+## Unscrambling the tumor genome via integrated analysis of structural variation and copy number
+*Daniel L. Cameron*, Charles Shale, Jonathan Baber, Anthony T. Papenfuss, Peter Priestly.
+
+## Tissue-specific enhancer functional networks for associating distal regulatory regions to disease
+*Xi Chen*, Jian Zhou, Chandra L. Theesfeld, Ran Zhang, Aaron K. Wong, Olga G. Troyanskaya.
+
+## Targeted Nanopore sequencing with Cas9 for studies of methylation, structural variants, and mutations
+*Timothy E. Gilpatrick*, Isac Lee, Fritz J. Sedlazek, Winston Timp.
+
+## Long-read sequencing of structurally variant genomes
+*Evan E. Eichler.*
+
+## Exploring the 3D spatial dependency of gene expression using Markov random fields
+*Naihui Zhou*, Iddo Friedberg, Mark S. Kaiser.
+
+## Mapping cis-eQTL from RNA-seq data with no genotypes
+*Elena Vigorito*, Simon White, Chris Wallace.
+
+## Exploring short tandem repeat expansions at both known and novel loci in the human genome
+*Harriet Dashnow*, Brent Pedersen, Daniel MacArthur, Alicia Oshlack, Aaron Quinlan.

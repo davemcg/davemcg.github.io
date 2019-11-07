@@ -24,7 +24,7 @@
     <item>
       <title>Bioinformatics</title>
       <link>/./categories/bioinformatics/</link>
-      <pubDate>Mon, 24 Jun 2019 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 06 Nov 2019 00:00:00 +0000</pubDate>
       
       <guid>/./categories/bioinformatics/</guid>
       <description></description>
@@ -40,11 +40,29 @@
     </item>
     
     <item>
+      <title>Conferences</title>
+      <link>/./categories/conferences/</link>
+      <pubDate>Wed, 06 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/./categories/conferences/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>GI2018</title>
       <link>/./categories/gi2018/</link>
       <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>/./categories/gi2018/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Gi2019</title>
+      <link>/./categories/gi2019/</link>
+      <pubDate>Wed, 06 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/./categories/gi2019/</guid>
       <description></description>
     </item>
     
@@ -126,6 +144,15 @@
       <pubDate>Mon, 24 Jun 2019 00:00:00 +0000</pubDate>
       
       <guid>/./categories/shiny/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Talk</title>
+      <link>/./categories/talk/</link>
+      <pubDate>Wed, 06 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/./categories/talk/</guid>
       <description></description>
     </item>
     

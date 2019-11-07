@@ -5,6 +5,15 @@
     
     <url>
     
+      <loc>/./post/gi2019-day01/</loc>
+      <lastmod>2019-11-06T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/./post/one-developer-portal-genesis/</loc>
       <lastmod>2019-06-24T00:00:00+00:00</lastmod>
     </url>
@@ -288,7 +297,7 @@
     <url>
     
       <loc>/./tags/bioinformatics/</loc>
-      <lastmod>2019-06-24T00:00:00+00:00</lastmod>
+      <lastmod>2019-11-06T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -298,7 +307,7 @@
     <url>
     
       <loc>/./categories/bioinformatics/</loc>
-      <lastmod>2019-06-24T00:00:00+00:00</lastmod>
+      <lastmod>2019-11-06T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -349,6 +358,26 @@
     
       <loc>/./tags/conference/</loc>
       <lastmod>2018-09-20T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/./tags/conferences/</loc>
+      <lastmod>2019-11-06T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/./categories/conferences/</loc>
+      <lastmod>2019-11-06T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -429,6 +458,26 @@
     
       <loc>/./tags/ggridgeline/</loc>
       <lastmod>2018-04-12T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/./tags/gi2019/</loc>
+      <lastmod>2019-11-06T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/./categories/gi2019/</loc>
+      <lastmod>2019-11-06T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -719,6 +768,26 @@
     
       <loc>/./tags/</loc>
       <lastmod>2018-04-20T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/./tags/talk/</loc>
+      <lastmod>2019-11-06T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/./categories/talk/</loc>
+      <lastmod>2019-11-06T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     

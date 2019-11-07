@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Conferences on eye Bioinformatician</title>
+    <link>/./tags/conferences/</link>
+    <description>Recent content in Conferences on eye Bioinformatician</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Wed, 06 Nov 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/./tags/conferences/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>#GI2019 2019 11 06</title>
+      <link>/./post/gi2019-day01/</link>
+      <pubDate>Wed, 06 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/gi2019-day01/</guid>
+      <description>Genome Informatica 2019 at CSHL
+Italics is the speaker
+349 attendees. Largest?
+189 posters
+39 (?) talks
+90 countries, 20 (US) states
+High(est) % female, URM for gi
+Night 1 Comparative 3D genome organization in Apicomplexan parasites Evelien M. Bunnik, Aarthi Venkat, Ferhat Ay, Karine G. Le Roch.
+Apicomplexan parasites:
+ toxoplasma gondii babesia most prevalent nad morbidity causing pathogens  Try to understand at genomic level
+Malaria (plasmodium) genome published 18 years ago</description>
+    </item>
+    
+  </channel>
+</rss>
