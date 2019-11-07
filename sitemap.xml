@@ -285,16 +285,6 @@
     
     <url>
     
-      <loc>/./tags/bash/</loc>
-      <lastmod>2018-04-20T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
       <loc>/./categories/bash/</loc>
       <lastmod>2018-04-20T00:00:00+00:00</lastmod>
       <priority>0</priority>
@@ -305,8 +295,8 @@
     
     <url>
     
-      <loc>/./tags/bioinformatics/</loc>
-      <lastmod>2019-11-07T00:00:00+00:00</lastmod>
+      <loc>/./tags/bash/</loc>
+      <lastmod>2018-04-20T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -325,8 +315,8 @@
     
     <url>
     
-      <loc>/./tags/bog18/</loc>
-      <lastmod>2018-05-08T00:00:00+00:00</lastmod>
+      <loc>/./tags/bioinformatics/</loc>
+      <lastmod>2019-11-07T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -336,6 +326,16 @@
     <url>
     
       <loc>/./categories/bog18/</loc>
+      <lastmod>2018-05-08T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/./tags/bog18/</loc>
       <lastmod>2018-05-08T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -375,7 +375,7 @@
     
     <url>
     
-      <loc>/./tags/conferences/</loc>
+      <loc>/./categories/conferences/</loc>
       <lastmod>2019-11-07T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -385,7 +385,7 @@
     
     <url>
     
-      <loc>/./categories/conferences/</loc>
+      <loc>/./tags/conferences/</loc>
       <lastmod>2019-11-07T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -435,7 +435,7 @@
     
     <url>
     
-      <loc>/./tags/gi2018/</loc>
+      <loc>/./categories/gi2018/</loc>
       <lastmod>2018-09-20T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -445,7 +445,7 @@
     
     <url>
     
-      <loc>/./categories/gi2018/</loc>
+      <loc>/./tags/gi2018/</loc>
       <lastmod>2018-09-20T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -475,7 +475,7 @@
     
     <url>
     
-      <loc>/./tags/gi2019/</loc>
+      <loc>/./categories/gi2019/</loc>
       <lastmod>2019-11-07T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -485,7 +485,7 @@
     
     <url>
     
-      <loc>/./categories/gi2019/</loc>
+      <loc>/./tags/gi2019/</loc>
       <lastmod>2019-11-07T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -545,7 +545,7 @@
     
     <url>
     
-      <loc>/./tags/onboarding/</loc>
+      <loc>/./categories/onboarding/</loc>
       <lastmod>2018-07-16T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -555,7 +555,7 @@
     
     <url>
     
-      <loc>/./categories/onboarding/</loc>
+      <loc>/./tags/onboarding/</loc>
       <lastmod>2018-07-16T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -575,7 +575,7 @@
     
     <url>
     
-      <loc>/./tags/pi/</loc>
+      <loc>/./categories/pi/</loc>
       <lastmod>2018-03-03T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -585,7 +585,7 @@
     
     <url>
     
-      <loc>/./categories/pi/</loc>
+      <loc>/./tags/pi/</loc>
       <lastmod>2018-03-03T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -635,7 +635,7 @@
     
     <url>
     
-      <loc>/./tags/python/</loc>
+      <loc>/./categories/python/</loc>
       <lastmod>2018-03-03T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -645,7 +645,7 @@
     
     <url>
     
-      <loc>/./categories/python/</loc>
+      <loc>/./tags/python/</loc>
       <lastmod>2018-03-03T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -665,7 +665,7 @@
     
     <url>
     
-      <loc>/./tags/r/</loc>
+      <loc>/./categories/r/</loc>
       <lastmod>2019-06-24T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -675,7 +675,7 @@
     
     <url>
     
-      <loc>/./categories/r/</loc>
+      <loc>/./tags/r/</loc>
       <lastmod>2019-06-24T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -695,7 +695,7 @@
     
     <url>
     
-      <loc>/./tags/raspberry/</loc>
+      <loc>/./categories/raspberry/</loc>
       <lastmod>2018-03-03T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -705,7 +705,7 @@
     
     <url>
     
-      <loc>/./categories/raspberry/</loc>
+      <loc>/./tags/raspberry/</loc>
       <lastmod>2018-03-03T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -735,16 +735,6 @@
     
     <url>
     
-      <loc>/./tags/script/</loc>
-      <lastmod>2018-02-07T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
       <loc>/./categories/script/</loc>
       <lastmod>2018-02-07T00:00:00+00:00</lastmod>
       <priority>0</priority>
@@ -755,8 +745,8 @@
     
     <url>
     
-      <loc>/./tags/shiny/</loc>
-      <lastmod>2019-06-24T00:00:00+00:00</lastmod>
+      <loc>/./tags/script/</loc>
+      <lastmod>2018-02-07T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -766,6 +756,16 @@
     <url>
     
       <loc>/./categories/shiny/</loc>
+      <lastmod>2019-06-24T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/./tags/shiny/</loc>
       <lastmod>2019-06-24T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -785,7 +785,7 @@
     
     <url>
     
-      <loc>/./tags/talk/</loc>
+      <loc>/./categories/talk/</loc>
       <lastmod>2019-11-07T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -795,7 +795,7 @@
     
     <url>
     
-      <loc>/./categories/talk/</loc>
+      <loc>/./tags/talk/</loc>
       <lastmod>2019-11-07T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>

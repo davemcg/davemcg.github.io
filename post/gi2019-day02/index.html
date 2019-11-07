@@ -17,7 +17,7 @@
       
     
   
-  <meta name="description" content="Day 2 - Session 2 - SEQUENCING ALGORITHMS, VARIANT DISCOVERY AND GENOME ASSEMBLY Genomic sketching with HyperLogLog centroFlye—Assembling centromeres with long error-prone reads Genotyping structural variants in pangenome graphs using the vg toolkit Rapidly mapping raw nanopore signal with UNCALLED to enable real-time targeted sequencing The construct and utility of reference pan-genome graphs PRINCESS—A framework for comprehensive detection andphasing of SNPs and structural variants Efficient chromosome-scale haplotype-resolved assembly of human individuals Utilization of an ensemble approach for identification of driver fusions in pediatric cancer   Day 2 - Session 2 - SEQUENCING ALGORITHMS, VARIANT DISCOVERY AND GENOME ASSEMBLY Genome Informatics 2019 at CSHL">
+  <meta name="description" content="Day 2 - Session 2 - SEQUENCING ALGORITHMS, VARIANT DISCOVERY AND GENOME ASSEMBLY Genomic sketching with HyperLogLog centroFlye—Assembling centromeres with long error-prone reads Genotyping structural variants in pangenome graphs using the vg toolkit Rapidly mapping raw nanopore signal with UNCALLED to enable real-time targeted sequencing The construct and utility of reference pan-genome graphs PRINCESS — A framework for comprehensive detection and phasing of SNPs and structural variants Efficient chromosome-scale haplotype-resolved assembly of human individuals Utilization of an ensemble approach for identification of driver fusions in pediatric cancer   Day 2 - Session 2 - SEQUENCING ALGORITHMS, VARIANT DISCOVERY AND GENOME ASSEMBLY Genome Informatics 2019 at CSHL">
 
   
   <link rel="alternate" hreflang="en-us" href="/./post/gi2019-day02/">
@@ -93,7 +93,7 @@
   <meta property="og:site_name" content="eye Bioinformatician">
   <meta property="og:url" content="/./post/gi2019-day02/">
   <meta property="og:title" content="#GI2019 2019 11 07 | eye Bioinformatician">
-  <meta property="og:description" content="Day 2 - Session 2 - SEQUENCING ALGORITHMS, VARIANT DISCOVERY AND GENOME ASSEMBLY Genomic sketching with HyperLogLog centroFlye—Assembling centromeres with long error-prone reads Genotyping structural variants in pangenome graphs using the vg toolkit Rapidly mapping raw nanopore signal with UNCALLED to enable real-time targeted sequencing The construct and utility of reference pan-genome graphs PRINCESS—A framework for comprehensive detection andphasing of SNPs and structural variants Efficient chromosome-scale haplotype-resolved assembly of human individuals Utilization of an ensemble approach for identification of driver fusions in pediatric cancer   Day 2 - Session 2 - SEQUENCING ALGORITHMS, VARIANT DISCOVERY AND GENOME ASSEMBLY Genome Informatics 2019 at CSHL">
+  <meta property="og:description" content="Day 2 - Session 2 - SEQUENCING ALGORITHMS, VARIANT DISCOVERY AND GENOME ASSEMBLY Genomic sketching with HyperLogLog centroFlye—Assembling centromeres with long error-prone reads Genotyping structural variants in pangenome graphs using the vg toolkit Rapidly mapping raw nanopore signal with UNCALLED to enable real-time targeted sequencing The construct and utility of reference pan-genome graphs PRINCESS — A framework for comprehensive detection and phasing of SNPs and structural variants Efficient chromosome-scale haplotype-resolved assembly of human individuals Utilization of an ensemble approach for identification of driver fusions in pediatric cancer   Day 2 - Session 2 - SEQUENCING ALGORITHMS, VARIANT DISCOVERY AND GENOME ASSEMBLY Genome Informatics 2019 at CSHL">
   <meta property="og:locale" content="en-us">
   
   <meta property="article:published_time" content="2019-11-07T00:00:00&#43;00:00">
@@ -276,7 +276,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    5 min read
+    7 min read
   </span>
   
 
@@ -365,7 +365,7 @@
 <li><a href="#genotyping-structural-variants-in-pangenome-graphs-using-the-vg-toolkit">Genotyping structural variants in pangenome graphs using the vg toolkit</a></li>
 <li><a href="#rapidly-mapping-raw-nanopore-signal-with-uncalled-to-enable-real-time-targeted-sequencing">Rapidly mapping raw nanopore signal with UNCALLED to enable real-time targeted sequencing</a></li>
 <li><a href="#the-construct-and-utility-of-reference-pan-genome-graphs">The construct and utility of reference pan-genome graphs</a></li>
-<li><a href="#princessa-framework-for-comprehensive-detection-andphasing-of-snps-and-structural-variants">PRINCESS—A framework for comprehensive detection andphasing of SNPs and structural variants</a></li>
+<li><a href="#princess-a-framework-for-comprehensive-detection-and-phasing-of-snps-and-structural-variants">PRINCESS — A framework for comprehensive detection and phasing of SNPs and structural variants</a></li>
 <li><a href="#efficient-chromosome-scale-haplotype-resolved-assembly-of-human-individuals">Efficient chromosome-scale haplotype-resolved assembly of human individuals</a></li>
 <li><a href="#utilization-of-an-ensemble-approach-for-identification-of-driver-fusions-in-pediatric-cancer">Utilization of an ensemble approach for identification of driver fusions in pediatric cancer</a></li>
 </ul>
@@ -573,10 +573,116 @@
 <div id="the-construct-and-utility-of-reference-pan-genome-graphs" class="section level1">
 <h1>The construct and utility of reference pan-genome graphs</h1>
 <p><strong>Heng Li.</strong></p>
+<p>pangenome = collection of genomes</p>
+<ul>
+<li>graph (collapse similar seq)</li>
+<li>or</li>
+<li>compressed full-text index</li>
+</ul>
+<p>10 years ago (review with Nils Homer): “alignment against multiple genomes will become increasingly important”</p>
+<p>“hasn’t happened yet”</p>
+<p>vcf doesn’t handle graphs</p>
+<p>GFP format (assembly format)</p>
+<ul>
+<li>davemcg note: looks like a directed(?) acyclic graph</li>
+<li>not good because if you split a segment, the <strong>coordinate changes</strong></li>
+</ul>
+<p>Proposal:</p>
+<ul>
+<li>reference GFA (GFA <strong>with tags that have coord info and version</strong>)</li>
+<li>start with GRCh38, incrementally add other genomes</li>
+<li>blacklist and decoy seq for linear tools</li>
+<li>updates to preserve coords</li>
+</ul>
+<p>Incrementally add new assemblies</p>
+<ul>
+<li>add assembly, make graph</li>
+<li>then add another assembly, make new graph</li>
+</ul>
+<p>Discussion of alignment linear seq to graph…which I don’t quite follow</p>
+<ul>
+<li>but ideal approach too slow</li>
+<li>so approximate with k shortest paths</li>
+</ul>
+<p>minigraph</p>
+<ul>
+<li>based on minimap2</li>
+<li>limitations!
+<ul>
+<li>doesn’t work with dense graphs (too many k paths?)</li>
+</ul></li>
+<li>1.5 hours over 24 CPUs with human graph of 20 haplotypes
+<ul>
+<li>36k bubbles</li>
+<li>94% of GRCh37 is invariable</li>
+</ul></li>
+<li><a href="https://github.com/lh3/minigraph" class="uri">https://github.com/lh3/minigraph</a> (didn’t give link but it’s on his github)</li>
+</ul>
+<p>multi-allelic regions and minisatellites are hard to assemble and genotype</p>
+<p>applications</p>
+<ul>
+<li>blacklist regions (SV, etc)</li>
+</ul>
 </div>
-<div id="princessa-framework-for-comprehensive-detection-andphasing-of-snps-and-structural-variants" class="section level1">
-<h1>PRINCESS—A framework for comprehensive detection andphasing of SNPs and structural variants</h1>
+<div id="princess-a-framework-for-comprehensive-detection-and-phasing-of-snps-and-structural-variants" class="section level1">
+<h1>PRINCESS — A framework for comprehensive detection and phasing of SNPs and structural variants</h1>
 <p><strong>Medhat Mahmoud</strong>, Winston Timp, Fritz J. Sedlazeck.</p>
+<p>Burn. Winston Timp not on the slide.</p>
+<p><span class="citation">@MedhatHelmy7</span></p>
+<p>Points out there are diff tech to detect SNV, SV, Phasing, Methylation</p>
+<p>Would prefer just use one platform</p>
+<ul>
+<li>ONT?</li>
+</ul>
+<p>PRINCESS</p>
+<ul>
+<li><strong>framework</strong> to integrate tools to analyze Long Reads</li>
+<li>mapping: minimap2 and/or NGMLR</li>
+<li>SNVs: Clair (deep NN) - first NN mention?</li>
+<li>SVs: Sniffles</li>
+<li>Phasing: WhatsHap, Princess-subtools</li>
+<li>can also use trio info (SNPs)</li>
+<li>Nanopolish for Methyl C</li>
+<li>outputs….statistics!</li>
+<li>runs on workstation or hpc or cloud</li>
+<li>outputs phase SNV, SV with optional MethylC</li>
+</ul>
+<p>Benchmarking with GiaB HG002</p>
+<ul>
+<li>PacBio CCS, PacBio CLR, ONT</li>
+<li>LOOOOOONG tail for ONT (read length dist)</li>
+<li>remove &lt;500bp in length</li>
+<li>try diff coverage (10x, 25x, 50x, 95x)</li>
+<li>with one tech (70-80% sensitivity, 85-93% precision for SNP)
+<ul>
+<li>PacBio CCS &gt; CLR &gt; ONT</li>
+</ul></li>
+<li>SV calling
+<ul>
+<li>CCS &gt; CLR == ONT (80% sensitivity, 85-95% precision)</li>
+</ul></li>
+<li>Phasing
+<ul>
+<li>Use parental SNPs</li>
+<li>N50 better with ONT (loooong reads)</li>
+<li>but better accuracy with PacBio</li>
+</ul></li>
+</ul>
+<p>Now real data</p>
+<ul>
+<li>Common Disease Genomics</li>
+<li>focus on cardiovascular and … something else missed it</li>
+<li>44k+ short read WGS -&gt; do some with long read -&gt; merge to make comprehensive genome -&gt; which can be used to improve catalogues</li>
+<li>SVcollector (github.com/fritzsedlazeck/SVCollector)</li>
+<li>then Princess (github.com/MeHelmy/princess)</li>
+<li>then Paragraph (github.com/Illumina/paragraph)
+<ul>
+<li>uh, what is paragraph</li>
+<li>from github: &quot; A graph-based structural variant genotyper for short-read sequence data.&quot;</li>
+<li>oh, that makes sense</li>
+<li>so use 44k short reads on graph?</li>
+</ul></li>
+</ul>
 </div>
 <div id="efficient-chromosome-scale-haplotype-resolved-assembly-of-human-individuals" class="section level1">
 <h1>Efficient chromosome-scale haplotype-resolved assembly of human individuals</h1>
