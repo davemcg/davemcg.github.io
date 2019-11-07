@@ -294,7 +294,7 @@ Apicomplexan parasites:
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    4 min read
+    6 min read
   </span>
   
 
@@ -547,10 +547,85 @@ Apicomplexan parasites:
 <div id="long-read-sequencing-of-structurally-variant-genomes" class="section level2">
 <h2>Long-read sequencing of structurally variant genomes</h2>
 <p><em>Evan E. Eichler.</em></p>
+<p>4% duplication</p>
+<p>49% of normal CNV maps to this 4% of genome</p>
+<p>Long reads increase resolution of SV</p>
+<p>SV detection comaprison between Illumina and PacBio (30k with PB, 11k with Illumina)</p>
+<ul>
+<li><strong>70% of SV missed with just Illumina data</strong></li>
+</ul>
+<p>Did SV analysis with LR seq method across diverse human genomes</p>
+<ul>
+<li>found near 100k resolved SV</li>
+<li>exciting to see a plateau of novel SV! (east africa most unique, as expected)</li>
+</ul>
+<p>Improve SV calling with short read data with improved genomes</p>
+<ul>
+<li>can find new eQTL</li>
+</ul>
+<p>Goal: t2t (telomere 2 telomere for chromosome)</p>
+<ul>
+<li>t2t consortium</li>
+</ul>
+<p>Solution:</p>
+<ul>
+<li>HiFi PacBio 99.9% acccurate 18kbp</li>
+<li>ONT gives you ultra long (whale!) reads</li>
+</ul>
+<p>HiFi &amp; Strandseq(?) to build referene-free phased human genomes</p>
+<p>hifi &amp; canu -&gt; saarclust &amp; strandseq -&gt; deepvariant -&gt; whatshap &amp; strandseq -&gt; canu/peregrine</p>
+<p>assemboy -&gt; contigs -&gt; snp calls -&gt; haplotype CCS reads -&gt; assembly</p>
+<p>23 chr (“clusters”)</p>
+<p>95% SNP phase</p>
+<p>N50 = 28 Mbp</p>
+<p>problematic regions</p>
+<ul>
+<li>canu and peregrine fail</li>
+<li>250 in count</li>
+<li>60% are supplemental dups</li>
+<li>18% SV</li>
+<li>23% acrocentric</li>
+</ul>
+<p>solutions</p>
+<ul>
+<li>build graghs around high dup regions of human genome</li>
+<li>“SDA” assembler</li>
+</ul>
+<p>Long reads getting centrome seq of chr8 (t2t consortium)</p>
 </div>
 <div id="exploring-the-3d-spatial-dependency-of-gene-expression-using-markov-random-fields" class="section level2">
 <h2>Exploring the 3D spatial dependency of gene expression using Markov random fields</h2>
 <p><em>Naihui Zhou</em>, Iddo Friedberg, Mark S. Kaiser.</p>
+<p>The quantitative expression of gene regulation could manifest as spatial dependency</p>
+<p>Hypothesis:</p>
+<ul>
+<li>TF factories (clustering of genes for active transcription)</li>
+<li>hub-enhancers (shared enhancers for many genes)</li>
+</ul>
+<p>Propose adding spatial location of genes to improve modeeling of gene-gene variation (which is already modelled in most diff expression analyses, e.g. limma)</p>
+<p>Poisson Hierarchical Markov Random Field Model (PHiMRF)</p>
+<ul>
+<li>uses HiC data to get pairwise gene interactions</li>
+<li>two genes called neighbors if HiC interaction &gt; threshold</li>
+<li>making a <em>spatial gene network</em></li>
+<li>genes are nodes, edges are HiC interaction</li>
+</ul>
+<p>New random variable Y<sub>ik</sub> which follows binomial dist (? missed this)</p>
+<p>Do genes in TAD have spatial dependencies?</p>
+<ul>
+<li>but how to deal with interTAD and intraTAD (within and between)?</li>
+<li>run model with both types of edges</li>
+<li>Yes…more connected than bootstraping tests</li>
+</ul>
+<p>davemcg note: Still waiting to see if/how this improves diff expression?</p>
+<p>Enriched GO terms for most conncted gene groups</p>
+<ul>
+<li>tx by RNA polII</li>
+<li>GPCR signalling</li>
+<li>negative cell proliferation</li>
+</ul>
+<p>R package!
+<a href="https://github.com/ashleyzhou972/PhiMRF" class="uri">https://github.com/ashleyzhou972/PhiMRF</a></p>
 </div>
 <div id="mapping-cis-eqtl-from-rna-seq-data-with-no-genotypes" class="section level2">
 <h2>Mapping cis-eQTL from RNA-seq data with no genotypes</h2>
@@ -589,9 +664,9 @@ Apicomplexan parasites:
       <h3>Related</h3>
       <ul>
         
-        <li><a href="/post/one-developer-portal-optimization/">One Developer Portal: eyeIntegration Web Optimization</a></li>
-        
         <li><a href="/post/one-developer-portal-genesis/">One Developer Portal: eyeIntegration Genesis</a></li>
+        
+        <li><a href="/post/one-developer-portal-optimization/">One Developer Portal: eyeIntegration Web Optimization</a></li>
         
         <li><a href="/post/gi2018-day-four/">#GI2018 - Day Four</a></li>
         

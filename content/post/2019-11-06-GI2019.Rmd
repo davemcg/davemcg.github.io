@@ -203,8 +203,100 @@ dmcg note:
 ## Long-read sequencing of structurally variant genomes
 *Evan E. Eichler.*
 
+4% duplication
+
+49% of normal CNV maps to this 4% of genome
+
+Long reads increase resolution of SV 
+
+SV detection comaprison between Illumina and PacBio (30k with PB, 11k with Illumina)
+
+  - **70% of SV missed with just Illumina data**
+  
+Did SV analysis with LR seq method across diverse human genomes
+  
+  - found near 100k resolved SV
+  - exciting to see a plateau of novel SV! (east africa most unique, as expected)
+
+Improve SV calling with short read data with improved genomes
+
+  - can find new eQTL
+  
+Goal: t2t (telomere 2 telomere for chromosome)
+
+  - t2t consortium
+
+Solution:
+
+  - HiFi PacBio 99.9% acccurate 18kbp
+  - ONT gives you ultra long (whale!) reads
+  
+HiFi & Strandseq(?) to build referene-free phased human genomes
+
+hifi & canu -> saarclust & strandseq -> deepvariant -> whatshap & strandseq -> canu/peregrine
+
+assemboy -> contigs -> snp calls -> haplotype CCS reads -> assembly
+
+23 chr ("clusters")
+
+95% SNP phase
+
+N50 = 28 Mbp
+
+problematic regions
+
+  - canu and peregrine fail
+  - 250 in count
+  - 60% are supplemental dups
+  - 18% SV
+  - 23% acrocentric
+  
+solutions
+
+  - build graghs around high dup regions of human genome
+  - "SDA" assembler
+  
+Long reads getting centrome seq of chr8 (t2t consortium)
+  
+  
 ## Exploring the 3D spatial dependency of gene expression using Markov random fields
 *Naihui Zhou*, Iddo Friedberg, Mark S. Kaiser.
+
+The quantitative expression of gene regulation could manifest as spatial dependency
+
+Hypothesis:
+  
+  - TF factories (clustering of genes for active transcription)
+  - hub-enhancers (shared enhancers for many genes)
+
+Propose adding spatial location of genes to improve modeeling of gene-gene variation (which is already modelled in most diff expression analyses, e.g. limma)
+
+Poisson Hierarchical Markov Random Field Model (PHiMRF)
+
+  - uses HiC data to get pairwise gene interactions
+  - two genes called neighbors if HiC interaction > threshold
+  - making a *spatial gene network*
+  - genes are nodes, edges are HiC interaction
+  
+New random variable Y<sub>ik</sub> which follows binomial dist (? missed this)
+
+Do genes in TAD have spatial dependencies?
+
+  - but how to deal with interTAD and intraTAD (within and between)?
+  - run model with both types of edges
+  - Yes...more connected than bootstraping tests
+  
+davemcg note: Still waiting to see if/how this improves diff expression?
+
+Enriched GO terms for most conncted gene groups
+
+  - tx by RNA polII
+  - GPCR signalling
+  - negative cell proliferation
+  
+R package!
+https://github.com/ashleyzhou972/PhiMRF
+
 
 ## Mapping cis-eQTL from RNA-seq data with no genotypes
 *Elena Vigorito*, Simon White, Chris Wallace.
