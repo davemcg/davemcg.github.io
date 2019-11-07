@@ -21,7 +21,7 @@ output:
     toc: true
 ---
 
-# Day 1 - Session 1
+# Day 1 - Session 1 - GENOME STRUCTURE AND FUNCTION
 
 Genome Informatics 2019 at CSHL
 
