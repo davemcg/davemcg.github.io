@@ -22,7 +22,7 @@ header:
 
 Genome Informatica 2019 at CSHL
 
-*Italics Bold* is the speaker
+**Bold** is the speaker
 
 349 attendees. Largest?
 
@@ -131,11 +131,33 @@ how to see if this sort of works?
 https://fenrir.flatironinstitute.org
 
   - web tool
+  - no preprint or paper?
   
+dmcg note:
+  
+  - seems like you'd really want some en-masse validation. validating a few sites doesn't seem like enough. 
+  - i missed what the input data for these models are (public stuff? Internal stuffs?)
 
-
+  
 ## Targeted Nanopore sequencing with Cas9 for studies of methylation, structural variants, and mutations
 *Timothy E. Gilpatrick*, Isac Lee, Fritz J. Sedlazek, Winston Timp.
+
+Want to enrich regions for genome
+
+
+ROI -> cut out with CRISPR (cas9 on both sides of ROI) -> dA tail -> adapter ligate
+
+ - oh even cutting just once helps with enrichment. cool.
+ - can target 10 sites simulateously (400X+ coverage with MinION)
+ 
+Tried with cancer model
+
+On-target perentage (reads) is about 1-4%
+
+  - most off-target randomly distributed
+  - very little off-target cutting
+  
+  
 
 ## Long-read sequencing of structurally variant genomes
 *Evan E. Eichler.*
