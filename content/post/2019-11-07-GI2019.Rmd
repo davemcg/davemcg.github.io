@@ -173,6 +173,54 @@ hard to work with vcf...representation confusion with equivalent representation 
 # Rapidly mapping raw nanopore signal with UNCALLED to enable real-time targeted sequencing
 **Sam Kovaka**, Yunfan Fan, Winston Timp, Michael C. Schatz.
 
+Don't want unwanted DNA sequence
+
+  - especially for low throughput sequencers (like ONT)
+  - targeted seq techniques not ideal for ONT
+    - length not enough
+    - erase DNA info (methylation, etc.)
+   
+ReadUntil
+
+  - selectively start/stop
+  - davemcg: uh, does this actually work yet?
+    - was announced a year ago or more??
+
+UNCALLED
+
+  - utility for nanopore current alignment to large expanses of DNA
+  - novel streaming algorithm which maps raw nanopore signale in real-time
+  - works with raw nanopore output (electrical signal)
+  - discussing kmer matching to nanopore output
+    - it looks...hard
+  - insane slide discussing algorith/implementation
+    - i am not equipped to summarize
+    
+ReadUntil
+  - enrichment (ejcet a read if it does not map)
+  - depletion (the converse)
+
+Longer reads get more enrichment
+  
+  - saves on seq cost and shorter reads hard to map
+  
+Testing with bacteria
+
+  - 4.5x enrichment of on-target
+  - 0.4x off-target
+  
+Doing a human cancer "panel" for SV
+
+  - 28 genes
+  - overall 3X enrichment
+  - and can assemble the genes with much higher success rate
+  
+Future
+
+  - want to improve yield
+  - is ssDNA "knotting" and blocking ejection?
+  - better API from ONT?
+
 # The construct and utility of reference pan-genome graphs
 **Heng Li.**
 

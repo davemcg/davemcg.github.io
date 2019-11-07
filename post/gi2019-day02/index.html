@@ -276,7 +276,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    4 min read
+    5 min read
   </span>
   
 
@@ -513,6 +513,61 @@
 <div id="rapidly-mapping-raw-nanopore-signal-with-uncalled-to-enable-real-time-targeted-sequencing" class="section level1">
 <h1>Rapidly mapping raw nanopore signal with UNCALLED to enable real-time targeted sequencing</h1>
 <p><strong>Sam Kovaka</strong>, Yunfan Fan, Winston Timp, Michael C. Schatz.</p>
+<p>Don’t want unwanted DNA sequence</p>
+<ul>
+<li>especially for low throughput sequencers (like ONT)</li>
+<li>targeted seq techniques not ideal for ONT
+<ul>
+<li>length not enough</li>
+<li>erase DNA info (methylation, etc.)</li>
+</ul></li>
+</ul>
+<p>ReadUntil</p>
+<ul>
+<li>selectively start/stop</li>
+<li>davemcg: uh, does this actually work yet?
+<ul>
+<li>was announced a year ago or more??</li>
+</ul></li>
+</ul>
+<p>UNCALLED</p>
+<ul>
+<li>utility for nanopore current alignment to large expanses of DNA</li>
+<li>novel streaming algorithm which maps raw nanopore signale in real-time</li>
+<li>works with raw nanopore output (electrical signal)</li>
+<li>discussing kmer matching to nanopore output
+<ul>
+<li>it looks…hard</li>
+</ul></li>
+<li>insane slide discussing algorith/implementation
+<ul>
+<li>i am not equipped to summarize</li>
+</ul></li>
+</ul>
+<p>ReadUntil
+- enrichment (ejcet a read if it does not map)
+- depletion (the converse)</p>
+<p>Longer reads get more enrichment</p>
+<ul>
+<li>saves on seq cost and shorter reads hard to map</li>
+</ul>
+<p>Testing with bacteria</p>
+<ul>
+<li>4.5x enrichment of on-target</li>
+<li>0.4x off-target</li>
+</ul>
+<p>Doing a human cancer “panel” for SV</p>
+<ul>
+<li>28 genes</li>
+<li>overall 3X enrichment</li>
+<li>and can assemble the genes with much higher success rate</li>
+</ul>
+<p>Future</p>
+<ul>
+<li>want to improve yield</li>
+<li>is ssDNA “knotting” and blocking ejection?</li>
+<li>better API from ONT?</li>
+</ul>
 </div>
 <div id="the-construct-and-utility-of-reference-pan-genome-graphs" class="section level1">
 <h1>The construct and utility of reference pan-genome graphs</h1>
@@ -562,9 +617,9 @@ Chou, John Aach, Jason Chin, Heng Li, George Church.</p>
         
         <li><a href="/post/gi2019-day01/">#GI2019 2019 11 06</a></li>
         
-        <li><a href="/post/one-developer-portal-optimization/">One Developer Portal: eyeIntegration Web Optimization</a></li>
-        
         <li><a href="/post/one-developer-portal-genesis/">One Developer Portal: eyeIntegration Genesis</a></li>
+        
+        <li><a href="/post/one-developer-portal-optimization/">One Developer Portal: eyeIntegration Web Optimization</a></li>
         
         <li><a href="/post/gi2018-day-four/">#GI2018 - Day Four</a></li>
         

@@ -172,6 +172,61 @@
 &lt;div id=&#34;rapidly-mapping-raw-nanopore-signal-with-uncalled-to-enable-real-time-targeted-sequencing&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Rapidly mapping raw nanopore signal with UNCALLED to enable real-time targeted sequencing&lt;/h1&gt;
 &lt;p&gt;&lt;strong&gt;Sam Kovaka&lt;/strong&gt;, Yunfan Fan, Winston Timp, Michael C. Schatz.&lt;/p&gt;
+&lt;p&gt;Don’t want unwanted DNA sequence&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;especially for low throughput sequencers (like ONT)&lt;/li&gt;
+&lt;li&gt;targeted seq techniques not ideal for ONT
+&lt;ul&gt;
+&lt;li&gt;length not enough&lt;/li&gt;
+&lt;li&gt;erase DNA info (methylation, etc.)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;ReadUntil&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;selectively start/stop&lt;/li&gt;
+&lt;li&gt;davemcg: uh, does this actually work yet?
+&lt;ul&gt;
+&lt;li&gt;was announced a year ago or more??&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;UNCALLED&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;utility for nanopore current alignment to large expanses of DNA&lt;/li&gt;
+&lt;li&gt;novel streaming algorithm which maps raw nanopore signale in real-time&lt;/li&gt;
+&lt;li&gt;works with raw nanopore output (electrical signal)&lt;/li&gt;
+&lt;li&gt;discussing kmer matching to nanopore output
+&lt;ul&gt;
+&lt;li&gt;it looks…hard&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;insane slide discussing algorith/implementation
+&lt;ul&gt;
+&lt;li&gt;i am not equipped to summarize&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;ReadUntil
+- enrichment (ejcet a read if it does not map)
+- depletion (the converse)&lt;/p&gt;
+&lt;p&gt;Longer reads get more enrichment&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;saves on seq cost and shorter reads hard to map&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Testing with bacteria&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;4.5x enrichment of on-target&lt;/li&gt;
+&lt;li&gt;0.4x off-target&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Doing a human cancer “panel” for SV&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;28 genes&lt;/li&gt;
+&lt;li&gt;overall 3X enrichment&lt;/li&gt;
+&lt;li&gt;and can assemble the genes with much higher success rate&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Future&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;want to improve yield&lt;/li&gt;
+&lt;li&gt;is ssDNA “knotting” and blocking ejection?&lt;/li&gt;
+&lt;li&gt;better API from ONT?&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/div&gt;
 &lt;div id=&#34;the-construct-and-utility-of-reference-pan-genome-graphs&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;The construct and utility of reference pan-genome graphs&lt;/h1&gt;
