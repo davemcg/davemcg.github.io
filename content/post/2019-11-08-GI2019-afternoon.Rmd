@@ -1,0 +1,115 @@
+---
+title: "#GI2019 2019 11 08 Morning Session"
+author: David McGaughey
+date: '2019-11-08'
+slug: gi2019-day03-morning
+categories:
+  - bioinformatics
+  - gi2019
+  - conferences
+  - talk
+tags:
+  - bioinformatics
+  - gi2019
+  - conferences
+  - talk
+header:
+  caption: ''
+  image: ''
+output:
+  blogdown::html_page:
+    toc: true
+---
+
+# Day 3 - Session 8 - EVOLUTION AND PHYLOGENETICS
+
+Genome Informatics 2019 at CSHL
+
+**Bold** is the speaker
+
+**If you dislike/disagree with my notes/sentiment and you are the speaker/PI then contact me. I very much could be mis-understanding some important points.**
+
+# Is pathogen evolution predictable? The role of population genomics
+**William Hanage.**
+
+Is pathogen evolution predictable?
+
+  - Probably not
+  - Cool, talk over, I guess.
+  
+Oh he is still going
+
+"Accessory genome"
+  
+  - three *e. coli* strains only share 39% of the genes
+    - Welsh et al.......2001 (?)
+  - the "mr. potato head" model
+  
+Sample 4k+ pneumococcal genomes from 4 dif places
+  
+  - Corander Nat Eco Evol 2017
+  - found 73 "sequence clusters" based on population (tree?) structure
+  - also 1700+ accessory genes (COGS)
+  
+**Dif strains are correlated when using accessory genes (was effectively R^2 of 0 with full genome)**
+
+Negative Frequency Dependent Selection
+
+  - balancing selection
+  - corrolary are antigens/phage receptors - if too common get ID'ed and wiped out
+
+Pneumococcal Conjugate vaccines (PCVs) as an evolutionary experiment
+
+  - we have good vaccines against *some* strains
+  - 7
+  - but there are 90+ serotypes
+
+Can we predict what types will persist/succeed after vaccination?
+
+
+Sampling (seq.) per/post vaccination
+
+  - 35 strains found
+  - vaccination wiped out the 7 that were covered
+  - uneven "replacement" rate by other strains
+    - not super convinced ... is this just noise?
+    
+Isolates in the same group tend to have the same set of COGS (getting increasingly concerned I don't know what COGS stands for...)
+
+Check for prevalence of COGS pre/post vaccination and sum distance from linear expected. 
+
+  - directional
+  
+Can predict fitness ... and it roughly matches what you'd expect. Not perfect, but the correlation looks real. 
+
+doi.org/10.1101/420315 (<- bioRxiv)
+
+What are the genes?! (<- his formatting)
+
+  - aaaah, he didn't say.
+  - tease
+  
+
+# Learning the properties of adaptive regions with functional data analysis
+**Mehreen R. Mughal**, Hillary Koch, Jinguo Huang, Francesca Chiaromonte, Michael DeGiorgio.
+
+# Creating pan-human and population-specific consensus representations of the reference genome and assessing their
+effect on functional genomic data analysis
+**Benjamin Kaminow**, Sara Ballouz, Jesse Gillis, Alex Dobin.
+
+# Gramene subsites—Pangenome browsers for crops
+Marcela K. Tello-Ruiz, Sharon Wei, Joshua Stein, Kapeel Chougule, **Andrew Olson**, Yinping Jiao, Bo Wang, Ivar Meijs, Doreen Ware.
+
+# 
+**Janet Kelso.**
+
+# What do we gain when tolerating loss? The information bottleneck, lossy compression, and detecting horizontal gene transfer
+**Apurva Narechania**, Rob Desalle, Barun Mathema, Barry Kreiswirth,
+Paul Planet.
+
+# A recurrent neural network for inferring sweeps and allele frequency trajectories using gene trees based on the ancestral recombination graph
+**Hussein A**. Hejase, Ziyi Mo, Adam Siepel.
+
+# Assembling the Y chromosomes of anopheles mosquitoes
+**Chujia Chen**, Austin Compton, Yang Wu, Jiangtao Liang, Dustin Miller, Xiaoguang Chen, Igor Sharakhov, Chunhong Mao, Zhijian J. Tu.
+

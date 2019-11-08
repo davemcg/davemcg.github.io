@@ -18,6 +18,123 @@
       <guid>/./post/gi2019-day03-morning/</guid>
       <description>&lt;div id=&#34;TOC&#34;&gt;
 &lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#day-3---session-8---evolution-and-phylogenetics&#34;&gt;Day 3 - Session 8 - EVOLUTION AND PHYLOGENETICS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#is-pathogen-evolution-predictable-the-role-of-population-genomics&#34;&gt;Is pathogen evolution predictable? The role of population genomics&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#learning-the-properties-of-adaptive-regions-with-functional-data-analysis&#34;&gt;Learning the properties of adaptive regions with functional data analysis&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#creating-pan-human-and-population-specific-consensus-representations-of-the-reference-genome-and-assessing-their&#34;&gt;Creating pan-human and population-specific consensus representations of the reference genome and assessing their&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#gramene-subsitespangenome-browsers-for-crops&#34;&gt;Gramene subsites—Pangenome browsers for crops&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#section&#34;&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#what-do-we-gain-when-tolerating-loss-the-information-bottleneck-lossy-compression-and-detecting-horizontal-gene-transfer&#34;&gt;What do we gain when tolerating loss? The information bottleneck, lossy compression, and detecting horizontal gene transfer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#a-recurrent-neural-network-for-inferring-sweeps-and-allele-frequency-trajectories-using-gene-trees-based-on-the-ancestral-recombination-graph&#34;&gt;A recurrent neural network for inferring sweeps and allele frequency trajectories using gene trees based on the ancestral recombination graph&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#assembling-the-y-chromosomes-of-anopheles-mosquitoes&#34;&gt;Assembling the Y chromosomes of anopheles mosquitoes&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;day-3---session-8---evolution-and-phylogenetics&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Day 3 - Session 8 - EVOLUTION AND PHYLOGENETICS&lt;/h1&gt;
+&lt;p&gt;Genome Informatics 2019 at CSHL&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Bold&lt;/strong&gt; is the speaker&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;If you dislike/disagree with my notes/sentiment and you are the speaker/PI then contact me. I very much could be mis-understanding some important points.&lt;/strong&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;is-pathogen-evolution-predictable-the-role-of-population-genomics&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Is pathogen evolution predictable? The role of population genomics&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;William Hanage.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Is pathogen evolution predictable?&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Probably not&lt;/li&gt;
+&lt;li&gt;Cool, talk over, I guess.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Oh he is still going&lt;/p&gt;
+&lt;p&gt;“Accessory genome”&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;three &lt;em&gt;e. coli&lt;/em&gt; strains only share 39% of the genes
+&lt;ul&gt;
+&lt;li&gt;Welsh et al…….2001 (?)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;the “mr. potato head” model&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Sample 4k+ pneumococcal genomes from 4 dif places&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Corander Nat Eco Evol 2017&lt;/li&gt;
+&lt;li&gt;found 73 “sequence clusters” based on population (tree?) structure&lt;/li&gt;
+&lt;li&gt;also 1700+ accessory genes (COGS)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Dif strains are correlated when using accessory genes (was effectively R^2 of 0 with full genome)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Negative Frequency Dependent Selection&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;balancing selection&lt;/li&gt;
+&lt;li&gt;corrolary are antigens/phage receptors - if too common get ID’ed and wiped out&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Pneumococcal Conjugate vaccines (PCVs) as an evolutionary experiment&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;we have good vaccines against &lt;em&gt;some&lt;/em&gt; strains&lt;/li&gt;
+&lt;li&gt;7&lt;/li&gt;
+&lt;li&gt;but there are 90+ serotypes&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Can we predict what types will persist/succeed after vaccination?&lt;/p&gt;
+&lt;p&gt;Sampling (seq.) per/post vaccination&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;35 strains found&lt;/li&gt;
+&lt;li&gt;vaccination wiped out the 7 that were covered&lt;/li&gt;
+&lt;li&gt;uneven “replacement” rate by other strains
+&lt;ul&gt;
+&lt;li&gt;not super convinced … is this just noise?&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Isolates in the same group tend to have the same set of COGS (getting increasingly concerned I don’t know what COGS stands for…)&lt;/p&gt;
+&lt;p&gt;Check for prevalence of COGS pre/post vaccination and sum distance from linear expected.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;directional&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Can predict fitness … and it roughly matches what you’d expect. Not perfect, but the correlation looks real.&lt;/p&gt;
+&lt;p&gt;doi.org/10.1101/420315 (&amp;lt;- bioRxiv)&lt;/p&gt;
+&lt;p&gt;What are the genes?! (&amp;lt;- his formatting)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;aaaah, he didn’t say.&lt;/li&gt;
+&lt;li&gt;tease&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;learning-the-properties-of-adaptive-regions-with-functional-data-analysis&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Learning the properties of adaptive regions with functional data analysis&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;Mehreen R. Mughal&lt;/strong&gt;, Hillary Koch, Jinguo Huang, Francesca Chiaromonte, Michael DeGiorgio.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;creating-pan-human-and-population-specific-consensus-representations-of-the-reference-genome-and-assessing-their&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Creating pan-human and population-specific consensus representations of the reference genome and assessing their&lt;/h1&gt;
+&lt;p&gt;effect on functional genomic data analysis
+&lt;strong&gt;Benjamin Kaminow&lt;/strong&gt;, Sara Ballouz, Jesse Gillis, Alex Dobin.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;gramene-subsitespangenome-browsers-for-crops&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Gramene subsites—Pangenome browsers for crops&lt;/h1&gt;
+&lt;p&gt;Marcela K. Tello-Ruiz, Sharon Wei, Joshua Stein, Kapeel Chougule, &lt;strong&gt;Andrew Olson&lt;/strong&gt;, Yinping Jiao, Bo Wang, Ivar Meijs, Doreen Ware.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;section&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;Janet Kelso.&lt;/strong&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;what-do-we-gain-when-tolerating-loss-the-information-bottleneck-lossy-compression-and-detecting-horizontal-gene-transfer&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;What do we gain when tolerating loss? The information bottleneck, lossy compression, and detecting horizontal gene transfer&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;Apurva Narechania&lt;/strong&gt;, Rob Desalle, Barun Mathema, Barry Kreiswirth,
+Paul Planet.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;a-recurrent-neural-network-for-inferring-sweeps-and-allele-frequency-trajectories-using-gene-trees-based-on-the-ancestral-recombination-graph&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;A recurrent neural network for inferring sweeps and allele frequency trajectories using gene trees based on the ancestral recombination graph&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;Hussein A&lt;/strong&gt;. Hejase, Ziyi Mo, Adam Siepel.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;assembling-the-y-chromosomes-of-anopheles-mosquitoes&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Assembling the Y chromosomes of anopheles mosquitoes&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;Chujia Chen&lt;/strong&gt;, Austin Compton, Yang Wu, Jiangtao Liang, Dustin Miller, Xiaoguang Chen, Igor Sharakhov, Chunhong Mao, Zhijian J. Tu.&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>#GI2019 2019 11 08 Morning Session</title>
+      <link>/./post/gi2019-day03-morning/</link>
+      <pubDate>Fri, 08 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/gi2019-day03-morning/</guid>
+      <description>&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#day-3---session-7---microbial-and-metagenomics&#34;&gt;Day 3 - Session 7 - MICROBIAL AND METAGENOMICS&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#strain-level-metagenomic-assignment-and-compositional-estimation-for-long-reads-with-metamaps&#34;&gt;Strain-level metagenomic assignment and compositional estimation for long reads with MetaMaps&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#metaflyescalable-long-read-metagenome-assembly-using-repeat-graphs&#34;&gt;metaFlye—Scalable long-read metagenome assembly using repeat graphs&lt;/a&gt;&lt;/li&gt;
@@ -4847,354 +4964,6 @@ enhancer == H3k27ac and H3k4me1&lt;/p&gt;
 &lt;li&gt;some promoter &amp;lt;-&amp;gt; enhancer (&lt;strong&gt;10-20% by my eyeball&lt;/strong&gt;)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Let&#39;s Plot 6: Simple guide to heatmaps with ComplexHeatmaps</title>
-      <link>/./post/simple-heatmaps-with-complexheatmaps/</link>
-      <pubDate>Mon, 07 May 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/./post/simple-heatmaps-with-complexheatmaps/</guid>
-      <description>&lt;div id=&#34;TOC&#34;&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#introduction&#34;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#data-processing&#34;&gt;Data processing&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#load-data&#34;&gt;Load data&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#peek-at-expression&#34;&gt;Peek at expression&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#peek-at-metadata&#34;&gt;Peek at metadata&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#brief-outline-on-how-the-rna-seq-data-was-processed-before-we-see-it&#34;&gt;Brief outline on how the RNA-seq data was processed before we see it&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#load-libraries&#34;&gt;Load libraries&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#create-a-sample---sample-distance-heatmap&#34;&gt;Create a Sample - Sample distance heatmap&lt;/a&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#easy-heatmap-with-complexheatmap&#34;&gt;Easy heatmap with ComplexHeatmap&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#complex-heatmap&#34;&gt;Complex heatmap&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#finished-heatmap&#34;&gt;Finished heatmap&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#gene-heatmaps&#34;&gt;Gene Heatmaps&lt;/a&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#a-bit-simpler&#34;&gt;A bit simpler&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#session-info&#34;&gt;Session Info&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-
-&lt;div id=&#34;introduction&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Introduction&lt;/h2&gt;
-&lt;p&gt;Heatmaps are a core competency for a bioinformatician. They are a compact way to visually demonstrate relationships and changes in values across conditions.&lt;/p&gt;
-&lt;p&gt;We are going to use RNA-seq data to make two kinds of common heatmaps:&lt;/p&gt;
-&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
-&lt;li&gt;Sample - Sample relationships&lt;/li&gt;
-&lt;li&gt;Gene expression changes across samples for a subset of genes&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/div&gt;
-&lt;div id=&#34;data-processing&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Data processing&lt;/h2&gt;
-&lt;p&gt;The two Rdata datasets we are going to use can be found here:&lt;/p&gt;
-&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/davemcg/Let_us_plot/blob/master/006_heatmaps/expression.Rdata&#34;&gt;Expression data&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/davemcg/Let_us_plot/blob/master/006_heatmaps/metadata.Rdata&#34;&gt;Metadata&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/div&gt;
-&lt;div id=&#34;load-data&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Load data&lt;/h2&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;load(&amp;#39;~/git/Let_us_plot/006_heatmaps/expression.Rdata&amp;#39;)
-load(&amp;#39;~/git/Let_us_plot/006_heatmaps/metadata.Rdata&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;peek-at-expression&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Peek at expression&lt;/h2&gt;
-&lt;p&gt;Rows are genes, columns are samples. Notice how the &lt;em&gt;numeric&lt;/em&gt; sample names got X appended to the beginning. This is because R variable names cannot start with a number. Generally R will ‘fix’ your sample names during a &lt;em&gt;base&lt;/em&gt; R handling.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;head(expression)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##     Gene       X10       X11       X16       X17       X18        X2
-## 1  ABCA1 13.973778 12.244265 12.628729 13.182851 11.383009 12.333361
-## 2 ABCA10 10.883834  8.813957 11.247787  9.870685  8.059123  9.346461
-## 3 ABCA13  9.171412  7.629223  7.490137  8.134116  8.261363  6.430140
-## 4  ABCA2 11.338420 14.976849 13.679589 12.014997 16.011478 13.439011
-## 5  ABCA4  8.773803 11.641017 11.293125  8.072241 12.393982 10.126994
-## 6  ABCA6  9.420007  6.285309  7.527962  8.659904  5.957441  6.535751
-##          X3        X4        X9      var
-## 1 13.483913 11.377315 10.976546 1.056482
-## 2 11.245402  8.585732  9.479805 1.387638
-## 3  9.955795  7.499681  7.084981 1.152503
-## 4 12.259725 16.007328 15.390794 3.168466
-## 5 10.126629 11.505725 11.344527 2.040986
-## 6  9.950779  5.658777  6.439992 2.526444&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# check number of rows (genes) and column (samples)
-dim(expression)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 2191   11&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;peek-at-metadata&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Peek at metadata&lt;/h2&gt;
-&lt;p&gt;Sample names with the serum conditions (Human Serum or Heat Inactivated HS) as well as the time the cells spend in the serum&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;metadata&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##   sample serum treatment_hours
-## 1      2    HS              24
-## 2      3    HS              48
-## 3      4  HIHS              48
-## 4      9    HS              24
-## 5     10    HS              48
-## 6     11  HIHS              48
-## 7     16    HS              24
-## 8     17    HS              48
-## 9     18  HIHS              48&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;brief-outline-on-how-the-rna-seq-data-was-processed-before-we-see-it&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Brief outline on how the RNA-seq data was processed before we see it&lt;/h2&gt;
-&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
-&lt;li&gt;&lt;a href=&#34;http://salmon.readthedocs.io&#34;&gt;Salmon&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://bioconductor.org/packages/release/bioc/html/tximport.html&#34;&gt;tximport&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://bioconductor.org/packages/release/bioc/html/DESeq2.html&#34;&gt;DESeq2&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.bioconductor.org/packages//2.10/bioc/vignettes/DESeq/inst/doc/vst.pdf&#34;&gt;variance stabilizing transformation&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Filter genes to only retain high variance genes (often not necessary, but used to reduce the amount of data I share)&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/div&gt;
-&lt;div id=&#34;load-libraries&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Load libraries&lt;/h2&gt;
-&lt;p&gt;I’ve rapidly become a fan of &lt;a href=&#34;https://www.bioconductor.org/packages/release/bioc/html/ComplexHeatmap.html&#34;&gt;ComplexHeatmap&lt;/a&gt;. It is capaable of creating just about anything &lt;strong&gt;and&lt;/strong&gt; has excellent documentation and examples.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ── Attaching packages ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ✔ ggplot2 3.0.0     ✔ purrr   0.2.4
-## ✔ tibble  1.4.2     ✔ dplyr   0.7.6
-## ✔ tidyr   0.8.1     ✔ stringr 1.3.1
-## ✔ readr   1.1.1     ✔ forcats 0.3.0&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ── Conflicts ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
-## ✖ dplyr::filter() masks stats::filter()
-## ✖ dplyr::lag()    masks stats::lag()&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ComplexHeatmap)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Loading required package: grid&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ========================================
-## ComplexHeatmap version 1.18.0
-## Bioconductor page: http://bioconductor.org/packages/ComplexHeatmap/
-## Github page: https://github.com/jokergoo/ComplexHeatmap
-## Documentation: http://bioconductor.org/packages/ComplexHeatmap/
-## 
-## If you use it in published research, please cite:
-## Gu, Z. Complex heatmaps reveal patterns and correlations in multidimensional 
-##   genomic data. Bioinformatics 2016.
-## ========================================&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(viridis)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Loading required package: viridisLite&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;create-a-sample---sample-distance-heatmap&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Create a Sample - Sample distance heatmap&lt;/h2&gt;
-&lt;p&gt;An powerful way to see sample to sample relationships is to use the expression data to arrange the samples. The distance between each sample can be calculated by taking the &lt;a href=&#34;https://en.wikipedia.org/wiki/Euclidean_distance&#34;&gt;euclidean distance&lt;/a&gt; between each sample. This reduces the space from a n x m matrix of values to a single number for each sample pair.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;expression_dists &amp;lt;- expression %&amp;gt;% 
-  # drop the Gene and variance column
-  select(-Gene, -var) %&amp;gt;% 
-  # flip axes as the dist() function does all of row-row relationships
-  # we want samples as the rows....
-  t() %&amp;gt;% 
-  # this actually calculates the euclidean distance (other types of distance are possible - read the docs with ?dist)
-  dist() %&amp;gt;% 
-  # coerce to matrix, then data frame
-  as.matrix() %&amp;gt;% data.frame() 
-
-# now a 9 x 9 data frame
-expression_dists %&amp;gt;% dim()&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 9 9&lt;/code&gt;&lt;/pre&gt;
-&lt;div id=&#34;easy-heatmap-with-complexheatmap&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;Easy heatmap with ComplexHeatmap&lt;/h3&gt;
-&lt;p&gt;I have a few problems with this plot:&lt;/p&gt;
-&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
-&lt;li&gt;Red / blue is more for distinguishing over / under in my opinion - we are talking about close to far&lt;/li&gt;
-&lt;li&gt;Don’t really need to see key for the colors. Distance is unit-less.&lt;/li&gt;
-&lt;li&gt;We can’t map between sample name and the metadata&lt;/li&gt;
-&lt;/ol&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;Heatmap(expression_dists)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/././post/2018-05-07-simple-heatmaps-with-complexheatmaps_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;complex-heatmap&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;Complex heatmap&lt;/h3&gt;
-&lt;p&gt;The metadata needs some extensive reworking to make it work with the sample distance data for the heatmap&lt;/p&gt;
-&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
-&lt;li&gt;&lt;code&gt;mutate&lt;/code&gt; the sample to add the ‘X’ to match the dist data column names&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;filter&lt;/code&gt; to only keep metadata samples that are in the distance data (very common to have metadata for &lt;em&gt;all&lt;/em&gt; samples)&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;select&lt;/code&gt; to grab the relevant columns (also common to have many extra columns that aren’t used)&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;mutate&lt;/code&gt; again to coerce the sample order in the metadata to match the sample order in the distance data&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;arrange&lt;/code&gt; to use the order set above for the metadata (try erasing this and see what happens….)&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;unique&lt;/code&gt; to remove duplicated rows&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;After that the HeatmapAnnotation take the &lt;code&gt;Time&lt;/code&gt; and &lt;code&gt;Serum&lt;/code&gt; as a data.frame and I am manually setting the colors by grabbing colors from the magma scheme from viridis.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;metadata_heatmap &amp;lt;- metadata  %&amp;gt;% 
-  mutate(sample = paste0(&amp;#39;X&amp;#39;, sample)) %&amp;gt;% 
-  filter(sample %in% colnames(expression_dists)) %&amp;gt;% 
-  dplyr::select(sample, treatment_hours, serum) %&amp;gt;% 
-  mutate(sample=factor(sample, levels=colnames(expression_dists))) %&amp;gt;% 
-  arrange(sample) %&amp;gt;% 
-  unique() 
-
-ha_column = HeatmapAnnotation(df = data.frame(Time = metadata_heatmap$treatment_hours,
-                                              Serum = metadata_heatmap$serum), 
-                              col = list(Serum = c(&amp;quot;HS&amp;quot; =  magma(20)[5], &amp;quot;HIHS&amp;quot; = magma(20)[7]),
-                                         Time = c(&amp;quot;24&amp;quot; = magma(20)[12], &amp;quot;48&amp;quot; = magma(20)[18])))
-
-
-Heatmap(expression_dists, 
-        col=viridis(100),
-        name = &amp;#39;Sample\nDistances&amp;#39;,
-        top_annotation = ha_column)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/././post/2018-05-07-simple-heatmaps-with-complexheatmaps_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;finished-heatmap&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;Finished heatmap&lt;/h3&gt;
-&lt;p&gt;Now I am going to drop the ‘X’ from the sample names and remove the Sample Distances key&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# substitute &amp;#39;&amp;#39; (nothing) for &amp;#39;X&amp;#39; for the column and row names
-colnames(expression_dists) &amp;lt;- gsub(&amp;#39;X&amp;#39;,&amp;#39;&amp;#39;,colnames(expression_dists))
-rownames(expression_dists) &amp;lt;- gsub(&amp;#39;X&amp;#39;,&amp;#39;&amp;#39;,rownames(expression_dists))
-Heatmap(expression_dists, 
-        col=viridis(100),
-        show_heatmap_legend = F,
-        top_annotation = ha_column)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/././post/2018-05-07-simple-heatmaps-with-complexheatmaps_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;gene-heatmaps&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Gene Heatmaps&lt;/h2&gt;
-&lt;p&gt;The next common type of heatmap is to show how a set of genes changes expression between conditions&lt;/p&gt;
-&lt;p&gt;We will look at a small set of genes and see how their expression changes when put in Heat Inactivated Human Serum (HIHS) or Human Serum (HS), only at the 48 hour time point.&lt;/p&gt;
-&lt;p&gt;First, make gene_set, HS, and HIHS sample vectors&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gene_set &amp;lt;- c(&amp;#39;EP300&amp;#39;,&amp;#39;ABCA4&amp;#39;,&amp;#39;CLCN6&amp;#39;,&amp;#39;CRX&amp;#39;,&amp;#39;HIST1H1T&amp;#39;,&amp;#39;IGSF9&amp;#39;,&amp;#39;SLC16A7&amp;#39;,&amp;#39;MYO5C&amp;#39;,&amp;#39;NEURL3&amp;#39;)
-
-HS_samples &amp;lt;- metadata %&amp;gt;% filter(serum==&amp;#39;HS&amp;#39;, treatment_hours==48) %&amp;gt;% pull(sample) %&amp;gt;% unique() %&amp;gt;% paste0(&amp;#39;X&amp;#39;,.)
-HIHS_samples &amp;lt;- metadata %&amp;gt;% filter(serum==&amp;#39;HIHS&amp;#39;, treatment_hours==48) %&amp;gt;% pull(sample) %&amp;gt;% unique() %&amp;gt;% paste0(&amp;#39;X&amp;#39;,.)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Now calculate the change in expression across the HIHS &amp;lt;-&amp;gt; HS comparison and prep the metadata&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gene_set = expression %&amp;gt;% filter(Gene %in% gene_set) %&amp;gt;% select(-var)
-
-# HIHS is the &amp;#39;reference&amp;#39;
-# we&amp;#39;ll look at how expression changes with you use HS
-row_mean_HIHS = gene_set[,HIHS_samples] %&amp;gt;% rowMeans()
-
-# now subtract the mean HIHS expression from each row,
-# and only keep HS samples for the plot
-heatmap_expression = gene_set[,HS_samples] - row_mean_HIHS
-# add Gene back as rownames
-row.names(heatmap_expression) &amp;lt;- gene_set$Gene
-# prep metadata as above
-metadata_heatmap &amp;lt;- metadata  %&amp;gt;% 
-  mutate(sample = paste0(&amp;#39;X&amp;#39;, sample)) %&amp;gt;% 
-  filter(sample %in% colnames(heatmap_expression)) %&amp;gt;% 
-  dplyr::select(sample, treatment_hours, serum) %&amp;gt;% 
-  mutate(sample=factor(sample, levels=colnames(heatmap_expression))) %&amp;gt;% 
-  arrange(sample) %&amp;gt;% 
-  unique() &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;The clustering of the rows is &lt;em&gt;really&lt;/em&gt; useful to quickly see what sets of genes are moving in the same direction&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ha_column = HeatmapAnnotation(df = data.frame(Time = metadata_heatmap$treatment_hours,
-                                              Serum = metadata_heatmap$serum), 
-                              col = list(Serum = c(&amp;quot;HS&amp;quot; =  magma(20)[5], &amp;quot;HIHS&amp;quot; = magma(20)[7]),
-                                         Time = c(&amp;quot;24&amp;quot; = magma(20)[12], &amp;quot;48&amp;quot; = magma(20)[18])))
-
-# Drop the X in sample names
-colnames(heatmap_expression) &amp;lt;- gsub(&amp;#39;X&amp;#39;,&amp;#39;&amp;#39;,colnames(heatmap_expression))
-Heatmap(heatmap_expression, 
-        cluster_columns = FALSE,
-        name = &amp;#39;log2(Fold\nChange)&amp;#39;, 
-        top_annotation = ha_column)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/././post/2018-05-07-simple-heatmaps-with-complexheatmaps_files/figure-html/unnamed-chunk-11-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;div id=&#34;a-bit-simpler&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;A bit simpler&lt;/h3&gt;
-&lt;p&gt;You may think the annotations are superfluous, as they are all the same. If you are making just one, I would agree. Usually I am making a bunch of plots and I’d rather keep the annotations attached so I don’t get confused later.&lt;/p&gt;
-&lt;p&gt;It is easy enough to drop them.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;Heatmap(heatmap_expression, 
-        cluster_columns = FALSE,
-        name = &amp;#39;log2(Fold\nChange)&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/././post/2018-05-07-simple-heatmaps-with-complexheatmaps_files/figure-html/unnamed-chunk-12-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;session-info&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Session Info&lt;/h2&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;devtools::session_info()&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Session info -------------------------------------------------------------&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##  setting  value                       
-##  version  R version 3.5.0 (2018-04-23)
-##  system   x86_64, darwin15.6.0        
-##  ui       X11                         
-##  language (EN)                        
-##  collate  en_US.UTF-8                 
-##  tz       America/New_York            
-##  date     2018-07-16&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Packages -----------------------------------------------------------------&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##  package        * version date       source                           
-##  assertthat       0.2.0   2017-04-11 CRAN (R 3.5.0)                   
-##  backports        1.1.2   2017-12-13 CRAN (R 3.5.0)                   
-##  base           * 3.5.0   2018-04-24 local                            
-##  bindr            0.1.1   2018-03-13 CRAN (R 3.5.0)                   
-##  bindrcpp       * 0.2.2   2018-03-29 CRAN (R 3.5.0)                   
-##  blogdown         0.8.1   2018-07-16 Github (rstudio/blogdown@d54c39a)
-##  bookdown         0.7     2018-02-18 CRAN (R 3.5.0)                   
-##  broom            0.4.4   2018-03-29 CRAN (R 3.5.0)                   
-##  cellranger       1.1.0   2016-07-27 CRAN (R 3.5.0)                   
-##  circlize         0.4.3   2017-12-20 CRAN (R 3.5.0)                   
-##  cli              1.0.0   2017-11-05 CRAN (R 3.5.0)                   
-##  colorspace       1.3-2   2016-12-14 CRAN (R 3.5.0)                   
-##  compiler         3.5.0   2018-04-24 local                            
-##  ComplexHeatmap * 1.18.0  2017-10-25 Bioconductor (R 3.5.0)           
-##  crayon           1.3.4   2017-09-16 CRAN (R 3.5.0)                   
-##  datasets       * 3.5.0   2018-04-24 local                            
-##  devtools         1.13.5  2018-02-18 CRAN (R 3.5.0)                   
-##  digest           0.6.15  2018-01-28 CRAN (R 3.5.0)                   
-##  dplyr          * 0.7.6   2018-06-29 cran (@0.7.6)                    
-##  evaluate         0.10.1  2017-06-24 CRAN (R 3.5.0)                   
-##  forcats        * 0.3.0   2018-02-19 CRAN (R 3.5.0)                   
-##  foreign          0.8-70  2017-11-28 CRAN (R 3.5.0)                   
-##  GetoptLong       0.1.6   2017-03-07 CRAN (R 3.5.0)                   
-##  ggplot2        * 3.0.0   2018-07-03 cran (@3.0.0)                    
-##  GlobalOptions    0.0.13  2018-03-15 CRAN (R 3.5.0)                   
-##  glue             1.2.0   2017-10-29 CRAN (R 3.5.0)                   
-##  graphics       * 3.5.0   2018-04-24 local                            
-##  grDevices      * 3.5.0   2018-04-24 local                            
-##  grid           * 3.5.0   2018-04-24 local                            
-##  gridExtra        2.3     2017-09-09 CRAN (R 3.5.0)                   
-##  gtable           0.2.0   2016-02-26 CRAN (R 3.5.0)                   
-##  haven            1.1.1   2018-01-18 CRAN (R 3.5.0)                   
-##  hms              0.4.2   2018-03-10 CRAN (R 3.5.0)                   
-##  htmltools        0.3.6   2017-04-28 CRAN (R 3.5.0)                   
-##  httr             1.3.1   2017-08-20 CRAN (R 3.5.0)                   
-##  jsonlite         1.5     2017-06-01 CRAN (R 3.5.0)                   
-##  knitr            1.20    2018-02-20 CRAN (R 3.5.0)                   
-##  lattice          0.20-35 2017-03-25 CRAN (R 3.5.0)                   
-##  lazyeval         0.2.1   2017-10-29 CRAN (R 3.5.0)                   
-##  lubridate        1.7.4   2018-04-11 CRAN (R 3.5.0)                   
-##  magrittr         1.5     2014-11-22 CRAN (R 3.5.0)                   
-##  memoise          1.1.0   2017-04-21 CRAN (R 3.5.0)                   
-##  methods        * 3.5.0   2018-04-24 local                            
-##  mnormt           1.5-5   2016-10-15 CRAN (R 3.5.0)                   
-##  modelr           0.1.2   2018-05-11 CRAN (R 3.5.0)                   
-##  munsell          0.4.3   2016-02-13 CRAN (R 3.5.0)                   
-##  nlme             3.1-137 2018-04-07 CRAN (R 3.5.0)                   
-##  parallel         3.5.0   2018-04-24 local                            
-##  pillar           1.2.3   2018-05-25 CRAN (R 3.5.0)                   
-##  pkgconfig        2.0.1   2017-03-21 CRAN (R 3.5.0)                   
-##  plyr             1.8.4   2016-06-08 CRAN (R 3.5.0)                   
-##  psych            1.8.4   2018-05-06 CRAN (R 3.5.0)                   
-##  purrr          * 0.2.4   2017-10-18 CRAN (R 3.5.0)                   
-##  R6               2.2.2   2017-06-17 CRAN (R 3.5.0)                   
-##  RColorBrewer     1.1-2   2014-12-07 CRAN (R 3.5.0)                   
-##  Rcpp             0.12.17 2018-05-18 CRAN (R 3.5.0)                   
-##  readr          * 1.1.1   2017-05-16 CRAN (R 3.5.0)                   
-##  readxl           1.1.0   2018-04-20 CRAN (R 3.5.0)                   
-##  reshape2         1.4.3   2017-12-11 CRAN (R 3.5.0)                   
-##  rjson            0.2.19  2018-05-18 CRAN (R 3.5.0)                   
-##  rlang            0.2.1   2018-05-30 CRAN (R 3.5.0)                   
-##  rmarkdown        1.10    2018-06-11 cran (@1.10)                     
-##  rprojroot        1.3-2   2018-01-03 CRAN (R 3.5.0)                   
-##  rstudioapi       0.7     2017-09-07 CRAN (R 3.5.0)                   
-##  rvest            0.3.2   2016-06-17 CRAN (R 3.5.0)                   
-##  scales           0.5.0   2017-08-24 CRAN (R 3.5.0)                   
-##  shape            1.4.4   2018-02-07 CRAN (R 3.5.0)                   
-##  stats          * 3.5.0   2018-04-24 local                            
-##  stringi          1.2.2   2018-05-02 CRAN (R 3.5.0)                   
-##  stringr        * 1.3.1   2018-05-10 CRAN (R 3.5.0)                   
-##  tibble         * 1.4.2   2018-01-22 CRAN (R 3.5.0)                   
-##  tidyr          * 0.8.1   2018-05-18 CRAN (R 3.5.0)                   
-##  tidyselect       0.2.4   2018-02-26 CRAN (R 3.5.0)                   
-##  tidyverse      * 1.2.1   2017-11-14 CRAN (R 3.5.0)                   
-##  tools            3.5.0   2018-04-24 local                            
-##  utils          * 3.5.0   2018-04-24 local                            
-##  viridis        * 0.5.1   2018-03-29 CRAN (R 3.5.0)                   
-##  viridisLite    * 0.3.0   2018-02-01 CRAN (R 3.5.0)                   
-##  withr            2.1.2   2018-03-15 CRAN (R 3.5.0)                   
-##  xfun             0.3     2018-07-06 cran (@0.3)                      
-##  xml2             1.2.0   2018-01-24 CRAN (R 3.5.0)                   
-##  yaml             2.1.19  2018-05-01 CRAN (R 3.5.0)&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 </description>
     </item>
