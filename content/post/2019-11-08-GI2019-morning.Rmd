@@ -1,0 +1,89 @@
+---
+title: "#GI2019 2019 11 08 Morning Session"
+author: David McGaughey
+date: '2019-11-07'
+slug: gi2019-day02-night
+categories:
+  - bioinformatics
+  - gi2019
+  - conferences
+  - talk
+tags:
+  - bioinformatics
+  - gi2019
+  - conferences
+  - talk
+header:
+  caption: ''
+  image: ''
+output:
+  blogdown::html_page:
+    toc: true
+---
+
+# Day 2 - Session 7 - MICROBIAL AND METAGENOMICS
+
+Genome Informatics 2019 at CSHL
+
+**Bold** is the speaker
+
+My notes will likely reflect my background knowledge of microbes. Which is nil. 
+
+# Strain-level metagenomic assignment and compositional estimation for long reads with MetaMaps
+**Alexander T. Dilthey**, Chirag Jain, Sergey Koren, Adam M. Phillippy.
+
+Discussion of how MinHash works. 
+
+kmers, which are hashed, then sorted (take the smallest), compare kmers between query and ref
+
+MinHash ~ Jaccard similarity (point to assess similarity, e.g. "alignment")
+
+"Mapping qualities"
+
+  - want prob. dist. of all mapping locations for a read
+  - assume
+    - read error rate known
+  - compute jaccard similarity
+  - model as Bernoulli
+  
+MetaMaps
+
+  - integrated metagenomic classification system
+  - takes lots from MashMap
+  - auto-tunes minimum read length & identity (EM)
+
+Benchmark
+
+  - precision better than others (Kraken, Kraken2, Centrifuge, MEGAN-LR)
+  - **REQUIRES LONG READS (> 1000bp)**
+  - slower than other methods (and takes more mem)
+    - but are working on this
+
+Going through some case studies on finding novel things
+
+  - find mismatches from errors in ref databases
+  - location mapping allows you to quantify categories of genes (or I totally misheard/misread)
+
+github.com/DiltheyLab/MetaMaps
+
+# metaFlye—Scalable long-read metagenome assembly using repeat graphs
+**Mikhail Kolmogorov**, Mikhail Rayko, Jeffrey Yuan, Evgeny Polevikov, Pavel Pevzner.
+
+# Detecting microbial transmission and engraftment after faecal microbiota transplants using long-read metagenomics and reticulatus
+**Samuel M. Nicholls**, Joshua C. Quick, Tariq H. Iqbal, Nicholas J. Loman.
+
+# Entropy of a bacterial stress response is a generalizable predictor for fitness and antibiotic sensitivity
+**Defne Surujon**, Zeyu Zhu, Juan C. Ortiz-Marquez, José Bento, Tim van Opijnen.
+
+# The use of kmer counts to train random forests to predict country of origin for bacterial pathogen sequencing data
+**Lauren Cowley**, Jordan Taylor, Claire Jenkins, Tim Dallman.
+
+# Real-time assembly using Nanopore sequencing data for microbial communities
+**Son H. Nguyen**, Minh D. Cao, Lachlan J. Coin.
+
+# Exploring the role of ribosomal gene repeats in the context of regeneration
+**Sofia N. Barreira**, Andreas D. Baxevanis.
+
+# Genomic epidemiology of West Nile virus in California
+**Karthik Gangavarapu**, Nathaniel Matteson, on behalf of the WestNile 4K Project.
+
