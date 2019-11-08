@@ -1,0 +1,124 @@
+---
+title: "#GI2019 2019 11 07 Night Session"
+author: David McGaughey
+date: '2019-11-07'
+slug: gi2019-day02-night
+categories:
+  - bioinformatics
+  - gi2019
+  - conferences
+  - talk
+tags:
+  - bioinformatics
+  - gi2019
+  - conferences
+  - talk
+header:
+  caption: ''
+  image: ''
+output:
+  blogdown::html_page:
+    toc: true
+---
+
+# Day 2 - Session 6 - TRANSCRIPTOMICS
+
+Genome Informatics 2019 at CSHL
+
+**Bold** is the speaker
+
+# The functional iso-transcriptomics analysis framework to assess the functional impact of alternative isoform usage
+Lorena de la Fuente, Manuel Tardáguila, Hector del Risco, Angeles Arzalluz, Francisco Pardo Palacios, Pedro Salguero, Cristina Martín, Sonia Tarazona, **Ana Conesa.**
+
+Missed most of this talk to FaceTime goodnight to my kids. 
+
+Not certain what is happening - is this some sort of analysis package? 
+
+OK, went to twitter. 
+
+http://tappas.org
+
+GUI system for analysis?
+
+# Multi-resolution, interactive, atlas-scale integration of single-cell assays and experiments
+**Akshay Balsubramani**, Anshul Kundaje.
+
+So many sc data types
+
+  - CITE, FACS, MERFISH, scATAC.....etc forever
+
+Want to unify datasets from different experiments 
+
+Using Tabula Muris data
+
+  - Has both Droplet and well based data with rougly equal n
+  - also both annotated with similar-ish cells
+  
+1. Connect cells of similar cell types (anchors)
+2. Impute measured features within clusters
+3. Refine co-embeddings on subpopulations as needed
+
+(I think only this last point may be new? I think many do the first two...)
+
+Use "Batch mxiing entropy" to quantify whether tissue types are clustering together
+
+Show how Seurat works OK ("overmixes" some cells)
+
+"Musica"
+
+kNN (nearest neighbors)
+
+Need existing labels to integrate? This would be a deal breaker for many....
+
+Is this a package/software tool???
+
+Want to align all single cell data, agnostic of tech.
+
+No software. 
+
+So impossible to evaluate whether this is useful. 
+
+# Efficient and robust transcriptome reconstruction from long-read RNA-seq alignments
+Sam Kovaka, Aleksey V. Zimin, Geo M. Pertea, Roham Razaghi, Steven L. Salzberg, **Mihaela Pertea.**
+
+Going over StringTie, which makes tx-ome from short-read (via graph) and high quality ref genome.
+
+Short-reads have two big limitations
+
+  - rarely span more than two exons
+  - multi-mapping
+
+Limitations of long read
+
+  - error rate (PacBio simualated looks WAY worse than I would have expected....not certain why)
+  - low throughput (can only get info on highly expressed genes)
+  
+Effect of noise on the splice graph
+
+  - makes the graph crazy complicated very quickly
+  - which is why StringTie has so much trouble with long-read data
+  
+StringTie2
+  
+  - represent splice graph as matrix (now is sparse matrix unlike StringTie1)
+  - correct splice site error by using consensus
+  - remove edges from splice graph which are "poorly" supported
+  - handles downsampled truth annotations pretty well (StringTie has guided mode which uses known genes to build transcripts)
+
+
+# Deconvolving the pervasive transcription from jumping genes in RNA-seq and unveiling their role in tumors
+**Fabio Navarro**, Jacob Hoops, Lauren Bellfy, Eliza Cerveira, Qihui Zhu, Chengsheng Zhang, Charles Lee, Mark Gersten.
+
+# Alignment and mapping methodology influence transcript abundance estimation
+Avi Srivastava, Laraib Malik, Hirak Sarkar, Mohsen Zakeri, Fatemeh Almodaresi, Charlotte Soneson, Michael I. Love, Carl Kingsford, **Rob Patro.**
+
+# A technology-agnostic long-read analysis pipeline for transcriptome discovery and quantification
+**Dana Wyman**, Gabriela Balderrama-Gutierrez, Fairlie Reese, Shan
+Jiang, Brian Williams, Barbara Wold, Ali Mortazavi.
+
+# Quantifying isoform expression in single-cell RNA-seq data with STARsolo-Quant
+**Nathan Castro-Pacheco**, Alexander Dobin.
+
+# Full-length transcript characterization for single cell RNA-seq analysis
+**Elizabeth Tseng**, Jason Underwood.
+  

@@ -432,6 +432,120 @@ Chou, John Aach, Jason Chin, Heng Li, George Church.&lt;/p&gt;
     </item>
     
     <item>
+      <title>#GI2019 2019 11 07 Night Session</title>
+      <link>/./post/gi2019-day02-night/</link>
+      <pubDate>Thu, 07 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/gi2019-day02-night/</guid>
+      <description>&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#day-2---session-6---transcriptomics&#34;&gt;Day 2 - Session 6 - TRANSCRIPTOMICS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#the-functional-iso-transcriptomics-analysis-framework-to-assess-the-functional-impact-of-alternative-isoform-usage&#34;&gt;The functional iso-transcriptomics analysis framework to assess the functional impact of alternative isoform usage&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#multi-resolution-interactive-atlas-scale-integration-of-single-cell-assays-and-experiments&#34;&gt;Multi-resolution, interactive, atlas-scale integration of single-cell assays and experiments&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#efficient-and-robust-transcriptome-reconstruction-from-long-read-rna-seq-alignments&#34;&gt;Efficient and robust transcriptome reconstruction from long-read RNA-seq alignments&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#deconvolving-the-pervasive-transcription-from-jumping-genes-in-rna-seq-and-unveiling-their-role-in-tumors&#34;&gt;Deconvolving the pervasive transcription from jumping genes in RNA-seq and unveiling their role in tumors&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#alignment-and-mapping-methodology-influence-transcript-abundance-estimation&#34;&gt;Alignment and mapping methodology influence transcript abundance estimation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#a-technology-agnostic-long-read-analysis-pipeline-for-transcriptome-discovery-and-quantification&#34;&gt;A technology-agnostic long-read analysis pipeline for transcriptome discovery and quantification&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#quantifying-isoform-expression-in-single-cell-rna-seq-data-with-starsolo-quant&#34;&gt;Quantifying isoform expression in single-cell RNA-seq data with STARsolo-Quant&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#full-length-transcript-characterization-for-single-cell-rna-seq-analysis&#34;&gt;Full-length transcript characterization for single cell RNA-seq analysis&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;day-2---session-6---transcriptomics&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Day 2 - Session 6 - TRANSCRIPTOMICS&lt;/h1&gt;
+&lt;p&gt;Genome Informatics 2019 at CSHL&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Bold&lt;/strong&gt; is the speaker&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;the-functional-iso-transcriptomics-analysis-framework-to-assess-the-functional-impact-of-alternative-isoform-usage&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;The functional iso-transcriptomics analysis framework to assess the functional impact of alternative isoform usage&lt;/h1&gt;
+&lt;p&gt;Lorena de la Fuente, Manuel Tardáguila, Hector del Risco, Angeles Arzalluz, Francisco Pardo Palacios, Pedro Salguero, Cristina Martín, Sonia Tarazona, &lt;strong&gt;Ana Conesa.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Missed most of this talk to FaceTime goodnight to my kids.&lt;/p&gt;
+&lt;p&gt;Not certain what is happening - is this some sort of analysis package?&lt;/p&gt;
+&lt;p&gt;OK, went to twitter.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://tappas.org&#34; class=&#34;uri&#34;&gt;http://tappas.org&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;GUI system for analysis?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;multi-resolution-interactive-atlas-scale-integration-of-single-cell-assays-and-experiments&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Multi-resolution, interactive, atlas-scale integration of single-cell assays and experiments&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;Akshay Balsubramani&lt;/strong&gt;, Anshul Kundaje.&lt;/p&gt;
+&lt;p&gt;So many sc data types&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;CITE, FACS, MERFISH, scATAC…..etc forever&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Want to unify datasets from different experiments&lt;/p&gt;
+&lt;p&gt;Using Tabula Muris data&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Has both Droplet and well based data with rougly equal n&lt;/li&gt;
+&lt;li&gt;also both annotated with similar-ish cells&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Connect cells of similar cell types (anchors)&lt;/li&gt;
+&lt;li&gt;Impute measured features within clusters&lt;/li&gt;
+&lt;li&gt;Refine co-embeddings on subpopulations as needed&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;(I think only this last point may be new? I think many do the first two…)&lt;/p&gt;
+&lt;p&gt;Use “Batch mxiing entropy” to quantify whether tissue types are clustering together&lt;/p&gt;
+&lt;p&gt;Show how Seurat works OK (“overmixes” some cells)&lt;/p&gt;
+&lt;p&gt;“Musica”&lt;/p&gt;
+&lt;p&gt;kNN (nearest neighbors)&lt;/p&gt;
+&lt;p&gt;Need existing labels to integrate? This would be a deal breaker for many….&lt;/p&gt;
+&lt;p&gt;Is this a package/software tool???&lt;/p&gt;
+&lt;p&gt;Want to align all single cell data, agnostic of tech.&lt;/p&gt;
+&lt;p&gt;No software.&lt;/p&gt;
+&lt;p&gt;So impossible to evaluate whether this is useful.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;efficient-and-robust-transcriptome-reconstruction-from-long-read-rna-seq-alignments&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Efficient and robust transcriptome reconstruction from long-read RNA-seq alignments&lt;/h1&gt;
+&lt;p&gt;Sam Kovaka, Aleksey V. Zimin, Geo M. Pertea, Roham Razaghi, Steven L. Salzberg, &lt;strong&gt;Mihaela Pertea.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Going over StringTie, which makes tx-ome from short-read (via graph) and high quality ref genome.&lt;/p&gt;
+&lt;p&gt;Short-reads have two big limitations&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;rarely span more than two exons&lt;/li&gt;
+&lt;li&gt;multi-mapping&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Limitations of long read&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;error rate (PacBio simualated looks WAY worse than I would have expected….not certain why)&lt;/li&gt;
+&lt;li&gt;low throughput (can only get info on highly expressed genes)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Effect of noise on the splice graph&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;makes the graph crazy complicated very quickly&lt;/li&gt;
+&lt;li&gt;which is why StringTie has so much trouble with long-read data&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;StringTie2&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;represent splice graph as matrix (now is sparse matrix unlike StringTie1)&lt;/li&gt;
+&lt;li&gt;correct splice site error by using consensus&lt;/li&gt;
+&lt;li&gt;remove edges from splice graph which are “poorly” supported&lt;/li&gt;
+&lt;li&gt;handles downsampled truth annotations pretty well (StringTie has guided mode which uses known genes to build transcripts)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;deconvolving-the-pervasive-transcription-from-jumping-genes-in-rna-seq-and-unveiling-their-role-in-tumors&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Deconvolving the pervasive transcription from jumping genes in RNA-seq and unveiling their role in tumors&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;Fabio Navarro&lt;/strong&gt;, Jacob Hoops, Lauren Bellfy, Eliza Cerveira, Qihui Zhu, Chengsheng Zhang, Charles Lee, Mark Gersten.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;alignment-and-mapping-methodology-influence-transcript-abundance-estimation&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Alignment and mapping methodology influence transcript abundance estimation&lt;/h1&gt;
+&lt;p&gt;Avi Srivastava, Laraib Malik, Hirak Sarkar, Mohsen Zakeri, Fatemeh Almodaresi, Charlotte Soneson, Michael I. Love, Carl Kingsford, &lt;strong&gt;Rob Patro.&lt;/strong&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;a-technology-agnostic-long-read-analysis-pipeline-for-transcriptome-discovery-and-quantification&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;A technology-agnostic long-read analysis pipeline for transcriptome discovery and quantification&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;Dana Wyman&lt;/strong&gt;, Gabriela Balderrama-Gutierrez, Fairlie Reese, Shan
+Jiang, Brian Williams, Barbara Wold, Ali Mortazavi.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;quantifying-isoform-expression-in-single-cell-rna-seq-data-with-starsolo-quant&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Quantifying isoform expression in single-cell RNA-seq data with STARsolo-Quant&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;Nathan Castro-Pacheco&lt;/strong&gt;, Alexander Dobin.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;full-length-transcript-characterization-for-single-cell-rna-seq-analysis&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Full-length transcript characterization for single cell RNA-seq analysis&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;Elizabeth Tseng&lt;/strong&gt;, Jason Underwood.&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>#GI2019 2019 11 06</title>
       <link>/./post/gi2019-day01/</link>
       <pubDate>Wed, 06 Nov 2019 00:00:00 +0000</pubDate>
@@ -4736,32 +4850,6 @@ library(tidyverse)
 &lt;pre&gt;&lt;code&gt;```{r}
 devtools::session_info()
 ```&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Easy bam downsampling</title>
-      <link>/./post/easy-bam-downsampling/</link>
-      <pubDate>Fri, 20 Apr 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/./post/easy-bam-downsampling/</guid>
-      <description>&lt;p&gt;When you have a set of ChIP-seq (like) files, it is sometimes useful to downsample the larger samples to more closely match most of the samples. Tommy Tang goes into more detail in his &lt;a href=&#34;http://crazyhottommy.blogspot.com/2016/05/downsampling-for-bam-files-to-certain.html&#34;&gt;blog post&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Unfortunately the tool suites I use most for bam files (samtools and picard) only downsample to a &lt;em&gt;percentage&lt;/em&gt;. Which isn’t ideal when you want your files to be no more than &lt;code&gt;n&lt;/code&gt; reads.&lt;/p&gt;
-&lt;p&gt;This post is just a slight one-upping of Tommy Tang’s &lt;a href=&#34;http://crazyhottommy.blogspot.com/2016/05/downsampling-for-bam-files-to-certain.html&#34;&gt;process&lt;/a&gt; to easily downsample a bam. If you do some googling you’ll find lots of &lt;em&gt;boutique&lt;/em&gt; tools to downsample. Which I tend to avoid because I don’t want to have to sift through the source to make sure what they are doing looks reasonable and often-times there are dependencies to worry about. For something this simple, there &lt;em&gt;should&lt;/em&gt; be a way to pipe together a few commands to get what we want. Which Tommy &lt;em&gt;almost&lt;/em&gt; does.&lt;/p&gt;
-&lt;p&gt;His little code snippet is &lt;code&gt;samtools idxstats example.bam | cut -f3 | awk &#39;BEGIN {total=0} {total += $1} END {print total}&#39;&lt;/code&gt;. It sums up the reads present in each chromosome/contig that the bam index holds. It is robust and will work unless the output format &lt;code&gt;idxstats&lt;/code&gt; sub-program is altered. Which I think is unlikely.&lt;/p&gt;
-&lt;p&gt;The problem is that you have to do a &lt;em&gt;little&lt;/em&gt; more work to get the percentage to feed &lt;code&gt;samtools view -s&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;So here’s my extension, using &lt;code&gt;awk&lt;/code&gt; to calculate the percentage of the bam file to sample if you want to get to &lt;code&gt;n&lt;/code&gt; reads. It also will return &lt;code&gt;1&lt;/code&gt; if your bam file has fewer reads than your target.&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;frac=$( samtools idxstats  input.bam | cut -f3 | awk &#39;BEGIN {total=0} {total += $1} END {frac=15000000/total; if (frac &amp;gt; 1) {print 1} else {print frac}}&#39; )&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;If you &lt;code&gt;echo $frac&lt;/code&gt; you get the downsample percentage: &lt;code&gt;0.334801&lt;/code&gt; for one of my bam files. You replace the 15000000 (15 million) with whatever you want to the the maximum number of reads.&lt;/p&gt;
-&lt;p&gt;If your bam has fewer than &lt;code&gt;n&lt;/code&gt; reads you’ll get back &lt;code&gt;1&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;You can then just feed this into &lt;code&gt;samtools view&lt;/code&gt; like so: &lt;code&gt;samtools view -bs $frac input.bam &amp;gt; subsample.bam&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Putting it all together we have a nice two step process which fits nicely into an automated pipeline / workflow:&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;frac=$( samtools idxstats  input.bam | cut -f3 | awk &#39;BEGIN {total=0} {total += $1} END {frac=15000000/total; if (frac &amp;gt; 1) {print 1} else {print frac}}&#39; )&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;samtools view -bs $frac input.bam &amp;gt; subsample.bam&lt;/code&gt;&lt;/p&gt;
-&lt;div id=&#34;update&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;UPDATE&lt;/h1&gt;
-&lt;p&gt;Tommy pointed out that you should run this &lt;strong&gt;after&lt;/strong&gt; you have removed reads that are duplicated, singletons, and low quality. It is not unusual to see bam files with &amp;gt;50% duplicate reads.&lt;/p&gt;
 &lt;/div&gt;
 </description>
     </item>

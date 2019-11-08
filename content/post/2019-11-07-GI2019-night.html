@@ -1,0 +1,129 @@
+---
+title: "#GI2019 2019 11 07 Night Session"
+author: David McGaughey
+date: '2019-11-07'
+slug: gi2019-day02-night
+categories:
+  - bioinformatics
+  - gi2019
+  - conferences
+  - talk
+tags:
+  - bioinformatics
+  - gi2019
+  - conferences
+  - talk
+header:
+  caption: ''
+  image: ''
+output:
+  blogdown::html_page:
+    toc: true
+---
+
+
+<div id="TOC">
+<ul>
+<li><a href="#day-2---session-6---transcriptomics">Day 2 - Session 6 - TRANSCRIPTOMICS</a></li>
+<li><a href="#the-functional-iso-transcriptomics-analysis-framework-to-assess-the-functional-impact-of-alternative-isoform-usage">The functional iso-transcriptomics analysis framework to assess the functional impact of alternative isoform usage</a></li>
+<li><a href="#multi-resolution-interactive-atlas-scale-integration-of-single-cell-assays-and-experiments">Multi-resolution, interactive, atlas-scale integration of single-cell assays and experiments</a></li>
+<li><a href="#efficient-and-robust-transcriptome-reconstruction-from-long-read-rna-seq-alignments">Efficient and robust transcriptome reconstruction from long-read RNA-seq alignments</a></li>
+<li><a href="#deconvolving-the-pervasive-transcription-from-jumping-genes-in-rna-seq-and-unveiling-their-role-in-tumors">Deconvolving the pervasive transcription from jumping genes in RNA-seq and unveiling their role in tumors</a></li>
+<li><a href="#alignment-and-mapping-methodology-influence-transcript-abundance-estimation">Alignment and mapping methodology influence transcript abundance estimation</a></li>
+<li><a href="#a-technology-agnostic-long-read-analysis-pipeline-for-transcriptome-discovery-and-quantification">A technology-agnostic long-read analysis pipeline for transcriptome discovery and quantification</a></li>
+<li><a href="#quantifying-isoform-expression-in-single-cell-rna-seq-data-with-starsolo-quant">Quantifying isoform expression in single-cell RNA-seq data with STARsolo-Quant</a></li>
+<li><a href="#full-length-transcript-characterization-for-single-cell-rna-seq-analysis">Full-length transcript characterization for single cell RNA-seq analysis</a></li>
+</ul>
+</div>
+
+<div id="day-2---session-6---transcriptomics" class="section level1">
+<h1>Day 2 - Session 6 - TRANSCRIPTOMICS</h1>
+<p>Genome Informatics 2019 at CSHL</p>
+<p><strong>Bold</strong> is the speaker</p>
+</div>
+<div id="the-functional-iso-transcriptomics-analysis-framework-to-assess-the-functional-impact-of-alternative-isoform-usage" class="section level1">
+<h1>The functional iso-transcriptomics analysis framework to assess the functional impact of alternative isoform usage</h1>
+<p>Lorena de la Fuente, Manuel Tardáguila, Hector del Risco, Angeles Arzalluz, Francisco Pardo Palacios, Pedro Salguero, Cristina Martín, Sonia Tarazona, <strong>Ana Conesa.</strong></p>
+<p>Missed most of this talk to FaceTime goodnight to my kids.</p>
+<p>Not certain what is happening - is this some sort of analysis package?</p>
+<p>OK, went to twitter.</p>
+<p><a href="http://tappas.org" class="uri">http://tappas.org</a></p>
+<p>GUI system for analysis?</p>
+</div>
+<div id="multi-resolution-interactive-atlas-scale-integration-of-single-cell-assays-and-experiments" class="section level1">
+<h1>Multi-resolution, interactive, atlas-scale integration of single-cell assays and experiments</h1>
+<p><strong>Akshay Balsubramani</strong>, Anshul Kundaje.</p>
+<p>So many sc data types</p>
+<ul>
+<li>CITE, FACS, MERFISH, scATAC…..etc forever</li>
+</ul>
+<p>Want to unify datasets from different experiments</p>
+<p>Using Tabula Muris data</p>
+<ul>
+<li>Has both Droplet and well based data with rougly equal n</li>
+<li>also both annotated with similar-ish cells</li>
+</ul>
+<ol style="list-style-type: decimal">
+<li>Connect cells of similar cell types (anchors)</li>
+<li>Impute measured features within clusters</li>
+<li>Refine co-embeddings on subpopulations as needed</li>
+</ol>
+<p>(I think only this last point may be new? I think many do the first two…)</p>
+<p>Use “Batch mxiing entropy” to quantify whether tissue types are clustering together</p>
+<p>Show how Seurat works OK (“overmixes” some cells)</p>
+<p>“Musica”</p>
+<p>kNN (nearest neighbors)</p>
+<p>Need existing labels to integrate? This would be a deal breaker for many….</p>
+<p>Is this a package/software tool???</p>
+<p>Want to align all single cell data, agnostic of tech.</p>
+<p>No software.</p>
+<p>So impossible to evaluate whether this is useful.</p>
+</div>
+<div id="efficient-and-robust-transcriptome-reconstruction-from-long-read-rna-seq-alignments" class="section level1">
+<h1>Efficient and robust transcriptome reconstruction from long-read RNA-seq alignments</h1>
+<p>Sam Kovaka, Aleksey V. Zimin, Geo M. Pertea, Roham Razaghi, Steven L. Salzberg, <strong>Mihaela Pertea.</strong></p>
+<p>Going over StringTie, which makes tx-ome from short-read (via graph) and high quality ref genome.</p>
+<p>Short-reads have two big limitations</p>
+<ul>
+<li>rarely span more than two exons</li>
+<li>multi-mapping</li>
+</ul>
+<p>Limitations of long read</p>
+<ul>
+<li>error rate (PacBio simualated looks WAY worse than I would have expected….not certain why)</li>
+<li>low throughput (can only get info on highly expressed genes)</li>
+</ul>
+<p>Effect of noise on the splice graph</p>
+<ul>
+<li>makes the graph crazy complicated very quickly</li>
+<li>which is why StringTie has so much trouble with long-read data</li>
+</ul>
+<p>StringTie2</p>
+<ul>
+<li>represent splice graph as matrix (now is sparse matrix unlike StringTie1)</li>
+<li>correct splice site error by using consensus</li>
+<li>remove edges from splice graph which are “poorly” supported</li>
+<li>handles downsampled truth annotations pretty well (StringTie has guided mode which uses known genes to build transcripts)</li>
+</ul>
+</div>
+<div id="deconvolving-the-pervasive-transcription-from-jumping-genes-in-rna-seq-and-unveiling-their-role-in-tumors" class="section level1">
+<h1>Deconvolving the pervasive transcription from jumping genes in RNA-seq and unveiling their role in tumors</h1>
+<p><strong>Fabio Navarro</strong>, Jacob Hoops, Lauren Bellfy, Eliza Cerveira, Qihui Zhu, Chengsheng Zhang, Charles Lee, Mark Gersten.</p>
+</div>
+<div id="alignment-and-mapping-methodology-influence-transcript-abundance-estimation" class="section level1">
+<h1>Alignment and mapping methodology influence transcript abundance estimation</h1>
+<p>Avi Srivastava, Laraib Malik, Hirak Sarkar, Mohsen Zakeri, Fatemeh Almodaresi, Charlotte Soneson, Michael I. Love, Carl Kingsford, <strong>Rob Patro.</strong></p>
+</div>
+<div id="a-technology-agnostic-long-read-analysis-pipeline-for-transcriptome-discovery-and-quantification" class="section level1">
+<h1>A technology-agnostic long-read analysis pipeline for transcriptome discovery and quantification</h1>
+<p><strong>Dana Wyman</strong>, Gabriela Balderrama-Gutierrez, Fairlie Reese, Shan
+Jiang, Brian Williams, Barbara Wold, Ali Mortazavi.</p>
+</div>
+<div id="quantifying-isoform-expression-in-single-cell-rna-seq-data-with-starsolo-quant" class="section level1">
+<h1>Quantifying isoform expression in single-cell RNA-seq data with STARsolo-Quant</h1>
+<p><strong>Nathan Castro-Pacheco</strong>, Alexander Dobin.</p>
+</div>
+<div id="full-length-transcript-characterization-for-single-cell-rna-seq-analysis" class="section level1">
+<h1>Full-length transcript characterization for single cell RNA-seq analysis</h1>
+<p><strong>Elizabeth Tseng</strong>, Jason Underwood.</p>
+</div>

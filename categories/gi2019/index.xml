@@ -22,6 +22,15 @@
     </item>
     
     <item>
+      <title>#GI2019 2019 11 07 Night Session</title>
+      <link>/./post/gi2019-day02-night/</link>
+      <pubDate>Thu, 07 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/gi2019-day02-night/</guid>
+      <description>Day 2 - Session 6 - TRANSCRIPTOMICS The functional iso-transcriptomics analysis framework to assess the functional impact of alternative isoform usage Multi-resolution, interactive, atlas-scale integration of single-cell assays and experiments Efficient and robust transcriptome reconstruction from long-read RNA-seq alignments Deconvolving the pervasive transcription from jumping genes in RNA-seq and unveiling their role in tumors Alignment and mapping methodology influence transcript abundance estimation A technology-agnostic long-read analysis pipeline for transcriptome discovery and quantification Quantifying isoform expression in single-cell RNA-seq data with STARsolo-Quant Full-length transcript characterization for single cell RNA-seq analysis   Day 2 - Session 6 - TRANSCRIPTOMICS Genome Informatics 2019 at CSHL</description>
+    </item>
+    
+    <item>
       <title>#GI2019 2019 11 06</title>
       <link>/./post/gi2019-day01/</link>
       <pubDate>Wed, 06 Nov 2019 00:00:00 +0000</pubDate>
