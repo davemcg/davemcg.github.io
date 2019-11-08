@@ -17,7 +17,7 @@
       
     
   
-  <meta name="description" content="Day 3 - Session 8 - EVOLUTION AND PHYLOGENETICS Is pathogen evolution predictable? The role of population genomics Learning the properties of adaptive regions with functional data analysis Creating pan-human and population-specific consensus representations of the reference genome and assessing their Gramene subsites—Pangenome browsers for crops  What do we gain when tolerating loss? The information bottleneck, lossy compression, and detecting horizontal gene transfer A recurrent neural network for inferring sweeps and allele frequency trajectories using gene trees based on the ancestral recombination graph Assembling the Y chromosomes of anopheles mosquitoes   Day 3 - Session 8 - EVOLUTION AND PHYLOGENETICS Genome Informatics 2019 at CSHL">
+  <meta name="description" content="Day 3 - Session 7 - MICROBIAL AND METAGENOMICS Strain-level metagenomic assignment and compositional estimation for long reads with MetaMaps metaFlye—Scalable long-read metagenome assembly using repeat graphs Detecting microbial transmission and engraftment after faecal microbiota transplants using long-read metagenomics and reticulatus Entropy of a bacterial stress response is a generalizable predictor for fitness and antibiotic sensitivity The use of kmer counts to train random forests to predict country of origin for bacterial pathogen sequencing data Real-time assembly using Nanopore sequencing data for microbial communities Exploring the role of ribosomal gene repeats in the context of regeneration Genomic epidemiology of West Nile virus in California   Day 3 - Session 7 - MICROBIAL AND METAGENOMICS Genome Informatics 2019 at CSHL">
 
   
   <link rel="alternate" hreflang="en-us" href="/./post/gi2019-day03-morning/">
@@ -93,7 +93,7 @@
   <meta property="og:site_name" content="eye Bioinformatician">
   <meta property="og:url" content="/./post/gi2019-day03-morning/">
   <meta property="og:title" content="#GI2019 2019 11 08 Morning Session | eye Bioinformatician">
-  <meta property="og:description" content="Day 3 - Session 8 - EVOLUTION AND PHYLOGENETICS Is pathogen evolution predictable? The role of population genomics Learning the properties of adaptive regions with functional data analysis Creating pan-human and population-specific consensus representations of the reference genome and assessing their Gramene subsites—Pangenome browsers for crops  What do we gain when tolerating loss? The information bottleneck, lossy compression, and detecting horizontal gene transfer A recurrent neural network for inferring sweeps and allele frequency trajectories using gene trees based on the ancestral recombination graph Assembling the Y chromosomes of anopheles mosquitoes   Day 3 - Session 8 - EVOLUTION AND PHYLOGENETICS Genome Informatics 2019 at CSHL">
+  <meta property="og:description" content="Day 3 - Session 7 - MICROBIAL AND METAGENOMICS Strain-level metagenomic assignment and compositional estimation for long reads with MetaMaps metaFlye—Scalable long-read metagenome assembly using repeat graphs Detecting microbial transmission and engraftment after faecal microbiota transplants using long-read metagenomics and reticulatus Entropy of a bacterial stress response is a generalizable predictor for fitness and antibiotic sensitivity The use of kmer counts to train random forests to predict country of origin for bacterial pathogen sequencing data Real-time assembly using Nanopore sequencing data for microbial communities Exploring the role of ribosomal gene repeats in the context of regeneration Genomic epidemiology of West Nile virus in California   Day 3 - Session 7 - MICROBIAL AND METAGENOMICS Genome Informatics 2019 at CSHL">
   <meta property="og:locale" content="en-us">
   
   <meta property="article:published_time" content="2019-11-08T00:00:00&#43;00:00">
@@ -276,7 +276,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    3 min read
+    6 min read
   </span>
   
 
@@ -359,111 +359,260 @@
     <div class="article-style" itemprop="articleBody">
       <div id="TOC">
 <ul>
-<li><a href="#day-3---session-8---evolution-and-phylogenetics">Day 3 - Session 8 - EVOLUTION AND PHYLOGENETICS</a></li>
-<li><a href="#is-pathogen-evolution-predictable-the-role-of-population-genomics">Is pathogen evolution predictable? The role of population genomics</a></li>
-<li><a href="#learning-the-properties-of-adaptive-regions-with-functional-data-analysis">Learning the properties of adaptive regions with functional data analysis</a></li>
-<li><a href="#creating-pan-human-and-population-specific-consensus-representations-of-the-reference-genome-and-assessing-their">Creating pan-human and population-specific consensus representations of the reference genome and assessing their</a></li>
-<li><a href="#gramene-subsitespangenome-browsers-for-crops">Gramene subsites—Pangenome browsers for crops</a></li>
-<li><a href="#section"></a></li>
-<li><a href="#what-do-we-gain-when-tolerating-loss-the-information-bottleneck-lossy-compression-and-detecting-horizontal-gene-transfer">What do we gain when tolerating loss? The information bottleneck, lossy compression, and detecting horizontal gene transfer</a></li>
-<li><a href="#a-recurrent-neural-network-for-inferring-sweeps-and-allele-frequency-trajectories-using-gene-trees-based-on-the-ancestral-recombination-graph">A recurrent neural network for inferring sweeps and allele frequency trajectories using gene trees based on the ancestral recombination graph</a></li>
-<li><a href="#assembling-the-y-chromosomes-of-anopheles-mosquitoes">Assembling the Y chromosomes of anopheles mosquitoes</a></li>
+<li><a href="#day-3---session-7---microbial-and-metagenomics">Day 3 - Session 7 - MICROBIAL AND METAGENOMICS</a></li>
+<li><a href="#strain-level-metagenomic-assignment-and-compositional-estimation-for-long-reads-with-metamaps">Strain-level metagenomic assignment and compositional estimation for long reads with MetaMaps</a></li>
+<li><a href="#metaflyescalable-long-read-metagenome-assembly-using-repeat-graphs">metaFlye—Scalable long-read metagenome assembly using repeat graphs</a></li>
+<li><a href="#detecting-microbial-transmission-and-engraftment-after-faecal-microbiota-transplants-using-long-read-metagenomics-and-reticulatus">Detecting microbial transmission and engraftment after faecal microbiota transplants using long-read metagenomics and reticulatus</a></li>
+<li><a href="#entropy-of-a-bacterial-stress-response-is-a-generalizable-predictor-for-fitness-and-antibiotic-sensitivity">Entropy of a bacterial stress response is a generalizable predictor for fitness and antibiotic sensitivity</a></li>
+<li><a href="#the-use-of-kmer-counts-to-train-random-forests-to-predict-country-of-origin-for-bacterial-pathogen-sequencing-data">The use of kmer counts to train random forests to predict country of origin for bacterial pathogen sequencing data</a></li>
+<li><a href="#real-time-assembly-using-nanopore-sequencing-data-for-microbial-communities">Real-time assembly using Nanopore sequencing data for microbial communities</a></li>
+<li><a href="#exploring-the-role-of-ribosomal-gene-repeats-in-the-context-of-regeneration">Exploring the role of ribosomal gene repeats in the context of regeneration</a></li>
+<li><a href="#genomic-epidemiology-of-west-nile-virus-in-california">Genomic epidemiology of West Nile virus in California</a></li>
 </ul>
 </div>
 
-<div id="day-3---session-8---evolution-and-phylogenetics" class="section level1">
-<h1>Day 3 - Session 8 - EVOLUTION AND PHYLOGENETICS</h1>
+<div id="day-3---session-7---microbial-and-metagenomics" class="section level1">
+<h1>Day 3 - Session 7 - MICROBIAL AND METAGENOMICS</h1>
 <p>Genome Informatics 2019 at CSHL</p>
 <p><strong>Bold</strong> is the speaker</p>
 <p><strong>If you dislike/disagree with my notes/sentiment and you are the speaker/PI then contact me. I very much could be mis-understanding some important points.</strong></p>
+<p>My notes will likely reflect my background knowledge of microbes. Which is nil.</p>
 </div>
-<div id="is-pathogen-evolution-predictable-the-role-of-population-genomics" class="section level1">
-<h1>Is pathogen evolution predictable? The role of population genomics</h1>
-<p><strong>William Hanage.</strong></p>
-<p>Is pathogen evolution predictable?</p>
+<div id="strain-level-metagenomic-assignment-and-compositional-estimation-for-long-reads-with-metamaps" class="section level1">
+<h1>Strain-level metagenomic assignment and compositional estimation for long reads with MetaMaps</h1>
+<p><strong>Alexander T. Dilthey</strong>, Chirag Jain, Sergey Koren, Adam M. Phillippy.</p>
+<p>Discussion of how MinHash works.</p>
+<p>kmers, which are hashed, then sorted (take the smallest), compare kmers between query and ref</p>
+<p>MinHash ~ Jaccard similarity (point to assess similarity, e.g. “alignment”)</p>
+<p>“Mapping qualities”</p>
 <ul>
-<li>Probably not</li>
-<li>Cool, talk over, I guess.</li>
-</ul>
-<p>Oh he is still going</p>
-<p>“Accessory genome”</p>
+<li>want prob. dist. of all mapping locations for a read</li>
+<li>assume
 <ul>
-<li>three <em>e. coli</em> strains only share 39% of the genes
-<ul>
-<li>Welsh et al…….2001 (?)</li>
+<li>read error rate known</li>
 </ul></li>
-<li>the “mr. potato head” model</li>
+<li>compute jaccard similarity</li>
+<li>model as Bernoulli</li>
 </ul>
-<p>Sample 4k+ pneumococcal genomes from 4 dif places</p>
+<p>MetaMaps</p>
 <ul>
-<li>Corander Nat Eco Evol 2017</li>
-<li>found 73 “sequence clusters” based on population (tree?) structure</li>
-<li>also 1700+ accessory genes (COGS)</li>
+<li>integrated metagenomic classification system</li>
+<li>takes lots from MashMap</li>
+<li>auto-tunes minimum read length &amp; identity (EM)</li>
 </ul>
-<p><strong>Dif strains are correlated when using accessory genes (was effectively R^2 of 0 with full genome)</strong></p>
-<p>Negative Frequency Dependent Selection</p>
+<p>Benchmark</p>
 <ul>
-<li>balancing selection</li>
-<li>corrolary are antigens/phage receptors - if too common get ID’ed and wiped out</li>
-</ul>
-<p>Pneumococcal Conjugate vaccines (PCVs) as an evolutionary experiment</p>
+<li>precision better than others (Kraken, Kraken2, Centrifuge, MEGAN-LR)</li>
+<li><strong>REQUIRES LONG READS (&gt; 1000bp)</strong></li>
+<li>slower than other methods (and takes more mem)
 <ul>
-<li>we have good vaccines against <em>some</em> strains</li>
-<li>7</li>
-<li>but there are 90+ serotypes</li>
-</ul>
-<p>Can we predict what types will persist/succeed after vaccination?</p>
-<p>Sampling (seq.) per/post vaccination</p>
-<ul>
-<li>35 strains found</li>
-<li>vaccination wiped out the 7 that were covered</li>
-<li>uneven “replacement” rate by other strains
-<ul>
-<li>not super convinced … is this just noise?</li>
+<li>but are working on this</li>
 </ul></li>
 </ul>
-<p>Isolates in the same group tend to have the same set of COGS (getting increasingly concerned I don’t know what COGS stands for…)</p>
-<p>Check for prevalence of COGS pre/post vaccination and sum distance from linear expected.</p>
+<p>Going through some case studies on finding novel things</p>
 <ul>
-<li>directional</li>
+<li>find mismatches from errors in ref databases</li>
+<li>location mapping allows you to quantify categories of genes (or I totally misheard/misread)</li>
 </ul>
-<p>Can predict fitness … and it roughly matches what you’d expect. Not perfect, but the correlation looks real.</p>
-<p>doi.org/10.1101/420315 (&lt;- bioRxiv)</p>
-<p>What are the genes?! (&lt;- his formatting)</p>
+<p>github.com/DiltheyLab/MetaMaps</p>
+</div>
+<div id="metaflyescalable-long-read-metagenome-assembly-using-repeat-graphs" class="section level1">
+<h1>metaFlye—Scalable long-read metagenome assembly using repeat graphs</h1>
+<p><strong>Mikhail Kolmogorov</strong>, Mikhail Rayko, Jeffrey Yuan, Evgeny Polevikov, Pavel Pevzner.</p>
+<p>Genome Assembly, with graphs</p>
+<p>Flye intro:
+- glue repeats into the graph</p>
+<p>OK, I’m not following this. Sorry Mikhail!</p>
+<p>Isn’t this a metagenome session? This is all genome assembly.</p>
+<p>Oh, he is shifting now.</p>
+<p>How to detect repeats?</p>
 <ul>
-<li>aaaah, he didn’t say.</li>
-<li>tease</li>
+<li>in genomes can use coverage</li>
+<li>not reliable enough in metagenomes</li>
+<li>need to use graph</li>
+</ul>
+<p>Emphasizes look at graph viz</p>
+<ul>
+<li>want one loop for bacteria chr</li>
+<li>reality sucks</li>
+<li>bubbles oh my
+<ul>
+<li>strain hetergeneity?</li>
+<li>or repeat -&gt; bubble -&gt; repeat?!</li>
+</ul></li>
+<li>BUBBLES CAN HAVE BUBBLES</li>
+</ul>
+<p>Showing cow rumen microbiome</p>
+<p>Now Sheep microbiome</p>
+<p>Looks like many successes and many crazy things</p>
+<p>Emphasizes metaFlye is still very much in dev.</p>
+<p>Recommends Bandage (Wick et al) and AGB (Mikheenko &amp; Kolmogorov) for viz of assemblies</p>
+<p>Asks us - would you prefer simple consensus or bubbly haplotype resolved assembly?</p>
+<p>github.com/fenderglass/Flye</p>
+</div>
+<div id="detecting-microbial-transmission-and-engraftment-after-faecal-microbiota-transplants-using-long-read-metagenomics-and-reticulatus" class="section level1">
+<h1>Detecting microbial transmission and engraftment after faecal microbiota transplants using long-read metagenomics and reticulatus</h1>
+<p><strong>Samuel M. Nicholls</strong>, Joshua C. Quick, Tariq H. Iqbal, Nicholas J. Loman.</p>
+<p><span class="citation">@samstudio8</span></p>
+<p>Intro on why microbiome is important</p>
+<ul>
+<li>health</li>
+<li>exciting as field isn’t fully define for best practices</li>
+</ul>
+<p>“three peaks challenge”</p>
+<ul>
+<li>want extraction method that maintains composition (equal representation of strain?) and long reads</li>
+</ul>
+<p>(everyone is so coy about what is a faecal transplant)</p>
+<p>anyways….checking human microbiomes pre/post transplant</p>
+<p>get looooong reads</p>
+<p>showing n50, contig nums, etc. they look uh, big? (don’t have a great sense about what is acceptable)</p>
+<p>diving into communities. oooooo very cool plot (bubble plot?) with families of bacteria. so many complete (?) genomes</p>
+<p>need to do assembly polishing, but expensive computation</p>
+<p>github.com/samstudio8/reticulatus (snakemake pipeline for polishing)</p>
+<p>tech discussion of GPU acceleration of steps in pipeline</p>
+<ul>
+<li>100 minutes -&gt; 5 minutes with GPU acceleration</li>
+<li>10 - 5 hours on promethION</li>
+</ul>
+<p>File parsers!</p>
+<ul>
+<li>poor gzip FQ parser</li>
+<li>port heng li readfq…save 40 minutes</li>
+</ul>
+<p>Huge time savings on real data</p>
+<p>back to data</p>
+<ul>
+<li>showing diffs pre/post transplantation
+<ul>
+<li>novel communities?</li>
+</ul></li>
+<li>how do they find these? eyeballing? diff testing?</li>
 </ul>
 </div>
-<div id="learning-the-properties-of-adaptive-regions-with-functional-data-analysis" class="section level1">
-<h1>Learning the properties of adaptive regions with functional data analysis</h1>
-<p><strong>Mehreen R. Mughal</strong>, Hillary Koch, Jinguo Huang, Francesca Chiaromonte, Michael DeGiorgio.</p>
+<div id="entropy-of-a-bacterial-stress-response-is-a-generalizable-predictor-for-fitness-and-antibiotic-sensitivity" class="section level1">
+<h1>Entropy of a bacterial stress response is a generalizable predictor for fitness and antibiotic sensitivity</h1>
+<p><strong>Defne Surujon</strong>, Zeyu Zhu, Juan C. Ortiz-Marquez, José Bento, Tim van Opijnen.</p>
+<p>Transciptional signatures can seprate straisn (antibiotic sensitive/resistant)</p>
+<p>Tough to do diff testing because genes often just flat out missing in some strains</p>
+<p>Want a more <strong>universal</strong> signature</p>
+<ul>
+<li>across strains/conditions</li>
+<li>without relying on previous knowledge of gene function/identity/patterns</li>
+</ul>
+<p>Try to predict fitness</p>
+<ul>
+<li><em>in vitro</em> make high fitness for control (what? how? )</li>
+</ul>
+<p>biorxiv.org/content/10.1101/813709v1</p>
+<p>3d PCA of strains, colored by (expression?) of major classes of genes</p>
+<ul>
+<li>noticed that high fitness genes had far less variance</li>
+</ul>
+<p>gene expression is <strong>more chaotic</strong> in low fitness strains</p>
+<p>can we use entropy? but how do we calculate entropy?</p>
+<ul>
+<li>assume each gene independent (which def. is not correct in real world….but still works in practice)</li>
+<li>calculate variance in gene expression</li>
+<li>then sum all var?</li>
+</ul>
+<p>making networks of gene interactions with some parameter tuning (to figure out edge nums/connectivity) to improve modelling</p>
+<p>to save time/money/sanity moved over testing to just one timepoint</p>
+<ul>
+<li>big diff in distribution width (log2FC density plot) between low/high fitness</li>
+</ul>
+<p>Does this work for <strong>many</strong> pathogens?</p>
+<ul>
+<li>seems like it</li>
+</ul>
 </div>
-<div id="creating-pan-human-and-population-specific-consensus-representations-of-the-reference-genome-and-assessing-their" class="section level1">
-<h1>Creating pan-human and population-specific consensus representations of the reference genome and assessing their</h1>
-<p>effect on functional genomic data analysis
-<strong>Benjamin Kaminow</strong>, Sara Ballouz, Jesse Gillis, Alex Dobin.</p>
+<div id="the-use-of-kmer-counts-to-train-random-forests-to-predict-country-of-origin-for-bacterial-pathogen-sequencing-data" class="section level1">
+<h1>The use of kmer counts to train random forests to predict country of origin for bacterial pathogen sequencing data</h1>
+<p><strong>Lauren Cowley</strong>, Jordan Taylor, Claire Jenkins, Tim Dallman.</p>
+<p><span class="citation">@laurencowley4</span></p>
+<p>Talking about food borne pathogens</p>
+<ul>
+<li>apparently 50% (!) of UK Salmonella is associated with foreign travel / imported food</li>
+</ul>
+<p>Discusses pathogen tracking system in UK</p>
+<ul>
+<li>local doc, epidemiologists</li>
+</ul>
+<p>Use RF for k-mer counting to figure out country of origin</p>
+<p>fsm-lite used (what is this?)</p>
+<ul>
+<li>kmer counter?</li>
+<li>some kmers mark strains</li>
+</ul>
+<p>big ’ol matrix</p>
+<ul>
+<li>5 million kmers across 500 strains, for example</li>
+</ul>
+<p>random forest (RF) intro</p>
+<ul>
+<li>classifier</li>
+<li>non continuous data</li>
+<li>highly resistant to overfitting (bc lots ’o trees)</li>
+<li>interpretability (kmers / features which are most informative for classifier)</li>
+</ul>
+<p>train of 2017 data, test on 2018 data</p>
+<ul>
+<li>71% accuracy for first pass</li>
+<li>only good at domestic/foreign</li>
+<li>non-england countries poorly represented</li>
+<li>decided to aggregate countries by region
+<ul>
+<li>little better</li>
+</ul></li>
+<li>neural network gets to 80% accuracy with most common 100 kmers</li>
+<li>try with most strains, fewer kmers</li>
+<li>will try unitigs instead of kmers</li>
+</ul>
 </div>
-<div id="gramene-subsitespangenome-browsers-for-crops" class="section level1">
-<h1>Gramene subsites—Pangenome browsers for crops</h1>
-<p>Marcela K. Tello-Ruiz, Sharon Wei, Joshua Stein, Kapeel Chougule, <strong>Andrew Olson</strong>, Yinping Jiao, Bo Wang, Ivar Meijs, Doreen Ware.</p>
+<div id="real-time-assembly-using-nanopore-sequencing-data-for-microbial-communities" class="section level1">
+<h1>Real-time assembly using Nanopore sequencing data for microbial communities</h1>
+<p><strong>Son H. Nguyen</strong>, Minh D. Cao, Lachlan J. Coin.</p>
 </div>
-<div id="section" class="section level1">
-<h1></h1>
-<p><strong>Janet Kelso.</strong></p>
+<div id="exploring-the-role-of-ribosomal-gene-repeats-in-the-context-of-regeneration" class="section level1">
+<h1>Exploring the role of ribosomal gene repeats in the context of regeneration</h1>
+<p><strong>Sofia N. Barreira</strong>, Andreas D. Baxevanis.</p>
+<p>Woo NHGRI (did postdoc there)!</p>
+<p>rDNA is highly repetitive in humans</p>
+<p>big intergenic spacer (GS)</p>
+<p>UBF (nucleolar tf) binds across rRNA</p>
+<p>but this is human….baxevanis lab studies hydractinia (highly regenerative marine hydrozoan from phylum cnidaria)</p>
+<ul>
+<li>you can decaptitate, and head regrows in 3 days</li>
+</ul>
+<p>are there genomic features that contribute to regeneration?</p>
+<ul>
+<li>got partial 18S and 28S seq from NCBI as well as human 5.8S and aligned to hydractinia genome assembly</li>
+<li>enhancer elements in rRNA?</li>
+<li>going to do chip-seq</li>
+</ul>
+<p>what about UBF?</p>
+<ul>
+<li>tough to ID</li>
+<li>looking for emergence across nematodes, ctenophores, cnidaria, arthopods….chordates</li>
+<li>doing a proteome assembly</li>
+</ul>
 </div>
-<div id="what-do-we-gain-when-tolerating-loss-the-information-bottleneck-lossy-compression-and-detecting-horizontal-gene-transfer" class="section level1">
-<h1>What do we gain when tolerating loss? The information bottleneck, lossy compression, and detecting horizontal gene transfer</h1>
-<p><strong>Apurva Narechania</strong>, Rob Desalle, Barun Mathema, Barry Kreiswirth,
-Paul Planet.</p>
-</div>
-<div id="a-recurrent-neural-network-for-inferring-sweeps-and-allele-frequency-trajectories-using-gene-trees-based-on-the-ancestral-recombination-graph" class="section level1">
-<h1>A recurrent neural network for inferring sweeps and allele frequency trajectories using gene trees based on the ancestral recombination graph</h1>
-<p><strong>Hussein A</strong>. Hejase, Ziyi Mo, Adam Siepel.</p>
-</div>
-<div id="assembling-the-y-chromosomes-of-anopheles-mosquitoes" class="section level1">
-<h1>Assembling the Y chromosomes of anopheles mosquitoes</h1>
-<p><strong>Chujia Chen</strong>, Austin Compton, Yang Wu, Jiangtao Liang, Dustin Miller, Xiaoguang Chen, Igor Sharakhov, Chunhong Mao, Zhijian J. Tu.</p>
+<div id="genomic-epidemiology-of-west-nile-virus-in-california" class="section level1">
+<h1>Genomic epidemiology of West Nile virus in California</h1>
+<p><strong>Karthik Gangavarapu</strong>, Nathaniel Matteson, on behalf of the WestNile 4K Project.</p>
+<p>West Nile</p>
+<ul>
+<li>birds &lt;-&gt; mosquito -&gt; human (dead end for west nile, yay)</li>
+<li>showing infection rate across time and US states</li>
+<li>variable infection rates by state</li>
+</ul>
+<p>sampling across california (CA) across time</p>
+<p>seq -&gt; phylogenetic tree</p>
+<ul>
+<li>5 clades</li>
+<li>cool flow moving plots showing movement of strains across CA across time</li>
+<li>virus can persist across seasons</li>
+</ul>
 </div>
 
     </div>
@@ -493,11 +642,11 @@ Paul Planet.</p>
       <h3>Related</h3>
       <ul>
         
-        <li><a href="/post/gi2019-day03-morning/">#GI2019 2019 11 08 Morning Session</a></li>
-        
-        <li><a href="/post/gi2019-day02-night/">#GI2019 2019 11 07 Night Session</a></li>
+        <li><a href="/post/gi2019-day03-afternoon/">#GI2019 2019 11 08 Afternoon Session</a></li>
         
         <li><a href="/post/gi2019-day02/">#GI2019 2019 11 07</a></li>
+        
+        <li><a href="/post/gi2019-day02-night/">#GI2019 2019 11 07 Night Session</a></li>
         
         <li><a href="/post/gi2019-day01/">#GI2019 2019 11 06</a></li>
         
