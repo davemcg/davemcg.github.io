@@ -157,11 +157,46 @@ back to data
     - novel communities?
   - how do they find these? eyeballing? diff testing?
 
-
-
 # Entropy of a bacterial stress response is a generalizable predictor for fitness and antibiotic sensitivity
 **Defne Surujon**, Zeyu Zhu, Juan C. Ortiz-Marquez, José Bento, Tim van Opijnen.
 
+Transciptional signatures can seprate straisn (antibiotic sensitive/resistant)
+
+Tough to do diff testing because genes often just flat out missing in some strains
+
+Want a more **universal** signature
+
+  - across strains/conditions
+  - without relying on previous knowledge of gene function/identity/patterns
+
+Try to predict fitness
+
+  - *in vitro* make high fitness for control (what? how? )
+  
+biorxiv.org/content/10.1101/813709v1
+
+3d PCA of strains, colored by (expression?) of major classes of genes
+
+  - noticed that high fitness genes had far less variance
+
+gene expression is **more chaotic** in low fitness strains
+
+can we use entropy? but how do we calculate entropy?
+
+  - assume each gene independent (which def. is not correct in real world....but still works in practice)
+  - calculate variance in gene expression
+  - then sum all var?
+  
+making networks of gene interactions with some parameter tuning (to figure out edge nums/connectivity) to improve modelling
+
+to save time/money/sanity moved over testing to just one timepoint
+
+  - big diff in distribution width (log2FC density plot) between low/high fitness 
+  
+Does this work for **many** pathogens?
+
+  - seems like it
+  
 # The use of kmer counts to train random forests to predict country of origin for bacterial pathogen sequencing data
 **Lauren Cowley**, Jordan Taylor, Claire Jenkins, Tim Dallman.
 
