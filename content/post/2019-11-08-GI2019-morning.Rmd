@@ -243,9 +243,48 @@ train of 2017 data, test on 2018 data
 # Real-time assembly using Nanopore sequencing data for microbial communities
 **Son H. Nguyen**, Minh D. Cao, Lachlan J. Coin.
 
+
 # Exploring the role of ribosomal gene repeats in the context of regeneration
 **Sofia N. Barreira**, Andreas D. Baxevanis.
+
+Woo NHGRI (did postdoc there)!
+
+rDNA is highly repetitive in humans
+
+big intergenic spacer (GS)
+
+UBF (nucleolar tf) binds across rRNA
+
+but this is human....baxevanis lab studies hydractinia (highly regenerative marine hydrozoan from phylum cnidaria)
+
+  - you can decaptitate, and head regrows in 3 days
+  
+are there genomic features that contribute to regeneration?
+
+  - got partial 18S and 28S seq from NCBI as well as human 5.8S and aligned to hydractinia genome assembly
+  - enhancer elements in rRNA?
+  - going to do chip-seq
+  
+what about UBF?
+
+  - tough to ID
+  - looking for emergence across nematodes, ctenophores, cnidaria, arthopods....chordates
+  - doing a proteome assembly
+
 
 # Genomic epidemiology of West Nile virus in California
 **Karthik Gangavarapu**, Nathaniel Matteson, on behalf of the WestNile 4K Project.
 
+West Nile 
+
+  - birds <-> mosquito -> human (dead end for west nile, yay) 
+  - showing infection rate across time and US states
+  - variable infection rates by state
+
+sampling across california (CA) across time
+
+seq -> phylogenetic tree
+
+  - 5 clades
+  - cool flow moving plots showing movement of strains across CA across time
+  - virus can persist across seasons
