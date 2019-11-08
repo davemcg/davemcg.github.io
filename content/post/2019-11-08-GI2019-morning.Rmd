@@ -2,7 +2,7 @@
 title: "#GI2019 2019 11 08 Morning Session"
 author: David McGaughey
 date: '2019-11-07'
-slug: gi2019-day02-night
+slug: gi2019-day03-morning
 categories:
   - bioinformatics
   - gi2019
@@ -68,6 +68,11 @@ github.com/DiltheyLab/MetaMaps
 
 # metaFlye—Scalable long-read metagenome assembly using repeat graphs
 **Mikhail Kolmogorov**, Mikhail Rayko, Jeffrey Yuan, Evgeny Polevikov, Pavel Pevzner.
+
+Genome Assembly, with graphs
+
+Flye intro: 
+  - glue repeats into the graph
 
 # Detecting microbial transmission and engraftment after faecal microbiota transplants using long-read metagenomics and reticulatus
 **Samuel M. Nicholls**, Joshua C. Quick, Tariq H. Iqbal, Nicholas J. Loman.
