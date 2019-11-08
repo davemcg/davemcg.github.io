@@ -276,7 +276,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    3 min read
+    6 min read
   </span>
   
 
@@ -444,23 +444,133 @@
 <div id="deconvolving-the-pervasive-transcription-from-jumping-genes-in-rna-seq-and-unveiling-their-role-in-tumors" class="section level1">
 <h1>Deconvolving the pervasive transcription from jumping genes in RNA-seq and unveiling their role in tumors</h1>
 <p><strong>Fabio Navarro</strong>, Jacob Hoops, Lauren Bellfy, Eliza Cerveira, Qihui Zhu, Chengsheng Zhang, Charles Lee, Mark Gersten.</p>
+<p>More than half of the genome is repetitive</p>
+<ul>
+<li>SINE, LINE, LTRs, Simple repeats</li>
+</ul>
+<p>Focus on LINE1 (most common, right?)</p>
+<p>Estimation of TE transcription in genome is hard</p>
+<ul>
+<li>tossing out multi-mappers throws out real data</li>
+</ul>
+<p>TeXP: <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1007293" class="uri">https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1007293</a></p>
+<p>How can we reliably quantify TE tx?</p>
 </div>
 <div id="alignment-and-mapping-methodology-influence-transcript-abundance-estimation" class="section level1">
 <h1>Alignment and mapping methodology influence transcript abundance estimation</h1>
 <p>Avi Srivastava, Laraib Malik, Hirak Sarkar, Mohsen Zakeri, Fatemeh Almodaresi, Charlotte Soneson, Michael I. Love, Carl Kingsford, <strong>Rob Patro.</strong></p>
+<p>Starts of with BO Li RSEM equation to estimate abundance</p>
+<p>This talk focuses on mapping approaches and how they influence tx quant</p>
+<p>“The sample is not the reference”</p>
+<p>Tested custom tx-ome vs ref</p>
+<p>Bowtie2 and STAR have largest drop in performance</p>
+<ul>
+<li>still difference isn’t huge</li>
+</ul>
+<p>Used real data</p>
+<ul>
+<li>both bulk and single cell (full length)</li>
+<li>no ground truth
+<ul>
+<li>hand check alignments</li>
+</ul></li>
+<li>found some themes….and we are on the next slide</li>
+</ul>
+<p>Made “decoy-aware” tx-ome</p>
+<ul>
+<li>mask exonic regions</li>
+<li>take rest and find similar regions, use this for decoy</li>
+<li>all reads that map best to decoy are tossed</li>
+</ul>
+<p>“Oracle”</p>
+<ul>
+<li>use bowtie2 against txome and STAR against genome (aware of tx)</li>
+<li>if some filter thingy happens, then toss read</li>
+</ul>
+<p>sorry these notes sucks….too busy listening…to this information dense talk….</p>
+<p>STAR seems the best…across the testing</p>
+<p><a href="https://www.biorxiv.org/content/10.1101/657874v2" class="uri">https://www.biorxiv.org/content/10.1101/657874v2</a></p>
 </div>
 <div id="a-technology-agnostic-long-read-analysis-pipeline-for-transcriptome-discovery-and-quantification" class="section level1">
 <h1>A technology-agnostic long-read analysis pipeline for transcriptome discovery and quantification</h1>
 <p><strong>Dana Wyman</strong>, Gabriela Balderrama-Gutierrez, Fairlie Reese, Shan
 Jiang, Brian Williams, Barbara Wold, Ali Mortazavi.</p>
+<p>TALON!</p>
+<p><em>quantification</em> of long read RNA-sdq</p>
+<p>also makes high quality annotations</p>
+<p>can add new data without re-running existing</p>
+<p>used SQANTI tx category names</p>
+<p>short tx can (often) be artifacts</p>
+<ul>
+<li>rna degradation, polyA priming issues</li>
+</ul>
+<p>lots of filtering to toss likely erroneous tx</p>
+<p>PacBio is consistent with PacBio (pearson 0.9) at gene and tx level (0.7)</p>
+<ul>
+<li>can also reliably detect egnes above TPM 5</li>
+</ul>
+<p>Direct-RNA ONT also reproducible</p>
+<ul>
+<li>a bit worse than PacBio</li>
+<li>misses many lower read level genes</li>
+<li>maybe because reads that get stuck in pore look like short tx</li>
+<li>fewer RTPCR artifacts (as expected…since there’s no RTPCR)</li>
+</ul>
+<p>github.com/dewyman/TALON
+github.com/dewyman/TranscriptClean</p>
 </div>
 <div id="quantifying-isoform-expression-in-single-cell-rna-seq-data-with-starsolo-quant" class="section level1">
 <h1>Quantifying isoform expression in single-cell RNA-seq data with STARsolo-Quant</h1>
 <p><strong>Nathan Castro-Pacheco</strong>, Alexander Dobin.</p>
+<p>Going over droplet based scRNA</p>
+<ul>
+<li>e.g. DropSeq, 10X</li>
+<li>high dropout, short reads</li>
+</ul>
+<p>Discussing tx isoforms….not many quantify</p>
+<ul>
+<li>exception: TCC (Ntranos….Pachter)</li>
+</ul>
+<p>Want to do tx isoform quant with sc data</p>
+<p>But short reads at 3’ end…don’t tend to map uniquely</p>
+<p>Propose merging clusters of scRNA to get higher counts</p>
+<p>quant -&gt; cluster -&gt; do quant again with pseudo bulk? (this is me guessing)</p>
+<p>EM based quant, models 3’ end bias</p>
+<p>STARsolo -&gt; cluster -&gt; STARsolo-Quant -&gt; combine reads from each cluster -&gt; EMaximization (well I wasn’t super far off)</p>
+<p>Showing a bunch of case studies with individual genes and the effect of low counts</p>
+<p>If they a bunch of tx have identical end, then you are screwed (so much multi-mapping) - they propose just merging these together</p>
+<p>With splatter (simulated data) spearman R 0.93</p>
 </div>
 <div id="full-length-transcript-characterization-for-single-cell-rna-seq-analysis" class="section level1">
 <h1>Full-length transcript characterization for single cell RNA-seq analysis</h1>
 <p><strong>Elizabeth Tseng</strong>, Jason Underwood.</p>
+<p><span class="citation">@magdoll</span></p>
+<p>Iso-Seq</p>
+<ul>
+<li>full length RNA-seq</li>
+<li>uses CCS</li>
+<li>8 passes get QV30</li>
+</ul>
+<p>Did Illumina and PacBio single cell</p>
+<ul>
+<li>droplet? what? SMARTseq? didn’t say….</li>
+<li>anyways, spearman R 0.96</li>
+</ul>
+<p>scRNA is shorter than bulk (for tx length)</p>
+<ul>
+<li>clear left-ward shift in scRNA data</li>
+</ul>
+<p>github.com/magdoll/sqanti2</p>
+<p>Talks about orthogonal valdation of full length, 5’, 3’ matching</p>
+<p>How to represent isoforms</p>
+<ul>
+<li>so many (&gt;200k, depending how you count)</li>
+<li>top 3 for each gene?</li>
+<li>just unique ORFs?
+<ul>
+<li>uh, what? is that a good idea? I guess I’m not certain why you HAVE to trim at this step</li>
+</ul></li>
+</ul>
 </div>
 
     </div>

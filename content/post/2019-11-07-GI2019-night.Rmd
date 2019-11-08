@@ -109,16 +109,155 @@ StringTie2
 # Deconvolving the pervasive transcription from jumping genes in RNA-seq and unveiling their role in tumors
 **Fabio Navarro**, Jacob Hoops, Lauren Bellfy, Eliza Cerveira, Qihui Zhu, Chengsheng Zhang, Charles Lee, Mark Gersten.
 
+More than half of the genome is repetitive
+
+  - SINE, LINE, LTRs, Simple repeats
+
+Focus on LINE1 (most common, right?)
+
+Estimation of TE transcription in genome is hard
+
+  - tossing out multi-mappers throws out real data
+  
+TeXP: https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1007293
+
+How can we reliably quantify TE tx?
+
+
 # Alignment and mapping methodology influence transcript abundance estimation
 Avi Srivastava, Laraib Malik, Hirak Sarkar, Mohsen Zakeri, Fatemeh Almodaresi, Charlotte Soneson, Michael I. Love, Carl Kingsford, **Rob Patro.**
+
+Starts of with BO Li RSEM equation to estimate abundance
+
+This talk focuses on mapping approaches and how they influence tx quant
+
+"The sample is not the reference"
+
+Tested custom tx-ome vs ref
+
+Bowtie2 and STAR have largest drop in performance
+
+  - still difference isn't huge
+  
+Used real data
+
+  - both bulk and single cell (full length)
+  - no ground truth
+    - hand check alignments
+  - found some themes....and we are on the next slide
+  
+Made "decoy-aware" tx-ome
+
+  - mask exonic regions
+  - take rest and find similar regions, use this for decoy
+  - all reads that map best to decoy are tossed 
+  
+
+"Oracle"
+
+  - use bowtie2 against txome and STAR against genome (aware of tx)
+  - if some filter thingy happens, then toss read
+
+sorry these notes sucks....too busy listening...to this information dense talk....
+
+STAR seems the best...across the testing
+
+https://www.biorxiv.org/content/10.1101/657874v2
+
 
 # A technology-agnostic long-read analysis pipeline for transcriptome discovery and quantification
 **Dana Wyman**, Gabriela Balderrama-Gutierrez, Fairlie Reese, Shan
 Jiang, Brian Williams, Barbara Wold, Ali Mortazavi.
 
+TALON!
+
+*quantification* of long read RNA-sdq
+
+also makes high quality annotations
+
+can add new data without re-running existing
+
+used SQANTI tx category names
+
+short tx can (often) be artifacts
+
+  - rna degradation, polyA priming issues
+  
+lots of filtering to toss likely erroneous tx
+
+PacBio is consistent with PacBio (pearson 0.9) at gene and tx level (0.7)
+
+  - can also reliably detect egnes above TPM 5
+  
+Direct-RNA ONT also reproducible
+
+  - a bit worse than PacBio
+  - misses many lower read level genes
+  - maybe because reads that get stuck in pore look like short tx
+  - fewer RTPCR artifacts (as expected...since there's no RTPCR)
+
+github.com/dewyman/TALON
+github.com/dewyman/TranscriptClean
+
 # Quantifying isoform expression in single-cell RNA-seq data with STARsolo-Quant
 **Nathan Castro-Pacheco**, Alexander Dobin.
 
+Going over droplet based scRNA
+
+  - e.g. DropSeq, 10X
+  - high dropout, short reads
+
+Discussing tx isoforms....not many quantify
+
+  - exception: TCC (Ntranos....Pachter)
+  
+Want to do tx isoform quant with sc data
+
+But short reads at 3' end...don't tend to map uniquely
+
+Propose merging clusters of scRNA to get higher counts
+
+quant -> cluster -> do quant again with pseudo bulk? (this is me guessing)
+
+EM based quant, models 3' end bias
+
+STARsolo -> cluster -> STARsolo-Quant -> combine reads from each cluster -> EMaximization (well I wasn't super far off)
+
+Showing a bunch of case studies with individual genes and the effect of low counts
+
+If they a bunch of tx have identical end, then you are screwed (so much multi-mapping) - they propose just merging these together
+
+With splatter (simulated data) spearman R 0.93
+
+
 # Full-length transcript characterization for single cell RNA-seq analysis
 **Elizabeth Tseng**, Jason Underwood.
+
+@magdoll
+
+Iso-Seq
+
+  - full length RNA-seq
+  - uses CCS
+  - 8 passes get QV30
+
+Did Illumina and PacBio single cell
+
+  - droplet? what? SMARTseq? didn't say....
+  - anyways, spearman R 0.96
+  
+scRNA is shorter than bulk (for tx length)
+  
+  - clear left-ward shift in scRNA data
+  
+github.com/magdoll/sqanti2
+
+Talks about orthogonal valdation of full length, 5', 3' matching
+
+How to represent isoforms
+
+  - so many (>200k, depending how you count)
+  - top 3 for each gene?
+  - just unique ORFs?
+    - uh, what? is that a good idea? I guess I'm not certain why you HAVE to trim at this step
   
