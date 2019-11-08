@@ -1,0 +1,110 @@
+---
+title: "#GI2019 2019 11 08 Morning Session"
+author: David McGaughey
+date: '2019-11-07'
+slug: gi2019-day02-night
+categories:
+  - bioinformatics
+  - gi2019
+  - conferences
+  - talk
+tags:
+  - bioinformatics
+  - gi2019
+  - conferences
+  - talk
+header:
+  caption: ''
+  image: ''
+output:
+  blogdown::html_page:
+    toc: true
+---
+
+
+<div id="TOC">
+<ul>
+<li><a href="#day-2---session-7---microbial-and-metagenomics">Day 2 - Session 7 - MICROBIAL AND METAGENOMICS</a></li>
+<li><a href="#strain-level-metagenomic-assignment-and-compositional-estimation-for-long-reads-with-metamaps">Strain-level metagenomic assignment and compositional estimation for long reads with MetaMaps</a></li>
+<li><a href="#metaflyescalable-long-read-metagenome-assembly-using-repeat-graphs">metaFlye—Scalable long-read metagenome assembly using repeat graphs</a></li>
+<li><a href="#detecting-microbial-transmission-and-engraftment-after-faecal-microbiota-transplants-using-long-read-metagenomics-and-reticulatus">Detecting microbial transmission and engraftment after faecal microbiota transplants using long-read metagenomics and reticulatus</a></li>
+<li><a href="#entropy-of-a-bacterial-stress-response-is-a-generalizable-predictor-for-fitness-and-antibiotic-sensitivity">Entropy of a bacterial stress response is a generalizable predictor for fitness and antibiotic sensitivity</a></li>
+<li><a href="#the-use-of-kmer-counts-to-train-random-forests-to-predict-country-of-origin-for-bacterial-pathogen-sequencing-data">The use of kmer counts to train random forests to predict country of origin for bacterial pathogen sequencing data</a></li>
+<li><a href="#real-time-assembly-using-nanopore-sequencing-data-for-microbial-communities">Real-time assembly using Nanopore sequencing data for microbial communities</a></li>
+<li><a href="#exploring-the-role-of-ribosomal-gene-repeats-in-the-context-of-regeneration">Exploring the role of ribosomal gene repeats in the context of regeneration</a></li>
+<li><a href="#genomic-epidemiology-of-west-nile-virus-in-california">Genomic epidemiology of West Nile virus in California</a></li>
+</ul>
+</div>
+
+<div id="day-2---session-7---microbial-and-metagenomics" class="section level1">
+<h1>Day 2 - Session 7 - MICROBIAL AND METAGENOMICS</h1>
+<p>Genome Informatics 2019 at CSHL</p>
+<p><strong>Bold</strong> is the speaker</p>
+<p>My notes will likely reflect my background knowledge of microbes. Which is nil.</p>
+</div>
+<div id="strain-level-metagenomic-assignment-and-compositional-estimation-for-long-reads-with-metamaps" class="section level1">
+<h1>Strain-level metagenomic assignment and compositional estimation for long reads with MetaMaps</h1>
+<p><strong>Alexander T. Dilthey</strong>, Chirag Jain, Sergey Koren, Adam M. Phillippy.</p>
+<p>Discussion of how MinHash works.</p>
+<p>kmers, which are hashed, then sorted (take the smallest), compare kmers between query and ref</p>
+<p>MinHash ~ Jaccard similarity (point to assess similarity, e.g. “alignment”)</p>
+<p>“Mapping qualities”</p>
+<ul>
+<li>want prob. dist. of all mapping locations for a read</li>
+<li>assume
+<ul>
+<li>read error rate known</li>
+</ul></li>
+<li>compute jaccard similarity</li>
+<li>model as Bernoulli</li>
+</ul>
+<p>MetaMaps</p>
+<ul>
+<li>integrated metagenomic classification system</li>
+<li>takes lots from MashMap</li>
+<li>auto-tunes minimum read length &amp; identity (EM)</li>
+</ul>
+<p>Benchmark</p>
+<ul>
+<li>precision better than others (Kraken, Kraken2, Centrifuge, MEGAN-LR)</li>
+<li><strong>REQUIRES LONG READS (&gt; 1000bp)</strong></li>
+<li>slower than other methods (and takes more mem)
+<ul>
+<li>but are working on this</li>
+</ul></li>
+</ul>
+<p>Going through some case studies on finding novel things</p>
+<ul>
+<li>find mismatches from errors in ref databases</li>
+<li>location mapping allows you to quantify categories of genes (or I totally misheard/misread)</li>
+</ul>
+<p>github.com/DiltheyLab/MetaMaps</p>
+</div>
+<div id="metaflyescalable-long-read-metagenome-assembly-using-repeat-graphs" class="section level1">
+<h1>metaFlye—Scalable long-read metagenome assembly using repeat graphs</h1>
+<p><strong>Mikhail Kolmogorov</strong>, Mikhail Rayko, Jeffrey Yuan, Evgeny Polevikov, Pavel Pevzner.</p>
+</div>
+<div id="detecting-microbial-transmission-and-engraftment-after-faecal-microbiota-transplants-using-long-read-metagenomics-and-reticulatus" class="section level1">
+<h1>Detecting microbial transmission and engraftment after faecal microbiota transplants using long-read metagenomics and reticulatus</h1>
+<p><strong>Samuel M. Nicholls</strong>, Joshua C. Quick, Tariq H. Iqbal, Nicholas J. Loman.</p>
+</div>
+<div id="entropy-of-a-bacterial-stress-response-is-a-generalizable-predictor-for-fitness-and-antibiotic-sensitivity" class="section level1">
+<h1>Entropy of a bacterial stress response is a generalizable predictor for fitness and antibiotic sensitivity</h1>
+<p><strong>Defne Surujon</strong>, Zeyu Zhu, Juan C. Ortiz-Marquez, José Bento, Tim van Opijnen.</p>
+</div>
+<div id="the-use-of-kmer-counts-to-train-random-forests-to-predict-country-of-origin-for-bacterial-pathogen-sequencing-data" class="section level1">
+<h1>The use of kmer counts to train random forests to predict country of origin for bacterial pathogen sequencing data</h1>
+<p><strong>Lauren Cowley</strong>, Jordan Taylor, Claire Jenkins, Tim Dallman.</p>
+</div>
+<div id="real-time-assembly-using-nanopore-sequencing-data-for-microbial-communities" class="section level1">
+<h1>Real-time assembly using Nanopore sequencing data for microbial communities</h1>
+<p><strong>Son H. Nguyen</strong>, Minh D. Cao, Lachlan J. Coin.</p>
+</div>
+<div id="exploring-the-role-of-ribosomal-gene-repeats-in-the-context-of-regeneration" class="section level1">
+<h1>Exploring the role of ribosomal gene repeats in the context of regeneration</h1>
+<p><strong>Sofia N. Barreira</strong>, Andreas D. Baxevanis.</p>
+</div>
+<div id="genomic-epidemiology-of-west-nile-virus-in-california" class="section level1">
+<h1>Genomic epidemiology of West Nile virus in California</h1>
+<p><strong>Karthik Gangavarapu</strong>, Nathaniel Matteson, on behalf of the WestNile 4K Project.</p>
+</div>
