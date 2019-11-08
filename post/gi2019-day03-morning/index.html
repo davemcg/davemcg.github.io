@@ -17,7 +17,7 @@
       
     
   
-  <meta name="description" content="Day 3 - Session 7 - MICROBIAL AND METAGENOMICS Strain-level metagenomic assignment and compositional estimation for long reads with MetaMaps metaFlye—Scalable long-read metagenome assembly using repeat graphs Entropy of a bacterial stress response is a generalizable predictor for fitness and antibiotic sensitivity The use of kmer counts to train random forests to predict country of origin for bacterial pathogen sequencing data Real-time assembly using Nanopore sequencing data for microbial communities Exploring the role of ribosomal gene repeats in the context of regeneration Genomic epidemiology of West Nile virus in California   Day 3 - Session 7 - MICROBIAL AND METAGENOMICS Genome Informatics 2019 at CSHL">
+  <meta name="description" content="Day 3 - Session 7 - MICROBIAL AND METAGENOMICS Strain-level metagenomic assignment and compositional estimation for long reads with MetaMaps metaFlye—Scalable long-read metagenome assembly using repeat graphs Detecting microbial transmission and engraftment after faecal microbiota transplants using long-read metagenomics and reticulatus Entropy of a bacterial stress response is a generalizable predictor for fitness and antibiotic sensitivity The use of kmer counts to train random forests to predict country of origin for bacterial pathogen sequencing data Real-time assembly using Nanopore sequencing data for microbial communities Exploring the role of ribosomal gene repeats in the context of regeneration Genomic epidemiology of West Nile virus in California   Day 3 - Session 7 - MICROBIAL AND METAGENOMICS Genome Informatics 2019 at CSHL">
 
   
   <link rel="alternate" hreflang="en-us" href="/./post/gi2019-day03-morning/">
@@ -93,7 +93,7 @@
   <meta property="og:site_name" content="eye Bioinformatician">
   <meta property="og:url" content="/./post/gi2019-day03-morning/">
   <meta property="og:title" content="#GI2019 2019 11 08 Morning Session | eye Bioinformatician">
-  <meta property="og:description" content="Day 3 - Session 7 - MICROBIAL AND METAGENOMICS Strain-level metagenomic assignment and compositional estimation for long reads with MetaMaps metaFlye—Scalable long-read metagenome assembly using repeat graphs Entropy of a bacterial stress response is a generalizable predictor for fitness and antibiotic sensitivity The use of kmer counts to train random forests to predict country of origin for bacterial pathogen sequencing data Real-time assembly using Nanopore sequencing data for microbial communities Exploring the role of ribosomal gene repeats in the context of regeneration Genomic epidemiology of West Nile virus in California   Day 3 - Session 7 - MICROBIAL AND METAGENOMICS Genome Informatics 2019 at CSHL">
+  <meta property="og:description" content="Day 3 - Session 7 - MICROBIAL AND METAGENOMICS Strain-level metagenomic assignment and compositional estimation for long reads with MetaMaps metaFlye—Scalable long-read metagenome assembly using repeat graphs Detecting microbial transmission and engraftment after faecal microbiota transplants using long-read metagenomics and reticulatus Entropy of a bacterial stress response is a generalizable predictor for fitness and antibiotic sensitivity The use of kmer counts to train random forests to predict country of origin for bacterial pathogen sequencing data Real-time assembly using Nanopore sequencing data for microbial communities Exploring the role of ribosomal gene repeats in the context of regeneration Genomic epidemiology of West Nile virus in California   Day 3 - Session 7 - MICROBIAL AND METAGENOMICS Genome Informatics 2019 at CSHL">
   <meta property="og:locale" content="en-us">
   
   <meta property="article:published_time" content="2019-11-08T00:00:00&#43;00:00">
@@ -276,7 +276,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    3 min read
+    4 min read
   </span>
   
 
@@ -362,6 +362,7 @@
 <li><a href="#day-3---session-7---microbial-and-metagenomics">Day 3 - Session 7 - MICROBIAL AND METAGENOMICS</a></li>
 <li><a href="#strain-level-metagenomic-assignment-and-compositional-estimation-for-long-reads-with-metamaps">Strain-level metagenomic assignment and compositional estimation for long reads with MetaMaps</a></li>
 <li><a href="#metaflyescalable-long-read-metagenome-assembly-using-repeat-graphs">metaFlye—Scalable long-read metagenome assembly using repeat graphs</a></li>
+<li><a href="#detecting-microbial-transmission-and-engraftment-after-faecal-microbiota-transplants-using-long-read-metagenomics-and-reticulatus">Detecting microbial transmission and engraftment after faecal microbiota transplants using long-read metagenomics and reticulatus</a></li>
 <li><a href="#entropy-of-a-bacterial-stress-response-is-a-generalizable-predictor-for-fitness-and-antibiotic-sensitivity">Entropy of a bacterial stress response is a generalizable predictor for fitness and antibiotic sensitivity</a></li>
 <li><a href="#the-use-of-kmer-counts-to-train-random-forests-to-predict-country-of-origin-for-bacterial-pathogen-sequencing-data">The use of kmer counts to train random forests to predict country of origin for bacterial pathogen sequencing data</a></li>
 <li><a href="#real-time-assembly-using-nanopore-sequencing-data-for-microbial-communities">Real-time assembly using Nanopore sequencing data for microbial communities</a></li>
@@ -374,6 +375,7 @@
 <h1>Day 3 - Session 7 - MICROBIAL AND METAGENOMICS</h1>
 <p>Genome Informatics 2019 at CSHL</p>
 <p><strong>Bold</strong> is the speaker</p>
+<p><strong>If you dislike/disagree with my notes/sentiment and you are the speaker/PI then contact me. I very much could be mis-understanding some important points.</strong></p>
 <p>My notes will likely reflect my background knowledge of microbes. Which is nil.</p>
 </div>
 <div id="strain-level-metagenomic-assignment-and-compositional-estimation-for-long-reads-with-metamaps" class="section level1">
@@ -427,9 +429,65 @@
 <ul>
 <li>in genomes can use coverage</li>
 <li>not reliable enough in metagenomes</li>
-<li>need to use graph
-# Detecting microbial transmission and engraftment after faecal microbiota transplants using long-read metagenomics and reticulatus
-<strong>Samuel M. Nicholls</strong>, Joshua C. Quick, Tariq H. Iqbal, Nicholas J. Loman.</li>
+<li>need to use graph</li>
+</ul>
+<p>Emphasizes look at graph viz</p>
+<ul>
+<li>want one loop for bacteria chr</li>
+<li>reality sucks</li>
+<li>bubbles oh my
+<ul>
+<li>strain hetergeneity?</li>
+<li>or repeat -&gt; bubble -&gt; repeat?!</li>
+</ul></li>
+<li>BUBBLES CAN HAVE BUBBLES</li>
+</ul>
+<p>Showing cow rumen microbiome</p>
+<p>Now Sheep microbiome</p>
+<p>Looks like many successes and many crazy things</p>
+<p>Emphasizes metaFlye is still very much in dev.</p>
+<p>Recommends Bandage (Wick et al) and AGB (Mikheenko &amp; Kolmogorov) for viz of assemblies</p>
+<p>Asks us - would you prefer simple consensus or bubbly haplotype resolved assembly?</p>
+<p>github.com/fenderglass/Flye</p>
+</div>
+<div id="detecting-microbial-transmission-and-engraftment-after-faecal-microbiota-transplants-using-long-read-metagenomics-and-reticulatus" class="section level1">
+<h1>Detecting microbial transmission and engraftment after faecal microbiota transplants using long-read metagenomics and reticulatus</h1>
+<p><strong>Samuel M. Nicholls</strong>, Joshua C. Quick, Tariq H. Iqbal, Nicholas J. Loman.</p>
+<p><span class="citation">@samstudio8</span></p>
+<p>Intro on why microbiome is important</p>
+<ul>
+<li>health</li>
+<li>exciting as field isn’t fully define for best practices</li>
+</ul>
+<p>“three peaks challenge”</p>
+<ul>
+<li>want extraction method that maintains composition (equal representation of strain?) and long reads</li>
+</ul>
+<p>(everyone is so coy about what is a faecal transplant)</p>
+<p>anyways….checking human microbiomes pre/post transplant</p>
+<p>get looooong reads</p>
+<p>showing n50, contig nums, etc. they look uh, big? (don’t have a great sense about what is acceptable)</p>
+<p>diving into communities. oooooo very cool plot (bubble plot?) with families of bacteria. so many complete (?) genomes</p>
+<p>need to do assembly polishing, but expensive computation</p>
+<p>github.com/samstudio8/reticulatus (snakemake pipeline for polishing)</p>
+<p>tech discussion of GPU acceleration of steps in pipeline</p>
+<ul>
+<li>100 minutes -&gt; 5 minutes with GPU acceleration</li>
+<li>10 - 5 hours on promethION</li>
+</ul>
+<p>File parsers!</p>
+<ul>
+<li>poor gzip FQ parser</li>
+<li>port heng li readfq…save 40 minutes</li>
+</ul>
+<p>Huge time savings on real data</p>
+<p>back to data</p>
+<ul>
+<li>showing diffs pre/post transplantation
+<ul>
+<li>novel communities?</li>
+</ul></li>
+<li>how do they find these? eyeballing? diff testing?</li>
 </ul>
 </div>
 <div id="entropy-of-a-bacterial-stress-response-is-a-generalizable-predictor-for-fitness-and-antibiotic-sensitivity" class="section level1">
@@ -480,15 +538,15 @@
       <h3>Related</h3>
       <ul>
         
-        <li><a href="/post/gi2019-day02/">#GI2019 2019 11 07</a></li>
-        
         <li><a href="/post/gi2019-day02-night/">#GI2019 2019 11 07 Night Session</a></li>
+        
+        <li><a href="/post/gi2019-day02/">#GI2019 2019 11 07</a></li>
         
         <li><a href="/post/gi2019-day01/">#GI2019 2019 11 06</a></li>
         
-        <li><a href="/post/one-developer-portal-genesis/">One Developer Portal: eyeIntegration Genesis</a></li>
-        
         <li><a href="/post/one-developer-portal-optimization/">One Developer Portal: eyeIntegration Web Optimization</a></li>
+        
+        <li><a href="/post/one-developer-portal-genesis/">One Developer Portal: eyeIntegration Genesis</a></li>
         
       </ul>
     </div>

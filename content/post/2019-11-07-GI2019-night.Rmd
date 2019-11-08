@@ -27,6 +27,8 @@ Genome Informatics 2019 at CSHL
 
 **Bold** is the speaker
 
+**If you dislike/disagree with my notes/sentiment and you are the speaker/PI then contact me. I very much could be mis-understanding some important points.**
+
 # The functional iso-transcriptomics analysis framework to assess the functional impact of alternative isoform usage
 Lorena de la Fuente, Manuel Tardáguila, Hector del Risco, Angeles Arzalluz, Francisco Pardo Palacios, Pedro Salguero, Cristina Martín, Sonia Tarazona, **Ana Conesa.**
 

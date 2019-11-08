@@ -27,6 +27,8 @@ Genome Informatics 2019 at CSHL
 
 **Bold** is the speaker
 
+**If you dislike/disagree with my notes/sentiment and you are the speaker/PI then contact me. I very much could be mis-understanding some important points.**
+
 # Genomic sketching with HyperLogLog
 Daniel N. Baker, **Ben Langmead.**
 

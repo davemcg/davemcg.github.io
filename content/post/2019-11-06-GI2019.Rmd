@@ -37,6 +37,8 @@ Genome Informatics 2019 at CSHL
 
 High(est) % female, URM for gi
 
+**If you dislike/disagree with my notes/sentiment and you are the speaker/PI then contact me. I very much could be mis-understanding some important points.**
+
 ## Comparative 3D genome organization in Apicomplexan parasites
 Evelien M. Bunnik, Aarthi Venkat, Ferhat Ay, **Karine G. Le Roch.**
 

@@ -27,6 +27,8 @@ Genome Informatics 2019 at CSHL
 
 **Bold** is the speaker
 
+**If you dislike/disagree with my notes/sentiment and you are the speaker/PI then contact me. I very much could be mis-understanding some important points.**
+
 My notes will likely reflect my background knowledge of microbes. Which is nil. 
 
 # Strain-level metagenomic assignment and compositional estimation for long reads with MetaMaps
@@ -85,8 +87,77 @@ How to detect repeats?
   - in genomes can use coverage
   - not reliable enough in metagenomes
   - need to use graph
+  
+Emphasizes look at graph viz
+
+  - want one loop for bacteria chr
+  - reality sucks
+  - bubbles oh my
+    - strain hetergeneity?
+    - or repeat -> bubble -> repeat?!
+  - BUBBLES CAN HAVE BUBBLES
+
+Showing cow rumen microbiome
+
+Now Sheep microbiome
+
+Looks like many successes and many crazy things 
+
+Emphasizes metaFlye is still very much in dev.
+
+Recommends Bandage (Wick et al)  and AGB (Mikheenko & Kolmogorov) for viz of assemblies
+
+Asks us - would you prefer simple consensus or bubbly haplotype resolved assembly?
+
+github.com/fenderglass/Flye
+
 # Detecting microbial transmission and engraftment after faecal microbiota transplants using long-read metagenomics and reticulatus
 **Samuel M. Nicholls**, Joshua C. Quick, Tariq H. Iqbal, Nicholas J. Loman.
+
+@samstudio8
+
+Intro on why microbiome is important
+
+  - health
+  - exciting as field isn't fully define for best practices
+  
+"three peaks challenge"
+
+  - want extraction method that maintains composition (equal representation of strain?) and long reads
+  
+(everyone is so coy about what is a faecal transplant)
+
+anyways....checking human microbiomes pre/post transplant
+
+get looooong reads
+
+showing n50, contig nums, etc. they look uh, big? (don't have a great sense about what is acceptable)
+
+diving into communities. oooooo very cool plot (bubble plot?) with families of bacteria. so many complete (?) genomes
+
+need to do assembly polishing, but expensive computation
+
+github.com/samstudio8/reticulatus (snakemake pipeline for polishing)
+
+tech discussion of GPU acceleration of steps in pipeline
+
+  - 100 minutes -> 5 minutes with GPU acceleration 
+  - 10 - 5 hours on promethION
+
+File parsers!
+  
+  - poor gzip FQ parser
+  - port heng li readfq...save 40 minutes
+  
+Huge time savings on real data
+
+back to data
+
+  - showing diffs pre/post transplantation
+    - novel communities?
+  - how do they find these? eyeballing? diff testing?
+
+
 
 # Entropy of a bacterial stress response is a generalizable predictor for fitness and antibiotic sensitivity
 **Defne Surujon**, Zeyu Zhu, Juan C. Ortiz-Marquez, José Bento, Tim van Opijnen.
