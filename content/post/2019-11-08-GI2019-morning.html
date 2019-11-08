@@ -194,6 +194,45 @@ output:
 <div id="the-use-of-kmer-counts-to-train-random-forests-to-predict-country-of-origin-for-bacterial-pathogen-sequencing-data" class="section level1">
 <h1>The use of kmer counts to train random forests to predict country of origin for bacterial pathogen sequencing data</h1>
 <p><strong>Lauren Cowley</strong>, Jordan Taylor, Claire Jenkins, Tim Dallman.</p>
+<p><span class="citation">@laurencowley4</span></p>
+<p>Talking about food borne pathogens</p>
+<ul>
+<li>apparently 50% (!) of UK Salmonella is associated with foreign travel / imported food</li>
+</ul>
+<p>Discusses pathogen tracking system in UK</p>
+<ul>
+<li>local doc, epidemiologists</li>
+</ul>
+<p>Use RF for k-mer counting to figure out country of origin</p>
+<p>fsm-lite used (what is this?)</p>
+<ul>
+<li>kmer counter?</li>
+<li>some kmers mark strains</li>
+</ul>
+<p>big ’ol matrix</p>
+<ul>
+<li>5 million kmers across 500 strains, for example</li>
+</ul>
+<p>random forest (RF) intro</p>
+<ul>
+<li>classifier</li>
+<li>non continuous data</li>
+<li>highly resistant to overfitting (bc lots ’o trees)</li>
+<li>interpretability (kmers / features which are most informative for classifier)</li>
+</ul>
+<p>train of 2017 data, test on 2018 data</p>
+<ul>
+<li>71% accuracy for first pass</li>
+<li>only good at domestic/foreign</li>
+<li>non-england countries poorly represented</li>
+<li>decided to aggregate countries by region
+<ul>
+<li>little better</li>
+</ul></li>
+<li>neural network gets to 80% accuracy with most common 100 kmers</li>
+<li>try with most strains, fewer kmers</li>
+<li>will try unitigs instead of kmers</li>
+</ul>
 </div>
 <div id="real-time-assembly-using-nanopore-sequencing-data-for-microbial-communities" class="section level1">
 <h1>Real-time assembly using Nanopore sequencing data for microbial communities</h1>

@@ -200,6 +200,46 @@ Does this work for **many** pathogens?
 # The use of kmer counts to train random forests to predict country of origin for bacterial pathogen sequencing data
 **Lauren Cowley**, Jordan Taylor, Claire Jenkins, Tim Dallman.
 
+@laurencowley4
+
+Talking about food borne pathogens
+
+  - apparently 50% (!) of UK Salmonella is associated with foreign travel / imported food
+  
+Discusses pathogen tracking system in UK
+
+  - local doc, epidemiologists
+  
+Use RF for k-mer counting to figure out country of origin 
+
+fsm-lite used (what is this?)
+
+  - kmer counter?
+  - some kmers mark strains
+
+big 'ol matrix
+
+  - 5 million kmers across 500 strains, for example
+
+random forest (RF) intro
+
+  - classifier
+  - non continuous data
+  - highly resistant to overfitting (bc lots 'o trees)
+  - interpretability (kmers / features which are most informative for classifier)
+  
+train of 2017 data, test on 2018 data
+
+  - 71% accuracy for first pass
+  - only good at domestic/foreign
+  - non-england countries poorly represented
+  - decided to aggregate countries by region
+    - little better
+  - neural network gets to 80% accuracy with most common 100 kmers
+  - try with most strains, fewer kmers
+  - will try unitigs instead of kmers
+
+
 # Real-time assembly using Nanopore sequencing data for microbial communities
 **Son H. Nguyen**, Minh D. Cao, Lachlan J. Coin.
 
