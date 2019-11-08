@@ -1,7 +1,7 @@
 ---
 title: "#GI2019 2019 11 08 Morning Session"
 author: David McGaughey
-date: '2019-11-07'
+date: '2019-11-08'
 slug: gi2019-day03-morning
 categories:
   - bioinformatics
@@ -21,7 +21,7 @@ output:
     toc: true
 ---
 
-# Day 2 - Session 7 - MICROBIAL AND METAGENOMICS
+# Day 3 - Session 7 - MICROBIAL AND METAGENOMICS
 
 Genome Informatics 2019 at CSHL
 
@@ -74,6 +74,17 @@ Genome Assembly, with graphs
 Flye intro: 
   - glue repeats into the graph
 
+OK, I'm not following this. Sorry Mikhail! 
+
+Isn't this a metagenome session? This is all genome assembly.
+
+Oh, he is shifting now. 
+
+How to detect repeats?
+
+  - in genomes can use coverage
+  - not reliable enough in metagenomes
+  - need to use graph
 # Detecting microbial transmission and engraftment after faecal microbiota transplants using long-read metagenomics and reticulatus
 **Samuel M. Nicholls**, Joshua C. Quick, Tariq H. Iqbal, Nicholas J. Loman.
 

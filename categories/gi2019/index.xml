@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
-    <lastBuildDate>Thu, 07 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 08 Nov 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/./categories/gi2019/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>#GI2019 2019 11 08 Morning Session</title>
+      <link>/./post/gi2019-day03-morning/</link>
+      <pubDate>Fri, 08 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/gi2019-day03-morning/</guid>
+      <description>Day 3 - Session 7 - MICROBIAL AND METAGENOMICS Strain-level metagenomic assignment and compositional estimation for long reads with MetaMaps metaFlye—Scalable long-read metagenome assembly using repeat graphs Entropy of a bacterial stress response is a generalizable predictor for fitness and antibiotic sensitivity The use of kmer counts to train random forests to predict country of origin for bacterial pathogen sequencing data Real-time assembly using Nanopore sequencing data for microbial communities Exploring the role of ribosomal gene repeats in the context of regeneration Genomic epidemiology of West Nile virus in California   Day 3 - Session 7 - MICROBIAL AND METAGENOMICS Genome Informatics 2019 at CSHL</description>
+    </item>
     
     <item>
       <title>#GI2019 2019 11 07</title>
@@ -28,15 +37,6 @@
       
       <guid>/./post/gi2019-day02-night/</guid>
       <description>Day 2 - Session 6 - TRANSCRIPTOMICS The functional iso-transcriptomics analysis framework to assess the functional impact of alternative isoform usage Multi-resolution, interactive, atlas-scale integration of single-cell assays and experiments Efficient and robust transcriptome reconstruction from long-read RNA-seq alignments Deconvolving the pervasive transcription from jumping genes in RNA-seq and unveiling their role in tumors Alignment and mapping methodology influence transcript abundance estimation A technology-agnostic long-read analysis pipeline for transcriptome discovery and quantification Quantifying isoform expression in single-cell RNA-seq data with STARsolo-Quant Full-length transcript characterization for single cell RNA-seq analysis   Day 2 - Session 6 - TRANSCRIPTOMICS Genome Informatics 2019 at CSHL</description>
-    </item>
-    
-    <item>
-      <title>#GI2019 2019 11 08 Morning Session</title>
-      <link>/./post/gi2019-day03-morning/</link>
-      <pubDate>Thu, 07 Nov 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/./post/gi2019-day03-morning/</guid>
-      <description>Day 2 - Session 7 - MICROBIAL AND METAGENOMICS Strain-level metagenomic assignment and compositional estimation for long reads with MetaMaps metaFlye—Scalable long-read metagenome assembly using repeat graphs Detecting microbial transmission and engraftment after faecal microbiota transplants using long-read metagenomics and reticulatus Entropy of a bacterial stress response is a generalizable predictor for fitness and antibiotic sensitivity The use of kmer counts to train random forests to predict country of origin for bacterial pathogen sequencing data Real-time assembly using Nanopore sequencing data for microbial communities Exploring the role of ribosomal gene repeats in the context of regeneration Genomic epidemiology of West Nile virus in California   Day 2 - Session 7 - MICROBIAL AND METAGENOMICS Genome Informatics 2019 at CSHL</description>
     </item>
     
     <item>
