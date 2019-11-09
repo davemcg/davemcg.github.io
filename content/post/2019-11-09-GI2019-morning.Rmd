@@ -91,9 +91,44 @@ Found 304 **putative** UPD cases in 1.3 million "singletons"
 # Sub-continental ancestry inference based on the gnomAD dataset accurately classifies patients at NCH
 **Andrei Rajkovic**, Defne Ceyhan, Greg Wheeler, Tara Lichtenberg, Ben Kelly, Peter White.
 
-#Patient stratification in the UK’s 100k Genomes Project—Using WGS and machine learning to predict cancer outcomes
+Trying to better infer ancestry with the gnomad projection
+
+ML algorithm (gradient boosted decision tree)
+
+  - trained on 4000 people (vcf input)
+  - accuracy defined as true ancestry in top2 (is that too loose?)
+  
+90+ ish accuracy (some ancestries don't do so well)
+
+I guess they are relying on self-reported ancestries? Aren't these notorious for being not so accurate....?
+
+  - I asked ... and yes they are .... which isn't a problem that can be dealt with so easily
+  
+# Patient stratification in the UK’s 100k Genomes Project—Using WGS and machine learning to predict cancer outcomes
 **Kate Ridout**, Pauline Robbe, CLL pilot consortium, Anna Schuh.
 Presenter affiliation: University of Oxford, Oxford, United Kingdom. 231
+
+Kaplan Meier curves
+
+  - these plots always bum me out
+  - death curve
+  
+Going through pipeline to call variants / SV / CNV in somatic tissue
+
+  - LOTS of different tools
+  - even chromHMM ... not certain what datasets the chromHMM was built off of
+  - anyways just super comprehensive, kitchen sink kind of stuff
+    - so many tools I wonder if they are correcting their p values for the bajillion test/tools they are doing....
+  
+showing some case studies....but why not combining all these into one framework....oh here we go I think
+
+  - LASSO
+  - non-negative matrix factorization (NMF)
+    - combine all features and see patterns, assess against outcomes
+    - n isn't super high (200 ish)
+  - several independent-ish models / data / thingies which get merged somehow?
+    - don't quite understand architecture...
+  - found a mut sig associated with better outcome (useful to de-prioritze for damaging chemo)
 
 # Inferring clone- and haplotype-specific chromosomal organization in rearranged cancer genomes with multiple sequencing technologies
 **Sergey Aganezov**, Fritz Sedlazeck, Sara Goodwin, Gayatri Arun, Isac Lee, Sam Kovaka, Michael Kitsche, Rachel Scherman, Ilya Zban, Vitaly Aksenov, Nikita Alexeev, Robert Wappel, Melissa Kramer, Karen Kostroff, David L. Spector, Winston Timp, Michael S. Schatz, W. Richard McCombie.

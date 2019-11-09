@@ -21,6 +21,7 @@
 &lt;li&gt;&lt;a href=&#34;#day-4---session-9---personal-and-medical-genomics&#34;&gt;Day 4 - Session 9 - PERSONAL AND MEDICAL GENOMICS&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#characterization-of-prevalence-and-health-consequences-of-uniparental-disomy-in-four-million-individuals-from-the-general-population&#34;&gt;Characterization of prevalence and health consequences of uniparental disomy in four million individuals from the general population&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#sub-continental-ancestry-inference-based-on-the-gnomad-dataset-accurately-classifies-patients-at-nch&#34;&gt;Sub-continental ancestry inference based on the gnomAD dataset accurately classifies patients at NCH&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#patient-stratification-in-the-uks-100k-genomes-projectusing-wgs-and-machine-learning-to-predict-cancer-outcomes&#34;&gt;Patient stratification in the UK’s 100k Genomes Project—Using WGS and machine learning to predict cancer outcomes&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#inferring-clone--and-haplotype-specific-chromosomal-organization-in-rearranged-cancer-genomes-with-multiple-sequencing-technologies&#34;&gt;Inferring clone- and haplotype-specific chromosomal organization in rearranged cancer genomes with multiple sequencing technologies&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#identification-and-interpretation-of-common-and-rare-variants-in-relation-to-rare-disease-phenotype-and-outcome&#34;&gt;Identification and interpretation of common and rare variants in relation to rare disease phenotype and outcome&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#somatic-mutation-status-prediction-by-a-splicing-alteration-based-machine-learning-technique&#34;&gt;Somatic mutation status prediction by a splicing-alteration-based machine learning technique&lt;/a&gt;&lt;/li&gt;
@@ -89,9 +90,50 @@ ROH == Runs of Homozygosity (LONG runs where both chr are identical)&lt;/p&gt;
 &lt;div id=&#34;sub-continental-ancestry-inference-based-on-the-gnomad-dataset-accurately-classifies-patients-at-nch&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Sub-continental ancestry inference based on the gnomAD dataset accurately classifies patients at NCH&lt;/h1&gt;
 &lt;p&gt;&lt;strong&gt;Andrei Rajkovic&lt;/strong&gt;, Defne Ceyhan, Greg Wheeler, Tara Lichtenberg, Ben Kelly, Peter White.&lt;/p&gt;
-&lt;p&gt;#Patient stratification in the UK’s 100k Genomes Project—Using WGS and machine learning to predict cancer outcomes
-&lt;strong&gt;Kate Ridout&lt;/strong&gt;, Pauline Robbe, CLL pilot consortium, Anna Schuh.
+&lt;p&gt;Trying to better infer ancestry with the gnomad projection&lt;/p&gt;
+&lt;p&gt;ML algorithm (gradient boosted decision tree)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;trained on 4000 people (vcf input)&lt;/li&gt;
+&lt;li&gt;accuracy defined as true ancestry in top2 (is that too loose?)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;90+ ish accuracy (some ancestries don’t do so well)&lt;/p&gt;
+&lt;p&gt;I guess they are relying on self-reported ancestries? Aren’t these notorious for being not so accurate….?&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;I asked … and yes they are …. which isn’t a problem that can be dealt with so easily&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;patient-stratification-in-the-uks-100k-genomes-projectusing-wgs-and-machine-learning-to-predict-cancer-outcomes&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Patient stratification in the UK’s 100k Genomes Project—Using WGS and machine learning to predict cancer outcomes&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;Kate Ridout&lt;/strong&gt;, Pauline Robbe, CLL pilot consortium, Anna Schuh.
 Presenter affiliation: University of Oxford, Oxford, United Kingdom. 231&lt;/p&gt;
+&lt;p&gt;Kaplan Meier curves&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;these plots always bum me out&lt;/li&gt;
+&lt;li&gt;death curve&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Going through pipeline to call variants / SV / CNV in somatic tissue&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;LOTS of different tools&lt;/li&gt;
+&lt;li&gt;even chromHMM … not certain what datasets the chromHMM was built off of&lt;/li&gt;
+&lt;li&gt;anyways just super comprehensive, kitchen sink kind of stuff
+&lt;ul&gt;
+&lt;li&gt;so many tools I wonder if they are correcting their p values for the bajillion test/tools they are doing….&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;showing some case studies….but why not combining all these into one framework….oh here we go I think&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;LASSO&lt;/li&gt;
+&lt;li&gt;non-negative matrix factorization (NMF)
+&lt;ul&gt;
+&lt;li&gt;combine all features and see patterns, assess against outcomes&lt;/li&gt;
+&lt;li&gt;n isn’t super high (200 ish)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;several independent-ish models / data / thingies which get merged somehow?
+&lt;ul&gt;
+&lt;li&gt;don’t quite understand architecture…&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;found a mut sig associated with better outcome (useful to de-prioritze for damaging chemo)&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/div&gt;
 &lt;div id=&#34;inferring-clone--and-haplotype-specific-chromosomal-organization-in-rearranged-cancer-genomes-with-multiple-sequencing-technologies&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Inferring clone- and haplotype-specific chromosomal organization in rearranged cancer genomes with multiple sequencing technologies&lt;/h1&gt;

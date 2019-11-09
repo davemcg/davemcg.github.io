@@ -17,7 +17,7 @@
       
     
   
-  <meta name="description" content="Day 4 - Session 9 - PERSONAL AND MEDICAL GENOMICS Characterization of prevalence and health consequences of uniparental disomy in four million individuals from the general population Sub-continental ancestry inference based on the gnomAD dataset accurately classifies patients at NCH Inferring clone- and haplotype-specific chromosomal organization in rearranged cancer genomes with multiple sequencing technologies Identification and interpretation of common and rare variants in relation to rare disease phenotype and outcome Somatic mutation status prediction by a splicing-alteration-based machine learning technique Beyond accessibility—ATAC-seq footprinting analysis reveals dynamics of transcription factor binding during preimplantation development   Day 4 - Session 9 - PERSONAL AND MEDICAL GENOMICS  Characterization of prevalence and health consequences of uniparental disomy in four million individuals from the general population Priyanka Nakka, Samuel Pattillo Smith, Anne H.">
+  <meta name="description" content="Day 4 - Session 9 - PERSONAL AND MEDICAL GENOMICS Characterization of prevalence and health consequences of uniparental disomy in four million individuals from the general population Sub-continental ancestry inference based on the gnomAD dataset accurately classifies patients at NCH Patient stratification in the UK’s 100k Genomes Project—Using WGS and machine learning to predict cancer outcomes Inferring clone- and haplotype-specific chromosomal organization in rearranged cancer genomes with multiple sequencing technologies Identification and interpretation of common and rare variants in relation to rare disease phenotype and outcome Somatic mutation status prediction by a splicing-alteration-based machine learning technique Beyond accessibility—ATAC-seq footprinting analysis reveals dynamics of transcription factor binding during preimplantation development   Day 4 - Session 9 - PERSONAL AND MEDICAL GENOMICS  Characterization of prevalence and health consequences of uniparental disomy in four million individuals from the general population Priyanka Nakka, Samuel Pattillo Smith, Anne H.">
 
   
   <link rel="alternate" hreflang="en-us" href="/./post/gi2019-day04-morning/">
@@ -93,7 +93,7 @@
   <meta property="og:site_name" content="eye Bioinformatician">
   <meta property="og:url" content="/./post/gi2019-day04-morning/">
   <meta property="og:title" content="2019 11 09 GI2019 Personal and Medical Genomics | eye Bioinformatician">
-  <meta property="og:description" content="Day 4 - Session 9 - PERSONAL AND MEDICAL GENOMICS Characterization of prevalence and health consequences of uniparental disomy in four million individuals from the general population Sub-continental ancestry inference based on the gnomAD dataset accurately classifies patients at NCH Inferring clone- and haplotype-specific chromosomal organization in rearranged cancer genomes with multiple sequencing technologies Identification and interpretation of common and rare variants in relation to rare disease phenotype and outcome Somatic mutation status prediction by a splicing-alteration-based machine learning technique Beyond accessibility—ATAC-seq footprinting analysis reveals dynamics of transcription factor binding during preimplantation development   Day 4 - Session 9 - PERSONAL AND MEDICAL GENOMICS  Characterization of prevalence and health consequences of uniparental disomy in four million individuals from the general population Priyanka Nakka, Samuel Pattillo Smith, Anne H.">
+  <meta property="og:description" content="Day 4 - Session 9 - PERSONAL AND MEDICAL GENOMICS Characterization of prevalence and health consequences of uniparental disomy in four million individuals from the general population Sub-continental ancestry inference based on the gnomAD dataset accurately classifies patients at NCH Patient stratification in the UK’s 100k Genomes Project—Using WGS and machine learning to predict cancer outcomes Inferring clone- and haplotype-specific chromosomal organization in rearranged cancer genomes with multiple sequencing technologies Identification and interpretation of common and rare variants in relation to rare disease phenotype and outcome Somatic mutation status prediction by a splicing-alteration-based machine learning technique Beyond accessibility—ATAC-seq footprinting analysis reveals dynamics of transcription factor binding during preimplantation development   Day 4 - Session 9 - PERSONAL AND MEDICAL GENOMICS  Characterization of prevalence and health consequences of uniparental disomy in four million individuals from the general population Priyanka Nakka, Samuel Pattillo Smith, Anne H.">
   <meta property="og:locale" content="en-us">
   
   <meta property="article:published_time" content="2019-11-09T00:00:00&#43;00:00">
@@ -276,7 +276,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    3 min read
+    4 min read
   </span>
   
 
@@ -362,6 +362,7 @@
 <li><a href="#day-4---session-9---personal-and-medical-genomics">Day 4 - Session 9 - PERSONAL AND MEDICAL GENOMICS</a></li>
 <li><a href="#characterization-of-prevalence-and-health-consequences-of-uniparental-disomy-in-four-million-individuals-from-the-general-population">Characterization of prevalence and health consequences of uniparental disomy in four million individuals from the general population</a></li>
 <li><a href="#sub-continental-ancestry-inference-based-on-the-gnomad-dataset-accurately-classifies-patients-at-nch">Sub-continental ancestry inference based on the gnomAD dataset accurately classifies patients at NCH</a></li>
+<li><a href="#patient-stratification-in-the-uks-100k-genomes-projectusing-wgs-and-machine-learning-to-predict-cancer-outcomes">Patient stratification in the UK’s 100k Genomes Project—Using WGS and machine learning to predict cancer outcomes</a></li>
 <li><a href="#inferring-clone--and-haplotype-specific-chromosomal-organization-in-rearranged-cancer-genomes-with-multiple-sequencing-technologies">Inferring clone- and haplotype-specific chromosomal organization in rearranged cancer genomes with multiple sequencing technologies</a></li>
 <li><a href="#identification-and-interpretation-of-common-and-rare-variants-in-relation-to-rare-disease-phenotype-and-outcome">Identification and interpretation of common and rare variants in relation to rare disease phenotype and outcome</a></li>
 <li><a href="#somatic-mutation-status-prediction-by-a-splicing-alteration-based-machine-learning-technique">Somatic mutation status prediction by a splicing-alteration-based machine learning technique</a></li>
@@ -430,9 +431,50 @@ ROH == Runs of Homozygosity (LONG runs where both chr are identical)</p>
 <div id="sub-continental-ancestry-inference-based-on-the-gnomad-dataset-accurately-classifies-patients-at-nch" class="section level1">
 <h1>Sub-continental ancestry inference based on the gnomAD dataset accurately classifies patients at NCH</h1>
 <p><strong>Andrei Rajkovic</strong>, Defne Ceyhan, Greg Wheeler, Tara Lichtenberg, Ben Kelly, Peter White.</p>
-<p>#Patient stratification in the UK’s 100k Genomes Project—Using WGS and machine learning to predict cancer outcomes
-<strong>Kate Ridout</strong>, Pauline Robbe, CLL pilot consortium, Anna Schuh.
+<p>Trying to better infer ancestry with the gnomad projection</p>
+<p>ML algorithm (gradient boosted decision tree)</p>
+<ul>
+<li>trained on 4000 people (vcf input)</li>
+<li>accuracy defined as true ancestry in top2 (is that too loose?)</li>
+</ul>
+<p>90+ ish accuracy (some ancestries don’t do so well)</p>
+<p>I guess they are relying on self-reported ancestries? Aren’t these notorious for being not so accurate….?</p>
+<ul>
+<li>I asked … and yes they are …. which isn’t a problem that can be dealt with so easily</li>
+</ul>
+</div>
+<div id="patient-stratification-in-the-uks-100k-genomes-projectusing-wgs-and-machine-learning-to-predict-cancer-outcomes" class="section level1">
+<h1>Patient stratification in the UK’s 100k Genomes Project—Using WGS and machine learning to predict cancer outcomes</h1>
+<p><strong>Kate Ridout</strong>, Pauline Robbe, CLL pilot consortium, Anna Schuh.
 Presenter affiliation: University of Oxford, Oxford, United Kingdom. 231</p>
+<p>Kaplan Meier curves</p>
+<ul>
+<li>these plots always bum me out</li>
+<li>death curve</li>
+</ul>
+<p>Going through pipeline to call variants / SV / CNV in somatic tissue</p>
+<ul>
+<li>LOTS of different tools</li>
+<li>even chromHMM … not certain what datasets the chromHMM was built off of</li>
+<li>anyways just super comprehensive, kitchen sink kind of stuff
+<ul>
+<li>so many tools I wonder if they are correcting their p values for the bajillion test/tools they are doing….</li>
+</ul></li>
+</ul>
+<p>showing some case studies….but why not combining all these into one framework….oh here we go I think</p>
+<ul>
+<li>LASSO</li>
+<li>non-negative matrix factorization (NMF)
+<ul>
+<li>combine all features and see patterns, assess against outcomes</li>
+<li>n isn’t super high (200 ish)</li>
+</ul></li>
+<li>several independent-ish models / data / thingies which get merged somehow?
+<ul>
+<li>don’t quite understand architecture…</li>
+</ul></li>
+<li>found a mut sig associated with better outcome (useful to de-prioritze for damaging chemo)</li>
+</ul>
 </div>
 <div id="inferring-clone--and-haplotype-specific-chromosomal-organization-in-rearranged-cancer-genomes-with-multiple-sequencing-technologies" class="section level1">
 <h1>Inferring clone- and haplotype-specific chromosomal organization in rearranged cancer genomes with multiple sequencing technologies</h1>
@@ -483,13 +525,13 @@ Presenter affiliation: University of Oxford, Oxford, United Kingdom. 231</p>
       <h3>Related</h3>
       <ul>
         
-        <li><a href="/post/gi2019-day03-morning/">#GI2019 2019 11 08 Morning Session</a></li>
-        
         <li><a href="/post/gi2019-day03-afternoon/">#GI2019 2019 11 08 Afternoon Session</a></li>
         
-        <li><a href="/post/gi2019-day02/">#GI2019 2019 11 07</a></li>
+        <li><a href="/post/gi2019-day03-morning/">#GI2019 2019 11 08 Morning Session</a></li>
         
         <li><a href="/post/gi2019-day02-night/">#GI2019 2019 11 07 Night Session</a></li>
+        
+        <li><a href="/post/gi2019-day02/">#GI2019 2019 11 07</a></li>
         
         <li><a href="/post/gi2019-day01/">#GI2019 2019 11 06</a></li>
         
