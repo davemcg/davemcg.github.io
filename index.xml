@@ -21,7 +21,7 @@
 &lt;li&gt;&lt;a href=&#34;#day-3---session-8---evolution-and-phylogenetics&#34;&gt;Day 3 - Session 8 - EVOLUTION AND PHYLOGENETICS&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#is-pathogen-evolution-predictable-the-role-of-population-genomics&#34;&gt;Is pathogen evolution predictable? The role of population genomics&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#learning-the-properties-of-adaptive-regions-with-functional-data-analysis&#34;&gt;Learning the properties of adaptive regions with functional data analysis&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#creating-pan-human-and-population-specific-consensus-representations-of-the-reference-genome-and-assessing-their&#34;&gt;Creating pan-human and population-specific consensus representations of the reference genome and assessing their&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#creating-pan-human-and-population-specific-consensus-representations-of-the-reference-genome-and-assessing-their-effect-on-functional-genomic-data-analysis&#34;&gt;Creating pan-human and population-specific consensus representations of the reference genome and assessing their effect on functional genomic data analysis&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#gramene-subsitespangenome-browsers-for-crops&#34;&gt;Gramene subsites—Pangenome browsers for crops&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#section&#34;&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#what-do-we-gain-when-tolerating-loss-the-information-bottleneck-lossy-compression-and-detecting-horizontal-gene-transfer&#34;&gt;What do we gain when tolerating loss? The information bottleneck, lossy compression, and detecting horizontal gene transfer&lt;/a&gt;&lt;/li&gt;
@@ -97,11 +97,93 @@
 &lt;div id=&#34;learning-the-properties-of-adaptive-regions-with-functional-data-analysis&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Learning the properties of adaptive regions with functional data analysis&lt;/h1&gt;
 &lt;p&gt;&lt;strong&gt;Mehreen R. Mughal&lt;/strong&gt;, Hillary Koch, Jinguo Huang, Francesca Chiaromonte, Michael DeGiorgio.&lt;/p&gt;
+&lt;p&gt;How do organisms adapt to their environment?&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;pos. selection == (over time) fixation&lt;/li&gt;
+&lt;li&gt;idea is more beneficial == faster fixation&lt;/li&gt;
+&lt;li&gt;selective sweep reduces diversity at haplotype
+&lt;ul&gt;
+&lt;li&gt;(chunk of genome)&lt;/li&gt;
+&lt;li&gt;so one beneficial variant can “drag” a whole lot of other variants into purity.
+&lt;ul&gt;
+&lt;li&gt;free-loaders&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;SURFDAWave&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ha&lt;/li&gt;
+&lt;li&gt;learn spatial dist. from statistics of sweep / neutral&lt;/li&gt;
+&lt;li&gt;doi.org/10.1101/834010&lt;/li&gt;
+&lt;li&gt;pick dist to match data&lt;/li&gt;
+&lt;li&gt;penalized regression
+&lt;ul&gt;
+&lt;li&gt;with wavelet coefficient&lt;/li&gt;
+&lt;li&gt;cross-validate params to check fit&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;predicts neutral/sweep pretty well in TF/TP/FN/FP&lt;/li&gt;
+&lt;li&gt;each statistic tested gets own model
+&lt;ul&gt;
+&lt;li&gt;initial freq&lt;/li&gt;
+&lt;li&gt;selection coef&lt;/li&gt;
+&lt;li&gt;time of selection&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Now running on SLC45A2&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;related to skin color in europeans&lt;/li&gt;
+&lt;li&gt;estimated time of selection 2000 years ago with initial freq of 0.04&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Adaptive introgression&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;selective sweep (?)&lt;/li&gt;
+&lt;li&gt;beneficial mutation has unique pattern&lt;/li&gt;
+&lt;li&gt;which SURFDAWave has 52% successful classification
+&lt;ul&gt;
+&lt;li&gt;kind of bleh&lt;/li&gt;
+&lt;li&gt;can be improved with more info?&lt;/li&gt;
+&lt;li&gt;with 2D info 52 -&amp;gt; 62%&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/div&gt;
-&lt;div id=&#34;creating-pan-human-and-population-specific-consensus-representations-of-the-reference-genome-and-assessing-their&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Creating pan-human and population-specific consensus representations of the reference genome and assessing their&lt;/h1&gt;
-&lt;p&gt;effect on functional genomic data analysis
-&lt;strong&gt;Benjamin Kaminow&lt;/strong&gt;, Sara Ballouz, Jesse Gillis, Alex Dobin.&lt;/p&gt;
+&lt;div id=&#34;creating-pan-human-and-population-specific-consensus-representations-of-the-reference-genome-and-assessing-their-effect-on-functional-genomic-data-analysis&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Creating pan-human and population-specific consensus representations of the reference genome and assessing their effect on functional genomic data analysis&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;Benjamin Kaminow&lt;/strong&gt;, Sara Ballouz, Jesse Gillis, Alex Dobin.&lt;/p&gt;
+&lt;p&gt;How much variation do we need to improve ref genome?&lt;/p&gt;
+&lt;p&gt;We can use &lt;strong&gt;all&lt;/strong&gt; known…but graph is complicated.&lt;/p&gt;
+&lt;p&gt;Consensus genome&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;simple&lt;/li&gt;
+&lt;li&gt;replace minor alleles with major alleles in other pop&lt;/li&gt;
+&lt;li&gt;have been used on variant calling&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;here we assess effects of RNA-seq&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;ConsDB download and parse db files which makes consensus VCF and FASTA&lt;/p&gt;
+&lt;p&gt;Uses 1000G&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;better pop balance&lt;/li&gt;
+&lt;li&gt;uh, but doesn’t 1000G have loads of technical errors due to seq. errors?
+&lt;ul&gt;
+&lt;li&gt;was this ever fixed……?&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;got RNA-seq data from one person from 4 diff pops&lt;/li&gt;
+&lt;li&gt;anyways….millions of replacements of SNPS&lt;/li&gt;
+&lt;li&gt;once replacements made, then # of diff SNPs decreases from one genome &amp;lt;-&amp;gt; consensus genome&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;check mapping with STARconsensus&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;STAR + VCF file to transform the reference&lt;/li&gt;
+&lt;li&gt;also does compare pre/post correction&lt;br /&gt;
+= VERY large drop in mapping error rate…(3.5 to 0.5%)
+&lt;ul&gt;
+&lt;li&gt;much bigger effect than I would have thought….&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;wait I’m confused
+&lt;ul&gt;
+&lt;li&gt;y axis says “% of reads overlapping variant”&lt;/li&gt;
+&lt;li&gt;that’s not error rate….&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/div&gt;
 &lt;div id=&#34;gramene-subsitespangenome-browsers-for-crops&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Gramene subsites—Pangenome browsers for crops&lt;/h1&gt;
@@ -110,11 +192,32 @@
 &lt;div id=&#34;section&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;&lt;/h1&gt;
 &lt;p&gt;&lt;strong&gt;Janet Kelso.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;NOT TWEETABLE&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;what-do-we-gain-when-tolerating-loss-the-information-bottleneck-lossy-compression-and-detecting-horizontal-gene-transfer&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;What do we gain when tolerating loss? The information bottleneck, lossy compression, and detecting horizontal gene transfer&lt;/h1&gt;
 &lt;p&gt;&lt;strong&gt;Apurva Narechania&lt;/strong&gt;, Rob Desalle, Barun Mathema, Barry Kreiswirth,
 Paul Planet.&lt;/p&gt;
+&lt;p&gt;Can we do horizontal gene transfer without genes?&lt;/p&gt;
+&lt;p&gt;Make pangenome&lt;/p&gt;
+&lt;p&gt;count kmers across genomes&lt;/p&gt;
+&lt;p&gt;clusters kmers&lt;/p&gt;
+&lt;p&gt;but how do we cluster well? don’t want to lose too much info…but also want to compress…how to get the proper balance?&lt;/p&gt;
+&lt;p&gt;claude shannon!&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;transmitter -&amp;gt; noisy channel -&amp;gt; receiver&lt;/li&gt;
+&lt;li&gt;noisy channel ~ noisy clusters&lt;/li&gt;
+&lt;li&gt;want middle ground where you can interpret but haven’t lost much info&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;can see how clusters stabliize with n kmers&lt;/p&gt;
+&lt;p&gt;I’m reminded of luke zappias/oshlack clustree work&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;which is ironic bc this talk is all about avoiding trees&lt;/li&gt;
+&lt;li&gt;done in 2 hours … which I guess is fast?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Plot show inflection between cluster n and norm. mutual information&lt;/p&gt;
+&lt;p&gt;q: you fixed at 19 kmer, why?
+a: looking at other kmer n - balance between closeness of variants and kmer n&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;a-recurrent-neural-network-for-inferring-sweeps-and-allele-frequency-trajectories-using-gene-trees-based-on-the-ancestral-recombination-graph&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;A recurrent neural network for inferring sweeps and allele frequency trajectories using gene trees based on the ancestral recombination graph&lt;/h1&gt;

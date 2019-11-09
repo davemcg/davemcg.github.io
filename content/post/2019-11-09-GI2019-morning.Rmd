@@ -1,0 +1,57 @@
+---
+title: "#GI2019 Personal and Medical Genomics"
+author: David McGaughey
+date: '2019-11-09'
+slug: gi2019-day04-morning
+categories:
+  - bioinformatics
+  - gi2019
+  - conferences
+  - talk
+tags:
+  - bioinformatics
+  - gi2019
+  - conferences
+  - talk
+header:
+  caption: ''
+  image: ''
+output:
+  blogdown::html_page:
+    toc: true
+---
+
+# Day 4 - Session 9 - PERSONAL AND MEDICAL GENOMICS
+
+# Characterization of prevalence and health consequences of uniparental disomy in four million individuals from the general population
+Priyanka Nakka, Samuel Pattillo Smith, Anne H. O’Donnell-Luria, Kimberly F. McManus, 23andMe Research Team, Joanna L. Mountain, **Sohini Ramachandran**, Fah Sathirapongsasuti.
+
+# Sub-continental ancestry inference based on the gnomAD dataset accurately classifies patients at NCH
+**Andrei Rajkovic**, Defne Ceyhan, Greg Wheeler, Tara Lichtenberg, Ben Kelly, Peter White.
+
+#Patient stratification in the UK’s 100k Genomes Project—Using WGS and machine learning to predict cancer outcomes
+**Kate Ridout**, Pauline Robbe, CLL pilot consortium, Anna Schuh.
+Presenter affiliation: University of Oxford, Oxford, United Kingdom. 231
+
+# Inferring clone- and haplotype-specific chromosomal organization in rearranged cancer genomes with multiple sequencing technologies
+**Sergey Aganezov**, Fritz Sedlazeck, Sara Goodwin, Gayatri Arun, Isac Lee, Sam Kovaka, Michael Kitsche, Rachel Scherman, Ilya Zban, Vitaly Aksenov, Nikita Alexeev, Robert Wappel, Melissa Kramer, Karen Kostroff, David L. Spector, Winston Timp, Michael S. Schatz, W. Richard McCombie.
+
+# Identification and interpretation of common and rare variants in relation to rare disease phenotype and outcome
+Mana Gajapathy, Brandon Wilk, Arthur Weborg, Angelina Uno- Antonison, Alex Moss, Matt Holt, Donna Brown, Melissa Wilk, Camille Birch, Nadiya Sosonkina, **Elizabeth Worthey**
+
+# Somatic mutation status prediction by a splicing-alteration-based machine learning technique
+Raul N. Mateos, Naoko Iida, Kenichi Chiba, Ai Okada, Yuichi Shiraishi. 
+
+NOT HERE?!
+
+Model selection and permutation testing for association studies within a large direct-to-consumer genetic cohort
+**Elena P. Sorokin**, Danny S. Park, Kristin A. Rand, Julie M. Granka, Eurie L. Hong, Kenneth G. Chahine, Catherine A. Ball.
+
+NOT TWEETABLE
+
+# Beyond accessibility—ATAC-seq footprinting analysis reveals dynamics of transcription factor binding during preimplantation development
+Mette Bentsen, Philipp Goymann, Anastasiia Petrova, Hendrik Schultheis, Kathrin Klee, Jens Preussner, Carsten Kuenne, Mario Looso.
+
+NOT HERE?!
+
+Uh, OK.

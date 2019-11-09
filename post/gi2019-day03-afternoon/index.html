@@ -17,7 +17,7 @@
       
     
   
-  <meta name="description" content="Day 3 - Session 8 - EVOLUTION AND PHYLOGENETICS Is pathogen evolution predictable? The role of population genomics Learning the properties of adaptive regions with functional data analysis Creating pan-human and population-specific consensus representations of the reference genome and assessing their Gramene subsites—Pangenome browsers for crops  What do we gain when tolerating loss? The information bottleneck, lossy compression, and detecting horizontal gene transfer A recurrent neural network for inferring sweeps and allele frequency trajectories using gene trees based on the ancestral recombination graph Assembling the Y chromosomes of anopheles mosquitoes   Day 3 - Session 8 - EVOLUTION AND PHYLOGENETICS Genome Informatics 2019 at CSHL">
+  <meta name="description" content="Day 3 - Session 8 - EVOLUTION AND PHYLOGENETICS Is pathogen evolution predictable? The role of population genomics Learning the properties of adaptive regions with functional data analysis Creating pan-human and population-specific consensus representations of the reference genome and assessing their effect on functional genomic data analysis Gramene subsites—Pangenome browsers for crops  What do we gain when tolerating loss? The information bottleneck, lossy compression, and detecting horizontal gene transfer A recurrent neural network for inferring sweeps and allele frequency trajectories using gene trees based on the ancestral recombination graph Assembling the Y chromosomes of anopheles mosquitoes   Day 3 - Session 8 - EVOLUTION AND PHYLOGENETICS Genome Informatics 2019 at CSHL">
 
   
   <link rel="alternate" hreflang="en-us" href="/./post/gi2019-day03-afternoon/">
@@ -93,7 +93,7 @@
   <meta property="og:site_name" content="eye Bioinformatician">
   <meta property="og:url" content="/./post/gi2019-day03-afternoon/">
   <meta property="og:title" content="#GI2019 2019 11 08 Afternoon Session | eye Bioinformatician">
-  <meta property="og:description" content="Day 3 - Session 8 - EVOLUTION AND PHYLOGENETICS Is pathogen evolution predictable? The role of population genomics Learning the properties of adaptive regions with functional data analysis Creating pan-human and population-specific consensus representations of the reference genome and assessing their Gramene subsites—Pangenome browsers for crops  What do we gain when tolerating loss? The information bottleneck, lossy compression, and detecting horizontal gene transfer A recurrent neural network for inferring sweeps and allele frequency trajectories using gene trees based on the ancestral recombination graph Assembling the Y chromosomes of anopheles mosquitoes   Day 3 - Session 8 - EVOLUTION AND PHYLOGENETICS Genome Informatics 2019 at CSHL">
+  <meta property="og:description" content="Day 3 - Session 8 - EVOLUTION AND PHYLOGENETICS Is pathogen evolution predictable? The role of population genomics Learning the properties of adaptive regions with functional data analysis Creating pan-human and population-specific consensus representations of the reference genome and assessing their effect on functional genomic data analysis Gramene subsites—Pangenome browsers for crops  What do we gain when tolerating loss? The information bottleneck, lossy compression, and detecting horizontal gene transfer A recurrent neural network for inferring sweeps and allele frequency trajectories using gene trees based on the ancestral recombination graph Assembling the Y chromosomes of anopheles mosquitoes   Day 3 - Session 8 - EVOLUTION AND PHYLOGENETICS Genome Informatics 2019 at CSHL">
   <meta property="og:locale" content="en-us">
   
   <meta property="article:published_time" content="2019-11-08T00:00:00&#43;00:00">
@@ -276,7 +276,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    3 min read
+    5 min read
   </span>
   
 
@@ -362,7 +362,7 @@
 <li><a href="#day-3---session-8---evolution-and-phylogenetics">Day 3 - Session 8 - EVOLUTION AND PHYLOGENETICS</a></li>
 <li><a href="#is-pathogen-evolution-predictable-the-role-of-population-genomics">Is pathogen evolution predictable? The role of population genomics</a></li>
 <li><a href="#learning-the-properties-of-adaptive-regions-with-functional-data-analysis">Learning the properties of adaptive regions with functional data analysis</a></li>
-<li><a href="#creating-pan-human-and-population-specific-consensus-representations-of-the-reference-genome-and-assessing-their">Creating pan-human and population-specific consensus representations of the reference genome and assessing their</a></li>
+<li><a href="#creating-pan-human-and-population-specific-consensus-representations-of-the-reference-genome-and-assessing-their-effect-on-functional-genomic-data-analysis">Creating pan-human and population-specific consensus representations of the reference genome and assessing their effect on functional genomic data analysis</a></li>
 <li><a href="#gramene-subsitespangenome-browsers-for-crops">Gramene subsites—Pangenome browsers for crops</a></li>
 <li><a href="#section"></a></li>
 <li><a href="#what-do-we-gain-when-tolerating-loss-the-information-bottleneck-lossy-compression-and-detecting-horizontal-gene-transfer">What do we gain when tolerating loss? The information bottleneck, lossy compression, and detecting horizontal gene transfer</a></li>
@@ -438,11 +438,93 @@
 <div id="learning-the-properties-of-adaptive-regions-with-functional-data-analysis" class="section level1">
 <h1>Learning the properties of adaptive regions with functional data analysis</h1>
 <p><strong>Mehreen R. Mughal</strong>, Hillary Koch, Jinguo Huang, Francesca Chiaromonte, Michael DeGiorgio.</p>
+<p>How do organisms adapt to their environment?</p>
+<ul>
+<li>pos. selection == (over time) fixation</li>
+<li>idea is more beneficial == faster fixation</li>
+<li>selective sweep reduces diversity at haplotype
+<ul>
+<li>(chunk of genome)</li>
+<li>so one beneficial variant can “drag” a whole lot of other variants into purity.
+<ul>
+<li>free-loaders</li>
+</ul></li>
+</ul></li>
+</ul>
+<p>SURFDAWave</p>
+<ul>
+<li>ha</li>
+<li>learn spatial dist. from statistics of sweep / neutral</li>
+<li>doi.org/10.1101/834010</li>
+<li>pick dist to match data</li>
+<li>penalized regression
+<ul>
+<li>with wavelet coefficient</li>
+<li>cross-validate params to check fit</li>
+</ul></li>
+<li>predicts neutral/sweep pretty well in TF/TP/FN/FP</li>
+<li>each statistic tested gets own model
+<ul>
+<li>initial freq</li>
+<li>selection coef</li>
+<li>time of selection</li>
+</ul></li>
+</ul>
+<p>Now running on SLC45A2</p>
+<ul>
+<li>related to skin color in europeans</li>
+<li>estimated time of selection 2000 years ago with initial freq of 0.04</li>
+</ul>
+<p>Adaptive introgression</p>
+<ul>
+<li>selective sweep (?)</li>
+<li>beneficial mutation has unique pattern</li>
+<li>which SURFDAWave has 52% successful classification
+<ul>
+<li>kind of bleh</li>
+<li>can be improved with more info?</li>
+<li>with 2D info 52 -&gt; 62%</li>
+</ul></li>
+</ul>
 </div>
-<div id="creating-pan-human-and-population-specific-consensus-representations-of-the-reference-genome-and-assessing-their" class="section level1">
-<h1>Creating pan-human and population-specific consensus representations of the reference genome and assessing their</h1>
-<p>effect on functional genomic data analysis
-<strong>Benjamin Kaminow</strong>, Sara Ballouz, Jesse Gillis, Alex Dobin.</p>
+<div id="creating-pan-human-and-population-specific-consensus-representations-of-the-reference-genome-and-assessing-their-effect-on-functional-genomic-data-analysis" class="section level1">
+<h1>Creating pan-human and population-specific consensus representations of the reference genome and assessing their effect on functional genomic data analysis</h1>
+<p><strong>Benjamin Kaminow</strong>, Sara Ballouz, Jesse Gillis, Alex Dobin.</p>
+<p>How much variation do we need to improve ref genome?</p>
+<p>We can use <strong>all</strong> known…but graph is complicated.</p>
+<p>Consensus genome</p>
+<ul>
+<li>simple</li>
+<li>replace minor alleles with major alleles in other pop</li>
+<li>have been used on variant calling</li>
+<li><strong>here we assess effects of RNA-seq</strong></li>
+</ul>
+<p>ConsDB download and parse db files which makes consensus VCF and FASTA</p>
+<p>Uses 1000G</p>
+<ul>
+<li>better pop balance</li>
+<li>uh, but doesn’t 1000G have loads of technical errors due to seq. errors?
+<ul>
+<li>was this ever fixed……?</li>
+</ul></li>
+<li>got RNA-seq data from one person from 4 diff pops</li>
+<li>anyways….millions of replacements of SNPS</li>
+<li>once replacements made, then # of diff SNPs decreases from one genome &lt;-&gt; consensus genome</li>
+</ul>
+<p>check mapping with STARconsensus</p>
+<ul>
+<li>STAR + VCF file to transform the reference</li>
+<li>also does compare pre/post correction<br />
+= VERY large drop in mapping error rate…(3.5 to 0.5%)
+<ul>
+<li>much bigger effect than I would have thought….</li>
+</ul></li>
+<li>wait I’m confused
+<ul>
+<li>y axis says “% of reads overlapping variant”</li>
+<li>that’s not error rate….</li>
+</ul></li>
+</ul>
 </div>
 <div id="gramene-subsitespangenome-browsers-for-crops" class="section level1">
 <h1>Gramene subsites—Pangenome browsers for crops</h1>
@@ -451,11 +533,32 @@
 <div id="section" class="section level1">
 <h1></h1>
 <p><strong>Janet Kelso.</strong></p>
+<p>NOT TWEETABLE</p>
 </div>
 <div id="what-do-we-gain-when-tolerating-loss-the-information-bottleneck-lossy-compression-and-detecting-horizontal-gene-transfer" class="section level1">
 <h1>What do we gain when tolerating loss? The information bottleneck, lossy compression, and detecting horizontal gene transfer</h1>
 <p><strong>Apurva Narechania</strong>, Rob Desalle, Barun Mathema, Barry Kreiswirth,
 Paul Planet.</p>
+<p>Can we do horizontal gene transfer without genes?</p>
+<p>Make pangenome</p>
+<p>count kmers across genomes</p>
+<p>clusters kmers</p>
+<p>but how do we cluster well? don’t want to lose too much info…but also want to compress…how to get the proper balance?</p>
+<p>claude shannon!</p>
+<ul>
+<li>transmitter -&gt; noisy channel -&gt; receiver</li>
+<li>noisy channel ~ noisy clusters</li>
+<li>want middle ground where you can interpret but haven’t lost much info</li>
+</ul>
+<p>can see how clusters stabliize with n kmers</p>
+<p>I’m reminded of luke zappias/oshlack clustree work</p>
+<ul>
+<li>which is ironic bc this talk is all about avoiding trees</li>
+<li>done in 2 hours … which I guess is fast?</li>
+</ul>
+<p>Plot show inflection between cluster n and norm. mutual information</p>
+<p>q: you fixed at 19 kmer, why?
+a: looking at other kmer n - balance between closeness of variants and kmer n</p>
 </div>
 <div id="a-recurrent-neural-network-for-inferring-sweeps-and-allele-frequency-trajectories-using-gene-trees-based-on-the-ancestral-recombination-graph" class="section level1">
 <h1>A recurrent neural network for inferring sweeps and allele frequency trajectories using gene trees based on the ancestral recombination graph</h1>

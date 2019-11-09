@@ -93,22 +93,125 @@ What are the genes?! (<- his formatting)
 # Learning the properties of adaptive regions with functional data analysis
 **Mehreen R. Mughal**, Hillary Koch, Jinguo Huang, Francesca Chiaromonte, Michael DeGiorgio.
 
-# Creating pan-human and population-specific consensus representations of the reference genome and assessing their
-effect on functional genomic data analysis
+How do organisms adapt to their environment?
+
+  - pos. selection == (over time) fixation
+  - idea is more beneficial == faster fixation
+  - selective sweep reduces diversity at haplotype
+    - (chunk of genome)
+    - so one beneficial variant can "drag" a whole lot of other variants into purity.
+      - free-loaders
+
+SURFDAWave
+  
+  - ha
+  - learn spatial dist. from statistics of sweep / neutral
+  - doi.org/10.1101/834010
+  - pick dist to match data
+  - penalized regression
+    - with wavelet coefficient
+    - cross-validate params to check fit
+  - predicts neutral/sweep pretty well in TF/TP/FN/FP 
+  - each statistic tested gets own model
+    - initial freq
+    - selection coef
+    - time of selection
+  
+Now running on SLC45A2
+
+  - related to skin color in europeans
+  - estimated time of selection 2000 years ago with initial freq of 0.04
+  
+Adaptive introgression
+
+  - selective sweep (?)
+  - beneficial mutation has unique pattern
+  - which SURFDAWave has 52% successful classification
+    - kind of bleh
+    - can be improved with more info?
+    - with 2D info 52 -> 62%
+
+# Creating pan-human and population-specific consensus representations of the reference genome and assessing their effect on functional genomic data analysis
 **Benjamin Kaminow**, Sara Ballouz, Jesse Gillis, Alex Dobin.
 
+How much variation do we need to improve ref genome?
+
+We can use **all** known...but graph is complicated.
+
+Consensus genome
+
+  - simple
+  - replace minor alleles with major alleles in other pop
+  - have been used on variant calling
+  - **here we assess effects of RNA-seq**
+  
+ConsDB download and parse db files which makes consensus VCF and FASTA
+
+Uses 1000G 
+
+  - better pop balance
+  - uh, but doesn't 1000G have loads of technical errors due to seq. errors?
+    - was this ever fixed......?
+  - got RNA-seq data from one person from 4 diff pops 
+  - anyways....millions of replacements of SNPS
+  - once replacements made, then # of diff SNPs decreases from one genome <-> consensus genome
+  
+check mapping with STARconsensus
+
+  - STAR + VCF file to transform the reference
+  - also does compare pre/post correction\
+  = VERY large drop in mapping error rate...(3.5 to 0.5%)
+    - much bigger effect than I would have thought....
+  - wait I'm confused
+    - y axis says "% of reads overlapping variant"
+    - that's not error rate....
+    
 # Gramene subsites—Pangenome browsers for crops
 Marcela K. Tello-Ruiz, Sharon Wei, Joshua Stein, Kapeel Chougule, **Andrew Olson**, Yinping Jiao, Bo Wang, Ivar Meijs, Doreen Ware.
 
+
+
 # 
 **Janet Kelso.**
+
+NOT TWEETABLE
+
 
 # What do we gain when tolerating loss? The information bottleneck, lossy compression, and detecting horizontal gene transfer
 **Apurva Narechania**, Rob Desalle, Barun Mathema, Barry Kreiswirth,
 Paul Planet.
 
+Can we do horizontal gene transfer without genes?
+
+Make pangenome
+
+count kmers across genomes
+
+clusters kmers
+
+but how do we cluster well? don't want to lose too much info...but also want to compress...how to get the proper balance?
+
+claude shannon!
+
+  - transmitter -> noisy channel -> receiver
+  - noisy channel ~ noisy clusters
+  - want middle ground where you can interpret but haven't lost much info
+  
+can see how clusters stabliize with n kmers
+
+I'm reminded of luke zappias/oshlack clustree work
+  
+  - which is ironic bc this talk is all about avoiding trees
+  - done in 2 hours ... which I guess is fast?
+  
+Plot show inflection between cluster n and norm. mutual information
+
+q: you fixed at 19 kmer, why?
+a: looking at other kmer n - balance between closeness of variants and kmer n
+
 # A recurrent neural network for inferring sweeps and allele frequency trajectories using gene trees based on the ancestral recombination graph
 **Hussein A**. Hejase, Ziyi Mo, Adam Siepel.
+
 
 # Assembling the Y chromosomes of anopheles mosquitoes
 **Chujia Chen**, Austin Compton, Yang Wu, Jiangtao Liang, Dustin Miller, Xiaoguang Chen, Igor Sharakhov, Chunhong Mao, Zhijian J. Tu.
