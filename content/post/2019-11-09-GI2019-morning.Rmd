@@ -1,5 +1,5 @@
 ---
-title: "#GI2019 Personal and Medical Genomics"
+title: "2019 11 09 GI2019 Personal and Medical Genomics"
 author: David McGaughey
 date: '2019-11-09'
 slug: gi2019-day04-morning
