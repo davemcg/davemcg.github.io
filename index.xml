@@ -34,6 +34,57 @@
 &lt;div id=&#34;characterization-of-prevalence-and-health-consequences-of-uniparental-disomy-in-four-million-individuals-from-the-general-population&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Characterization of prevalence and health consequences of uniparental disomy in four million individuals from the general population&lt;/h1&gt;
 &lt;p&gt;Priyanka Nakka, Samuel Pattillo Smith, Anne H. O’Donnell-Luria, Kimberly F. McManus, 23andMe Research Team, Joanna L. Mountain, &lt;strong&gt;Sohini Ramachandran&lt;/strong&gt;, Fah Sathirapongsasuti.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;citation&#34;&gt;@s_ramach&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Paper came out two days ago AJHG&lt;/p&gt;
+&lt;p&gt;“Population-level summaries of ROH increase with divergnce from Agrica”
+ROH == Runs of Homozygosity (LONG runs where both chr are identical)&lt;/p&gt;
+&lt;p&gt;“Class C ROH”&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;don’t know what this is…something about consanguinity?&lt;/li&gt;
+&lt;li&gt;oh, &amp;gt;0.8MB?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Group interested in distribution across human genomes&lt;/p&gt;
+&lt;p&gt;23andMe partially sort of funded (personel) this study&lt;/p&gt;
+&lt;p&gt;Also uses 23andMe data&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;obv&lt;/li&gt;
+&lt;li&gt;not even MacArthur has 4 million genomes&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Posting IBD karyogram….from reddit (imgur.com/a/hl6Cd)&lt;/p&gt;
+&lt;p&gt;UPD&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;both homologs of chr come from one parent&lt;/li&gt;
+&lt;li&gt;meiotic oopsie&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;3,300 reported in clinical literature&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;upd-tl.com/upd.html&lt;/li&gt;
+&lt;li&gt;more common on chr 6,7,11, and 15 (most common)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;What is incidence in population (at least 23andMe pop)?&lt;/p&gt;
+&lt;p&gt;What are rates of maternal/paternal UPD?&lt;/p&gt;
+&lt;p&gt;Three subtypes of UPD&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;HetUPD, IsoUPD, Partial IsoUPD&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In 916,712 duos/trios in 23andMe found 199 with UPD&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Maternal UPD 3X more common than Paternal UPD&lt;/li&gt;
+&lt;li&gt;different dist across chr than the upd-tl.com data&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Estimate 1/2000 rate (more common than previously estimated)&lt;/p&gt;
+&lt;p&gt;Trained log. regression classifier for each chr for each pop to diagnose ROH from UPD (instead of consanguinity)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;used ROH length&lt;/li&gt;
+&lt;li&gt;ratio of ROH across chr&lt;/li&gt;
+&lt;li&gt;other things I missed&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Found 304 &lt;strong&gt;putative&lt;/strong&gt; UPD cases in 1.3 million “singletons”&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;recapitulates chr dist. patterns&lt;/li&gt;
+&lt;li&gt;found 172 more in UK biobank&lt;/li&gt;
+&lt;li&gt;found 0 in the 4,000 duos (not a big sample size)&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/div&gt;
 &lt;div id=&#34;sub-continental-ancestry-inference-based-on-the-gnomad-dataset-accurately-classifies-patients-at-nch&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Sub-continental ancestry inference based on the gnomAD dataset accurately classifies patients at NCH&lt;/h1&gt;
@@ -53,7 +104,7 @@ Presenter affiliation: University of Oxford, Oxford, United Kingdom. 231&lt;/p&g
 &lt;div id=&#34;somatic-mutation-status-prediction-by-a-splicing-alteration-based-machine-learning-technique&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Somatic mutation status prediction by a splicing-alteration-based machine learning technique&lt;/h1&gt;
 &lt;p&gt;Raul N. Mateos, Naoko Iida, Kenichi Chiba, Ai Okada, Yuichi Shiraishi.&lt;/p&gt;
-&lt;p&gt;NOT HERE?!&lt;/p&gt;
+&lt;p&gt;NOT HERE&lt;/p&gt;
 &lt;p&gt;Model selection and permutation testing for association studies within a large direct-to-consumer genetic cohort
 &lt;strong&gt;Elena P. Sorokin&lt;/strong&gt;, Danny S. Park, Kristin A. Rand, Julie M. Granka, Eurie L. Hong, Kenneth G. Chahine, Catherine A. Ball.&lt;/p&gt;
 &lt;p&gt;NOT TWEETABLE&lt;/p&gt;
@@ -61,8 +112,7 @@ Presenter affiliation: University of Oxford, Oxford, United Kingdom. 231&lt;/p&g
 &lt;div id=&#34;beyond-accessibilityatac-seq-footprinting-analysis-reveals-dynamics-of-transcription-factor-binding-during-preimplantation-development&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Beyond accessibility—ATAC-seq footprinting analysis reveals dynamics of transcription factor binding during preimplantation development&lt;/h1&gt;
 &lt;p&gt;Mette Bentsen, Philipp Goymann, Anastasiia Petrova, Hendrik Schultheis, Kathrin Klee, Jens Preussner, Carsten Kuenne, Mario Looso.&lt;/p&gt;
-&lt;p&gt;NOT HERE?!&lt;/p&gt;
-&lt;p&gt;Uh, OK.&lt;/p&gt;
+&lt;p&gt;NOT HERE&lt;/p&gt;
 &lt;/div&gt;
 </description>
     </item>

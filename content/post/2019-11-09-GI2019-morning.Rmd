@@ -26,6 +26,68 @@ output:
 # Characterization of prevalence and health consequences of uniparental disomy in four million individuals from the general population
 Priyanka Nakka, Samuel Pattillo Smith, Anne H. O’Donnell-Luria, Kimberly F. McManus, 23andMe Research Team, Joanna L. Mountain, **Sohini Ramachandran**, Fah Sathirapongsasuti.
 
+@s_ramach
+
+Paper came out two days ago AJHG
+
+"Population-level summaries of ROH increase with divergnce from Agrica"
+ROH == Runs of Homozygosity (LONG runs where both chr are identical)
+
+"Class C ROH"
+
+  - don't know what this is...something about consanguinity?
+  - oh, >0.8MB?
+  
+Group interested in distribution across human genomes
+
+23andMe partially sort of funded (personel) this study
+
+Also uses 23andMe data
+
+  - obv
+  - not even MacArthur has 4 million genomes
+
+Posting IBD karyogram....from reddit (imgur.com/a/hl6Cd)
+
+UPD
+
+  - both homologs of chr come from one parent
+  - meiotic oopsie
+  
+3,300 reported in clinical literature
+
+  - upd-tl.com/upd.html
+  - more common on chr 6,7,11, and 15 (most common)
+  
+What is incidence in population (at least 23andMe pop)?
+
+What are rates of maternal/paternal UPD?
+
+Three subtypes of UPD
+
+  - HetUPD, IsoUPD, Partial IsoUPD
+  
+In 916,712 duos/trios in 23andMe found 199 with UPD
+
+  - Maternal UPD 3X more common than Paternal UPD
+  - different dist across chr than the upd-tl.com data
+
+Estimate 1/2000 rate (more common than previously estimated)
+
+Trained log. regression classifier for each chr for each pop to diagnose ROH from UPD (instead of consanguinity)
+
+  - used ROH length
+  - ratio of ROH across chr
+  - other things I missed
+  
+Found 304 **putative** UPD cases in 1.3 million "singletons"
+
+  - recapitulates chr dist. patterns
+  - found 172 more in UK biobank
+  - found 0 in the 4,000 duos (not a big sample size)
+  
+
+
 # Sub-continental ancestry inference based on the gnomAD dataset accurately classifies patients at NCH
 **Andrei Rajkovic**, Defne Ceyhan, Greg Wheeler, Tara Lichtenberg, Ben Kelly, Peter White.
 
@@ -42,7 +104,7 @@ Mana Gajapathy, Brandon Wilk, Arthur Weborg, Angelina Uno- Antonison, Alex Moss,
 # Somatic mutation status prediction by a splicing-alteration-based machine learning technique
 Raul N. Mateos, Naoko Iida, Kenichi Chiba, Ai Okada, Yuichi Shiraishi. 
 
-NOT HERE?!
+NOT HERE
 
 Model selection and permutation testing for association studies within a large direct-to-consumer genetic cohort
 **Elena P. Sorokin**, Danny S. Park, Kristin A. Rand, Julie M. Granka, Eurie L. Hong, Kenneth G. Chahine, Catherine A. Ball.
@@ -52,6 +114,4 @@ NOT TWEETABLE
 # Beyond accessibility—ATAC-seq footprinting analysis reveals dynamics of transcription factor binding during preimplantation development
 Mette Bentsen, Philipp Goymann, Anastasiia Petrova, Hendrik Schultheis, Kathrin Klee, Jens Preussner, Carsten Kuenne, Mario Looso.
 
-NOT HERE?!
-
-Uh, OK.
+NOT HERE
