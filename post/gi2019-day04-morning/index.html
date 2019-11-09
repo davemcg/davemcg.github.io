@@ -276,7 +276,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    4 min read
+    5 min read
   </span>
   
 
@@ -479,10 +479,44 @@ Presenter affiliation: University of Oxford, Oxford, United Kingdom. 231</p>
 <div id="inferring-clone--and-haplotype-specific-chromosomal-organization-in-rearranged-cancer-genomes-with-multiple-sequencing-technologies" class="section level1">
 <h1>Inferring clone- and haplotype-specific chromosomal organization in rearranged cancer genomes with multiple sequencing technologies</h1>
 <p><strong>Sergey Aganezov</strong>, Fritz Sedlazeck, Sara Goodwin, Gayatri Arun, Isac Lee, Sam Kovaka, Michael Kitsche, Rachel Scherman, Ilya Zban, Vitaly Aksenov, Nikita Alexeev, Robert Wappel, Melissa Kramer, Karen Kostroff, David L. Spector, Winston Timp, Michael S. Schatz, W. Richard McCombie.</p>
+<p>Recover linear genome org from cancer genomes</p>
+<p>Referring to short-read NGS as 2nd gen and long reads as 3rd gen</p>
+<ul>
+<li>will this catch on? Probably not…especially if I misunderstood what happened</li>
+</ul>
+<p>10x Linked Reads + ONT + PacBio</p>
+<ul>
+<li>check concordance</li>
+<li>overlap not great between all three</li>
+<li>A TON were found in both ONT + PacBio
+<ul>
+<li>LOTS of FP for 10x…not a good slide for this tech</li>
+<li>so maybe don’t use 10X LR for SV</li>
+</ul></li>
+</ul>
+<p>Overall finding so many more SV with long reads</p>
+<p>Get to 90% precision/recall at 25X</p>
+<p>Tried to genotype SVs in 1000G - found a few (germline of course). Artifacts? Interesting? Dunno…</p>
+<p>Discussing haplotype resolved chr structure technique</p>
+<ul>
+<li>github.com/izban/contig-covering</li>
+</ul>
 </div>
 <div id="identification-and-interpretation-of-common-and-rare-variants-in-relation-to-rare-disease-phenotype-and-outcome" class="section level1">
 <h1>Identification and interpretation of common and rare variants in relation to rare disease phenotype and outcome</h1>
 <p>Mana Gajapathy, Brandon Wilk, Arthur Weborg, Angelina Uno- Antonison, Alex Moss, Matt Holt, Donna Brown, Melissa Wilk, Camille Birch, Nadiya Sosonkina, <strong>Elizabeth Worthey</strong></p>
+<p>History lesson on how in 2003, “success rate” for rare genetic disease had seq. diagnosis of about 5%. Today is approaching 50%.</p>
+<p>But common genetic disease is ~5% <em>today</em></p>
+<p>Sanger -&gt; Exome -&gt; WGS</p>
+<p>Software / pipelines are curcial in making seq. <strong>useful</strong></p>
+<p>Using many orthogonal datasets and phenotype info (HPO?) to improve filtering</p>
+<p>This software proprietary / custom for UAB?</p>
+<p>varsight:</p>
+<ul>
+<li>biorxiv.org/content/10.1101/532440v2</li>
+<li><a href="https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-019-3026-8" class="uri">https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-019-3026-8</a></li>
+</ul>
+<p>Patient with paterna isodomic UPD….3!!! different diseases with multiple causual genes! Yikes.</p>
 </div>
 <div id="somatic-mutation-status-prediction-by-a-splicing-alteration-based-machine-learning-technique" class="section level1">
 <h1>Somatic mutation status prediction by a splicing-alteration-based machine learning technique</h1>

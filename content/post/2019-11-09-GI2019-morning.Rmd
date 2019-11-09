@@ -133,8 +133,52 @@ showing some case studies....but why not combining all these into one framework.
 # Inferring clone- and haplotype-specific chromosomal organization in rearranged cancer genomes with multiple sequencing technologies
 **Sergey Aganezov**, Fritz Sedlazeck, Sara Goodwin, Gayatri Arun, Isac Lee, Sam Kovaka, Michael Kitsche, Rachel Scherman, Ilya Zban, Vitaly Aksenov, Nikita Alexeev, Robert Wappel, Melissa Kramer, Karen Kostroff, David L. Spector, Winston Timp, Michael S. Schatz, W. Richard McCombie.
 
+Recover linear genome org from cancer genomes
+
+Referring to short-read NGS as 2nd gen and long reads as 3rd gen
+
+  - will this catch on? Probably not...especially if I misunderstood what happened
+
+10x Linked Reads + ONT + PacBio
+
+  - check concordance
+  - overlap not great between all three
+  - A TON were found in both ONT + PacBio
+    - LOTS of FP for 10x...not a good slide for this tech
+    - so maybe don't use 10X LR for SV
+    
+Overall finding so many more SV with long reads
+
+Get to 90% precision/recall at 25X
+
+Tried to genotype SVs in 1000G - found a few (germline of course). Artifacts? Interesting? Dunno...
+
+Discussing haplotype resolved chr structure technique
+
+  - github.com/izban/contig-covering
+
+
 # Identification and interpretation of common and rare variants in relation to rare disease phenotype and outcome
 Mana Gajapathy, Brandon Wilk, Arthur Weborg, Angelina Uno- Antonison, Alex Moss, Matt Holt, Donna Brown, Melissa Wilk, Camille Birch, Nadiya Sosonkina, **Elizabeth Worthey**
+
+History lesson on how in 2003, "success rate" for rare genetic disease had seq. diagnosis of about 5%. Today is approaching 50%. 
+
+But common genetic disease is ~5% *today*
+
+Sanger -> Exome -> WGS
+
+Software / pipelines are curcial in making seq. **useful**
+
+Using many orthogonal datasets and phenotype info (HPO?) to improve filtering
+
+This software proprietary / custom for UAB?
+
+varsight:
+  
+  - biorxiv.org/content/10.1101/532440v2
+  - https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-019-3026-8
+  
+Patient with paterna isodomic UPD....3!!! different diseases with multiple causual genes! Yikes. 
 
 # Somatic mutation status prediction by a splicing-alteration-based machine learning technique
 Raul N. Mateos, Naoko Iida, Kenichi Chiba, Ai Okada, Yuichi Shiraishi. 
