@@ -5,6 +5,15 @@
     
     <url>
     
+      <loc>/./post/parallel-seurat-findmarker/</loc>
+      <lastmod>2019-12-13T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/./post/gi2019-day04-morning/</loc>
       <lastmod>2019-11-09T00:00:00+00:00</lastmod>
     </url>
@@ -601,6 +610,16 @@
     
     <url>
     
+      <loc>/./tags/parallel/</loc>
+      <lastmod>2019-12-13T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/./people/</loc>
       <lastmod>2018-02-01T00:00:00+00:00</lastmod>
       <priority>0</priority>
@@ -712,7 +731,7 @@
     <url>
     
       <loc>/./tags/r/</loc>
-      <lastmod>2019-06-24T00:00:00+00:00</lastmod>
+      <lastmod>2019-12-13T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -771,6 +790,26 @@
     
     <url>
     
+      <loc>/./categories/scrna/</loc>
+      <lastmod>2019-12-13T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/./tags/scrna/</loc>
+      <lastmod>2019-12-13T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/./categories/script/</loc>
       <lastmod>2018-02-07T00:00:00+00:00</lastmod>
       <priority>0</priority>
@@ -791,6 +830,16 @@
     
     <url>
     
+      <loc>/./tags/seurat/</loc>
+      <lastmod>2019-12-13T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/./categories/shiny/</loc>
       <lastmod>2019-06-24T00:00:00+00:00</lastmod>
       <priority>0</priority>
@@ -803,6 +852,16 @@
     
       <loc>/./tags/shiny/</loc>
       <lastmod>2019-06-24T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/./tags/singlecell/</loc>
+      <lastmod>2019-12-13T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     

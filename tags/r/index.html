@@ -94,7 +94,7 @@
   <meta property="og:description" content="Staff Scientist">
   <meta property="og:locale" content="en-us">
   
-  <meta property="og:updated_time" content="2019-06-24T00:00:00&#43;00:00">
+  <meta property="og:updated_time" content="2019-12-13T00:00:00&#43;00:00">
   
 
   
@@ -259,6 +259,18 @@
   
   
   <div>
+    <h2><a href="/./post/parallel-seurat-findmarker/">Seurat FindMarker with Cluster N vs M</a></h2>
+    <div class="article-style">
+      
+      What Easy cluster by cluster Seurat FindMarkers implementation
+ Why Because Seurat’s FindMarkers (which can be parallelized if you also load library(Future) and plan(&quot;multiprocess&quot;)) runs with cluster N against all other clusters.
+People kept asking me for “well what about cluster 23 vs 17” and I kept saying “uh, I haven’t run that because…”
+ How This is being done a Mac. This may not work on a PC. Multicore stuffs are complicated.
+      
+    </div>
+  </div>
+  
+  <div>
     <h2><a href="/./post/one-developer-portal-genesis/">One Developer Portal: eyeIntegration Genesis</a></h2>
     <div class="article-style">
       
@@ -344,15 +356,6 @@ Bar plots are terrible. Why? Simple. They don’t show what your data looks like
     <div class="article-style">
       
       Load data Curious? Data How many genes are in this dataset? What genes are in here? How many data points (bases) per gene? How many exons per gene? How many base pairs of ABCA4 (well, ABCA4 exons) is covered by more than 10 reads? 5 reads? Let’s check all of the genes to see which are the worst covered We can visually display the data, also Hard to see what is going on, let’s make little plots for each gene Where are genes poorly covered?
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/./post/split-vcf-into-n-pieces-by-coordinate/">Split VCF into n pieces by coordinate</a></h2>
-    <div class="article-style">
-      
-      Introduction Read in vcf header Parse out chr / contig sizes Split chr above 3e7 base pairs into equal(ish) size pieces print coordinates given a chromosome / contig calculate coordinates print ’em output ’em for python input (Snakemake) rscript Using the script output sessionInfo()   Introduction bcftools view -r 1:40000-50000 vcf.gz will output (to stdout) a vcf containing the header and variants on chromosome 1 between coordinates 40,000 and 50,000 base pairs.
       
     </div>
   </div>

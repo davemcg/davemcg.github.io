@@ -75,7 +75,7 @@ to add new features.
 This is getting sort of long so I'm going to break it into several pieces:
 
 1. [Making a performant site](/post/one-developer-portal-optimization)
-2. What does eyeIntegration 1.0 mean? (future post)
+2. What's new with eyeIntegration 1.0? (future post)
 3. Crucial software bits (future post)
 4. What will eyeIntegration 2.0 be? (future post)
 

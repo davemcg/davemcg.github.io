@@ -1,0 +1,129 @@
+---
+title: 'Seurat FindMarker with Cluster N vs M'
+author: David McGaughey
+date: '2019-12-13'
+slug: parallel-seurat-findmarker
+categories:
+  - scRNA
+tags:
+  - singlecell
+  - scRNA
+  - Seurat
+  - R
+  - parallel
+header:
+  caption: ''
+  image: ''
+  preview: yes
+---
+
+# What
+
+Easy cluster by cluster Seurat `FindMarkers` implementation
+
+# Why
+
+Because Seurat's `FindMarkers` (which can be parallelized if you also load 
+`library(Future)` and `plan("multiprocess")`) runs with cluster `N` against **all**
+other clusters. 
+
+People kept asking me for "well what about cluster 23 vs 17" and I kept saying 
+"uh, I haven't run that because..."
+
+# How
+This is being done a Mac. This **may** not work on a PC. Multicore stuffs are complicated. See https://github.com/HenrikBengtsson/future/issues/299
+
+## First we load libraries 
+```{r, warning=FALSE}
+library(future)
+library(tictoc) # easy benchmarking
+library(Seurat) # I'm assuming you are using version 3
+library(tidyverse)
+plan(strategy = "multisession", workers = 4)
+options(future.globals.maxSize = 500000 * 1024^2) # unnecessary for this toy example but future, by default, limits the size of the obj to 500mb. This examples to 500GB. Obviously you can get into trouble very quickly on real data as the object will get copied over and over for each parallel run.
+
+# build in seurat object
+pbmc_small
+```
+
+## Cluster M vs N
+
+Okay now let's do each cluster vs each cluster. 
+
+This seurat object has three clusters: 0, 1, 2
+
+Instead of 0 vs 1,2 and 1 vs 0,2, and 2 vs 0,1, I want 0 vs 1, 0 vs 2, 1 vs 2.
+
+
+```{r, warning=FALSE}
+# get cluster names
+cluster_names <- Idents(pbmc_small) %>%  
+  unique() %>% 
+  as.character() %>% 
+  sort()
+```
+
+## The `combn` function makes all of the pairwise comparisons.
+```{r}
+calc_diff <- function(i, obj){
+  first <- combn(cluster_names,2)[1,i]
+  second <- combn(cluster_names,2)[2,i]
+  comparison = paste0(first,'__',second)
+  print(comparison)
+  out <- FindMarkers(obj, ident.1 = first, ident.2 = second, logfc.threshold = 0.5, verbose = FALSE)
+  out$comparison <- comparison
+  out
+}
+```
+
+## Use `map` to run all the combinations
+```{r, warning=FALSE}
+tic()
+de_rna <- map(1:ncol(combn(cluster_names,2)), calc_diff, pbmc_small)
+toc()
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## List is returned, but very easy to make one obj
+Use `str` to show compasition of the `de_rna` object.
+
+We use `map` again to moves the gene names from the `row.names` to a column.
+
+Then `bind_rows` to collapse the list of data.frames in one data frame.
+
+We pick 10 random rows to show
+```{r}
+str(de_rna)
+# Move Gene names from `rownames` to column
+de_rna <- map(de_rna, rownames_to_column, 'Gene')
+easy <- bind_rows(de_rna)
+easy %>% sample_n(10)
+```
+
+# Bonus parallelization
+`FindMarkers` is already parallelized, but I found that parallelization across comparisons was about 15% faster with big Seurat objects. YMMV. This is stupid easy to implement with `furrr`. The only substantial difference is that I do `library(furrr)` and prepend `future_` to `map`. The `.progress` option gives you an easy progress bar. 
+```{r, warning=FALSE}
+library(furrr)
+tic()
+de_rna <- future_map(1:ncol(combn(cluster_names,2)), calc_diff, pbmc_small, .progress = TRUE)
+toc()
+```

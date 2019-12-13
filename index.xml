@@ -11,6 +11,148 @@
     <atom:link href="//" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Seurat FindMarker with Cluster N vs M</title>
+      <link>/./post/parallel-seurat-findmarker/</link>
+      <pubDate>Fri, 13 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/parallel-seurat-findmarker/</guid>
+      <description>&lt;div id=&#34;what&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;What&lt;/h1&gt;
+&lt;p&gt;Easy cluster by cluster Seurat &lt;code&gt;FindMarkers&lt;/code&gt; implementation&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;why&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Why&lt;/h1&gt;
+&lt;p&gt;Because Seurat’s &lt;code&gt;FindMarkers&lt;/code&gt; (which can be parallelized if you also load
+&lt;code&gt;library(Future)&lt;/code&gt; and &lt;code&gt;plan(&amp;quot;multiprocess&amp;quot;)&lt;/code&gt;) runs with cluster &lt;code&gt;N&lt;/code&gt; against &lt;strong&gt;all&lt;/strong&gt;
+other clusters.&lt;/p&gt;
+&lt;p&gt;People kept asking me for “well what about cluster 23 vs 17” and I kept saying
+“uh, I haven’t run that because…”&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;how&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;How&lt;/h1&gt;
+&lt;p&gt;This is being done a Mac. This &lt;strong&gt;may&lt;/strong&gt; not work on a PC. Multicore stuffs are complicated. See &lt;a href=&#34;https://github.com/HenrikBengtsson/future/issues/299&#34; class=&#34;uri&#34;&gt;https://github.com/HenrikBengtsson/future/issues/299&lt;/a&gt;&lt;/p&gt;
+&lt;div id=&#34;first-we-load-libraries&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;First we load libraries&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(future)
+library(tictoc) # easy benchmarking
+library(Seurat) # I&amp;#39;m assuming you are using version 3
+library(tidyverse)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## ── Attaching packages ───────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.3.0 ──&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## ✔ ggplot2 3.2.1     ✔ purrr   0.3.3
+## ✔ tibble  2.1.3     ✔ dplyr   0.8.3
+## ✔ tidyr   1.0.0     ✔ stringr 1.4.0
+## ✔ readr   1.3.1     ✔ forcats 0.4.0&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## ── Conflicts ──────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plan(strategy = &amp;quot;multisession&amp;quot;, workers = 4)
+options(future.globals.maxSize = 500000 * 1024^2) # unnecessary for this toy example but future, by default, limits the size of the obj to 500mb. This examples to 500GB. Obviously you can get into trouble very quickly on real data as the object will get copied over and over for each parallel run.
+
+# build in seurat object
+pbmc_small&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## An object of class Seurat 
+## 230 features across 80 samples within 1 assay 
+## Active assay: RNA (230 features)
+##  2 dimensional reductions calculated: pca, tsne&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;cluster-m-vs-n&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Cluster M vs N&lt;/h2&gt;
+&lt;p&gt;Okay now let’s do each cluster vs each cluster.&lt;/p&gt;
+&lt;p&gt;This seurat object has three clusters: 0, 1, 2&lt;/p&gt;
+&lt;p&gt;Instead of 0 vs 1,2 and 1 vs 0,2, and 2 vs 0,1, I want 0 vs 1, 0 vs 2, 1 vs 2.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# get cluster names
+cluster_names &amp;lt;- Idents(pbmc_small) %&amp;gt;%  
+  unique() %&amp;gt;% 
+  as.character() %&amp;gt;% 
+  sort()&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;the-combn-function-makes-all-of-the-pairwise-comparisons.&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;The &lt;code&gt;combn&lt;/code&gt; function makes all of the pairwise comparisons.&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;calc_diff &amp;lt;- function(i, obj){
+  first &amp;lt;- combn(cluster_names,2)[1,i]
+  second &amp;lt;- combn(cluster_names,2)[2,i]
+  comparison = paste0(first,&amp;#39;__&amp;#39;,second)
+  print(comparison)
+  out &amp;lt;- FindMarkers(obj, ident.1 = first, ident.2 = second, logfc.threshold = 0.5, verbose = FALSE)
+  out$comparison &amp;lt;- comparison
+  out
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;use-map-to-run-all-the-combinations&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Use &lt;code&gt;map&lt;/code&gt; to run all the combinations&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tic()
+de_rna &amp;lt;- map(1:ncol(combn(cluster_names,2)), calc_diff, pbmc_small)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;0__1&amp;quot;
+## [1] &amp;quot;0__2&amp;quot;
+## [1] &amp;quot;1__2&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;toc()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 20.392 sec elapsed&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;list-is-returned-but-very-easy-to-make-one-obj&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;List is returned, but very easy to make one obj&lt;/h2&gt;
+&lt;p&gt;Use &lt;code&gt;str&lt;/code&gt; to show compasition of the &lt;code&gt;de_rna&lt;/code&gt; object.&lt;/p&gt;
+&lt;p&gt;We use &lt;code&gt;map&lt;/code&gt; again to moves the gene names from the &lt;code&gt;row.names&lt;/code&gt; to a column.&lt;/p&gt;
+&lt;p&gt;Then &lt;code&gt;bind_rows&lt;/code&gt; to collapse the list of data.frames in one data frame.&lt;/p&gt;
+&lt;p&gt;We pick 10 random rows to show&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str(de_rna)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## List of 3
+##  $ :&amp;#39;data.frame&amp;#39;:    195 obs. of  6 variables:
+##   ..$ p_val     : num [1:195] 1.70e-11 4.47e-11 5.33e-11 7.00e-11 3.29e-10 ...
+##   ..$ avg_logFC : num [1:195] -2.54 -2.55 -4.04 -3.08 -3.33 ...
+##   ..$ pct.1     : num [1:195] 0.111 0.306 0.111 0.417 0.083 0.083 0.194 0.139 0.111 0.194 ...
+##   ..$ pct.2     : num [1:195] 1 1 0.96 1 0.88 0.88 0.88 0.96 0.84 1 ...
+##   ..$ p_val_adj : num [1:195] 3.92e-09 1.03e-08 1.23e-08 1.61e-08 7.56e-08 ...
+##   ..$ comparison: chr [1:195] &amp;quot;0__1&amp;quot; &amp;quot;0__1&amp;quot; &amp;quot;0__1&amp;quot; &amp;quot;0__1&amp;quot; ...
+##  $ :&amp;#39;data.frame&amp;#39;:    161 obs. of  6 variables:
+##   ..$ p_val     : num [1:161] 9.15e-11 2.46e-09 3.54e-09 6.11e-09 2.02e-08 ...
+##   ..$ avg_logFC : num [1:161] -4.45 -3.24 -4.14 -3.53 -3.32 ...
+##   ..$ pct.1     : num [1:161] 0.083 0.111 0.083 0.028 0.056 0.417 0.028 0.028 0 0 ...
+##   ..$ pct.2     : num [1:161] 0.947 0.895 0.842 0.789 0.789 0.895 0.632 0.632 0.526 0.474 ...
+##   ..$ p_val_adj : num [1:161] 2.10e-08 5.66e-07 8.14e-07 1.41e-06 4.65e-06 ...
+##   ..$ comparison: chr [1:161] &amp;quot;0__2&amp;quot; &amp;quot;0__2&amp;quot; &amp;quot;0__2&amp;quot; &amp;quot;0__2&amp;quot; ...
+##  $ :&amp;#39;data.frame&amp;#39;:    166 obs. of  6 variables:
+##   ..$ p_val     : num [1:166] 2.04e-08 4.00e-08 3.14e-07 3.17e-07 1.15e-06 ...
+##   ..$ avg_logFC : num [1:166] 5.35 2.4 4.6 2 1.79 ...
+##   ..$ pct.1     : num [1:166] 0.96 1 0.88 1 1 1 0.84 1 1 0.72 ...
+##   ..$ pct.2     : num [1:166] 0.053 0.263 0.105 0.316 0.263 0.421 0.158 0.474 0.421 0.053 ...
+##   ..$ p_val_adj : num [1:166] 4.69e-06 9.19e-06 7.23e-05 7.30e-05 2.64e-04 ...
+##   ..$ comparison: chr [1:166] &amp;quot;1__2&amp;quot; &amp;quot;1__2&amp;quot; &amp;quot;1__2&amp;quot; &amp;quot;1__2&amp;quot; ...&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Move Gene names from `rownames` to column
+de_rna &amp;lt;- map(de_rna, rownames_to_column, &amp;#39;Gene&amp;#39;)
+easy &amp;lt;- bind_rows(de_rna)
+easy %&amp;gt;% sample_n(10)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##       Gene      p_val  avg_logFC pct.1 pct.2 p_val_adj comparison
+## 1   ITGA2B 0.04457624  2.6794766 0.222 0.040         1       0__1
+## 2    TAGAP 0.52702955 -1.0622216 0.200 0.105         1       1__2
+## 3     XCL2 0.10780247 -2.2367768 0.000 0.105         1       1__2
+## 4  TSC22D1 0.14045345  3.3077263 0.111 0.000         1       0__2
+## 5    PTCRA 0.06464320  3.3644245 0.167 0.000         1       0__2
+## 6  BLOC1S4 0.74153653  1.6190737 0.167 0.160         1       0__1
+## 7    TTC38 0.19899409  0.7938259 0.194 0.053         1       0__2
+## 8   FAM96A 0.07588120 -1.0820997 0.083 0.263         1       0__2
+## 9     SSR2 0.26271072 -0.7004999 0.520 0.579         1       1__2
+## 10    GYPC 0.39392929  1.0464468 0.389 0.316         1       0__2&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;bonus-parallelization&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Bonus parallelization&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;FindMarkers&lt;/code&gt; is already parallelized, but I found that parallelization across comparisons was about 15% faster with big Seurat objects. YMMV. This is stupid easy to implement with &lt;code&gt;furrr&lt;/code&gt;. The only substantial difference is that I do &lt;code&gt;library(furrr)&lt;/code&gt; and prepend &lt;code&gt;future_&lt;/code&gt; to &lt;code&gt;map&lt;/code&gt;. The &lt;code&gt;.progress&lt;/code&gt; option gives you an easy progress bar.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(furrr)
+tic()
+de_rna &amp;lt;- future_map(1:ncol(combn(cluster_names,2)), calc_diff, pbmc_small, .progress = TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+ Progress: ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── 100%
+## 
+## [1] &amp;quot;0__1&amp;quot;
+## [1] &amp;quot;0__2&amp;quot;
+## [1] &amp;quot;1__2&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;toc()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 0.814 sec elapsed&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>2019 11 09 GI2019 Personal and Medical Genomics</title>
       <link>/./post/gi2019-day04-morning/</link>
       <pubDate>Sat, 09 Nov 2019 00:00:00 +0000</pubDate>
@@ -1707,7 +1849,7 @@ to add new features.&lt;/p&gt;
 &lt;p&gt;This is getting sort of long so I’m going to break it into several pieces:&lt;/p&gt;
 &lt;ol style=&#34;list-style-type: decimal&#34;&gt;
 &lt;li&gt;&lt;a href=&#34;/./post/one-developer-portal-optimization&#34;&gt;Making a performant site&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;What does eyeIntegration 1.0 mean? (future post)&lt;/li&gt;
+&lt;li&gt;What’s new with eyeIntegration 1.0? (future post)&lt;/li&gt;
 &lt;li&gt;Crucial software bits (future post)&lt;/li&gt;
 &lt;li&gt;What will eyeIntegration 2.0 be? (future post)&lt;/li&gt;
 &lt;/ol&gt;
@@ -3017,322 +3159,6 @@ with slower internet.&lt;/p&gt;
 &lt;div id=&#34;reproducibility&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Reproducibility&lt;/h2&gt;
 &lt;p&gt;Everything you do is to be written in code. The expectation is you can run (ideally one) script/Snakemake file and reproduce virtually all of the downstream analyses from the &lt;strong&gt;raw&lt;/strong&gt; data.&lt;/p&gt;
-&lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Quick Guide to Gene Name Conversion</title>
-      <link>/./post/quick-guide-to-gene-name-conversion/</link>
-      <pubDate>Mon, 18 Jun 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/./post/quick-guide-to-gene-name-conversion/</guid>
-      <description>&lt;div id=&#34;background&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Background&lt;/h2&gt;
-&lt;p&gt;There are several popular naming systems for (human) genes:&lt;/p&gt;
-&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
-&lt;li&gt;RefSeq (&lt;a href=&#34;https://www.ncbi.nlm.nih.gov/nuccore/NM_000350&#34;&gt;NM_000350&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;Ensembl (&lt;a href=&#34;https://useast.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000198691;r=1:93992835-94121132&#34;&gt;ENSG00000198691&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;HGNC Symbol (&lt;a href=&#34;https://www.genenames.org/cgi-bin/gene_symbol_report?hgnc_id=HGNC:34&#34;&gt;ABCA4&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;Entrez (&lt;a href=&#34;https://www.ncbi.nlm.nih.gov/gene/24&#34;&gt;24&lt;/a&gt;)&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Given enough time in &lt;code&gt;#bioinformatics&lt;/code&gt;, you will have to do every possible combination of conversions.&lt;/p&gt;
-&lt;p&gt;This post will very briefly explain the most expedient way to automatically convert between these formats with &lt;code&gt;R&lt;/code&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;more-exhaustive-resources&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;More exhaustive resources&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;http://crazyhottommy.blogspot.com/2014/09/converting-gene-ids-using-bioconductor.html&#34; class=&#34;uri&#34;&gt;http://crazyhottommy.blogspot.com/2014/09/converting-gene-ids-using-bioconductor.html&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://davetang.org/muse/2013/11/25/thoughts-converting-gene-identifiers/&#34; class=&#34;uri&#34;&gt;https://davetang.org/muse/2013/11/25/thoughts-converting-gene-identifiers/&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;ensembl---hgnc---entrez&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Ensembl &amp;lt;-&amp;gt; HGNC &amp;lt;-&amp;gt; Entrez&lt;/h2&gt;
-&lt;p&gt;Stephen Turner has built a small set of data frames (well, tibbles) with core information, including transcript &amp;lt;-&amp;gt; gene info. You just install the library, run &lt;code&gt;library(annotables)&lt;/code&gt; and you have tibbles for the info. Super easy.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://github.com/stephenturner/annotables&#34; class=&#34;uri&#34;&gt;https://github.com/stephenturner/annotables&lt;/a&gt;&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;## install steps, run once
-# install.packages(&amp;quot;devtools&amp;quot;)
-# devtools::install_github(&amp;quot;stephenturner/annotables&amp;quot;)
-
-library(annotables)
-library(tidyverse)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ── Attaching packages ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ✔ ggplot2 3.0.0     ✔ purrr   0.2.4
-## ✔ tibble  1.4.2     ✔ dplyr   0.7.6
-## ✔ tidyr   0.8.1     ✔ stringr 1.3.1
-## ✔ readr   1.1.1     ✔ forcats 0.3.0&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;dplyr&amp;#39; was built under R version 3.5.1&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ── Conflicts ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
-## ✖ dplyr::filter() masks stats::filter()
-## ✖ dplyr::lag()    masks stats::lag()&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;grch38 %&amp;gt;% head()&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## # A tibble: 6 x 9
-##   ensgene  entrez symbol chr    start    end strand biotype description   
-##   &amp;lt;chr&amp;gt;     &amp;lt;int&amp;gt; &amp;lt;chr&amp;gt;  &amp;lt;chr&amp;gt;  &amp;lt;int&amp;gt;  &amp;lt;int&amp;gt;  &amp;lt;int&amp;gt; &amp;lt;chr&amp;gt;   &amp;lt;chr&amp;gt;         
-## 1 ENSG000…   7105 TSPAN6 X     1.01e8 1.01e8     -1 protei… tetraspanin 6…
-## 2 ENSG000…  64102 TNMD   X     1.01e8 1.01e8      1 protei… tenomodulin […
-## 3 ENSG000…   8813 DPM1   20    5.09e7 5.10e7     -1 protei… dolichyl-phos…
-## 4 ENSG000…  57147 SCYL3  1     1.70e8 1.70e8     -1 protei… SCY1 like pse…
-## 5 ENSG000…  55732 C1orf… 1     1.70e8 1.70e8      1 protei… chromosome 1 …
-## 6 ENSG000…   2268 FGR    1     2.76e7 2.76e7     -1 protei… FGR proto-onc…&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# or grch37, grcm38, rnor6, galgal5, wbcel235, bdgp6, mmul801&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;But, he did not add Refseq names. So if you need to get RefSeq names into one of the others, you’ll have to do another step.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;biomart-refseq---ensembl---hgnc---entrez&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;biomaRt (RefSeq &amp;lt;-&amp;gt; (Ensembl &amp;lt;-&amp;gt; HGNC &amp;lt;-&amp;gt; Entrez))&lt;/h2&gt;
-&lt;p&gt;Ensembl’s biomaRt tool is super powerful. And very annoying to use for me, as I find the syntax impossible to remember. Also it takes over the dplyr &lt;code&gt;select&lt;/code&gt; function with its own &lt;code&gt;select&lt;/code&gt;. You’ll notice here I do not load biomaRt.&lt;/p&gt;
-&lt;p&gt;But it can convert just about anything to anything.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;## install steps, run once
-# source(&amp;quot;https://bioconductor.org/biocLite.R&amp;quot;)
-# biocLite(&amp;quot;biomaRt&amp;quot;)
-# library(biomaRt) # &amp;lt;- don&amp;#39;t load!, just use the :: 
-mart&amp;lt;- biomaRt::useMart(biomart = &amp;#39;ensembl&amp;#39;, dataset = &amp;#39;hsapiens_gene_ensembl&amp;#39;)
-# mapping example
-refseq_ids &amp;lt;- c(&amp;quot;NM_006573&amp;quot;, &amp;quot;NM_002985&amp;quot;, &amp;quot;NM_032965&amp;quot;, &amp;quot;NM_002987&amp;quot;, &amp;quot;NM_006274&amp;quot;, &amp;quot;NM_004591&amp;quot;, &amp;quot;NM_002990&amp;quot;)
-  
-refseq_mapping &amp;lt;- biomaRt::getBM(attributes = c(&amp;quot;refseq_mrna&amp;quot;,&amp;quot;hgnc_symbol&amp;quot;), 
-                        filters=&amp;quot;refseq_mrna&amp;quot;, # you swap out of this filter for whatever your input is
-                        values=refseq_ids, # vector of your NMf
-                        mart=mart)
-
-refseq_mapping &lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##   refseq_mrna hgnc_symbol
-## 1   NM_002985        CCL5
-## 2   NM_002987       CCL17
-## 3   NM_002990       CCL22
-## 4   NM_004591       CCL20
-## 5   NM_006274       CCL19
-## 6   NM_006573    TNFSF13B
-## 7   NM_032965       CCL15&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;If you want to get the rest of the info in Annotables matched up with the RefSeq NM, then just do a &lt;code&gt;left_join&lt;/code&gt;&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;left_join(refseq_mapping %&amp;gt;% select(refseq_mrna, symbol = hgnc_symbol), grch37)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Joining, by = &amp;quot;symbol&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##   refseq_mrna   symbol         ensgene entrez         chr     start
-## 1   NM_002985     CCL5 ENSG00000161570   6352          17  34198495
-## 2   NM_002985     CCL5 ENSG00000271503   6352 HG385_PATCH  34198510
-## 3   NM_002987    CCL17 ENSG00000102970   6361          16  57438679
-## 4   NM_002990    CCL22 ENSG00000102962   6367          16  57392684
-## 5   NM_004591    CCL20 ENSG00000115009   6364           2 228678558
-## 6   NM_006274    CCL19 ENSG00000172724   6363           9  34689564
-## 7   NM_006573 TNFSF13B ENSG00000102524  10673          13 108903588
-## 8   NM_032965    CCL15 ENSG00000267596   6359          17  34323476
-##         end strand        biotype
-## 1  34207797     -1 protein_coding
-## 2  34207812     -1 protein_coding
-## 3  57449974      1 protein_coding
-## 4  57400102      1 protein_coding
-## 5 228682272      1 protein_coding
-## 6  34691274     -1 protein_coding
-## 7 108960832      1 protein_coding
-## 8  34329084     -1 protein_coding
-##                                                                             description
-## 1                         chemokine (C-C motif) ligand 5 [Source:HGNC Symbol;Acc:10632]
-## 2                         chemokine (C-C motif) ligand 5 [Source:HGNC Symbol;Acc:10632]
-## 3                        chemokine (C-C motif) ligand 17 [Source:HGNC Symbol;Acc:10615]
-## 4                        chemokine (C-C motif) ligand 22 [Source:HGNC Symbol;Acc:10621]
-## 5                        chemokine (C-C motif) ligand 20 [Source:HGNC Symbol;Acc:10619]
-## 6                        chemokine (C-C motif) ligand 19 [Source:HGNC Symbol;Acc:10617]
-## 7 tumor necrosis factor (ligand) superfamily, member 13b [Source:HGNC Symbol;Acc:11929]
-## 8                        chemokine (C-C motif) ligand 15 [Source:HGNC Symbol;Acc:10613]&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# we have 8 rows now becuase CCL5 has two matching ensgenes mapped to different locations&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;sessioninfo&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;sessionInfo&lt;/h2&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;devtools::session_info()&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Session info -------------------------------------------------------------&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##  setting  value                       
-##  version  R version 3.5.0 (2018-04-23)
-##  system   x86_64, darwin15.6.0        
-##  ui       X11                         
-##  language (EN)                        
-##  collate  en_US.UTF-8                 
-##  tz       America/New_York            
-##  date     2018-07-16&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Packages -----------------------------------------------------------------&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##  package       * version   date      
-##  annotables    * 0.1.91    2018-06-18
-##  AnnotationDbi   1.42.1    2018-05-08
-##  assertthat      0.2.0     2017-04-11
-##  backports       1.1.2     2017-12-13
-##  base          * 3.5.0     2018-04-24
-##  bindr           0.1.1     2018-03-13
-##  bindrcpp        0.2.2     2018-03-29
-##  Biobase         2.40.0    2018-05-01
-##  BiocGenerics    0.26.0    2018-05-01
-##  biomaRt         2.36.1    2018-05-24
-##  bit             1.1-13    2018-05-15
-##  bit64           0.9-7     2017-05-08
-##  bitops          1.0-6     2013-08-17
-##  blob            1.1.1     2018-03-25
-##  blogdown        0.8.1     2018-07-16
-##  bookdown        0.7       2018-02-18
-##  broom           0.4.4     2018-03-29
-##  cellranger      1.1.0     2016-07-27
-##  cli             1.0.0     2017-11-05
-##  colorspace      1.3-2     2016-12-14
-##  compiler        3.5.0     2018-04-24
-##  crayon          1.3.4     2017-09-16
-##  curl            3.2       2018-03-28
-##  datasets      * 3.5.0     2018-04-24
-##  DBI             1.0.0     2018-05-02
-##  devtools        1.13.5    2018-02-18
-##  digest          0.6.15    2018-01-28
-##  dplyr         * 0.7.6     2018-06-29
-##  evaluate        0.10.1    2017-06-24
-##  forcats       * 0.3.0     2018-02-19
-##  foreign         0.8-70    2017-11-28
-##  ggplot2       * 3.0.0     2018-07-03
-##  glue            1.2.0     2017-10-29
-##  graphics      * 3.5.0     2018-04-24
-##  grDevices     * 3.5.0     2018-04-24
-##  grid            3.5.0     2018-04-24
-##  gtable          0.2.0     2016-02-26
-##  haven           1.1.1     2018-01-18
-##  hms             0.4.2     2018-03-10
-##  htmltools       0.3.6     2017-04-28
-##  httr            1.3.1     2017-08-20
-##  IRanges         2.14.10   2018-05-16
-##  jsonlite        1.5       2017-06-01
-##  knitr           1.20      2018-02-20
-##  lattice         0.20-35   2017-03-25
-##  lazyeval        0.2.1     2017-10-29
-##  lubridate       1.7.4     2018-04-11
-##  magrittr        1.5       2014-11-22
-##  memoise         1.1.0     2017-04-21
-##  methods       * 3.5.0     2018-04-24
-##  mnormt          1.5-5     2016-10-15
-##  modelr          0.1.2     2018-05-11
-##  munsell         0.4.3     2016-02-13
-##  nlme            3.1-137   2018-04-07
-##  parallel        3.5.0     2018-04-24
-##  pillar          1.2.3     2018-05-25
-##  pkgconfig       2.0.1     2017-03-21
-##  plyr            1.8.4     2016-06-08
-##  prettyunits     1.0.2     2015-07-13
-##  progress        1.1.2     2016-12-14
-##  psych           1.8.4     2018-05-06
-##  purrr         * 0.2.4     2017-10-18
-##  R6              2.2.2     2017-06-17
-##  Rcpp            0.12.17   2018-05-18
-##  RCurl           1.95-4.10 2018-01-04
-##  readr         * 1.1.1     2017-05-16
-##  readxl          1.1.0     2018-04-20
-##  reshape2        1.4.3     2017-12-11
-##  rlang           0.2.1     2018-05-30
-##  rmarkdown       1.10      2018-06-11
-##  rprojroot       1.3-2     2018-01-03
-##  RSQLite         2.1.1     2018-05-06
-##  rstudioapi      0.7       2017-09-07
-##  rvest           0.3.2     2016-06-17
-##  S4Vectors       0.18.2    2018-05-16
-##  scales          0.5.0     2017-08-24
-##  stats         * 3.5.0     2018-04-24
-##  stats4          3.5.0     2018-04-24
-##  stringi         1.2.2     2018-05-02
-##  stringr       * 1.3.1     2018-05-10
-##  tibble        * 1.4.2     2018-01-22
-##  tidyr         * 0.8.1     2018-05-18
-##  tidyselect      0.2.4     2018-02-26
-##  tidyverse     * 1.2.1     2017-11-14
-##  tools           3.5.0     2018-04-24
-##  utf8            1.1.4     2018-05-24
-##  utils         * 3.5.0     2018-04-24
-##  withr           2.1.2     2018-03-15
-##  xfun            0.3       2018-07-06
-##  XML             3.98-1.11 2018-04-16
-##  xml2            1.2.0     2018-01-24
-##  yaml            2.1.19    2018-05-01
-##  source                                   
-##  Github (stephenturner/annotables@958545a)
-##  Bioconductor                             
-##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.0)                           
-##  local                                    
-##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.0)                           
-##  Bioconductor                             
-##  Bioconductor                             
-##  Bioconductor                             
-##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.0)                           
-##  Github (rstudio/blogdown@d54c39a)        
-##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.0)                           
-##  local                                    
-##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.0)                           
-##  local                                    
-##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.0)                           
-##  cran (@0.7.6)                            
-##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.0)                           
-##  cran (@3.0.0)                            
-##  CRAN (R 3.5.0)                           
-##  local                                    
-##  local                                    
-##  local                                    
-##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.0)                           
-##  Bioconductor                             
-##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.0)                           
-##  local                                    
-##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.0)                           
-##  local                                    
-##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.0)                           
-##  cran (@1.10)                             
-##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.0)                           
-##  Bioconductor                             
-##  CRAN (R 3.5.0)                           
-##  local                                    
-##  local                                    
-##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.0)                           
-##  local                                    
-##  CRAN (R 3.5.0)                           
-##  local                                    
-##  CRAN (R 3.5.0)                           
-##  cran (@0.3)                              
-##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.0)&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 </description>
     </item>

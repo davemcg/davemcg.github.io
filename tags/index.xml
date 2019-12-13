@@ -166,6 +166,15 @@
     </item>
     
     <item>
+      <title>Parallel</title>
+      <link>/./tags/parallel/</link>
+      <pubDate>Fri, 13 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/./tags/parallel/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Pi</title>
       <link>/./tags/pi/</link>
       <pubDate>Sat, 03 Mar 2018 00:00:00 +0000</pubDate>
@@ -213,7 +222,7 @@
     <item>
       <title>R</title>
       <link>/./tags/r/</link>
-      <pubDate>Mon, 24 Jun 2019 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 13 Dec 2019 00:00:00 +0000</pubDate>
       
       <guid>/./tags/r/</guid>
       <description></description>
@@ -256,6 +265,15 @@
     </item>
     
     <item>
+      <title>ScRNA</title>
+      <link>/./tags/scrna/</link>
+      <pubDate>Fri, 13 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/./tags/scrna/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Script</title>
       <link>/./tags/script/</link>
       <pubDate>Wed, 07 Feb 2018 00:00:00 +0000</pubDate>
@@ -265,11 +283,29 @@
     </item>
     
     <item>
+      <title>Seurat</title>
+      <link>/./tags/seurat/</link>
+      <pubDate>Fri, 13 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/./tags/seurat/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Shiny</title>
       <link>/./tags/shiny/</link>
       <pubDate>Mon, 24 Jun 2019 00:00:00 +0000</pubDate>
       
       <guid>/./tags/shiny/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Singlecell</title>
+      <link>/./tags/singlecell/</link>
+      <pubDate>Fri, 13 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/./tags/singlecell/</guid>
       <description></description>
     </item>
     

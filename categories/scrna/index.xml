@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ScRNA on eye Bioinformatician</title>
+    <link>/./categories/scrna/</link>
+    <description>Recent content in ScRNA on eye Bioinformatician</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Fri, 13 Dec 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/./categories/scrna/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Seurat FindMarker with Cluster N vs M</title>
+      <link>/./post/parallel-seurat-findmarker/</link>
+      <pubDate>Fri, 13 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/parallel-seurat-findmarker/</guid>
+      <description>What Easy cluster by cluster Seurat FindMarkers implementation
+ Why Because Seurat’s FindMarkers (which can be parallelized if you also load library(Future) and plan(&amp;quot;multiprocess&amp;quot;)) runs with cluster N against all other clusters.
+People kept asking me for “well what about cluster 23 vs 17” and I kept saying “uh, I haven’t run that because…”
+ How This is being done a Mac. This may not work on a PC. Multicore stuffs are complicated.</description>
+    </item>
+    
+  </channel>
+</rss>

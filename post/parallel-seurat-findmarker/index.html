@@ -17,12 +17,13 @@
       
     
   
-  <meta name="description" content="News! eyeIntegration version 1.0 went live early this year (2019-01-16) and recently was accepted for publication in IOVS. In celebration of the news, I’m posting a small series of posts about the genesis, development, upgrades, and future of eyeIntegration.
-You can find our latest manuscript on bioRxiv. The latest update should go live soon.
- Background eyeIntegration was developed to serve as a quick and easy to use normal gene expression portal in eye tissues.">
+  <meta name="description" content="What Easy cluster by cluster Seurat FindMarkers implementation
+ Why Because Seurat’s FindMarkers (which can be parallelized if you also load library(Future) and plan(&quot;multiprocess&quot;)) runs with cluster N against all other clusters.
+People kept asking me for “well what about cluster 23 vs 17” and I kept saying “uh, I haven’t run that because…”
+ How This is being done a Mac. This may not work on a PC. Multicore stuffs are complicated.">
 
   
-  <link rel="alternate" hreflang="en-us" href="/./post/one-developer-portal-genesis/">
+  <link rel="alternate" hreflang="en-us" href="/./post/parallel-seurat-findmarker/">
 
   
 
@@ -85,7 +86,7 @@ You can find our latest manuscript on bioRxiv. The latest update should go live 
   <link rel="icon" type="image/png" href="/img/icon.png">
   <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
 
-  <link rel="canonical" href="/./post/one-developer-portal-genesis/">
+  <link rel="canonical" href="/./post/parallel-seurat-findmarker/">
 
   <meta property="twitter:card" content="summary_large_image">
   
@@ -93,22 +94,23 @@ You can find our latest manuscript on bioRxiv. The latest update should go live 
   <meta property="twitter:creator" content="@https://twitter.com/David_McGaughey">
   
   <meta property="og:site_name" content="eye Bioinformatician">
-  <meta property="og:url" content="/./post/one-developer-portal-genesis/">
-  <meta property="og:title" content="One Developer Portal: eyeIntegration Genesis | eye Bioinformatician">
-  <meta property="og:description" content="News! eyeIntegration version 1.0 went live early this year (2019-01-16) and recently was accepted for publication in IOVS. In celebration of the news, I’m posting a small series of posts about the genesis, development, upgrades, and future of eyeIntegration.
-You can find our latest manuscript on bioRxiv. The latest update should go live soon.
- Background eyeIntegration was developed to serve as a quick and easy to use normal gene expression portal in eye tissues.">
+  <meta property="og:url" content="/./post/parallel-seurat-findmarker/">
+  <meta property="og:title" content="Seurat FindMarker with Cluster N vs M | eye Bioinformatician">
+  <meta property="og:description" content="What Easy cluster by cluster Seurat FindMarkers implementation
+ Why Because Seurat’s FindMarkers (which can be parallelized if you also load library(Future) and plan(&quot;multiprocess&quot;)) runs with cluster N against all other clusters.
+People kept asking me for “well what about cluster 23 vs 17” and I kept saying “uh, I haven’t run that because…”
+ How This is being done a Mac. This may not work on a PC. Multicore stuffs are complicated.">
   <meta property="og:locale" content="en-us">
   
-  <meta property="article:published_time" content="2019-06-24T00:00:00&#43;00:00">
+  <meta property="article:published_time" content="2019-12-13T00:00:00&#43;00:00">
   
-  <meta property="article:modified_time" content="2019-06-24T00:00:00&#43;00:00">
-  
-
-  
+  <meta property="article:modified_time" content="2019-12-13T00:00:00&#43;00:00">
   
 
-  <title>One Developer Portal: eyeIntegration Genesis | eye Bioinformatician</title>
+  
+  
+
+  <title>Seurat FindMarker with Cluster N vs M | eye Bioinformatician</title>
 
 </head>
 <body id="top" data-spy="scroll" data-target="#toc" data-offset="71" >
@@ -261,7 +263,7 @@ You can find our latest manuscript on bioRxiv. The latest update should go live 
 
 
   <div class="article-container">
-    <h1 itemprop="name">One Developer Portal: eyeIntegration Genesis</h1>
+    <h1 itemprop="name">Seurat FindMarker with Cluster N vs M</h1>
 
     
 
@@ -269,8 +271,8 @@ You can find our latest manuscript on bioRxiv. The latest update should go live 
 
   <span class="article-date">
     
-    <time datetime="2019-06-24 00:00:00 &#43;0000 UTC" itemprop="datePublished dateModified">
-      Jun 24, 2019
+    <time datetime="2019-12-13 00:00:00 &#43;0000 UTC" itemprop="datePublished dateModified">
+      Dec 13, 2019
     </time>
   </span>
   <span itemscope itemprop="author publisher" itemtype="http://schema.org/Person">
@@ -280,14 +282,14 @@ You can find our latest manuscript on bioRxiv. The latest update should go live 
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    3 min read
+    5 min read
   </span>
   
 
   
   
   <span class="middot-divider"></span>
-  <a href="/./post/one-developer-portal-genesis/#disqus_thread"></a>
+  <a href="/./post/parallel-seurat-findmarker/#disqus_thread"></a>
   
 
   
@@ -297,13 +299,7 @@ You can find our latest manuscript on bioRxiv. The latest update should go live 
   <span class="article-categories">
     <i class="fa fa-folder"></i>
     
-    <a href="/./categories/bioinformatics/">bioinformatics</a
-    >, 
-    
-    <a href="/./categories/r/">R</a
-    >, 
-    
-    <a href="/./categories/shiny/">shiny</a
+    <a href="/./categories/scrna/">scRNA</a
     >
     
   </span>
@@ -316,35 +312,35 @@ You can find our latest manuscript on bioRxiv. The latest update should go live 
   <ul class="share">
     <li>
       <a class="twitter"
-         href="https://twitter.com/intent/tweet?text=One%20Developer%20Portal%3a%20eyeIntegration%20Genesis&amp;url=%2f.%2fpost%2fone-developer-portal-genesis%2f"
+         href="https://twitter.com/intent/tweet?text=Seurat%20FindMarker%20with%20Cluster%20N%20vs%20M&amp;url=%2f.%2fpost%2fparallel-seurat-findmarker%2f"
          target="_blank" rel="noopener">
         <i class="fa fa-twitter"></i>
       </a>
     </li>
     <li>
       <a class="facebook"
-         href="https://www.facebook.com/sharer.php?u=%2f.%2fpost%2fone-developer-portal-genesis%2f"
+         href="https://www.facebook.com/sharer.php?u=%2f.%2fpost%2fparallel-seurat-findmarker%2f"
          target="_blank" rel="noopener">
         <i class="fa fa-facebook"></i>
       </a>
     </li>
     <li>
       <a class="linkedin"
-         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2f.%2fpost%2fone-developer-portal-genesis%2f&amp;title=One%20Developer%20Portal%3a%20eyeIntegration%20Genesis"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2f.%2fpost%2fparallel-seurat-findmarker%2f&amp;title=Seurat%20FindMarker%20with%20Cluster%20N%20vs%20M"
          target="_blank" rel="noopener">
         <i class="fa fa-linkedin"></i>
       </a>
     </li>
     <li>
       <a class="weibo"
-         href="http://service.weibo.com/share/share.php?url=%2f.%2fpost%2fone-developer-portal-genesis%2f&amp;title=One%20Developer%20Portal%3a%20eyeIntegration%20Genesis"
+         href="http://service.weibo.com/share/share.php?url=%2f.%2fpost%2fparallel-seurat-findmarker%2f&amp;title=Seurat%20FindMarker%20with%20Cluster%20N%20vs%20M"
          target="_blank" rel="noopener">
         <i class="fa fa-weibo"></i>
       </a>
     </li>
     <li>
       <a class="email"
-         href="mailto:?subject=One%20Developer%20Portal%3a%20eyeIntegration%20Genesis&amp;body=%2f.%2fpost%2fone-developer-portal-genesis%2f">
+         href="mailto:?subject=Seurat%20FindMarker%20with%20Cluster%20N%20vs%20M&amp;body=%2f.%2fpost%2fparallel-seurat-findmarker%2f">
         <i class="fa fa-envelope"></i>
       </a>
     </li>
@@ -358,62 +354,138 @@ You can find our latest manuscript on bioRxiv. The latest update should go live 
 
 
     <div class="article-style" itemprop="articleBody">
-      <div id="news" class="section level2">
-<h2>News!</h2>
-<p><a href="https://eyeIntegration.nei.nih.gov/">eyeIntegration</a> version 1.0 went live early this year (2019-01-16)
-and recently was accepted for publication in <a href="https://iovs.arvojournals.org">IOVS</a>. In celebration
-of the news, I’m posting a small series of posts about the genesis, development, upgrades, and future of
-eyeIntegration.</p>
-<p>You can find our latest manuscript on <a href="https://www.biorxiv.org/content/10.1101/579482v1">bioRxiv</a>. The latest update
-should go live soon.</p>
+      <div id="what" class="section level1">
+<h1>What</h1>
+<p>Easy cluster by cluster Seurat <code>FindMarkers</code> implementation</p>
 </div>
-<div id="background" class="section level2">
-<h2>Background</h2>
-<p><a href="https://eyeIntegration.nei.nih.gov/">eyeIntegration</a> was developed to serve as a
-quick and easy to use <em>normal</em> gene expression portal in eye tissues.</p>
-<p><img src="/img/eyeIntegration_shot.png" alt="eyeIntegration" />
-The inspiration came from <a href="https://gtexportal.org/home/index.html">GTEx</a>, which contains dozens of
-post-mortem tissue types from hundreds of samples (and samples are people who have donated their
-body to science - thanks!).</p>
-<p>Knowing what the <em>normal</em> gene expression is a crucial piece of information when
-doing novel gene function research. You are going to be a lot less excited about an interesting
-gene if you also know it has zero expression in the retina.</p>
-<p>Since no eye tissues are collected by GTEx, I had to build my own version. The <em>best</em>
-solution would involve setting up a very expensive study - with a carefully designed
-tissue collection, DNA/RNA extraction, etc. protocols along with huge amounts of paperwork
-required when working with people. This would also be very expensive and take multiple
-years.</p>
-<p>As I have approximately zero research dollars, I did the next best thing and just
-grabbed all the publicly available RNA-seq eye samples from <a href="https://www.ncbi.nlm.nih.gov/geo/">GEO</a>
-/ <a href="https://www.ncbi.nlm.nih.gov/sra">SRA</a> / <a href="https://www.ebi.ac.uk/ena">ENA</a>.</p>
-<p>Since I knew R and did not know any web development stuffs I chose to use <a href="https://shiny.rstudio.com">Shiny</a>
-to build the web portal. In 2016 (my first commit was May 24th, 2016), when this project got started this seemed sort
-of nuts to do this. But the documentation was pretty good and it wasn’t too hard
-to spin up a Shiny server on a linux box I had under my desk. Over the past three years
-<a href="https://www.rstudio.com">RStudio</a> has continued to develop Shiny and I’m feeling
-better and better about going this route.</p>
+<div id="why" class="section level1">
+<h1>Why</h1>
+<p>Because Seurat’s <code>FindMarkers</code> (which can be parallelized if you also load
+<code>library(Future)</code> and <code>plan(&quot;multiprocess&quot;)</code>) runs with cluster <code>N</code> against <strong>all</strong>
+other clusters.</p>
+<p>People kept asking me for “well what about cluster 23 vs 17” and I kept saying
+“uh, I haven’t run that because…”</p>
 </div>
-<div id="what-do-you-mean-by-one-developer-portal" class="section level2">
-<h2>What do you mean by <code>One Developer Portal</code>?</h2>
-<p>I work for the National Eye Institute <a href="https://nei.nih.gov">NEI</a>, as a
-<a href="https://oir.nih.gov/sourcebook/personnel/ipds-appointment-mechanisms/staff-scientist">staff scientist</a>
-(not a PI/professor - which means I don’t have a pot of $ to do research). I provide
-bioinformatic support / data analysis for a <a href="https://nei.nih.gov/intramural/ogcsb">branch</a> in NEI.</p>
-<p><a href="https://eyeIntegration.nei.nih.gov/">eyeIntegration</a> is a essentially a
-side-project I’ve done in my “spare time” and is run by myself
-(with important features written by two <a href="https://www.training.nih.gov/programs/postbac_irta">post-bacs</a>
-, John Bryan and Vinay Swamy). It is possible to make and support
-a resource like this <strong>because</strong> of <a href="https://hpc.nih.gov">available compute</a> and great software.</p>
-<p>The long-term goal is to keep eyeIntegration current (e.g. take in new samples)
-with part-time effort from one person (me) with periodic bursts of activity
-to add new features.</p>
-<p>This is getting sort of long so I’m going to break it into several pieces:</p>
-<ol style="list-style-type: decimal">
-<li><a href="/post/one-developer-portal-optimization">Making a performant site</a></li>
-<li>What’s new with eyeIntegration 1.0? (future post)</li>
-<li>Crucial software bits (future post)</li>
-<li>What will eyeIntegration 2.0 be? (future post)</li>
-</ol>
+<div id="how" class="section level1">
+<h1>How</h1>
+<p>This is being done a Mac. This <strong>may</strong> not work on a PC. Multicore stuffs are complicated. See <a href="https://github.com/HenrikBengtsson/future/issues/299" class="uri">https://github.com/HenrikBengtsson/future/issues/299</a></p>
+<div id="first-we-load-libraries" class="section level2">
+<h2>First we load libraries</h2>
+<pre class="r"><code>library(future)
+library(tictoc) # easy benchmarking
+library(Seurat) # I&#39;m assuming you are using version 3
+library(tidyverse)</code></pre>
+<pre><code>## ── Attaching packages ───────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.3.0 ──</code></pre>
+<pre><code>## ✔ ggplot2 3.2.1     ✔ purrr   0.3.3
+## ✔ tibble  2.1.3     ✔ dplyr   0.8.3
+## ✔ tidyr   1.0.0     ✔ stringr 1.4.0
+## ✔ readr   1.3.1     ✔ forcats 0.4.0</code></pre>
+<pre><code>## ── Conflicts ──────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()</code></pre>
+<pre class="r"><code>plan(strategy = &quot;multisession&quot;, workers = 4)
+options(future.globals.maxSize = 500000 * 1024^2) # unnecessary for this toy example but future, by default, limits the size of the obj to 500mb. This examples to 500GB. Obviously you can get into trouble very quickly on real data as the object will get copied over and over for each parallel run.
+
+# build in seurat object
+pbmc_small</code></pre>
+<pre><code>## An object of class Seurat 
+## 230 features across 80 samples within 1 assay 
+## Active assay: RNA (230 features)
+##  2 dimensional reductions calculated: pca, tsne</code></pre>
+</div>
+<div id="cluster-m-vs-n" class="section level2">
+<h2>Cluster M vs N</h2>
+<p>Okay now let’s do each cluster vs each cluster.</p>
+<p>This seurat object has three clusters: 0, 1, 2</p>
+<p>Instead of 0 vs 1,2 and 1 vs 0,2, and 2 vs 0,1, I want 0 vs 1, 0 vs 2, 1 vs 2.</p>
+<pre class="r"><code># get cluster names
+cluster_names &lt;- Idents(pbmc_small) %&gt;%  
+  unique() %&gt;% 
+  as.character() %&gt;% 
+  sort()</code></pre>
+</div>
+<div id="the-combn-function-makes-all-of-the-pairwise-comparisons." class="section level2">
+<h2>The <code>combn</code> function makes all of the pairwise comparisons.</h2>
+<pre class="r"><code>calc_diff &lt;- function(i, obj){
+  first &lt;- combn(cluster_names,2)[1,i]
+  second &lt;- combn(cluster_names,2)[2,i]
+  comparison = paste0(first,&#39;__&#39;,second)
+  print(comparison)
+  out &lt;- FindMarkers(obj, ident.1 = first, ident.2 = second, logfc.threshold = 0.5, verbose = FALSE)
+  out$comparison &lt;- comparison
+  out
+}</code></pre>
+</div>
+<div id="use-map-to-run-all-the-combinations" class="section level2">
+<h2>Use <code>map</code> to run all the combinations</h2>
+<pre class="r"><code>tic()
+de_rna &lt;- map(1:ncol(combn(cluster_names,2)), calc_diff, pbmc_small)</code></pre>
+<pre><code>## [1] &quot;0__1&quot;
+## [1] &quot;0__2&quot;
+## [1] &quot;1__2&quot;</code></pre>
+<pre class="r"><code>toc()</code></pre>
+<pre><code>## 20.392 sec elapsed</code></pre>
+</div>
+<div id="list-is-returned-but-very-easy-to-make-one-obj" class="section level2">
+<h2>List is returned, but very easy to make one obj</h2>
+<p>Use <code>str</code> to show compasition of the <code>de_rna</code> object.</p>
+<p>We use <code>map</code> again to moves the gene names from the <code>row.names</code> to a column.</p>
+<p>Then <code>bind_rows</code> to collapse the list of data.frames in one data frame.</p>
+<p>We pick 10 random rows to show</p>
+<pre class="r"><code>str(de_rna)</code></pre>
+<pre><code>## List of 3
+##  $ :&#39;data.frame&#39;:    195 obs. of  6 variables:
+##   ..$ p_val     : num [1:195] 1.70e-11 4.47e-11 5.33e-11 7.00e-11 3.29e-10 ...
+##   ..$ avg_logFC : num [1:195] -2.54 -2.55 -4.04 -3.08 -3.33 ...
+##   ..$ pct.1     : num [1:195] 0.111 0.306 0.111 0.417 0.083 0.083 0.194 0.139 0.111 0.194 ...
+##   ..$ pct.2     : num [1:195] 1 1 0.96 1 0.88 0.88 0.88 0.96 0.84 1 ...
+##   ..$ p_val_adj : num [1:195] 3.92e-09 1.03e-08 1.23e-08 1.61e-08 7.56e-08 ...
+##   ..$ comparison: chr [1:195] &quot;0__1&quot; &quot;0__1&quot; &quot;0__1&quot; &quot;0__1&quot; ...
+##  $ :&#39;data.frame&#39;:    161 obs. of  6 variables:
+##   ..$ p_val     : num [1:161] 9.15e-11 2.46e-09 3.54e-09 6.11e-09 2.02e-08 ...
+##   ..$ avg_logFC : num [1:161] -4.45 -3.24 -4.14 -3.53 -3.32 ...
+##   ..$ pct.1     : num [1:161] 0.083 0.111 0.083 0.028 0.056 0.417 0.028 0.028 0 0 ...
+##   ..$ pct.2     : num [1:161] 0.947 0.895 0.842 0.789 0.789 0.895 0.632 0.632 0.526 0.474 ...
+##   ..$ p_val_adj : num [1:161] 2.10e-08 5.66e-07 8.14e-07 1.41e-06 4.65e-06 ...
+##   ..$ comparison: chr [1:161] &quot;0__2&quot; &quot;0__2&quot; &quot;0__2&quot; &quot;0__2&quot; ...
+##  $ :&#39;data.frame&#39;:    166 obs. of  6 variables:
+##   ..$ p_val     : num [1:166] 2.04e-08 4.00e-08 3.14e-07 3.17e-07 1.15e-06 ...
+##   ..$ avg_logFC : num [1:166] 5.35 2.4 4.6 2 1.79 ...
+##   ..$ pct.1     : num [1:166] 0.96 1 0.88 1 1 1 0.84 1 1 0.72 ...
+##   ..$ pct.2     : num [1:166] 0.053 0.263 0.105 0.316 0.263 0.421 0.158 0.474 0.421 0.053 ...
+##   ..$ p_val_adj : num [1:166] 4.69e-06 9.19e-06 7.23e-05 7.30e-05 2.64e-04 ...
+##   ..$ comparison: chr [1:166] &quot;1__2&quot; &quot;1__2&quot; &quot;1__2&quot; &quot;1__2&quot; ...</code></pre>
+<pre class="r"><code># Move Gene names from `rownames` to column
+de_rna &lt;- map(de_rna, rownames_to_column, &#39;Gene&#39;)
+easy &lt;- bind_rows(de_rna)
+easy %&gt;% sample_n(10)</code></pre>
+<pre><code>##       Gene      p_val  avg_logFC pct.1 pct.2 p_val_adj comparison
+## 1   ITGA2B 0.04457624  2.6794766 0.222 0.040         1       0__1
+## 2    TAGAP 0.52702955 -1.0622216 0.200 0.105         1       1__2
+## 3     XCL2 0.10780247 -2.2367768 0.000 0.105         1       1__2
+## 4  TSC22D1 0.14045345  3.3077263 0.111 0.000         1       0__2
+## 5    PTCRA 0.06464320  3.3644245 0.167 0.000         1       0__2
+## 6  BLOC1S4 0.74153653  1.6190737 0.167 0.160         1       0__1
+## 7    TTC38 0.19899409  0.7938259 0.194 0.053         1       0__2
+## 8   FAM96A 0.07588120 -1.0820997 0.083 0.263         1       0__2
+## 9     SSR2 0.26271072 -0.7004999 0.520 0.579         1       1__2
+## 10    GYPC 0.39392929  1.0464468 0.389 0.316         1       0__2</code></pre>
+</div>
+</div>
+<div id="bonus-parallelization" class="section level1">
+<h1>Bonus parallelization</h1>
+<p><code>FindMarkers</code> is already parallelized, but I found that parallelization across comparisons was about 15% faster with big Seurat objects. YMMV. This is stupid easy to implement with <code>furrr</code>. The only substantial difference is that I do <code>library(furrr)</code> and prepend <code>future_</code> to <code>map</code>. The <code>.progress</code> option gives you an easy progress bar.</p>
+<pre class="r"><code>library(furrr)
+tic()
+de_rna &lt;- future_map(1:ncol(combn(cluster_names,2)), calc_diff, pbmc_small, .progress = TRUE)</code></pre>
+<pre><code>## 
+ Progress: ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── 100%
+## 
+## [1] &quot;0__1&quot;
+## [1] &quot;0__2&quot;
+## [1] &quot;1__2&quot;</code></pre>
+<pre class="r"><code>toc()</code></pre>
+<pre><code>## 0.814 sec elapsed</code></pre>
 </div>
 
     </div>
@@ -423,11 +495,15 @@ to add new features.</p>
 
 <div class="article-tags">
   
-  <a class="btn btn-primary btn-outline" href="/./tags/bioinformatics/">bioinformatics</a>
+  <a class="btn btn-primary btn-outline" href="/./tags/singlecell/">singlecell</a>
+  
+  <a class="btn btn-primary btn-outline" href="/./tags/scrna/">scRNA</a>
+  
+  <a class="btn btn-primary btn-outline" href="/./tags/seurat/">Seurat</a>
   
   <a class="btn btn-primary btn-outline" href="/./tags/r/">R</a>
   
-  <a class="btn btn-primary btn-outline" href="/./tags/shiny/">shiny</a>
+  <a class="btn btn-primary btn-outline" href="/./tags/parallel/">parallel</a>
   
 </div>
 
@@ -441,15 +517,15 @@ to add new features.</p>
       <h3>Related</h3>
       <ul>
         
+        <li><a href="/post/one-developer-portal-genesis/">One Developer Portal: eyeIntegration Genesis</a></li>
+        
         <li><a href="/post/one-developer-portal-optimization/">One Developer Portal: eyeIntegration Web Optimization</a></li>
         
         <li><a href="/post/simple-heatmaps-with-complexheatmaps/">Let&#39;s Plot 6: Simple guide to heatmaps with ComplexHeatmaps</a></li>
         
+        <li><a href="/post/let-s-plot-5-ridgeline-density-plots/">Let’s Plot 5: ridgeline density plots</a></li>
+        
         <li><a href="/post/are-you-in-genomics-stop-using-roc-use-pr/">Are you in genomics and building models? Stop using ROC - use PR</a></li>
-        
-        <li><a href="/post/let-s-plot-4-r-vs-excel/">Let’s Plot 4: R vs Excel, Round 1</a></li>
-        
-        <li><a href="/post/let-s-plot-3-part-2/">Let’s Plot 3: Base pair resolution NGS (exome) coverage plots - Part 2</a></li>
         
       </ul>
     </div>
