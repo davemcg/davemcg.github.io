@@ -86,7 +86,7 @@ library(cowplot)</code></pre>
 <pre><code>##   behavior, execute:
 ##   theme_set(theme_cowplot())</code></pre>
 <pre><code>## ********************************************************</code></pre>
-<pre class="r"><code>gene_cluster &lt;- read_tsv(&#39;scRNA_dotplot_data.tsv.gz&#39;)</code></pre>
+<pre class="r"><code>gene_cluster &lt;- read_tsv(&#39;https://github.com/davemcg/davemcg.github.io/raw/master/content/post/scRNA_dotplot_data.tsv.gz&#39;)</code></pre>
 <pre><code>## Parsed with column specification:
 ## cols(
 ##   Gene = col_character(),
@@ -97,13 +97,13 @@ library(cowplot)</code></pre>
 ## )</code></pre>
 <pre class="r"><code>gene_cluster %&gt;% sample_n(5)</code></pre>
 <pre><code>## # A tibble: 5 x 5
-##   Gene    cluster cell_ct cell_exp_ct    count
-##   &lt;chr&gt;   &lt;chr&gt;     &lt;dbl&gt;       &lt;dbl&gt;    &lt;dbl&gt;
-## 1 SLC10A7 c23         138           7 0.0550  
-## 2 TRHR    c07        2200           2 0.000909
-## 3 ROCK1   c17        1087         640 0.838   
-## 4 MSH2    c01        3532         442 0.140   
-## 5 LRRC29  c15        1283        1242 3.52</code></pre>
+##   Gene    cluster cell_ct cell_exp_ct   count
+##   &lt;chr&gt;   &lt;chr&gt;     &lt;dbl&gt;       &lt;dbl&gt;   &lt;dbl&gt;
+## 1 SLC10A7 c22         278           1 0.00360
+## 2 FAM129B c04        2856          56 0.0207 
+## 3 FTSJ3   c05        2393         112 0.0490 
+## 4 JRK     c19         922         431 0.704  
+## 5 RHBDD3  c17        1087           3 0.00276</code></pre>
 <p><code>Count</code> is the mean log2 scaled counts for the gene in that cluster</p>
 <p><code>cluster</code> is the identifier for the cluster in this scRNA experiment</p>
 <p><code>cell_ct</code> is the number of cells in the cluster</p>

@@ -80,7 +80,7 @@ library(cowplot)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##   behavior, execute:
 ##   theme_set(theme_cowplot())&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## ********************************************************&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gene_cluster &amp;lt;- read_tsv(&amp;#39;scRNA_dotplot_data.tsv.gz&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gene_cluster &amp;lt;- read_tsv(&amp;#39;https://github.com/davemcg/davemcg.github.io/raw/master/content/post/scRNA_dotplot_data.tsv.gz&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Parsed with column specification:
 ## cols(
 ##   Gene = col_character(),
@@ -91,13 +91,13 @@ library(cowplot)&lt;/code&gt;&lt;/pre&gt;
 ## )&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gene_cluster %&amp;gt;% sample_n(5)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## # A tibble: 5 x 5
-##   Gene    cluster cell_ct cell_exp_ct    count
-##   &amp;lt;chr&amp;gt;   &amp;lt;chr&amp;gt;     &amp;lt;dbl&amp;gt;       &amp;lt;dbl&amp;gt;    &amp;lt;dbl&amp;gt;
-## 1 SLC10A7 c23         138           7 0.0550  
-## 2 TRHR    c07        2200           2 0.000909
-## 3 ROCK1   c17        1087         640 0.838   
-## 4 MSH2    c01        3532         442 0.140   
-## 5 LRRC29  c15        1283        1242 3.52&lt;/code&gt;&lt;/pre&gt;
+##   Gene    cluster cell_ct cell_exp_ct   count
+##   &amp;lt;chr&amp;gt;   &amp;lt;chr&amp;gt;     &amp;lt;dbl&amp;gt;       &amp;lt;dbl&amp;gt;   &amp;lt;dbl&amp;gt;
+## 1 SLC10A7 c22         278           1 0.00360
+## 2 FAM129B c04        2856          56 0.0207 
+## 3 FTSJ3   c05        2393         112 0.0490 
+## 4 JRK     c19         922         431 0.704  
+## 5 RHBDD3  c17        1087           3 0.00276&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;code&gt;Count&lt;/code&gt; is the mean log2 scaled counts for the gene in that cluster&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;cluster&lt;/code&gt; is the identifier for the cluster in this scRNA experiment&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;cell_ct&lt;/code&gt; is the number of cells in the cluster&lt;/p&gt;

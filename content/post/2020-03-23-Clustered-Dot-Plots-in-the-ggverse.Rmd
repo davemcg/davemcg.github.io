@@ -48,7 +48,7 @@ library(tidyverse)
 library(ggdendro)
 library(cowplot)
 
-gene_cluster <- read_tsv('scRNA_dotplot_data.tsv.gz')
+gene_cluster <- read_tsv('https://github.com/davemcg/davemcg.github.io/raw/master/content/post/scRNA_dotplot_data.tsv.gz')
 gene_cluster %>% sample_n(5)
 ```
 
