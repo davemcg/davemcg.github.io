@@ -93,11 +93,11 @@ library(cowplot)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## # A tibble: 5 x 5
 ##   Gene    cluster cell_ct cell_exp_ct   count
 ##   &amp;lt;chr&amp;gt;   &amp;lt;chr&amp;gt;     &amp;lt;dbl&amp;gt;       &amp;lt;dbl&amp;gt;   &amp;lt;dbl&amp;gt;
-## 1 SLC10A7 c22         278           1 0.00360
-## 2 FAM129B c04        2856          56 0.0207 
-## 3 FTSJ3   c05        2393         112 0.0490 
-## 4 JRK     c19         922         431 0.704  
-## 5 RHBDD3  c17        1087           3 0.00276&lt;/code&gt;&lt;/pre&gt;
+## 1 STAT2   c01        3532           5 0.00142
+## 2 VGLL3   c12        1789         186 0.136  
+## 3 FAM228B c17        1087         913 1.62   
+## 4 MYH11   c18        1070         236 0.266  
+## 5 RHBDD3  c05        2393           9 0.00418&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;code&gt;Count&lt;/code&gt; is the mean log2 scaled counts for the gene in that cluster&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;cluster&lt;/code&gt; is the identifier for the cluster in this scRNA experiment&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;cell_ct&lt;/code&gt; is the number of cells in the cluster&lt;/p&gt;

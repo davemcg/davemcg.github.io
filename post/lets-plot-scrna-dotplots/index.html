@@ -303,6 +303,9 @@
     >, 
     
     <a href="/./categories/r/">R</a
+    >, 
+    
+    <a href="/./categories/lets-plot/">Let&#39;s Plot</a
     >
     
   </span>
@@ -434,11 +437,11 @@ library(cowplot)</code></pre>
 <pre><code>## # A tibble: 5 x 5
 ##   Gene    cluster cell_ct cell_exp_ct   count
 ##   &lt;chr&gt;   &lt;chr&gt;     &lt;dbl&gt;       &lt;dbl&gt;   &lt;dbl&gt;
-## 1 SLC10A7 c22         278           1 0.00360
-## 2 FAM129B c04        2856          56 0.0207 
-## 3 FTSJ3   c05        2393         112 0.0490 
-## 4 JRK     c19         922         431 0.704  
-## 5 RHBDD3  c17        1087           3 0.00276</code></pre>
+## 1 STAT2   c01        3532           5 0.00142
+## 2 VGLL3   c12        1789         186 0.136  
+## 3 FAM228B c17        1087         913 1.62   
+## 4 MYH11   c18        1070         236 0.266  
+## 5 RHBDD3  c05        2393           9 0.00418</code></pre>
 <p><code>Count</code> is the mean log2 scaled counts for the gene in that cluster</p>
 <p><code>cluster</code> is the identifier for the cluster in this scRNA experiment</p>
 <p><code>cell_ct</code> is the number of cells in the cluster</p>
@@ -680,6 +683,8 @@ plot_grid(fancy_tree_plot, NULL, dotplot, nrow = 1, rel_widths = c(0.5,-0.05, 2)
   
   <a class="btn btn-primary btn-outline" href="/./tags/r/">R</a>
   
+  <a class="btn btn-primary btn-outline" href="/./tags/lets-plot/">Let&#39;s Plot</a>
+  
 </div>
 
 
@@ -692,15 +697,15 @@ plot_grid(fancy_tree_plot, NULL, dotplot, nrow = 1, rel_widths = c(0.5,-0.05, 2)
       <h3>Related</h3>
       <ul>
         
+        <li><a href="/post/let-s-plot-4-r-vs-excel/">Let’s Plot 4: R vs Excel, Round 1</a></li>
+        
+        <li><a href="/post/let-s-plot-3-part-2/">Let’s Plot 3: Base pair resolution NGS (exome) coverage plots - Part 2</a></li>
+        
+        <li><a href="/post/let-s-plot-3-part-i/">Let’s Plot 3: Base pair resolution NGS coverage plots (Part I)</a></li>
+        
         <li><a href="/post/parallel-seurat-findmarker/">Seurat FindMarker with Cluster N vs M</a></li>
         
         <li><a href="/post/one-developer-portal-genesis/">One Developer Portal: eyeIntegration Genesis</a></li>
-        
-        <li><a href="/post/one-developer-portal-optimization/">One Developer Portal: eyeIntegration Web Optimization</a></li>
-        
-        <li><a href="/post/simple-heatmaps-with-complexheatmaps/">Let&#39;s Plot 6: Simple guide to heatmaps with ComplexHeatmaps</a></li>
-        
-        <li><a href="/post/are-you-in-genomics-stop-using-roc-use-pr/">Are you in genomics and building models? Stop using ROC - use PR</a></li>
         
       </ul>
     </div>
