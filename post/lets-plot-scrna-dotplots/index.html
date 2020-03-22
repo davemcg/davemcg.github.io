@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme" content="hugo-academic">
+  <meta name="generator" content="Hugo 0.40" />
+  <meta name="author" content="David McGaughey">
+
+  
+  
+  
+  
+    
+      
+    
+  
+  <meta name="description" content="Intro Example dotplot  How do I make a dotplot? But let’s do this ourself! Dotplot! Zero effort Remove dots where there is zero (or near zero expression) Better color, better theme, rotate x axis labels Tweak color scaling  Now what? Hey look: ggdendro! Let’s glue them together with cowplot How do we do better?  How can we do EVEN better? One more adjust  Downside Exercises for the reader   Intro What’s a dotplot?">
+
+  
+  <link rel="alternate" hreflang="en-us" href="/./post/lets-plot-scrna-dotplots/">
+
+  
+
+
+  
+
+  
+  
+  <meta name="theme-color" content="#0095eb">
+  
+  
+  
+  
+    
+  
+  
+    
+    
+      
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+      
+    
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha512-6MXa8B6uaO18Hid6blRMetEIoPqHf7Ux1tnyIQdpt9qI5OACx7C+O3IVTr98vwGnlcg0LOLa02i9Y1HpVhlfiw==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+  
+  
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat:400,700%7cRoboto:400,400italic,700%7cRoboto&#43;Mono">
+  
+  <link rel="stylesheet" href="/styles.css">
+  
+
+  
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-113461893-1', 'auto');
+      
+      ga('require', 'eventTracker');
+      ga('require', 'outboundLinkTracker');
+      ga('require', 'urlChangeTracker');
+      ga('send', 'pageview');
+    </script>
+    <script async src="//www.google-analytics.com/analytics.js"></script>
+    
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g==" crossorigin="anonymous"></script>
+    
+  
+
+  
+  <link rel="alternate" href="/./index.xml" type="application/rss+xml" title="eye Bioinformatician">
+  <link rel="feed" href="/./index.xml" type="application/rss+xml" title="eye Bioinformatician">
+  
+
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="/./post/lets-plot-scrna-dotplots/">
+
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="twitter:site" content="@https://twitter.com/David_McGaughey">
+  <meta property="twitter:creator" content="@https://twitter.com/David_McGaughey">
+  
+  <meta property="og:site_name" content="eye Bioinformatician">
+  <meta property="og:url" content="/./post/lets-plot-scrna-dotplots/">
+  <meta property="og:title" content="Let&#39;s Plot 7: Clustered Dot Plots in the ggverse | eye Bioinformatician">
+  <meta property="og:description" content="Intro Example dotplot  How do I make a dotplot? But let’s do this ourself! Dotplot! Zero effort Remove dots where there is zero (or near zero expression) Better color, better theme, rotate x axis labels Tweak color scaling  Now what? Hey look: ggdendro! Let’s glue them together with cowplot How do we do better?  How can we do EVEN better? One more adjust  Downside Exercises for the reader   Intro What’s a dotplot?">
+  <meta property="og:locale" content="en-us">
+  
+  <meta property="article:published_time" content="2020-03-23T00:00:00&#43;00:00">
+  
+  <meta property="article:modified_time" content="2020-03-23T00:00:00&#43;00:00">
+  
+
+  
+  
+
+  <title>Let&#39;s Plot 7: Clustered Dot Plots in the ggverse | eye Bioinformatician</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#toc" data-offset="71" >
+
+<nav class="navbar navbar-default navbar-fixed-top" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="navbar-header">
+      
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+              data-target=".navbar-collapse" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+      <a class="navbar-brand" href="/">eye Bioinformatician</a>
+    </div>
+
+    
+    <div class="collapse navbar-collapse">
+
+      
+      
+      <ul class="nav navbar-nav navbar-right">
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#about">
+            
+            <span>Home</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true">
+            
+            <span>Posts</span>
+            
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            
+            <li class="nav-item">
+              <a href="/#posts">
+                
+                <span>Recent Posts</span>
+                
+              </a>
+            </li>
+            
+            <li class="nav-item">
+              <a href="/post">
+                
+                <span>All Posts</span>
+                
+              </a>
+            </li>
+            
+          </ul>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#projects">
+            
+            <span>Projects</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#culture">
+            
+            <span>Culture</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#publications_selected">
+            
+            <span>Publications</span>
+            
+          </a>
+        </li>
+
+        
+        
+      
+
+      
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+  <div class="article-container">
+    <h1 itemprop="name">Let&#39;s Plot 7: Clustered Dot Plots in the ggverse</h1>
+
+    
+
+<div class="article-metadata">
+
+  <span class="article-date">
+    
+    <time datetime="2020-03-23 00:00:00 &#43;0000 UTC" itemprop="datePublished dateModified">
+      Mar 23, 2020
+    </time>
+  </span>
+  <span itemscope itemprop="author publisher" itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="David McGaughey">
+  </span>
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    10 min read
+  </span>
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <a href="/./post/lets-plot-scrna-dotplots/#disqus_thread"></a>
+  
+
+  
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fa fa-folder"></i>
+    
+    <a href="/./categories/bioinformatics/">bioinformatics</a
+    >, 
+    
+    <a href="/./categories/scrna/">scRNA</a
+    >, 
+    
+    <a href="/./categories/rna/">RNA</a
+    >, 
+    
+    <a href="/./categories/r/">R</a
+    >
+    
+  </span>
+  
+  
+
+  
+  
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=Let%27s%20Plot%207%3a%20Clustered%20Dot%20Plots%20in%20the%20ggverse&amp;url=%2f.%2fpost%2flets-plot-scrna-dotplots%2f"
+         target="_blank" rel="noopener">
+        <i class="fa fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=%2f.%2fpost%2flets-plot-scrna-dotplots%2f"
+         target="_blank" rel="noopener">
+        <i class="fa fa-facebook"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2f.%2fpost%2flets-plot-scrna-dotplots%2f&amp;title=Let%27s%20Plot%207%3a%20Clustered%20Dot%20Plots%20in%20the%20ggverse"
+         target="_blank" rel="noopener">
+        <i class="fa fa-linkedin"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=%2f.%2fpost%2flets-plot-scrna-dotplots%2f&amp;title=Let%27s%20Plot%207%3a%20Clustered%20Dot%20Plots%20in%20the%20ggverse"
+         target="_blank" rel="noopener">
+        <i class="fa fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=Let%27s%20Plot%207%3a%20Clustered%20Dot%20Plots%20in%20the%20ggverse&amp;body=%2f.%2fpost%2flets-plot-scrna-dotplots%2f">
+        <i class="fa fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+
+    <div class="article-style" itemprop="articleBody">
+      <div id="TOC">
+<ul>
+<li><a href="#intro">Intro</a><ul>
+<li><a href="#example-dotplot">Example dotplot</a></li>
+</ul></li>
+<li><a href="#how-do-i-make-a-dotplot">How do I make a dotplot?</a></li>
+<li><a href="#but-lets-do-this-ourself">But let’s do this ourself!</a></li>
+<li><a href="#dotplot">Dotplot!</a><ul>
+<li><a href="#zero-effort">Zero effort</a></li>
+<li><a href="#remove-dots-where-there-is-zero-or-near-zero-expression">Remove dots where there is zero (or near zero expression)</a></li>
+<li><a href="#better-color-better-theme-rotate-x-axis-labels">Better color, better theme, rotate x axis labels</a></li>
+<li><a href="#tweak-color-scaling">Tweak color scaling</a></li>
+</ul></li>
+<li><a href="#now-what">Now what?</a></li>
+<li><a href="#hey-look-ggdendro">Hey look: ggdendro!</a><ul>
+<li><a href="#lets-glue-them-together-with-cowplot">Let’s glue them together with cowplot</a></li>
+<li><a href="#how-do-we-do-better">How do we do better?</a></li>
+</ul></li>
+<li><a href="#how-can-we-do-even-better">How can we do EVEN better?</a><ul>
+<li><a href="#one-more-adjust">One more adjust</a></li>
+</ul></li>
+<li><a href="#downside">Downside</a></li>
+<li><a href="#exercises-for-the-reader">Exercises for the reader</a></li>
+</ul>
+</div>
+
+<div id="intro" class="section level1">
+<h1>Intro</h1>
+<p>What’s a dotplot? Well, it is sort of like a heatmap where rows are genes and the columns are clusters (groups of related cells). Well, columns could be genes and rows could be clusters. I have seen both.</p>
+<p>How is it not a heatmap? Because the <strong>size</strong> of the dot (not a square, like a heatmap) at the intersection of gene/cluster is proportionate to the fraction/percentage of cells in the cluster that express the gene. If a higher percentage of cells in the cluster express the gene (at whatever level you decide, but most use <em>any</em> expression), then the dot is larger.</p>
+<p>This is useful as you can assess expression (usually mean) of the gene and the <em>consistency</em> of expression simultaneously.</p>
+<div id="example-dotplot" class="section level2">
+<h2>Example dotplot</h2>
+<p><img src="/img/sanes_dotplot_example.png" />
+Figure 2D from <a href="https://www.sciencedirect.com/science/article/pii/S0092867419300376">Peng et al.</a> showing expression of markers of retinal bipolar cells in different clusters (labelled as cell types).</p>
+</div>
+</div>
+<div id="how-do-i-make-a-dotplot" class="section level1">
+<h1>How do I make a dotplot?</h1>
+<p>Easy, if you use Seurat: <a href="">https://satijalab.org/seurat/v3.0/visualization_vignette.html</a></p>
+</div>
+<div id="but-lets-do-this-ourself" class="section level1">
+<h1>But let’s do this ourself!</h1>
+<p>This is real data, but the gene names have been randomized.</p>
+<p>I’m providing a <code>tsv</code> with some <a href="https://www.jstatsoft.org/article/view/v059i10">tidy data</a>.</p>
+<p>Let’s import it and see what it look like. You’ll need the three packages below installed on your computer.</p>
+<pre class="r"><code>library(tidyverse)</code></pre>
+<pre><code>## ── Attaching packages ───────────────────────────────────────────────────────────────────── tidyverse 1.3.0 ──</code></pre>
+<pre><code>## ✓ ggplot2 3.2.1     ✓ purrr   0.3.3
+## ✓ tibble  2.1.3     ✓ dplyr   0.8.4
+## ✓ tidyr   1.0.2     ✓ stringr 1.4.0
+## ✓ readr   1.3.1     ✓ forcats 0.5.0</code></pre>
+<pre><code>## ── Conflicts ──────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
+<pre class="r"><code>library(ggdendro)
+library(cowplot)</code></pre>
+<pre><code>## 
+## ********************************************************</code></pre>
+<pre><code>## Note: As of version 1.0.0, cowplot does not change the</code></pre>
+<pre><code>##   default ggplot2 theme anymore. To recover the previous</code></pre>
+<pre><code>##   behavior, execute:
+##   theme_set(theme_cowplot())</code></pre>
+<pre><code>## ********************************************************</code></pre>
+<pre class="r"><code>gene_cluster &lt;- read_tsv(&#39;scRNA_dotplot_data.tsv.gz&#39;)</code></pre>
+<pre><code>## Parsed with column specification:
+## cols(
+##   Gene = col_character(),
+##   cluster = col_character(),
+##   cell_ct = col_double(),
+##   cell_exp_ct = col_double(),
+##   count = col_double()
+## )</code></pre>
+<pre class="r"><code>gene_cluster %&gt;% sample_n(5)</code></pre>
+<pre><code>## # A tibble: 5 x 5
+##   Gene    cluster cell_ct cell_exp_ct    count
+##   &lt;chr&gt;   &lt;chr&gt;     &lt;dbl&gt;       &lt;dbl&gt;    &lt;dbl&gt;
+## 1 SLC10A7 c23         138           7 0.0550  
+## 2 TRHR    c07        2200           2 0.000909
+## 3 ROCK1   c17        1087         640 0.838   
+## 4 MSH2    c01        3532         442 0.140   
+## 5 LRRC29  c15        1283        1242 3.52</code></pre>
+<p><code>Count</code> is the mean log2 scaled counts for the gene in that cluster</p>
+<p><code>cluster</code> is the identifier for the cluster in this scRNA experiment</p>
+<p><code>cell_ct</code> is the number of cells in the cluster</p>
+<p><code>cell_exp_ct</code> is the number of cells with detectable (&gt;0) expression of that gene in the cluster</p>
+</div>
+<div id="dotplot" class="section level1">
+<h1>Dotplot!</h1>
+<div id="zero-effort" class="section level2">
+<h2>Zero effort</h2>
+<p>This is actually quite easy</p>
+<p>It’s the details that make it complicated</p>
+<pre class="r"><code>markers &lt;- gene_cluster$Gene %&gt;% unique()
+
+gene_cluster %&gt;% filter(Gene %in% markers) %&gt;% 
+  mutate(`% Expressing` = (cell_exp_ct/cell_ct) * 100) %&gt;% 
+  ggplot(aes(x=cluster, y = Gene, color = count, size = `% Expressing`)) + 
+  geom_point() </code></pre>
+<p><img src="/./post/2020-03-23-Clustered-Dot-Plots-in-the-ggverse_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+</div>
+<div id="remove-dots-where-there-is-zero-or-near-zero-expression" class="section level2">
+<h2>Remove dots where there is zero (or near zero expression)</h2>
+<p>There are dots for 0% expression. That’s not ideal. It would look better to have no dot at all.</p>
+<p>Let’s remove gene - cluster with either a log2(Count+1) of 0 or less than 1% of the cells in the cluster expressing any amount of the gene.</p>
+<pre class="r"><code>gene_cluster %&gt;% filter(Gene %in% markers) %&gt;% 
+  mutate(`% Expressing` = (cell_exp_ct/cell_ct) * 100) %&gt;% 
+  filter(count &gt; 0, `% Expressing` &gt; 1) %&gt;% 
+  ggplot(aes(x=cluster, y = Gene, color = count, size = `% Expressing`)) + 
+  geom_point() </code></pre>
+<p><img src="/./post/2020-03-23-Clustered-Dot-Plots-in-the-ggverse_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+</div>
+<div id="better-color-better-theme-rotate-x-axis-labels" class="section level2">
+<h2>Better color, better theme, rotate x axis labels</h2>
+<p>I’m a <code>viridis</code> and <code>theme_cowplot</code> fan (I have also removed the axis lines as they aren’t really doing much here)</p>
+<pre class="r"><code>gene_cluster %&gt;% filter(Gene %in% markers) %&gt;% 
+  mutate(`% Expressing` = (cell_exp_ct/cell_ct) * 100) %&gt;% 
+  filter(count &gt; 0, `% Expressing` &gt; 1) %&gt;% 
+  ggplot(aes(x=cluster, y = Gene, color = count, size = `% Expressing`)) + 
+  geom_point() + 
+  scale_color_viridis_c(name = &#39;log2 (count + 1)&#39;) + 
+  cowplot::theme_cowplot() + 
+  theme(axis.line  = element_blank()) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+  ylab(&#39;&#39;) +
+  theme(axis.ticks = element_blank()) </code></pre>
+<p><img src="/./post/2020-03-23-Clustered-Dot-Plots-in-the-ggverse_files/figure-html/unnamed-chunk-4-1.png" width="768" /></p>
+</div>
+<div id="tweak-color-scaling" class="section level2">
+<h2>Tweak color scaling</h2>
+<p>One gene (KCNQ1 at c15) is at much higher expression than anything else. I would rather have anything at say <code>log(count+1) ~ 4</code> be bright yellow. We can do this by using <code>scale_color_gradientn</code> with limits set to <code>c(0,4)</code> and have anything above 4 be “squished” down by <code>oob = scales::squish</code></p>
+<pre class="r"><code>gene_cluster %&gt;% filter(Gene %in% markers) %&gt;% 
+  mutate(`% Expressing` = (cell_exp_ct/cell_ct) * 100) %&gt;% 
+  filter(count &gt; 0, `% Expressing` &gt; 1) %&gt;% 
+  ggplot(aes(x=cluster, y = Gene, color = count, size = `% Expressing`)) + 
+  geom_point() + 
+  cowplot::theme_cowplot() + 
+  theme(axis.line  = element_blank()) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+  ylab(&#39;&#39;) +
+  theme(axis.ticks = element_blank()) +
+  scale_color_gradientn(colours = viridis::viridis(20), limits = c(0,4), oob = scales::squish, name = &#39;log2 (count + 1)&#39;)</code></pre>
+<p><img src="/./post/2020-03-23-Clustered-Dot-Plots-in-the-ggverse_files/figure-html/unnamed-chunk-5-1.png" width="768" /></p>
+</div>
+</div>
+<div id="now-what" class="section level1">
+<h1>Now what?</h1>
+<p>Are we done? Well, this looks pretty good and for your data, this may be great!</p>
+<p>But - in <strong>this</strong> case I’d like to group the genes (cluster) by similar expression patterns and show the dendrogram. This is trivial to do in a heatmap (e.g. my favorite <code>ComplexHeatmap</code>). See <a href="https://davemcg.github.io/post/simple-heatmaps-with-complexheatmaps/" class="uri">https://davemcg.github.io/post/simple-heatmaps-with-complexheatmaps/</a> for a guide I wrote.</p>
+<p>But ggplot doesn’t have a built in dendrogram…so we will have to do some more work.</p>
+<p>Some options:</p>
+<ol style="list-style-type: decimal">
+<li>Just run <code>hclust</code> and reorder the genes by the results with <code>mutate(Gene = factor(Gene, levels = YOURNEWGENEORDER)</code>. This will visually (gene order) get the right result, but there’ll be no dendrogram.</li>
+<li>Re-do this whole thing in <code>ComplexHeatmap</code> and use the custom function <a href="https://jokergoo.github.io/ComplexHeatmap-reference/book/a-single-heatmap.html#customize-the-heatmap-body">cell_fun</a> to hack something together. I used this once to add some text to a heatmap and it was painful enough that I would prefer not to go this route.</li>
+<li>Keep reading</li>
+</ol>
+</div>
+<div id="hey-look-ggdendro" class="section level1">
+<h1>Hey look: ggdendro!</h1>
+<p><a href="https://cran.r-project.org/web/packages/ggdendro/vignettes/ggdendro.html" class="uri">https://cran.r-project.org/web/packages/ggdendro/vignettes/ggdendro.html</a></p>
+<p>Read the <code># comments</code> which explain what each step is doing. This is largely copied from the <code>ggdendro</code> vignette.</p>
+<pre class="r"><code># make data square to calculate euclidean distance
+mat &lt;- gene_cluster %&gt;% 
+  filter(Gene %in% markers) %&gt;% 
+  select(-cell_ct, -cell_exp_ct) %&gt;%  # drop unused columns to faciliate widening
+  pivot_wider(names_from = cluster, values_from = count) %&gt;% 
+  data.frame() # make df as tibbles -&gt; matrix annoying
+row.names(mat) &lt;- mat$Gene  # put gene in `row`
+mat &lt;- mat[,-1] #drop gene column as now in rows
+clust &lt;- hclust(dist(mat %&gt;% as.matrix())) # hclust with distance matrix
+
+
+ddgram &lt;- as.dendrogram(clust) # create dendrogram
+ddata &lt;- dendro_data(ddgram, type = &#39;rectangle&#39;) # extract into lists of data
+ggplot(segment(ddata)) + 
+  geom_segment(aes(x = x, y = y, xend = xend, yend = yend)) + 
+  coord_flip() + 
+  scale_y_reverse(expand = c(0.2, 0)) +
+  theme_dendro()</code></pre>
+<p><img src="/./post/2020-03-23-Clustered-Dot-Plots-in-the-ggverse_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<div id="lets-glue-them-together-with-cowplot" class="section level2">
+<h2>Let’s glue them together with cowplot</h2>
+<p>Notice how <code>rel_widths</code> in <code>plot_grid</code> is used to tweak the relative width of each plot and we are using <code>align</code> to attempt to line the plots up.</p>
+<pre class="r"><code>tree_plot &lt;- ggplot(segment(ddata)) + 
+  geom_segment(aes(x = x, y = y, xend = xend, yend = yend)) + 
+  coord_flip() + 
+  scale_y_reverse(expand = c(0.2, 0)) +
+  theme_dendro()
+
+dotplot &lt;- gene_cluster %&gt;% filter(Gene %in% markers) %&gt;% 
+  mutate(`% Expressing` = (cell_exp_ct/cell_ct) * 100) %&gt;% 
+  filter(count &gt; 0, `% Expressing` &gt; 1) %&gt;% 
+  ggplot(aes(x=cluster, y = Gene, color = count, size = `% Expressing`)) + 
+  geom_point() + 
+  cowplot::theme_cowplot() + 
+  theme(axis.line  = element_blank()) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+  ylab(&#39;&#39;) +
+  theme(axis.ticks = element_blank()) +
+  scale_color_gradientn(colours = viridis::viridis(20), limits = c(0,4), oob = scales::squish, name = &#39;log2 (count + 1)&#39;)
+
+plot_grid(tree_plot, dotplot, nrow = 1, rel_widths = c(0.5,2), align = &#39;h&#39;)</code></pre>
+<p><img src="/./post/2020-03-23-Clustered-Dot-Plots-in-the-ggverse_files/figure-html/unnamed-chunk-7-1.png" width="768" />
+(ignore the fact that the genes are <strong>NOT</strong> reordered - I’ll get there. This was just to check if the dendrogram would line up with the genes. It doesn’t line up. Boo.)</p>
+</div>
+<div id="how-do-we-do-better" class="section level2">
+<h2>How do we do better?</h2>
+<p><code>cowplot</code> has a <code>scale</code> function. If you fool around you can get it quite close! Let’s also use the <code>ddata$labels$label</code> dendrogram gene order to reorder the genes in the dotplot (see how I’ve turned Gene into a factor in the <code>mutate</code> block). I’m also going to SQUEEZE the plots together with a cowplot trick of adding a fake plot in between and giving it a negative distance.</p>
+<pre class="r"><code>dotplot &lt;- gene_cluster %&gt;% filter(Gene %in% markers) %&gt;% 
+  mutate(`% Expressing` = (cell_exp_ct/cell_ct) * 100,
+         Gene = factor(Gene, levels = ddata$labels$label)) %&gt;% 
+  #filter(count &gt; 0, `% Expressing` &gt; 1) %&gt;% 
+  ggplot(aes(x=cluster, y = Gene, color = count, size = `% Expressing`)) + 
+  geom_point() + 
+  cowplot::theme_cowplot() + 
+  theme(axis.line  = element_blank()) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+  ylab(&#39;&#39;) +
+  theme(axis.ticks = element_blank()) +
+  scale_color_gradientn(colours = viridis::viridis(20), limits = c(0,4), oob = scales::squish, name = &#39;log2 (count + 1)&#39;)
+
+plot_grid(tree_plot, NULL, dotplot, nrow = 1, rel_widths = c(0.5,-0.1, 2), align = &#39;h&#39;, scale = c(1.06,1, 1))</code></pre>
+<p><img src="/./post/2020-03-23-Clustered-Dot-Plots-in-the-ggverse_files/figure-html/unnamed-chunk-8-1.png" width="1152" />
+This isn’t ideal as this requires you to fiddle with scale every time.</p>
+</div>
+</div>
+<div id="how-can-we-do-even-better" class="section level1">
+<h1>How can we do EVEN better?</h1>
+<p>After some googling I discovered this faaaabulous stackoverflow post: <a href="https://stackoverflow.com/questions/42047896/joining-a-dendrogram-and-a-heatmap" class="uri">https://stackoverflow.com/questions/42047896/joining-a-dendrogram-and-a-heatmap</a></p>
+<p>I’ve largely copied and pasted chunks from it.</p>
+<pre class="r"><code>######################
+# this is cribbed from 
+# https://stackoverflow.com/questions/42047896/joining-a-dendrogram-and-a-heatmap
+# to align dendrogram with dotplot
+ddata &lt;- dendro_data(ddgram, type = &#39;rectangle&#39;) # extract into lists of data
+gene_pos_table &lt;- with(
+  ddata$labels, 
+  data.frame(y_center = x, gene = as.character(label), height = 1))
+# axis munging &lt;- This is where the magic happens
+gene_axis_limits &lt;- with(
+  gene_pos_table, 
+  c(min(y_center - 0.5 * height), max(y_center + 0.5 * height))) +  0.1 * c(-1, 1)
+
+ddata &lt;- with(
+  segment(ddata), 
+  data.frame(x = y, y = x, xend = yend, yend = xend))
+
+fancy_tree_plot &lt;-  ggplot((ddata)) + geom_segment(aes(x = x, y = y, xend = xend, yend = yend)) + 
+  scale_x_reverse(expand = c(0, 0.5)) + 
+  scale_y_continuous(breaks = gene_pos_table$y_center, 
+                     labels = gene_pos_table$gene, 
+                     limits = gene_axis_limits, 
+                     expand = c(0, 0)) + 
+  labs(x = &quot;Distance&quot;, y = &quot;&quot;, colour = &quot;&quot;, size = &quot;&quot;) +
+  theme_dendro() 
+
+dotplot &lt;- gene_cluster %&gt;% filter(Gene %in% markers) %&gt;% 
+  mutate(`% Expressing` = (cell_exp_ct/cell_ct) * 100,
+         Gene = factor(Gene, levels = gene_pos_table$gene)) %&gt;% 
+  filter(count &gt; 0, `% Expressing` &gt; 1) %&gt;% 
+  ggplot(aes(x=cluster, y = Gene, color = count, size = `% Expressing`)) + 
+  geom_point() + 
+  cowplot::theme_cowplot() + 
+  theme(axis.line  = element_blank()) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+  ylab(&#39;&#39;) +
+  theme(axis.ticks = element_blank()) +
+  scale_color_gradientn(colours = viridis::viridis(20), limits = c(0,4), oob = scales::squish, name = &#39;log2 (count + 1)&#39;)
+#################################################
+
+plot_grid(fancy_tree_plot, NULL, dotplot, nrow = 1, rel_widths = c(0.5,-0.1, 2), align = &#39;h&#39;)</code></pre>
+<p><img src="/./post/2020-03-23-Clustered-Dot-Plots-in-the-ggverse_files/figure-html/unnamed-chunk-9-1.png" width="1152" /></p>
+<p>Boom <em>almost</em> done!</p>
+<div id="one-more-adjust" class="section level2">
+<h2>One more adjust</h2>
+<p>Let’s move the gene names to the right side with <code>scale_y_discrete(position = &quot;right&quot;)</code></p>
+<pre class="r"><code>dotplot &lt;- gene_cluster %&gt;% filter(Gene %in% markers) %&gt;% 
+  mutate(`% Expressing` = (cell_exp_ct/cell_ct) * 100,
+         Gene = factor(Gene, levels = gene_pos_table$gene)) %&gt;% 
+  filter(count &gt; 0, `% Expressing` &gt; 1) %&gt;% 
+  ggplot(aes(x=cluster, y = Gene, color = count, size = `% Expressing`)) + 
+  geom_point() + 
+  cowplot::theme_cowplot() + 
+  theme(axis.line  = element_blank()) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+  ylab(&#39;&#39;) +
+  theme(axis.ticks = element_blank()) +
+  scale_color_gradientn(colours = viridis::viridis(20), limits = c(0,4), oob = scales::squish, name = &#39;log2 (count + 1)&#39;) +
+  scale_y_discrete(position = &quot;right&quot;)
+#################################################
+
+plot_grid(fancy_tree_plot, NULL, dotplot, nrow = 1, rel_widths = c(0.5,-0.05, 2), align = &#39;h&#39;)</code></pre>
+<p><img src="/./post/2020-03-23-Clustered-Dot-Plots-in-the-ggverse_files/figure-html/unnamed-chunk-10-1.png" width="1152" /></p>
+</div>
+</div>
+<div id="downside" class="section level1">
+<h1>Downside</h1>
+<p>The major one is that this does not have any way displaying <code>ComplexHeatmap</code> or <code>pheatmap</code> like color bars to visually show categories (e.g.color bars that label the scRNA clusters by cell type). I (think) the only solution is to delve into the <code>ComplexHeatmap</code> <code>cell_fun</code> world. If you figure something out, let me know!</p>
+</div>
+<div id="exercises-for-the-reader" class="section level1">
+<h1>Exercises for the reader</h1>
+<ul>
+<li>Change the color scheme from <code>viridis</code> to <code>magma</code></li>
+<li>Transform the plot to have clusters as rows and genes as columns</li>
+<li>You should be able to adapt the <code>hclust</code> code I ran above to reorder the cluster columns. Super advanced would be adding a dendrogram above the columns (I’m not certain this is possible)</li>
+</ul>
+</div>
+
+    </div>
+
+    
+
+
+<div class="article-tags">
+  
+  <a class="btn btn-primary btn-outline" href="/./tags/bioinformatics/">bioinformatics</a>
+  
+  <a class="btn btn-primary btn-outline" href="/./tags/scrna/">scRNA</a>
+  
+  <a class="btn btn-primary btn-outline" href="/./tags/rna/">RNA</a>
+  
+  <a class="btn btn-primary btn-outline" href="/./tags/r/">R</a>
+  
+</div>
+
+
+
+
+    
+    
+    <div class="article-widget">
+      <div class="hr-light"></div>
+      <h3>Related</h3>
+      <ul>
+        
+        <li><a href="/post/parallel-seurat-findmarker/">Seurat FindMarker with Cluster N vs M</a></li>
+        
+        <li><a href="/post/one-developer-portal-genesis/">One Developer Portal: eyeIntegration Genesis</a></li>
+        
+        <li><a href="/post/one-developer-portal-optimization/">One Developer Portal: eyeIntegration Web Optimization</a></li>
+        
+        <li><a href="/post/simple-heatmaps-with-complexheatmaps/">Let&#39;s Plot 6: Simple guide to heatmaps with ComplexHeatmaps</a></li>
+        
+        <li><a href="/post/are-you-in-genomics-stop-using-roc-use-pr/">Are you in genomics and building models? Stop using ROC - use PR</a></li>
+        
+      </ul>
+    </div>
+    
+
+    
+
+    
+<section id="comments">
+  <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "davemcg-gitub-io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+
+  </div>
+</article>
+
+<footer class="site-footer">
+  <div class="container">
+    <p class="powered-by">
+
+      &copy; 2018 &middot; 
+
+      Powered by the
+      <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+      <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+      <span class="pull-right" aria-hidden="true">
+        <a href="#" id="back_to_top">
+          <span class="button_icon">
+            <i class="fa fa-chevron-up fa-2x"></i>
+          </span>
+        </a>
+      </span>
+
+    </p>
+  </div>
+</footer>
+
+
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close btn-large" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Cite</h4>
+      </div>
+      <div>
+        <pre><code class="modal-body tex"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-primary btn-outline js-copy-cite" href="#" target="_blank">
+          <i class="fa fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-primary btn-outline js-download-cite" href="#" target="_blank">
+          <i class="fa fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+    
+    <script id="dsq-count-scr" src="//davemcg-gitub-io.disqus.com/count.js" async></script>
+    
+
+    
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha512-3P8rXCuGJdNZOnUx/03c1jOTnMn3rP63nBip5gOP2qmUh5YAdVAvFZ1E+QLZZbC1rtMrQb+mah3AfYW11RUrWA==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.3/imagesloaded.pkgd.min.js" integrity="sha512-umsR78NN0D23AzgoZ11K7raBD+R6hqKojyBZs1w8WvYlsI+QuKRGBx3LFCwhatzBunCjDuJpDHwxD13sLMbpRA==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha512-iztkobsvnjKfAtTNdHkGVjAYTrrtlC7mGp/54c40wowO7LhURYl3gVzzcEqGl/qKXQltJ2HwMrdLcNUdo+N/RQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+    
+    
+    <script src="/js/hugo-academic.js"></script>
+    
+
+    
+    
+      
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+      
+
+      
+
+      
+
+      <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML" integrity="sha512-tOav5w1OjvsSJzePRtt2uQPFwBoHt1VZcUq8l8nm5284LEKE9FSJBQryzMBzHxY5P0zRdNqEcpLIRVYFNgu1jw==" crossorigin="anonymous"></script>
+    
+    
+
+  </body>
+</html>
+

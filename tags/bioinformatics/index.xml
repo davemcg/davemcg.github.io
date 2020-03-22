@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
-    <lastBuildDate>Sat, 09 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 23 Mar 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/./tags/bioinformatics/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Let&#39;s Plot 7: Clustered Dot Plots in the ggverse</title>
+      <link>/./post/lets-plot-scrna-dotplots/</link>
+      <pubDate>Mon, 23 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/lets-plot-scrna-dotplots/</guid>
+      <description>Intro Example dotplot  How do I make a dotplot? But let’s do this ourself! Dotplot! Zero effort Remove dots where there is zero (or near zero expression) Better color, better theme, rotate x axis labels Tweak color scaling  Now what? Hey look: ggdendro! Let’s glue them together with cowplot How do we do better?  How can we do EVEN better? One more adjust  Downside Exercises for the reader   Intro What’s a dotplot?</description>
+    </item>
     
     <item>
       <title>2019 11 09 GI2019 Personal and Medical Genomics</title>

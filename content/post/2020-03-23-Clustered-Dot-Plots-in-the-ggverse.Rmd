@@ -1,0 +1,286 @@
+---
+title: "Let's Plot 7: Clustered Dot Plots in the ggverse"
+author: David McGaughey
+date: '2020-03-23'
+slug: lets-plot-scRNA-dotplots
+categories:
+  - bioinformatics
+  - scRNA
+  - RNA
+  - R
+tags:
+  - bioinformatics
+  - scRNA
+  - RNA
+  - R
+header:
+  caption: ''
+  image: ''
+output:
+  blogdown::html_page:
+    toc: true
+---
+
+# Intro
+What's a dotplot? Well, it is sort of like a heatmap where rows are genes and the columns are clusters (groups of related cells). Well, columns could be genes and rows could be clusters. I have seen both. 
+
+How is it not a heatmap? Because the **size** of the dot (not a square, like a heatmap) at the intersection of gene/cluster is proportionate to the fraction/percentage of cells in the cluster that express the gene. If a higher percentage of cells in the cluster express the gene (at whatever level you decide, but most use *any* expression), then the dot is larger.
+
+This is useful as you can assess expression (usually mean) of the gene and the *consistency* of expression simultaneously. 
+
+## Example dotplot
+
+![](/img/sanes_dotplot_example.png)
+Figure 2D from [Peng et al.](https://www.sciencedirect.com/science/article/pii/S0092867419300376) showing expression of markers of retinal bipolar cells in different clusters (labelled as cell types).
+
+# How do I make a dotplot?
+Easy, if you use Seurat: [https://satijalab.org/seurat/v3.0/visualization_vignette.html]()
+
+# But let's do this ourself!
+This is real data, but the gene names have been randomized. 
+
+I'm providing a `tsv` with some [tidy data](https://www.jstatsoft.org/article/view/v059i10). 
+
+Let's import it and see what it look like. You'll need the three packages below installed on your computer.
+
+```{r}
+library(tidyverse)
+library(ggdendro)
+library(cowplot)
+
+gene_cluster <- read_tsv('scRNA_dotplot_data.tsv.gz')
+gene_cluster %>% sample_n(5)
+```
+
+`Count` is the mean log2 scaled counts for the gene in that cluster 
+
+`cluster` is the identifier for the cluster in this scRNA experiment
+
+`cell_ct` is the number of cells in the cluster
+
+`cell_exp_ct` is the number of cells with detectable (>0) expression of that gene in the cluster
+
+# Dotplot!
+
+## Zero effort
+This is actually quite easy
+
+It's the details that make it complicated
+```{r}
+markers <- gene_cluster$Gene %>% unique()
+
+gene_cluster %>% filter(Gene %in% markers) %>% 
+  mutate(`% Expressing` = (cell_exp_ct/cell_ct) * 100) %>% 
+  ggplot(aes(x=cluster, y = Gene, color = count, size = `% Expressing`)) + 
+  geom_point() 
+```
+
+## Remove dots where there is zero (or near zero expression)
+There are dots for 0% expression. That's not ideal. It would look better to have no dot at all.
+
+Let's remove gene - cluster with either a log2(Count+1) of 0 or less than 1% of the cells in the cluster expressing any amount of the gene. 
+```{r}
+gene_cluster %>% filter(Gene %in% markers) %>% 
+  mutate(`% Expressing` = (cell_exp_ct/cell_ct) * 100) %>% 
+  filter(count > 0, `% Expressing` > 1) %>% 
+  ggplot(aes(x=cluster, y = Gene, color = count, size = `% Expressing`)) + 
+  geom_point() 
+```
+
+## Better color, better theme, rotate x axis labels
+I'm a `viridis` and `theme_cowplot` fan (I have also removed the axis lines as they aren't really doing much here)
+```{r, fig.height=6, fig.width=8}
+gene_cluster %>% filter(Gene %in% markers) %>% 
+  mutate(`% Expressing` = (cell_exp_ct/cell_ct) * 100) %>% 
+  filter(count > 0, `% Expressing` > 1) %>% 
+  ggplot(aes(x=cluster, y = Gene, color = count, size = `% Expressing`)) + 
+  geom_point() + 
+  scale_color_viridis_c(name = 'log2 (count + 1)') + 
+  cowplot::theme_cowplot() + 
+  theme(axis.line  = element_blank()) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+  ylab('') +
+  theme(axis.ticks = element_blank()) 
+```
+
+## Tweak color scaling
+One gene (KCNQ1 at c15) is at much higher expression than anything else. I would rather have anything at say `log(count+1) ~ 4` be bright yellow. We can do this by using `scale_color_gradientn` with limits set to `c(0,4)` and have anything above 4 be "squished" down by `oob = scales::squish`
+```{r, fig.height=6, fig.width=8}
+gene_cluster %>% filter(Gene %in% markers) %>% 
+  mutate(`% Expressing` = (cell_exp_ct/cell_ct) * 100) %>% 
+  filter(count > 0, `% Expressing` > 1) %>% 
+  ggplot(aes(x=cluster, y = Gene, color = count, size = `% Expressing`)) + 
+  geom_point() + 
+  cowplot::theme_cowplot() + 
+  theme(axis.line  = element_blank()) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+  ylab('') +
+  theme(axis.ticks = element_blank()) +
+  scale_color_gradientn(colours = viridis::viridis(20), limits = c(0,4), oob = scales::squish, name = 'log2 (count + 1)')
+```
+
+# Now what?
+Are we done? Well, this looks pretty good and for your data, this may be great!
+
+But - in **this** case I'd like to group the genes (cluster) by similar expression patterns and show the dendrogram. This is trivial to do in a heatmap (e.g. my favorite `ComplexHeatmap`). See https://davemcg.github.io/post/simple-heatmaps-with-complexheatmaps/ for a guide I wrote. 
+
+But ggplot doesn't have a built in dendrogram...so we will have to do some more work.
+
+Some options:
+
+  1. Just run `hclust` and reorder the genes by the results with `mutate(Gene = factor(Gene, levels = YOURNEWGENEORDER)`. This will visually (gene order) get the right result, but there'll be no dendrogram. 
+  2. Re-do this whole thing in `ComplexHeatmap` and use the custom function [cell_fun](https://jokergoo.github.io/ComplexHeatmap-reference/book/a-single-heatmap.html#customize-the-heatmap-body) to hack something together. I used this once to add some text to a heatmap and it was painful enough that I would prefer not to go this route. 
+  3. Keep reading
+
+# Hey look: ggdendro!
+https://cran.r-project.org/web/packages/ggdendro/vignettes/ggdendro.html
+
+Read the `# comments` which explain what each step is doing. This is largely copied from the `ggdendro` vignette.
+```{r}
+# make data square to calculate euclidean distance
+mat <- gene_cluster %>% 
+  filter(Gene %in% markers) %>% 
+  select(-cell_ct, -cell_exp_ct) %>%  # drop unused columns to faciliate widening
+  pivot_wider(names_from = cluster, values_from = count) %>% 
+  data.frame() # make df as tibbles -> matrix annoying
+row.names(mat) <- mat$Gene  # put gene in `row`
+mat <- mat[,-1] #drop gene column as now in rows
+clust <- hclust(dist(mat %>% as.matrix())) # hclust with distance matrix
+
+
+ddgram <- as.dendrogram(clust) # create dendrogram
+ddata <- dendro_data(ddgram, type = 'rectangle') # extract into lists of data
+ggplot(segment(ddata)) + 
+  geom_segment(aes(x = x, y = y, xend = xend, yend = yend)) + 
+  coord_flip() + 
+  scale_y_reverse(expand = c(0.2, 0)) +
+  theme_dendro()
+```
+
+## Let's glue them together with cowplot
+Notice how `rel_widths` in `plot_grid` is used to tweak the relative width of each plot and we are using `align` to attempt to line the plots up.
+```{r, fig.height=6, fig.width=8}
+tree_plot <- ggplot(segment(ddata)) + 
+  geom_segment(aes(x = x, y = y, xend = xend, yend = yend)) + 
+  coord_flip() + 
+  scale_y_reverse(expand = c(0.2, 0)) +
+  theme_dendro()
+
+dotplot <- gene_cluster %>% filter(Gene %in% markers) %>% 
+  mutate(`% Expressing` = (cell_exp_ct/cell_ct) * 100) %>% 
+  filter(count > 0, `% Expressing` > 1) %>% 
+  ggplot(aes(x=cluster, y = Gene, color = count, size = `% Expressing`)) + 
+  geom_point() + 
+  cowplot::theme_cowplot() + 
+  theme(axis.line  = element_blank()) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+  ylab('') +
+  theme(axis.ticks = element_blank()) +
+  scale_color_gradientn(colours = viridis::viridis(20), limits = c(0,4), oob = scales::squish, name = 'log2 (count + 1)')
+
+plot_grid(tree_plot, dotplot, nrow = 1, rel_widths = c(0.5,2), align = 'h')
+```
+(ignore the fact that the genes are **NOT** reordered - I'll get there. This was just to check if the dendrogram would line up with the genes. It doesn't line up. Boo.) 
+
+## How do we do better?
+`cowplot` has a `scale` function. If you fool around you can get it quite close! Let's also use the `ddata$labels$label` dendrogram gene order to reorder the genes in the dotplot (see how I've turned Gene into a factor in the `mutate` block). I'm also going to SQUEEZE the plots together with a cowplot trick of adding a fake plot in between and giving it a negative distance.
+```{r, fig.height=6, fig.width=12}
+dotplot <- gene_cluster %>% filter(Gene %in% markers) %>% 
+  mutate(`% Expressing` = (cell_exp_ct/cell_ct) * 100,
+         Gene = factor(Gene, levels = ddata$labels$label)) %>% 
+  #filter(count > 0, `% Expressing` > 1) %>% 
+  ggplot(aes(x=cluster, y = Gene, color = count, size = `% Expressing`)) + 
+  geom_point() + 
+  cowplot::theme_cowplot() + 
+  theme(axis.line  = element_blank()) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+  ylab('') +
+  theme(axis.ticks = element_blank()) +
+  scale_color_gradientn(colours = viridis::viridis(20), limits = c(0,4), oob = scales::squish, name = 'log2 (count + 1)')
+
+plot_grid(tree_plot, NULL, dotplot, nrow = 1, rel_widths = c(0.5,-0.1, 2), align = 'h', scale = c(1.06,1, 1))
+```
+This isn't ideal as this requires you to fiddle with scale every time.  
+
+# How can we do EVEN better?
+
+After some googling I discovered this faaaabulous stackoverflow post: https://stackoverflow.com/questions/42047896/joining-a-dendrogram-and-a-heatmap
+
+I've largely copied and pasted chunks from it.
+```{r, fig.height=6, fig.width=12}
+######################
+# this is cribbed from 
+# https://stackoverflow.com/questions/42047896/joining-a-dendrogram-and-a-heatmap
+# to align dendrogram with dotplot
+ddata <- dendro_data(ddgram, type = 'rectangle') # extract into lists of data
+gene_pos_table <- with(
+  ddata$labels, 
+  data.frame(y_center = x, gene = as.character(label), height = 1))
+# axis munging <- This is where the magic happens
+gene_axis_limits <- with(
+  gene_pos_table, 
+  c(min(y_center - 0.5 * height), max(y_center + 0.5 * height))) +  0.1 * c(-1, 1)
+
+ddata <- with(
+  segment(ddata), 
+  data.frame(x = y, y = x, xend = yend, yend = xend))
+
+fancy_tree_plot <-  ggplot((ddata)) + geom_segment(aes(x = x, y = y, xend = xend, yend = yend)) + 
+  scale_x_reverse(expand = c(0, 0.5)) + 
+  scale_y_continuous(breaks = gene_pos_table$y_center, 
+                     labels = gene_pos_table$gene, 
+                     limits = gene_axis_limits, 
+                     expand = c(0, 0)) + 
+  labs(x = "Distance", y = "", colour = "", size = "") +
+  theme_dendro() 
+
+dotplot <- gene_cluster %>% filter(Gene %in% markers) %>% 
+  mutate(`% Expressing` = (cell_exp_ct/cell_ct) * 100,
+         Gene = factor(Gene, levels = gene_pos_table$gene)) %>% 
+  filter(count > 0, `% Expressing` > 1) %>% 
+  ggplot(aes(x=cluster, y = Gene, color = count, size = `% Expressing`)) + 
+  geom_point() + 
+  cowplot::theme_cowplot() + 
+  theme(axis.line  = element_blank()) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+  ylab('') +
+  theme(axis.ticks = element_blank()) +
+  scale_color_gradientn(colours = viridis::viridis(20), limits = c(0,4), oob = scales::squish, name = 'log2 (count + 1)')
+#################################################
+
+plot_grid(fancy_tree_plot, NULL, dotplot, nrow = 1, rel_widths = c(0.5,-0.1, 2), align = 'h')
+```
+
+Boom *almost* done!
+
+## One more adjust
+Let's move the gene names to the right side with `scale_y_discrete(position = "right")`
+```{r, fig.height=6, fig.width=12}
+dotplot <- gene_cluster %>% filter(Gene %in% markers) %>% 
+  mutate(`% Expressing` = (cell_exp_ct/cell_ct) * 100,
+         Gene = factor(Gene, levels = gene_pos_table$gene)) %>% 
+  filter(count > 0, `% Expressing` > 1) %>% 
+  ggplot(aes(x=cluster, y = Gene, color = count, size = `% Expressing`)) + 
+  geom_point() + 
+  cowplot::theme_cowplot() + 
+  theme(axis.line  = element_blank()) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+  ylab('') +
+  theme(axis.ticks = element_blank()) +
+  scale_color_gradientn(colours = viridis::viridis(20), limits = c(0,4), oob = scales::squish, name = 'log2 (count + 1)') +
+  scale_y_discrete(position = "right")
+#################################################
+
+plot_grid(fancy_tree_plot, NULL, dotplot, nrow = 1, rel_widths = c(0.5,-0.05, 2), align = 'h')
+```
+
+# Downside
+The major one is that this does not have any way displaying `ComplexHeatmap` or `pheatmap` like color bars to visually show categories (e.g.color bars that label the scRNA clusters by cell type). I (think) the only solution is to delve into the `ComplexHeatmap` `cell_fun` world. If you figure something out, let me know!
+
+# Exercises for the reader
+
+  - Change the color scheme from `viridis` to `magma`
+  - Transform the plot to have clusters as rows and genes as columns
+  - You should be able to adapt the `hclust` code I ran above to reorder the cluster columns. Super advanced would be adding a dendrogram above the columns (I'm not certain this is possible)
+
+

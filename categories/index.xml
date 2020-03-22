@@ -24,7 +24,7 @@
     <item>
       <title>Bioinformatics</title>
       <link>/./categories/bioinformatics/</link>
-      <pubDate>Sat, 09 Nov 2019 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 23 Mar 2020 00:00:00 +0000</pubDate>
       
       <guid>/./categories/bioinformatics/</guid>
       <description></description>
@@ -114,9 +114,18 @@
     <item>
       <title>R</title>
       <link>/./categories/r/</link>
-      <pubDate>Mon, 24 Jun 2019 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 23 Mar 2020 00:00:00 +0000</pubDate>
       
       <guid>/./categories/r/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>RNA</title>
+      <link>/./categories/rna/</link>
+      <pubDate>Mon, 23 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/./categories/rna/</guid>
       <description></description>
     </item>
     
@@ -132,7 +141,7 @@
     <item>
       <title>ScRNA</title>
       <link>/./categories/scrna/</link>
-      <pubDate>Fri, 13 Dec 2019 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 23 Mar 2020 00:00:00 +0000</pubDate>
       
       <guid>/./categories/scrna/</guid>
       <description></description>

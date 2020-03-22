@@ -11,6 +11,322 @@
     <atom:link href="//" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Let&#39;s Plot 7: Clustered Dot Plots in the ggverse</title>
+      <link>/./post/lets-plot-scrna-dotplots/</link>
+      <pubDate>Mon, 23 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/lets-plot-scrna-dotplots/</guid>
+      <description>&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#intro&#34;&gt;Intro&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#example-dotplot&#34;&gt;Example dotplot&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#how-do-i-make-a-dotplot&#34;&gt;How do I make a dotplot?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#but-lets-do-this-ourself&#34;&gt;But let’s do this ourself!&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#dotplot&#34;&gt;Dotplot!&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#zero-effort&#34;&gt;Zero effort&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#remove-dots-where-there-is-zero-or-near-zero-expression&#34;&gt;Remove dots where there is zero (or near zero expression)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#better-color-better-theme-rotate-x-axis-labels&#34;&gt;Better color, better theme, rotate x axis labels&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#tweak-color-scaling&#34;&gt;Tweak color scaling&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#now-what&#34;&gt;Now what?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#hey-look-ggdendro&#34;&gt;Hey look: ggdendro!&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#lets-glue-them-together-with-cowplot&#34;&gt;Let’s glue them together with cowplot&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#how-do-we-do-better&#34;&gt;How do we do better?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#how-can-we-do-even-better&#34;&gt;How can we do EVEN better?&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#one-more-adjust&#34;&gt;One more adjust&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#downside&#34;&gt;Downside&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#exercises-for-the-reader&#34;&gt;Exercises for the reader&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;intro&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Intro&lt;/h1&gt;
+&lt;p&gt;What’s a dotplot? Well, it is sort of like a heatmap where rows are genes and the columns are clusters (groups of related cells). Well, columns could be genes and rows could be clusters. I have seen both.&lt;/p&gt;
+&lt;p&gt;How is it not a heatmap? Because the &lt;strong&gt;size&lt;/strong&gt; of the dot (not a square, like a heatmap) at the intersection of gene/cluster is proportionate to the fraction/percentage of cells in the cluster that express the gene. If a higher percentage of cells in the cluster express the gene (at whatever level you decide, but most use &lt;em&gt;any&lt;/em&gt; expression), then the dot is larger.&lt;/p&gt;
+&lt;p&gt;This is useful as you can assess expression (usually mean) of the gene and the &lt;em&gt;consistency&lt;/em&gt; of expression simultaneously.&lt;/p&gt;
+&lt;div id=&#34;example-dotplot&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Example dotplot&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;/./img/sanes_dotplot_example.png&#34; /&gt;
+Figure 2D from &lt;a href=&#34;https://www.sciencedirect.com/science/article/pii/S0092867419300376&#34;&gt;Peng et al.&lt;/a&gt; showing expression of markers of retinal bipolar cells in different clusters (labelled as cell types).&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;how-do-i-make-a-dotplot&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;How do I make a dotplot?&lt;/h1&gt;
+&lt;p&gt;Easy, if you use Seurat: &lt;a href=&#34;&#34;&gt;https://satijalab.org/seurat/v3.0/visualization_vignette.html&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;but-lets-do-this-ourself&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;But let’s do this ourself!&lt;/h1&gt;
+&lt;p&gt;This is real data, but the gene names have been randomized.&lt;/p&gt;
+&lt;p&gt;I’m providing a &lt;code&gt;tsv&lt;/code&gt; with some &lt;a href=&#34;https://www.jstatsoft.org/article/view/v059i10&#34;&gt;tidy data&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Let’s import it and see what it look like. You’ll need the three packages below installed on your computer.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## ── Attaching packages ───────────────────────────────────────────────────────────────────── tidyverse 1.3.0 ──&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## ✓ ggplot2 3.2.1     ✓ purrr   0.3.3
+## ✓ tibble  2.1.3     ✓ dplyr   0.8.4
+## ✓ tidyr   1.0.2     ✓ stringr 1.4.0
+## ✓ readr   1.3.1     ✓ forcats 0.5.0&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## ── Conflicts ──────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggdendro)
+library(cowplot)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## ********************************************************&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Note: As of version 1.0.0, cowplot does not change the&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   default ggplot2 theme anymore. To recover the previous&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   behavior, execute:
+##   theme_set(theme_cowplot())&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## ********************************************************&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gene_cluster &amp;lt;- read_tsv(&amp;#39;scRNA_dotplot_data.tsv.gz&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Parsed with column specification:
+## cols(
+##   Gene = col_character(),
+##   cluster = col_character(),
+##   cell_ct = col_double(),
+##   cell_exp_ct = col_double(),
+##   count = col_double()
+## )&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gene_cluster %&amp;gt;% sample_n(5)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 5 x 5
+##   Gene    cluster cell_ct cell_exp_ct    count
+##   &amp;lt;chr&amp;gt;   &amp;lt;chr&amp;gt;     &amp;lt;dbl&amp;gt;       &amp;lt;dbl&amp;gt;    &amp;lt;dbl&amp;gt;
+## 1 SLC10A7 c23         138           7 0.0550  
+## 2 TRHR    c07        2200           2 0.000909
+## 3 ROCK1   c17        1087         640 0.838   
+## 4 MSH2    c01        3532         442 0.140   
+## 5 LRRC29  c15        1283        1242 3.52&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;Count&lt;/code&gt; is the mean log2 scaled counts for the gene in that cluster&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;cluster&lt;/code&gt; is the identifier for the cluster in this scRNA experiment&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;cell_ct&lt;/code&gt; is the number of cells in the cluster&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;cell_exp_ct&lt;/code&gt; is the number of cells with detectable (&amp;gt;0) expression of that gene in the cluster&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;dotplot&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Dotplot!&lt;/h1&gt;
+&lt;div id=&#34;zero-effort&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Zero effort&lt;/h2&gt;
+&lt;p&gt;This is actually quite easy&lt;/p&gt;
+&lt;p&gt;It’s the details that make it complicated&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;markers &amp;lt;- gene_cluster$Gene %&amp;gt;% unique()
+
+gene_cluster %&amp;gt;% filter(Gene %in% markers) %&amp;gt;% 
+  mutate(`% Expressing` = (cell_exp_ct/cell_ct) * 100) %&amp;gt;% 
+  ggplot(aes(x=cluster, y = Gene, color = count, size = `% Expressing`)) + 
+  geom_point() &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/././post/2020-03-23-Clustered-Dot-Plots-in-the-ggverse_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;remove-dots-where-there-is-zero-or-near-zero-expression&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Remove dots where there is zero (or near zero expression)&lt;/h2&gt;
+&lt;p&gt;There are dots for 0% expression. That’s not ideal. It would look better to have no dot at all.&lt;/p&gt;
+&lt;p&gt;Let’s remove gene - cluster with either a log2(Count+1) of 0 or less than 1% of the cells in the cluster expressing any amount of the gene.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gene_cluster %&amp;gt;% filter(Gene %in% markers) %&amp;gt;% 
+  mutate(`% Expressing` = (cell_exp_ct/cell_ct) * 100) %&amp;gt;% 
+  filter(count &amp;gt; 0, `% Expressing` &amp;gt; 1) %&amp;gt;% 
+  ggplot(aes(x=cluster, y = Gene, color = count, size = `% Expressing`)) + 
+  geom_point() &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/././post/2020-03-23-Clustered-Dot-Plots-in-the-ggverse_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;better-color-better-theme-rotate-x-axis-labels&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Better color, better theme, rotate x axis labels&lt;/h2&gt;
+&lt;p&gt;I’m a &lt;code&gt;viridis&lt;/code&gt; and &lt;code&gt;theme_cowplot&lt;/code&gt; fan (I have also removed the axis lines as they aren’t really doing much here)&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gene_cluster %&amp;gt;% filter(Gene %in% markers) %&amp;gt;% 
+  mutate(`% Expressing` = (cell_exp_ct/cell_ct) * 100) %&amp;gt;% 
+  filter(count &amp;gt; 0, `% Expressing` &amp;gt; 1) %&amp;gt;% 
+  ggplot(aes(x=cluster, y = Gene, color = count, size = `% Expressing`)) + 
+  geom_point() + 
+  scale_color_viridis_c(name = &amp;#39;log2 (count + 1)&amp;#39;) + 
+  cowplot::theme_cowplot() + 
+  theme(axis.line  = element_blank()) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+  ylab(&amp;#39;&amp;#39;) +
+  theme(axis.ticks = element_blank()) &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/././post/2020-03-23-Clustered-Dot-Plots-in-the-ggverse_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;768&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;tweak-color-scaling&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Tweak color scaling&lt;/h2&gt;
+&lt;p&gt;One gene (KCNQ1 at c15) is at much higher expression than anything else. I would rather have anything at say &lt;code&gt;log(count+1) ~ 4&lt;/code&gt; be bright yellow. We can do this by using &lt;code&gt;scale_color_gradientn&lt;/code&gt; with limits set to &lt;code&gt;c(0,4)&lt;/code&gt; and have anything above 4 be “squished” down by &lt;code&gt;oob = scales::squish&lt;/code&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gene_cluster %&amp;gt;% filter(Gene %in% markers) %&amp;gt;% 
+  mutate(`% Expressing` = (cell_exp_ct/cell_ct) * 100) %&amp;gt;% 
+  filter(count &amp;gt; 0, `% Expressing` &amp;gt; 1) %&amp;gt;% 
+  ggplot(aes(x=cluster, y = Gene, color = count, size = `% Expressing`)) + 
+  geom_point() + 
+  cowplot::theme_cowplot() + 
+  theme(axis.line  = element_blank()) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+  ylab(&amp;#39;&amp;#39;) +
+  theme(axis.ticks = element_blank()) +
+  scale_color_gradientn(colours = viridis::viridis(20), limits = c(0,4), oob = scales::squish, name = &amp;#39;log2 (count + 1)&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/././post/2020-03-23-Clustered-Dot-Plots-in-the-ggverse_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;768&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;now-what&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Now what?&lt;/h1&gt;
+&lt;p&gt;Are we done? Well, this looks pretty good and for your data, this may be great!&lt;/p&gt;
+&lt;p&gt;But - in &lt;strong&gt;this&lt;/strong&gt; case I’d like to group the genes (cluster) by similar expression patterns and show the dendrogram. This is trivial to do in a heatmap (e.g. my favorite &lt;code&gt;ComplexHeatmap&lt;/code&gt;). See &lt;a href=&#34;https://davemcg.github.io/post/simple-heatmaps-with-complexheatmaps/&#34; class=&#34;uri&#34;&gt;https://davemcg.github.io/post/simple-heatmaps-with-complexheatmaps/&lt;/a&gt; for a guide I wrote.&lt;/p&gt;
+&lt;p&gt;But ggplot doesn’t have a built in dendrogram…so we will have to do some more work.&lt;/p&gt;
+&lt;p&gt;Some options:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Just run &lt;code&gt;hclust&lt;/code&gt; and reorder the genes by the results with &lt;code&gt;mutate(Gene = factor(Gene, levels = YOURNEWGENEORDER)&lt;/code&gt;. This will visually (gene order) get the right result, but there’ll be no dendrogram.&lt;/li&gt;
+&lt;li&gt;Re-do this whole thing in &lt;code&gt;ComplexHeatmap&lt;/code&gt; and use the custom function &lt;a href=&#34;https://jokergoo.github.io/ComplexHeatmap-reference/book/a-single-heatmap.html#customize-the-heatmap-body&#34;&gt;cell_fun&lt;/a&gt; to hack something together. I used this once to add some text to a heatmap and it was painful enough that I would prefer not to go this route.&lt;/li&gt;
+&lt;li&gt;Keep reading&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div id=&#34;hey-look-ggdendro&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Hey look: ggdendro!&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&#34;https://cran.r-project.org/web/packages/ggdendro/vignettes/ggdendro.html&#34; class=&#34;uri&#34;&gt;https://cran.r-project.org/web/packages/ggdendro/vignettes/ggdendro.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Read the &lt;code&gt;# comments&lt;/code&gt; which explain what each step is doing. This is largely copied from the &lt;code&gt;ggdendro&lt;/code&gt; vignette.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# make data square to calculate euclidean distance
+mat &amp;lt;- gene_cluster %&amp;gt;% 
+  filter(Gene %in% markers) %&amp;gt;% 
+  select(-cell_ct, -cell_exp_ct) %&amp;gt;%  # drop unused columns to faciliate widening
+  pivot_wider(names_from = cluster, values_from = count) %&amp;gt;% 
+  data.frame() # make df as tibbles -&amp;gt; matrix annoying
+row.names(mat) &amp;lt;- mat$Gene  # put gene in `row`
+mat &amp;lt;- mat[,-1] #drop gene column as now in rows
+clust &amp;lt;- hclust(dist(mat %&amp;gt;% as.matrix())) # hclust with distance matrix
+
+
+ddgram &amp;lt;- as.dendrogram(clust) # create dendrogram
+ddata &amp;lt;- dendro_data(ddgram, type = &amp;#39;rectangle&amp;#39;) # extract into lists of data
+ggplot(segment(ddata)) + 
+  geom_segment(aes(x = x, y = y, xend = xend, yend = yend)) + 
+  coord_flip() + 
+  scale_y_reverse(expand = c(0.2, 0)) +
+  theme_dendro()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/././post/2020-03-23-Clustered-Dot-Plots-in-the-ggverse_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;div id=&#34;lets-glue-them-together-with-cowplot&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Let’s glue them together with cowplot&lt;/h2&gt;
+&lt;p&gt;Notice how &lt;code&gt;rel_widths&lt;/code&gt; in &lt;code&gt;plot_grid&lt;/code&gt; is used to tweak the relative width of each plot and we are using &lt;code&gt;align&lt;/code&gt; to attempt to line the plots up.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tree_plot &amp;lt;- ggplot(segment(ddata)) + 
+  geom_segment(aes(x = x, y = y, xend = xend, yend = yend)) + 
+  coord_flip() + 
+  scale_y_reverse(expand = c(0.2, 0)) +
+  theme_dendro()
+
+dotplot &amp;lt;- gene_cluster %&amp;gt;% filter(Gene %in% markers) %&amp;gt;% 
+  mutate(`% Expressing` = (cell_exp_ct/cell_ct) * 100) %&amp;gt;% 
+  filter(count &amp;gt; 0, `% Expressing` &amp;gt; 1) %&amp;gt;% 
+  ggplot(aes(x=cluster, y = Gene, color = count, size = `% Expressing`)) + 
+  geom_point() + 
+  cowplot::theme_cowplot() + 
+  theme(axis.line  = element_blank()) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+  ylab(&amp;#39;&amp;#39;) +
+  theme(axis.ticks = element_blank()) +
+  scale_color_gradientn(colours = viridis::viridis(20), limits = c(0,4), oob = scales::squish, name = &amp;#39;log2 (count + 1)&amp;#39;)
+
+plot_grid(tree_plot, dotplot, nrow = 1, rel_widths = c(0.5,2), align = &amp;#39;h&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/././post/2020-03-23-Clustered-Dot-Plots-in-the-ggverse_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;768&#34; /&gt;
+(ignore the fact that the genes are &lt;strong&gt;NOT&lt;/strong&gt; reordered - I’ll get there. This was just to check if the dendrogram would line up with the genes. It doesn’t line up. Boo.)&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;how-do-we-do-better&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;How do we do better?&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;cowplot&lt;/code&gt; has a &lt;code&gt;scale&lt;/code&gt; function. If you fool around you can get it quite close! Let’s also use the &lt;code&gt;ddata$labels$label&lt;/code&gt; dendrogram gene order to reorder the genes in the dotplot (see how I’ve turned Gene into a factor in the &lt;code&gt;mutate&lt;/code&gt; block). I’m also going to SQUEEZE the plots together with a cowplot trick of adding a fake plot in between and giving it a negative distance.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;dotplot &amp;lt;- gene_cluster %&amp;gt;% filter(Gene %in% markers) %&amp;gt;% 
+  mutate(`% Expressing` = (cell_exp_ct/cell_ct) * 100,
+         Gene = factor(Gene, levels = ddata$labels$label)) %&amp;gt;% 
+  #filter(count &amp;gt; 0, `% Expressing` &amp;gt; 1) %&amp;gt;% 
+  ggplot(aes(x=cluster, y = Gene, color = count, size = `% Expressing`)) + 
+  geom_point() + 
+  cowplot::theme_cowplot() + 
+  theme(axis.line  = element_blank()) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+  ylab(&amp;#39;&amp;#39;) +
+  theme(axis.ticks = element_blank()) +
+  scale_color_gradientn(colours = viridis::viridis(20), limits = c(0,4), oob = scales::squish, name = &amp;#39;log2 (count + 1)&amp;#39;)
+
+plot_grid(tree_plot, NULL, dotplot, nrow = 1, rel_widths = c(0.5,-0.1, 2), align = &amp;#39;h&amp;#39;, scale = c(1.06,1, 1))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/././post/2020-03-23-Clustered-Dot-Plots-in-the-ggverse_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;1152&#34; /&gt;
+This isn’t ideal as this requires you to fiddle with scale every time.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;how-can-we-do-even-better&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;How can we do EVEN better?&lt;/h1&gt;
+&lt;p&gt;After some googling I discovered this faaaabulous stackoverflow post: &lt;a href=&#34;https://stackoverflow.com/questions/42047896/joining-a-dendrogram-and-a-heatmap&#34; class=&#34;uri&#34;&gt;https://stackoverflow.com/questions/42047896/joining-a-dendrogram-and-a-heatmap&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;I’ve largely copied and pasted chunks from it.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;######################
+# this is cribbed from 
+# https://stackoverflow.com/questions/42047896/joining-a-dendrogram-and-a-heatmap
+# to align dendrogram with dotplot
+ddata &amp;lt;- dendro_data(ddgram, type = &amp;#39;rectangle&amp;#39;) # extract into lists of data
+gene_pos_table &amp;lt;- with(
+  ddata$labels, 
+  data.frame(y_center = x, gene = as.character(label), height = 1))
+# axis munging &amp;lt;- This is where the magic happens
+gene_axis_limits &amp;lt;- with(
+  gene_pos_table, 
+  c(min(y_center - 0.5 * height), max(y_center + 0.5 * height))) +  0.1 * c(-1, 1)
+
+ddata &amp;lt;- with(
+  segment(ddata), 
+  data.frame(x = y, y = x, xend = yend, yend = xend))
+
+fancy_tree_plot &amp;lt;-  ggplot((ddata)) + geom_segment(aes(x = x, y = y, xend = xend, yend = yend)) + 
+  scale_x_reverse(expand = c(0, 0.5)) + 
+  scale_y_continuous(breaks = gene_pos_table$y_center, 
+                     labels = gene_pos_table$gene, 
+                     limits = gene_axis_limits, 
+                     expand = c(0, 0)) + 
+  labs(x = &amp;quot;Distance&amp;quot;, y = &amp;quot;&amp;quot;, colour = &amp;quot;&amp;quot;, size = &amp;quot;&amp;quot;) +
+  theme_dendro() 
+
+dotplot &amp;lt;- gene_cluster %&amp;gt;% filter(Gene %in% markers) %&amp;gt;% 
+  mutate(`% Expressing` = (cell_exp_ct/cell_ct) * 100,
+         Gene = factor(Gene, levels = gene_pos_table$gene)) %&amp;gt;% 
+  filter(count &amp;gt; 0, `% Expressing` &amp;gt; 1) %&amp;gt;% 
+  ggplot(aes(x=cluster, y = Gene, color = count, size = `% Expressing`)) + 
+  geom_point() + 
+  cowplot::theme_cowplot() + 
+  theme(axis.line  = element_blank()) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+  ylab(&amp;#39;&amp;#39;) +
+  theme(axis.ticks = element_blank()) +
+  scale_color_gradientn(colours = viridis::viridis(20), limits = c(0,4), oob = scales::squish, name = &amp;#39;log2 (count + 1)&amp;#39;)
+#################################################
+
+plot_grid(fancy_tree_plot, NULL, dotplot, nrow = 1, rel_widths = c(0.5,-0.1, 2), align = &amp;#39;h&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/././post/2020-03-23-Clustered-Dot-Plots-in-the-ggverse_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;1152&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Boom &lt;em&gt;almost&lt;/em&gt; done!&lt;/p&gt;
+&lt;div id=&#34;one-more-adjust&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;One more adjust&lt;/h2&gt;
+&lt;p&gt;Let’s move the gene names to the right side with &lt;code&gt;scale_y_discrete(position = &amp;quot;right&amp;quot;)&lt;/code&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;dotplot &amp;lt;- gene_cluster %&amp;gt;% filter(Gene %in% markers) %&amp;gt;% 
+  mutate(`% Expressing` = (cell_exp_ct/cell_ct) * 100,
+         Gene = factor(Gene, levels = gene_pos_table$gene)) %&amp;gt;% 
+  filter(count &amp;gt; 0, `% Expressing` &amp;gt; 1) %&amp;gt;% 
+  ggplot(aes(x=cluster, y = Gene, color = count, size = `% Expressing`)) + 
+  geom_point() + 
+  cowplot::theme_cowplot() + 
+  theme(axis.line  = element_blank()) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+  ylab(&amp;#39;&amp;#39;) +
+  theme(axis.ticks = element_blank()) +
+  scale_color_gradientn(colours = viridis::viridis(20), limits = c(0,4), oob = scales::squish, name = &amp;#39;log2 (count + 1)&amp;#39;) +
+  scale_y_discrete(position = &amp;quot;right&amp;quot;)
+#################################################
+
+plot_grid(fancy_tree_plot, NULL, dotplot, nrow = 1, rel_widths = c(0.5,-0.05, 2), align = &amp;#39;h&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/././post/2020-03-23-Clustered-Dot-Plots-in-the-ggverse_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;1152&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;downside&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Downside&lt;/h1&gt;
+&lt;p&gt;The major one is that this does not have any way displaying &lt;code&gt;ComplexHeatmap&lt;/code&gt; or &lt;code&gt;pheatmap&lt;/code&gt; like color bars to visually show categories (e.g.color bars that label the scRNA clusters by cell type). I (think) the only solution is to delve into the &lt;code&gt;ComplexHeatmap&lt;/code&gt; &lt;code&gt;cell_fun&lt;/code&gt; world. If you figure something out, let me know!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;exercises-for-the-reader&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Exercises for the reader&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Change the color scheme from &lt;code&gt;viridis&lt;/code&gt; to &lt;code&gt;magma&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Transform the plot to have clusters as rows and genes as columns&lt;/li&gt;
+&lt;li&gt;You should be able to adapt the &lt;code&gt;hclust&lt;/code&gt; code I ran above to reorder the cluster columns. Super advanced would be adding a dendrogram above the columns (I’m not certain this is possible)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Seurat FindMarker with Cluster N vs M</title>
       <link>/./post/parallel-seurat-findmarker/</link>
       <pubDate>Fri, 13 Dec 2019 00:00:00 +0000</pubDate>
@@ -3134,31 +3450,6 @@ with slower internet.&lt;/p&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://ned.nih.gov/search/&#34;&gt;NIH Phone Book&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Programming Practices</title>
-      <link>/./culture/practices/</link>
-      <pubDate>Mon, 16 Jul 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/./culture/practices/</guid>
-      <description>&lt;div id=&#34;version-tracking&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Version Tracking&lt;/h2&gt;
-&lt;p&gt;We use git.&lt;/p&gt;
-&lt;p&gt;You will use git.&lt;/p&gt;
-&lt;p&gt;You will have your own github.com (or equivalent, like gitlab) account.&lt;/p&gt;
-&lt;p&gt;Your projects will each have their own repository on github.com.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;language&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Language&lt;/h2&gt;
-&lt;p&gt;I use a combination of R, python, Snakemake, awk, and bash. I lean heavily on R to produce visualizations and interactive documents/sites and Snakemake to reproducibly process data in projects.&lt;/p&gt;
-&lt;p&gt;Projects you do with me will likely have to be written in some combination of the above languages, so they can be supported after you leave (or you’ll have to talk me into learning language X).&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;reproducibility&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Reproducibility&lt;/h2&gt;
-&lt;p&gt;Everything you do is to be written in code. The expectation is you can run (ideally one) script/Snakemake file and reproduce virtually all of the downstream analyses from the &lt;strong&gt;raw&lt;/strong&gt; data.&lt;/p&gt;
 &lt;/div&gt;
 </description>
     </item>
