@@ -128,13 +128,13 @@ library(cowplot)</code></pre>
 ## )</code></pre>
 <pre class="r"><code>gene_cluster %&gt;% sample_n(5)</code></pre>
 <pre><code>## # A tibble: 5 x 6
-##   Gene    cluster cell_ct cell_exp_ct   count Group    
-##   &lt;chr&gt;   &lt;chr&gt;     &lt;dbl&gt;       &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;    
-## 1 TOM1L2  c04        2856         479 0.186   Astrocyte
-## 2 S100A12 c15        1283           2 0.00247 Neuron   
-## 3 CARM1   c00        4178         336 0.0882  Neuron   
-## 4 MYH11   c21         297         242 1.98    Astrocyte
-## 5 TRHR    c23         138          25 0.297   Neuron</code></pre>
+##   Gene    cluster cell_ct cell_exp_ct    count Group     
+##   &lt;chr&gt;   &lt;chr&gt;     &lt;dbl&gt;       &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;     
+## 1 MYH11   c22         278           9 0.0324   Fibroblast
+## 2 CARM1   c19         922           8 0.00868  Astrocyte 
+## 3 MICA    c11        1870          22 0.0118   Astrocyte 
+## 4 SLC39A3 c02        3320           3 0.000904 Fibroblast
+## 5 DVL3    c20         336         254 1.30     Neuron</code></pre>
 <p><code>Count</code> is the mean log2 scaled counts for the gene in that cluster</p>
 <p><code>cluster</code> is the identifier for the cluster in this scRNA experiment</p>
 <p><code>cell_ct</code> is the number of cells in the cluster</p>
@@ -286,12 +286,9 @@ plot_grid(ggtree_plot, NULL, dotplot, nrow = 1, rel_widths = c(0.5,-0.05, 2), al
 <pre><code>## Scale for &#39;y&#39; is already present. Adding another scale for &#39;y&#39;, which will
 ## replace the existing scale.</code></pre>
 <pre class="r"><code>plot_grid(ggtree_plot_yset, NULL, dotplot, nrow = 1, rel_widths = c(0.5,-0.05, 2), align = &#39;h&#39;)</code></pre>
-<p><img src="/./post/2020-03-23-Clustered-Dot-Plots-in-the-ggverse_files/figure-html/unnamed-chunk-9-1.png" width="768" /></p>
-<p>The next thing is to manually tweak size with <code>cowplot</code> <code>scale</code></p>
-<p>I’m going to intentionally mess up the dendrogram so you get a taste of how it works</p>
-<pre class="r"><code>plot_grid(ggtree_plot, NULL, dotplot, nrow = 1, rel_widths = c(0.5,-0.05, 2), align = &#39;h&#39;, 
-          scale = c(0.8, 1))</code></pre>
-<p><img src="/./post/2020-03-23-Clustered-Dot-Plots-in-the-ggverse_files/figure-html/unnamed-chunk-10-1.png" width="1152" /></p>
+<p><img src="/./post/2020-03-23-Clustered-Dot-Plots-in-the-ggverse_files/figure-html/unnamed-chunk-9-1.png" width="768" />
+If you get an error about <code>ylim2</code> not being available, then you have an older version of <code>ggtree</code></p>
+<p>The next option is to manually tweak size of each object with <code>cowplot</code> <code>scale</code></p>
 </div>
 <div id="one-more-adjust" class="section level2">
 <h2>One more adjust</h2>
@@ -312,7 +309,7 @@ plot_grid(ggtree_plot, NULL, dotplot, nrow = 1, rel_widths = c(0.5,-0.05, 2), al
 #################################################
 
 plot_grid(ggtree_plot, NULL, dotplot, nrow = 1, rel_widths = c(0.5,-0.05, 2), align = &#39;h&#39;)</code></pre>
-<p><img src="/./post/2020-03-23-Clustered-Dot-Plots-in-the-ggverse_files/figure-html/unnamed-chunk-11-1.png" width="1152" /></p>
+<p><img src="/./post/2020-03-23-Clustered-Dot-Plots-in-the-ggverse_files/figure-html/unnamed-chunk-10-1.png" width="1152" /></p>
 </div>
 <div id="moonshot" class="section level2">
 <h2>Moonshot</h2>
@@ -370,7 +367,7 @@ plot_spacer() + plot_spacer() + ggtree_plot_col +
   ggtree_plot + plot_spacer() + dotplot + 
   plot_spacer() + plot_spacer() + legend + 
   plot_layout(ncol = 3, widths = c(0.7, -0.1, 4), heights = c(0.9, 0.1, -0.1, 4, 1))</code></pre>
-<p><img src="/./post/2020-03-23-Clustered-Dot-Plots-in-the-ggverse_files/figure-html/unnamed-chunk-12-1.png" width="1056" /></p>
+<p><img src="/./post/2020-03-23-Clustered-Dot-Plots-in-the-ggverse_files/figure-html/unnamed-chunk-11-1.png" width="1056" /></p>
 <p>It works! I had to switch over to the <code>patchwork</code> package to layout the gg objects, as <code>cowplot</code> was being fiddly (as Guangchuang did in his <a href="https://yulab-smu.github.io/treedata-book/chapter10.html">example</a>)</p>
 </div>
 </div>
@@ -431,5 +428,5 @@ dotplot &lt;- gene_cluster %&gt;% filter(Gene %in% markers) %&gt;%
 #################################################
 
 plot_grid(fancy_tree_plot, NULL, dotplot, nrow = 1, rel_widths = c(0.5,-0.1, 2), align = &#39;h&#39;)</code></pre>
-<p><img src="/./post/2020-03-23-Clustered-Dot-Plots-in-the-ggverse_files/figure-html/unnamed-chunk-13-1.png" width="1152" /></p>
+<p><img src="/./post/2020-03-23-Clustered-Dot-Plots-in-the-ggverse_files/figure-html/unnamed-chunk-12-1.png" width="1152" /></p>
 </div>

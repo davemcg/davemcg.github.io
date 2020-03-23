@@ -120,13 +120,13 @@ library(cowplot)&lt;/code&gt;&lt;/pre&gt;
 ## )&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gene_cluster %&amp;gt;% sample_n(5)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## # A tibble: 5 x 6
-##   Gene    cluster cell_ct cell_exp_ct   count Group    
-##   &amp;lt;chr&amp;gt;   &amp;lt;chr&amp;gt;     &amp;lt;dbl&amp;gt;       &amp;lt;dbl&amp;gt;   &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;    
-## 1 TOM1L2  c04        2856         479 0.186   Astrocyte
-## 2 S100A12 c15        1283           2 0.00247 Neuron   
-## 3 CARM1   c00        4178         336 0.0882  Neuron   
-## 4 MYH11   c21         297         242 1.98    Astrocyte
-## 5 TRHR    c23         138          25 0.297   Neuron&lt;/code&gt;&lt;/pre&gt;
+##   Gene    cluster cell_ct cell_exp_ct    count Group     
+##   &amp;lt;chr&amp;gt;   &amp;lt;chr&amp;gt;     &amp;lt;dbl&amp;gt;       &amp;lt;dbl&amp;gt;    &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;     
+## 1 MYH11   c22         278           9 0.0324   Fibroblast
+## 2 CARM1   c19         922           8 0.00868  Astrocyte 
+## 3 MICA    c11        1870          22 0.0118   Astrocyte 
+## 4 SLC39A3 c02        3320           3 0.000904 Fibroblast
+## 5 DVL3    c20         336         254 1.30     Neuron&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;code&gt;Count&lt;/code&gt; is the mean log2 scaled counts for the gene in that cluster&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;cluster&lt;/code&gt; is the identifier for the cluster in this scRNA experiment&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;cell_ct&lt;/code&gt; is the number of cells in the cluster&lt;/p&gt;
@@ -278,12 +278,9 @@ plot_grid(ggtree_plot, NULL, dotplot, nrow = 1, rel_widths = c(0.5,-0.05, 2), al
 &lt;pre&gt;&lt;code&gt;## Scale for &amp;#39;y&amp;#39; is already present. Adding another scale for &amp;#39;y&amp;#39;, which will
 ## replace the existing scale.&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot_grid(ggtree_plot_yset, NULL, dotplot, nrow = 1, rel_widths = c(0.5,-0.05, 2), align = &amp;#39;h&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/././post/2020-03-23-Clustered-Dot-Plots-in-the-ggverse_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;768&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;The next thing is to manually tweak size with &lt;code&gt;cowplot&lt;/code&gt; &lt;code&gt;scale&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;I’m going to intentionally mess up the dendrogram so you get a taste of how it works&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot_grid(ggtree_plot, NULL, dotplot, nrow = 1, rel_widths = c(0.5,-0.05, 2), align = &amp;#39;h&amp;#39;, 
-          scale = c(0.8, 1))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/././post/2020-03-23-Clustered-Dot-Plots-in-the-ggverse_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;1152&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/././post/2020-03-23-Clustered-Dot-Plots-in-the-ggverse_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;768&#34; /&gt;
+If you get an error about &lt;code&gt;ylim2&lt;/code&gt; not being available, then you have an older version of &lt;code&gt;ggtree&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;The next option is to manually tweak size of each object with &lt;code&gt;cowplot&lt;/code&gt; &lt;code&gt;scale&lt;/code&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;one-more-adjust&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;One more adjust&lt;/h2&gt;
@@ -304,7 +301,7 @@ plot_grid(ggtree_plot, NULL, dotplot, nrow = 1, rel_widths = c(0.5,-0.05, 2), al
 #################################################
 
 plot_grid(ggtree_plot, NULL, dotplot, nrow = 1, rel_widths = c(0.5,-0.05, 2), align = &amp;#39;h&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/././post/2020-03-23-Clustered-Dot-Plots-in-the-ggverse_files/figure-html/unnamed-chunk-11-1.png&#34; width=&#34;1152&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/././post/2020-03-23-Clustered-Dot-Plots-in-the-ggverse_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;1152&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;moonshot&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Moonshot&lt;/h2&gt;
@@ -362,7 +359,7 @@ plot_spacer() + plot_spacer() + ggtree_plot_col +
   ggtree_plot + plot_spacer() + dotplot + 
   plot_spacer() + plot_spacer() + legend + 
   plot_layout(ncol = 3, widths = c(0.7, -0.1, 4), heights = c(0.9, 0.1, -0.1, 4, 1))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/././post/2020-03-23-Clustered-Dot-Plots-in-the-ggverse_files/figure-html/unnamed-chunk-12-1.png&#34; width=&#34;1056&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/././post/2020-03-23-Clustered-Dot-Plots-in-the-ggverse_files/figure-html/unnamed-chunk-11-1.png&#34; width=&#34;1056&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;It works! I had to switch over to the &lt;code&gt;patchwork&lt;/code&gt; package to layout the gg objects, as &lt;code&gt;cowplot&lt;/code&gt; was being fiddly (as Guangchuang did in his &lt;a href=&#34;https://yulab-smu.github.io/treedata-book/chapter10.html&#34;&gt;example&lt;/a&gt;)&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -423,7 +420,7 @@ dotplot &amp;lt;- gene_cluster %&amp;gt;% filter(Gene %in% markers) %&amp;gt;%
 #################################################
 
 plot_grid(fancy_tree_plot, NULL, dotplot, nrow = 1, rel_widths = c(0.5,-0.1, 2), align = &amp;#39;h&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/././post/2020-03-23-Clustered-Dot-Plots-in-the-ggverse_files/figure-html/unnamed-chunk-13-1.png&#34; width=&#34;1152&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/././post/2020-03-23-Clustered-Dot-Plots-in-the-ggverse_files/figure-html/unnamed-chunk-12-1.png&#34; width=&#34;1152&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 </description>
     </item>
