@@ -18,6 +18,7 @@
       <guid>/./post/lets-plot-scrna-dotplots/</guid>
       <description>&lt;div id=&#34;TOC&#34;&gt;
 &lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#update&#34;&gt;2020 03 23 Update&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#intro&#34;&gt;Intro&lt;/a&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#example-dotplot&#34;&gt;Example dotplot&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
@@ -30,18 +31,23 @@
 &lt;li&gt;&lt;a href=&#34;#tweak-color-scaling&#34;&gt;Tweak color scaling&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#now-what&#34;&gt;Now what?&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#hey-look-ggdendro&#34;&gt;Hey look: ggdendro!&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#hey-look-ggtree&#34;&gt;Hey look: ggtree&lt;/a&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#lets-glue-them-together-with-cowplot&#34;&gt;Let’s glue them together with cowplot&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#how-do-we-do-better&#34;&gt;How do we do better?&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#how-can-we-do-even-better&#34;&gt;How can we do EVEN better?&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#two-more-tweak-options-if-you-are-having-trouble&#34;&gt;Two more tweak options if you are having trouble:&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#one-more-adjust&#34;&gt;One more adjust&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#moonshot&#34;&gt;Moonshot&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#downside&#34;&gt;Downside&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#exercises-for-the-reader&#34;&gt;Exercises for the reader&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#old-solution-kept-for-posterity&#34;&gt;OLD Solution (kept for posterity)&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 
+&lt;div id=&#34;update&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;2020 03 23 Update&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&#34;http://divingintogeneticsandgenomics.rbind.io&#34;&gt;Ming Tang&lt;/a&gt; pointed out a better way to align plots, so I have rewritten the &lt;a href=&#34;#moonshot&#34;&gt;back end&lt;/a&gt; of this post. I’ve also made a MUCH fancier plot….&lt;/p&gt;
+&lt;/div&gt;
 &lt;div id=&#34;intro&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Intro&lt;/h1&gt;
 &lt;p&gt;What’s a dotplot? Well, it is sort of like a heatmap where rows are genes and the columns are clusters (groups of related cells). Well, columns could be genes and rows could be clusters. I have seen both.&lt;/p&gt;
@@ -59,16 +65,16 @@ Figure 2D from &lt;a href=&#34;https://www.sciencedirect.com/science/article/pii
 &lt;/div&gt;
 &lt;div id=&#34;but-lets-do-this-ourself&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;But let’s do this ourself!&lt;/h1&gt;
-&lt;p&gt;This is real data, but the gene names have been randomized.&lt;/p&gt;
+&lt;p&gt;This is real data, but the gene names have been randomized. The group names are made up.&lt;/p&gt;
 &lt;p&gt;I’m providing a &lt;code&gt;tsv&lt;/code&gt; with some &lt;a href=&#34;https://www.jstatsoft.org/article/view/v059i10&#34;&gt;tidy data&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Let’s import it and see what it look like. You’ll need the three packages below installed on your computer.&lt;/p&gt;
+&lt;p&gt;Let’s import it and see what it look like. You’ll need the five packages below installed on your computer.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ── Attaching packages ───────────────────────────────────────────────────────────────────── tidyverse 1.3.0 ──&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ✓ ggplot2 3.2.1     ✓ purrr   0.3.3
+&lt;pre&gt;&lt;code&gt;## ── Attaching packages ────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.3.0 ──&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## ✓ ggplot2 3.3.0     ✓ purrr   0.3.3
 ## ✓ tibble  2.1.3     ✓ dplyr   0.8.4
 ## ✓ tidyr   1.0.2     ✓ stringr 1.4.0
 ## ✓ readr   1.3.1     ✓ forcats 0.5.0&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ── Conflicts ──────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+&lt;pre&gt;&lt;code&gt;## ── Conflicts ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggdendro)
@@ -80,28 +86,52 @@ library(cowplot)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##   behavior, execute:
 ##   theme_set(theme_cowplot())&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## ********************************************************&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gene_cluster &amp;lt;- read_tsv(&amp;#39;https://github.com/davemcg/davemcg.github.io/raw/master/content/post/scRNA_dotplot_data.tsv.gz&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggtree) # install with `devtools::install_github(&amp;quot;YuLab-SMU/ggtree&amp;quot;)` as you need a version newer than what bioconductor serves&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Registered S3 method overwritten by &amp;#39;treeio&amp;#39;:
+##   method     from
+##   root.phylo ape&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## ggtree v2.1.3  For help: https://yulab-smu.github.io/treedata-book/
+## 
+## If you use ggtree in published research, please cite the most appropriate paper(s):
+## 
+## [36m-[39m Guangchuang Yu. Using ggtree to visualize data on tree-like structures. Current Protocols in Bioinformatics, 2020, 69:e96. doi:10.1002/cpbi.96
+## [36m-[39m Guangchuang Yu, Tommy Tsan-Yuk Lam, Huachen Zhu, Yi Guan. Two methods for mapping and visualizing associated data on phylogeny using ggtree. Molecular Biology and Evolution 2018, 35(12):3041-3043. doi:10.1093/molbev/msy194
+## [36m-[39m Guangchuang Yu, David Smith, Huachen Zhu, Yi Guan, Tommy Tsan-Yuk Lam. ggtree: an R package for visualization and annotation of phylogenetic trees with their covariates and other associated data. Methods in Ecology and Evolution 2017, 8(1):28-36, doi:10.1111/2041-210X.12628&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## Attaching package: &amp;#39;ggtree&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## The following object is masked from &amp;#39;package:tidyr&amp;#39;:
+## 
+##     expand&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(patchwork) &lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## Attaching package: &amp;#39;patchwork&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## The following object is masked from &amp;#39;package:cowplot&amp;#39;:
+## 
+##     align_plots&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gene_cluster &amp;lt;- read_tsv(&amp;#39;scRNA_dotplot_data.tsv.gz&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Parsed with column specification:
 ## cols(
 ##   Gene = col_character(),
 ##   cluster = col_character(),
 ##   cell_ct = col_double(),
 ##   cell_exp_ct = col_double(),
-##   count = col_double()
+##   count = col_double(),
+##   Group = col_character()
 ## )&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gene_cluster %&amp;gt;% sample_n(5)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## # A tibble: 5 x 5
-##   Gene    cluster cell_ct cell_exp_ct   count
-##   &amp;lt;chr&amp;gt;   &amp;lt;chr&amp;gt;     &amp;lt;dbl&amp;gt;       &amp;lt;dbl&amp;gt;   &amp;lt;dbl&amp;gt;
-## 1 STAT2   c01        3532           5 0.00142
-## 2 VGLL3   c12        1789         186 0.136  
-## 3 FAM228B c17        1087         913 1.62   
-## 4 MYH11   c18        1070         236 0.266  
-## 5 RHBDD3  c05        2393           9 0.00418&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 5 x 6
+##   Gene    cluster cell_ct cell_exp_ct   count Group     
+##   &amp;lt;chr&amp;gt;   &amp;lt;chr&amp;gt;     &amp;lt;dbl&amp;gt;       &amp;lt;dbl&amp;gt;   &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;     
+## 1 STAT2   c16        1278         502 0.524   Neuron    
+## 2 VGLL3   c07        2200          22 0.0124  Astrocyte 
+## 3 SLC10A7 c15        1283          36 0.0349  Neuron    
+## 4 PAK2    c01        3532          47 0.0138  Microglia 
+## 5 ESRRA   c17        1087           4 0.00368 Fibroblast&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;code&gt;Count&lt;/code&gt; is the mean log2 scaled counts for the gene in that cluster&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;cluster&lt;/code&gt; is the identifier for the cluster in this scRNA experiment&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;cell_ct&lt;/code&gt; is the number of cells in the cluster&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;cell_exp_ct&lt;/code&gt; is the number of cells with detectable (&amp;gt;0) expression of that gene in the cluster&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Group&lt;/code&gt; is the (made up) cell types that the clusters represent&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;dotplot&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Dotplot!&lt;/h1&gt;
@@ -170,17 +200,17 @@ gene_cluster %&amp;gt;% filter(Gene %in% markers) %&amp;gt;%
 &lt;ol style=&#34;list-style-type: decimal&#34;&gt;
 &lt;li&gt;Just run &lt;code&gt;hclust&lt;/code&gt; and reorder the genes by the results with &lt;code&gt;mutate(Gene = factor(Gene, levels = YOURNEWGENEORDER)&lt;/code&gt;. This will visually (gene order) get the right result, but there’ll be no dendrogram.&lt;/li&gt;
 &lt;li&gt;Re-do this whole thing in &lt;code&gt;ComplexHeatmap&lt;/code&gt; and use the custom function &lt;a href=&#34;https://jokergoo.github.io/ComplexHeatmap-reference/book/a-single-heatmap.html#customize-the-heatmap-body&#34;&gt;cell_fun&lt;/a&gt; to hack something together. I used this once to add some text to a heatmap and it was painful enough that I would prefer not to go this route.&lt;/li&gt;
-&lt;li&gt;Keep reading&lt;/li&gt;
+&lt;li&gt;UPDATE: Ming Tang pointed out he wrote a &lt;a href=&#34;https://divingintogeneticsandgenomics.rbind.io/post/align-multiple-ggplot2-plots-by-axis/&#34;&gt;blog post&lt;/a&gt; with another solution, &lt;a href=&#34;https://guangchuangyu.github.io/software/ggtree/&#34;&gt;ggtree&lt;/a&gt; written by Guangchuang Yu&lt;/li&gt;
+&lt;li&gt;OLDER SOLUTION (see at the very end for the original solution)&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;
-&lt;div id=&#34;hey-look-ggdendro&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Hey look: ggdendro!&lt;/h1&gt;
-&lt;p&gt;&lt;a href=&#34;https://cran.r-project.org/web/packages/ggdendro/vignettes/ggdendro.html&#34; class=&#34;uri&#34;&gt;https://cran.r-project.org/web/packages/ggdendro/vignettes/ggdendro.html&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Read the &lt;code&gt;# comments&lt;/code&gt; which explain what each step is doing. This is largely copied from the &lt;code&gt;ggdendro&lt;/code&gt; vignette.&lt;/p&gt;
+&lt;div id=&#34;hey-look-ggtree&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Hey look: ggtree&lt;/h1&gt;
+&lt;p&gt;Again (as of 2020-03-22), install from devtools like this: &lt;code&gt;devtools::install_github(&amp;quot;YuLab-SMU/ggtree&amp;quot;)&lt;/code&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# make data square to calculate euclidean distance
 mat &amp;lt;- gene_cluster %&amp;gt;% 
   filter(Gene %in% markers) %&amp;gt;% 
-  select(-cell_ct, -cell_exp_ct) %&amp;gt;%  # drop unused columns to faciliate widening
+  select(-cell_ct, -cell_exp_ct, -Group) %&amp;gt;%  # drop unused columns to faciliate widening
   pivot_wider(names_from = cluster, values_from = count) %&amp;gt;% 
   data.frame() # make df as tibbles -&amp;gt; matrix annoying
 row.names(mat) &amp;lt;- mat$Gene  # put gene in `row`
@@ -189,23 +219,13 @@ clust &amp;lt;- hclust(dist(mat %&amp;gt;% as.matrix())) # hclust with distance 
 
 
 ddgram &amp;lt;- as.dendrogram(clust) # create dendrogram
-ddata &amp;lt;- dendro_data(ddgram, type = &amp;#39;rectangle&amp;#39;) # extract into lists of data
-ggplot(segment(ddata)) + 
-  geom_segment(aes(x = x, y = y, xend = xend, yend = yend)) + 
-  coord_flip() + 
-  scale_y_reverse(expand = c(0.2, 0)) +
-  theme_dendro()&lt;/code&gt;&lt;/pre&gt;
+ggtree_plot &amp;lt;- ggtree::ggtree(ddgram)
+ggtree_plot&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;/././post/2020-03-23-Clustered-Dot-Plots-in-the-ggverse_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;div id=&#34;lets-glue-them-together-with-cowplot&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Let’s glue them together with cowplot&lt;/h2&gt;
 &lt;p&gt;Notice how &lt;code&gt;rel_widths&lt;/code&gt; in &lt;code&gt;plot_grid&lt;/code&gt; is used to tweak the relative width of each plot and we are using &lt;code&gt;align&lt;/code&gt; to attempt to line the plots up.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tree_plot &amp;lt;- ggplot(segment(ddata)) + 
-  geom_segment(aes(x = x, y = y, xend = xend, yend = yend)) + 
-  coord_flip() + 
-  scale_y_reverse(expand = c(0.2, 0)) +
-  theme_dendro()
-
-dotplot &amp;lt;- gene_cluster %&amp;gt;% filter(Gene %in% markers) %&amp;gt;% 
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;dotplot &amp;lt;- gene_cluster %&amp;gt;% filter(Gene %in% markers) %&amp;gt;% 
   mutate(`% Expressing` = (cell_exp_ct/cell_ct) * 100) %&amp;gt;% 
   filter(count &amp;gt; 0, `% Expressing` &amp;gt; 1) %&amp;gt;% 
   ggplot(aes(x=cluster, y = Gene, color = count, size = `% Expressing`)) + 
@@ -217,16 +237,22 @@ dotplot &amp;lt;- gene_cluster %&amp;gt;% filter(Gene %in% markers) %&amp;gt;%
   theme(axis.ticks = element_blank()) +
   scale_color_gradientn(colours = viridis::viridis(20), limits = c(0,4), oob = scales::squish, name = &amp;#39;log2 (count + 1)&amp;#39;)
 
-plot_grid(tree_plot, dotplot, nrow = 1, rel_widths = c(0.5,2), align = &amp;#39;h&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+
+
+plot_grid(ggtree_plot, dotplot, nrow = 1, rel_widths = c(0.5,2), align = &amp;#39;h&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;/././post/2020-03-23-Clustered-Dot-Plots-in-the-ggverse_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;768&#34; /&gt;
-(ignore the fact that the genes are &lt;strong&gt;NOT&lt;/strong&gt; reordered - I’ll get there. This was just to check if the dendrogram would line up with the genes. It doesn’t line up. Boo.)&lt;/p&gt;
+(ignore the fact that the genes are &lt;strong&gt;NOT&lt;/strong&gt; reordered - I’ll get there. This was just to check if the dendrogram would line up with the genes….and it does! I’ll mention two more ways to fiddle with alignment if your own data does not line up)&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;how-do-we-do-better&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;How do we do better?&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;cowplot&lt;/code&gt; has a &lt;code&gt;scale&lt;/code&gt; function. If you fool around you can get it quite close! Let’s also use the &lt;code&gt;ddata$labels$label&lt;/code&gt; dendrogram gene order to reorder the genes in the dotplot (see how I’ve turned Gene into a factor in the &lt;code&gt;mutate&lt;/code&gt; block). I’m also going to SQUEEZE the plots together with a cowplot trick of adding a fake plot in between and giving it a negative distance.&lt;/p&gt;
+&lt;p&gt;Two things:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Reorder the genes with the hclust ordering.&lt;/li&gt;
+&lt;li&gt;I’m also going to SQUEEZE the plots together with a cowplot trick of adding a fake plot in between and giving it a negative distance.&lt;/li&gt;
+&lt;/ul&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;dotplot &amp;lt;- gene_cluster %&amp;gt;% filter(Gene %in% markers) %&amp;gt;% 
   mutate(`% Expressing` = (cell_exp_ct/cell_ct) * 100,
-         Gene = factor(Gene, levels = ddata$labels$label)) %&amp;gt;% 
+         Gene = factor(Gene, levels = clust$labels[clust$order])) %&amp;gt;% 
   #filter(count &amp;gt; 0, `% Expressing` &amp;gt; 1) %&amp;gt;% 
   ggplot(aes(x=cluster, y = Gene, color = count, size = `% Expressing`)) + 
   geom_point() + 
@@ -237,13 +263,123 @@ plot_grid(tree_plot, dotplot, nrow = 1, rel_widths = c(0.5,2), align = &amp;#39;
   theme(axis.ticks = element_blank()) +
   scale_color_gradientn(colours = viridis::viridis(20), limits = c(0,4), oob = scales::squish, name = &amp;#39;log2 (count + 1)&amp;#39;)
 
-plot_grid(tree_plot, NULL, dotplot, nrow = 1, rel_widths = c(0.5,-0.1, 2), align = &amp;#39;h&amp;#39;, scale = c(1.06,1, 1))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/././post/2020-03-23-Clustered-Dot-Plots-in-the-ggverse_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;1152&#34; /&gt;
-This isn’t ideal as this requires you to fiddle with scale every time.&lt;/p&gt;
+plot_grid(ggtree_plot, NULL, dotplot, nrow = 1, rel_widths = c(0.5,-0.05, 2), align = &amp;#39;h&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/././post/2020-03-23-Clustered-Dot-Plots-in-the-ggverse_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;768&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Boom &lt;em&gt;almost&lt;/em&gt; done!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;two-more-tweak-options-if-you-are-having-trouble&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Two more tweak options if you are having trouble:&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;scale (cowplot)&lt;/li&gt;
+&lt;li&gt;ylim2 (ggtree)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;First thing to try if the two plots don’t line up: use &lt;code&gt;ylim2&lt;/code&gt; from ggtree to adjust the size of the ggplot object as follows:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggtree_plot_yset &amp;lt;- ggtree_plot + ylim2(dotplot)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Scale for &amp;#39;y&amp;#39; is already present. Adding another scale for &amp;#39;y&amp;#39;, which will
+## replace the existing scale.&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot_grid(ggtree_plot_yset, NULL, dotplot, nrow = 1, rel_widths = c(0.5,-0.05, 2), align = &amp;#39;h&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/././post/2020-03-23-Clustered-Dot-Plots-in-the-ggverse_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;768&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;The next thing is to manually tweak size with &lt;code&gt;cowplot&lt;/code&gt; &lt;code&gt;scale&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;I’m going to intentionally mess up the dendrogram so you get a taste of how it works&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot_grid(ggtree_plot, NULL, dotplot, nrow = 1, rel_widths = c(0.5,-0.05, 2), align = &amp;#39;h&amp;#39;, 
+          scale = c(0.8, 1))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/././post/2020-03-23-Clustered-Dot-Plots-in-the-ggverse_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;1152&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;one-more-adjust&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;One more adjust&lt;/h2&gt;
+&lt;p&gt;Let’s move the gene names to the right side with &lt;code&gt;scale_y_discrete(position = &amp;quot;right&amp;quot;)&lt;/code&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;dotplot &amp;lt;- gene_cluster %&amp;gt;% filter(Gene %in% markers) %&amp;gt;% 
+  mutate(`% Expressing` = (cell_exp_ct/cell_ct) * 100,
+         Gene = factor(Gene, levels = clust$labels[clust$order])) %&amp;gt;% 
+  filter(count &amp;gt; 0, `% Expressing` &amp;gt; 1) %&amp;gt;% 
+  ggplot(aes(x=cluster, y = Gene, color = count, size = `% Expressing`)) + 
+  geom_point() + 
+  cowplot::theme_cowplot() + 
+  theme(axis.line  = element_blank()) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+  ylab(&amp;#39;&amp;#39;) +
+  theme(axis.ticks = element_blank()) +
+  scale_color_gradientn(colours = viridis::viridis(20), limits = c(0,4), oob = scales::squish, name = &amp;#39;log2 (count + 1)&amp;#39;) +
+  scale_y_discrete(position = &amp;quot;right&amp;quot;)
+#################################################
+
+plot_grid(ggtree_plot, NULL, dotplot, nrow = 1, rel_widths = c(0.5,-0.05, 2), align = &amp;#39;h&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/././post/2020-03-23-Clustered-Dot-Plots-in-the-ggverse_files/figure-html/unnamed-chunk-11-1.png&#34; width=&#34;1152&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;moonshot&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Moonshot&lt;/h2&gt;
+&lt;p&gt;With our new (thanks Ming and Guangchuang) &lt;code&gt;ggtree&lt;/code&gt; / &lt;code&gt;ylim2&lt;/code&gt; tools I’m wondering if I can get the clusters (columns) ordered by euclidean distance. Also I’m going to try to add some labels to the clusters.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# make data square to calculate euclidean distance
+mat &amp;lt;- gene_cluster %&amp;gt;% 
+  filter(Gene %in% markers) %&amp;gt;% 
+  select(-cell_ct, -cell_exp_ct, -Group) %&amp;gt;%  # drop unused columns to faciliate widening
+  pivot_wider(names_from = cluster, values_from = count) %&amp;gt;% 
+  data.frame() # make df as tibbles -&amp;gt; matrix annoying
+row.names(mat) &amp;lt;- mat$Gene  # put gene in `row`
+mat &amp;lt;- mat[,-1] #drop gene column as now in rows
+v_clust &amp;lt;- hclust(dist(mat %&amp;gt;% as.matrix() %&amp;gt;% t())) # hclust with distance matrix
+############ NOTICE THE t() above)
+
+ddgram_col &amp;lt;- as.dendrogram(v_clust)
+ggtree_plot_col &amp;lt;- ggtree(ddgram_col) + layout_dendrogram()
+
+dotplot &amp;lt;- gene_cluster %&amp;gt;% filter(Gene %in% markers) %&amp;gt;% 
+  mutate(`% Expressing` = (cell_exp_ct/cell_ct) * 100,
+         Gene = factor(Gene, levels = clust$labels[clust$order]),
+         cluster = factor(cluster, levels = v_clust$labels[v_clust$order])) %&amp;gt;% 
+  filter(count &amp;gt; 0, `% Expressing` &amp;gt; 1) %&amp;gt;% 
+  ggplot(aes(x=cluster, y = Gene, color = count, size = `% Expressing`)) + 
+  geom_point() + 
+  cowplot::theme_cowplot() + 
+  theme(axis.line  = element_blank()) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+  ylab(&amp;#39;&amp;#39;) +
+  theme(axis.ticks = element_blank()) +
+  scale_color_gradientn(colours = viridis::viridis(20), limits = c(0,4), oob = scales::squish, name = &amp;#39;log2 (count + 1)&amp;#39;) +
+  scale_y_discrete(position = &amp;quot;right&amp;quot;)
+#################################################
+ggtree_plot_col &amp;lt;- ggtree_plot_col + xlim2(dotplot)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## the plot was flipped and the x limits will be applied to y-axis&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Scale for &amp;#39;y&amp;#39; is already present. Adding another scale for &amp;#39;y&amp;#39;, which will
+## replace the existing scale.&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggtree_plot &amp;lt;- ggtree_plot + ylim2(dotplot)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Scale for &amp;#39;y&amp;#39; is already present. Adding another scale for &amp;#39;y&amp;#39;, which will
+## replace the existing scale.&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;labels &amp;lt;- ggplot(gene_cluster %&amp;gt;% 
+                   mutate(`Cell Type` = Group,
+                           cluster = factor(cluster, levels = v_clust$labels[v_clust$order])), 
+                 aes(x = cluster, y = 1, fill = `Cell Type`)) + 
+  geom_tile() + 
+  scale_fill_brewer(palette = &amp;#39;Set1&amp;#39;) + 
+  theme_nothing() +
+  xlim2(dotplot)
+
+legend &amp;lt;- plot_grid(get_legend(labels + theme(legend.position=&amp;quot;bottom&amp;quot;)))
+
+plot_spacer() + plot_spacer() + ggtree_plot_col +
+  plot_spacer() + plot_spacer() + labels + 
+  plot_spacer() + plot_spacer() + plot_spacer() +
+  ggtree_plot + plot_spacer() + dotplot + 
+  plot_spacer() + plot_spacer() + legend + 
+  plot_layout(ncol = 3, widths = c(0.7, -0.1, 4), heights = c(0.9, 0.1, -0.1, 4, 1))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/././post/2020-03-23-Clustered-Dot-Plots-in-the-ggverse_files/figure-html/unnamed-chunk-12-1.png&#34; width=&#34;1056&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;It works! I had to switch over to the &lt;code&gt;patchwork&lt;/code&gt; package to layout the gg objects, as &lt;code&gt;cowplot&lt;/code&gt; was being fiddly (as Guangchuang did in his &lt;a href=&#34;https://yulab-smu.github.io/treedata-book/chapter10.html&#34;&gt;example&lt;/a&gt;)&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id=&#34;how-can-we-do-even-better&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;How can we do EVEN better?&lt;/h1&gt;
+&lt;div id=&#34;downside&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Downside&lt;/h1&gt;
+&lt;p&gt;This has a LOT of moving parts. I’m not very confident this’ll work in 6 months (today is March 23rd 2020). But maybe I’m wrong?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;exercises-for-the-reader&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Exercises for the reader&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Change the color scheme from &lt;code&gt;viridis&lt;/code&gt; to &lt;code&gt;magma&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Transform the plot to have clusters as rows and genes as columns&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;old-solution-kept-for-posterity&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;OLD Solution (kept for posterity)&lt;/h1&gt;
+&lt;p&gt;Using &lt;a href=&#34;https://cran.r-project.org/web/packages/ggdendro/vignettes/ggdendro.html&#34;&gt;ggdendro&lt;/a&gt;!&lt;/p&gt;
 &lt;p&gt;After some googling I discovered this faaaabulous stackoverflow post: &lt;a href=&#34;https://stackoverflow.com/questions/42047896/joining-a-dendrogram-and-a-heatmap&#34; class=&#34;uri&#34;&gt;https://stackoverflow.com/questions/42047896/joining-a-dendrogram-and-a-heatmap&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;I’ve largely copied and pasted chunks from it.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;######################
@@ -287,41 +423,7 @@ dotplot &amp;lt;- gene_cluster %&amp;gt;% filter(Gene %in% markers) %&amp;gt;%
 #################################################
 
 plot_grid(fancy_tree_plot, NULL, dotplot, nrow = 1, rel_widths = c(0.5,-0.1, 2), align = &amp;#39;h&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/././post/2020-03-23-Clustered-Dot-Plots-in-the-ggverse_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;1152&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;Boom &lt;em&gt;almost&lt;/em&gt; done!&lt;/p&gt;
-&lt;div id=&#34;one-more-adjust&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;One more adjust&lt;/h2&gt;
-&lt;p&gt;Let’s move the gene names to the right side with &lt;code&gt;scale_y_discrete(position = &amp;quot;right&amp;quot;)&lt;/code&gt;&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;dotplot &amp;lt;- gene_cluster %&amp;gt;% filter(Gene %in% markers) %&amp;gt;% 
-  mutate(`% Expressing` = (cell_exp_ct/cell_ct) * 100,
-         Gene = factor(Gene, levels = gene_pos_table$gene)) %&amp;gt;% 
-  filter(count &amp;gt; 0, `% Expressing` &amp;gt; 1) %&amp;gt;% 
-  ggplot(aes(x=cluster, y = Gene, color = count, size = `% Expressing`)) + 
-  geom_point() + 
-  cowplot::theme_cowplot() + 
-  theme(axis.line  = element_blank()) +
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
-  ylab(&amp;#39;&amp;#39;) +
-  theme(axis.ticks = element_blank()) +
-  scale_color_gradientn(colours = viridis::viridis(20), limits = c(0,4), oob = scales::squish, name = &amp;#39;log2 (count + 1)&amp;#39;) +
-  scale_y_discrete(position = &amp;quot;right&amp;quot;)
-#################################################
-
-plot_grid(fancy_tree_plot, NULL, dotplot, nrow = 1, rel_widths = c(0.5,-0.05, 2), align = &amp;#39;h&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/././post/2020-03-23-Clustered-Dot-Plots-in-the-ggverse_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;1152&#34; /&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;downside&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Downside&lt;/h1&gt;
-&lt;p&gt;The major one is that this does not have any way displaying &lt;code&gt;ComplexHeatmap&lt;/code&gt; or &lt;code&gt;pheatmap&lt;/code&gt; like color bars to visually show categories (e.g.color bars that label the scRNA clusters by cell type). I (think) the only solution is to delve into the &lt;code&gt;ComplexHeatmap&lt;/code&gt; &lt;code&gt;cell_fun&lt;/code&gt; world. If you figure something out, let me know!&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;exercises-for-the-reader&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Exercises for the reader&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;Change the color scheme from &lt;code&gt;viridis&lt;/code&gt; to &lt;code&gt;magma&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Transform the plot to have clusters as rows and genes as columns&lt;/li&gt;
-&lt;li&gt;You should be able to adapt the &lt;code&gt;hclust&lt;/code&gt; code I ran above to reorder the cluster columns. Super advanced would be adding a dendrogram above the columns (I’m not certain this is possible)&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;/././post/2020-03-23-Clustered-Dot-Plots-in-the-ggverse_files/figure-html/unnamed-chunk-13-1.png&#34; width=&#34;1152&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 </description>
     </item>
