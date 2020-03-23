@@ -22,6 +22,8 @@ output:
   blogdown::html_page:
     toc: true
 ---
+# 2020 03 23 Update
+[Ming Tang](http://divingintogeneticsandgenomics.rbind.io) pointed out a better way to align plots, so I have rewritten the [back end](#moonshot) of this post. I've also made a MUCH fancier plot....
 
 # Intro
 What's a dotplot? Well, it is sort of like a heatmap where rows are genes and the columns are clusters (groups of related cells). Well, columns could be genes and rows could be clusters. I have seen both. 
@@ -39,16 +41,18 @@ Figure 2D from [Peng et al.](https://www.sciencedirect.com/science/article/pii/S
 Easy, if you use Seurat: [https://satijalab.org/seurat/v3.0/visualization_vignette.html]()
 
 # But let's do this ourself!
-This is real data, but the gene names have been randomized. 
+This is real data, but the gene names have been randomized. The group names are made up.
 
 I'm providing a `tsv` with some [tidy data](https://www.jstatsoft.org/article/view/v059i10). 
 
-Let's import it and see what it look like. You'll need the three packages below installed on your computer.
+Let's import it and see what it look like. You'll need the five packages below installed on your computer.
 
 ```{r}
 library(tidyverse)
 library(ggdendro)
 library(cowplot)
+library(ggtree) # install with `devtools::install_github("YuLab-SMU/ggtree")` as you need a version newer than what bioconductor serves
+library(patchwork) 
 
 gene_cluster <- read_tsv('https://github.com/davemcg/davemcg.github.io/raw/master/content/post/scRNA_dotplot_data.tsv.gz')
 gene_cluster %>% sample_n(5)
@@ -61,6 +65,8 @@ gene_cluster %>% sample_n(5)
 `cell_ct` is the number of cells in the cluster
 
 `cell_exp_ct` is the number of cells with detectable (>0) expression of that gene in the cluster
+
+`Group` is the (made up) cell types that the clusters represent
 
 # Dotplot!
 
@@ -130,19 +136,20 @@ But ggplot doesn't have a built in dendrogram...so we will have to do some more 
 
 Some options:
 
-  1. Just run `hclust` and reorder the genes by the results with `mutate(Gene = factor(Gene, levels = YOURNEWGENEORDER)`. This will visually (gene order) get the right result, but there'll be no dendrogram. 
-  2. Re-do this whole thing in `ComplexHeatmap` and use the custom function [cell_fun](https://jokergoo.github.io/ComplexHeatmap-reference/book/a-single-heatmap.html#customize-the-heatmap-body) to hack something together. I used this once to add some text to a heatmap and it was painful enough that I would prefer not to go this route. 
-  3. Keep reading
+1. Just run `hclust` and reorder the genes by the results with `mutate(Gene = factor(Gene, levels = YOURNEWGENEORDER)`. This will visually (gene order) get the right result, but there'll be no dendrogram. 
+2. Re-do this whole thing in `ComplexHeatmap` and use the custom function [cell_fun](https://jokergoo.github.io/ComplexHeatmap-reference/book/a-single-heatmap.html#customize-the-heatmap-body) to hack something together. I used this once to add some text to a heatmap and it was painful enough that I would prefer not to go this route. 
+3. UPDATE: Ming Tang pointed out he wrote a [blog post](https://divingintogeneticsandgenomics.rbind.io/post/align-multiple-ggplot2-plots-by-axis/) with another solution, [ggtree](https://guangchuangyu.github.io/software/ggtree/) written by Guangchuang Yu
+4. OLDER SOLUTION (see at the very end for the original solution)
 
-# Hey look: ggdendro!
-https://cran.r-project.org/web/packages/ggdendro/vignettes/ggdendro.html
 
-Read the `# comments` which explain what each step is doing. This is largely copied from the `ggdendro` vignette.
+# Hey look: ggtree
+
+Again (as of 2020-03-22), install from devtools like this: `devtools::install_github("YuLab-SMU/ggtree")`
 ```{r}
 # make data square to calculate euclidean distance
 mat <- gene_cluster %>% 
   filter(Gene %in% markers) %>% 
-  select(-cell_ct, -cell_exp_ct) %>%  # drop unused columns to faciliate widening
+  select(-cell_ct, -cell_exp_ct, -Group) %>%  # drop unused columns to faciliate widening
   pivot_wider(names_from = cluster, values_from = count) %>% 
   data.frame() # make df as tibbles -> matrix annoying
 row.names(mat) <- mat$Gene  # put gene in `row`
@@ -151,22 +158,14 @@ clust <- hclust(dist(mat %>% as.matrix())) # hclust with distance matrix
 
 
 ddgram <- as.dendrogram(clust) # create dendrogram
-ddata <- dendro_data(ddgram, type = 'rectangle') # extract into lists of data
-ggplot(segment(ddata)) + 
-  geom_segment(aes(x = x, y = y, xend = xend, yend = yend)) + 
-  coord_flip() + 
-  scale_y_reverse(expand = c(0.2, 0)) +
-  theme_dendro()
+ggtree_plot <- ggtree::ggtree(ddgram)
+ggtree_plot
+
 ```
 
 ## Let's glue them together with cowplot
 Notice how `rel_widths` in `plot_grid` is used to tweak the relative width of each plot and we are using `align` to attempt to line the plots up.
 ```{r, fig.height=6, fig.width=8}
-tree_plot <- ggplot(segment(ddata)) + 
-  geom_segment(aes(x = x, y = y, xend = xend, yend = yend)) + 
-  coord_flip() + 
-  scale_y_reverse(expand = c(0.2, 0)) +
-  theme_dendro()
 
 dotplot <- gene_cluster %>% filter(Gene %in% markers) %>% 
   mutate(`% Expressing` = (cell_exp_ct/cell_ct) * 100) %>% 
@@ -180,16 +179,21 @@ dotplot <- gene_cluster %>% filter(Gene %in% markers) %>%
   theme(axis.ticks = element_blank()) +
   scale_color_gradientn(colours = viridis::viridis(20), limits = c(0,4), oob = scales::squish, name = 'log2 (count + 1)')
 
-plot_grid(tree_plot, dotplot, nrow = 1, rel_widths = c(0.5,2), align = 'h')
+
+
+plot_grid(ggtree_plot, dotplot, nrow = 1, rel_widths = c(0.5,2), align = 'h')
 ```
-(ignore the fact that the genes are **NOT** reordered - I'll get there. This was just to check if the dendrogram would line up with the genes. It doesn't line up. Boo.) 
+(ignore the fact that the genes are **NOT** reordered - I'll get there. This was just to check if the dendrogram would line up with the genes....and it does! I'll mention two more ways to fiddle with alignment if your own data does not line up) 
 
 ## How do we do better?
-`cowplot` has a `scale` function. If you fool around you can get it quite close! Let's also use the `ddata$labels$label` dendrogram gene order to reorder the genes in the dotplot (see how I've turned Gene into a factor in the `mutate` block). I'm also going to SQUEEZE the plots together with a cowplot trick of adding a fake plot in between and giving it a negative distance.
-```{r, fig.height=6, fig.width=12}
+Two things:
+
+- Reorder the genes with the hclust ordering.
+- I'm also going to SQUEEZE the plots together with a cowplot trick of adding a fake plot in between and giving it a negative distance.
+```{r, fig.height=6, fig.width=8}
 dotplot <- gene_cluster %>% filter(Gene %in% markers) %>% 
   mutate(`% Expressing` = (cell_exp_ct/cell_ct) * 100,
-         Gene = factor(Gene, levels = ddata$labels$label)) %>% 
+         Gene = factor(Gene, levels = clust$labels[clust$order])) %>% 
   #filter(count > 0, `% Expressing` > 1) %>% 
   ggplot(aes(x=cluster, y = Gene, color = count, size = `% Expressing`)) + 
   geom_point() + 
@@ -200,11 +204,120 @@ dotplot <- gene_cluster %>% filter(Gene %in% markers) %>%
   theme(axis.ticks = element_blank()) +
   scale_color_gradientn(colours = viridis::viridis(20), limits = c(0,4), oob = scales::squish, name = 'log2 (count + 1)')
 
-plot_grid(tree_plot, NULL, dotplot, nrow = 1, rel_widths = c(0.5,-0.1, 2), align = 'h', scale = c(1.06,1, 1))
+plot_grid(ggtree_plot, NULL, dotplot, nrow = 1, rel_widths = c(0.5,-0.05, 2), align = 'h')
 ```
-This isn't ideal as this requires you to fiddle with scale every time.  
 
-# How can we do EVEN better?
+Boom *almost* done!
+
+## Two more tweak options if you are having trouble:
+
+- scale (cowplot)
+- ylim2 (ggtree)
+
+First thing to try if the two plots don't line up: use `ylim2` from ggtree to adjust the size of the ggplot object as follows:
+
+```{r, fig.height=6, fig.width=8}
+ggtree_plot_yset <- ggtree_plot + ylim2(dotplot)
+plot_grid(ggtree_plot_yset, NULL, dotplot, nrow = 1, rel_widths = c(0.5,-0.05, 2), align = 'h')
+```
+
+The next thing is to manually tweak size with `cowplot` `scale`
+
+I'm going to intentionally mess up the dendrogram so you get a taste of how it works
+```{r, fig.height=6, fig.width=12}
+plot_grid(ggtree_plot, NULL, dotplot, nrow = 1, rel_widths = c(0.5,-0.05, 2), align = 'h', 
+          scale = c(0.8, 1))
+```
+
+## One more adjust
+Let's move the gene names to the right side with `scale_y_discrete(position = "right")`
+```{r, fig.height=6, fig.width=12}
+dotplot <- gene_cluster %>% filter(Gene %in% markers) %>% 
+  mutate(`% Expressing` = (cell_exp_ct/cell_ct) * 100,
+         Gene = factor(Gene, levels = clust$labels[clust$order])) %>% 
+  filter(count > 0, `% Expressing` > 1) %>% 
+  ggplot(aes(x=cluster, y = Gene, color = count, size = `% Expressing`)) + 
+  geom_point() + 
+  cowplot::theme_cowplot() + 
+  theme(axis.line  = element_blank()) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+  ylab('') +
+  theme(axis.ticks = element_blank()) +
+  scale_color_gradientn(colours = viridis::viridis(20), limits = c(0,4), oob = scales::squish, name = 'log2 (count + 1)') +
+  scale_y_discrete(position = "right")
+#################################################
+
+plot_grid(ggtree_plot, NULL, dotplot, nrow = 1, rel_widths = c(0.5,-0.05, 2), align = 'h')
+```
+
+## Moonshot
+With our new (thanks Ming and Guangchuang) `ggtree` / `ylim2` tools I'm wondering if I can get the clusters (columns) ordered by euclidean distance. Also I'm going to try to add some labels to the clusters. 
+```{r, fig.height=11, fig.width=11}
+# make data square to calculate euclidean distance
+mat <- gene_cluster %>% 
+  filter(Gene %in% markers) %>% 
+  select(-cell_ct, -cell_exp_ct, -Group) %>%  # drop unused columns to faciliate widening
+  pivot_wider(names_from = cluster, values_from = count) %>% 
+  data.frame() # make df as tibbles -> matrix annoying
+row.names(mat) <- mat$Gene  # put gene in `row`
+mat <- mat[,-1] #drop gene column as now in rows
+v_clust <- hclust(dist(mat %>% as.matrix() %>% t())) # hclust with distance matrix
+############ NOTICE THE t() above)
+
+ddgram_col <- as.dendrogram(v_clust)
+ggtree_plot_col <- ggtree(ddgram_col) + layout_dendrogram()
+
+dotplot <- gene_cluster %>% filter(Gene %in% markers) %>% 
+  mutate(`% Expressing` = (cell_exp_ct/cell_ct) * 100,
+         Gene = factor(Gene, levels = clust$labels[clust$order]),
+         cluster = factor(cluster, levels = v_clust$labels[v_clust$order])) %>% 
+  filter(count > 0, `% Expressing` > 1) %>% 
+  ggplot(aes(x=cluster, y = Gene, color = count, size = `% Expressing`)) + 
+  geom_point() + 
+  cowplot::theme_cowplot() + 
+  theme(axis.line  = element_blank()) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+  ylab('') +
+  theme(axis.ticks = element_blank()) +
+  scale_color_gradientn(colours = viridis::viridis(20), limits = c(0,4), oob = scales::squish, name = 'log2 (count + 1)') +
+  scale_y_discrete(position = "right")
+#################################################
+ggtree_plot_col <- ggtree_plot_col + xlim2(dotplot)
+ggtree_plot <- ggtree_plot + ylim2(dotplot)
+
+labels <- ggplot(gene_cluster %>% 
+                   mutate(`Cell Type` = Group,
+                           cluster = factor(cluster, levels = v_clust$labels[v_clust$order])), 
+                 aes(x = cluster, y = 1, fill = `Cell Type`)) + 
+  geom_tile() + 
+  scale_fill_brewer(palette = 'Set1') + 
+  theme_nothing() +
+  xlim2(dotplot)
+
+legend <- plot_grid(get_legend(labels + theme(legend.position="bottom")))
+
+plot_spacer() + plot_spacer() + ggtree_plot_col +
+  plot_spacer() + plot_spacer() + labels + 
+  plot_spacer() + plot_spacer() + plot_spacer() +
+  ggtree_plot + plot_spacer() + dotplot + 
+  plot_spacer() + plot_spacer() + legend + 
+  plot_layout(ncol = 3, widths = c(0.7, -0.1, 4), heights = c(0.9, 0.1, -0.1, 4, 1))
+
+```
+
+It works! I had to switch over to the `patchwork` package to layout the gg objects, as `cowplot` was being fiddly (as Guangchuang did in his [example](https://yulab-smu.github.io/treedata-book/chapter10.html))
+
+# Downside
+This has a LOT of moving parts. I'm not very confident this'll work in 6 months (today is March 23rd 2020). But maybe I'm wrong?
+
+# Exercises for the reader
+
+- Change the color scheme from `viridis` to `magma`
+- Transform the plot to have clusters as rows and genes as columns
+
+# OLD Solution (kept for posterity)
+
+Using [ggdendro](https://cran.r-project.org/web/packages/ggdendro/vignettes/ggdendro.html)!
 
 After some googling I discovered this faaaabulous stackoverflow post: https://stackoverflow.com/questions/42047896/joining-a-dendrogram-and-a-heatmap
 
@@ -252,37 +365,3 @@ dotplot <- gene_cluster %>% filter(Gene %in% markers) %>%
 
 plot_grid(fancy_tree_plot, NULL, dotplot, nrow = 1, rel_widths = c(0.5,-0.1, 2), align = 'h')
 ```
-
-Boom *almost* done!
-
-## One more adjust
-Let's move the gene names to the right side with `scale_y_discrete(position = "right")`
-```{r, fig.height=6, fig.width=12}
-dotplot <- gene_cluster %>% filter(Gene %in% markers) %>% 
-  mutate(`% Expressing` = (cell_exp_ct/cell_ct) * 100,
-         Gene = factor(Gene, levels = gene_pos_table$gene)) %>% 
-  filter(count > 0, `% Expressing` > 1) %>% 
-  ggplot(aes(x=cluster, y = Gene, color = count, size = `% Expressing`)) + 
-  geom_point() + 
-  cowplot::theme_cowplot() + 
-  theme(axis.line  = element_blank()) +
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
-  ylab('') +
-  theme(axis.ticks = element_blank()) +
-  scale_color_gradientn(colours = viridis::viridis(20), limits = c(0,4), oob = scales::squish, name = 'log2 (count + 1)') +
-  scale_y_discrete(position = "right")
-#################################################
-
-plot_grid(fancy_tree_plot, NULL, dotplot, nrow = 1, rel_widths = c(0.5,-0.05, 2), align = 'h')
-```
-
-# Downside
-The major one is that this does not have any way displaying `ComplexHeatmap` or `pheatmap` like color bars to visually show categories (e.g.color bars that label the scRNA clusters by cell type). I (think) the only solution is to delve into the `ComplexHeatmap` `cell_fun` world. If you figure something out, let me know!
-
-# Exercises for the reader
-
-  - Change the color scheme from `viridis` to `magma`
-  - Transform the plot to have clusters as rows and genes as columns
-  - You should be able to adapt the `hclust` code I ran above to reorder the cluster columns. Super advanced would be adding a dendrogram above the columns (I'm not certain this is possible)
-
-

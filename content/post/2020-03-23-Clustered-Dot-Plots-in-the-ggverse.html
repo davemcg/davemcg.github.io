@@ -116,7 +116,7 @@ library(cowplot)</code></pre>
 <pre><code>## The following object is masked from &#39;package:cowplot&#39;:
 ## 
 ##     align_plots</code></pre>
-<pre class="r"><code>gene_cluster &lt;- read_tsv(&#39;scRNA_dotplot_data.tsv.gz&#39;)</code></pre>
+<pre class="r"><code>gene_cluster &lt;- read_tsv(&#39;https://github.com/davemcg/davemcg.github.io/raw/master/content/post/scRNA_dotplot_data.tsv.gz&#39;)</code></pre>
 <pre><code>## Parsed with column specification:
 ## cols(
 ##   Gene = col_character(),
@@ -128,13 +128,13 @@ library(cowplot)</code></pre>
 ## )</code></pre>
 <pre class="r"><code>gene_cluster %&gt;% sample_n(5)</code></pre>
 <pre><code>## # A tibble: 5 x 6
-##   Gene    cluster cell_ct cell_exp_ct   count Group     
-##   &lt;chr&gt;   &lt;chr&gt;     &lt;dbl&gt;       &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;     
-## 1 STAT2   c16        1278         502 0.524   Neuron    
-## 2 VGLL3   c07        2200          22 0.0124  Astrocyte 
-## 3 SLC10A7 c15        1283          36 0.0349  Neuron    
-## 4 PAK2    c01        3532          47 0.0138  Microglia 
-## 5 ESRRA   c17        1087           4 0.00368 Fibroblast</code></pre>
+##   Gene    cluster cell_ct cell_exp_ct   count Group    
+##   &lt;chr&gt;   &lt;chr&gt;     &lt;dbl&gt;       &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;    
+## 1 TOM1L2  c04        2856         479 0.186   Astrocyte
+## 2 S100A12 c15        1283           2 0.00247 Neuron   
+## 3 CARM1   c00        4178         336 0.0882  Neuron   
+## 4 MYH11   c21         297         242 1.98    Astrocyte
+## 5 TRHR    c23         138          25 0.297   Neuron</code></pre>
 <p><code>Count</code> is the mean log2 scaled counts for the gene in that cluster</p>
 <p><code>cluster</code> is the identifier for the cluster in this scRNA experiment</p>
 <p><code>cell_ct</code> is the number of cells in the cluster</p>
