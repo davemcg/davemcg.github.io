@@ -1,0 +1,233 @@
+---
+title: "Let's Plot 8: (Animated) US State Covid-19 Case Count"
+author: David McGaughey
+date: '2020-03-25'
+slug: lets-plot-covid19-animated
+categories:
+  - R
+  - Let's Plot
+tags:
+  - R
+  - Let's Plot
+header:
+  caption: ''
+  image: ''
+output:
+  blogdown::html_page:
+    toc: true
+---
+
+## Load packages, pull data
+```{r message = FALSE, warning = FALSE, results = FALSE}
+library(tidyverse)
+library(gganimate)
+library(ggrepel)
+library(pals)
+covid_time <- read_csv('https://github.com/CSSEGISandData/COVID-19/raw/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv')
+
+covid_death <- read_csv("https://github.com/CSSEGISandData/COVID-19/raw/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Deaths.csv")
+```
+
+## Write function to clean and transform
+Read the `#comments` for explanations of what is happening
+
+The data has a few inconsistencies in how states/territories are named. 
+
+It's also "wide" and needs to be tidy ("long") for plotting in `ggplot`.
+```{r}
+
+# cleaning time
+# let's make this a function as we need to do it twice
+CSSEGIS_cleaner <- function(table, type = 'Cases'){
+  # make state_table to convert two letter states (eg IA) to full name (eg Iowa)
+  state_table <- cbind(state.abb, state.name) %>% as_tibble()
+  
+  out <- table %>% 
+    pivot_longer(cols = contains('/20'), names_to = 'Date', values_to  = 'type') %>% 
+    # only keep USA, remove 0 case lines
+    filter(`Country/Region` == 'US', type > 0) %>% 
+    # extract two letter abbreviation, if used (check for comma)
+    mutate(State = case_when(grepl(',', `Province/State`) ~ str_extract(`Province/State`, ',.*') %>% 
+                               gsub('\\.| |,','',.) %>% 
+                               toupper(),
+                             TRUE ~ `Province/State`)) %>% 
+    # join abbreviation to state_table we made
+    left_join(., state_table, by = c('State' = 'state.abb')) %>% 
+    # swap in full name into State column
+    mutate(State = case_when(is.na(state.name) ~ State,
+                             TRUE ~ state.name)) %>% 
+    # fix two issues by "hand"
+    mutate(State = case_when(State == 'DC' ~ 'District of Columbia',
+                             State == 'United States Virgin Islands' ~ 'Virgin Islands',
+                             TRUE ~ State)) %>% 
+    # remove the cruise ship
+    filter(State != 'Grand Princess') %>% 
+    # crucial operation where we take the "Dups" (e.g. CA to Californai) and merge them together
+    group_by(State, Date) %>% 
+    summarise( type = sum( type )) %>% 
+    # make date a real date
+    mutate(Date = as.Date(Date,format='%m/%d/%y'))
+  colnames(out)[3] <- type
+  out
+}
+
+# run functions
+us_covid_cases_clean <- CSSEGIS_cleaner(covid_time)
+us_covid_deaths_clean <- CSSEGIS_cleaner(covid_death, 'Deaths')
+```
+
+## Plotter function
+This is a fairly complex function as it:
+
+  - overlays color lines by `top_states`, given by user, on top of all data (in gray)
+  - labels the color lines with `ggrepel` (but only at the end!)
+  - uses a `cowplot` theme, with tweaked grid lines
+  - custom x and y labels
+  - expand x lim to fit the state names
+```{r}
+
+covid19_plotter <- function(clean_data, 
+                            type = Cases, 
+                            top_states = c('Washington', 'New York', 'California'), 
+                            xlab = '', 
+                            ylab = '', 
+                            title = ''){
+  plot <- clean_data %>% 
+    filter(State %in% top_states) %>% 
+    ggplot(aes(x=Date,y= {{ type }}, 
+               group = State, 
+               color = State)) + 
+    geom_line(data = clean_data, aes(x=Date, y = {{ type }}, group = State), color = 'gray') +
+    geom_line(size = 2) +
+    ggrepel::geom_text_repel(data = clean_data %>% 
+                               filter(State %in% top_states) %>% 
+                               filter(Date == max(Date)),
+                             aes(x=Date, y = {{ type }}, label = State),
+                             direction = 'y',
+                             nudge_x = 3,
+                             hjust = 0,
+                             segment.size = 0.5,
+                             force = 2,
+                             size = 5) +
+    cowplot::theme_cowplot() +
+    guides(color=FALSE) +
+    scale_color_manual(values = as.vector(pals::glasbey(26))) +
+    theme(panel.grid.major.y = element_line(linetype = 'dotted')) +
+    scale_y_continuous(breaks = c(10, 100,1000,5000,10000, 20000)) +
+    scale_x_date(date_labels = "%b %d",
+                 breaks = c(as.Date('2020-02-01'),
+                            as.Date('2020-02-15'),
+                            as.Date('2020-03-01'),
+                            as.Date('2020-03-15'),
+                            max(clean_data$Date)
+                 )) +
+    expand_limits(x = c(min(clean_data$Date),max(clean_data$Date) + 7 )) +
+    ylab(ylab) + xlab(xlab) + ggtitle(title)
+  plot
+}
+```
+
+## Cases by state 
+Important: We don't know the denominator (number of tests given). So New York *may* not have far more cases than the rest of the other states, but rather they are testing far more. 
+
+I've overwritten the function-specified y scale (hence the ggplot warning). 
+```{r}
+# find top n (by sum cases) states
+top_n <- us_covid_cases_clean %>% filter(Date == max(Date)) %>% arrange(-Cases) %>% head(9) %>% pull(State)
+
+covid19_plotter(us_covid_cases_clean, 
+                type = Cases,
+                top_states = top_n,
+                ylab = 'Cases',
+                xlab = paste0('\nData Pulled ', Sys.Date(), ' from Johns Hopkins CSSE'),
+                title = 'USA COVID-19 Cases by State') +
+  scale_y_continuous(breaks = c(100,1000,5000,10000, 20000))
+```
+
+### Cases, with log10 scaling
+Log10 scaling helps see the trends between states better
+```{r}
+covid19_plotter(us_covid_cases_clean, 
+                type = Cases,
+                top_states = top_n,
+                ylab = 'log10 Cases',
+                xlab = paste0('\nData Pulled ', Sys.Date(), ' from Johns Hopkins CSSE'),
+                title = 'USA COVID-19 Cases by State') +
+  coord_trans(y = 'log10')
+```
+
+## Deaths by state (log10 scaled)
+Deaths may be a more useful metric as states may not be testing at comparable rates
+```{r}
+# find top n (by sum cases) states
+top_n <- us_covid_deaths_clean %>% filter(Date == max(Date)) %>% arrange(-Deaths) %>% head(9) %>% pull(State)
+covid19_plotter(us_covid_deaths_clean, 
+                type = Deaths,
+                top_states = top_n,
+                ylab = 'log10 Deaths',
+                xlab = paste0('\nData Pulled ', Sys.Date(), ' from Johns Hopkins CSSE'),
+                title = 'COVID-19 Deaths by US State') +
+  coord_trans(y = 'log10')
+```
+
+## Deaths by state, animated
+This is *extremely* easy to do, thanks to the `gganimate` [package](https://gganimate.com) (written by Thomas Lin Pedersen)
+```{r message = FALSE, warning = FALSE}
+animation <- covid19_plotter(us_covid_deaths_clean, 
+                             type = Deaths,
+                             top_states = top_n,
+                             ylab = 'log10 Deaths',
+                             xlab = paste0('\nData Pulled ', Sys.Date(), ' from Johns Hopkins CSSE'),
+                             title = 'COVID-19 Deaths by US State') + 
+  coord_trans(y = 'log10') +
+  transition_reveal(Date) + 
+  view_follow(fixed_y = TRUE, 
+              fixed_x = TRUE)
+
+animate(animation, 
+        height = 400, 
+        width = 600, 
+        end_pause = 30)
+
+```
+
+## Shift plot
+Many visualizations (e.g. NYTimes, Financial Times) are plotting (on the x-axis) *Days Past n Deaths* so you can better compare the infection rate across different locations.
+
+Let's give that a try.
+
+We need to find, for each state, the first `Date` where `Deaths` >= 5.
+
+We see the state of Washington was about two weeks ahead of everyone else
+```{r}
+day0 <- us_covid_deaths_clean %>% 
+  filter(Deaths >= 5) %>% 
+  group_by(State) %>% 
+  summarise(Day0 = min(Date))
+day0 %>% arrange(Day0)
+```
+## Transform Data and plot
+We filter the data to only retain States with >= 5 deaths
+
+Then we left join the `day0` table we made above
+
+We do math (yes, R can do math on Dates), creating a new `Date` where `Date` = `Date` - `Day0` (`Day0` is first Date in state where COVID19 deaths >= 5).
+
+As our new Date is a time, we swap out the x axis scale for `scale_x_continuous`
+
+We see that New York, Georgia, Lousiana, and New Jersey are on similar trajectories.
+```{r}
+covid19_plotter(us_covid_deaths_clean %>% 
+                  filter(State %in% day0$State,
+                         Deaths >= 5) %>% 
+                  left_join(., day0, by = 'State') %>% 
+                  mutate(Date = Date - Day0), 
+                type = Deaths,
+                top_states = top_n,
+                ylab = 'log10 Deaths',
+                xlab = paste0('Days Past 5 Deaths\n\nData Pulled ', Sys.Date(), ' from Johns Hopkins CSSE'),
+                title = 'COVID-19 Deaths by US State') +
+  scale_x_continuous() + 
+  coord_trans(y = 'log10') +
+  scale_y_continuous(breaks = c(10,25, 50,75, 100))
+```

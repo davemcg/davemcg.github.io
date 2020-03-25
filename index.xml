@@ -11,6 +11,255 @@
     <atom:link href="//" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Let&#39;s Plot 8: (Animated) US State Covid-19 Case Count</title>
+      <link>/./post/lets-plot-covid19-animated/</link>
+      <pubDate>Wed, 25 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/lets-plot-covid19-animated/</guid>
+      <description>&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#load-packages-pull-data&#34;&gt;Load packages, pull data&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#write-function-to-clean-and-transform&#34;&gt;Write function to clean and transform&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#plotter-function&#34;&gt;Plotter function&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#cases-by-state&#34;&gt;Cases by state&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#cases-with-log10-scaling&#34;&gt;Cases, with log10 scaling&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#deaths-by-state-log10-scaled&#34;&gt;Deaths by state (log10 scaled)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#deaths-by-state-animated&#34;&gt;Deaths by state, animated&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#shift-plot&#34;&gt;Shift plot&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#transform-data-and-plot&#34;&gt;Transform Data and plot&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;load-packages-pull-data&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Load packages, pull data&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)
+library(gganimate)
+library(ggrepel)
+library(pals)
+covid_time &amp;lt;- read_csv(&amp;#39;https://github.com/CSSEGISandData/COVID-19/raw/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv&amp;#39;)
+
+covid_death &amp;lt;- read_csv(&amp;quot;https://github.com/CSSEGISandData/COVID-19/raw/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Deaths.csv&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;write-function-to-clean-and-transform&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Write function to clean and transform&lt;/h2&gt;
+&lt;p&gt;Read the &lt;code&gt;#comments&lt;/code&gt; for explanations of what is happening&lt;/p&gt;
+&lt;p&gt;The data has a few inconsistencies in how states/territories are named.&lt;/p&gt;
+&lt;p&gt;It’s also “wide” and needs to be tidy (“long”) for plotting in &lt;code&gt;ggplot&lt;/code&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# cleaning time
+# let&amp;#39;s make this a function as we need to do it twice
+CSSEGIS_cleaner &amp;lt;- function(table, type = &amp;#39;Cases&amp;#39;){
+  # make state_table to convert two letter states (eg IA) to full name (eg Iowa)
+  state_table &amp;lt;- cbind(state.abb, state.name) %&amp;gt;% as_tibble()
+  
+  out &amp;lt;- table %&amp;gt;% 
+    pivot_longer(cols = contains(&amp;#39;/20&amp;#39;), names_to = &amp;#39;Date&amp;#39;, values_to  = &amp;#39;type&amp;#39;) %&amp;gt;% 
+    # only keep USA, remove 0 case lines
+    filter(`Country/Region` == &amp;#39;US&amp;#39;, type &amp;gt; 0) %&amp;gt;% 
+    # extract two letter abbreviation, if used (check for comma)
+    mutate(State = case_when(grepl(&amp;#39;,&amp;#39;, `Province/State`) ~ str_extract(`Province/State`, &amp;#39;,.*&amp;#39;) %&amp;gt;% 
+                               gsub(&amp;#39;\\.| |,&amp;#39;,&amp;#39;&amp;#39;,.) %&amp;gt;% 
+                               toupper(),
+                             TRUE ~ `Province/State`)) %&amp;gt;% 
+    # join abbreviation to state_table we made
+    left_join(., state_table, by = c(&amp;#39;State&amp;#39; = &amp;#39;state.abb&amp;#39;)) %&amp;gt;% 
+    # swap in full name into State column
+    mutate(State = case_when(is.na(state.name) ~ State,
+                             TRUE ~ state.name)) %&amp;gt;% 
+    # fix two issues by &amp;quot;hand&amp;quot;
+    mutate(State = case_when(State == &amp;#39;DC&amp;#39; ~ &amp;#39;District of Columbia&amp;#39;,
+                             State == &amp;#39;United States Virgin Islands&amp;#39; ~ &amp;#39;Virgin Islands&amp;#39;,
+                             TRUE ~ State)) %&amp;gt;% 
+    # remove the cruise ship
+    filter(State != &amp;#39;Grand Princess&amp;#39;) %&amp;gt;% 
+    # crucial operation where we take the &amp;quot;Dups&amp;quot; (e.g. CA to Californai) and merge them together
+    group_by(State, Date) %&amp;gt;% 
+    summarise( type = sum( type )) %&amp;gt;% 
+    # make date a real date
+    mutate(Date = as.Date(Date,format=&amp;#39;%m/%d/%y&amp;#39;))
+  colnames(out)[3] &amp;lt;- type
+  out
+}
+
+# run functions
+us_covid_cases_clean &amp;lt;- CSSEGIS_cleaner(covid_time)
+us_covid_deaths_clean &amp;lt;- CSSEGIS_cleaner(covid_death, &amp;#39;Deaths&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;plotter-function&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Plotter function&lt;/h2&gt;
+&lt;p&gt;This is a fairly complex function as it:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;overlays color lines by &lt;code&gt;top_states&lt;/code&gt;, given by user, on top of all data (in gray)&lt;/li&gt;
+&lt;li&gt;labels the color lines with &lt;code&gt;ggrepel&lt;/code&gt; (but only at the end!)&lt;/li&gt;
+&lt;li&gt;uses a &lt;code&gt;cowplot&lt;/code&gt; theme, with tweaked grid lines&lt;/li&gt;
+&lt;li&gt;custom x and y labels&lt;/li&gt;
+&lt;li&gt;expand x lim to fit the state names&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;covid19_plotter &amp;lt;- function(clean_data, 
+                            type = Cases, 
+                            top_states = c(&amp;#39;Washington&amp;#39;, &amp;#39;New York&amp;#39;, &amp;#39;California&amp;#39;), 
+                            xlab = &amp;#39;&amp;#39;, 
+                            ylab = &amp;#39;&amp;#39;, 
+                            title = &amp;#39;&amp;#39;){
+  plot &amp;lt;- clean_data %&amp;gt;% 
+    filter(State %in% top_states) %&amp;gt;% 
+    ggplot(aes(x=Date,y= {{ type }}, 
+               group = State, 
+               color = State)) + 
+    geom_line(data = clean_data, aes(x=Date, y = {{ type }}, group = State), color = &amp;#39;gray&amp;#39;) +
+    geom_line(size = 2) +
+    ggrepel::geom_text_repel(data = clean_data %&amp;gt;% 
+                               filter(State %in% top_states) %&amp;gt;% 
+                               filter(Date == max(Date)),
+                             aes(x=Date, y = {{ type }}, label = State),
+                             direction = &amp;#39;y&amp;#39;,
+                             nudge_x = 3,
+                             hjust = 0,
+                             segment.size = 0.5,
+                             force = 2,
+                             size = 5) +
+    cowplot::theme_cowplot() +
+    guides(color=FALSE) +
+    scale_color_manual(values = as.vector(pals::glasbey(26))) +
+    theme(panel.grid.major.y = element_line(linetype = &amp;#39;dotted&amp;#39;)) +
+    scale_y_continuous(breaks = c(10, 100,1000,5000,10000, 20000)) +
+    scale_x_date(date_labels = &amp;quot;%b %d&amp;quot;,
+                 breaks = c(as.Date(&amp;#39;2020-02-01&amp;#39;),
+                            as.Date(&amp;#39;2020-02-15&amp;#39;),
+                            as.Date(&amp;#39;2020-03-01&amp;#39;),
+                            as.Date(&amp;#39;2020-03-15&amp;#39;),
+                            max(clean_data$Date)
+                 )) +
+    expand_limits(x = c(min(clean_data$Date),max(clean_data$Date) + 7 )) +
+    ylab(ylab) + xlab(xlab) + ggtitle(title)
+  plot
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;cases-by-state&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Cases by state&lt;/h2&gt;
+&lt;p&gt;Important: We don’t know the denominator (number of tests given). So New York &lt;em&gt;may&lt;/em&gt; not have far more cases than the rest of the other states, but rather they are testing far more.&lt;/p&gt;
+&lt;p&gt;I’ve overwritten the function-specified y scale (hence the ggplot warning).&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# find top n (by sum cases) states
+top_n &amp;lt;- us_covid_cases_clean %&amp;gt;% filter(Date == max(Date)) %&amp;gt;% arrange(-Cases) %&amp;gt;% head(9) %&amp;gt;% pull(State)
+
+covid19_plotter(us_covid_cases_clean, 
+                type = Cases,
+                top_states = top_n,
+                ylab = &amp;#39;Cases&amp;#39;,
+                xlab = paste0(&amp;#39;\nData Pulled &amp;#39;, Sys.Date(), &amp;#39; from Johns Hopkins CSSE&amp;#39;),
+                title = &amp;#39;USA COVID-19 Cases by State&amp;#39;) +
+  scale_y_continuous(breaks = c(100,1000,5000,10000, 20000))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Scale for &amp;#39;y&amp;#39; is already present. Adding another scale for &amp;#39;y&amp;#39;, which will
+## replace the existing scale.&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/././post/2020-03-25-Animated-Covid19-Line-Plot_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;div id=&#34;cases-with-log10-scaling&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Cases, with log10 scaling&lt;/h3&gt;
+&lt;p&gt;Log10 scaling helps see the trends between states better&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;covid19_plotter(us_covid_cases_clean, 
+                type = Cases,
+                top_states = top_n,
+                ylab = &amp;#39;log10 Cases&amp;#39;,
+                xlab = paste0(&amp;#39;\nData Pulled &amp;#39;, Sys.Date(), &amp;#39; from Johns Hopkins CSSE&amp;#39;),
+                title = &amp;#39;USA COVID-19 Cases by State&amp;#39;) +
+  coord_trans(y = &amp;#39;log10&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/././post/2020-03-25-Animated-Covid19-Line-Plot_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;deaths-by-state-log10-scaled&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Deaths by state (log10 scaled)&lt;/h2&gt;
+&lt;p&gt;Deaths may be a more useful metric as states may not be testing at comparable rates&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# find top n (by sum cases) states
+top_n &amp;lt;- us_covid_deaths_clean %&amp;gt;% filter(Date == max(Date)) %&amp;gt;% arrange(-Deaths) %&amp;gt;% head(9) %&amp;gt;% pull(State)
+covid19_plotter(us_covid_deaths_clean, 
+                type = Deaths,
+                top_states = top_n,
+                ylab = &amp;#39;log10 Deaths&amp;#39;,
+                xlab = paste0(&amp;#39;\nData Pulled &amp;#39;, Sys.Date(), &amp;#39; from Johns Hopkins CSSE&amp;#39;),
+                title = &amp;#39;COVID-19 Deaths by US State&amp;#39;) +
+  coord_trans(y = &amp;#39;log10&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/././post/2020-03-25-Animated-Covid19-Line-Plot_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;deaths-by-state-animated&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Deaths by state, animated&lt;/h2&gt;
+&lt;p&gt;This is &lt;em&gt;extremely&lt;/em&gt; easy to do, thanks to the &lt;code&gt;gganimate&lt;/code&gt; &lt;a href=&#34;https://gganimate.com&#34;&gt;package&lt;/a&gt; (written by Thomas Lin Pedersen)&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;animation &amp;lt;- covid19_plotter(us_covid_deaths_clean, 
+                             type = Deaths,
+                             top_states = top_n,
+                             ylab = &amp;#39;log10 Deaths&amp;#39;,
+                             xlab = paste0(&amp;#39;\nData Pulled &amp;#39;, Sys.Date(), &amp;#39; from Johns Hopkins CSSE&amp;#39;),
+                             title = &amp;#39;COVID-19 Deaths by US State&amp;#39;) + 
+  coord_trans(y = &amp;#39;log10&amp;#39;) +
+  transition_reveal(Date) + 
+  view_follow(fixed_y = TRUE, 
+              fixed_x = TRUE)
+
+animate(animation, 
+        height = 400, 
+        width = 600, 
+        end_pause = 30)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/././post/2020-03-25-Animated-Covid19-Line-Plot_files/figure-html/unnamed-chunk-7-1.gif&#34; /&gt;&lt;!-- --&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;shift-plot&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Shift plot&lt;/h2&gt;
+&lt;p&gt;Many visualizations (e.g. NYTimes, Financial Times) are plotting (on the x-axis) &lt;em&gt;Days Past n Deaths&lt;/em&gt; so you can better compare the infection rate across different locations.&lt;/p&gt;
+&lt;p&gt;Let’s give that a try.&lt;/p&gt;
+&lt;p&gt;We need to find, for each state, the first &lt;code&gt;Date&lt;/code&gt; where &lt;code&gt;Deaths&lt;/code&gt; &amp;gt;= 5.&lt;/p&gt;
+&lt;p&gt;We see the state of Washington was about two weeks ahead of everyone else&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;day0 &amp;lt;- us_covid_deaths_clean %&amp;gt;% 
+  filter(Deaths &amp;gt;= 5) %&amp;gt;% 
+  group_by(State) %&amp;gt;% 
+  summarise(Day0 = min(Date))
+day0 %&amp;gt;% arrange(Day0)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 16 x 2
+##    State         Day0      
+##    &amp;lt;chr&amp;gt;         &amp;lt;date&amp;gt;    
+##  1 Washington    2020-03-02
+##  2 California    2020-03-14
+##  3 Florida       2020-03-16
+##  4 New York      2020-03-16
+##  5 Georgia       2020-03-19
+##  6 Louisiana     2020-03-19
+##  7 New Jersey    2020-03-19
+##  8 Texas         2020-03-19
+##  9 Illinois      2020-03-20
+## 10 Michigan      2020-03-21
+## 11 Oregon        2020-03-21
+## 12 Colorado      2020-03-22
+## 13 Connecticut   2020-03-22
+## 14 Indiana       2020-03-22
+## 15 Massachusetts 2020-03-22
+## 16 Virginia      2020-03-22&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;transform-data-and-plot&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Transform Data and plot&lt;/h2&gt;
+&lt;p&gt;We filter the data to only retain States with &amp;gt;= 5 deaths&lt;/p&gt;
+&lt;p&gt;Then we left join the &lt;code&gt;day0&lt;/code&gt; table we made above&lt;/p&gt;
+&lt;p&gt;We do math (yes, R can do math on Dates), creating a new &lt;code&gt;Date&lt;/code&gt; where &lt;code&gt;Date&lt;/code&gt; = &lt;code&gt;Date&lt;/code&gt; - &lt;code&gt;Day0&lt;/code&gt; (&lt;code&gt;Day0&lt;/code&gt; is first Date in state where COVID19 deaths &amp;gt;= 5).&lt;/p&gt;
+&lt;p&gt;As our new Date is a time, we swap out the x axis scale for &lt;code&gt;scale_x_continuous&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;We see that New York, Georgia, Lousiana, and New Jersey are on similar trajectories.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;covid19_plotter(us_covid_deaths_clean %&amp;gt;% 
+                  filter(State %in% day0$State,
+                         Deaths &amp;gt;= 5) %&amp;gt;% 
+                  left_join(., day0, by = &amp;#39;State&amp;#39;) %&amp;gt;% 
+                  mutate(Date = Date - Day0), 
+                type = Deaths,
+                top_states = top_n,
+                ylab = &amp;#39;log10 Deaths&amp;#39;,
+                xlab = paste0(&amp;#39;Days Past 5 Deaths\n\nData Pulled &amp;#39;, Sys.Date(), &amp;#39; from Johns Hopkins CSSE&amp;#39;),
+                title = &amp;#39;COVID-19 Deaths by US State&amp;#39;) +
+  scale_x_continuous() + 
+  coord_trans(y = &amp;#39;log10&amp;#39;) +
+  scale_y_continuous(breaks = c(10,25, 50,75, 100))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Scale for &amp;#39;x&amp;#39; is already present. Adding another scale for &amp;#39;x&amp;#39;, which will
+## replace the existing scale.&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Scale for &amp;#39;y&amp;#39; is already present. Adding another scale for &amp;#39;y&amp;#39;, which will
+## replace the existing scale.&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/././post/2020-03-25-Animated-Covid19-Line-Plot_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Let&#39;s Plot 7: Clustered Dot Plots in the ggverse</title>
       <link>/./post/lets-plot-scrna-dotplots/</link>
       <pubDate>Mon, 23 Mar 2020 00:00:00 +0000</pubDate>
@@ -3480,75 +3729,6 @@ with slower internet.&lt;/p&gt;
 &lt;p&gt;Workflows are … CWL?&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;This seems targeted towards a pretty small audience - people running huge compute platforms?&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;** I guess you could use this for a smaller projects and deploy to cloud, but I would think that the overhead of learning this would likely overwhelm the potential savings relative to using Snakemake / Docker / Conda. **&lt;/p&gt;
-&lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Onboarding</title>
-      <link>/./culture/onboarding/</link>
-      <pubDate>Mon, 16 Jul 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/./culture/onboarding/</guid>
-      <description>&lt;div id=&#34;points-of-contact&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Points of Contact&lt;/h2&gt;
-&lt;p&gt;Administrative&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Jairo Meija
-&lt;ul&gt;
-&lt;li&gt;Jairo (“Hi Ro”) is the administrative manager for the OGVFB&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Cathy Geer
-&lt;ul&gt;
-&lt;li&gt;The administrative assistant for the branch&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;If you have any admin-related questions, shoot one of them an email or go chat with them in 10N109&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Brian Brooks&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;The boss. He is the NEI Clinical Director and the head of the OGVFB&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Tiziana Cogliati&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;She is Brian’s lab manager. She does the day to day administration of Brian’s research lab and guides the research along with Brian&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Cesar Perez-Gonzalez&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;NEI Scientific Program Administrator&lt;/li&gt;
-&lt;li&gt;He is the guy who oversees all trainees in NEI&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div id=&#34;before-the-first-day&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Before the first day&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;You should have made an appointment to get a NIH badge
-&lt;ul&gt;
-&lt;li&gt;If this doesn’t make any sense then &lt;a href=&#34;https://ned.nih.gov/search/ViewDetails.aspx?NIHID=0011297616&#34;&gt;contact&lt;/a&gt; Jairo&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div id=&#34;nih-training&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;NIH training&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.safetytraining.nih.gov/TrainingRequirements.aspx&#34; class=&#34;uri&#34;&gt;https://www.safetytraining.nih.gov/TrainingRequirements.aspx&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;only required if you &lt;strong&gt;know&lt;/strong&gt; you are doing bench work&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://irtsectraining.nih.gov&#34; class=&#34;uri&#34;&gt;https://irtsectraining.nih.gov&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://researchethics.od.nih.gov&#34; class=&#34;uri&#34;&gt;https://researchethics.od.nih.gov&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div id=&#34;nih-resources&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;NIH resources&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://neinet.nei.nih.gov&#34;&gt;NEI Intranet&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;only available after you get here&lt;/li&gt;
-&lt;li&gt;internal page with org chart, meeting scheduling, etc et.c&lt;/li&gt;
-&lt;li&gt;(&lt;a href=&#34;http://neinet.nei.nih.gov/intramural/FellowsStudents/postbac.asp&#34; class=&#34;uri&#34;&gt;http://neinet.nei.nih.gov/intramural/FellowsStudents/postbac.asp&lt;/a&gt;)&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://ned.nih.gov/search/&#34;&gt;NIH Phone Book&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
 &lt;/div&gt;
 </description>
     </item>
