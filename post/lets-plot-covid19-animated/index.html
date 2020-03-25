@@ -526,6 +526,7 @@ covid19_plotter(us_covid_deaths_clean,
                              xlab = paste0(&#39;\nData Pulled &#39;, Sys.Date(), &#39; from Johns Hopkins CSSE&#39;),
                              title = &#39;COVID-19 Deaths by US State&#39;) + 
   coord_trans(y = &#39;log10&#39;) +
+   scale_y_continuous(breaks = c(10,25, 50,75, 100)) +
   transition_reveal(Date) + 
   view_follow(fixed_y = TRUE, 
               fixed_x = TRUE)

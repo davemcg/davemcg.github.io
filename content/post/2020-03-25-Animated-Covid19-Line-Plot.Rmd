@@ -180,6 +180,7 @@ animation <- covid19_plotter(us_covid_deaths_clean,
                              xlab = paste0('\nData Pulled ', Sys.Date(), ' from Johns Hopkins CSSE'),
                              title = 'COVID-19 Deaths by US State') + 
   coord_trans(y = 'log10') +
+   scale_y_continuous(breaks = c(10,25, 50,75, 100)) +
   transition_reveal(Date) + 
   view_follow(fixed_y = TRUE, 
               fixed_x = TRUE)
