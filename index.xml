@@ -18,8 +18,9 @@
       <guid>/./post/lets-plot-covid19-animated/</guid>
       <description>&lt;div id=&#34;TOC&#34;&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#load-packages-pull-data&#34;&gt;Load packages, pull data&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#write-function-to-clean-and-transform&#34;&gt;Write function to clean and transform&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#load-packages-pull-data&#34;&gt;Load packages, pull data&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#update&#34;&gt;2020 03 30 Update&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#plotter-function&#34;&gt;Plotter function&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#cases-by-state&#34;&gt;Cases by state&lt;/a&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#cases-with-log10-scaling&#34;&gt;Cases, with log10 scaling&lt;/a&gt;&lt;/li&gt;
@@ -33,57 +34,67 @@
 
 &lt;div id=&#34;load-packages-pull-data&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Load packages, pull data&lt;/h2&gt;
+&lt;div id=&#34;update&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;2020 03 30 Update&lt;/h3&gt;
+&lt;p&gt;CSSE changed their data structure, so I’ve updated the document.&lt;/p&gt;
+&lt;p&gt;I was using their “time series” data, but they dropped the US-specific (with state by state info) documents.&lt;/p&gt;
+&lt;p&gt;So we’ll have change the import process to use their “daily reports”&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)
 library(gganimate)
 library(ggrepel)
 library(pals)
-covid_time &amp;lt;- read_csv(&amp;#39;https://github.com/CSSEGISandData/COVID-19/raw/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv&amp;#39;)
+library(purrr)
 
-covid_death &amp;lt;- read_csv(&amp;quot;https://github.com/CSSEGISandData/COVID-19/raw/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Deaths.csv&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;write-function-to-clean-and-transform&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Write function to clean and transform&lt;/h2&gt;
-&lt;p&gt;Read the &lt;code&gt;#comments&lt;/code&gt; for explanations of what is happening&lt;/p&gt;
-&lt;p&gt;The data has a few inconsistencies in how states/territories are named.&lt;/p&gt;
-&lt;p&gt;It’s also “wide” and needs to be tidy (“long”) for plotting in &lt;code&gt;ggplot&lt;/code&gt;.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# cleaning time
-# let&amp;#39;s make this a function as we need to do it twice
-CSSEGIS_cleaner &amp;lt;- function(table, type = &amp;#39;Cases&amp;#39;){
-  # make state_table to convert two letter states (eg IA) to full name (eg Iowa)
-  state_table &amp;lt;- cbind(state.abb, state.name) %&amp;gt;% as_tibble()
-  
-  out &amp;lt;- table %&amp;gt;% 
-    pivot_longer(cols = contains(&amp;#39;/20&amp;#39;), names_to = &amp;#39;Date&amp;#39;, values_to  = &amp;#39;type&amp;#39;) %&amp;gt;% 
-    # only keep USA, remove 0 case lines
-    filter(`Country/Region` == &amp;#39;US&amp;#39;, type &amp;gt; 0) %&amp;gt;% 
-    # extract two letter abbreviation, if used (check for comma)
-    mutate(State = case_when(grepl(&amp;#39;,&amp;#39;, `Province/State`) ~ str_extract(`Province/State`, &amp;#39;,.*&amp;#39;) %&amp;gt;% 
-                               gsub(&amp;#39;\\.| |,&amp;#39;,&amp;#39;&amp;#39;,.) %&amp;gt;% 
-                               toupper(),
-                             TRUE ~ `Province/State`)) %&amp;gt;% 
-    # join abbreviation to state_table we made
-    left_join(., state_table, by = c(&amp;#39;State&amp;#39; = &amp;#39;state.abb&amp;#39;)) %&amp;gt;% 
-    # swap in full name into State column
-    mutate(State = case_when(is.na(state.name) ~ State,
-                             TRUE ~ state.name)) %&amp;gt;% 
-    # fix two issues by &amp;quot;hand&amp;quot;
-    mutate(State = case_when(State == &amp;#39;DC&amp;#39; ~ &amp;#39;District of Columbia&amp;#39;,
-                             State == &amp;#39;United States Virgin Islands&amp;#39; ~ &amp;#39;Virgin Islands&amp;#39;,
-                             TRUE ~ State)) %&amp;gt;% 
-    # remove the cruise ship
-    filter(State != &amp;#39;Grand Princess&amp;#39;) %&amp;gt;% 
-    # crucial operation where we take the &amp;quot;Dups&amp;quot; (e.g. CA to Californai) and merge them together
-    group_by(State, Date) %&amp;gt;% 
-    summarise( type = sum( type )) %&amp;gt;% 
-    # make date a real date
-    mutate(Date = as.Date(Date,format=&amp;#39;%m/%d/%y&amp;#39;))
-  colnames(out)[3] &amp;lt;- type
-  out
+start = as.Date(&amp;#39;2020-01-22&amp;#39;)
+end = as.Date(&amp;#39;2020-03-29&amp;#39;)
+files = paste0(&amp;#39;https://github.com/CSSEGISandData/COVID-19/raw/master/csse_covid_19_data/csse_covid_19_daily_reports/&amp;#39;, format(seq(start,end, by = 1), format = &amp;#39;%m-%d-%Y&amp;#39;), &amp;#39;.csv&amp;#39;)
+
+names(files) &amp;lt;- format(seq(start,end, by = 1))
+
+# use purrr to read_csv each individual file and make a list of data frames
+covid_data_list &amp;lt;- files %&amp;gt;% 
+  map(read_csv)
+
+# loop through each data frame and clean column names
+# add date to each individual data frame
+# only keep state, country, confirmed, deaths, recovered
+for (set in names(covid_data_list)){
+  colnames(covid_data_list[[set]]) &amp;lt;- gsub(&amp;#39;/&amp;#39;,&amp;#39;_&amp;#39;, colnames(covid_data_list[[set]]))
+  covid_data_list[[set]] &amp;lt;- covid_data_list[[set]] %&amp;gt;% 
+    select(Province_State, Country_Region, Confirmed, Deaths, Recovered) %&amp;gt;% 
+    mutate(Date = as.Date(set))
 }
 
-# run functions
-us_covid_cases_clean &amp;lt;- CSSEGIS_cleaner(covid_time)
-us_covid_deaths_clean &amp;lt;- CSSEGIS_cleaner(covid_death, &amp;#39;Deaths&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+# collapse list of data frames to one data frame
+covid_data &amp;lt;- covid_data_list %&amp;gt;% 
+  bind_rows()
+
+# make state_table to convert two letter states (eg IA) to full name (eg Iowa)
+state_table &amp;lt;- cbind(state.abb, state.name) %&amp;gt;% as_tibble()
+# make USA data and clean up state names and remove the cruise ship data (and a few &amp;quot;Wuhan Evacuee&amp;quot;)
+covid_usa &amp;lt;- covid_data %&amp;gt;% 
+  filter(Country_Region == &amp;#39;US&amp;#39;) %&amp;gt;%
+  filter(!grepl(&amp;#39;Diamond|Princess|Wuhan&amp;#39;, Province_State)) %&amp;gt;% 
+  mutate(State = case_when(grepl(&amp;#39;,&amp;#39;, `Province_State`) ~ str_extract(`Province_State`, &amp;#39;, \\w\\w&amp;#39;) %&amp;gt;% 
+                             gsub(&amp;#39;\\.| |,&amp;#39;,&amp;#39;&amp;#39;,.) %&amp;gt;% 
+                             toupper(),
+                           TRUE ~ `Province_State`)) %&amp;gt;% 
+  left_join(., state_table, by = c(&amp;#39;State&amp;#39; = &amp;#39;state.abb&amp;#39;)) %&amp;gt;% 
+  # swap in full name into State column
+  mutate(State = case_when(is.na(state.name) ~ State,
+                           TRUE ~ state.name)) %&amp;gt;% 
+  # fix a few more inconsistent state / region names
+  mutate(State = case_when(State == &amp;#39;DC&amp;#39; ~ &amp;#39;District of Columbia&amp;#39;,
+                           State == &amp;#39;United States Virgin Islands&amp;#39; ~ &amp;#39;Virgin Islands&amp;#39;,
+                           State == &amp;#39;Chicago&amp;#39; ~ &amp;#39;Illinois&amp;#39;,
+                           TRUE ~ State)) %&amp;gt;% 
+  filter(!State %in% c(&amp;#39;US&amp;#39;,&amp;#39;Recovered&amp;#39;)) %&amp;gt;% 
+  group_by(State, Date) %&amp;gt;% 
+  # now summarise &amp;quot;redundant&amp;quot; state entries into
+  summarise(Cases = sum(Confirmed),
+            Deaths = sum(Deaths),
+            Recovered = sum(Recovered))&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;plotter-function&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Plotter function&lt;/h2&gt;
@@ -122,7 +133,7 @@ us_covid_deaths_clean &amp;lt;- CSSEGIS_cleaner(covid_death, &amp;#39;Deaths&amp
     guides(color=FALSE) +
     scale_color_manual(values = as.vector(pals::glasbey(26))) +
     theme(panel.grid.major.y = element_line(linetype = &amp;#39;dotted&amp;#39;)) +
-    scale_y_continuous(breaks = c(10, 100,1000,5000,10000, 20000)) +
+    scale_y_continuous(breaks = c(10, 100,1000,5000,10000, 20000, 60000)) +
     scale_x_date(date_labels = &amp;quot;%b %d&amp;quot;,
                  breaks = c(as.Date(&amp;#39;2020-02-01&amp;#39;),
                             as.Date(&amp;#39;2020-02-15&amp;#39;),
@@ -140,56 +151,59 @@ us_covid_deaths_clean &amp;lt;- CSSEGIS_cleaner(covid_death, &amp;#39;Deaths&amp
 &lt;p&gt;Important: We don’t know the denominator (number of tests given). So New York &lt;em&gt;may&lt;/em&gt; not have far more cases than the rest of the other states, but rather they are testing far more.&lt;/p&gt;
 &lt;p&gt;I’ve overwritten the function-specified y scale (hence the ggplot warning).&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# find top n (by sum cases) states
-top_n &amp;lt;- us_covid_cases_clean %&amp;gt;% filter(Date == max(Date)) %&amp;gt;% arrange(-Cases) %&amp;gt;% head(9) %&amp;gt;% pull(State)
+top_n &amp;lt;- covid_usa %&amp;gt;% filter(Date == max(Date)) %&amp;gt;% arrange(-Cases) %&amp;gt;% head(9) %&amp;gt;% pull(State)
 
-covid19_plotter(us_covid_cases_clean, 
+covid19_plotter(covid_usa, 
                 type = Cases,
                 top_states = top_n,
                 ylab = &amp;#39;Cases&amp;#39;,
                 xlab = paste0(&amp;#39;\nData Pulled &amp;#39;, Sys.Date(), &amp;#39; from Johns Hopkins CSSE&amp;#39;),
                 title = &amp;#39;USA COVID-19 Cases by State&amp;#39;) +
-  scale_y_continuous(breaks = c(100,1000,5000,10000, 20000))&lt;/code&gt;&lt;/pre&gt;
+  scale_y_continuous(breaks = c(100,1000,5000,10000, 20000, 40000, 60000))&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Scale for &amp;#39;y&amp;#39; is already present. Adding another scale for &amp;#39;y&amp;#39;, which will
 ## replace the existing scale.&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/././post/2020-03-25-Animated-Covid19-Line-Plot_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/././post/2020-03-25-Animated-Covid19-Line-Plot_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;div id=&#34;cases-with-log10-scaling&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Cases, with log10 scaling&lt;/h3&gt;
 &lt;p&gt;Log10 scaling helps see the trends between states better&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;covid19_plotter(us_covid_cases_clean, 
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;covid19_plotter(covid_usa %&amp;gt;% filter(Cases &amp;gt; 0), 
                 type = Cases,
                 top_states = top_n,
                 ylab = &amp;#39;log10 Cases&amp;#39;,
                 xlab = paste0(&amp;#39;\nData Pulled &amp;#39;, Sys.Date(), &amp;#39; from Johns Hopkins CSSE&amp;#39;),
                 title = &amp;#39;USA COVID-19 Cases by State&amp;#39;) +
   coord_trans(y = &amp;#39;log10&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/././post/2020-03-25-Animated-Covid19-Line-Plot_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/././post/2020-03-25-Animated-Covid19-Line-Plot_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;deaths-by-state-log10-scaled&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Deaths by state (log10 scaled)&lt;/h2&gt;
 &lt;p&gt;Deaths may be a more useful metric as states may not be testing at comparable rates&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# find top n (by sum cases) states
-top_n &amp;lt;- us_covid_deaths_clean %&amp;gt;% filter(Date == max(Date)) %&amp;gt;% arrange(-Deaths) %&amp;gt;% head(9) %&amp;gt;% pull(State)
-covid19_plotter(us_covid_deaths_clean, 
+top_n &amp;lt;- covid_usa %&amp;gt;% filter(Date == max(Date)) %&amp;gt;% arrange(-Deaths) %&amp;gt;% head(9) %&amp;gt;% pull(State)
+covid19_plotter(covid_usa %&amp;gt;% filter(Deaths &amp;gt; 0), 
                 type = Deaths,
                 top_states = top_n,
-                ylab = &amp;#39;log10 Deaths&amp;#39;,
+                ylab = &amp;#39;Deaths&amp;#39;,
                 xlab = paste0(&amp;#39;\nData Pulled &amp;#39;, Sys.Date(), &amp;#39; from Johns Hopkins CSSE&amp;#39;),
                 title = &amp;#39;COVID-19 Deaths by US State&amp;#39;) +
-  coord_trans(y = &amp;#39;log10&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/././post/2020-03-25-Animated-Covid19-Line-Plot_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+  coord_trans(y = &amp;#39;log10&amp;#39;) +
+  scale_y_continuous(breaks = c(10,25, 50, 100, 250, 500, 1000))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Scale for &amp;#39;y&amp;#39; is already present. Adding another scale for &amp;#39;y&amp;#39;, which will
+## replace the existing scale.&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/././post/2020-03-25-Animated-Covid19-Line-Plot_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;deaths-by-state-animated&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Deaths by state, animated&lt;/h2&gt;
 &lt;p&gt;This is &lt;em&gt;extremely&lt;/em&gt; easy to do, thanks to the &lt;code&gt;gganimate&lt;/code&gt; &lt;a href=&#34;https://gganimate.com&#34;&gt;package&lt;/a&gt; (written by Thomas Lin Pedersen)&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;animation &amp;lt;- covid19_plotter(us_covid_deaths_clean, 
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;animation &amp;lt;- covid19_plotter(covid_usa %&amp;gt;% filter(Deaths &amp;gt; 0), 
                              type = Deaths,
                              top_states = top_n,
-                             ylab = &amp;#39;log10 Deaths&amp;#39;,
+                             ylab = &amp;#39;Deaths&amp;#39;,
                              xlab = paste0(&amp;#39;\nData Pulled &amp;#39;, Sys.Date(), &amp;#39; from Johns Hopkins CSSE&amp;#39;),
                              title = &amp;#39;COVID-19 Deaths by US State&amp;#39;) + 
   coord_trans(y = &amp;#39;log10&amp;#39;) +
-   scale_y_continuous(breaks = c(10,25, 50,75, 100)) +
+  scale_y_continuous(breaks = c(5, 10,25, 50, 100, 250, 500, 1000)) +
   transition_reveal(Date) + 
   view_follow(fixed_y = TRUE, 
               fixed_x = TRUE)
@@ -198,38 +212,33 @@ animate(animation,
         height = 400, 
         width = 600, 
         end_pause = 30)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/././post/2020-03-25-Animated-Covid19-Line-Plot_files/figure-html/unnamed-chunk-7-1.gif&#34; /&gt;&lt;!-- --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/././post/2020-03-25-Animated-Covid19-Line-Plot_files/figure-html/unnamed-chunk-6-1.gif&#34; /&gt;&lt;!-- --&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;shift-plot&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Shift plot&lt;/h2&gt;
 &lt;p&gt;Many visualizations (e.g. NYTimes, Financial Times) are plotting (on the x-axis) &lt;em&gt;Days Past n Deaths&lt;/em&gt; so you can better compare the infection rate across different locations.&lt;/p&gt;
 &lt;p&gt;Let’s give that a try.&lt;/p&gt;
 &lt;p&gt;We need to find, for each state, the first &lt;code&gt;Date&lt;/code&gt; where &lt;code&gt;Deaths&lt;/code&gt; &amp;gt;= 5.&lt;/p&gt;
-&lt;p&gt;We see the state of Washington was about two weeks ahead of everyone else&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;day0 &amp;lt;- us_covid_deaths_clean %&amp;gt;% 
+&lt;p&gt;We see the state of Washington was about two weeks ahead of anyone else&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;day0 &amp;lt;- covid_usa %&amp;gt;% 
   filter(Deaths &amp;gt;= 5) %&amp;gt;% 
   group_by(State) %&amp;gt;% 
   summarise(Day0 = min(Date))
 day0 %&amp;gt;% arrange(Day0)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## # A tibble: 16 x 2
-##    State         Day0      
-##    &amp;lt;chr&amp;gt;         &amp;lt;date&amp;gt;    
-##  1 Washington    2020-03-02
-##  2 California    2020-03-14
-##  3 Florida       2020-03-16
-##  4 New York      2020-03-16
-##  5 Georgia       2020-03-19
-##  6 Louisiana     2020-03-19
-##  7 New Jersey    2020-03-19
-##  8 Texas         2020-03-19
-##  9 Illinois      2020-03-20
-## 10 Michigan      2020-03-21
-## 11 Oregon        2020-03-21
-## 12 Colorado      2020-03-22
-## 13 Connecticut   2020-03-22
-## 14 Indiana       2020-03-22
-## 15 Massachusetts 2020-03-22
-## 16 Virginia      2020-03-22&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 37 x 2
+##    State      Day0      
+##    &amp;lt;chr&amp;gt;      &amp;lt;date&amp;gt;    
+##  1 Washington 2020-03-02
+##  2 California 2020-03-14
+##  3 Florida    2020-03-16
+##  4 New York   2020-03-16
+##  5 Georgia    2020-03-19
+##  6 Louisiana  2020-03-19
+##  7 New Jersey 2020-03-19
+##  8 Texas      2020-03-19
+##  9 Illinois   2020-03-20
+## 10 Michigan   2020-03-21
+## # … with 27 more rows&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;transform-data-and-plot&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Transform Data and plot&lt;/h2&gt;
@@ -237,25 +246,25 @@ day0 %&amp;gt;% arrange(Day0)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Then we left join the &lt;code&gt;day0&lt;/code&gt; table we made above&lt;/p&gt;
 &lt;p&gt;We do math (yes, R can do math on Dates), creating a new &lt;code&gt;Date&lt;/code&gt; where &lt;code&gt;Date&lt;/code&gt; = &lt;code&gt;Date&lt;/code&gt; - &lt;code&gt;Day0&lt;/code&gt; (&lt;code&gt;Day0&lt;/code&gt; is first Date in state where COVID19 deaths &amp;gt;= 5).&lt;/p&gt;
 &lt;p&gt;As our new Date is a time, we swap out the x axis scale for &lt;code&gt;scale_x_continuous&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;We see that New York, Georgia, Lousiana, and New Jersey are on similar trajectories.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;covid19_plotter(us_covid_deaths_clean %&amp;gt;% 
+&lt;p&gt;We see that New York, Michigan, Lousiana, and New Jersey are on similar trajectories.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;covid19_plotter(covid_usa %&amp;gt;% 
                   filter(State %in% day0$State,
                          Deaths &amp;gt;= 5) %&amp;gt;% 
                   left_join(., day0, by = &amp;#39;State&amp;#39;) %&amp;gt;% 
                   mutate(Date = Date - Day0), 
                 type = Deaths,
                 top_states = top_n,
-                ylab = &amp;#39;log10 Deaths&amp;#39;,
+                ylab = &amp;#39;Deaths&amp;#39;,
                 xlab = paste0(&amp;#39;Days Past 5 Deaths\n\nData Pulled &amp;#39;, Sys.Date(), &amp;#39; from Johns Hopkins CSSE&amp;#39;),
                 title = &amp;#39;COVID-19 Deaths by US State&amp;#39;) +
   scale_x_continuous() + 
   coord_trans(y = &amp;#39;log10&amp;#39;) +
-  scale_y_continuous(breaks = c(10,25, 50,75, 100))&lt;/code&gt;&lt;/pre&gt;
+  scale_y_continuous(breaks = c(10,25, 50, 100, 250, 500, 1000))&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Scale for &amp;#39;x&amp;#39; is already present. Adding another scale for &amp;#39;x&amp;#39;, which will
 ## replace the existing scale.&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Scale for &amp;#39;y&amp;#39; is already present. Adding another scale for &amp;#39;y&amp;#39;, which will
 ## replace the existing scale.&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/././post/2020-03-25-Animated-Covid19-Line-Plot_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/././post/2020-03-25-Animated-Covid19-Line-Plot_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 </description>
     </item>

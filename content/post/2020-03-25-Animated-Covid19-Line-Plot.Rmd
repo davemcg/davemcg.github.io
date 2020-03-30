@@ -18,72 +18,81 @@ output:
 ---
 
 ## Load packages, pull data
+
+### 2020 03 30 Update
+CSSE changed their data structure, so I've updated the document.
+
+I was using their "time series" data, but they dropped the US-specific (with state by state info) documents. 
+
+So we'll have change the import process to use their "daily reports"
+
 ```{r message = FALSE, warning = FALSE, results = FALSE}
 library(tidyverse)
 library(gganimate)
 library(ggrepel)
 library(pals)
-covid_time <- read_csv('https://github.com/CSSEGISandData/COVID-19/raw/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv')
+library(purrr)
 
-covid_death <- read_csv("https://github.com/CSSEGISandData/COVID-19/raw/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Deaths.csv")
-```
+start = as.Date('2020-01-22')
+end = as.Date('2020-03-29')
+files = paste0('https://github.com/CSSEGISandData/COVID-19/raw/master/csse_covid_19_data/csse_covid_19_daily_reports/', format(seq(start,end, by = 1), format = '%m-%d-%Y'), '.csv')
 
-## Write function to clean and transform
-Read the `#comments` for explanations of what is happening
+names(files) <- format(seq(start,end, by = 1))
 
-The data has a few inconsistencies in how states/territories are named. 
+# use purrr to read_csv each individual file and make a list of data frames
+covid_data_list <- files %>% 
+  map(read_csv)
 
-It's also "wide" and needs to be tidy ("long") for plotting in `ggplot`.
-```{r}
-
-# cleaning time
-# let's make this a function as we need to do it twice
-CSSEGIS_cleaner <- function(table, type = 'Cases'){
-  # make state_table to convert two letter states (eg IA) to full name (eg Iowa)
-  state_table <- cbind(state.abb, state.name) %>% as_tibble()
-  
-  out <- table %>% 
-    pivot_longer(cols = contains('/20'), names_to = 'Date', values_to  = 'type') %>% 
-    # only keep USA, remove 0 case lines
-    filter(`Country/Region` == 'US', type > 0) %>% 
-    # extract two letter abbreviation, if used (check for comma)
-    mutate(State = case_when(grepl(',', `Province/State`) ~ str_extract(`Province/State`, ',.*') %>% 
-                               gsub('\\.| |,','',.) %>% 
-                               toupper(),
-                             TRUE ~ `Province/State`)) %>% 
-    # join abbreviation to state_table we made
-    left_join(., state_table, by = c('State' = 'state.abb')) %>% 
-    # swap in full name into State column
-    mutate(State = case_when(is.na(state.name) ~ State,
-                             TRUE ~ state.name)) %>% 
-    # fix two issues by "hand"
-    mutate(State = case_when(State == 'DC' ~ 'District of Columbia',
-                             State == 'United States Virgin Islands' ~ 'Virgin Islands',
-                             TRUE ~ State)) %>% 
-    # remove the cruise ship
-    filter(State != 'Grand Princess') %>% 
-    # crucial operation where we take the "Dups" (e.g. CA to Californai) and merge them together
-    group_by(State, Date) %>% 
-    summarise( type = sum( type )) %>% 
-    # make date a real date
-    mutate(Date = as.Date(Date,format='%m/%d/%y'))
-  colnames(out)[3] <- type
-  out
+# loop through each data frame and clean column names
+# add date to each individual data frame
+# only keep state, country, confirmed, deaths, recovered
+for (set in names(covid_data_list)){
+  colnames(covid_data_list[[set]]) <- gsub('/','_', colnames(covid_data_list[[set]]))
+  covid_data_list[[set]] <- covid_data_list[[set]] %>% 
+    select(Province_State, Country_Region, Confirmed, Deaths, Recovered) %>% 
+    mutate(Date = as.Date(set))
 }
 
-# run functions
-us_covid_cases_clean <- CSSEGIS_cleaner(covid_time)
-us_covid_deaths_clean <- CSSEGIS_cleaner(covid_death, 'Deaths')
+# collapse list of data frames to one data frame
+covid_data <- covid_data_list %>% 
+  bind_rows()
+
+# make state_table to convert two letter states (eg IA) to full name (eg Iowa)
+state_table <- cbind(state.abb, state.name) %>% as_tibble()
+# make USA data and clean up state names and remove the cruise ship data (and a few "Wuhan Evacuee")
+covid_usa <- covid_data %>% 
+  filter(Country_Region == 'US') %>%
+  filter(!grepl('Diamond|Princess|Wuhan', Province_State)) %>% 
+  mutate(State = case_when(grepl(',', `Province_State`) ~ str_extract(`Province_State`, ', \\w\\w') %>% 
+                             gsub('\\.| |,','',.) %>% 
+                             toupper(),
+                           TRUE ~ `Province_State`)) %>% 
+  left_join(., state_table, by = c('State' = 'state.abb')) %>% 
+  # swap in full name into State column
+  mutate(State = case_when(is.na(state.name) ~ State,
+                           TRUE ~ state.name)) %>% 
+  # fix a few more inconsistent state / region names
+  mutate(State = case_when(State == 'DC' ~ 'District of Columbia',
+                           State == 'United States Virgin Islands' ~ 'Virgin Islands',
+                           State == 'Chicago' ~ 'Illinois',
+                           TRUE ~ State)) %>% 
+  filter(!State %in% c('US','Recovered')) %>% 
+  group_by(State, Date) %>% 
+  # now summarise "redundant" state entries into
+  summarise(Cases = sum(Confirmed),
+            Deaths = sum(Deaths),
+            Recovered = sum(Recovered))
 ```
+
 
 ## Plotter function
 This is a fairly complex function as it:
 
-  - overlays color lines by `top_states`, given by user, on top of all data (in gray)
-  - labels the color lines with `ggrepel` (but only at the end!)
-  - uses a `cowplot` theme, with tweaked grid lines
-  - custom x and y labels
-  - expand x lim to fit the state names
+- overlays color lines by `top_states`, given by user, on top of all data (in gray)
+- labels the color lines with `ggrepel` (but only at the end!)
+- uses a `cowplot` theme, with tweaked grid lines
+- custom x and y labels
+- expand x lim to fit the state names
 ```{r}
 
 covid19_plotter <- function(clean_data, 
@@ -113,7 +122,7 @@ covid19_plotter <- function(clean_data,
     guides(color=FALSE) +
     scale_color_manual(values = as.vector(pals::glasbey(26))) +
     theme(panel.grid.major.y = element_line(linetype = 'dotted')) +
-    scale_y_continuous(breaks = c(10, 100,1000,5000,10000, 20000)) +
+    scale_y_continuous(breaks = c(10, 100,1000,5000,10000, 20000, 60000)) +
     scale_x_date(date_labels = "%b %d",
                  breaks = c(as.Date('2020-02-01'),
                             as.Date('2020-02-15'),
@@ -133,21 +142,21 @@ Important: We don't know the denominator (number of tests given). So New York *m
 I've overwritten the function-specified y scale (hence the ggplot warning). 
 ```{r}
 # find top n (by sum cases) states
-top_n <- us_covid_cases_clean %>% filter(Date == max(Date)) %>% arrange(-Cases) %>% head(9) %>% pull(State)
+top_n <- covid_usa %>% filter(Date == max(Date)) %>% arrange(-Cases) %>% head(9) %>% pull(State)
 
-covid19_plotter(us_covid_cases_clean, 
+covid19_plotter(covid_usa, 
                 type = Cases,
                 top_states = top_n,
                 ylab = 'Cases',
                 xlab = paste0('\nData Pulled ', Sys.Date(), ' from Johns Hopkins CSSE'),
                 title = 'USA COVID-19 Cases by State') +
-  scale_y_continuous(breaks = c(100,1000,5000,10000, 20000))
+  scale_y_continuous(breaks = c(100,1000,5000,10000, 20000, 40000, 60000))
 ```
 
 ### Cases, with log10 scaling
 Log10 scaling helps see the trends between states better
 ```{r}
-covid19_plotter(us_covid_cases_clean, 
+covid19_plotter(covid_usa %>% filter(Cases > 0), 
                 type = Cases,
                 top_states = top_n,
                 ylab = 'log10 Cases',
@@ -160,27 +169,28 @@ covid19_plotter(us_covid_cases_clean,
 Deaths may be a more useful metric as states may not be testing at comparable rates
 ```{r}
 # find top n (by sum cases) states
-top_n <- us_covid_deaths_clean %>% filter(Date == max(Date)) %>% arrange(-Deaths) %>% head(9) %>% pull(State)
-covid19_plotter(us_covid_deaths_clean, 
+top_n <- covid_usa %>% filter(Date == max(Date)) %>% arrange(-Deaths) %>% head(9) %>% pull(State)
+covid19_plotter(covid_usa %>% filter(Deaths > 0), 
                 type = Deaths,
                 top_states = top_n,
-                ylab = 'log10 Deaths',
+                ylab = 'Deaths',
                 xlab = paste0('\nData Pulled ', Sys.Date(), ' from Johns Hopkins CSSE'),
                 title = 'COVID-19 Deaths by US State') +
-  coord_trans(y = 'log10')
+  coord_trans(y = 'log10') +
+  scale_y_continuous(breaks = c(10,25, 50, 100, 250, 500, 1000))
 ```
 
 ## Deaths by state, animated
 This is *extremely* easy to do, thanks to the `gganimate` [package](https://gganimate.com) (written by Thomas Lin Pedersen)
 ```{r message = FALSE, warning = FALSE}
-animation <- covid19_plotter(us_covid_deaths_clean, 
+animation <- covid19_plotter(covid_usa %>% filter(Deaths > 0), 
                              type = Deaths,
                              top_states = top_n,
-                             ylab = 'log10 Deaths',
+                             ylab = 'Deaths',
                              xlab = paste0('\nData Pulled ', Sys.Date(), ' from Johns Hopkins CSSE'),
                              title = 'COVID-19 Deaths by US State') + 
   coord_trans(y = 'log10') +
-   scale_y_continuous(breaks = c(10,25, 50,75, 100)) +
+  scale_y_continuous(breaks = c(5, 10,25, 50, 100, 250, 500, 1000)) +
   transition_reveal(Date) + 
   view_follow(fixed_y = TRUE, 
               fixed_x = TRUE)
@@ -199,9 +209,9 @@ Let's give that a try.
 
 We need to find, for each state, the first `Date` where `Deaths` >= 5.
 
-We see the state of Washington was about two weeks ahead of everyone else
+We see the state of Washington was about two weeks ahead of anyone else
 ```{r}
-day0 <- us_covid_deaths_clean %>% 
+day0 <- covid_usa %>% 
   filter(Deaths >= 5) %>% 
   group_by(State) %>% 
   summarise(Day0 = min(Date))
@@ -216,19 +226,19 @@ We do math (yes, R can do math on Dates), creating a new `Date` where `Date` = `
 
 As our new Date is a time, we swap out the x axis scale for `scale_x_continuous`
 
-We see that New York, Georgia, Lousiana, and New Jersey are on similar trajectories.
+We see that New York, Michigan, Lousiana, and New Jersey are on similar trajectories.
 ```{r}
-covid19_plotter(us_covid_deaths_clean %>% 
+covid19_plotter(covid_usa %>% 
                   filter(State %in% day0$State,
                          Deaths >= 5) %>% 
                   left_join(., day0, by = 'State') %>% 
                   mutate(Date = Date - Day0), 
                 type = Deaths,
                 top_states = top_n,
-                ylab = 'log10 Deaths',
+                ylab = 'Deaths',
                 xlab = paste0('Days Past 5 Deaths\n\nData Pulled ', Sys.Date(), ' from Johns Hopkins CSSE'),
                 title = 'COVID-19 Deaths by US State') +
   scale_x_continuous() + 
   coord_trans(y = 'log10') +
-  scale_y_continuous(breaks = c(10,25, 50,75, 100))
+  scale_y_continuous(breaks = c(10,25, 50, 100, 250, 500, 1000))
 ```

@@ -18,8 +18,8 @@
       <pubDate>Wed, 25 Mar 2020 00:00:00 +0000</pubDate>
       
       <guid>/./post/lets-plot-covid19-animated/</guid>
-      <description>Load packages, pull data Write function to clean and transform Plotter function Cases by state Cases, with log10 scaling  Deaths by state (log10 scaled) Deaths by state, animated Shift plot Transform Data and plot   Load packages, pull data library(tidyverse) library(gganimate) library(ggrepel) library(pals) covid_time &amp;lt;- read_csv(&amp;#39;https://github.com/CSSEGISandData/COVID-19/raw/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv&amp;#39;) covid_death &amp;lt;- read_csv(&amp;quot;https://github.com/CSSEGISandData/COVID-19/raw/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Deaths.csv&amp;quot;)  Write function to clean and transform Read the #comments for explanations of what is happening
-The data has a few inconsistencies in how states/territories are named.</description>
+      <description>Load packages, pull data 2020 03 30 Update  Plotter function Cases by state Cases, with log10 scaling  Deaths by state (log10 scaled) Deaths by state, animated Shift plot Transform Data and plot   Load packages, pull data 2020 03 30 Update CSSE changed their data structure, so I’ve updated the document.
+I was using their “time series” data, but they dropped the US-specific (with state by state info) documents.</description>
     </item>
     
     <item>

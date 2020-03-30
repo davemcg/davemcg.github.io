@@ -1,34 +1,92 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Let&#39;s Plot on eye Bioinformatician</title>
+    <title>Let’s Plot on eye Bioinformatician</title>
     <link>/./categories/lets-plot/</link>
-    <description>Recent content in Let&#39;s Plot on eye Bioinformatician</description>
+    <description>Recent content in Let’s Plot on eye Bioinformatician</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
-    <lastBuildDate>Wed, 25 Mar 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 07 May 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/./categories/lets-plot/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Let&#39;s Plot 8: (Animated) US State Covid-19 Case Count</title>
-      <link>/./post/lets-plot-covid19-animated/</link>
-      <pubDate>Wed, 25 Mar 2020 00:00:00 +0000</pubDate>
+      <title>Let&#39;s Plot 6: Simple guide to heatmaps with ComplexHeatmaps</title>
+      <link>/./post/simple-heatmaps-with-complexheatmaps/</link>
+      <pubDate>Mon, 07 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>/./post/lets-plot-covid19-animated/</guid>
-      <description>Load packages, pull data Write function to clean and transform Plotter function Cases by state Cases, with log10 scaling  Deaths by state (log10 scaled) Deaths by state, animated Shift plot Transform Data and plot   Load packages, pull data library(tidyverse) library(gganimate) library(ggrepel) library(pals) covid_time &amp;lt;- read_csv(&amp;#39;https://github.com/CSSEGISandData/COVID-19/raw/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv&amp;#39;) covid_death &amp;lt;- read_csv(&amp;quot;https://github.com/CSSEGISandData/COVID-19/raw/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Deaths.csv&amp;quot;)  Write function to clean and transform Read the #comments for explanations of what is happening
-The data has a few inconsistencies in how states/territories are named.</description>
+      <guid>/./post/simple-heatmaps-with-complexheatmaps/</guid>
+      <description>Introduction Data processing Load data Peek at expression Peek at metadata Brief outline on how the RNA-seq data was processed before we see it Load libraries Create a Sample - Sample distance heatmap Easy heatmap with ComplexHeatmap Complex heatmap Finished heatmap  Gene Heatmaps A bit simpler  Session Info   Introduction Heatmaps are a core competency for a bioinformatician. They are a compact way to visually demonstrate relationships and changes in values across conditions.</description>
     </item>
     
     <item>
-      <title>Let&#39;s Plot 7: Clustered Dot Plots in the ggverse</title>
-      <link>/./post/lets-plot-scrna-dotplots/</link>
-      <pubDate>Mon, 23 Mar 2020 00:00:00 +0000</pubDate>
+      <title>Let’s Plot 5: ridgeline density plots</title>
+      <link>/./post/let-s-plot-5-ridgeline-density-plots/</link>
+      <pubDate>Thu, 12 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>/./post/lets-plot-scrna-dotplots/</guid>
-      <description>2020 03 23 Update Intro Example dotplot  How do I make a dotplot? But let’s do this ourself! Dotplot! Zero effort Remove dots where there is zero (or near zero expression) Better color, better theme, rotate x axis labels Tweak color scaling  Now what? Hey look: ggtree Let’s glue them together with cowplot How do we do better? Two more tweak options if you are having trouble: One more adjust Moonshot  Downside Exercises for the reader OLD Solution (kept for posterity)   2020 03 23 Update Ming Tang pointed out a better way to align plots, so I have rewritten the back end of this post.</description>
+      <guid>/./post/let-s-plot-5-ridgeline-density-plots/</guid>
+      <description>Intro For this installment of Let’s Plot (where anyone can make a figure!), we’ll be making the hottest visualization of 2017 - the joy plot or ridgeline plot.
+Joy plots are partially overlapping density line plots. They are useful for densely showing changes in many distributions over time / condition / etc.
+This type of visualization was inspired by the cover art from Joy Division’s album Unknown Pleasures and implemented in the R package ggridges by Claus Wilke.</description>
+    </item>
+    
+    <item>
+      <title>Let’s Plot 4: R vs Excel, Round 1</title>
+      <link>/./post/let-s-plot-4-r-vs-excel/</link>
+      <pubDate>Thu, 01 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/let-s-plot-4-r-vs-excel/</guid>
+      <description>Introduction Data Cleaning Reformatting Box Plot Boxplot with all the data displayed I used to prefer violin plots I’m a fan of beeswarm plots with boxplots Doing statistics. Session   Introduction The battle that we’ve all been waiting for. Excel vs. R. Bar plot versus a plot that actually shows the data.
+Yeah, this isn’t a fair fight.
+Bar plots are terrible. Why? Simple. They don’t show what your data looks like.</description>
+    </item>
+    
+    <item>
+      <title>Let’s Plot 3: Base pair resolution NGS (exome) coverage plots - Part 2</title>
+      <link>/./post/let-s-plot-3-part-2/</link>
+      <pubDate>Thu, 08 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/let-s-plot-3-part-2/</guid>
+      <description>Introduction Call mosdepth on bam to calculate bp-specific read depth Intersect base pair depth info with transcript and exon number Now it’s R time! Prepare Metadata Load mosdepth / bedtools intersect data and prep Plot Maker, version 1 Version 2 sessionInfo()    Introduction This is a barebones (but detailed enough, I hope) discussion of how to take a bam file, extract base pair resolution coverage data, then finagle the data into coverage plots by gene and exon.</description>
+    </item>
+    
+    <item>
+      <title>Let’s Plot 3: Base pair resolution NGS coverage plots (Part I)</title>
+      <link>/./post/let-s-plot-3-part-i/</link>
+      <pubDate>Wed, 07 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/let-s-plot-3-part-i/</guid>
+      <description>Load data Curious? Data How many genes are in this dataset? What genes are in here? How many data points (bases) per gene? How many exons per gene? How many base pairs of ABCA4 (well, ABCA4 exons) is covered by more than 10 reads? 5 reads? Let’s check all of the genes to see which are the worst covered We can visually display the data, also Hard to see what is going on, let’s make little plots for each gene Where are genes poorly covered?</description>
+    </item>
+    
+    <item>
+      <title>Let’s Plot 2: Smoothed Lines</title>
+      <link>/./post/let-s-plot-2-smoothed-lines/</link>
+      <pubDate>Sun, 04 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/let-s-plot-2-smoothed-lines/</guid>
+      <description>Get data (two xls files) from here: Load data and look at structure (str) Head (first few lines) AUC, N1P1, Latency Summary of eel and cobra AUC What kind of time points or conditions or whatever do we have again? Summary by pig and region Plot AUC by time and region and pig Prettier plot with lines and more formatting N1P1 Plot Latency plot Bonus   Data from Aaron Rising.</description>
+    </item>
+    
+    <item>
+      <title>Let’s Plot 1: Going in circles </title>
+      <link>/./post/let-s-plot-1/</link>
+      <pubDate>Thu, 01 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/let-s-plot-1/</guid>
+      <description>What is going on? Where to get the code and data? Import data with readxl OK, first let’s remove the notes. However, we aren’t done. The data is “wide” instead of “long” and we have mixed session IDs (Amp 1-3 and Angle 1-3) with the value type. Now we need to extract the session (1,2,3) and the test type (Amp or Angle) Now we have two value types (Angle and Amplitude) in one column.</description>
+    </item>
+    
+    <item>
+      <title>What is Let’s Plot?</title>
+      <link>/./post/what-is-let-s-plot/</link>
+      <pubDate>Wed, 31 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/what-is-let-s-plot/</guid>
+      <description>Tooling How can I follow along?   The concept is simple - I get data from one of the scientists in my group. Or I get my own. Then I demonstrate, step-by-step, how I generate the plot(s). I’ll also toss in some data science concepts occasionally.
+They are a bit sparse on the words because I’m presenting these in person. But I believe they are clear enough for someone to follow along.</description>
     </item>
     
   </channel>
