@@ -29,6 +29,7 @@
 &lt;li&gt;&lt;a href=&#34;#deaths-by-state-animated&#34;&gt;Deaths by state, animated&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#shift-plot&#34;&gt;Shift plot&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#transform-data-and-plot&#34;&gt;Transform Data and plot&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#add-exponential-lines&#34;&gt;Add exponential lines&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -39,6 +40,7 @@
 &lt;p&gt;CSSE changed their data structure, so I’ve updated the document.&lt;/p&gt;
 &lt;p&gt;I was using their “time series” data, but they dropped the US-specific (with state by state info) documents.&lt;/p&gt;
 &lt;p&gt;So we’ll have change the import process to use their “daily reports”&lt;/p&gt;
+&lt;p&gt;I’ve added one more plot - the deaths by state with overlays showing the future projections if deaths double every 2 or 4 days.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)
 library(gganimate)
 library(ggrepel)
@@ -265,6 +267,61 @@ day0 %&amp;gt;% arrange(Day0)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Scale for &amp;#39;y&amp;#39; is already present. Adding another scale for &amp;#39;y&amp;#39;, which will
 ## replace the existing scale.&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;/././post/2020-03-25-Animated-Covid19-Line-Plot_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;add-exponential-lines&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Add exponential lines&lt;/h2&gt;
+&lt;p&gt;For deaths doubling every 2,and 4 days&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# function to calculate cases/etc over user given double times (in days) and start values
+growth_maker = function(start_day = 0, start_val = 5, doubles_every_n_days = 2, end_val = 5000){
+  out &amp;lt;- cbind(start_day, start_val)
+  vals = start_val
+  days = start_day
+  while(vals &amp;lt; end_val){
+    vals = vals * 2
+    days = days + doubles_every_n_days
+    out &amp;lt;- rbind(out, 
+                 cbind(days, vals))
+    
+  }
+  out &amp;lt;- as_tibble(out)
+  colnames(out) &amp;lt;- c(&amp;#39;Date&amp;#39;, &amp;#39;Deaths&amp;#39;)
+  out &amp;lt;- out %&amp;gt;% mutate(Date = as.difftime(Date, units = &amp;#39;days&amp;#39;), 
+                        &amp;#39;State&amp;#39; = paste0(&amp;#39;doubles &amp;#39;, doubles_every_n_days, &amp;#39; days&amp;#39;))
+  out
+}
+
+doubling_data = bind_rows(growth_maker(start_val = 10, end_val = 2000, doubles_every_n_days = 2),
+                          growth_maker(start_val = 5, end_val = 2000, doubles_every_n_days = 4))
+
+covid19_plotter(covid_usa %&amp;gt;% 
+                  filter(State %in% day0$State,
+                         Deaths &amp;gt;= 5) %&amp;gt;% 
+                  left_join(., day0, by = &amp;#39;State&amp;#39;) %&amp;gt;% 
+                  mutate(Date = Date - Day0), 
+                type = Deaths,
+                top_states = top_n,
+                ylab = &amp;#39;Deaths&amp;#39;,
+                xlab = paste0(&amp;#39;Days Past 5 Deaths\n\nData Pulled &amp;#39;, Sys.Date(), &amp;#39; from Johns Hopkins CSSE&amp;#39;),
+                title = &amp;#39;COVID-19 Deaths by US State&amp;#39;) +
+  scale_x_continuous() + 
+  scale_y_log10(breaks = c(10,30,100,300,1000)) +
+  geom_line(data = doubling_data,             
+            aes(x=Date, y=Deaths, 
+                group = State, 
+                color = NULL,
+                State = NULL), 
+            alpha = 0.2) +
+  geom_text_repel(data = doubling_data %&amp;gt;% 
+                    group_by(State) %&amp;gt;% 
+                    top_n(n = 1, wt = Deaths),
+                  aes(x = Date, 
+                      y = Deaths, 
+                      label = State), color = &amp;#39;gray&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Scale for &amp;#39;x&amp;#39; is already present. Adding another scale for &amp;#39;x&amp;#39;, which will
+## replace the existing scale.&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Scale for &amp;#39;y&amp;#39; is already present. Adding another scale for &amp;#39;y&amp;#39;, which will
+## replace the existing scale.&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/././post/2020-03-25-Animated-Covid19-Line-Plot_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 </description>
     </item>

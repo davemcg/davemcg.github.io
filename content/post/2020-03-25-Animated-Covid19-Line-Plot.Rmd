@@ -26,6 +26,8 @@ I was using their "time series" data, but they dropped the US-specific (with sta
 
 So we'll have change the import process to use their "daily reports"
 
+I've added one more plot - the deaths by state with overlays showing the future projections if deaths double every 2 or 4 days. 
+
 ```{r message = FALSE, warning = FALSE, results = FALSE}
 library(tidyverse)
 library(gganimate)
@@ -242,3 +244,58 @@ covid19_plotter(covid_usa %>%
   coord_trans(y = 'log10') +
   scale_y_continuous(breaks = c(10,25, 50, 100, 250, 500, 1000))
 ```
+
+## Add exponential lines
+For deaths doubling every 2,and 4 days
+```{r}
+# function to calculate cases/etc over user given double times (in days) and start values
+growth_maker = function(start_day = 0, start_val = 5, doubles_every_n_days = 2, end_val = 5000){
+  out <- cbind(start_day, start_val)
+  vals = start_val
+  days = start_day
+  while(vals < end_val){
+    vals = vals * 2
+    days = days + doubles_every_n_days
+    out <- rbind(out, 
+                 cbind(days, vals))
+    
+  }
+  out <- as_tibble(out)
+  colnames(out) <- c('Date', 'Deaths')
+  out <- out %>% mutate(Date = as.difftime(Date, units = 'days'), 
+                        'State' = paste0('doubles ', doubles_every_n_days, ' days'))
+  out
+}
+
+doubling_data = bind_rows(growth_maker(start_val = 10, end_val = 2000, doubles_every_n_days = 2),
+                          growth_maker(start_val = 5, end_val = 2000, doubles_every_n_days = 4))
+
+covid19_plotter(covid_usa %>% 
+                  filter(State %in% day0$State,
+                         Deaths >= 5) %>% 
+                  left_join(., day0, by = 'State') %>% 
+                  mutate(Date = Date - Day0), 
+                type = Deaths,
+                top_states = top_n,
+                ylab = 'Deaths',
+                xlab = paste0('Days Past 5 Deaths\n\nData Pulled ', Sys.Date(), ' from Johns Hopkins CSSE'),
+                title = 'COVID-19 Deaths by US State') +
+  scale_x_continuous() + 
+  scale_y_log10(breaks = c(10,30,100,300,1000)) +
+  geom_line(data = doubling_data,             
+            aes(x=Date, y=Deaths, 
+                group = State, 
+                color = NULL,
+                State = NULL), 
+            alpha = 0.2) +
+  geom_text_repel(data = doubling_data %>% 
+                    group_by(State) %>% 
+                    top_n(n = 1, wt = Deaths),
+                  aes(x = Date, 
+                      y = Deaths, 
+                      label = State), color = 'gray')
+```
+
+
+
+

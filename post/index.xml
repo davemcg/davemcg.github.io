@@ -18,7 +18,7 @@
       <pubDate>Wed, 25 Mar 2020 00:00:00 +0000</pubDate>
       
       <guid>/./post/lets-plot-covid19-animated/</guid>
-      <description>Load packages, pull data 2020 03 30 Update  Plotter function Cases by state Cases, with log10 scaling  Deaths by state (log10 scaled) Deaths by state, animated Shift plot Transform Data and plot   Load packages, pull data 2020 03 30 Update CSSE changed their data structure, so I’ve updated the document.
+      <description>Load packages, pull data 2020 03 30 Update  Plotter function Cases by state Cases, with log10 scaling  Deaths by state (log10 scaled) Deaths by state, animated Shift plot Transform Data and plot Add exponential lines   Load packages, pull data 2020 03 30 Update CSSE changed their data structure, so I’ve updated the document.
 I was using their “time series” data, but they dropped the US-specific (with state by state info) documents.</description>
     </item>
     

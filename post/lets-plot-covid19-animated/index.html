@@ -17,7 +17,7 @@
       
     
   
-  <meta name="description" content="Load packages, pull data 2020 03 30 Update  Plotter function Cases by state Cases, with log10 scaling  Deaths by state (log10 scaled) Deaths by state, animated Shift plot Transform Data and plot   Load packages, pull data 2020 03 30 Update CSSE changed their data structure, so I’ve updated the document.
+  <meta name="description" content="Load packages, pull data 2020 03 30 Update  Plotter function Cases by state Cases, with log10 scaling  Deaths by state (log10 scaled) Deaths by state, animated Shift plot Transform Data and plot Add exponential lines   Load packages, pull data 2020 03 30 Update CSSE changed their data structure, so I’ve updated the document.
 I was using their “time series” data, but they dropped the US-specific (with state by state info) documents.">
 
   
@@ -94,7 +94,7 @@ I was using their “time series” data, but they dropped the US-specific (with
   <meta property="og:site_name" content="eye Bioinformatician">
   <meta property="og:url" content="/./post/lets-plot-covid19-animated/">
   <meta property="og:title" content="Let&#39;s Plot 8: (Animated) US State Covid-19 Case Count | eye Bioinformatician">
-  <meta property="og:description" content="Load packages, pull data 2020 03 30 Update  Plotter function Cases by state Cases, with log10 scaling  Deaths by state (log10 scaled) Deaths by state, animated Shift plot Transform Data and plot   Load packages, pull data 2020 03 30 Update CSSE changed their data structure, so I’ve updated the document.
+  <meta property="og:description" content="Load packages, pull data 2020 03 30 Update  Plotter function Cases by state Cases, with log10 scaling  Deaths by state (log10 scaled) Deaths by state, animated Shift plot Transform Data and plot Add exponential lines   Load packages, pull data 2020 03 30 Update CSSE changed their data structure, so I’ve updated the document.
 I was using their “time series” data, but they dropped the US-specific (with state by state info) documents.">
   <meta property="og:locale" content="en-us">
   
@@ -278,7 +278,7 @@ I was using their “time series” data, but they dropped the US-specific (with
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    6 min read
+    8 min read
   </span>
   
 
@@ -366,6 +366,7 @@ I was using their “time series” data, but they dropped the US-specific (with
 <li><a href="#deaths-by-state-animated">Deaths by state, animated</a></li>
 <li><a href="#shift-plot">Shift plot</a></li>
 <li><a href="#transform-data-and-plot">Transform Data and plot</a></li>
+<li><a href="#add-exponential-lines">Add exponential lines</a></li>
 </ul>
 </div>
 
@@ -376,6 +377,7 @@ I was using their “time series” data, but they dropped the US-specific (with
 <p>CSSE changed their data structure, so I’ve updated the document.</p>
 <p>I was using their “time series” data, but they dropped the US-specific (with state by state info) documents.</p>
 <p>So we’ll have change the import process to use their “daily reports”</p>
+<p>I’ve added one more plot - the deaths by state with overlays showing the future projections if deaths double every 2 or 4 days.</p>
 <pre class="r"><code>library(tidyverse)
 library(gganimate)
 library(ggrepel)
@@ -602,6 +604,61 @@ day0 %&gt;% arrange(Day0)</code></pre>
 <pre><code>## Scale for &#39;y&#39; is already present. Adding another scale for &#39;y&#39;, which will
 ## replace the existing scale.</code></pre>
 <p><img src="/./post/2020-03-25-Animated-Covid19-Line-Plot_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+</div>
+<div id="add-exponential-lines" class="section level2">
+<h2>Add exponential lines</h2>
+<p>For deaths doubling every 2,and 4 days</p>
+<pre class="r"><code># function to calculate cases/etc over user given double times (in days) and start values
+growth_maker = function(start_day = 0, start_val = 5, doubles_every_n_days = 2, end_val = 5000){
+  out &lt;- cbind(start_day, start_val)
+  vals = start_val
+  days = start_day
+  while(vals &lt; end_val){
+    vals = vals * 2
+    days = days + doubles_every_n_days
+    out &lt;- rbind(out, 
+                 cbind(days, vals))
+    
+  }
+  out &lt;- as_tibble(out)
+  colnames(out) &lt;- c(&#39;Date&#39;, &#39;Deaths&#39;)
+  out &lt;- out %&gt;% mutate(Date = as.difftime(Date, units = &#39;days&#39;), 
+                        &#39;State&#39; = paste0(&#39;doubles &#39;, doubles_every_n_days, &#39; days&#39;))
+  out
+}
+
+doubling_data = bind_rows(growth_maker(start_val = 10, end_val = 2000, doubles_every_n_days = 2),
+                          growth_maker(start_val = 5, end_val = 2000, doubles_every_n_days = 4))
+
+covid19_plotter(covid_usa %&gt;% 
+                  filter(State %in% day0$State,
+                         Deaths &gt;= 5) %&gt;% 
+                  left_join(., day0, by = &#39;State&#39;) %&gt;% 
+                  mutate(Date = Date - Day0), 
+                type = Deaths,
+                top_states = top_n,
+                ylab = &#39;Deaths&#39;,
+                xlab = paste0(&#39;Days Past 5 Deaths\n\nData Pulled &#39;, Sys.Date(), &#39; from Johns Hopkins CSSE&#39;),
+                title = &#39;COVID-19 Deaths by US State&#39;) +
+  scale_x_continuous() + 
+  scale_y_log10(breaks = c(10,30,100,300,1000)) +
+  geom_line(data = doubling_data,             
+            aes(x=Date, y=Deaths, 
+                group = State, 
+                color = NULL,
+                State = NULL), 
+            alpha = 0.2) +
+  geom_text_repel(data = doubling_data %&gt;% 
+                    group_by(State) %&gt;% 
+                    top_n(n = 1, wt = Deaths),
+                  aes(x = Date, 
+                      y = Deaths, 
+                      label = State), color = &#39;gray&#39;)</code></pre>
+<pre><code>## Scale for &#39;x&#39; is already present. Adding another scale for &#39;x&#39;, which will
+## replace the existing scale.</code></pre>
+<pre><code>## Scale for &#39;y&#39; is already present. Adding another scale for &#39;y&#39;, which will
+## replace the existing scale.</code></pre>
+<p><img src="/./post/2020-03-25-Animated-Covid19-Line-Plot_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 </div>
 
     </div>
