@@ -1,0 +1,78 @@
+---
+title: "Let's Plot 9: dabest"
+author: David McGaughey
+date: '2020-07-20'
+slug: lets-plot-box-plot-fancy
+categories:
+  - R
+  - Let's Plot
+tags:
+  - R
+  - Let's Plot
+header:
+  caption: ''
+  image: ''
+output:
+  blogdown::html_page:
+    toc: true
+---
+
+## Load packages
+```{r}
+library(dabestr)
+library(dplyr)
+library(ggplot2)
+```
+
+## Import Excel file
+```{r}
+fig2a_data <- readxl::read_excel('fig2.xlsx')
+
+fig2a_data
+```
+
+This doesn't look right...there's no header in this data. Let's re-import.
+```{r}
+fig2a_data <- readxl::read_excel('fig2.xlsx', col_names = FALSE)
+fig2a_data
+```
+
+Better. Let's add some column names
+
+```{r}
+colnames(fig2a_data) <- c('Scaffold', 'Young\'s Modulus')
+fig2a_data
+```
+## Plotting!
+That's better. OK. Let's do a quick boxplot.
+
+```{r}
+fig2a_data %>% 
+  ggplot(aes(x=Scaffold, y=`Young\'s Modulus`)) +
+  geom_boxplot()
+```
+
+## Hmm, the order is not ideal
+```{r}
+fig2a_data %>% 
+  mutate(Scaffold = factor(Scaffold, levels = c('Single layer unfused', 'Single layer fused', 'Bilayer random fibers', 'Bilayer aligned fibers'))) %>% 
+  ggplot(aes(x=Scaffold, y=`Young\'s Modulus`)) +
+  geom_boxplot()
+```
+### Overlay points
+```{r}
+fig2a_data %>% 
+  mutate(Scaffold = factor(Scaffold, levels = c('Single layer unfused', 'Single layer fused', 'Bilayer random fibers', 'Bilayer aligned fibers'))) %>% 
+  ggplot(aes(x=Scaffold, y=`Young\'s Modulus`)) +
+  geom_boxplot() +
+  geom_point()
+```
+
+# dabest
+```{r}
+dabest(fig2a_data, x= Scaffold, y = `Young\'s Modulus`,
+                             idx = c("Single layer unfused", "Single layer fused", "Bilayer random fibers","Bilayer aligned fibers"),
+                             paired = FALSE) %>% 
+                      mean_diff() %>% 
+  plot(effsize.ylim = c(0, 1000))
+```
