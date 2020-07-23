@@ -87,7 +87,11 @@ fig2a_data %>%
 
 ## Overlay points
 
-Showing off the *modular* nature of ggplot. Need another plotting style? Just `+` another `geom_`
+I am a HUGE proponent of showing your data. If you *just* use the boxplot you are not giving any information on how many experiments you have done. 
+
+So let's show off the data by using the the *modular* nature of ggplot
+
+Need another plotting style? Just `+` another `geom_`
 
 ```{r}
 fig2a_data %>% 

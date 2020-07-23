@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
-    <lastBuildDate>Mon, 20 Jul 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 23 Jul 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/./tags/lets-plot/index.xml" rel="self" type="application/rss+xml" />
     
@@ -15,7 +15,7 @@
     <item>
       <title>Let&#39;s Plot 9: The venerable box plot</title>
       <link>/./post/lets-plot-box-plot-fancy/</link>
-      <pubDate>Mon, 20 Jul 2020 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 23 Jul 2020 00:00:00 +0000</pubDate>
       
       <guid>/./post/lets-plot-box-plot-fancy/</guid>
       <description>Intro Load packages Import Excel file Plotting! Hmm, the order is not ideal Overlay points Wilcox test ggbeeswarm Themes Themes, with some tweaking of color and text dabest, one comparison dabest, multiple comparisons Conclusion Session Info   Intro This is the 9th Let’s Plot…and I’ve not done a workup of the most useful plot - the boxplot. Oops. Well let’s rectify that.
