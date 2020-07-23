@@ -509,7 +509,9 @@ fig2a_data</code></pre>
 </div>
 <div id="overlay-points" class="section level2">
 <h2>Overlay points</h2>
-<p>Showing off the <em>modular</em> nature of ggplot. Need another plotting style? Just <code>+</code> another <code>geom_</code></p>
+<p>I am a HUGE proponent of showing your data. If you <em>just</em> use the boxplot you are not giving any information on how many experiments you have done.</p>
+<p>So let’s show off the data by using the the <em>modular</em> nature of ggplot</p>
+<p>Need another plotting style? Just <code>+</code> another <code>geom_</code></p>
 <pre class="r"><code>fig2a_data %&gt;% 
   mutate(Scaffold = factor(Scaffold, levels = c(&#39;Single layer unfused&#39;, &#39;Single layer fused&#39;, &#39;Bilayer random fibers&#39;, &#39;Bilayer aligned fibers&#39;))) %&gt;% 
   ggplot(aes(x=Scaffold, y=`Young\&#39;s Modulus`)) +

@@ -35,7 +35,7 @@ library(ggbeeswarm)
 library(cowplot)
 ```
 
-## Import Excel file
+## Import TSV (tab-separated-value) file
 
 Quick peek into the import. This data is from Figure 2a from the [Bharti lab](https://stm.sciencemag.org/content/11/475/eaat5580?rss=1)
 ```{r}

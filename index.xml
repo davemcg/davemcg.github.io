@@ -172,7 +172,9 @@ fig2a_data&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;overlay-points&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Overlay points&lt;/h2&gt;
-&lt;p&gt;Showing off the &lt;em&gt;modular&lt;/em&gt; nature of ggplot. Need another plotting style? Just &lt;code&gt;+&lt;/code&gt; another &lt;code&gt;geom_&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;I am a HUGE proponent of showing your data. If you &lt;em&gt;just&lt;/em&gt; use the boxplot you are not giving any information on how many experiments you have done.&lt;/p&gt;
+&lt;p&gt;So let’s show off the data by using the the &lt;em&gt;modular&lt;/em&gt; nature of ggplot&lt;/p&gt;
+&lt;p&gt;Need another plotting style? Just &lt;code&gt;+&lt;/code&gt; another &lt;code&gt;geom_&lt;/code&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;fig2a_data %&amp;gt;% 
   mutate(Scaffold = factor(Scaffold, levels = c(&amp;#39;Single layer unfused&amp;#39;, &amp;#39;Single layer fused&amp;#39;, &amp;#39;Bilayer random fibers&amp;#39;, &amp;#39;Bilayer aligned fibers&amp;#39;))) %&amp;gt;% 
   ggplot(aes(x=Scaffold, y=`Young\&amp;#39;s Modulus`)) +
