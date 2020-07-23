@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme" content="hugo-academic">
+  <meta name="generator" content="Hugo 0.40" />
+  <meta name="author" content="David McGaughey">
+
+  
+  
+  
+  
+    
+      
+    
+  
+  <meta name="description" content="Intro Load packages Import Excel file Plotting! Hmm, the order is not ideal Overlay points Wilcox test ggbeeswarm Themes Themes, with some tweaking of color and text dabest, one comparison dabest, multiple comparisons Conclusion Session Info   Intro This is the 9th Let’s Plot…and I’ve not done a workup of the most useful plot - the boxplot. Oops. Well let’s rectify that.
+ Load packages Many many packages. We’ll see what they do later.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="/./post/lets-plot-box-plot-fancy/">
+
+  
+
+
+  
+
+  
+  
+  <meta name="theme-color" content="#0095eb">
+  
+  
+  
+  
+    
+  
+  
+    
+    
+      
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+      
+    
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha512-6MXa8B6uaO18Hid6blRMetEIoPqHf7Ux1tnyIQdpt9qI5OACx7C+O3IVTr98vwGnlcg0LOLa02i9Y1HpVhlfiw==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+  
+  
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat:400,700%7cRoboto:400,400italic,700%7cRoboto&#43;Mono">
+  
+  <link rel="stylesheet" href="/styles.css">
+  
+
+  
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-113461893-1', 'auto');
+      
+      ga('require', 'eventTracker');
+      ga('require', 'outboundLinkTracker');
+      ga('require', 'urlChangeTracker');
+      ga('send', 'pageview');
+    </script>
+    <script async src="//www.google-analytics.com/analytics.js"></script>
+    
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g==" crossorigin="anonymous"></script>
+    
+  
+
+  
+  <link rel="alternate" href="/./index.xml" type="application/rss+xml" title="eye Bioinformatician">
+  <link rel="feed" href="/./index.xml" type="application/rss+xml" title="eye Bioinformatician">
+  
+
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="/./post/lets-plot-box-plot-fancy/">
+
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="twitter:site" content="@https://twitter.com/David_McGaughey">
+  <meta property="twitter:creator" content="@https://twitter.com/David_McGaughey">
+  
+  <meta property="og:site_name" content="eye Bioinformatician">
+  <meta property="og:url" content="/./post/lets-plot-box-plot-fancy/">
+  <meta property="og:title" content="Let&#39;s Plot 9: The venerable box plot | eye Bioinformatician">
+  <meta property="og:description" content="Intro Load packages Import Excel file Plotting! Hmm, the order is not ideal Overlay points Wilcox test ggbeeswarm Themes Themes, with some tweaking of color and text dabest, one comparison dabest, multiple comparisons Conclusion Session Info   Intro This is the 9th Let’s Plot…and I’ve not done a workup of the most useful plot - the boxplot. Oops. Well let’s rectify that.
+ Load packages Many many packages. We’ll see what they do later.">
+  <meta property="og:locale" content="en-us">
+  
+  <meta property="article:published_time" content="2020-07-20T00:00:00&#43;00:00">
+  
+  <meta property="article:modified_time" content="2020-07-20T00:00:00&#43;00:00">
+  
+
+  
+  
+
+  <title>Let&#39;s Plot 9: The venerable box plot | eye Bioinformatician</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#toc" data-offset="71" >
+
+<nav class="navbar navbar-default navbar-fixed-top" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="navbar-header">
+      
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+              data-target=".navbar-collapse" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+      <a class="navbar-brand" href="/">eye Bioinformatician</a>
+    </div>
+
+    
+    <div class="collapse navbar-collapse">
+
+      
+      
+      <ul class="nav navbar-nav navbar-right">
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#about">
+            
+            <span>Home</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true">
+            
+            <span>Posts</span>
+            
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            
+            <li class="nav-item">
+              <a href="/#posts">
+                
+                <span>Recent Posts</span>
+                
+              </a>
+            </li>
+            
+            <li class="nav-item">
+              <a href="/post">
+                
+                <span>All Posts</span>
+                
+              </a>
+            </li>
+            
+          </ul>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#projects">
+            
+            <span>Projects</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#culture">
+            
+            <span>Culture</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#publications_selected">
+            
+            <span>Publications</span>
+            
+          </a>
+        </li>
+
+        
+        
+      
+
+      
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+  <div class="article-container">
+    <h1 itemprop="name">Let&#39;s Plot 9: The venerable box plot</h1>
+
+    
+
+<div class="article-metadata">
+
+  <span class="article-date">
+    
+    <time datetime="2020-07-20 00:00:00 &#43;0000 UTC" itemprop="datePublished dateModified">
+      Jul 20, 2020
+    </time>
+  </span>
+  <span itemscope itemprop="author publisher" itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="David McGaughey">
+  </span>
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    7 min read
+  </span>
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <a href="/./post/lets-plot-box-plot-fancy/#disqus_thread"></a>
+  
+
+  
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fa fa-folder"></i>
+    
+    <a href="/./categories/r/">R</a
+    >, 
+    
+    <a href="/./categories/lets-plot/">Let&#39;s Plot</a
+    >
+    
+  </span>
+  
+  
+
+  
+  
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=Let%27s%20Plot%209%3a%20The%20venerable%20box%20plot&amp;url=%2f.%2fpost%2flets-plot-box-plot-fancy%2f"
+         target="_blank" rel="noopener">
+        <i class="fa fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=%2f.%2fpost%2flets-plot-box-plot-fancy%2f"
+         target="_blank" rel="noopener">
+        <i class="fa fa-facebook"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2f.%2fpost%2flets-plot-box-plot-fancy%2f&amp;title=Let%27s%20Plot%209%3a%20The%20venerable%20box%20plot"
+         target="_blank" rel="noopener">
+        <i class="fa fa-linkedin"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=%2f.%2fpost%2flets-plot-box-plot-fancy%2f&amp;title=Let%27s%20Plot%209%3a%20The%20venerable%20box%20plot"
+         target="_blank" rel="noopener">
+        <i class="fa fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=Let%27s%20Plot%209%3a%20The%20venerable%20box%20plot&amp;body=%2f.%2fpost%2flets-plot-box-plot-fancy%2f">
+        <i class="fa fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+
+    <div class="article-style" itemprop="articleBody">
+      <div id="TOC">
+<ul>
+<li><a href="#intro">Intro</a></li>
+<li><a href="#load-packages">Load packages</a></li>
+<li><a href="#import-excel-file">Import Excel file</a></li>
+<li><a href="#plotting">Plotting!</a></li>
+<li><a href="#hmm-the-order-is-not-ideal">Hmm, the order is not ideal</a></li>
+<li><a href="#overlay-points">Overlay points</a></li>
+<li><a href="#wilcox-test">Wilcox test</a></li>
+<li><a href="#ggbeeswarm">ggbeeswarm</a></li>
+<li><a href="#themes">Themes</a></li>
+<li><a href="#themes-with-some-tweaking-of-color-and-text">Themes, with some tweaking of color and text</a></li>
+<li><a href="#dabest-one-comparison">dabest, one comparison</a></li>
+<li><a href="#dabest-multiple-comparisons">dabest, multiple comparisons</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+<li><a href="#session-info">Session Info</a></li>
+</ul>
+</div>
+
+<div id="intro" class="section level2">
+<h2>Intro</h2>
+<p>This is the 9th Let’s Plot…and I’ve not done a workup of the <em>most</em> useful plot - the boxplot. Oops. Well let’s rectify that.</p>
+</div>
+<div id="load-packages" class="section level2">
+<h2>Load packages</h2>
+<p>Many many packages. We’ll see what they do later.</p>
+<p>If you get an error loading the packge, you can install it by running <code>install.packages</code> as:
+<code>install.package('dabestr')</code></p>
+<pre class="r"><code>library(dabestr)</code></pre>
+<pre><code>## Warning: package &#39;dabestr&#39; was built under R version 3.6.2</code></pre>
+<pre><code>## Loading required package: magrittr</code></pre>
+<pre class="r"><code>library(readr)
+library(dplyr)</code></pre>
+<pre><code>## Warning: package &#39;dplyr&#39; was built under R version 3.6.2</code></pre>
+<pre><code>## 
+## Attaching package: &#39;dplyr&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     filter, lag</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     intersect, setdiff, setequal, union</code></pre>
+<pre class="r"><code>library(ggplot2)</code></pre>
+<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 3.6.2</code></pre>
+<pre class="r"><code>library(ggpubr)</code></pre>
+<pre><code>## Warning: package &#39;ggpubr&#39; was built under R version 3.6.2</code></pre>
+<pre class="r"><code>library(ggbeeswarm)
+library(cowplot)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;cowplot&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:ggpubr&#39;:
+## 
+##     get_legend</code></pre>
+<pre><code>## The following object is masked from &#39;package:ggplot2&#39;:
+## 
+##     ggsave</code></pre>
+</div>
+<div id="import-excel-file" class="section level2">
+<h2>Import Excel file</h2>
+<p>Quick peek into the import. This data is from Figure 2a from the <a href="https://stm.sciencemag.org/content/11/475/eaat5580?rss=1">Bharti lab</a></p>
+<pre class="r"><code>fig2a_data &lt;- read_tsv(&#39;https://github.com/davemcg/davemcg.github.io/raw/master/content/post/fig2.tsv&#39;)</code></pre>
+<pre><code>## Parsed with column specification:
+## cols(
+##   `Single layer unfused` = col_character(),
+##   `287.57` = col_double()
+## )</code></pre>
+<pre class="r"><code>fig2a_data</code></pre>
+<pre><code>## # A tibble: 28 x 2
+##    `Single layer unfused` `287.57`
+##    &lt;chr&gt;                     &lt;dbl&gt;
+##  1 Single layer unfused       302.
+##  2 Single layer unfused       248.
+##  3 Single layer unfused       296.
+##  4 Single layer unfused       307.
+##  5 Single layer unfused       179.
+##  6 Single layer unfused       453.
+##  7 Single layer unfused       143.
+##  8 Single layer unfused       189.
+##  9 Single layer unfused       239 
+## 10 Single layer unfused       327.
+## # … with 18 more rows</code></pre>
+<p>This doesn’t look right…there’s no header in this data. Let’s re-import.</p>
+<pre class="r"><code>fig2a_data &lt;- read_tsv(&#39;https://github.com/davemcg/davemcg.github.io/raw/master/content/post/fig2.tsv&#39;, col_names = FALSE)</code></pre>
+<pre><code>## Parsed with column specification:
+## cols(
+##   X1 = col_character(),
+##   X2 = col_double()
+## )</code></pre>
+<pre class="r"><code>fig2a_data</code></pre>
+<pre><code>## # A tibble: 29 x 2
+##    X1                      X2
+##    &lt;chr&gt;                &lt;dbl&gt;
+##  1 Single layer unfused  288.
+##  2 Single layer unfused  302.
+##  3 Single layer unfused  248.
+##  4 Single layer unfused  296.
+##  5 Single layer unfused  307.
+##  6 Single layer unfused  179.
+##  7 Single layer unfused  453.
+##  8 Single layer unfused  143.
+##  9 Single layer unfused  189.
+## 10 Single layer unfused  239 
+## # … with 19 more rows</code></pre>
+<p>Better. Let’s add some column names</p>
+<pre class="r"><code>colnames(fig2a_data) &lt;- c(&#39;Scaffold&#39;, &#39;Young\&#39;s Modulus&#39;)
+fig2a_data</code></pre>
+<pre><code>## # A tibble: 29 x 2
+##    Scaffold             `Young&#39;s Modulus`
+##    &lt;chr&gt;                            &lt;dbl&gt;
+##  1 Single layer unfused              288.
+##  2 Single layer unfused              302.
+##  3 Single layer unfused              248.
+##  4 Single layer unfused              296.
+##  5 Single layer unfused              307.
+##  6 Single layer unfused              179.
+##  7 Single layer unfused              453.
+##  8 Single layer unfused              143.
+##  9 Single layer unfused              189.
+## 10 Single layer unfused              239 
+## # … with 19 more rows</code></pre>
+<p>OK, let’s see how many <code>Scaffold</code> types we have and the number of samples of each with <code>base R</code> style.</p>
+<pre class="r"><code>table(fig2a_data$Scaffold )</code></pre>
+<pre><code>## 
+## Bilayer aligned fibers  Bilayer random fibers     Single layer fused 
+##                      5                      3                      6 
+##   Single layer unfused 
+##                     15</code></pre>
+<p>Now let’s do the same, but in a tidyverse way. We us the <code>%&gt;%</code> to <em>pipe</em> the <code>fig2a_data</code> into <code>group_by</code> then the grouped data is sent to <code>summarise</code> to do the counting (with <code>n()</code>). It’s more readable this way.</p>
+<pre class="r"><code>fig2a_data %&gt;% group_by(Scaffold) %&gt;% summarise(Count = n())</code></pre>
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+<pre><code>## # A tibble: 4 x 2
+##   Scaffold               Count
+##   &lt;chr&gt;                  &lt;int&gt;
+## 1 Bilayer aligned fibers     5
+## 2 Bilayer random fibers      3
+## 3 Single layer fused         6
+## 4 Single layer unfused      15</code></pre>
+</div>
+<div id="plotting" class="section level2">
+<h2>Plotting!</h2>
+<p>OK. Let’s do a quick boxplot.</p>
+<pre class="r"><code>fig2a_data %&gt;% 
+  ggplot(aes(x=Scaffold, y=`Young\&#39;s Modulus`)) +
+  geom_boxplot()</code></pre>
+<p><img src="/./post/2020-07-20-Boxplot-Estimation-Plot_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+</div>
+<div id="hmm-the-order-is-not-ideal" class="section level2">
+<h2>Hmm, the order is not ideal</h2>
+<pre class="r"><code>fig2a_data %&gt;% 
+  mutate(Scaffold = factor(Scaffold, levels = c(&#39;Single layer unfused&#39;, &#39;Single layer fused&#39;, &#39;Bilayer random fibers&#39;, &#39;Bilayer aligned fibers&#39;))) %&gt;% 
+  ggplot(aes(x=Scaffold, y=`Young\&#39;s Modulus`)) +
+  geom_boxplot()</code></pre>
+<p><img src="/./post/2020-07-20-Boxplot-Estimation-Plot_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+</div>
+<div id="overlay-points" class="section level2">
+<h2>Overlay points</h2>
+<p>Showing off the <em>modular</em> nature of ggplot. Need another plotting style? Just <code>+</code> another <code>geom_</code></p>
+<pre class="r"><code>fig2a_data %&gt;% 
+  mutate(Scaffold = factor(Scaffold, levels = c(&#39;Single layer unfused&#39;, &#39;Single layer fused&#39;, &#39;Bilayer random fibers&#39;, &#39;Bilayer aligned fibers&#39;))) %&gt;% 
+  ggplot(aes(x=Scaffold, y=`Young\&#39;s Modulus`)) +
+  geom_boxplot() +
+  geom_point()</code></pre>
+<p><img src="/./post/2020-07-20-Boxplot-Estimation-Plot_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+</div>
+<div id="wilcox-test" class="section level2">
+<h2>Wilcox test</h2>
+<p>It’s popular in science papers to show the p-values between the groups. We set up the groupings with the <code>my_comparison</code> list object. <code>ggpubr</code> then is used to overlay the results with its <code>stat_compare_means</code> ggplot add-on.</p>
+<pre class="r"><code>my_comparisons &lt;- list( c(&quot;Single layer unfused&quot;, &quot;Single layer fused&quot;), c(&quot;Single layer unfused&quot;, &quot;Bilayer random fibers&quot;), c(&quot;Single layer unfused&quot;, &quot;Bilayer aligned fibers&quot;) )
+fig2a_data %&gt;% 
+  mutate(Scaffold = factor(Scaffold, levels = c(&#39;Single layer unfused&#39;, &#39;Single layer fused&#39;, &#39;Bilayer random fibers&#39;, &#39;Bilayer aligned fibers&#39;))) %&gt;% 
+  ggplot(aes(x=Scaffold, y=`Young\&#39;s Modulus`)) +
+  geom_boxplot() +
+  geom_point() +
+  stat_compare_means(comparisons = my_comparisons, method = &#39;wilcox.test&#39;)</code></pre>
+<p><img src="/./post/2020-07-20-Boxplot-Estimation-Plot_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+</div>
+<div id="ggbeeswarm" class="section level2">
+<h2>ggbeeswarm</h2>
+<p>When you have many points, they tend to overlap each other. A <em>beeswarm</em> plot is nice because it spreads the points sideways in a manner to show the distribution of the data.</p>
+<p>I’ve replaced <code>geom_point</code> with <code>geom_quasirandom</code>.</p>
+<pre class="r"><code>my_comparisons &lt;- list( c(&quot;Single layer unfused&quot;, &quot;Single layer fused&quot;), c(&quot;Single layer unfused&quot;, &quot;Bilayer random fibers&quot;), c(&quot;Single layer unfused&quot;, &quot;Bilayer aligned fibers&quot;) )
+fig2a_data %&gt;% 
+  mutate(Scaffold = factor(Scaffold, levels = c(&#39;Single layer unfused&#39;, &#39;Single layer fused&#39;, &#39;Bilayer random fibers&#39;, &#39;Bilayer aligned fibers&#39;))) %&gt;% 
+  ggplot(aes(x=Scaffold, y=`Young\&#39;s Modulus`)) +
+  geom_boxplot() +
+  geom_quasirandom() +
+  stat_compare_means(comparisons = my_comparisons, method = &#39;wilcox.test&#39;) </code></pre>
+<p><img src="/./post/2020-07-20-Boxplot-Estimation-Plot_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+</div>
+<div id="themes" class="section level2">
+<h2>Themes</h2>
+<p>I’m not partial to gray everwhere, so let’s use the <code>cowplot</code> <code>theme_cowplot</code> theme.</p>
+<pre class="r"><code>my_comparisons &lt;- list( c(&quot;Single layer unfused&quot;, &quot;Single layer fused&quot;), c(&quot;Single layer unfused&quot;, &quot;Bilayer random fibers&quot;), c(&quot;Single layer unfused&quot;, &quot;Bilayer aligned fibers&quot;) )
+fig2a_data %&gt;% 
+  mutate(Scaffold = factor(Scaffold, levels = c(&#39;Single layer unfused&#39;, &#39;Single layer fused&#39;, &#39;Bilayer random fibers&#39;, &#39;Bilayer aligned fibers&#39;))) %&gt;% 
+  ggplot(aes(x=Scaffold, y=`Young\&#39;s Modulus`)) +
+  geom_boxplot() +
+  geom_quasirandom() +
+  stat_compare_means(comparisons = my_comparisons, method = &#39;wilcox.test&#39;) +
+  theme_cowplot() </code></pre>
+<p><img src="/./post/2020-07-20-Boxplot-Estimation-Plot_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+</div>
+<div id="themes-with-some-tweaking-of-color-and-text" class="section level2">
+<h2>Themes, with some tweaking of color and text</h2>
+<ul>
+<li>Increase point size</li>
+<li>Make boxplot black</li>
+<li>Make points gray</li>
+<li>Make scaffold labels less wide by adding <code>\n</code> (newline) between each word</li>
+</ul>
+<pre class="r"><code>my_comparisons &lt;- list( c(&quot;Single\nlayer\nunfused&quot;, &quot;Single\nlayer\nfused&quot;), c(&quot;Single\nlayer\nunfused&quot;, &quot;Bilayer\nrandom\nfibers&quot;), c(&quot;Single\nlayer\nunfused&quot;, &quot;Bilayer\naligned\nfibers&quot;) )
+fig2a_data %&gt;% 
+  mutate(Scaffold = gsub(&#39; &#39;, &#39;\n&#39;, Scaffold), 
+         Scaffold = factor(Scaffold, levels = c(&#39;Single\nlayer\nunfused&#39;, &#39;Single\nlayer\nfused&#39;, &#39;Bilayer\nrandom\nfibers&#39;, &#39;Bilayer\naligned\nfibers&#39;))) %&gt;% 
+  ggplot(aes(x=Scaffold, y=`Young\&#39;s Modulus`)) +
+  geom_boxplot(fill = &#39;black&#39;, color = &#39;dimgray&#39;) +
+  geom_quasirandom(color = &#39;dimgray&#39;, size = 3) +
+  stat_compare_means(comparisons = my_comparisons, method = &#39;wilcox.test&#39;) +
+  theme_cowplot() </code></pre>
+<p><img src="/./post/2020-07-20-Boxplot-Estimation-Plot_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+</div>
+<div id="dabest-one-comparison" class="section level2">
+<h2>dabest, one comparison</h2>
+<p>One visualization that has been discussed as an alternative to the boxplot is the <a href="https://www.nature.com/articles/s41592-019-0470-3">estimation plot</a>. As R is a super popular figure making platform, the authors have made an <a href="https://cran.r-project.org/web/packages/dabestr/vignettes/using-dabestr.html">R package</a> to make these plots.</p>
+<pre class="r"><code>dabest_dat &lt;- fig2a_data %&gt;% 
+  filter(Scaffold %in% c(&quot;Single layer unfused&quot;, &quot;Single layer fused&quot;))
+dabest(dabest_dat, x= Scaffold, y = `Young\&#39;s Modulus`,
+                             idx = c(&quot;Single layer unfused&quot;, &quot;Single layer fused&quot;),
+                             paired = FALSE) %&gt;% 
+                      mean_diff() %&gt;% 
+  plot(effsize.ylim = c(0, 1000))</code></pre>
+<p><img src="/./post/2020-07-20-Boxplot-Estimation-Plot_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+</div>
+<div id="dabest-multiple-comparisons" class="section level2">
+<h2>dabest, multiple comparisons</h2>
+<pre class="r"><code>dabest(fig2a_data, x= Scaffold, y = `Young\&#39;s Modulus`,
+                             idx = c(&quot;Single layer unfused&quot;, &quot;Single layer fused&quot;, &quot;Bilayer random fibers&quot;,&quot;Bilayer aligned fibers&quot;),
+                             paired = FALSE) %&gt;% 
+                      mean_diff() %&gt;% 
+  plot(effsize.ylim = c(0, 1000))</code></pre>
+<pre><code>## Warning in plot.dabest_effsize(., effsize.ylim = c(0, 1000)): NAs
+## introduced by coercion</code></pre>
+<p><img src="/./post/2020-07-20-Boxplot-Estimation-Plot_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+</div>
+<div id="conclusion" class="section level2">
+<h2>Conclusion</h2>
+<p>Boxplots are easy, making them look <em>awesome</em> is more work. But R and ggplot2 are up to it.</p>
+</div>
+<div id="session-info" class="section level2">
+<h2>Session Info</h2>
+<p>Version numbers of things</p>
+<pre class="r"><code>sessionInfo()</code></pre>
+<pre><code>## R version 3.6.0 (2019-04-26)
+## Platform: x86_64-apple-darwin15.6.0 (64-bit)
+## Running under: macOS  10.15.6
+## 
+## Matrix products: default
+## BLAS:   /Library/Frameworks/R.framework/Versions/3.6/Resources/lib/libRblas.0.dylib
+## LAPACK: /Library/Frameworks/R.framework/Versions/3.6/Resources/lib/libRlapack.dylib
+## 
+## locale:
+## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+## 
+## attached base packages:
+## [1] stats     graphics  grDevices utils     datasets  methods   base     
+## 
+## other attached packages:
+## [1] cowplot_0.9.4    ggbeeswarm_0.6.0 ggpubr_0.4.0     ggplot2_3.3.2   
+## [5] dplyr_1.0.0      readr_1.3.1      dabestr_0.3.0    magrittr_1.5    
+## 
+## loaded via a namespace (and not attached):
+##  [1] beeswarm_0.2.3     tidyselect_1.1.0   xfun_0.7          
+##  [4] purrr_0.3.2        haven_2.1.0        carData_3.0-4     
+##  [7] colorspace_1.4-1   vctrs_0.3.2        generics_0.0.2    
+## [10] htmltools_0.3.6    yaml_2.2.0         utf8_1.1.4        
+## [13] rlang_0.4.7        pillar_1.4.6       foreign_0.8-71    
+## [16] glue_1.4.1         withr_2.1.2        RColorBrewer_1.1-2
+## [19] readxl_1.3.1       plyr_1.8.4         lifecycle_0.2.0   
+## [22] stringr_1.4.0      munsell_0.5.0      ggsignif_0.6.0    
+## [25] blogdown_0.13      gtable_0.3.0       cellranger_1.1.0  
+## [28] zip_2.0.2          evaluate_0.13      labeling_0.3      
+## [31] knitr_1.23         rio_0.5.16         forcats_0.4.0     
+## [34] vipor_0.4.5        curl_3.3           fansi_0.4.0       
+## [37] broom_0.7.0        Rcpp_1.0.5         scales_1.0.0      
+## [40] backports_1.1.4    abind_1.4-5        hms_0.4.2         
+## [43] digest_0.6.19      stringi_1.4.3      openxlsx_4.1.5    
+## [46] bookdown_0.11      rstatix_0.6.0      grid_3.6.0        
+## [49] cli_1.1.0          tools_3.6.0        tibble_3.0.3      
+## [52] crayon_1.3.4       tidyr_1.1.0        car_3.0-8         
+## [55] pkgconfig_2.0.2    ellipsis_0.3.1     data.table_1.12.2 
+## [58] assertthat_0.2.1   rmarkdown_1.13     R6_2.4.0          
+## [61] boot_1.3-22        compiler_3.6.0</code></pre>
+</div>
+
+    </div>
+
+    
+
+
+<div class="article-tags">
+  
+  <a class="btn btn-primary btn-outline" href="/./tags/r/">R</a>
+  
+  <a class="btn btn-primary btn-outline" href="/./tags/lets-plot/">Let&#39;s Plot</a>
+  
+</div>
+
+
+
+
+    
+    
+    <div class="article-widget">
+      <div class="hr-light"></div>
+      <h3>Related</h3>
+      <ul>
+        
+        <li><a href="/post/lets-plot-covid19-animated/">Let&#39;s Plot 8: (Animated) US State Covid-19 Case Count</a></li>
+        
+        <li><a href="/post/lets-plot-scrna-dotplots/">Let&#39;s Plot 7: Clustered Dot Plots in the ggverse</a></li>
+        
+        <li><a href="/post/let-s-plot-4-r-vs-excel/">Let’s Plot 4: R vs Excel, Round 1</a></li>
+        
+        <li><a href="/post/let-s-plot-3-part-2/">Let’s Plot 3: Base pair resolution NGS (exome) coverage plots - Part 2</a></li>
+        
+        <li><a href="/post/let-s-plot-3-part-i/">Let’s Plot 3: Base pair resolution NGS coverage plots (Part I)</a></li>
+        
+      </ul>
+    </div>
+    
+
+    
+
+    
+<section id="comments">
+  <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "davemcg-gitub-io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+
+  </div>
+</article>
+
+<footer class="site-footer">
+  <div class="container">
+    <p class="powered-by">
+
+      &copy; 2018 &middot; 
+
+      Powered by the
+      <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+      <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+      <span class="pull-right" aria-hidden="true">
+        <a href="#" id="back_to_top">
+          <span class="button_icon">
+            <i class="fa fa-chevron-up fa-2x"></i>
+          </span>
+        </a>
+      </span>
+
+    </p>
+  </div>
+</footer>
+
+
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close btn-large" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Cite</h4>
+      </div>
+      <div>
+        <pre><code class="modal-body tex"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-primary btn-outline js-copy-cite" href="#" target="_blank">
+          <i class="fa fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-primary btn-outline js-download-cite" href="#" target="_blank">
+          <i class="fa fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+    
+    <script id="dsq-count-scr" src="//davemcg-gitub-io.disqus.com/count.js" async></script>
+    
+
+    
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha512-3P8rXCuGJdNZOnUx/03c1jOTnMn3rP63nBip5gOP2qmUh5YAdVAvFZ1E+QLZZbC1rtMrQb+mah3AfYW11RUrWA==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.3/imagesloaded.pkgd.min.js" integrity="sha512-umsR78NN0D23AzgoZ11K7raBD+R6hqKojyBZs1w8WvYlsI+QuKRGBx3LFCwhatzBunCjDuJpDHwxD13sLMbpRA==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha512-iztkobsvnjKfAtTNdHkGVjAYTrrtlC7mGp/54c40wowO7LhURYl3gVzzcEqGl/qKXQltJ2HwMrdLcNUdo+N/RQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+    
+    
+    <script src="/js/hugo-academic.js"></script>
+    
+
+    
+    
+      
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+      
+
+      
+
+      
+
+      <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML" integrity="sha512-tOav5w1OjvsSJzePRtt2uQPFwBoHt1VZcUq8l8nm5284LEKE9FSJBQryzMBzHxY5P0zRdNqEcpLIRVYFNgu1jw==" crossorigin="anonymous"></script>
+    
+    
+
+  </body>
+</html>
+

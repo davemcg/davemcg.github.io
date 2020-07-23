@@ -11,6 +11,308 @@
     <atom:link href="//" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Let&#39;s Plot 9: The venerable box plot</title>
+      <link>/./post/lets-plot-box-plot-fancy/</link>
+      <pubDate>Mon, 20 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/./post/lets-plot-box-plot-fancy/</guid>
+      <description>&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#intro&#34;&gt;Intro&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#load-packages&#34;&gt;Load packages&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#import-excel-file&#34;&gt;Import Excel file&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#plotting&#34;&gt;Plotting!&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#hmm-the-order-is-not-ideal&#34;&gt;Hmm, the order is not ideal&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#overlay-points&#34;&gt;Overlay points&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#wilcox-test&#34;&gt;Wilcox test&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#ggbeeswarm&#34;&gt;ggbeeswarm&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#themes&#34;&gt;Themes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#themes-with-some-tweaking-of-color-and-text&#34;&gt;Themes, with some tweaking of color and text&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#dabest-one-comparison&#34;&gt;dabest, one comparison&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#dabest-multiple-comparisons&#34;&gt;dabest, multiple comparisons&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#conclusion&#34;&gt;Conclusion&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#session-info&#34;&gt;Session Info&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;intro&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Intro&lt;/h2&gt;
+&lt;p&gt;This is the 9th Let’s Plot…and I’ve not done a workup of the &lt;em&gt;most&lt;/em&gt; useful plot - the boxplot. Oops. Well let’s rectify that.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;load-packages&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Load packages&lt;/h2&gt;
+&lt;p&gt;Many many packages. We’ll see what they do later.&lt;/p&gt;
+&lt;p&gt;If you get an error loading the packge, you can install it by running &lt;code&gt;install.packages&lt;/code&gt; as:
+&lt;code&gt;install.package(&#39;dabestr&#39;)&lt;/code&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(dabestr)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;dabestr&amp;#39; was built under R version 3.6.2&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Loading required package: magrittr&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(readr)
+library(dplyr)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;dplyr&amp;#39; was built under R version 3.6.2&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## Attaching package: &amp;#39;dplyr&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## The following objects are masked from &amp;#39;package:stats&amp;#39;:
+## 
+##     filter, lag&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## The following objects are masked from &amp;#39;package:base&amp;#39;:
+## 
+##     intersect, setdiff, setequal, union&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggplot2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;ggplot2&amp;#39; was built under R version 3.6.2&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggpubr)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;ggpubr&amp;#39; was built under R version 3.6.2&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggbeeswarm)
+library(cowplot)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## Attaching package: &amp;#39;cowplot&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## The following object is masked from &amp;#39;package:ggpubr&amp;#39;:
+## 
+##     get_legend&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## The following object is masked from &amp;#39;package:ggplot2&amp;#39;:
+## 
+##     ggsave&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;import-excel-file&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Import Excel file&lt;/h2&gt;
+&lt;p&gt;Quick peek into the import. This data is from Figure 2a from the &lt;a href=&#34;https://stm.sciencemag.org/content/11/475/eaat5580?rss=1&#34;&gt;Bharti lab&lt;/a&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;fig2a_data &amp;lt;- read_tsv(&amp;#39;https://github.com/davemcg/davemcg.github.io/raw/master/content/post/fig2.tsv&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Parsed with column specification:
+## cols(
+##   `Single layer unfused` = col_character(),
+##   `287.57` = col_double()
+## )&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;fig2a_data&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 28 x 2
+##    `Single layer unfused` `287.57`
+##    &amp;lt;chr&amp;gt;                     &amp;lt;dbl&amp;gt;
+##  1 Single layer unfused       302.
+##  2 Single layer unfused       248.
+##  3 Single layer unfused       296.
+##  4 Single layer unfused       307.
+##  5 Single layer unfused       179.
+##  6 Single layer unfused       453.
+##  7 Single layer unfused       143.
+##  8 Single layer unfused       189.
+##  9 Single layer unfused       239 
+## 10 Single layer unfused       327.
+## # … with 18 more rows&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This doesn’t look right…there’s no header in this data. Let’s re-import.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;fig2a_data &amp;lt;- read_tsv(&amp;#39;https://github.com/davemcg/davemcg.github.io/raw/master/content/post/fig2.tsv&amp;#39;, col_names = FALSE)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Parsed with column specification:
+## cols(
+##   X1 = col_character(),
+##   X2 = col_double()
+## )&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;fig2a_data&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 29 x 2
+##    X1                      X2
+##    &amp;lt;chr&amp;gt;                &amp;lt;dbl&amp;gt;
+##  1 Single layer unfused  288.
+##  2 Single layer unfused  302.
+##  3 Single layer unfused  248.
+##  4 Single layer unfused  296.
+##  5 Single layer unfused  307.
+##  6 Single layer unfused  179.
+##  7 Single layer unfused  453.
+##  8 Single layer unfused  143.
+##  9 Single layer unfused  189.
+## 10 Single layer unfused  239 
+## # … with 19 more rows&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Better. Let’s add some column names&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;colnames(fig2a_data) &amp;lt;- c(&amp;#39;Scaffold&amp;#39;, &amp;#39;Young\&amp;#39;s Modulus&amp;#39;)
+fig2a_data&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 29 x 2
+##    Scaffold             `Young&amp;#39;s Modulus`
+##    &amp;lt;chr&amp;gt;                            &amp;lt;dbl&amp;gt;
+##  1 Single layer unfused              288.
+##  2 Single layer unfused              302.
+##  3 Single layer unfused              248.
+##  4 Single layer unfused              296.
+##  5 Single layer unfused              307.
+##  6 Single layer unfused              179.
+##  7 Single layer unfused              453.
+##  8 Single layer unfused              143.
+##  9 Single layer unfused              189.
+## 10 Single layer unfused              239 
+## # … with 19 more rows&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;OK, let’s see how many &lt;code&gt;Scaffold&lt;/code&gt; types we have and the number of samples of each with &lt;code&gt;base R&lt;/code&gt; style.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;table(fig2a_data$Scaffold )&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## Bilayer aligned fibers  Bilayer random fibers     Single layer fused 
+##                      5                      3                      6 
+##   Single layer unfused 
+##                     15&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now let’s do the same, but in a tidyverse way. We us the &lt;code&gt;%&amp;gt;%&lt;/code&gt; to &lt;em&gt;pipe&lt;/em&gt; the &lt;code&gt;fig2a_data&lt;/code&gt; into &lt;code&gt;group_by&lt;/code&gt; then the grouped data is sent to &lt;code&gt;summarise&lt;/code&gt; to do the counting (with &lt;code&gt;n()&lt;/code&gt;). It’s more readable this way.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;fig2a_data %&amp;gt;% group_by(Scaffold) %&amp;gt;% summarise(Count = n())&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## `summarise()` ungrouping output (override with `.groups` argument)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 4 x 2
+##   Scaffold               Count
+##   &amp;lt;chr&amp;gt;                  &amp;lt;int&amp;gt;
+## 1 Bilayer aligned fibers     5
+## 2 Bilayer random fibers      3
+## 3 Single layer fused         6
+## 4 Single layer unfused      15&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;plotting&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Plotting!&lt;/h2&gt;
+&lt;p&gt;OK. Let’s do a quick boxplot.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;fig2a_data %&amp;gt;% 
+  ggplot(aes(x=Scaffold, y=`Young\&amp;#39;s Modulus`)) +
+  geom_boxplot()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/././post/2020-07-20-Boxplot-Estimation-Plot_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;hmm-the-order-is-not-ideal&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Hmm, the order is not ideal&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;fig2a_data %&amp;gt;% 
+  mutate(Scaffold = factor(Scaffold, levels = c(&amp;#39;Single layer unfused&amp;#39;, &amp;#39;Single layer fused&amp;#39;, &amp;#39;Bilayer random fibers&amp;#39;, &amp;#39;Bilayer aligned fibers&amp;#39;))) %&amp;gt;% 
+  ggplot(aes(x=Scaffold, y=`Young\&amp;#39;s Modulus`)) +
+  geom_boxplot()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/././post/2020-07-20-Boxplot-Estimation-Plot_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;overlay-points&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Overlay points&lt;/h2&gt;
+&lt;p&gt;Showing off the &lt;em&gt;modular&lt;/em&gt; nature of ggplot. Need another plotting style? Just &lt;code&gt;+&lt;/code&gt; another &lt;code&gt;geom_&lt;/code&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;fig2a_data %&amp;gt;% 
+  mutate(Scaffold = factor(Scaffold, levels = c(&amp;#39;Single layer unfused&amp;#39;, &amp;#39;Single layer fused&amp;#39;, &amp;#39;Bilayer random fibers&amp;#39;, &amp;#39;Bilayer aligned fibers&amp;#39;))) %&amp;gt;% 
+  ggplot(aes(x=Scaffold, y=`Young\&amp;#39;s Modulus`)) +
+  geom_boxplot() +
+  geom_point()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/././post/2020-07-20-Boxplot-Estimation-Plot_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;wilcox-test&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Wilcox test&lt;/h2&gt;
+&lt;p&gt;It’s popular in science papers to show the p-values between the groups. We set up the groupings with the &lt;code&gt;my_comparison&lt;/code&gt; list object. &lt;code&gt;ggpubr&lt;/code&gt; then is used to overlay the results with its &lt;code&gt;stat_compare_means&lt;/code&gt; ggplot add-on.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;my_comparisons &amp;lt;- list( c(&amp;quot;Single layer unfused&amp;quot;, &amp;quot;Single layer fused&amp;quot;), c(&amp;quot;Single layer unfused&amp;quot;, &amp;quot;Bilayer random fibers&amp;quot;), c(&amp;quot;Single layer unfused&amp;quot;, &amp;quot;Bilayer aligned fibers&amp;quot;) )
+fig2a_data %&amp;gt;% 
+  mutate(Scaffold = factor(Scaffold, levels = c(&amp;#39;Single layer unfused&amp;#39;, &amp;#39;Single layer fused&amp;#39;, &amp;#39;Bilayer random fibers&amp;#39;, &amp;#39;Bilayer aligned fibers&amp;#39;))) %&amp;gt;% 
+  ggplot(aes(x=Scaffold, y=`Young\&amp;#39;s Modulus`)) +
+  geom_boxplot() +
+  geom_point() +
+  stat_compare_means(comparisons = my_comparisons, method = &amp;#39;wilcox.test&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/././post/2020-07-20-Boxplot-Estimation-Plot_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;ggbeeswarm&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;ggbeeswarm&lt;/h2&gt;
+&lt;p&gt;When you have many points, they tend to overlap each other. A &lt;em&gt;beeswarm&lt;/em&gt; plot is nice because it spreads the points sideways in a manner to show the distribution of the data.&lt;/p&gt;
+&lt;p&gt;I’ve replaced &lt;code&gt;geom_point&lt;/code&gt; with &lt;code&gt;geom_quasirandom&lt;/code&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;my_comparisons &amp;lt;- list( c(&amp;quot;Single layer unfused&amp;quot;, &amp;quot;Single layer fused&amp;quot;), c(&amp;quot;Single layer unfused&amp;quot;, &amp;quot;Bilayer random fibers&amp;quot;), c(&amp;quot;Single layer unfused&amp;quot;, &amp;quot;Bilayer aligned fibers&amp;quot;) )
+fig2a_data %&amp;gt;% 
+  mutate(Scaffold = factor(Scaffold, levels = c(&amp;#39;Single layer unfused&amp;#39;, &amp;#39;Single layer fused&amp;#39;, &amp;#39;Bilayer random fibers&amp;#39;, &amp;#39;Bilayer aligned fibers&amp;#39;))) %&amp;gt;% 
+  ggplot(aes(x=Scaffold, y=`Young\&amp;#39;s Modulus`)) +
+  geom_boxplot() +
+  geom_quasirandom() +
+  stat_compare_means(comparisons = my_comparisons, method = &amp;#39;wilcox.test&amp;#39;) &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/././post/2020-07-20-Boxplot-Estimation-Plot_files/figure-html/unnamed-chunk-11-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;themes&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Themes&lt;/h2&gt;
+&lt;p&gt;I’m not partial to gray everwhere, so let’s use the &lt;code&gt;cowplot&lt;/code&gt; &lt;code&gt;theme_cowplot&lt;/code&gt; theme.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;my_comparisons &amp;lt;- list( c(&amp;quot;Single layer unfused&amp;quot;, &amp;quot;Single layer fused&amp;quot;), c(&amp;quot;Single layer unfused&amp;quot;, &amp;quot;Bilayer random fibers&amp;quot;), c(&amp;quot;Single layer unfused&amp;quot;, &amp;quot;Bilayer aligned fibers&amp;quot;) )
+fig2a_data %&amp;gt;% 
+  mutate(Scaffold = factor(Scaffold, levels = c(&amp;#39;Single layer unfused&amp;#39;, &amp;#39;Single layer fused&amp;#39;, &amp;#39;Bilayer random fibers&amp;#39;, &amp;#39;Bilayer aligned fibers&amp;#39;))) %&amp;gt;% 
+  ggplot(aes(x=Scaffold, y=`Young\&amp;#39;s Modulus`)) +
+  geom_boxplot() +
+  geom_quasirandom() +
+  stat_compare_means(comparisons = my_comparisons, method = &amp;#39;wilcox.test&amp;#39;) +
+  theme_cowplot() &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/././post/2020-07-20-Boxplot-Estimation-Plot_files/figure-html/unnamed-chunk-12-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;themes-with-some-tweaking-of-color-and-text&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Themes, with some tweaking of color and text&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Increase point size&lt;/li&gt;
+&lt;li&gt;Make boxplot black&lt;/li&gt;
+&lt;li&gt;Make points gray&lt;/li&gt;
+&lt;li&gt;Make scaffold labels less wide by adding &lt;code&gt;\n&lt;/code&gt; (newline) between each word&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;my_comparisons &amp;lt;- list( c(&amp;quot;Single\nlayer\nunfused&amp;quot;, &amp;quot;Single\nlayer\nfused&amp;quot;), c(&amp;quot;Single\nlayer\nunfused&amp;quot;, &amp;quot;Bilayer\nrandom\nfibers&amp;quot;), c(&amp;quot;Single\nlayer\nunfused&amp;quot;, &amp;quot;Bilayer\naligned\nfibers&amp;quot;) )
+fig2a_data %&amp;gt;% 
+  mutate(Scaffold = gsub(&amp;#39; &amp;#39;, &amp;#39;\n&amp;#39;, Scaffold), 
+         Scaffold = factor(Scaffold, levels = c(&amp;#39;Single\nlayer\nunfused&amp;#39;, &amp;#39;Single\nlayer\nfused&amp;#39;, &amp;#39;Bilayer\nrandom\nfibers&amp;#39;, &amp;#39;Bilayer\naligned\nfibers&amp;#39;))) %&amp;gt;% 
+  ggplot(aes(x=Scaffold, y=`Young\&amp;#39;s Modulus`)) +
+  geom_boxplot(fill = &amp;#39;black&amp;#39;, color = &amp;#39;dimgray&amp;#39;) +
+  geom_quasirandom(color = &amp;#39;dimgray&amp;#39;, size = 3) +
+  stat_compare_means(comparisons = my_comparisons, method = &amp;#39;wilcox.test&amp;#39;) +
+  theme_cowplot() &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/././post/2020-07-20-Boxplot-Estimation-Plot_files/figure-html/unnamed-chunk-13-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;dabest-one-comparison&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;dabest, one comparison&lt;/h2&gt;
+&lt;p&gt;One visualization that has been discussed as an alternative to the boxplot is the &lt;a href=&#34;https://www.nature.com/articles/s41592-019-0470-3&#34;&gt;estimation plot&lt;/a&gt;. As R is a super popular figure making platform, the authors have made an &lt;a href=&#34;https://cran.r-project.org/web/packages/dabestr/vignettes/using-dabestr.html&#34;&gt;R package&lt;/a&gt; to make these plots.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;dabest_dat &amp;lt;- fig2a_data %&amp;gt;% 
+  filter(Scaffold %in% c(&amp;quot;Single layer unfused&amp;quot;, &amp;quot;Single layer fused&amp;quot;))
+dabest(dabest_dat, x= Scaffold, y = `Young\&amp;#39;s Modulus`,
+                             idx = c(&amp;quot;Single layer unfused&amp;quot;, &amp;quot;Single layer fused&amp;quot;),
+                             paired = FALSE) %&amp;gt;% 
+                      mean_diff() %&amp;gt;% 
+  plot(effsize.ylim = c(0, 1000))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/././post/2020-07-20-Boxplot-Estimation-Plot_files/figure-html/unnamed-chunk-14-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;dabest-multiple-comparisons&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;dabest, multiple comparisons&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;dabest(fig2a_data, x= Scaffold, y = `Young\&amp;#39;s Modulus`,
+                             idx = c(&amp;quot;Single layer unfused&amp;quot;, &amp;quot;Single layer fused&amp;quot;, &amp;quot;Bilayer random fibers&amp;quot;,&amp;quot;Bilayer aligned fibers&amp;quot;),
+                             paired = FALSE) %&amp;gt;% 
+                      mean_diff() %&amp;gt;% 
+  plot(effsize.ylim = c(0, 1000))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning in plot.dabest_effsize(., effsize.ylim = c(0, 1000)): NAs
+## introduced by coercion&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/././post/2020-07-20-Boxplot-Estimation-Plot_files/figure-html/unnamed-chunk-15-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;conclusion&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;Boxplots are easy, making them look &lt;em&gt;awesome&lt;/em&gt; is more work. But R and ggplot2 are up to it.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;session-info&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Session Info&lt;/h2&gt;
+&lt;p&gt;Version numbers of things&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;sessionInfo()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## R version 3.6.0 (2019-04-26)
+## Platform: x86_64-apple-darwin15.6.0 (64-bit)
+## Running under: macOS  10.15.6
+## 
+## Matrix products: default
+## BLAS:   /Library/Frameworks/R.framework/Versions/3.6/Resources/lib/libRblas.0.dylib
+## LAPACK: /Library/Frameworks/R.framework/Versions/3.6/Resources/lib/libRlapack.dylib
+## 
+## locale:
+## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+## 
+## attached base packages:
+## [1] stats     graphics  grDevices utils     datasets  methods   base     
+## 
+## other attached packages:
+## [1] cowplot_0.9.4    ggbeeswarm_0.6.0 ggpubr_0.4.0     ggplot2_3.3.2   
+## [5] dplyr_1.0.0      readr_1.3.1      dabestr_0.3.0    magrittr_1.5    
+## 
+## loaded via a namespace (and not attached):
+##  [1] beeswarm_0.2.3     tidyselect_1.1.0   xfun_0.7          
+##  [4] purrr_0.3.2        haven_2.1.0        carData_3.0-4     
+##  [7] colorspace_1.4-1   vctrs_0.3.2        generics_0.0.2    
+## [10] htmltools_0.3.6    yaml_2.2.0         utf8_1.1.4        
+## [13] rlang_0.4.7        pillar_1.4.6       foreign_0.8-71    
+## [16] glue_1.4.1         withr_2.1.2        RColorBrewer_1.1-2
+## [19] readxl_1.3.1       plyr_1.8.4         lifecycle_0.2.0   
+## [22] stringr_1.4.0      munsell_0.5.0      ggsignif_0.6.0    
+## [25] blogdown_0.13      gtable_0.3.0       cellranger_1.1.0  
+## [28] zip_2.0.2          evaluate_0.13      labeling_0.3      
+## [31] knitr_1.23         rio_0.5.16         forcats_0.4.0     
+## [34] vipor_0.4.5        curl_3.3           fansi_0.4.0       
+## [37] broom_0.7.0        Rcpp_1.0.5         scales_1.0.0      
+## [40] backports_1.1.4    abind_1.4-5        hms_0.4.2         
+## [43] digest_0.6.19      stringi_1.4.3      openxlsx_4.1.5    
+## [46] bookdown_0.11      rstatix_0.6.0      grid_3.6.0        
+## [49] cli_1.1.0          tools_3.6.0        tibble_3.0.3      
+## [52] crayon_1.3.4       tidyr_1.1.0        car_3.0-8         
+## [55] pkgconfig_2.0.2    ellipsis_0.3.1     data.table_1.12.2 
+## [58] assertthat_0.2.1   rmarkdown_1.13     R6_2.4.0          
+## [61] boot_1.3-22        compiler_3.6.0&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Let&#39;s Plot 8: (Animated) US State Covid-19 Case Count</title>
       <link>/./post/lets-plot-covid19-animated/</link>
       <pubDate>Wed, 25 Mar 2020 00:00:00 +0000</pubDate>
@@ -3581,221 +3883,6 @@ with slower internet.&lt;/p&gt;
 &lt;p&gt;workflows - rule based (XML) - infer parameters&lt;/p&gt;
 &lt;p&gt;get more algorithms on linear growth - ProgressCactus (?) - &lt;a href=&#34;https://github.com/glennhickey/progressiveCactus&#34;&gt;https://github.com/glennhickey/progressiveCactus ?&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>#GI2018 - Day One</title>
-      <link>/./post/gi2018-day-one/</link>
-      <pubDate>Mon, 17 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/./post/gi2018-day-one/</guid>
-      <description>&lt;div id=&#34;TOC&#34;&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#intro&#34;&gt;Intro&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#section&#34;&gt;2018-09-17&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#sarah-teichmann-teichmann-lab&#34;&gt;Sarah Teichmann (Teichmann Lab)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#girgio-gonnella-stefan-kurtz&#34;&gt;Girgio Gonnella (Stefan Kurtz)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#luke-zappia-oshlack&#34;&gt;Luke Zappia (Oshlack?)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#laura-huerta-papatheodorou&#34;&gt;Laura Huerta (Papatheodorou)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#casey-greene-greene&#34;&gt;Casey Greene (Greene)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#sergei-yakneen&#34;&gt;Sergei Yakneen&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-
-&lt;div id=&#34;intro&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Intro&lt;/h1&gt;
-&lt;p&gt;Very sparse and poorly written notes covering &lt;a href=&#34;https://twitter.com/hashtag/GI2018?src=hash&#34;&gt;#GI2018&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Typos everywhere. Things may change dramatically over time as I scan back through notes.&lt;/p&gt;
-&lt;p&gt;I’ve tried to respect #notwitter. Will be updated periodically.&lt;/p&gt;
-&lt;p&gt;Speaker (Lab | Group)&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;BOLDED is voice&lt;/strong&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;section&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;2018-09-17&lt;/h1&gt;
-&lt;/div&gt;
-&lt;div id=&#34;sarah-teichmann-teichmann-lab&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Sarah Teichmann (Teichmann Lab)&lt;/h1&gt;
-&lt;p&gt;Cell Atlas Technologies and the Maternal-Fetal Interface&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;humancellatlas.org&#34;&gt;Human Cell Atlas plug&lt;/a&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;600 scientists&lt;/li&gt;
-&lt;li&gt;scRNAseq + spatial methods&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;scRNA works OK&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;70%+ pearson cor (among genes?)&lt;/li&gt;
-&lt;li&gt;Detection limit pretty good after 1 million reads&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.biorxiv.org/content/early/2016/09/08/073692&#34;&gt;Svensson and Teichmann preprint&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Spatial Tech&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;i.e. gene expression at voxel resolution in a non-destroyed tissue
-&lt;ul&gt;
-&lt;li&gt;1 voxel ~ 20 cells&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Hope to ID spatially variable genes
-&lt;ul&gt;
-&lt;li&gt;[github.com/TeichLab/SpatialDE]&lt;/li&gt;
-&lt;li&gt;Svensson and Teichmann&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Braga and Stegle: Merge Spatial TX with scRNA&lt;/p&gt;
-&lt;p&gt;Future stuffs: Histology merged with scRNA&lt;/p&gt;
-&lt;p&gt;Back to HCA&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Many tissues, many scientists, many countries&lt;/li&gt;
-&lt;li&gt;curious if any integration with Chan-Zuckerberg&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Moving onto to Maternal-fetal interface&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;tricky area&lt;/li&gt;
-&lt;li&gt;immune component&lt;/li&gt;
-&lt;li&gt;two organisms&lt;/li&gt;
-&lt;li&gt;&lt;em&gt;tumor like&lt;/em&gt;&lt;/li&gt;
-&lt;li&gt;scRNA + WGS resolved fetal/maternal adn cell tyes&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div id=&#34;girgio-gonnella-stefan-kurtz&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Girgio Gonnella (Stefan Kurtz)&lt;/h1&gt;
-&lt;p&gt;Flexible and interactive visualization of GFA sequence graphs&lt;/p&gt;
-&lt;p&gt;Graphical Fragment Assembly&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;format for representing sequence graphs&lt;/li&gt;
-&lt;li&gt;contig output not as informative as graphs&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;GFA1 proposal format from Heng Li releaseed in 2016-09&lt;/p&gt;
-&lt;p&gt;GFA2 2017-01 more general&lt;/p&gt;
-&lt;p&gt;Today more assemblers are using&lt;/p&gt;
-&lt;p&gt;GFA2 format:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;header&lt;/li&gt;
-&lt;li&gt;sequences&lt;/li&gt;
-&lt;li&gt;relationships&lt;/li&gt;
-&lt;li&gt;RGFA (Ruby)&lt;/li&gt;
-&lt;li&gt;Gfapy (python)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;GfaViz&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;visualization of GFA2 (and GFA1)&lt;/li&gt;
-&lt;li&gt;C++, QT, OGDF&lt;/li&gt;
-&lt;li&gt;GUI and CLI&lt;/li&gt;
-&lt;li&gt;Two layouts, many options to customize views&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Scaffolding graphs&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;dealing with pos gaps (missing seq) and neg gaps (contig overlap by repeats)&lt;/li&gt;
-&lt;li&gt;Show how it looks with Bandage, no gap info&lt;/li&gt;
-&lt;li&gt;much busier with GfaViz
-&lt;ul&gt;
-&lt;li&gt;but now can see gap info between the pieces&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Long reads&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;local alignments are messy (noisy data)&lt;/li&gt;
-&lt;li&gt;GFA2 has &lt;em&gt;internal&lt;/em&gt; alignments&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Release is &lt;em&gt;later this year&lt;/em&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;ggonnella on github&lt;/li&gt;
-&lt;li&gt;email: &lt;a href=&#34;mailto:gonnella@zbh.uni-hamburg.de&#34;&gt;gonnella@zbh.uni-hamburg.de&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div id=&#34;luke-zappia-oshlack&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Luke Zappia (Oshlack?)&lt;/h1&gt;
-&lt;p&gt;Using clustering trees to visualize scRNA-seq data&lt;/p&gt;
-&lt;p&gt;(caps my own) &lt;strong&gt;SO MANY CLUSTERING TOOLS&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;T-SNE IS NOT CLUSTERING&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;How do we decide how many clusters?&lt;/p&gt;
-&lt;p&gt;When deciding k (cluster num) you can think of a graph and with edge weights to assess interesting groups&lt;/p&gt;
-&lt;p&gt;Cells on edge / num of cells in high res cluster&lt;/p&gt;
-&lt;p&gt;Above equation good way to think about usefulness of cluster groups&lt;/p&gt;
-&lt;p&gt;As we increase k, we can see how the graph changes and can get a sense of whether k should be changed&lt;/p&gt;
-&lt;p&gt;Real data&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;used Seurat to cluster&lt;/li&gt;
-&lt;li&gt;see a branch with is distinct and doesn’t interact with anything else&lt;/li&gt;
-&lt;li&gt;also see a stable region&lt;/li&gt;
-&lt;li&gt;see low proportion edges if you really increase the k&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;I can’t doodle on the computer, which would be helpful here but this stuff looks really helpful&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Using edge porportion (above eq.) and cluster relatinoships you get a decent sense of whether the clustering makes sense&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;WHAT SO COOL&lt;/strong&gt; (overlap of cluster trees on t-SNE)&lt;/p&gt;
-&lt;p&gt;Q: could this be used to magic pick a k? A: Everyone asks this….please don’t….no idea what would happen&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;laura-huerta-papatheodorou&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Laura Huerta (Papatheodorou)&lt;/h1&gt;
-&lt;p&gt;Data curation integration and visualization&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Oh boy, a viz talk that I’m going to cover with words&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Expression Atlas&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;open science resource for holding expression data&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;super useful resource, unfortunately in my experience pain to get data into R with their R packages&lt;/strong&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;I find it easier to just find the tsv output link and then slurp that into R&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;big value in consistent computational workflows&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;&amp;gt;3,300&lt;/code&gt; datasets, from all the big consortia (GTEx, FANTOM, etc)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;clusterSeq package&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;missed what this does but looks like a good thing to check out…&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;from bioconductor page: &lt;em&gt;Identification of clusters of co-expressed genes based on their expression across multiple (replicated) biological samples.&lt;/em&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Can embed Expression Atlas data on other pages (ensembl does this)&lt;/p&gt;
-&lt;p&gt;scRNA-seq data also - again public data, consistent processing (extension of iRAP) - can see whether gene is considered a &lt;em&gt;marker&lt;/em&gt; gene (&lt;strong&gt;not sure how this is picked&lt;/strong&gt;) - have a t-SNE(?) interactive plot view and shows your favorite gene colored&lt;/p&gt;
-&lt;p&gt;Future:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;merge bulk and scRNA data&lt;/li&gt;
-&lt;li&gt;….something else I missed about metadata?&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Q: How is data updated with genome build change? A: In lock step, can view old versions&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;casey-greene-greene&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Casey Greene (Greene)&lt;/h1&gt;
-&lt;p&gt;Can “big data” help us tackle rare diseases?&lt;/p&gt;
-&lt;p&gt;~3.7 million assays / datasets&lt;/p&gt;
-&lt;p&gt;~3.8 billion USD&lt;/p&gt;
-&lt;p&gt;Really tough to compare &lt;em&gt;across&lt;/em&gt; datasets with the “modular” approach&lt;/p&gt;
-&lt;p&gt;PLIER: decompose dataset into latent variables by genes and sample:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Mao et al biorxiv 2017&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Latent variables in individual datasets not helpful for dataset comparison - but could you run PLIER on datasetS and see whether it “works” - with SLE (lupus)….yes - with only 7 datasets, can find vars that are NOT dataset specific&lt;/p&gt;
-&lt;p&gt;Can you learn patterns from large datasets then &lt;em&gt;transfer&lt;/em&gt; to individual dataset / problem?&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;bit.ly/MultiPLIER&#34;&gt;MultiPLIER&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;ran with recount2 data on SLE (looking at ANC-associated)&lt;/li&gt;
-&lt;li&gt;top loadings known info&lt;/li&gt;
-&lt;li&gt;see how loading score drops in other (non SLE) tissues&lt;/li&gt;
-&lt;li&gt;slides: &lt;a href=&#34;https://www.dropbox.com/sh/j0ysaojqmac29qv/AADBHy-3y8qzWHr34F7M39QIa?dl=0&#34; class=&#34;uri&#34;&gt;https://www.dropbox.com/sh/j0ysaojqmac29qv/AADBHy-3y8qzWHr34F7M39QIa?dl=0&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Pitch for &lt;a href=&#34;http://researchparasite.com&#34; class=&#34;uri&#34;&gt;http://researchparasite.com&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;sergei-yakneen&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Sergei Yakneen&lt;/h1&gt;
-&lt;p&gt;Butler: a framework for large-scale scientific analysis on the cloud&lt;/p&gt;
-&lt;p&gt;[github.com/llevar/butler]&lt;/p&gt;
-&lt;p&gt;PCAWG&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;pan cancer analysis of whole genomes&lt;/li&gt;
-&lt;li&gt;2,834 donors, 70,313 files, 729 TB&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Show graph scaling off as pipelines choke as more samples get added&lt;/p&gt;
-&lt;p&gt;If progress was linear, &lt;em&gt;years&lt;/em&gt; of compute (?) time could be saved&lt;/p&gt;
-&lt;p&gt;Key needs:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;provisioning&lt;/li&gt;
-&lt;li&gt;config management&lt;/li&gt;
-&lt;li&gt;workflow&lt;/li&gt;
-&lt;li&gt;operations management&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Tried to use “off the shelf” infrastructure / processes to build Butler&lt;/p&gt;
-&lt;p&gt;Workflows are … CWL?&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;This seems targeted towards a pretty small audience - people running huge compute platforms?&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;** I guess you could use this for a smaller projects and deploy to cloud, but I would think that the overhead of learning this would likely overwhelm the potential savings relative to using Snakemake / Docker / Conda. **&lt;/p&gt;
 &lt;/div&gt;
 </description>
     </item>

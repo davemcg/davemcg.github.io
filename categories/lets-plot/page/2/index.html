@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="theme" content="hugo-academic">
-  <meta name="generator" content="Hugo 0.40" />
+  <meta name="generator" content="Hugo 0.55.5" />
   <meta name="author" content="David McGaughey">
 
   
@@ -18,7 +18,7 @@
   <meta name="description" content="Staff Scientist">
 
   
-  <link rel="alternate" hreflang="en-us" href="/./tags/lets-plot/">
+  <link rel="alternate" hreflang="en-us" href="/./categories/lets-plot/">
 
   
 
@@ -73,15 +73,15 @@
   
 
   
-  <link rel="alternate" href="/./tags/lets-plot/index.xml" type="application/rss+xml" title="eye Bioinformatician">
-  <link rel="feed" href="/./tags/lets-plot/index.xml" type="application/rss+xml" title="eye Bioinformatician">
+  <link rel="alternate" href="/./categories/lets-plot/index.xml" type="application/rss+xml" title="eye Bioinformatician">
+  <link rel="feed" href="/./categories/lets-plot/index.xml" type="application/rss+xml" title="eye Bioinformatician">
   
 
   <link rel="manifest" href="/site.webmanifest">
   <link rel="icon" type="image/png" href="/img/icon.png">
   <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
 
-  <link rel="canonical" href="/./tags/lets-plot/">
+  <link rel="canonical" href="/./categories/lets-plot/">
 
   <meta property="twitter:card" content="summary_large_image">
   
@@ -89,8 +89,8 @@
   <meta property="twitter:creator" content="@https://twitter.com/David_McGaughey">
   
   <meta property="og:site_name" content="eye Bioinformatician">
-  <meta property="og:url" content="/./tags/lets-plot/">
-  <meta property="og:title" content="Let&#39;s Plot | eye Bioinformatician">
+  <meta property="og:url" content="/./categories/lets-plot/">
+  <meta property="og:title" content="Let’s Plot | eye Bioinformatician">
   <meta property="og:description" content="Staff Scientist">
   <meta property="og:locale" content="en-us">
   
@@ -100,7 +100,7 @@
   
   
 
-  <title>Let&#39;s Plot | eye Bioinformatician</title>
+  <title>Let’s Plot | eye Bioinformatician</title>
 
 </head>
 <body id="top" data-spy="scroll" data-target="#toc" data-offset="71" >
@@ -252,87 +252,11 @@
 
 <div class="universal-wrapper">
 
-  <h1>Let&#39;s Plot</h1>
+  <h1>Let’s Plot</h1>
 
   
 
   
-  
-  <div>
-    <h2><a href="/./post/lets-plot-box-plot-fancy/">Let&#39;s Plot 9: The venerable box plot</a></h2>
-    <div class="article-style">
-      
-      Intro Load packages Import Excel file Plotting! Hmm, the order is not ideal Overlay points Wilcox test ggbeeswarm Themes Themes, with some tweaking of color and text dabest, one comparison dabest, multiple comparisons Conclusion Session Info   Intro This is the 9th Let’s Plot…and I’ve not done a workup of the most useful plot - the boxplot. Oops. Well let’s rectify that.
- Load packages Many many packages. We’ll see what they do later.
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/./post/lets-plot-covid19-animated/">Let&#39;s Plot 8: (Animated) US State Covid-19 Case Count</a></h2>
-    <div class="article-style">
-      
-      Load packages, pull data 2020 03 30 Update  Plotter function Cases by state Cases, with log10 scaling  Deaths by state (log10 scaled) Deaths by state, animated Shift plot Transform Data and plot Add exponential lines   Load packages, pull data 2020 03 30 Update CSSE changed their data structure, so I’ve updated the document.
-I was using their “time series” data, but they dropped the US-specific (with state by state info) documents.
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/./post/lets-plot-scrna-dotplots/">Let&#39;s Plot 7: Clustered Dot Plots in the ggverse</a></h2>
-    <div class="article-style">
-      
-      2020 03 23 Update Intro Example dotplot  How do I make a dotplot? But let’s do this ourself! Dotplot! Zero effort Remove dots where there is zero (or near zero expression) Better color, better theme, rotate x axis labels Tweak color scaling  Now what? Hey look: ggtree Let’s glue them together with cowplot How do we do better? Two more tweak options if you are having trouble: One more adjust Moonshot  Downside Exercises for the reader OLD Solution (kept for posterity)   2020 03 23 Update Ming Tang pointed out a better way to align plots, so I have rewritten the back end of this post.
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/./post/let-s-plot-4-r-vs-excel/">Let’s Plot 4: R vs Excel, Round 1</a></h2>
-    <div class="article-style">
-      
-      Introduction Data Cleaning Reformatting Box Plot Boxplot with all the data displayed I used to prefer violin plots I’m a fan of beeswarm plots with boxplots Doing statistics. Session   Introduction The battle that we’ve all been waiting for. Excel vs. R. Bar plot versus a plot that actually shows the data.
-Yeah, this isn’t a fair fight.
-Bar plots are terrible. Why? Simple. They don’t show what your data looks like.
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/./post/let-s-plot-3-part-2/">Let’s Plot 3: Base pair resolution NGS (exome) coverage plots - Part 2</a></h2>
-    <div class="article-style">
-      
-      Introduction Call mosdepth on bam to calculate bp-specific read depth Intersect base pair depth info with transcript and exon number Now it’s R time! Prepare Metadata Load mosdepth / bedtools intersect data and prep Plot Maker, version 1 Version 2 sessionInfo()    Introduction This is a barebones (but detailed enough, I hope) discussion of how to take a bam file, extract base pair resolution coverage data, then finagle the data into coverage plots by gene and exon.
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/./post/let-s-plot-3-part-i/">Let’s Plot 3: Base pair resolution NGS coverage plots (Part I)</a></h2>
-    <div class="article-style">
-      
-      Load data Curious? Data How many genes are in this dataset? What genes are in here? How many data points (bases) per gene? How many exons per gene? How many base pairs of ABCA4 (well, ABCA4 exons) is covered by more than 10 reads? 5 reads? Let’s check all of the genes to see which are the worst covered We can visually display the data, also Hard to see what is going on, let’s make little plots for each gene Where are genes poorly covered?
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/./post/let-s-plot-2-smoothed-lines/">Let’s Plot 2: Smoothed Lines</a></h2>
-    <div class="article-style">
-      
-      Get data (two xls files) from here: Load data and look at structure (str) Head (first few lines) AUC, N1P1, Latency Summary of eel and cobra AUC What kind of time points or conditions or whatever do we have again? Summary by pig and region Plot AUC by time and region and pig Prettier plot with lines and more formatting N1P1 Plot Latency plot Bonus   Data from Aaron Rising.
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/./post/let-s-plot-1/">Let’s Plot 1: Going in circles </a></h2>
-    <div class="article-style">
-      
-      What is going on? Where to get the code and data? Import data with readxl OK, first let’s remove the notes. However, we aren’t done. The data is “wide” instead of “long” and we have mixed session IDs (Amp 1-3 and Angle 1-3) with the value type. Now we need to extract the session (1,2,3) and the test type (Amp or Angle) Now we have two value types (Angle and Amplitude) in one column.
-      
-    </div>
-  </div>
   
   <div>
     <h2><a href="/./post/what-is-let-s-plot/">What is Let’s Plot?</a></h2>
@@ -346,6 +270,15 @@ They are a bit sparse on the words because I’m presenting these in person. But
   
 
   
+<nav>
+  <ul class="pager">
+    
+    <li><a href="/categories/lets-plot/">&lt;</a></li>
+    
+    
+  </ul>
+</nav>
+
 
 
 </div>

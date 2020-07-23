@@ -1,7 +1,7 @@
 ---
-title: "Let's Plot 9: dabest"
+title: "Let's Plot 9: The venerable box plot"
 author: David McGaughey
-date: '2020-07-20'
+date: '2020-07-23'
 slug: lets-plot-box-plot-fancy
 categories:
   - R
@@ -16,24 +16,37 @@ output:
   blogdown::html_page:
     toc: true
 ---
+## Intro
+This is the 9th Let's Plot...and I've not done a workup of the *most* useful plot - the boxplot. Oops. Well let's rectify that. 
 
 ## Load packages
+
+Many many packages. We'll see what they do later.
+
+If you get an error loading the packge, you can install it by running `install.packages` as:
+`install.package('dabestr')`
 ```{r}
 library(dabestr)
+library(readr)
 library(dplyr)
 library(ggplot2)
+library(ggpubr)
+library(ggbeeswarm)
+library(cowplot)
 ```
 
 ## Import Excel file
+
+Quick peek into the import. This data is from Figure 2a from the [Bharti lab](https://stm.sciencemag.org/content/11/475/eaat5580?rss=1)
 ```{r}
-fig2a_data <- readxl::read_excel('fig2.xlsx')
+fig2a_data <- read_tsv('https://github.com/davemcg/davemcg.github.io/raw/master/content/post/fig2.tsv')
 
 fig2a_data
 ```
 
 This doesn't look right...there's no header in this data. Let's re-import.
 ```{r}
-fig2a_data <- readxl::read_excel('fig2.xlsx', col_names = FALSE)
+fig2a_data <- read_tsv('https://github.com/davemcg/davemcg.github.io/raw/master/content/post/fig2.tsv', col_names = FALSE)
 fig2a_data
 ```
 
@@ -43,8 +56,20 @@ Better. Let's add some column names
 colnames(fig2a_data) <- c('Scaffold', 'Young\'s Modulus')
 fig2a_data
 ```
+
+OK, let's see how many `Scaffold` types we have and the number of samples of each with `base R` style.
+
+```{r}
+table(fig2a_data$Scaffold )
+```
+
+Now let's do the same, but in a tidyverse way. We us the ` %>% ` to *pipe* the `fig2a_data` into `group_by` then the grouped data is sent to `summarise` to do the counting (with `n()`). It's more readable this way.
+
+```{r}
+fig2a_data %>% group_by(Scaffold) %>% summarise(Count = n())
+```
 ## Plotting!
-That's better. OK. Let's do a quick boxplot.
+OK. Let's do a quick boxplot. 
 
 ```{r}
 fig2a_data %>% 
@@ -59,7 +84,11 @@ fig2a_data %>%
   ggplot(aes(x=Scaffold, y=`Young\'s Modulus`)) +
   geom_boxplot()
 ```
-### Overlay points
+
+## Overlay points
+
+Showing off the *modular* nature of ggplot. Need another plotting style? Just `+` another `geom_`
+
 ```{r}
 fig2a_data %>% 
   mutate(Scaffold = factor(Scaffold, levels = c('Single layer unfused', 'Single layer fused', 'Bilayer random fibers', 'Bilayer aligned fibers'))) %>% 
@@ -68,11 +97,100 @@ fig2a_data %>%
   geom_point()
 ```
 
-# dabest
+## Wilcox test
+
+It's popular in science papers to show the p-values between the groups. We set up the groupings with the `my_comparison` list object. `ggpubr` then is used to overlay the results with its `stat_compare_means` ggplot add-on.
+```{r}
+my_comparisons <- list( c("Single layer unfused", "Single layer fused"), c("Single layer unfused", "Bilayer random fibers"), c("Single layer unfused", "Bilayer aligned fibers") )
+fig2a_data %>% 
+  mutate(Scaffold = factor(Scaffold, levels = c('Single layer unfused', 'Single layer fused', 'Bilayer random fibers', 'Bilayer aligned fibers'))) %>% 
+  ggplot(aes(x=Scaffold, y=`Young\'s Modulus`)) +
+  geom_boxplot() +
+  geom_point() +
+  stat_compare_means(comparisons = my_comparisons, method = 'wilcox.test')
+```
+
+## ggbeeswarm
+When you have many points, they tend to overlap each other. A *beeswarm* plot is nice because it spreads the points sideways in a manner to show the distribution of the data.
+
+I've replaced `geom_point` with `geom_quasirandom`.
+
+```{r}
+my_comparisons <- list( c("Single layer unfused", "Single layer fused"), c("Single layer unfused", "Bilayer random fibers"), c("Single layer unfused", "Bilayer aligned fibers") )
+fig2a_data %>% 
+  mutate(Scaffold = factor(Scaffold, levels = c('Single layer unfused', 'Single layer fused', 'Bilayer random fibers', 'Bilayer aligned fibers'))) %>% 
+  ggplot(aes(x=Scaffold, y=`Young\'s Modulus`)) +
+  geom_boxplot() +
+  geom_quasirandom() +
+  stat_compare_means(comparisons = my_comparisons, method = 'wilcox.test') 
+```
+
+## Themes
+
+I'm not partial to gray everwhere, so let's use the `cowplot` `theme_cowplot` theme. 
+```{r}
+my_comparisons <- list( c("Single layer unfused", "Single layer fused"), c("Single layer unfused", "Bilayer random fibers"), c("Single layer unfused", "Bilayer aligned fibers") )
+fig2a_data %>% 
+  mutate(Scaffold = factor(Scaffold, levels = c('Single layer unfused', 'Single layer fused', 'Bilayer random fibers', 'Bilayer aligned fibers'))) %>% 
+  ggplot(aes(x=Scaffold, y=`Young\'s Modulus`)) +
+  geom_boxplot() +
+  geom_quasirandom() +
+  stat_compare_means(comparisons = my_comparisons, method = 'wilcox.test') +
+  theme_cowplot() 
+```
+
+## Themes, with some tweaking of color and text
+
+  - Increase point size
+  - Make boxplot black
+  - Make points gray 
+  - Make scaffold labels less wide by adding `\n` (newline) between each word
+  
+```{r}
+my_comparisons <- list( c("Single\nlayer\nunfused", "Single\nlayer\nfused"), c("Single\nlayer\nunfused", "Bilayer\nrandom\nfibers"), c("Single\nlayer\nunfused", "Bilayer\naligned\nfibers") )
+fig2a_data %>% 
+  mutate(Scaffold = gsub(' ', '\n', Scaffold), 
+         Scaffold = factor(Scaffold, levels = c('Single\nlayer\nunfused', 'Single\nlayer\nfused', 'Bilayer\nrandom\nfibers', 'Bilayer\naligned\nfibers'))) %>% 
+  ggplot(aes(x=Scaffold, y=`Young\'s Modulus`)) +
+  geom_boxplot(fill = 'black', color = 'dimgray') +
+  geom_quasirandom(color = 'dimgray', size = 3) +
+  stat_compare_means(comparisons = my_comparisons, method = 'wilcox.test') +
+  theme_cowplot() 
+```
+
+
+## dabest, one comparison
+One visualization that has been discussed as an alternative to the boxplot is the [estimation plot](https://www.nature.com/articles/s41592-019-0470-3). As R is a super popular figure making platform, the authors have made an [R package](https://cran.r-project.org/web/packages/dabestr/vignettes/using-dabestr.html
+) to make these plots. 
+
+
+
+
+```{r}
+dabest_dat <- fig2a_data %>% 
+  filter(Scaffold %in% c("Single layer unfused", "Single layer fused"))
+dabest(dabest_dat, x= Scaffold, y = `Young\'s Modulus`,
+                             idx = c("Single layer unfused", "Single layer fused"),
+                             paired = FALSE) %>% 
+                      mean_diff() %>% 
+  plot(effsize.ylim = c(0, 1000))
+```
+
+## dabest, multiple comparisons
 ```{r}
 dabest(fig2a_data, x= Scaffold, y = `Young\'s Modulus`,
                              idx = c("Single layer unfused", "Single layer fused", "Bilayer random fibers","Bilayer aligned fibers"),
                              paired = FALSE) %>% 
                       mean_diff() %>% 
   plot(effsize.ylim = c(0, 1000))
+```
+
+## Conclusion
+
+Boxplots are easy, making them look *awesome* is more work. But R and ggplot2 are up to it. 
+
+## Session Info 
+Version numbers of things
+```{r}
+sessionInfo()
 ```
