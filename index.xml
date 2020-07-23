@@ -20,7 +20,7 @@
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#intro&#34;&gt;Intro&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#load-packages&#34;&gt;Load packages&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#import-excel-file&#34;&gt;Import Excel file&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#import-tsv-tab-separated-value-file&#34;&gt;Import TSV (tab-separated-value) file&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#plotting&#34;&gt;Plotting!&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#hmm-the-order-is-not-ideal&#34;&gt;Hmm, the order is not ideal&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#overlay-points&#34;&gt;Overlay points&lt;/a&gt;&lt;/li&gt;
@@ -73,9 +73,9 @@ library(cowplot)&lt;/code&gt;&lt;/pre&gt;
 ## 
 ##     ggsave&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-&lt;div id=&#34;import-excel-file&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Import Excel file&lt;/h2&gt;
-&lt;p&gt;Quick peek into the import. This data is from Figure 2a from the &lt;a href=&#34;https://stm.sciencemag.org/content/11/475/eaat5580?rss=1&#34;&gt;Bharti lab&lt;/a&gt;&lt;/p&gt;
+&lt;div id=&#34;import-tsv-tab-separated-value-file&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Import TSV (tab-separated-value) file&lt;/h2&gt;
+&lt;p&gt;Quick peek into the import. This data is from Figure 2a from the Bharti lab’s paper &lt;a href=&#34;https://stm.sciencemag.org/content/11/475/eaat5580?rss=1&#34;&gt;Clinical-grade stem cell–derived retinal pigment epithelium patch rescues retinal degeneration in rodents and pigs&lt;/a&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;fig2a_data &amp;lt;- read_tsv(&amp;#39;https://github.com/davemcg/davemcg.github.io/raw/master/content/post/fig2.tsv&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Parsed with column specification:
 ## cols(
@@ -164,6 +164,7 @@ fig2a_data&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;hmm-the-order-is-not-ideal&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Hmm, the order is not ideal&lt;/h2&gt;
+&lt;p&gt;Let’s convert the &lt;code&gt;Scaffold&lt;/code&gt; character vector type column into a factor, which allows us to set a custom order of the values. &lt;code&gt;ggplot&lt;/code&gt; uses alphabetical order for character vectors.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;fig2a_data %&amp;gt;% 
   mutate(Scaffold = factor(Scaffold, levels = c(&amp;#39;Single layer unfused&amp;#39;, &amp;#39;Single layer fused&amp;#39;, &amp;#39;Bilayer random fibers&amp;#39;, &amp;#39;Bilayer aligned fibers&amp;#39;))) %&amp;gt;% 
   ggplot(aes(x=Scaffold, y=`Young\&amp;#39;s Modulus`)) +

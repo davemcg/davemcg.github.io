@@ -37,7 +37,7 @@ library(cowplot)
 
 ## Import TSV (tab-separated-value) file
 
-Quick peek into the import. This data is from Figure 2a from the [Bharti lab](https://stm.sciencemag.org/content/11/475/eaat5580?rss=1)
+Quick peek into the import. This data is from Figure 2a from the Bharti lab's paper [Clinical-grade stem cell–derived retinal pigment epithelium patch rescues retinal degeneration in rodents and pigs](https://stm.sciencemag.org/content/11/475/eaat5580?rss=1)
 ```{r}
 fig2a_data <- read_tsv('https://github.com/davemcg/davemcg.github.io/raw/master/content/post/fig2.tsv')
 
@@ -78,6 +78,7 @@ fig2a_data %>%
 ```
 
 ## Hmm, the order is not ideal
+Let's convert the `Scaffold` character vector type column into a factor, which allows us to set a custom order of the values. `ggplot` uses alphabetical order for character vectors. 
 ```{r}
 fig2a_data %>% 
   mutate(Scaffold = factor(Scaffold, levels = c('Single layer unfused', 'Single layer fused', 'Bilayer random fibers', 'Bilayer aligned fibers'))) %>% 

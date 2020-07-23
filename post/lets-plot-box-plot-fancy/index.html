@@ -17,8 +17,8 @@
       
     
   
-  <meta name="description" content="Intro Load packages Import Excel file Plotting! Hmm, the order is not ideal Overlay points Wilcox test ggbeeswarm Themes Themes, with some tweaking of color and text dabest, one comparison dabest, multiple comparisons Conclusion Session Info   Intro This is the 9th Let’s Plot…and I’ve not done a workup of the most useful plot - the boxplot. Oops. Well let’s rectify that.
- Load packages Many many packages. We’ll see what they do later.">
+  <meta name="description" content="Intro Load packages Import TSV (tab-separated-value) file Plotting! Hmm, the order is not ideal Overlay points Wilcox test ggbeeswarm Themes Themes, with some tweaking of color and text dabest, one comparison dabest, multiple comparisons Conclusion Session Info   Intro This is the 9th Let’s Plot…and I’ve not done a workup of the most useful plot - the boxplot. Oops. Well let’s rectify that.
+ Load packages Many many packages.">
 
   
   <link rel="alternate" hreflang="en-us" href="/./post/lets-plot-box-plot-fancy/">
@@ -94,8 +94,8 @@
   <meta property="og:site_name" content="eye Bioinformatician">
   <meta property="og:url" content="/./post/lets-plot-box-plot-fancy/">
   <meta property="og:title" content="Let&#39;s Plot 9: The venerable box plot | eye Bioinformatician">
-  <meta property="og:description" content="Intro Load packages Import Excel file Plotting! Hmm, the order is not ideal Overlay points Wilcox test ggbeeswarm Themes Themes, with some tweaking of color and text dabest, one comparison dabest, multiple comparisons Conclusion Session Info   Intro This is the 9th Let’s Plot…and I’ve not done a workup of the most useful plot - the boxplot. Oops. Well let’s rectify that.
- Load packages Many many packages. We’ll see what they do later.">
+  <meta property="og:description" content="Intro Load packages Import TSV (tab-separated-value) file Plotting! Hmm, the order is not ideal Overlay points Wilcox test ggbeeswarm Themes Themes, with some tweaking of color and text dabest, one comparison dabest, multiple comparisons Conclusion Session Info   Intro This is the 9th Let’s Plot…and I’ve not done a workup of the most useful plot - the boxplot. Oops. Well let’s rectify that.
+ Load packages Many many packages.">
   <meta property="og:locale" content="en-us">
   
   <meta property="article:published_time" content="2020-07-23T00:00:00&#43;00:00">
@@ -278,7 +278,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    7 min read
+    8 min read
   </span>
   
 
@@ -357,7 +357,7 @@
 <ul>
 <li><a href="#intro">Intro</a></li>
 <li><a href="#load-packages">Load packages</a></li>
-<li><a href="#import-excel-file">Import Excel file</a></li>
+<li><a href="#import-tsv-tab-separated-value-file">Import TSV (tab-separated-value) file</a></li>
 <li><a href="#plotting">Plotting!</a></li>
 <li><a href="#hmm-the-order-is-not-ideal">Hmm, the order is not ideal</a></li>
 <li><a href="#overlay-points">Overlay points</a></li>
@@ -410,9 +410,9 @@ library(cowplot)</code></pre>
 ## 
 ##     ggsave</code></pre>
 </div>
-<div id="import-excel-file" class="section level2">
-<h2>Import Excel file</h2>
-<p>Quick peek into the import. This data is from Figure 2a from the <a href="https://stm.sciencemag.org/content/11/475/eaat5580?rss=1">Bharti lab</a></p>
+<div id="import-tsv-tab-separated-value-file" class="section level2">
+<h2>Import TSV (tab-separated-value) file</h2>
+<p>Quick peek into the import. This data is from Figure 2a from the Bharti lab’s paper <a href="https://stm.sciencemag.org/content/11/475/eaat5580?rss=1">Clinical-grade stem cell–derived retinal pigment epithelium patch rescues retinal degeneration in rodents and pigs</a></p>
 <pre class="r"><code>fig2a_data &lt;- read_tsv(&#39;https://github.com/davemcg/davemcg.github.io/raw/master/content/post/fig2.tsv&#39;)</code></pre>
 <pre><code>## Parsed with column specification:
 ## cols(
@@ -501,6 +501,7 @@ fig2a_data</code></pre>
 </div>
 <div id="hmm-the-order-is-not-ideal" class="section level2">
 <h2>Hmm, the order is not ideal</h2>
+<p>Let’s convert the <code>Scaffold</code> character vector type column into a factor, which allows us to set a custom order of the values. <code>ggplot</code> uses alphabetical order for character vectors.</p>
 <pre class="r"><code>fig2a_data %&gt;% 
   mutate(Scaffold = factor(Scaffold, levels = c(&#39;Single layer unfused&#39;, &#39;Single layer fused&#39;, &#39;Bilayer random fibers&#39;, &#39;Bilayer aligned fibers&#39;))) %&gt;% 
   ggplot(aes(x=Scaffold, y=`Young\&#39;s Modulus`)) +
